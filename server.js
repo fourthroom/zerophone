@@ -12,6 +12,10 @@ const io = new Server(server, {
   }
 });
 
+// TOTAL MONTHLY RENDER FREE TIER HOURS ALLOWANCE
+const MONTHLY_RENDER_HOURS_LIMIT = 750;
+const serverStartTime = new Date();
+
 // ANONYMOUS IN-MEMORY USAGE STATS
 const usageStats = {
   activeConnections: 0,
@@ -21,11 +25,24 @@ const usageStats = {
   totalRoomsJoined: 0
 };
 
-// Public Stats Endpoint (No personal data, only aggregate counts)
+// Public Stats Endpoint
 app.get('/stats', (req, res) => {
+  const uptimeSeconds = process.uptime();
+  const uptimeHours = parseFloat((uptimeSeconds / 3600).toFixed(4));
+  const remainingHours = parseFloat(Math.max(0, MONTHLY_RENDER_HOURS_LIMIT - uptimeHours).toFixed(4));
+  const percentUsed = parseFloat(((uptimeHours / MONTHLY_RENDER_HOURS_LIMIT) * 100).toFixed(2));
+
   res.json({
     status: "online",
     stats: usageStats,
+    serverUptime: {
+      startedAt: serverStartTime.toISOString(),
+      currentSessionSeconds: Math.floor(uptimeSeconds),
+      currentSessionHours: uptimeHours,
+      monthlyAllowanceHours: MONTHLY_RENDER_HOURS_LIMIT,
+      sessionHoursRemaining: remainingHours,
+      percentOfMonthlyQuotaUsed: `${percentUsed}%`
+    },
     timestamp: new Date().toISOString()
   });
 });
