@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1b382b"/>
+      <stop offset="100%" stop-color="#0d1f17"/>
+    </linearGradient>
+    <linearGradient id="trunkGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8d3a1b"/>
+      <stop offset="50%" stop-color="#b85328"/>
+      <stop offset="100%" stop-color="#5e240e"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Background Card -->
+  <rect width="512" height="512" rx="115" fill="url(#bgGrad)"/>
+  <rect width="504" height="504" x="4" y="4" rx="111" fill="none" stroke="#30d158" stroke-width="6" stroke-opacity="0.4"/>
+
+  <!-- Giant Sequoia Graphic -->
+  <g filter="url(#shadow)">
+    <!-- Base / Ground Mound -->
+    <ellipse cx="256" cy="450" rx="180" ry="24" fill="#14291e"/>
+    <path d="M120 450 Q 256 420 392 450 Z" fill="#2d5a3f"/>
+
+    <!-- Massive Buttressed Trunk -->
+    <path d="M 232 140 
+             C 230 220, 220 330, 160 445 
+             L 352 445 
+             C 292 330, 282 220, 280 140 
+             Z" fill="url(#trunkGrad)"/>
+    
+    <!-- Trunk Bark Grooves -->
+    <path d="M 246 170 C 244 260, 230 350, 205 445" stroke="#5e240e" stroke-width="5" stroke-linecap="round" fill="none"/>
+    <path d="M 266 170 C 268 260, 282 350, 307 445" stroke="#782d12" stroke-width="5" stroke-linecap="round" fill="none"/>
+    <path d="M 256 150 L 256 445" stroke="#421808" stroke-width="4" fill="none"/>
+
+    <!-- Distinctive High Tiered Canopy -->
+    <!-- Top Crown -->
+    <path d="M 256 55 C 215 55, 200 95, 215 115 C 200 120, 205 145, 230 150 C 240 155, 272 155, 282 150 C 307 145, 312 120, 297 115 C 312 95, 297 55, 256 55 Z" fill="#3cd070"/>
+    
+    <!-- Upper Foliage Boughs -->
+    <ellipse cx="195" cy="180" rx="60" ry="32" fill="#2ea858"/>
+    <ellipse cx="317" cy="175" rx="62" ry="34" fill="#2ea858"/>
+    <ellipse cx="170" cy="235" rx="65" ry="35" fill="#258c48"/>
+    <ellipse cx="342" cy="230" rx="68" ry="36" fill="#258c48"/>
+
+    <!-- Heavy Mid/Lower Boughs -->
+    <ellipse cx="155" cy="295" rx="72" ry="38" fill="#1b6e36"/>
+    <ellipse cx="357" cy="290" rx="75" ry="40" fill="#1b6e36"/>
+    <ellipse cx="180" cy="350" rx="65" ry="32" fill="#16572b"/>
+    <ellipse cx="332" cy="345" rx="68" ry="34" fill="#16572b"/>
+  </g>
+</svg>

@@ -4,24 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   
-  <title>ZeroPhone — Encrypted Browser Video Calling, WebText & Local Resources</title>
-  <meta name="description" content="ZeroPhone is a privacy-first web utility featuring end-to-end AES-256-GCM encrypted video calling, voice calls, free WebText, local Wi-Fi maps, and live radio.">
-  <meta name="keywords" content="ZeroPhone, fourthroom.org, AES-256 encryption, free video call, browser calling, WebRTC, free web text, local radio streams, public wifi maps">
+  <title>ZeroPhone (Family) — Encrypted Video Calling & WebText</title>
+  <meta name="description" content="ZeroPhone Family Room - End-to-end encrypted calling, WebText, local maps, and radio.">
   <meta name="author" content="FourthRoom">
-  <link rel="canonical" href="https://fourthroom.org/">
 
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://fourthroom.org/">
-  <meta property="og:title" content="ZeroPhone — Encrypted Web Calling & WebText">
-  <meta property="og:description" content="Instant, private video and voice calling right from your browser powered by AES-256-GCM encryption. No downloads or accounts required.">
-  <meta property="og:image" content="https://fourthroom.org/icon.png">
+  <meta property="og:title" content="ZeroPhone Family Room">
+  <meta property="og:description" content="Private family video and voice room.">
+  <meta property="og:image" content="family-icon.svg">
 
-  <link rel="icon" type="image/png" href="icon.png">
-  <link rel="shortcut icon" type="image/png" href="icon.png">
-  <link rel="apple-touch-icon" href="icon.png">
+  <link rel="icon" type="image/svg+xml" href="family-icon.svg">
+  <link rel="alternate icon" type="image/png" href="family-icon.svg">
+  <link rel="apple-touch-icon" href="family-icon.svg">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="ZeroPhone">
+  <meta name="apple-mobile-web-app-title" content="ZeroPhone Family">
   <meta name="theme-color" content="#121212">
 
   <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
@@ -46,7 +43,7 @@
       gap: 12px;
     }
     .brand-container { display: flex; align-items: center; gap: 10px; }
-    .app-header-logo { width: 36px; height: 36px; border-radius: 8px; object-fit: cover; box-shadow: 0 2px 6px rgba(0,0,0,0.4); }
+    .app-header-logo { width: 38px; height: 38px; border-radius: 9px; object-fit: contain; box-shadow: 0 2px 6px rgba(0,0,0,0.5); }
     .app-brand-title { font-size: 26px; font-weight: 900; letter-spacing: -0.5px; color: #fff; margin: 0; display: flex; align-items: center; gap: 8px; }
     .tab-bar { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
     .tab-btn {
@@ -245,8 +242,8 @@
   <div id="mainHeader" class="top-header">
     <div class="brand-container">
       <h1 class="app-brand-title">
-        <img src="icon.png" alt="Cabin Icon" class="app-header-logo" onerror="this.style.display='none'">
-        ZeroPhone
+        <img src="family-icon.svg" alt="Sequoia Tree Icon" class="app-header-logo" onerror="this.style.display='none'">
+        ZeroPhone Family
       </h1>
     </div>
 
@@ -254,8 +251,8 @@
       <button class="tab-btn tab-level1-phone active" onclick="switchTab('level1-phone')">Level 1 - WebPhone<span class="sub-tagline">30 Min Free / Device</span></button>
       <button class="tab-btn tab-level1-text" onclick="switchTab('level1-text')">Level 1 - WebText<span class="sub-tagline">Completely Free</span></button>
       <button class="tab-btn tab-level2" onclick="switchTab('level2')">Level 2 - "CellPhone"<span class="sub-tagline">Carrier Text & Calling</span></button>
-      <button class="tab-btn tab-maps" onclick="switchTab('maps')">📍 Maps<span class="sub-tagline">Wi-Fi & Resource Finder</span></button>
-      <button class="tab-btn tab-radio" onclick="switchTab('radio')">📻 Radio<span class="sub-tagline">Local Live Streams</span></button>
+      <button class="tab-maps" onclick="switchTab('maps')">📍 Maps<span class="sub-tagline">Wi-Fi & Resource Finder</span></button>
+      <button class="tab-radio" onclick="switchTab('radio')">📻 Radio<span class="sub-tagline">Local Live Streams</span></button>
     </div>
   </div>
 
@@ -417,7 +414,7 @@
     let isVideoMuted = false;
     let callTimerInterval = null;
 
-    const CALL_LIMIT_SECONDS = 30 * 60; // 30 Minutes of calling
+    const CALL_LIMIT_SECONDS = 30 * 60;
 
     const roomIdInput = document.getElementById('roomId');
     const callerNameInput = document.getElementById('callerName');
@@ -428,7 +425,6 @@
 
     const rtcConfig = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] };
 
-    // --- USAGE QUOTA ENGINE FOR CALLS ONLY ---
     function getDeviceUsage() {
       const stored = localStorage.getItem('zp_usage');
       const now = Date.now();
@@ -507,7 +503,6 @@
       }
     }
 
-    // --- RADIO ENGINE (100% UNLIMITED & FREE) ---
     const RADIO_API_BASE = "https://de1.api.radio-browser.info/json/stations/search";
 
     async function fetchRadioBrowserGenre(tag) {
@@ -535,7 +530,6 @@
       }
     }
 
-    // --- WEBRTC ENGINE ---
     function updateGridLayout() {
       const grid = document.getElementById('videoStreamView');
       if (!grid) return;
@@ -596,11 +590,11 @@
       const isEmail = document.getElementById('phoneInviteToggle').checked;
 
       if (isEmail) {
-        const subject = `ZeroPhone Invitation from ${name}`;
-        const emailBody = `Hello!\n\n${name} invited you to a video call:\n${inviteUrl}`;
+        const subject = `ZeroPhone Family Call from ${name}`;
+        const emailBody = `Hello!\n\n${name} invited you to join the private ZeroPhone family call:\n${inviteUrl}`;
         window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
       } else {
-        const smsMessage = `Knock, Knock!\n\n${name} invited you to a video call: ${inviteUrl}`;
+        const smsMessage = `Knock, Knock!\n\n${name} invited you to the ZeroPhone family call: ${inviteUrl}`;
         window.location.href = `sms:?&body=${encodeURIComponent(smsMessage)}`;
       }
     }
@@ -705,7 +699,7 @@
 
     socket.on('answer', async ({ answer, senderId }) => {
       if (peerConnections[senderId]) {
-        await peerConnections[senderId].setRemoteDescription(new RTCSessionDescription(answer));
+        await peerConnections[senderId].setRemoteDescription(new RTCPessionDescription(answer));
       }
     });
 
