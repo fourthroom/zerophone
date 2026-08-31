@@ -140,6 +140,23 @@
     .tab-content { display: none; }
     .tab-content.active { display: block; }
 
+    /* PROMINENT TIER PRICING NOTE */
+    .pricing-announcement-card {
+      background: #18221b;
+      border: 1px solid #30d158;
+      border-radius: 12px;
+      max-width: 580px;
+      margin: 10px auto 14px auto;
+      padding: 12px 16px;
+      font-size: 13px;
+      line-height: 1.45;
+      color: #e2e8f0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+    .pricing-announcement-card b {
+      color: #30d158;
+    }
+
     /* REDESIGNED SIMPLIFIED LEVEL 1 WEBPHONE CARD */
     .webphone-simplified-card {
       background: #1c1c1e;
@@ -332,13 +349,24 @@
       background-color: #ff3b30;
     }
 
-    /* IN-CALL CONTROLS BAR */
+    /* IN-CALL CONTROLS BAR & CALL TIMER */
     .incall-controls-bar {
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 15px;
       margin-top: 15px;
+      flex-wrap: wrap;
+    }
+
+    .call-timer-badge {
+      background: #1c1c1e;
+      border: 1px solid #30d158;
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: bold;
+      color: #30d158;
     }
 
     .btn-media-toggle {
@@ -789,6 +817,11 @@
     <div id="tab-level1-phone" class="tab-content active">
       <div id="status">Connected to Server</div>
 
+      <!-- PROMINENT NOTE BANNER -->
+      <div class="pricing-announcement-card">
+        ZeroPhone is a free app for making video calls and sending texts, as well as a free Maps and Radio. The <b>Free Tier</b> allows the user to make <b>15 minute video calls</b>. For a <b>$5 fee</b>, the user can make an entire month (31 days) of unlimited calls.
+      </div>
+
       <div id="webphoneMainSection">
         <div class="webphone-simplified-card">
           
@@ -856,6 +889,7 @@
       </div>
 
       <div id="inCallControls" class="incall-controls-bar" style="display:none;">
+        <div id="callTimerDisplay" class="call-timer-badge">⏱️ 15:00</div>
         <button id="toggleMicBtn" class="btn-media-toggle" onclick="toggleAudio()" title="Mute/Unmute Mic">🎙️</button>
         <button id="toggleCamBtn" class="btn-media-toggle" onclick="toggleVideo()" title="Turn Camera On/Off">📹</button>
         <button id="hangUpBtn" class="btn-red-end" onclick="hangUpCall()">🔴 End Call</button>
@@ -1020,6 +1054,11 @@
 
     let isAudioMuted = false;
     let isVideoMuted = false;
+
+    // 15-MINUTE CALL LIMIT CONTROLS (FREE TIER)
+    const MAX_CALL_DURATION_SEC = 15 * 60; // 900 seconds
+    let callTimerInterval = null;
+    let callSecondsRemaining = MAX_CALL_DURATION_SEC;
 
     const roomIdInput = document.getElementById('roomId');
     const callerNameInput = document.getElementById('callerName');
@@ -1431,9 +1470,46 @@
       document.getElementById('inCallControls').style.display = 'flex';
       document.getElementById('webphoneMainSection').style.display = 'none';
 
+      // Start the 15-Minute Free Tier Timer
+      startCallTimer();
+
       updateGridLayout();
       socket.emit('join-room', roomId);
       statusDiv.innerText = `Joined room: ${roomId}. Waiting for peers...`;
+    }
+
+    // 15-MINUTE CALL DURATION TIMER ENGINE
+    function startCallTimer() {
+      clearInterval(callTimerInterval);
+      callSecondsRemaining = MAX_CALL_DURATION_SEC;
+      updateTimerDisplay();
+
+      callTimerInterval = setInterval(() => {
+        callSecondsRemaining--;
+        updateTimerDisplay();
+
+        if (callSecondsRemaining <= 0) {
+          clearInterval(callTimerInterval);
+          hangUpCall();
+          alert("Your 15-minute free call session has ended. Upgrade to unlimited calling or start a new call!");
+        }
+      }, 1000);
+    }
+
+    function updateTimerDisplay() {
+      const display = document.getElementById('callTimerDisplay');
+      if (!display) return;
+      const mins = Math.floor(callSecondsRemaining / 60);
+      const secs = callSecondsRemaining % 60;
+      display.innerText = `⏱️ ${mins}:${secs < 10 ? '0' : ''}${secs}`;
+
+      if (callSecondsRemaining <= 120) {
+        display.style.borderColor = "#ff3b30";
+        display.style.color = "#ff3b30";
+      } else {
+        display.style.borderColor = "#30d158";
+        display.style.color = "#30d158";
+      }
     }
 
     // IN-CALL CONTROLS: AUDIO & VIDEO MUTE TOGGLES
@@ -1474,6 +1550,8 @@
     }
 
     function hangUpCall() {
+      clearInterval(callTimerInterval);
+
       if (localStream) {
         localStream.getTracks().forEach(track => track.stop());
         localStream = null;
