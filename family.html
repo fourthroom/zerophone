@@ -794,7 +794,7 @@
     </div>
 
     <div id="tab-level1-phone" class="tab-content active">
-      <div id="status">Connected to Server</div>
+      <div id="status">Ready to Call</div>
 
       <div id="webphoneMainSection">
         <div class="webphone-simplified-card">
@@ -1050,7 +1050,8 @@
   <script>
     const SIGNALING_SERVER = "https://webrtc-signaling-do2l.onrender.com";
     
-    const socket = io(SIGNALING_SERVER);
+    // LAZY SOCKET: Do not connect on initial page load
+    const socket = io(SIGNALING_SERVER, { autoConnect: false });
     let localStream;
     let peerConnections = {};
     let currentCoords = null;
@@ -1064,6 +1065,21 @@
     const statusDiv = document.getElementById('status');
 
     const rtcConfig = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] };
+
+    function ensureSocketConnected(onConnected) {
+      if (socket.connected) {
+        if (onConnected) onConnected();
+        return;
+      }
+      statusDiv.innerText = "Connecting to server...";
+      statusDiv.style.color = "#ff9500";
+      socket.connect();
+      socket.once('connect', () => {
+        statusDiv.innerText = "Connected to Server";
+        statusDiv.style.color = "#30d158";
+        if (onConnected) onConnected();
+      });
+    }
 
     // DYNAMIC GRID LAYOUT ADJUSTER (SQUARE FRAMES FOR 1, 2, 3, AND 4 PARTICIPANTS)
     function updateGridLayout() {
@@ -1226,7 +1242,11 @@
         document.querySelectorAll('.tab-btn')[1].classList.add('active');
         document.getElementById('tab-level1-text').classList.add('active');
         const r = document.getElementById('webTextRoomId').value.trim() || roomIdInput.value.trim();
-        if (r) socket.emit('join-room', r);
+        if (r) {
+          ensureSocketConnected(() => {
+            socket.emit('join-room', r);
+          });
+        }
       } else if (tabName === 'level2') {
         document.querySelectorAll('.tab-btn')[2].classList.add('active');
         document.getElementById('tab-level2').classList.add('active');
@@ -1412,11 +1432,6 @@
       sendInvite('text');
     }
 
-    socket.on('connect', () => {
-      statusDiv.innerText = "Connected to Server";
-      statusDiv.style.color = "#30d158";
-    });
-
     socket.on('connect_error', () => {
       statusDiv.innerText = "Waking up server (please wait)...";
       statusDiv.style.color = "#ff9500";
@@ -1471,9 +1486,12 @@
       document.getElementById('inCallControls').style.display = 'flex';
       document.getElementById('webphoneMainSection').style.display = 'none';
 
-      updateGridLayout();
-      socket.emit('join-room', roomId);
-      statusDiv.innerText = `Joined room: ${roomId}. Waiting for peers...`;
+      // Connect to Render only now
+      ensureSocketConnected(() => {
+        updateGridLayout();
+        socket.emit('join-room', roomId);
+        statusDiv.innerText = `Joined room: ${roomId}. Waiting for peers...`;
+      });
     }
 
     // IN-CALL CONTROLS: AUDIO & VIDEO MUTE TOGGLES
@@ -1523,6 +1541,11 @@
         if (peerConnections[id]) peerConnections[id].close();
       });
       peerConnections = {};
+
+      // Disconnect socket from Render immediately on hangup
+      if (socket && socket.connected) {
+        socket.disconnect();
+      }
 
       const grid = document.getElementById('videoStreamView');
       grid.innerHTML = `
@@ -1662,11 +1685,13 @@
       const roomId = document.getElementById('webTextRoomId').value.trim() || 'room1';
 
       if (msg) {
-        socket.emit('join-room', roomId);
-        const encrypted = await encryptPayload(msg, roomId);
-        socket.emit('send-web-chat', { roomId: roomId, cipher: encrypted.cipher, iv: encrypted.iv, sender: sender });
-        appendWebMessage(sender, msg);
-        input.value = '';
+        ensureSocketConnected(async () => {
+          socket.emit('join-room', roomId);
+          const encrypted = await encryptPayload(msg, roomId);
+          socket.emit('send-web-chat', { roomId: roomId, cipher: encrypted.cipher, iv: encrypted.iv, sender: sender });
+          appendWebMessage(sender, msg);
+          input.value = '';
+        });
       }
     }
 
