@@ -120,6 +120,9 @@
     .tab-maps { background: #5c3800; border-top: 3px solid #ff9500; }
     .tab-maps.active { background: #ff9500; color: #000; }
 
+    .tab-seattle-wifi { background: #005a70; border-top: 3px solid #00c0f0; }
+    .tab-seattle-wifi.active { background: #00c0f0; color: #000; }
+
     .tab-radio { background: #4a0072; border-top: 3px solid #e040fb; }
     .tab-radio.active { background: #e040fb; color: #000; }
 
@@ -771,6 +774,10 @@
         📍 Maps
         <span class="sub-tagline">Wi-Fi & Resource Finder</span>
       </button>
+      <button class="tab-btn tab-seattle-wifi" onclick="switchTab('seattle-wifi')">
+        🌐 Seattle Wi-Fi
+        <span class="sub-tagline">City Portal Map</span>
+      </button>
       <button class="tab-btn tab-radio" onclick="switchTab('radio')">
         📻 Radio
         <span class="sub-tagline">Local Live Streams</span>
@@ -948,6 +955,36 @@
 
         <div class="map-frame-container">
           <iframe id="googleMapIframe" src="https://www.google.com/maps?q=Seattle+WA&z=14&output=embed" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div class="privacy-notice-badge">
+        🔒 <b>End-to-End Encrypted (AES-256-GCM):</b> All video, voice, and web text are scrambled directly on your device before transmission. Zero data is logged, stored, or shared.
+      </div>
+    </div>
+
+    <div id="tab-seattle-wifi" class="tab-content">
+      <h2 style="color: #00c0f0; margin-top: 0;">🌐 City of Seattle Public Wi-Fi Portal</h2>
+      <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Official municipal database for city libraries, civic centers, and public hotspots</p>
+
+      <div class="maps-box" style="border-color: #00c0f0;">
+        <div style="margin-bottom: 14px; display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap;">
+          <a href="https://maps.seattle.gov/publicwifi/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+            <button style="font-size: 13px; padding: 10px 20px; background: #00c0f0; color: #000; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(0, 192, 240, 0.3);">
+              ↗️ Launch Seattle Portal Fullscreen
+            </button>
+          </a>
+        </div>
+
+        <div class="map-frame-container" style="height: 550px; border-color: #007d99;">
+          <iframe 
+            id="seattleWifiIframe" 
+            src="https://maps.seattle.gov/publicwifi/" 
+            title="Seattle Public Wi-Fi Map"
+            loading="lazy"
+            sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+            allowfullscreen>
+          </iframe>
         </div>
       </div>
 
@@ -1197,8 +1234,11 @@
         document.querySelectorAll('.tab-btn')[3].classList.add('active');
         document.getElementById('tab-maps').classList.add('active');
         if (!currentCoords) centerMapOnUser(false);
-      } else if (tabName === 'radio') {
+      } else if (tabName === 'seattle-wifi') {
         document.querySelectorAll('.tab-btn')[4].classList.add('active');
+        document.getElementById('tab-seattle-wifi').classList.add('active');
+      } else if (tabName === 'radio') {
+        document.querySelectorAll('.tab-btn')[5].classList.add('active');
         document.getElementById('tab-radio').classList.add('active');
       }
     }
