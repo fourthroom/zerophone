@@ -815,9 +815,9 @@
     </div>
 
     <div id="tab-level1-phone" class="tab-content active">
-      <div id="status">Connected to Server</div>
+      <div id="status">Ready to Call</div>
 
-      <!-- PROMINENT NOTE BANNER -->
+      <!-- PROMINENT PRICING BANNER -->
       <div class="pricing-announcement-card">
         ZeroPhone is a free app for making video calls and sending texts, as well as a free Maps and Radio. The <b>Free Tier</b> allows the user to make <b>15 minute video calls</b>. For a <b>$5 fee</b>, the user can make an entire month (31 days) of unlimited calls.
       </div>
@@ -1047,7 +1047,8 @@
   <script>
     const SIGNALING_SERVER = "https://webrtc-signaling-do2l.onrender.com";
     
-    const socket = io(SIGNALING_SERVER);
+    // LAZY SOCKET: Do not connect on initial page load
+    const socket = io(SIGNALING_SERVER, { autoConnect: false });
     let localStream;
     let peerConnections = {};
     let currentCoords = null;
@@ -1055,7 +1056,7 @@
     let isAudioMuted = false;
     let isVideoMuted = false;
 
-    // 15-MINUTE CALL LIMIT CONTROLS (FREE TIER)
+    // 15-MINUTE CALL DURATION TIMER ENGINE
     const MAX_CALL_DURATION_SEC = 15 * 60; // 900 seconds
     let callTimerInterval = null;
     let callSecondsRemaining = MAX_CALL_DURATION_SEC;
@@ -1067,7 +1068,22 @@
 
     const rtcConfig = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] };
 
-    // DYNAMIC GRID LAYOUT ADJUSTER (SQUARE FRAMES FOR 1, 2, 3, AND 4 PARTICIPANTS)
+    function ensureSocketConnected(onConnected) {
+      if (socket.connected) {
+        if (onConnected) onConnected();
+        return;
+      }
+      statusDiv.innerText = "Connecting to server...";
+      statusDiv.style.color = "#ff9500";
+      socket.connect();
+      socket.once('connect', () => {
+        statusDiv.innerText = "Connected to Server";
+        statusDiv.style.color = "#30d158";
+        if (onConnected) onConnected();
+      });
+    }
+
+    // DYNAMIC GRID LAYOUT ADJUSTER
     function updateGridLayout() {
       const grid = document.getElementById('videoStreamView');
       if (!grid) return;
@@ -1228,7 +1244,11 @@
         document.querySelectorAll('.tab-btn')[1].classList.add('active');
         document.getElementById('tab-level1-text').classList.add('active');
         const r = document.getElementById('webTextRoomId').value.trim() || roomIdInput.value.trim();
-        if (r) socket.emit('join-room', r);
+        if (r) {
+          ensureSocketConnected(() => {
+            socket.emit('join-room', r);
+          });
+        }
       } else if (tabName === 'level2') {
         document.querySelectorAll('.tab-btn')[2].classList.add('active');
         document.getElementById('tab-level2').classList.add('active');
@@ -1411,22 +1431,16 @@
       sendInvite('text');
     }
 
-    socket.on('connect', () => {
-      statusDiv.innerText = "Connected to Server";
-      statusDiv.style.color = "#30d158";
-    });
-
     socket.on('connect_error', () => {
       statusDiv.innerText = "Waking up server (please wait)...";
       statusDiv.style.color = "#ff9500";
     });
 
-    // START MULTI-PARTY VIDEO CALL WITH ANDROID-SAFE PERMISSIONS & FALLBACKS
+    // START MULTI-PARTY VIDEO CALL
     async function startCall() {
       const roomId = roomIdInput.value.trim();
       if (!roomId) return alert("Please enter a room name");
 
-      // Adaptive constraints compatible with Motorola / Android hardware
       const mediaConfigs = [
         {
           audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true },
@@ -1459,7 +1473,6 @@
       const localVid = document.getElementById('localVideo');
       localVid.srcObject = localStream;
       
-      // Explicit play invocation required by Android/Mobile Chrome
       try {
         await localVid.play();
       } catch (err) {
@@ -1470,12 +1483,15 @@
       document.getElementById('inCallControls').style.display = 'flex';
       document.getElementById('webphoneMainSection').style.display = 'none';
 
-      // Start the 15-Minute Free Tier Timer
+      // Start Call Timer
       startCallTimer();
 
-      updateGridLayout();
-      socket.emit('join-room', roomId);
-      statusDiv.innerText = `Joined room: ${roomId}. Waiting for peers...`;
+      // Connect to Render only now
+      ensureSocketConnected(() => {
+        updateGridLayout();
+        socket.emit('join-room', roomId);
+        statusDiv.innerText = `Joined room: ${roomId}. Waiting for peers...`;
+      });
     }
 
     // 15-MINUTE CALL DURATION TIMER ENGINE
@@ -1561,6 +1577,11 @@
         if (peerConnections[id]) peerConnections[id].close();
       });
       peerConnections = {};
+
+      // Disconnect socket from Render immediately on hangup
+      if (socket && socket.connected) {
+        socket.disconnect();
+      }
 
       const grid = document.getElementById('videoStreamView');
       grid.innerHTML = `
@@ -1662,7 +1683,6 @@
         const videoEl = document.getElementById(`video-${targetSocketId}`);
         videoEl.srcObject = event.streams[0];
         
-        // Explicit play for remote feeds on Android mobile
         videoEl.play().catch(e => console.warn("Remote stream play trigger:", e));
         statusDiv.innerText = "Live Connected!";
       };
@@ -1700,11 +1720,13 @@
       const roomId = document.getElementById('webTextRoomId').value.trim() || 'room1';
 
       if (msg) {
-        socket.emit('join-room', roomId);
-        const encrypted = await encryptPayload(msg, roomId);
-        socket.emit('send-web-chat', { roomId: roomId, cipher: encrypted.cipher, iv: encrypted.iv, sender: sender });
-        appendWebMessage(sender, msg);
-        input.value = '';
+        ensureSocketConnected(async () => {
+          socket.emit('join-room', roomId);
+          const encrypted = await encryptPayload(msg, roomId);
+          socket.emit('send-web-chat', { roomId: roomId, cipher: encrypted.cipher, iv: encrypted.iv, sender: sender });
+          appendWebMessage(sender, msg);
+          input.value = '';
+        });
       }
     }
 
