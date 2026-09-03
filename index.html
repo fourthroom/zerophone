@@ -5,16 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   
   <title>ZeroPhone — Encrypted Browser Video Calling, WebText & Local Resources</title>
-  <meta name="description" content="ZeroPhone is a completely free, privacy-first web utility featuring end-to-end AES-256-GCM encrypted video calling, voice calls, free WebText, local Wi-Fi maps, live radio, and world art museum collections.">
-  <meta name="keywords" content="ZeroPhone, fourthroom.org, AES-256 encryption, free video call, browser calling, WebRTC, free web text, local radio streams, public wifi maps, art gallery">
+  <meta name="description" content="ZeroPhone is a completely free, privacy-first web utility featuring end-to-end AES-256-GCM encrypted video calling, voice calls, free WebText, local Wi-Fi maps, live radio, world art museum collections, and wisdom texts.">
+  <meta name="keywords" content="ZeroPhone, fourthroom.org, AES-256 encryption, free video call, browser calling, WebRTC, free web text, local radio streams, public wifi maps, art gallery, philosophy library">
   <meta name="author" content="FourthRoom">
-  <link rel="canonical" href="https://fourthroom.org/">
+  <link rel="canonical" href="[https://fourthroom.org/](https://fourthroom.org/)">
 
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://fourthroom.org/">
+  <meta property="og:url" content="[https://fourthroom.org/](https://fourthroom.org/)">
   <meta property="og:title" content="ZeroPhone — Encrypted Web Calling & WebText">
   <meta property="og:description" content="Instant, private video and voice calling right from your browser powered by AES-256-GCM encryption. No downloads or accounts required.">
-  <meta property="og:image" content="https://fourthroom.org/icon.png">
+  <meta property="og:image" content="[https://fourthroom.org/icon.png](https://fourthroom.org/icon.png)">
 
   <link rel="icon" type="image/png" href="icon.png">
   <link rel="shortcut icon" type="image/png" href="icon.png">
@@ -24,7 +24,7 @@
   <meta name="apple-mobile-web-app-title" content="ZeroPhone">
   <meta name="theme-color" content="#121212">
 
-  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+  <script src="[https://cdn.socket.io/4.7.5/socket.io.min.js](https://cdn.socket.io/4.7.5/socket.io.min.js)"></script>
   <style>
     * { box-sizing: border-box; }
     body { 
@@ -102,6 +102,8 @@
     .tab-radio.active { background: #e040fb; color: #000; }
     .tab-art { background: #4a3600; border-top: 3px solid #ffd60a; }
     .tab-art.active { background: #ffd60a; color: #000; }
+    .tab-wisdom { background: #1a3636; border-top: 3px solid #40e0d0; }
+    .tab-wisdom.active { background: #40e0d0; color: #000; }
 
     .sub-tagline { font-size: 11px; display: block; font-weight: normal; margin-top: 2px; }
     .container { padding: 10px 15px; max-width: 100%; margin: 0 auto; text-align: center; }
@@ -292,7 +294,6 @@
 
     /* MULTI-MUSEUM ART GALLERY STYLES */
     .art-box { background: #1c1c1e; border: 1px solid #ffd60a; border-radius: 12px; padding: 20px; max-width: 1000px; margin: 0 auto; }
-    
     .museum-institution-bar {
       display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 12px;
       padding-bottom: 12px; border-bottom: 1px solid #333;
@@ -302,21 +303,18 @@
       font-size: 12px; font-weight: 900; border-radius: 20px; cursor: pointer; transition: all 0.2s;
     }
     .museum-inst-btn.active { background: #ffd60a; color: #000; }
-
     .art-genre-bar { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
     .art-genre-btn {
       background: #2c2c2e; color: #fff; border: 1px solid #555; padding: 8px 12px;
       font-size: 12px; font-weight: bold; border-radius: 8px; cursor: pointer;
     }
     .art-genre-btn:hover { background: #3a3a3c; }
-
     .art-layout { display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; }
     .art-bank-container { flex: 1; min-width: 280px; background: #121212; border: 1px solid #333; border-radius: 12px; padding: 12px; text-align: left; }
     .art-bank-header { font-size: 13px; font-weight: bold; color: #ffd60a; margin: 0 0 10px 0; text-transform: uppercase; }
     .art-bank-list { display: flex; flex-direction: column; gap: 8px; max-height: 480px; overflow-y: auto; }
     .art-bank-item { background: #2c2c2e; border: 1px solid #444; border-radius: 8px; padding: 10px; cursor: pointer; text-align: left; }
     .art-bank-item.active { border-color: #ffd60a; background: #332b00; }
-
     .art-display-console {
       flex: 2; min-width: 320px; background: #121212; border: 1px solid #333; border-radius: 12px;
       padding: 18px; display: flex; flex-direction: column; align-items: center; gap: 14px;
@@ -337,20 +335,12 @@
       display: inline-block; margin-top: 8px; background: #2a2400; color: #ffd60a;
       border: 1px solid #ffd60a; border-radius: 6px; padding: 4px 8px; font-size: 11px; font-weight: bold;
     }
-
-    /* ACTION BAR FOR FULLSCREEN & SLIDESHOW */
-    .art-actions-bar {
-      display: flex; gap: 10px; width: 100%; justify-content: center;
-    }
+    .art-actions-bar { display: flex; gap: 10px; width: 100%; justify-content: center; }
     .btn-art-action {
       background: #2c2c2e; color: #ffd60a; border: 1px solid #ffd60a; border-radius: 8px;
       padding: 8px 16px; font-size: 13px; font-weight: bold; cursor: pointer; transition: all 0.2s;
     }
-    .btn-art-action.playing {
-      background: #ffd60a; color: #000;
-    }
-
-    /* FULLSCREEN ART THEATER MODAL */
+    .btn-art-action.playing { background: #ffd60a; color: #000; }
     .art-fullscreen-modal {
       display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       background: rgba(0, 0, 0, 0.96); z-index: 100000; flex-direction: column;
@@ -359,17 +349,190 @@
     .art-fullscreen-close-btn {
       position: absolute; top: 20px; right: 25px; background: #ff3b30; color: #fff;
       border: none; padding: 10px 18px; border-radius: 8px; font-size: 16px;
-      font-weight: 900; cursor: pointer; box-shadow: 0 4px 12px rgba(255, 59, 48, 0.5);
+      font-weight: 900; cursor: pointer;
     }
-    .art-fullscreen-img {
-      max-width: 92%; max-height: 82vh; object-fit: contain; border-radius: 8px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.9);
-    }
-    .art-fullscreen-caption {
-      margin-top: 14px; text-align: center; color: #fff; max-width: 80%;
-    }
+    .art-fullscreen-img { max-width: 92%; max-height: 82vh; object-fit: contain; border-radius: 8px; }
+    .art-fullscreen-caption { margin-top: 14px; text-align: center; color: #fff; max-width: 80%; }
     .art-fullscreen-caption h3 { margin: 0 0 4px 0; color: #ffd60a; font-size: 18px; }
     .art-fullscreen-caption p { margin: 0; color: #aaa; font-size: 13px; }
+
+    /* WISDOM TEXTS & PHILOSOPHY LIBRARY STYLES */
+    .wisdom-box {
+      background: #1c1c1e;
+      border: 1px solid #40e0d0;
+      border-radius: 12px;
+      padding: 20px;
+      max-width: 1020px;
+      margin: 0 auto;
+    }
+    .wisdom-tradition-bar {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #333;
+    }
+    .wisdom-trad-btn {
+      background: #2c2c2e;
+      color: #fff;
+      border: 1px solid #555;
+      padding: 8px 12px;
+      font-size: 12px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s, border 0.2s;
+    }
+    .wisdom-trad-btn.active {
+      background: #40e0d0;
+      color: #000;
+      border-color: #40e0d0;
+      font-weight: 900;
+    }
+    .wisdom-layout { display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; }
+    .wisdom-bank-container {
+      flex: 1;
+      min-width: 280px;
+      background: #121212;
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 12px;
+      text-align: left;
+    }
+    .wisdom-bank-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .wisdom-bank-header {
+      font-size: 13px;
+      font-weight: bold;
+      color: #40e0d0;
+      margin: 0;
+      text-transform: uppercase;
+    }
+    .btn-bank-back {
+      background: #2c2c2e;
+      color: #40e0d0;
+      border: 1px solid #40e0d0;
+      border-radius: 6px;
+      padding: 3px 8px;
+      font-size: 11px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .wisdom-bank-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 480px;
+      overflow-y: auto;
+    }
+    .wisdom-bank-item {
+      background: #2c2c2e;
+      border: 1px solid #444;
+      border-radius: 8px;
+      padding: 10px;
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.15s;
+    }
+    .wisdom-bank-item.active {
+      border-color: #40e0d0;
+      background: #003333;
+    }
+    .wisdom-console {
+      flex: 2;
+      min-width: 320px;
+      background: #121212;
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 14px;
+    }
+    .wisdom-reading-frame {
+      width: 100%;
+      height: 380px;
+      background: #000;
+      border-radius: 10px;
+      border: 1px solid #444;
+      padding: 20px;
+      overflow-y: auto;
+      text-align: left;
+      font-family: Georgia, serif;
+      font-size: 15px;
+      line-height: 1.7;
+      color: #eaeaea;
+      white-space: pre-wrap;
+    }
+    .wisdom-summary-card {
+      background: #1c1c1e;
+      border: 1px solid #444;
+      border-radius: 10px;
+      padding: 14px 16px;
+      text-align: left;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .wisdom-summary-title {
+      font-size: 17px;
+      font-weight: 900;
+      color: #40e0d0;
+      margin: 0 0 4px 0;
+    }
+    .wisdom-summary-meta { color: #fff; font-weight: bold; margin: 0 0 6px 0; }
+    .wisdom-summary-text { color: #aaa; font-size: 12px; margin: 0; }
+
+    /* QUOTE TICKER / SLIDESHOW PANEL */
+    .wisdom-quote-panel {
+      margin-top: 18px;
+      background: #151516;
+      border: 1px solid #40e0d0;
+      border-radius: 12px;
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      text-align: center;
+    }
+    .wisdom-quote-text {
+      font-family: Georgia, serif;
+      font-style: italic;
+      font-size: 16px;
+      color: #fff;
+      line-height: 1.5;
+      margin: 0;
+    }
+    .wisdom-quote-author {
+      font-size: 12px;
+      font-weight: bold;
+      color: #40e0d0;
+      margin: 0;
+    }
+    .wisdom-quote-controls {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      align-items: center;
+      margin-top: 4px;
+    }
+    .btn-quote-action {
+      background: #2c2c2e;
+      color: #40e0d0;
+      border: 1px solid #40e0d0;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .btn-quote-action.active-run { background: #40e0d0; color: #000; }
 
     .under-construction-box {
       background: #1c1c1e; border: 2px dashed #ff3b30; border-radius: 16px;
@@ -466,6 +629,10 @@
         🏛️ Art Gallery
         <span class="sub-tagline">World Masterpieces</span>
       </button>
+      <button class="tab-btn tab-wisdom" onclick="switchTab('wisdom')">
+        📜 Wisdom Texts
+        <span class="sub-tagline">Sacred Canon & Philosophy</span>
+      </button>
     </div>
   </div>
 
@@ -477,11 +644,12 @@
       <button id="megaEnterBtn" class="btn-mega-enter">📹 Enter Video Call</button>
     </div>
 
+    <!-- LEVEL 1 PHONE TAB -->
     <div id="tab-level1-phone" class="tab-content active">
       <div id="status">Ready to Call</div>
 
       <div class="pricing-announcement-card">
-        ZeroPhone is a free app for making video calls and sending texts, as well as a free Maps, Radio, and Art Museum Gallery. The <b>Free Tier</b> allows the user to make <b>15 minute video calls</b>. For a <b>$5 fee</b>, the user can make an entire month (31 days) of unlimited calls.
+        ZeroPhone is a free app for making video calls and sending texts, as well as a free Maps, Radio, Art Gallery, and Wisdom Library. The <b>Free Tier</b> allows the user to make <b>15 minute video calls</b>. For a <b>$5 fee</b>, the user can make an entire month (31 days) of unlimited calls.
       </div>
 
       <div id="webphoneMainSection">
@@ -562,6 +730,7 @@
       </div>
     </div>
 
+    <!-- LEVEL 1 TEXT TAB -->
     <div id="tab-level1-text" class="tab-content">
       <h2 style="color: #63e685; margin-top: 0;">Level 1 - WebText</h2>
       <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Completely Free Multi-User Web Texting</p>
@@ -606,6 +775,7 @@
       </div>
     </div>
 
+    <!-- LEVEL 2 TAB -->
     <div id="tab-level2" class="tab-content">
       <div class="under-construction-box">
         <h1 style="color: #ff3b30; font-size: 32px; font-weight: 900; margin: 0 0 10px 0; text-transform: uppercase;">
@@ -621,6 +791,7 @@
       </div>
     </div>
 
+    <!-- MAPS TAB -->
     <div id="tab-maps" class="tab-content">
       <h2 style="color: #ff9500; margin-top: 0;">📍 Free Wi-Fi & Resource Maps</h2>
       <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Find local internet access points and essential resources nearby</p>
@@ -642,7 +813,7 @@
         </div>
 
         <div class="map-frame-container">
-          <iframe id="googleMapIframe" src="https://www.google.com/maps?q=Seattle+WA&z=14&output=embed" allowfullscreen></iframe>
+          <iframe id="googleMapIframe" src="[https://www.google.com/maps?q=Seattle+WA&z=14&output=embed](https://www.google.com/maps?q=Seattle+WA&z=14&output=embed)" allowfullscreen></iframe>
         </div>
       </div>
 
@@ -651,13 +822,14 @@
       </div>
     </div>
 
+    <!-- SEATTLE WI-FI TAB -->
     <div id="tab-seattle-wifi" class="tab-content">
       <h2 style="color: #00c0f0; margin-top: 0;">🌐 City of Seattle Public Wi-Fi Portal</h2>
       <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Official municipal database for city libraries, civic centers, and public hotspots</p>
 
       <div class="maps-box" style="border-color: #00c0f0;">
         <div style="margin-bottom: 14px; display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap;">
-          <a href="https://maps.seattle.gov/publicwifi/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+          <a href="[https://maps.seattle.gov/publicwifi/](https://maps.seattle.gov/publicwifi/)" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
             <button style="font-size: 13px; padding: 10px 20px; background: #00c0f0; color: #000; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(0, 192, 240, 0.3);">
               ↗️ Launch Seattle Portal Fullscreen
             </button>
@@ -667,7 +839,7 @@
         <div class="map-frame-container" style="height: 550px; border-color: #007d99;">
           <iframe 
             id="seattleWifiIframe" 
-            src="https://maps.seattle.gov/publicwifi/" 
+            src="[https://maps.seattle.gov/publicwifi/](https://maps.seattle.gov/publicwifi/)" 
             title="Seattle Public Wi-Fi Map"
             loading="lazy"
             sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
@@ -681,6 +853,7 @@
       </div>
     </div>
 
+    <!-- RADIO TAB -->
     <div id="tab-radio" class="tab-content">
       <h2 style="color: #e040fb; margin-top: 0;">📻 Local Live Internet Radio</h2>
       <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Select a genre to populate the Left Station Bank</p>
@@ -733,13 +906,12 @@
       </div>
     </div>
 
-    <!-- OPEN ACCESS WORLD ART MUSEUMS TAB -->
+    <!-- ART GALLERY TAB -->
     <div id="tab-art" class="tab-content">
       <h2 style="color: #ffd60a; margin-top: 0;">🏛️ World Art Museum Collections</h2>
       <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Direct open-access digital collections from premier international museums</p>
 
       <div class="art-box">
-        <!-- MUSEUM INSTITUTION SELECTOR -->
         <div class="museum-institution-bar">
           <button id="btnMuseumAll" class="museum-inst-btn active" onclick="setMuseumScope('all')">🌐 All Museums (Blended)</button>
           <button id="btnMuseumAIC" class="museum-inst-btn" onclick="setMuseumScope('aic')">🏛️ Chicago (AIC)</button>
@@ -747,7 +919,6 @@
           <button id="btnMuseumCMA" class="museum-inst-btn" onclick="setMuseumScope('cma')">🏛️ Cleveland (CMA)</button>
         </div>
 
-        <!-- GENRE / PERIOD FILTER BAR -->
         <div class="art-genre-bar">
           <button class="art-genre-btn" onclick="triggerArtSearch('impressionism', 'Impressionism')">🎨 Impressionism</button>
           <button class="art-genre-btn" onclick="triggerArtSearch('renaissance', 'Renaissance')">⚜️ Renaissance</button>
@@ -772,7 +943,6 @@
               <img id="mainArtworkImg" src="" alt="Painting Display" style="display: none;" onload="onArtworkImageLoaded()">
             </div>
 
-            <!-- ACTION BUTTONS: FULLSCREEN & SLIDESHOW -->
             <div class="art-actions-bar">
               <button class="btn-art-action" onclick="openArtFullscreen()">⛶ Fullscreen</button>
               <button id="btnArtSlideshow" class="btn-art-action" onclick="toggleArtSlideshow()">▶️ Start Slideshow</button>
@@ -805,10 +975,66 @@
       </div>
     </div>
 
+    <!-- WISDOM TEXTS & PHILOSOPHY LIBRARY TAB -->
+    <div id="tab-wisdom" class="tab-content">
+      <h2 style="color: #40e0d0; margin-top: 0;">📜 Sacred Wisdom Texts & Philosophy Library</h2>
+      <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Classical canonical root texts, translations, and an automated contemplative quote ticker</p>
+
+      <div class="wisdom-box">
+        <div class="wisdom-tradition-bar">
+          <button class="wisdom-trad-btn active" onclick="selectWisdomTradition('western')">🏛️ Western Philosophy</button>
+          <button class="wisdom-trad-btn" onclick="selectWisdomTradition('eastern')">☯️ Eastern Philosophy</button>
+          <button class="wisdom-trad-btn" onclick="selectWisdomTradition('christianity')">✝️ Christianity</button>
+          <button class="wisdom-trad-btn" onclick="selectWisdomTradition('buddhism')">☸️ Buddhism</button>
+          <button class="wisdom-trad-btn" onclick="selectWisdomTradition('islam')">☪️ Islam</button>
+          <button class="wisdom-trad-btn" onclick="selectWisdomTradition('hinduism')">🕉️ Hinduism</button>
+          <button class="wisdom-trad-btn" onclick="selectWisdomTradition('misc')">✨ Misc. Religious</button>
+        </div>
+
+        <div class="wisdom-layout">
+          <div class="wisdom-bank-container">
+            <div class="wisdom-bank-header-row">
+              <h4 id="wisdomBankTitle" class="wisdom-bank-header">Lineages & Schools</h4>
+              <button id="wisdomBackBtn" class="btn-bank-back" style="display:none;" onclick="renderWisdomSchools()">← Back</button>
+            </div>
+            <div id="wisdomBankList" class="wisdom-bank-list">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+
+          <div class="wisdom-console">
+            <div id="wisdomReadingFrame" class="wisdom-reading-frame">
+              Select a school and text on the left to begin reading...
+            </div>
+
+            <div id="wisdomSummaryCard" class="wisdom-summary-card">
+              <h3 id="wisdomDocTitle" class="wisdom-summary-title">Text Title</h3>
+              <div id="wisdomDocMeta" class="wisdom-summary-meta">Tradition • Author / School</div>
+              <p id="wisdomDocSummary" class="wisdom-summary-text">Historical context and philosophical description will display here.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="wisdom-quote-panel">
+          <p id="wisdomQuoteContent" class="wisdom-quote-text">"Loading contemplative quote..."</p>
+          <p id="wisdomQuoteCitation" class="wisdom-quote-author">— Author | Work | School</p>
+          <div class="wisdom-quote-controls">
+            <button id="btnRandomQuote" class="btn-quote-action" onclick="fetchRandomQuoteNow()">🎲 Random A Quote</button>
+            <button id="btnToggleQuoteTicker" class="btn-quote-action active-run" onclick="toggleQuoteTicker()">⏸ Pause 60s Ticker</button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="privacy-notice-badge">
+        🔒 <b>End-to-End Encrypted (AES-256-GCM):</b> All video, voice, and web text are scrambled directly on your device before transmission. Zero data is logged, stored, or shared.
+      </div>
+    </div>
+
   </div>
 
   <script>
-    const SIGNALING_SERVER = "https://webrtc-signaling-do2l.onrender.com";
+    const SIGNALING_SERVER = "[https://webrtc-signaling-do2l.onrender.com](https://webrtc-signaling-do2l.onrender.com)";
     
     const socket = io(SIGNALING_SERVER, { autoConnect: false });
     let localStream;
@@ -967,8 +1193,8 @@
 
     window.addEventListener('DOMContentLoaded', () => {
       loadIceServers();
+      initWisdomLibrary();
 
-      // Enter key support for art search input
       const artInput = document.getElementById('customArtInput');
       if (artInput) {
         artInput.addEventListener('keypress', (e) => {
@@ -976,7 +1202,6 @@
         });
       }
 
-      // ESC key to close fullscreen
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeArtFullscreen();
       });
@@ -1049,15 +1274,18 @@
         if (!hasLoadedArtOnce) {
           triggerArtSearch('impressionism', 'Impressionism');
         }
+      } else if (tabName === 'wisdom') {
+        document.querySelectorAll('.tab-btn')[7].classList.add('active');
+        document.getElementById('tab-wisdom').classList.add('active');
       }
     }
 
     function loadMapQuery(resourceTerm, zoomLevel = 14) {
       const iframe = document.getElementById('googleMapIframe');
       if (currentCoords) {
-        iframe.src = `https://www.google.com/maps?q=${encodeURIComponent(resourceTerm)}&ll=${currentCoords.lat},${currentCoords.lng}&z=${zoomLevel}&output=embed`;
+        iframe.src = `[https://www.google.com/maps?q=$](https://www.google.com/maps?q=$){encodeURIComponent(resourceTerm)}&ll=${currentCoords.lat},${currentCoords.lng}&z=${zoomLevel}&output=embed`;
       } else {
-        iframe.src = `https://www.google.com/maps?q=${encodeURIComponent(resourceTerm + ' in Seattle WA')}&z=${zoomLevel}&output=embed`;
+        iframe.src = `[https://www.google.com/maps?q=$](https://www.google.com/maps?q=$){encodeURIComponent(resourceTerm + ' in Seattle WA')}&z=${zoomLevel}&output=embed`;
       }
     }
 
@@ -1073,7 +1301,7 @@
               geoStatus.innerText = "📍 GPS Location Locked!";
               geoStatus.style.color = "#30d158";
             }
-            document.getElementById('googleMapIframe').src = `https://www.google.com/maps?q=${currentCoords.lat},${currentCoords.lng}&z=${15}&output=embed`;
+            document.getElementById('googleMapIframe').src = `[https://www.google.com/maps?q=$](https://www.google.com/maps?q=$){currentCoords.lat},${currentCoords.lng}&z=${15}&output=embed`;
           },
           (err) => {
             currentCoords = null;
@@ -1095,7 +1323,7 @@
     }
 
     // RADIO ENGINE
-    const RADIO_API_BASE = "https://de1.api.radio-browser.info/json/stations/search";
+    const RADIO_API_BASE = "[https://de1.api.radio-browser.info/json/stations/search](https://de1.api.radio-browser.info/json/stations/search)";
 
     async function fetchRadioBrowserGenre(tag, labelName) {
       const bankList = document.getElementById('stationBankList');
@@ -1218,7 +1446,7 @@
     async function fetchFromAIC(query, limit = 8) {
       try {
         const randomPage = Math.floor(Math.random() * 8) + 1;
-        const url = `https://api.artic.edu/api/v1/artworks/search?q=${encodeURIComponent(query)}&query[term][is_public_domain]=true&fields=id,title,artist_title,artist_display,date_display,medium_display,image_id&page=${randomPage}&limit=${limit}`;
+        const url = `[https://api.artic.edu/api/v1/artworks/search?q=$](https://api.artic.edu/api/v1/artworks/search?q=$){encodeURIComponent(query)}&query[term][is_public_domain]=true&fields=id,title,artist_title,artist_display,date_display,medium_display,image_id&page=${randomPage}&limit=${limit}`;
         const res = await fetch(url);
         const json = await res.json();
         return (json.data || []).filter(item => item.image_id).map(item => ({
@@ -1227,7 +1455,7 @@
           artist: item.artist_display || item.artist_title || 'Unknown Artist',
           date: item.date_display || 'Date Unknown',
           medium: item.medium_display || 'Oil on canvas / Painting',
-          imageUrl: `https://www.artic.edu/iiif/2/${item.image_id}/full/843,/0/default.jpg`,
+          imageUrl: `[https://www.artic.edu/iiif/2/$](https://www.artic.edu/iiif/2/$){item.image_id}/full/843,/0/default.jpg`,
           museum: 'The Art Institute of Chicago'
         }));
       } catch (e) {
@@ -1239,7 +1467,7 @@
     async function fetchFromCMA(query, limit = 8) {
       try {
         const randomSkip = Math.floor(Math.random() * 20);
-        const url = `https://openaccess-api.clevelandart.org/api/artworks/?q=${encodeURIComponent(query)}&has_image=1&skip=${randomSkip}&limit=${limit}`;
+        const url = `[https://openaccess-api.clevelandart.org/api/artworks/?q=$](https://openaccess-api.clevelandart.org/api/artworks/?q=$){encodeURIComponent(query)}&has_image=1&skip=${randomSkip}&limit=${limit}`;
         const res = await fetch(url);
         const json = await res.json();
         return (json.data || []).filter(item => item.images && item.images.web && item.images.web.url).map(item => ({
@@ -1259,14 +1487,14 @@
 
     async function fetchFromMet(query, limit = 6) {
       try {
-        const searchUrl = `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=${encodeURIComponent(query)}`;
+        const searchUrl = `[https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=$](https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=$){encodeURIComponent(query)}`;
         const searchRes = await fetch(searchUrl);
         const searchJson = await searchRes.json();
         if (!searchJson.objectIDs || searchJson.objectIDs.length === 0) return [];
 
         const shuffledIds = shuffleArray(searchJson.objectIDs).slice(0, limit);
         const promises = shuffledIds.map(id => 
-          fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${id}`)
+          fetch(`[https://collectionapi.metmuseum.org/public/collection/v1/objects/$](https://collectionapi.metmuseum.org/public/collection/v1/objects/$){id}`)
             .then(r => r.ok ? r.json() : null)
             .catch(() => null)
         );
@@ -1393,7 +1621,6 @@
       document.getElementById('mainArtworkImg').style.display = 'block';
     }
 
-    // FULLSCREEN THEATER ENGINE
     function openArtFullscreen() {
       const modal = document.getElementById('artFullscreenModal');
       modal.style.display = 'flex';
@@ -1404,7 +1631,6 @@
       modal.style.display = 'none';
     }
 
-    // AUTOMATED RANDOMIZED SLIDESHOW ENGINE
     function toggleArtSlideshow() {
       const btn = document.getElementById('btnArtSlideshow');
       if (slideshowInterval) {
@@ -1428,6 +1654,306 @@
         return;
       }
       selectArtItem(currentArtworkList[currentArtworkIndex], currentArtworkIndex);
+    }
+
+    // =======================================================
+    // WISDOM TEXTS & PHILOSOPHY LIBRARY ENGINE
+    // =======================================================
+    const WISDOM_DATABASE = {
+      western: {
+        title: "Western Philosophy",
+        schools: {
+          classical: {
+            name: "Platonic & Socratic",
+            docs: [
+              {
+                title: "The Allegory of the Cave",
+                author: "Plato",
+                work: "The Republic (Book VII)",
+                summary: "Plato's central metaphor distinguishing between the shadowy world of sensory illusions and the true illuminated realm of eternal forms.",
+                content: "And now, I said, let me show in a figure how far our nature is enlightened or unenlightened:—Behold! human beings living in a underground cave, which has a mouth open towards the light and reaching all along the cave; here they have been from their childhood, and have their legs and necks chained so that they cannot move, and can only see before them, being prevented by the chains from turning round their heads. Above and behind them a fire is blazing at a distance, and between the fire and the prisoners there is a raised way; and you will see, if you look, a low wall built along the way, like the screen which marionette players have in front of them, over which they show the puppets.\n\nAnd do you see, I said, men passing along the wall carrying all sorts of vessels, and statues and figures of animals made of wood and stone and various materials, which appear over the wall?\n\nYou have shown me a strange image, and they are strange prisoners.\n\nLike ourselves, I replied; and they see only their own shadows, or the shadows of one another, which the fire throws on the opposite wall of the cave?"
+              },
+              {
+                title: "Ennead I, Treatise 6: On Beauty",
+                author: "Plotinus",
+                work: "The Enneads",
+                summary: "Foundational Neoplatonic treatise explaining how earthly beauty reflects divine intellect and ascends to the transcendent One.",
+                content: "Withdraw into yourself and look. And if you do not find yourself beautiful yet, act as does the creator of a statue that is to be made beautiful: he cuts away here, he smoothes there, he makes this line lighter, this other purer, until a lovely face has grown upon his work. So do you also: cut away all that is excessive, straighten all that is crooked, bring light to all that is overcast, labour to make all one glow of beauty and never cease chiselling your statue, until there shall shine out on you from it the godlike splendour of virtue.\n\nNever did eye see the sun unless it had first become sunlike, and never can the soul have vision of the First Beauty unless itself be beautiful."
+              }
+            ]
+          },
+          stoicism: {
+            name: "Stoicism",
+            docs: [
+              {
+                title: "The Inner Citadel",
+                author: "Marcus Aurelius",
+                work: "Meditations (Book IV)",
+                summary: "Personal reflections on maintaining composure, recognizing the transience of life, and safeguarding the ruling center of consciousness.",
+                content: "People look for retreats for themselves, in the country, by the coast, or in the hills. There is nowhere that a person can find a more peaceful and trouble-free retreat than in his own mind, especially if he has within himself the kind of thoughts that he can dip into and immediately be at complete ease. So constantly grant yourself this retreat, and refresh yourself. Keep your rules of life brief and basic, and as soon as you whisper them to yourself they will wipe away your discontent."
+              }
+            ]
+          }
+        }
+      },
+      buddhism: {
+        title: "Buddhism",
+        schools: {
+          madhyamaka: {
+            name: "Madhyamaka & Prajñāpāramitā",
+            docs: [
+              {
+                title: "The Heart Sūtra (Prajñāpāramitā Hṛdaya)",
+                author: "Trans. Xuanzang / Red Pine",
+                work: "Prajñāpāramitā Canon",
+                summary: "The quintessential Mahāyāna distillation of śūnyatā (emptiness), establishing the non-duality of phenomena and ultimate reality.",
+                content: "Avalokiteśvara Bodhisattva, practicing deep Prajñāpāramitā, clearly saw that all five skandhas are empty, transforming all suffering and distress.\n\nŚāriputra, form is no other than emptiness, emptiness no other than form; form is exactly emptiness, emptiness exactly form. Sensation, perception, mental formations, and consciousness are also like this.\n\nŚāriputra, all dharmas are marked by emptiness: not arising, not ceasing; not defiled, not pure; not increasing, not decreasing. Therefore in emptiness there is no form, no sensation, perception, volition, consciousness..."
+              },
+              {
+                title: "Examination of Conditions (Chapter 1)",
+                author: "Nāgārjuna",
+                work: "Mūlamadhyamakakārikā",
+                summary: "Nāgārjuna's foundational dialectic demonstrating that nothing arises independently from itself, other, both, or without cause.",
+                content: "Neither from itself nor from another,\nNor from both, nor without a cause,\nDoes anything whatever, anywhere arise.\n\nThere are four conditions: efficient, objective, immediate, and dominant.\nThere is no fifth condition.\n\nThe essence of entities does not exist in conditions.\nIf an entity has no inherent existence, then other-existence cannot be found."
+              }
+            ]
+          },
+          tibetan: {
+            name: "Tibetan Tantra & Lamdré",
+            docs: [
+              {
+                title: "Vajra Verses of the Inherent Mind",
+                author: "Mahāsiddha Virūpa",
+                work: "Lamdré Root Lines",
+                summary: "The foundational esoteric verses of the Path and Its Fruit (Lamdré), explaining the inseparability of Saṃsāra and Nirvāṇa.",
+                content: "The external appearance is mind;\nMind is the illusion-like non-arising;\nWhen non-arising is realized as ineffable clarity,\nSaṃsāra and Nirvāṇa are experienced as indivisible.\n\nThe root of all phenomena is mind itself;\nMind itself has no origin, location, or destination;\nRemaining relaxed in that natural state without alteration\nis the supreme realization of the Mahāmudrā."
+              }
+            ]
+          },
+          zen: {
+            name: "Zen / Chan",
+            docs: [
+              {
+                title: "Verses on the Mind-Mirror",
+                author: "Huineng & Shenxiu",
+                work: "Platform Sūtra",
+                summary: "The classic debate contrasting gradual cultivation against immediate non-dual awakening in early Chan Buddhism.",
+                content: "Shenxiu's Verse:\n'The body is the bodhi tree;\nThe mind is like a clear mirror stand.\nAt all times strive to polish it clean,\nAnd let no dust alight.'\n\nHuineng's Response:\n'Bodhi originally has no tree in it,\nNor does the clear mirror have a stand.\nOriginally there is not a single thing—\nWhere could any dust alight?'"
+              }
+            ]
+          }
+        }
+      },
+      eastern: {
+        title: "Eastern Philosophy",
+        schools: {
+          daoism: {
+            name: "Daoism",
+            docs: [
+              {
+                title: "The Constant Tao (Chapter 1)",
+                author: "Laozi",
+                work: "Dao De Jing",
+                summary: "The paradoxical opening of the Dao De Jing defining wu wei, namelessness, and the mystery behind all manifest phenomena.",
+                content: "The Tao that can be spoken of is not the eternal Tao.\nThe name that can be named is not the eternal name.\nThe nameless is the origin of Heaven and Earth;\nThe named is the mother of all things.\n\nFree from desire, you realize the mystery.\nCaught in desire, you see only the manifestations.\nYet mystery and manifestations arise from the same source.\nThis source is called darkness. Darkness within darkness: the gateway to all understanding."
+              }
+            ]
+          }
+        }
+      },
+      hinduism: {
+        title: "Hinduism",
+        schools: {
+          vedanta: {
+            name: "Advaita Vedānta & Gītā",
+            docs: [
+              {
+                title: "The Yoga of Knowledge (Sāṅkhya Yoga)",
+                author: "Krishna (Vyāsa)",
+                work: "Bhagavad Gītā (Chapter 2)",
+                summary: "Krishna instructs Arjuna on the eternal nature of the Ātman, which neither slays nor is slain, untouched by material decay.",
+                content: "Never was there a time when I did not exist, nor you, nor all these kings; nor in the future shall any of us cease to be.\n\nAs the embodied soul continuously passes, in this body, from boyhood to youth to old age, the soul similarly passes into another body at death. A sober person is not bewildered by such a change.\n\nWeapons cannot shred the soul, nor can fire burn it. Water cannot wet it, nor can the wind dry it. The soul is eternal, all-pervading, unchangeable, immovable, and eternally the same."
+              }
+            ]
+          }
+        }
+      },
+      christianity: {
+        title: "Christianity",
+        schools: {
+          mysticism: {
+            name: "Christian Mysticism & Philokalia",
+            docs: [
+              {
+                title: "The Ground of the Soul",
+                author: "Meister Eckhart",
+                work: "German Sermons",
+                summary: "The breakthrough of consciousness into the divine ground where God and soul coalesce beyond form and multiplicity.",
+                content: "There is something in the soul that is uncreated and uncreatable; if the whole soul were such, it would be uncreated and uncreatable, and this is the Intellect. God's ground and my ground are one ground, one knowing, one love.\n\nIf you are to know God in divine fashion, your knowing must become pure un-knowing, a forgetting of yourself and of all creatures."
+              }
+            ]
+          }
+        }
+      },
+      islam: {
+        title: "Islam",
+        schools: {
+          sufism: {
+            name: "Sufi Metaphysics",
+            docs: [
+              {
+                title: "The Unity of Being (Waḥdat al-Wujūd)",
+                author: "Ibn 'Arabī",
+                work: "The Ringstones of Wisdom (Fuṣūṣ al-Ḥikam)",
+                summary: "The metaphysical realization that existence belongs only to the divine reality, and creatures are manifestations of divine names.",
+                content: "Beware of being bound by one particular creed, disbelieving in everything else; for you would forfeit much good, indeed you would forfeit the true knowledge of reality. Be in yourself a receptive matter for all forms of belief, for God is wider and greater than to be confined to one belief to the exclusion of another."
+              }
+            ]
+          }
+        }
+      },
+      misc: {
+        title: "Misc. Religious & Esoteric",
+        schools: {
+          hermeticism: {
+            name: "Hermeticism & Esoteric",
+            docs: [
+              {
+                title: "The Emerald Tablet",
+                author: "Hermes Trismegistus",
+                work: "Tabula Smaragdina",
+                summary: "The root axioms of classical Western alchemy linking microcosm and macrocosm through one continuous substance.",
+                content: "Truly, without deceit, certainly and most verily: That which is Below corresponds to that which is Above, and that which is Above corresponds to that which is Below, to accomplish the miracles of the One Thing.\n\nAnd just as all things have come from One, by the mediation of One, so all things were born from this One Thing by adaptation."
+              }
+            ]
+          }
+        }
+      }
+    };
+
+    let activeTraditionKey = 'western';
+    let wisdomQuoteCorpus = [];
+    let quoteTickerTimer = null;
+    let isQuoteTickerRunning = true;
+
+    function initWisdomLibrary() {
+      renderWisdomSchools();
+      loadWisdomQuotes();
+    }
+
+    function selectWisdomTradition(tradKey) {
+      activeTraditionKey = tradKey;
+      document.querySelectorAll('.wisdom-trad-btn').forEach(btn => btn.classList.remove('active'));
+      const activeBtn = Array.from(document.querySelectorAll('.wisdom-trad-btn')).find(b => b.getAttribute('onclick').includes(tradKey));
+      if (activeBtn) activeBtn.classList.add('active');
+
+      renderWisdomSchools();
+    }
+
+    function renderWisdomSchools() {
+      const bankTitle = document.getElementById('wisdomBankTitle');
+      const backBtn = document.getElementById('wisdomBackBtn');
+      const list = document.getElementById('wisdomBankList');
+
+      bankTitle.innerText = `${WISDOM_DATABASE[activeTraditionKey].title}: Schools`;
+      backBtn.style.display = 'none';
+      list.innerHTML = '';
+
+      const schools = WISDOM_DATABASE[activeTraditionKey].schools;
+      Object.keys(schools).forEach((schoolKey, idx) => {
+        const school = schools[schoolKey];
+        const item = document.createElement('div');
+        item.className = `wisdom-bank-item ${idx === 0 ? 'active' : ''}`;
+        item.innerHTML = `
+          <span style="font-size:13px; font-weight:bold; color:#40e0d0; display:block;">📂 ${school.name}</span>
+          <span style="font-size:11px; color:#aaa;">${school.docs.length} canonical text(s)</span>
+        `;
+        item.onclick = () => renderWisdomDocuments(schoolKey);
+        list.appendChild(item);
+      });
+
+      const firstSchoolKey = Object.keys(schools)[0];
+      if (firstSchoolKey && schools[firstSchoolKey].docs[0]) {
+        displayWisdomDoc(schools[firstSchoolKey].docs[0]);
+      }
+    }
+
+    function renderWisdomDocuments(schoolKey) {
+      const bankTitle = document.getElementById('wisdomBankTitle');
+      const backBtn = document.getElementById('wisdomBackBtn');
+      const list = document.getElementById('wisdomBankList');
+
+      const school = WISDOM_DATABASE[activeTraditionKey].schools[schoolKey];
+      bankTitle.innerText = school.name;
+      backBtn.style.display = 'inline-block';
+      list.innerHTML = '';
+
+      school.docs.forEach((doc, idx) => {
+        const item = document.createElement('div');
+        item.className = `wisdom-bank-item ${idx === 0 ? 'active' : ''}`;
+        item.innerHTML = `
+          <span style="font-size:13px; font-weight:bold; color:#fff; display:block;">📜 ${doc.title}</span>
+          <span style="font-size:11px; color:#40e0d0;">${doc.author} (${doc.work})</span>
+        `;
+        item.onclick = () => {
+          document.querySelectorAll('.wisdom-bank-item').forEach(el => el.classList.remove('active'));
+          item.classList.add('active');
+          displayWisdomDoc(doc);
+        };
+        list.appendChild(item);
+      });
+
+      if (school.docs.length > 0) {
+        displayWisdomDoc(school.docs[0]);
+      }
+    }
+
+    function displayWisdomDoc(doc) {
+      document.getElementById('wisdomReadingFrame').innerText = doc.content;
+      document.getElementById('wisdomDocTitle').innerText = doc.title;
+      document.getElementById('wisdomDocMeta').innerText = `${doc.author} • ${doc.work}`;
+      document.getElementById('wisdomDocSummary').innerText = doc.summary;
+    }
+
+    async function loadWisdomQuotes() {
+      try {
+        const res = await fetch('wisdom-quotes.json');
+        if (res.ok) {
+          wisdomQuoteCorpus = await res.json();
+          fetchRandomQuoteNow();
+          startQuoteTicker();
+        }
+      } catch (e) {
+        console.warn('Fallback quote loading', e);
+      }
+    }
+
+    function fetchRandomQuoteNow() {
+      if (!wisdomQuoteCorpus || wisdomQuoteCorpus.length === 0) return;
+      const pick = wisdomQuoteCorpus[Math.floor(Math.random() * wisdomQuoteCorpus.length)];
+      document.getElementById('wisdomQuoteContent').innerText = `"${pick.quote}"`;
+      document.getElementById('wisdomQuoteCitation').innerText = `— ${pick.author} | ${pick.work} (${pick.tradition} • ${pick.school})`;
+    }
+
+    function startQuoteTicker() {
+      clearInterval(quoteTickerTimer);
+      quoteTickerTimer = setInterval(fetchRandomQuoteNow, 60000);
+      isQuoteTickerRunning = true;
+      document.getElementById('btnToggleQuoteTicker').innerText = "⏸ Pause 60s Ticker";
+      document.getElementById('btnToggleQuoteTicker').classList.add('active-run');
+    }
+
+    function toggleQuoteTicker() {
+      const btn = document.getElementById('btnToggleQuoteTicker');
+      if (isQuoteTickerRunning) {
+        clearInterval(quoteTickerTimer);
+        isQuoteTickerRunning = false;
+        btn.innerText = "▶️ Start 60s Ticker";
+        btn.classList.remove('active-run');
+      } else {
+        fetchRandomQuoteNow();
+        startQuoteTicker();
+      }
     }
 
     function startCallTimer() {

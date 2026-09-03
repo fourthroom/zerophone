@@ -1,0 +1,31 @@
+name: Quarterly Wisdom Quotes Restock
+
+on:
+  schedule:
+    - cron: '0 0 1 1,4,7,10 *'
+  workflow_dispatch:
+
+jobs:
+  restock:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run Restock Script
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node scripts/restock-quotes.js
+
+      - name: Commit and Push
+        run: |
+          git config --global user.name "WisdomBot"
+          git config --global user.email "bot@fourthroom.org"
+          git add wisdom-quotes.json
+          git commit -m "Quarterly AI restock: refreshed wisdom-quotes.json" || exit 0
+          git push
