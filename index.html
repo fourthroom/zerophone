@@ -6,8 +6,8 @@
   
   <!-- SEO PRIMARY META TAGS FOR GOOGLE SEARCH -->
   <title>ZeroPhone — Encrypted Browser Video Calling, WebText & Local Resources</title>
-  <meta name="description" content="ZeroPhone is a completely free, privacy-first web utility featuring end-to-end AES-256-GCM encrypted video calling, voice calls, free WebText, local Wi-Fi maps, and live radio.">
-  <meta name="keywords" content="ZeroPhone, fourthroom.org, AES-256 encryption, free video call, browser calling, WebRTC, free web text, local radio streams, public wifi maps">
+  <meta name="description" content="ZeroPhone is a completely free, privacy-first web utility featuring end-to-end AES-256-GCM encrypted video calling, voice calls, free WebText, local Wi-Fi maps, live radio, and fine art collections.">
+  <meta name="keywords" content="ZeroPhone, fourthroom.org, AES-256 encryption, free video call, browser calling, WebRTC, free web text, local radio streams, public wifi maps, art gallery">
   <meta name="author" content="FourthRoom">
   <link rel="canonical" href="https://fourthroom.org/">
 
@@ -106,8 +106,12 @@
     .tab-level2.active { background: #0a84ff; color: #fff; }
     .tab-maps { background: #5c3800; border-top: 3px solid #ff9500; }
     .tab-maps.active { background: #ff9500; color: #000; }
+    .tab-seattle-wifi { background: #005a70; border-top: 3px solid #00c0f0; }
+    .tab-seattle-wifi.active { background: #00c0f0; color: #000; }
     .tab-radio { background: #4a0072; border-top: 3px solid #e040fb; }
     .tab-radio.active { background: #e040fb; color: #000; }
+    .tab-art { background: #4a3600; border-top: 3px solid #ffd60a; }
+    .tab-art.active { background: #ffd60a; color: #000; }
 
     .sub-tagline { font-size: 11px; display: block; font-weight: normal; margin-top: 2px; }
     .container { padding: 10px 15px; max-width: 100%; margin: 0 auto; text-align: center; }
@@ -397,7 +401,6 @@
 
     #localVideo { transform: scaleX(-1); }
 
-    /* VOICE ONLY TURN BADGE */
     .turn-badge {
       display: none;
       position: absolute;
@@ -607,6 +610,141 @@
       max-width: 480px;
       text-align: left;
     }
+
+    /* ART GALLERY SPECIFIC STYLING */
+    .art-box {
+      background: #1c1c1e;
+      border: 1px solid #ffd60a;
+      border-radius: 12px;
+      padding: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .art-genre-bar {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .art-genre-btn {
+      background: #2c2c2e;
+      color: #fff;
+      border: 1px solid #555;
+      padding: 10px 14px;
+      font-size: 13px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .art-genre-btn:hover { background: #3a3a3c; }
+    .art-layout { display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; }
+    .art-bank-container {
+      flex: 1;
+      min-width: 280px;
+      background: #121212;
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 12px;
+      text-align: left;
+    }
+    .art-bank-header {
+      font-size: 13px;
+      font-weight: bold;
+      color: #ffd60a;
+      margin: 0 0 10px 0;
+      text-transform: uppercase;
+    }
+    .art-bank-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 480px;
+      overflow-y: auto;
+    }
+    .art-bank-item {
+      background: #2c2c2e;
+      border: 1px solid #444;
+      border-radius: 8px;
+      padding: 10px;
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.15s;
+    }
+    .art-bank-item.active {
+      border-color: #ffd60a;
+      background: #332b00;
+    }
+    .art-display-console {
+      flex: 2;
+      min-width: 320px;
+      background: #121212;
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+    .art-image-frame {
+      width: 100%;
+      min-height: 380px;
+      max-height: 520px;
+      background: #000;
+      border-radius: 10px;
+      border: 1px solid #444;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .art-image-frame img {
+      max-width: 100%;
+      max-height: 500px;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+    }
+    .art-caption-card {
+      width: 100%;
+      background: #1c1c1e;
+      border: 1px solid #444;
+      border-radius: 10px;
+      padding: 14px 16px;
+      text-align: left;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .art-caption-title {
+      font-size: 18px;
+      font-weight: 900;
+      color: #ffd60a;
+      margin: 0 0 4px 0;
+    }
+    .art-caption-artist {
+      font-size: 14px;
+      font-weight: bold;
+      color: #fff;
+      margin: 0 0 6px 0;
+    }
+    .art-caption-meta {
+      color: #aaa;
+      font-size: 12px;
+      margin: 0;
+    }
+    .art-museum-badge {
+      display: inline-block;
+      margin-top: 8px;
+      background: #2a2400;
+      color: #ffd60a;
+      border: 1px solid #ffd60a;
+      border-radius: 6px;
+      padding: 4px 8px;
+      font-size: 11px;
+      font-weight: bold;
+    }
+
     .under-construction-box {
       background: #1c1c1e;
       border: 2px dashed #ff3b30;
@@ -703,9 +841,17 @@
         📍 Maps
         <span class="sub-tagline">Wi-Fi & Resource Finder</span>
       </button>
+      <button class="tab-btn tab-seattle-wifi" onclick="switchTab('seattle-wifi')">
+        🌐 Seattle Wi-Fi
+        <span class="sub-tagline">City Portal Map</span>
+      </button>
       <button class="tab-btn tab-radio" onclick="switchTab('radio')">
         📻 Radio
         <span class="sub-tagline">Local Live Streams</span>
+      </button>
+      <button class="tab-btn tab-art" onclick="switchTab('art')">
+        🏛️ Art Gallery
+        <span class="sub-tagline">Masterpieces & Paintings</span>
       </button>
     </div>
   </div>
@@ -892,6 +1038,37 @@
       </div>
     </div>
 
+    <!-- SEATTLE PUBLIC WI-FI TAB -->
+    <div id="tab-seattle-wifi" class="tab-content">
+      <h2 style="color: #00c0f0; margin-top: 0;">🌐 City of Seattle Public Wi-Fi Portal</h2>
+      <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Official municipal database for city libraries, civic centers, and public hotspots</p>
+
+      <div class="maps-box" style="border-color: #00c0f0;">
+        <div style="margin-bottom: 14px; display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap;">
+          <a href="https://maps.seattle.gov/publicwifi/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+            <button style="font-size: 13px; padding: 10px 20px; background: #00c0f0; color: #000; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(0, 192, 240, 0.3);">
+              ↗️ Launch Seattle Portal Fullscreen
+            </button>
+          </a>
+        </div>
+
+        <div class="map-frame-container" style="height: 550px; border-color: #007d99;">
+          <iframe 
+            id="seattleWifiIframe" 
+            src="https://maps.seattle.gov/publicwifi/" 
+            title="Seattle Public Wi-Fi Map"
+            loading="lazy"
+            sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <div class="privacy-notice-badge">
+        🔒 <b>End-to-End Encrypted (AES-256-GCM):</b> All video, voice, and web text are scrambled directly on your device before transmission. Zero data is logged, stored, or shared.
+      </div>
+    </div>
+
     <div id="tab-radio" class="tab-content">
       <h2 style="color: #e040fb; margin-top: 0;">📻 Local Live Internet Radio</h2>
       <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Select a genre to populate the Left Station Bank</p>
@@ -931,6 +1108,64 @@
               <div style="display: flex; gap: 8px;">
                 <input type="text" id="customStreamInput" placeholder="e.g., KEXP, KING, KNKX, KUOW..." style="flex: 1; text-align: left; background: #2c2c2e; border: 1px solid #555; color: #fff; padding: 8px 12px; border-radius: 6px;">
                 <button onclick="searchRadioBrowserCustom()" class="btn-round-blue" style="width: auto; height: auto; font-size: 13px; padding: 8px 14px; border-radius: 6px;">Tune In</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="privacy-notice-badge">
+        🔒 <b>End-to-End Encrypted (AES-256-GCM):</b> All video, voice, and web text are scrambled directly on your device before transmission. Zero data is logged, stored, or shared.
+      </div>
+    </div>
+
+    <!-- ART GALLERY TAB -->
+    <div id="tab-art" class="tab-content">
+      <h2 style="color: #ffd60a; margin-top: 0;">🏛️ Open-Access Art Museum Gallery</h2>
+      <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Curated public domain masterpieces streamed directly from world museum collections</p>
+
+      <div class="art-box">
+        <div class="art-genre-bar">
+          <button class="art-genre-btn" onclick="fetchMuseumArt('impressionism', 'Impressionism')">🎨 Impressionism</button>
+          <button class="art-genre-btn" onclick="fetchMuseumArt('post-impressionism', 'Post-Impressionism')">🌻 Post-Impressionism</button>
+          <button class="art-genre-btn" onclick="fetchMuseumArt('renaissance', 'Renaissance')">⚜️ Renaissance</button>
+          <button class="art-genre-btn" onclick="fetchMuseumArt('baroque', 'Baroque')">🏛️ Baroque</button>
+          <button class="art-genre-btn" onclick="fetchMuseumArt('japanese woodblock', 'Japanese Woodblock')">🌊 Woodblock Prints</button>
+          <button class="art-genre-btn" onclick="fetchMuseumArt('monet', 'Claude Monet')">🌿 Monet</button>
+          <button class="art-genre-btn" onclick="fetchMuseumArt('cats', 'Cats in Art')">🐈 Cats in Art</button>
+          <button class="art-genre-btn" style="background:#ffd60a; color:#000;" onclick="fetchRandomArt()">🎲 Random Discovery</button>
+        </div>
+
+        <div class="art-layout">
+          <div class="art-bank-container">
+            <h4 class="art-bank-header">🖼️ Gallery Bank</h4>
+            <div id="artBankList" class="art-bank-list">
+              <p style="color: #666; font-size: 12px; font-style: italic; margin: 0;">Select a genre above to load paintings into this gallery bank...</p>
+            </div>
+          </div>
+
+          <div class="art-display-console">
+            <div class="art-image-frame" id="artImageFrame">
+              <span id="artLoadingIndicator" style="color: #aaa; font-size: 13px; font-style: italic;">Select a painting from the bank to display</span>
+              <img id="mainArtworkImg" src="" alt="Painting Display" style="display: none;" onload="onArtworkImageLoaded()">
+            </div>
+
+            <div id="artCaptionCard" class="art-caption-card">
+              <h3 id="artCaptionTitle" class="art-caption-title">Painting Title</h3>
+              <div id="artCaptionArtist" class="art-caption-artist">Artist Name</div>
+              <p id="artCaptionMeta" class="art-caption-meta">Date • Medium / Details</p>
+              <div id="artCaptionMuseum" class="art-museum-badge">🏛️ The Art Institute of Chicago (Open Access Collection)</div>
+            </div>
+
+            <div class="tuner-box" style="margin-top: 5px;">
+              <label for="customArtInput" style="display:block; font-size: 12px; color: #aaa; font-weight: bold; margin-bottom: 6px;">
+                🏛️ Search Artist, Movement, or Title:
+              </label>
+              <div style="display: flex; gap: 8px;">
+                <input type="text" id="customArtInput" placeholder="e.g., Van Gogh, Renoir, Rembrandt, Turner, Hokusai..." style="flex: 1; text-align: left; background: #2c2c2e; border: 1px solid #555; color: #fff; padding: 8px 12px; border-radius: 6px;">
+                <button onclick="searchArtCustom()" class="btn-round-blue" style="width: auto; height: auto; font-size: 13px; padding: 8px 14px; border-radius: 6px;">Search</button>
               </div>
             </div>
 
@@ -1166,9 +1401,18 @@
         document.querySelectorAll('.tab-btn')[3].classList.add('active');
         document.getElementById('tab-maps').classList.add('active');
         if (!currentCoords) centerMapOnUser(false);
-      } else if (tabName === 'radio') {
+      } else if (tabName === 'seattle-wifi') {
         document.querySelectorAll('.tab-btn')[4].classList.add('active');
+        document.getElementById('tab-seattle-wifi').classList.add('active');
+      } else if (tabName === 'radio') {
+        document.querySelectorAll('.tab-btn')[5].classList.add('active');
         document.getElementById('tab-radio').classList.add('active');
+      } else if (tabName === 'art') {
+        document.querySelectorAll('.tab-btn')[6].classList.add('active');
+        document.getElementById('tab-art').classList.add('active');
+        if (!hasLoadedArtOnce) {
+          fetchMuseumArt('impressionism', 'Impressionism');
+        }
       }
     }
 
@@ -1215,6 +1459,7 @@
       document.getElementById('locationModal').style.display = 'none';
     }
 
+    // Radio Engine
     const RADIO_API_BASE = "https://de1.api.radio-browser.info/json/stations/search";
 
     async function fetchRadioBrowserGenre(tag, labelName) {
@@ -1304,6 +1549,120 @@
         statusText.innerText = "Tap Play arrow on player to listen";
         statusText.style.color = "#e040fb";
       });
+    }
+
+    // ==========================================
+    // OPEN-ACCESS ART MUSEUM ENGINE (AIC IIIF)
+    // ==========================================
+    let hasLoadedArtOnce = false;
+    const ART_API_BASE = "https://api.artic.edu/api/v1/artworks/search";
+
+    async function fetchMuseumArt(query, labelName) {
+      hasLoadedArtOnce = true;
+      const bankList = document.getElementById('artBankList');
+      const indicator = document.getElementById('artLoadingIndicator');
+      
+      bankList.innerHTML = '<p style="color:#aaa; font-size:12px; font-style:italic;">Querying museum archives...</p>';
+      indicator.style.display = 'block';
+      indicator.innerText = `⏳ Retrieving artworks for "${labelName}"...`;
+      document.getElementById('mainArtworkImg').style.display = 'none';
+
+      try {
+        const url = `${ART_API_BASE}?q=${encodeURIComponent(query)}&query[term][is_public_domain]=true&fields=id,title,artist_title,artist_display,date_display,medium_display,image_id&limit=18`;
+        const res = await fetch(url);
+        const json = await res.json();
+        const validWorks = (json.data || []).filter(item => item.image_id);
+
+        if (validWorks.length > 0) {
+          renderArtBank(validWorks);
+          selectArtItem(validWorks[0]);
+        } else {
+          bankList.innerHTML = '<p style="color:#ff3b30; font-size:12px;">No public domain paintings found with accessible high-res images.</p>';
+          indicator.innerText = "No public domain images available.";
+        }
+      } catch (err) {
+        console.error("Art fetch error:", err);
+        bankList.innerHTML = '<p style="color:#ff3b30; font-size:12px;">Error contacting museum database.</p>';
+        indicator.innerText = "Error loading artwork.";
+      }
+    }
+
+    async function fetchRandomArt() {
+      const page = Math.floor(Math.random() * 25) + 1;
+      hasLoadedArtOnce = true;
+      const bankList = document.getElementById('artBankList');
+      const indicator = document.getElementById('artLoadingIndicator');
+      
+      bankList.innerHTML = '<p style="color:#aaa; font-size:12px; font-style:italic;">Selecting random collection items...</p>';
+      indicator.style.display = 'block';
+      indicator.innerText = "🎲 Curating random masterpieces...";
+      document.getElementById('mainArtworkImg').style.display = 'none';
+
+      try {
+        const url = `https://api.artic.edu/api/v1/artworks?query[term][is_public_domain]=true&fields=id,title,artist_title,artist_display,date_display,medium_display,image_id&page=${page}&limit=16`;
+        const res = await fetch(url);
+        const json = await res.json();
+        const validWorks = (json.data || []).filter(item => item.image_id);
+
+        if (validWorks.length > 0) {
+          renderArtBank(validWorks);
+          selectArtItem(validWorks[0]);
+        } else {
+          fetchMuseumArt('painting', 'Paintings');
+        }
+      } catch (err) {
+        bankList.innerHTML = '<p style="color:#ff3b30; font-size:12px;">Error fetching random items.</p>';
+      }
+    }
+
+    async function searchArtCustom() {
+      const input = document.getElementById('customArtInput');
+      const query = input.value.trim();
+      if (!query) return alert("Please enter an artist or title.");
+      fetchMuseumArt(query, query);
+    }
+
+    function renderArtBank(artworks) {
+      const bankList = document.getElementById('artBankList');
+      bankList.innerHTML = '';
+
+      artworks.forEach((art, idx) => {
+        const item = document.createElement('div');
+        item.className = `art-bank-item ${idx === 0 ? 'active' : ''}`;
+        item.id = `art-item-${art.id}`;
+        item.innerHTML = `
+          <span style="font-size:13px; font-weight:bold; color:#ffd60a; display:block;">🎨 ${art.title}</span>
+          <span style="font-size:11px; color:#aaa;">${art.artist_title || 'Unknown Artist'} (${art.date_display || 'N/D'})</span>
+        `;
+        item.onclick = () => {
+          document.querySelectorAll('.art-bank-item').forEach(el => el.classList.remove('active'));
+          item.classList.add('active');
+          selectArtItem(art);
+        };
+        bankList.appendChild(item);
+      });
+    }
+
+    function selectArtItem(art) {
+      const img = document.getElementById('mainArtworkImg');
+      const indicator = document.getElementById('artLoadingIndicator');
+
+      indicator.style.display = 'block';
+      indicator.innerText = `⏳ Loading high-res stream for "${art.title}"...`;
+      img.style.display = 'none';
+
+      const imageUrl = `https://www.artic.edu/iiif/2/${art.image_id}/full/843,/0/default.jpg`;
+      img.src = imageUrl;
+
+      document.getElementById('artCaptionTitle').innerText = art.title;
+      document.getElementById('artCaptionArtist').innerText = art.artist_display || art.artist_title || 'Unknown Artist';
+      document.getElementById('artCaptionMeta').innerText = `${art.date_display || 'Date Unknown'} • ${art.medium_display || 'Oil on canvas / Pigment'}`;
+      document.getElementById('artCaptionMuseum').innerText = "🏛️ The Art Institute of Chicago (Open Access Collection)";
+    }
+
+    function onArtworkImageLoaded() {
+      document.getElementById('artLoadingIndicator').style.display = 'none';
+      document.getElementById('mainArtworkImg').style.display = 'block';
     }
 
     function sendInvite(mode = 'video') {
@@ -1556,7 +1915,6 @@
       updateGridLayout();
     });
 
-    // MONITORS AND ENFORCES VOICE-ONLY FOR PEERS CONNECTED VIA TURN RELAY
     function monitorPeerRelay(pc, targetSocketId) {
       pc.relayInterval = setInterval(async () => {
         if (pc.connectionState === 'closed') {
@@ -1577,13 +1935,11 @@
               if (isRelayed && !pc.isVoiceRestricted) {
                 pc.isVoiceRestricted = true;
 
-                // Stop sending outbound video track to this relayed peer
                 const videoSender = pc.getSenders().find(s => s.track && s.track.kind === 'video');
                 if (videoSender) {
                   await videoSender.replaceTrack(null);
                 }
 
-                // Show Voice Only badge
                 const badge = document.getElementById(`turn-badge-${targetSocketId}`);
                 if (badge) badge.style.display = 'block';
 
