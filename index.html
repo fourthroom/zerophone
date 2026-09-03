@@ -4,28 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   
-  <!-- SEO PRIMARY META TAGS FOR GOOGLE SEARCH -->
   <title>ZeroPhone — Encrypted Browser Video Calling, WebText & Local Resources</title>
-  <meta name="description" content="ZeroPhone is a completely free, privacy-first web utility featuring end-to-end AES-256-GCM encrypted video calling, voice calls, free WebText, local Wi-Fi maps, live radio, and fine art collections.">
+  <meta name="description" content="ZeroPhone is a completely free, privacy-first web utility featuring end-to-end AES-256-GCM encrypted video calling, voice calls, free WebText, local Wi-Fi maps, live radio, and world art museum collections.">
   <meta name="keywords" content="ZeroPhone, fourthroom.org, AES-256 encryption, free video call, browser calling, WebRTC, free web text, local radio streams, public wifi maps, art gallery">
   <meta name="author" content="FourthRoom">
   <link rel="canonical" href="https://fourthroom.org/">
 
-  <!-- OPEN GRAPH / FACEBOOK / MESSENGER / TEXT PREVIEWS -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://fourthroom.org/">
   <meta property="og:title" content="ZeroPhone — Encrypted Web Calling & WebText">
   <meta property="og:description" content="Instant, private video and voice calling right from your browser powered by AES-256-GCM encryption. No downloads or accounts required.">
   <meta property="og:image" content="https://fourthroom.org/icon.png">
 
-  <!-- TWITTER CARD META TAGS -->
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:url" content="https://fourthroom.org/">
-  <meta name="twitter:title" content="ZeroPhone — AES-256 Encrypted Web Calling & WebText">
-  <meta name="twitter:description" content="Completely free, end-to-end encrypted video and voice calls directly in your browser.">
-  <meta name="twitter:image" content="https://fourthroom.org/icon.png">
-
-  <!-- BROWSER TAB FAVICON & PWA ICONS -->
   <link rel="icon" type="image/png" href="icon.png">
   <link rel="shortcut icon" type="image/png" href="icon.png">
   <link rel="apple-touch-icon" href="icon.png">
@@ -156,264 +146,85 @@
       padding: 12px 14px;
     }
 
-    .step-title-green {
-      color: #30d158;
-      font-weight: bold;
-      font-size: 14px;
-      white-space: nowrap;
-      text-align: left;
-    }
-
+    .step-title-green { color: #30d158; font-weight: bold; font-size: 14px; white-space: nowrap; text-align: left; }
     .webphone-input-field {
-      flex: 1;
-      padding: 8px 12px;
-      font-size: 14px;
-      border-radius: 6px;
-      background: #2c2c2e;
-      color: #fff;
-      border: 1px solid #444;
-      text-align: left;
+      flex: 1; padding: 8px 12px; font-size: 14px; border-radius: 6px;
+      background: #2c2c2e; color: #fff; border: 1px solid #444; text-align: left;
     }
 
     .btn-round-red {
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      background: #ff3b30;
-      color: #fff;
-      font-size: 10px;
-      font-weight: 900;
-      border: none;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 10px rgba(255, 59, 48, 0.35);
-      transition: transform 0.1s, background 0.2s;
-      line-height: 1.1;
-      flex-shrink: 0;
-      text-decoration: none;
+      width: 56px; height: 56px; border-radius: 50%; background: #ff3b30; color: #fff;
+      font-size: 10px; font-weight: 900; border: none; cursor: pointer; display: flex;
+      flex-direction: column; align-items: center; justify-content: center;
+      box-shadow: 0 4px 10px rgba(255, 59, 48, 0.35); text-decoration: none;
     }
-    .btn-round-red:hover { background: #d70015; }
-    .btn-round-red:active { transform: scale(0.92); }
-
     .btn-round-blue {
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      background: #0a84ff;
-      color: #fff;
-      font-size: 10px;
-      font-weight: 900;
-      border: none;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 10px rgba(10, 132, 255, 0.35);
-      transition: transform 0.1s, background 0.2s;
-      line-height: 1.1;
-      flex-shrink: 0;
-      text-decoration: none;
+      width: 56px; height: 56px; border-radius: 50%; background: #0a84ff; color: #fff;
+      font-size: 10px; font-weight: 900; border: none; cursor: pointer; display: flex;
+      flex-direction: column; align-items: center; justify-content: center;
+      box-shadow: 0 4px 10px rgba(10, 132, 255, 0.35); text-decoration: none;
     }
-    .btn-round-blue:hover { background: #0066cc; }
-    .btn-round-blue:active { transform: scale(0.92); }
-
     .btn-square-start-red {
-      width: 65px;
-      height: 60px;
-      background: #ff3b30;
-      color: #fff;
-      font-size: 10px;
-      font-weight: 900;
-      border-radius: 10px;
-      border: none;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 2px;
+      width: 65px; height: 60px; background: #ff3b30; color: #fff; font-size: 10px;
+      font-weight: 900; border-radius: 10px; border: none; cursor: pointer; display: flex;
+      flex-direction: column; align-items: center; justify-content: center; gap: 2px;
       box-shadow: 0 4px 12px rgba(255, 59, 48, 0.4);
-      transition: transform 0.1s, background 0.2s;
-      flex-shrink: 0;
-      line-height: 1.1;
     }
-    .btn-square-start-red:hover { background: #d70015; }
-    .btn-square-start-red:active { transform: scale(0.92); }
 
     .vintage-toggle-panel {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background: #1c1c1e;
-      border: 1px solid #444;
-      border-radius: 10px;
-      padding: 6px 8px;
-      gap: 4px;
-      box-shadow: inset 0 0 6px rgba(0,0,0,0.8);
-      flex-shrink: 0;
+      display: flex; flex-direction: column; align-items: center; background: #1c1c1e;
+      border: 1px solid #444; border-radius: 10px; padding: 6px 8px; gap: 4px;
     }
-
-    .toggle-label-group {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 9px;
-      font-weight: bold;
-      color: #aaa;
-    }
-
-    .indicator-light {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #333;
-      border: 1px solid #555;
-      transition: background 0.2s, box-shadow 0.2s;
-    }
-    .indicator-light.active-red {
-      background: #ff3b30;
-      box-shadow: 0 0 6px #ff3b30, 0 0 10px #ff3b30;
-    }
-
-    .switch-container {
-      position: relative;
-      width: 22px;
-      height: 44px;
-    }
+    .toggle-label-group { display: flex; align-items: center; gap: 4px; font-size: 9px; font-weight: bold; color: #aaa; }
+    .indicator-light { width: 7px; height: 7px; border-radius: 50%; background: #333; border: 1px solid #555; }
+    .indicator-light.active-red { background: #ff3b30; box-shadow: 0 0 6px #ff3b30; }
+    .switch-container { position: relative; width: 22px; height: 44px; }
     .switch-container input { opacity: 0; width: 0; height: 0; }
     .slider-track {
-      position: absolute;
-      cursor: pointer;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background-color: #2c2c2e;
-      border: 2px solid #555;
-      border-radius: 12px;
-      transition: .2s;
+      position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #2c2c2e; border: 2px solid #555; border-radius: 12px;
     }
     .slider-track:before {
-      position: absolute;
-      content: "";
-      height: 16px;
-      width: 14px;
-      left: 2px;
-      top: 2px;
-      background-color: #aaa;
-      border-radius: 6px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.6);
-      transition: .2s;
+      position: absolute; content: ""; height: 16px; width: 14px; left: 2px; top: 2px;
+      background-color: #aaa; border-radius: 6px; transition: .2s;
     }
-    input:checked + .slider-track:before {
-      transform: translateY(20px);
-      background-color: #ff3b30;
-    }
+    input:checked + .slider-track:before { transform: translateY(20px); background-color: #ff3b30; }
 
-    .incall-controls-bar {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 15px;
-      margin-top: 15px;
-      flex-wrap: wrap;
-    }
-
+    .incall-controls-bar { display: flex; justify-content: center; align-items: center; gap: 15px; margin-top: 15px; flex-wrap: wrap; }
     .call-timer-badge {
-      background: #1c1c1e;
-      border: 1px solid #30d158;
-      border-radius: 20px;
-      padding: 6px 14px;
-      font-size: 13px;
-      font-weight: bold;
-      color: #30d158;
+      background: #1c1c1e; border: 1px solid #30d158; border-radius: 20px;
+      padding: 6px 14px; font-size: 13px; font-weight: bold; color: #30d158;
     }
-
     .btn-media-toggle {
-      background: #2c2c2e;
-      color: #fff;
-      border: 1px solid #555;
-      border-radius: 50%;
-      width: 52px;
-      height: 52px;
-      font-size: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: background 0.2s, border 0.2s;
+      background: #2c2c2e; color: #fff; border: 1px solid #555; border-radius: 50%;
+      width: 52px; height: 52px; font-size: 20px; display: flex; align-items: center; justify-content: center; cursor: pointer;
     }
-    .btn-media-toggle.muted {
-      background: #ff3b30;
-      border-color: #d70015;
-    }
-
+    .btn-media-toggle.muted { background: #ff3b30; border-color: #d70015; }
     .btn-red-end { 
-      background: #ff3b30; 
-      color: white; 
-      cursor: pointer; 
-      font-weight: bold; 
-      font-size: 16px; 
-      padding: 12px 24px; 
-      border-radius: 10px;
-      border: none;
-      box-shadow: 0 4px 12px rgba(255, 59, 48, 0.4);
+      background: #ff3b30; color: white; cursor: pointer; font-weight: bold; 
+      font-size: 16px; padding: 12px 24px; border-radius: 10px; border: none;
     }
-    .btn-red-end:hover { background: #d70015; }
 
     #status { font-weight: bold; color: #30d158; margin-bottom: 4px; }
 
     .video-grid { 
-      display: grid;
-      grid-template-columns: minmax(0, 480px);
-      gap: 12px; 
-      justify-content: center; 
-      align-content: center;
-      margin: 10px auto; 
-      width: 100%;
-      max-width: 900px;
+      display: grid; grid-template-columns: minmax(0, 480px); gap: 12px; 
+      justify-content: center; align-content: center; margin: 10px auto; width: 100%; max-width: 900px;
     }
     .video-grid.peers-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .video-grid.peers-3,
-    .video-grid.peers-4 {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      grid-template-rows: repeat(2, auto);
+    .video-grid.peers-3, .video-grid.peers-4 {
+      grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, auto);
     }
-
-    .video-card { 
-      width: 100%; 
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-    }
-
+    .video-card { width: 100%; display: flex; flex-direction: column; align-items: center; position: relative; }
     video { 
-      width: 100%; 
-      aspect-ratio: 1 / 1; 
-      background: #000; 
-      border-radius: 14px; 
-      border: 2px solid #333; 
-      object-fit: cover; 
-      display: block;
+      width: 100%; aspect-ratio: 1 / 1; background: #000; border-radius: 14px; 
+      border: 2px solid #333; object-fit: cover; display: block;
     }
-
     #localVideo { transform: scaleX(-1); }
 
     .turn-badge {
-      display: none;
-      position: absolute;
-      top: 36px;
-      left: 10px;
-      background: rgba(255, 149, 0, 0.85);
-      color: #000;
-      font-size: 10px;
-      font-weight: 900;
-      padding: 3px 8px;
-      border-radius: 6px;
-      z-index: 10;
-      letter-spacing: 0.5px;
+      display: none; position: absolute; top: 36px; left: 10px; background: rgba(255, 149, 0, 0.85);
+      color: #000; font-size: 10px; font-weight: 900; padding: 3px 8px; border-radius: 6px; z-index: 10;
     }
 
     @media (max-width: 520px) {
@@ -423,366 +234,125 @@
     }
 
     .modal-return-overlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.85);
-      z-index: 99999;
-      justify-content: center;
-      align-items: center;
+      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.85); z-index: 99999; justify-content: center; align-items: center;
     }
     .modal-return-content {
-      background: #1c1c1e;
-      border: 2px solid #30d158;
-      border-radius: 16px;
-      padding: 30px 20px;
-      max-width: 360px;
-      width: 85%;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.9);
+      background: #1c1c1e; border: 2px solid #30d158; border-radius: 16px; padding: 30px 20px;
+      max-width: 360px; width: 85%; text-align: center;
     }
     .btn-return-app {
-      background: #30d158;
-      color: #000;
-      border: none;
-      padding: 14px 28px;
-      border-radius: 10px;
-      font-size: 16px;
-      font-weight: 900;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(48, 209, 88, 0.4);
+      background: #30d158; color: #000; border: none; padding: 14px 28px; border-radius: 10px;
+      font-size: 16px; font-weight: 900; cursor: pointer;
     }
 
     #responderAccessBox {
-      display: none;
-      background: #1c1c1e;
-      border: 2px solid #30d158;
-      border-radius: 20px;
-      padding: 40px 20px;
-      max-width: 450px;
-      margin: 40px auto;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+      display: none; background: #1c1c1e; border: 2px solid #30d158; border-radius: 20px;
+      padding: 40px 20px; max-width: 450px; margin: 40px auto; text-align: center;
     }
     .btn-mega-enter {
-      background: #30d158;
-      color: #000;
-      font-size: 24px;
-      font-weight: 900;
-      padding: 20px 32px;
-      border-radius: 14px;
-      border: none;
-      cursor: pointer;
-      width: 100%;
-      box-shadow: 0 6px 20px rgba(48, 209, 88, 0.4);
+      background: #30d158; color: #000; font-size: 24px; font-weight: 900; padding: 20px 32px;
+      border-radius: 14px; border: none; cursor: pointer; width: 100%;
     }
 
-    .web-chat-box {
-      background: #1c1c1e;
-      border: 1px solid #63e685;
-      border-radius: 12px;
-      padding: 15px;
-      max-width: 620px;
-      margin: 0 auto;
-    }
+    .web-chat-box { background: #1c1c1e; border: 1px solid #63e685; border-radius: 12px; padding: 15px; max-width: 620px; margin: 0 auto; }
     #web-chat-thread {
-      height: 260px;
-      border: 1px solid #333;
-      border-radius: 8px;
-      padding: 10px;
-      overflow-y: auto;
-      background: #121212;
-      text-align: left;
-      margin-bottom: 12px;
+      height: 260px; border: 1px solid #333; border-radius: 8px; padding: 10px;
+      overflow-y: auto; background: #121212; text-align: left; margin-bottom: 12px;
     }
 
-    .maps-box {
-      background: #1c1c1e;
-      border: 1px solid #ff9500;
-      border-radius: 12px;
-      padding: 15px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .maps-filter-bar {
-      display: flex;
-      gap: 8px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 15px;
-    }
+    .maps-box { background: #1c1c1e; border: 1px solid #ff9500; border-radius: 12px; padding: 15px; max-width: 900px; margin: 0 auto; }
+    .maps-filter-bar { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 15px; }
     .maps-filter-btn {
-      background: #2c2c2e;
-      color: #fff;
-      border: 1px solid #555;
-      padding: 8px 12px;
-      font-size: 13px;
-      font-weight: bold;
-      border-radius: 8px;
-      cursor: pointer;
+      background: #2c2c2e; color: #fff; border: 1px solid #555; padding: 8px 12px;
+      font-size: 13px; font-weight: bold; border-radius: 8px; cursor: pointer;
     }
-    .map-frame-container {
-      width: 100%;
-      height: 500px;
-      border-radius: 10px;
-      overflow: hidden;
-      border: 1px solid #444;
-    }
+    .map-frame-container { width: 100%; height: 500px; border-radius: 10px; overflow: hidden; border: 1px solid #444; }
     iframe { width: 100%; height: 100%; border: none; }
 
-    .radio-box {
-      background: #1c1c1e;
-      border: 1px solid #e040fb;
-      border-radius: 12px;
-      padding: 20px;
-      max-width: 950px;
-      margin: 0 auto;
-    }
-    .radio-genre-bar {
-      display: flex;
-      gap: 8px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 20px;
-    }
+    .radio-box { background: #1c1c1e; border: 1px solid #e040fb; border-radius: 12px; padding: 20px; max-width: 950px; margin: 0 auto; }
+    .radio-genre-bar { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
     .genre-btn {
-      background: #2c2c2e;
-      color: #fff;
-      border: 1px solid #555;
-      padding: 10px 14px;
-      font-size: 13px;
-      font-weight: bold;
-      border-radius: 8px;
-      cursor: pointer;
+      background: #2c2c2e; color: #fff; border: 1px solid #555; padding: 10px 14px;
+      font-size: 13px; font-weight: bold; border-radius: 8px; cursor: pointer;
     }
     .radio-layout { display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; }
-    .station-bank-container {
-      flex: 1;
-      min-width: 280px;
-      background: #121212;
-      border: 1px solid #333;
-      border-radius: 12px;
-      padding: 12px;
-      text-align: left;
-    }
-    .station-bank-header {
-      font-size: 13px;
-      font-weight: bold;
-      color: #e040fb;
-      margin: 0 0 10px 0;
-      text-transform: uppercase;
-    }
-    .station-bank-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      max-height: 360px;
-      overflow-y: auto;
-    }
-    .station-bank-item {
-      background: #2c2c2e;
-      border: 1px solid #444;
-      border-radius: 8px;
-      padding: 10px;
-      cursor: pointer;
-      text-align: left;
-    }
+    .station-bank-container { flex: 1; min-width: 280px; background: #121212; border: 1px solid #333; border-radius: 12px; padding: 12px; text-align: left; }
+    .station-bank-header { font-size: 13px; font-weight: bold; color: #e040fb; margin: 0 0 10px 0; text-transform: uppercase; }
+    .station-bank-list { display: flex; flex-direction: column; gap: 8px; max-height: 360px; overflow-y: auto; }
+    .station-bank-item { background: #2c2c2e; border: 1px solid #444; border-radius: 8px; padding: 10px; cursor: pointer; text-align: left; }
     .radio-console {
-      flex: 1.5;
-      min-width: 320px;
-      background: #121212;
-      border: 1px solid #333;
-      border-radius: 12px;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 15px;
+      flex: 1.5; min-width: 320px; background: #121212; border: 1px solid #333; border-radius: 12px;
+      padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 15px;
     }
     .now-playing-title { font-size: 20px; font-weight: bold; color: #e040fb; margin: 0; }
     .now-playing-sub { font-size: 13px; color: #aaa; margin-top: -6px; }
     audio { width: 100%; max-width: 480px; border-radius: 8px; }
-    .tuner-box {
-      margin-top: 10px;
-      padding-top: 15px;
-      border-top: 1px solid #333;
-      width: 100%;
-      max-width: 480px;
-      text-align: left;
-    }
+    .tuner-box { margin-top: 10px; padding-top: 15px; border-top: 1px solid #333; width: 100%; max-width: 480px; text-align: left; }
 
-    /* ART GALLERY SPECIFIC STYLING */
-    .art-box {
-      background: #1c1c1e;
-      border: 1px solid #ffd60a;
-      border-radius: 12px;
-      padding: 20px;
-      max-width: 1000px;
-      margin: 0 auto;
+    /* MULTI-MUSEUM ART GALLERY STYLES */
+    .art-box { background: #1c1c1e; border: 1px solid #ffd60a; border-radius: 12px; padding: 20px; max-width: 1000px; margin: 0 auto; }
+    
+    .museum-institution-bar {
+      display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 12px;
+      padding-bottom: 12px; border-bottom: 1px solid #333;
     }
-    .art-genre-bar {
-      display: flex;
-      gap: 8px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 20px;
+    .museum-inst-btn {
+      background: #18181a; color: #ffd60a; border: 1px solid #ffd60a; padding: 8px 14px;
+      font-size: 12px; font-weight: 900; border-radius: 20px; cursor: pointer; transition: all 0.2s;
     }
+    .museum-inst-btn.active { background: #ffd60a; color: #000; }
+
+    .art-genre-bar { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
     .art-genre-btn {
-      background: #2c2c2e;
-      color: #fff;
-      border: 1px solid #555;
-      padding: 10px 14px;
-      font-size: 13px;
-      font-weight: bold;
-      border-radius: 8px;
-      cursor: pointer;
+      background: #2c2c2e; color: #fff; border: 1px solid #555; padding: 8px 12px;
+      font-size: 12px; font-weight: bold; border-radius: 8px; cursor: pointer;
     }
     .art-genre-btn:hover { background: #3a3a3c; }
+
     .art-layout { display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; }
-    .art-bank-container {
-      flex: 1;
-      min-width: 280px;
-      background: #121212;
-      border: 1px solid #333;
-      border-radius: 12px;
-      padding: 12px;
-      text-align: left;
-    }
-    .art-bank-header {
-      font-size: 13px;
-      font-weight: bold;
-      color: #ffd60a;
-      margin: 0 0 10px 0;
-      text-transform: uppercase;
-    }
-    .art-bank-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      max-height: 480px;
-      overflow-y: auto;
-    }
-    .art-bank-item {
-      background: #2c2c2e;
-      border: 1px solid #444;
-      border-radius: 8px;
-      padding: 10px;
-      cursor: pointer;
-      text-align: left;
-      transition: background 0.15s;
-    }
-    .art-bank-item.active {
-      border-color: #ffd60a;
-      background: #332b00;
-    }
+    .art-bank-container { flex: 1; min-width: 280px; background: #121212; border: 1px solid #333; border-radius: 12px; padding: 12px; text-align: left; }
+    .art-bank-header { font-size: 13px; font-weight: bold; color: #ffd60a; margin: 0 0 10px 0; text-transform: uppercase; }
+    .art-bank-list { display: flex; flex-direction: column; gap: 8px; max-height: 480px; overflow-y: auto; }
+    .art-bank-item { background: #2c2c2e; border: 1px solid #444; border-radius: 8px; padding: 10px; cursor: pointer; text-align: left; }
+    .art-bank-item.active { border-color: #ffd60a; background: #332b00; }
+
     .art-display-console {
-      flex: 2;
-      min-width: 320px;
-      background: #121212;
-      border: 1px solid #333;
-      border-radius: 12px;
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 14px;
+      flex: 2; min-width: 320px; background: #121212; border: 1px solid #333; border-radius: 12px;
+      padding: 18px; display: flex; flex-direction: column; align-items: center; gap: 14px;
     }
     .art-image-frame {
-      width: 100%;
-      min-height: 380px;
-      max-height: 520px;
-      background: #000;
-      border-radius: 10px;
-      border: 1px solid #444;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
+      width: 100%; min-height: 380px; max-height: 520px; background: #000; border-radius: 10px;
+      border: 1px solid #444; display: flex; align-items: center; justify-content: center; overflow: hidden;
     }
-    .art-image-frame img {
-      max-width: 100%;
-      max-height: 500px;
-      object-fit: contain;
-      border-radius: 8px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.8);
-    }
+    .art-image-frame img { max-width: 100%; max-height: 500px; object-fit: contain; border-radius: 8px; }
     .art-caption-card {
-      width: 100%;
-      background: #1c1c1e;
-      border: 1px solid #444;
-      border-radius: 10px;
-      padding: 14px 16px;
-      text-align: left;
-      font-size: 13px;
-      line-height: 1.5;
+      width: 100%; background: #1c1c1e; border: 1px solid #444; border-radius: 10px;
+      padding: 14px 16px; text-align: left; font-size: 13px; line-height: 1.5;
     }
-    .art-caption-title {
-      font-size: 18px;
-      font-weight: 900;
-      color: #ffd60a;
-      margin: 0 0 4px 0;
-    }
-    .art-caption-artist {
-      font-size: 14px;
-      font-weight: bold;
-      color: #fff;
-      margin: 0 0 6px 0;
-    }
-    .art-caption-meta {
-      color: #aaa;
-      font-size: 12px;
-      margin: 0;
-    }
+    .art-caption-title { font-size: 18px; font-weight: 900; color: #ffd60a; margin: 0 0 4px 0; }
+    .art-caption-artist { font-size: 14px; font-weight: bold; color: #fff; margin: 0 0 6px 0; }
+    .art-caption-meta { color: #aaa; font-size: 12px; margin: 0; }
     .art-museum-badge {
-      display: inline-block;
-      margin-top: 8px;
-      background: #2a2400;
-      color: #ffd60a;
-      border: 1px solid #ffd60a;
-      border-radius: 6px;
-      padding: 4px 8px;
-      font-size: 11px;
-      font-weight: bold;
+      display: inline-block; margin-top: 8px; background: #2a2400; color: #ffd60a;
+      border: 1px solid #ffd60a; border-radius: 6px; padding: 4px 8px; font-size: 11px; font-weight: bold;
     }
 
     .under-construction-box {
-      background: #1c1c1e;
-      border: 2px dashed #ff3b30;
-      border-radius: 16px;
-      padding: 50px 20px;
-      max-width: 500px;
-      margin: 30px auto;
+      background: #1c1c1e; border: 2px dashed #ff3b30; border-radius: 16px;
+      padding: 50px 20px; max-width: 500px; margin: 30px auto;
     }
     .privacy-notice-badge {
-      margin-top: 25px;
-      font-size: 12px;
-      color: #888;
-      background: #18181a;
-      border: 1px solid #2a2a2d;
-      border-radius: 20px;
-      padding: 8px 16px;
-      display: inline-block;
-      max-width: 90%;
-      line-height: 1.4;
+      margin-top: 25px; font-size: 12px; color: #888; background: #18181a; border: 1px solid #2a2a2d;
+      border-radius: 20px; padding: 8px 16px; display: inline-block; max-width: 90%; line-height: 1.4;
     }
     .location-modal-overlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.85);
-      z-index: 9999;
-      justify-content: center;
-      align-items: center;
+      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.85); z-index: 9999; justify-content: center; align-items: center;
     }
     .location-modal-content {
-      background: #1c1c1e;
-      border: 2px solid #ff9500;
-      border-radius: 16px;
-      padding: 25px;
-      max-width: 420px;
-      width: 85%;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.9);
+      background: #1c1c1e; border: 2px solid #ff9500; border-radius: 16px;
+      padding: 25px; max-width: 420px; width: 85%; text-align: center;
     }
   </style>
 </head>
@@ -851,7 +421,7 @@
       </button>
       <button class="tab-btn tab-art" onclick="switchTab('art')">
         🏛️ Art Gallery
-        <span class="sub-tagline">Masterpieces & Paintings</span>
+        <span class="sub-tagline">World Masterpieces</span>
       </button>
     </div>
   </div>
@@ -868,7 +438,7 @@
       <div id="status">Ready to Call</div>
 
       <div class="pricing-announcement-card">
-        ZeroPhone is a free app for making video calls and sending texts, as well as a free Maps and Radio. The <b>Free Tier</b> allows the user to make <b>15 minute video calls</b>. For a <b>$5 fee</b>, the user can make an entire month (31 days) of unlimited calls.
+        ZeroPhone is a free app for making video calls and sending texts, as well as a free Maps, Radio, and Art Museum Gallery. The <b>Free Tier</b> allows the user to make <b>15 minute video calls</b>. For a <b>$5 fee</b>, the user can make an entire month (31 days) of unlimited calls.
       </div>
 
       <div id="webphoneMainSection">
@@ -1121,28 +691,36 @@
       </div>
     </div>
 
-    <!-- ART GALLERY TAB -->
+    <!-- OPEN ACCESS WORLD ART MUSEUMS TAB -->
     <div id="tab-art" class="tab-content">
-      <h2 style="color: #ffd60a; margin-top: 0;">🏛️ Open-Access Art Museum Gallery</h2>
-      <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Curated public domain masterpieces streamed directly from world museum collections</p>
+      <h2 style="color: #ffd60a; margin-top: 0;">🏛️ World Art Museum Collections</h2>
+      <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Direct open-access digital collections from premier international museums</p>
 
       <div class="art-box">
+        <!-- MUSEUM INSTITUTION SELECTOR -->
+        <div class="museum-institution-bar">
+          <button id="btnMuseumAll" class="museum-inst-btn active" onclick="setMuseumScope('all')">🌐 All Museums (Blended)</button>
+          <button id="btnMuseumAIC" class="museum-inst-btn" onclick="setMuseumScope('aic')">🏛️ Chicago (AIC)</button>
+          <button id="btnMuseumMET" class="museum-inst-btn" onclick="setMuseumScope('met')">🏛️ The Met (NYC)</button>
+          <button id="btnMuseumCMA" class="museum-inst-btn" onclick="setMuseumScope('cma')">🏛️ Cleveland (CMA)</button>
+        </div>
+
+        <!-- GENRE / PERIOD FILTER BAR -->
         <div class="art-genre-bar">
-          <button class="art-genre-btn" onclick="fetchMuseumArt('impressionism', 'Impressionism')">🎨 Impressionism</button>
-          <button class="art-genre-btn" onclick="fetchMuseumArt('post-impressionism', 'Post-Impressionism')">🌻 Post-Impressionism</button>
-          <button class="art-genre-btn" onclick="fetchMuseumArt('renaissance', 'Renaissance')">⚜️ Renaissance</button>
-          <button class="art-genre-btn" onclick="fetchMuseumArt('baroque', 'Baroque')">🏛️ Baroque</button>
-          <button class="art-genre-btn" onclick="fetchMuseumArt('japanese woodblock', 'Japanese Woodblock')">🌊 Woodblock Prints</button>
-          <button class="art-genre-btn" onclick="fetchMuseumArt('monet', 'Claude Monet')">🌿 Monet</button>
-          <button class="art-genre-btn" onclick="fetchMuseumArt('cats', 'Cats in Art')">🐈 Cats in Art</button>
-          <button class="art-genre-btn" style="background:#ffd60a; color:#000;" onclick="fetchRandomArt()">🎲 Random Discovery</button>
+          <button class="art-genre-btn" onclick="triggerArtSearch('impressionism', 'Impressionism')">🎨 Impressionism</button>
+          <button class="art-genre-btn" onclick="triggerArtSearch('renaissance', 'Renaissance')">⚜️ Renaissance</button>
+          <button class="art-genre-btn" onclick="triggerArtSearch('baroque', 'Baroque')">🏛️ Baroque</button>
+          <button class="art-genre-btn" onclick="triggerArtSearch('dutch', 'Dutch Masters')">🇳🇱 Dutch Masters</button>
+          <button class="art-genre-btn" onclick="triggerArtSearch('japanese woodblock', 'Japanese Prints')">🌊 Japanese Prints</button>
+          <button class="art-genre-btn" onclick="triggerArtSearch('landscape', 'Landscapes')">🌲 Landscapes</button>
+          <button class="art-genre-btn" style="background:#ffd60a; color:#000;" onclick="triggerArtRandom()">🎲 Discovery Mix</button>
         </div>
 
         <div class="art-layout">
           <div class="art-bank-container">
             <h4 class="art-bank-header">🖼️ Gallery Bank</h4>
             <div id="artBankList" class="art-bank-list">
-              <p style="color: #666; font-size: 12px; font-style: italic; margin: 0;">Select a genre above to load paintings into this gallery bank...</p>
+              <p style="color: #666; font-size: 12px; font-style: italic; margin: 0;">Loading artwork collection...</p>
             </div>
           </div>
 
@@ -1156,15 +734,15 @@
               <h3 id="artCaptionTitle" class="art-caption-title">Painting Title</h3>
               <div id="artCaptionArtist" class="art-caption-artist">Artist Name</div>
               <p id="artCaptionMeta" class="art-caption-meta">Date • Medium / Details</p>
-              <div id="artCaptionMuseum" class="art-museum-badge">🏛️ The Art Institute of Chicago (Open Access Collection)</div>
+              <div id="artCaptionMuseum" class="art-museum-badge">🏛️ Museum Collection</div>
             </div>
 
             <div class="tuner-box" style="margin-top: 5px;">
               <label for="customArtInput" style="display:block; font-size: 12px; color: #aaa; font-weight: bold; margin-bottom: 6px;">
-                🏛️ Search Artist, Movement, or Title:
+                🏛️ Search Artist, Movement, or Title Across Museums:
               </label>
               <div style="display: flex; gap: 8px;">
-                <input type="text" id="customArtInput" placeholder="e.g., Van Gogh, Renoir, Rembrandt, Turner, Hokusai..." style="flex: 1; text-align: left; background: #2c2c2e; border: 1px solid #555; color: #fff; padding: 8px 12px; border-radius: 6px;">
+                <input type="text" id="customArtInput" placeholder="e.g., Monet, Rembrandt, Van Gogh, Homer, Hokusai..." style="flex: 1; text-align: left; background: #2c2c2e; border: 1px solid #555; color: #fff; padding: 8px 12px; border-radius: 6px;">
                 <button onclick="searchArtCustom()" class="btn-round-blue" style="width: auto; height: auto; font-size: 13px; padding: 8px 14px; border-radius: 6px;">Search</button>
               </div>
             </div>
@@ -1304,13 +882,11 @@
     function triggerCellCall(event) {
       const number = prompt("Enter phone number to call (optional):", "");
       const callLink = document.getElementById('callCellBtn');
-      
       if (number && number.trim()) {
         callLink.href = `tel:${encodeURIComponent(number.trim())}`;
       } else {
         callLink.href = "tel:";
       }
-
       setTimeout(() => {
         document.getElementById('returnModal').style.display = 'flex';
       }, 10000);
@@ -1370,7 +946,6 @@
     document.getElementById('megaEnterBtn').addEventListener('click', () => {
       document.getElementById('responderAccessBox').style.display = 'none';
       document.getElementById('status').style.display = 'block';
-      
       if (modeParam === 'text') {
         switchTab('level1-text');
       } else {
@@ -1411,14 +986,13 @@
         document.querySelectorAll('.tab-btn')[6].classList.add('active');
         document.getElementById('tab-art').classList.add('active');
         if (!hasLoadedArtOnce) {
-          fetchMuseumArt('impressionism', 'Impressionism');
+          triggerArtSearch('impressionism', 'Impressionism');
         }
       }
     }
 
     function loadMapQuery(resourceTerm, zoomLevel = 14) {
       const iframe = document.getElementById('googleMapIframe');
-
       if (currentCoords) {
         iframe.src = `https://www.google.com/maps?q=${encodeURIComponent(resourceTerm)}&ll=${currentCoords.lat},${currentCoords.lng}&z=${zoomLevel}&output=embed`;
       } else {
@@ -1459,7 +1033,7 @@
       document.getElementById('locationModal').style.display = 'none';
     }
 
-    // Radio Engine
+    // RADIO ENGINE
     const RADIO_API_BASE = "https://de1.api.radio-browser.info/json/stations/search";
 
     async function fetchRadioBrowserGenre(tag, labelName) {
@@ -1552,74 +1126,147 @@
     }
 
     // ==========================================
-    // OPEN-ACCESS ART MUSEUM ENGINE (AIC IIIF)
+    // MULTI-MUSEUM OPEN-ACCESS ARCHITECTURE
     // ==========================================
     let hasLoadedArtOnce = false;
-    const ART_API_BASE = "https://api.artic.edu/api/v1/artworks/search";
+    let currentMuseumScope = 'all';
+    let lastArtQuery = 'impressionism';
 
-    async function fetchMuseumArt(query, labelName) {
-      hasLoadedArtOnce = true;
-      const bankList = document.getElementById('artBankList');
-      const indicator = document.getElementById('artLoadingIndicator');
-      
-      bankList.innerHTML = '<p style="color:#aaa; font-size:12px; font-style:italic;">Querying museum archives...</p>';
-      indicator.style.display = 'block';
-      indicator.innerText = `⏳ Retrieving artworks for "${labelName}"...`;
-      document.getElementById('mainArtworkImg').style.display = 'none';
+    function setMuseumScope(scope) {
+      currentMuseumScope = scope;
+      document.querySelectorAll('.museum-inst-btn').forEach(btn => btn.classList.remove('active'));
+      if (scope === 'all') document.getElementById('btnMuseumAll').classList.add('active');
+      if (scope === 'aic') document.getElementById('btnMuseumAIC').classList.add('active');
+      if (scope === 'met') document.getElementById('btnMuseumMET').classList.add('active');
+      if (scope === 'cma') document.getElementById('btnMuseumCMA').classList.add('active');
 
+      triggerArtSearch(lastArtQuery, lastArtQuery);
+    }
+
+    async function fetchFromAIC(query, limit = 8) {
       try {
-        const url = `${ART_API_BASE}?q=${encodeURIComponent(query)}&query[term][is_public_domain]=true&fields=id,title,artist_title,artist_display,date_display,medium_display,image_id&limit=18`;
+        const url = `https://api.artic.edu/api/v1/artworks/search?q=${encodeURIComponent(query)}&query[term][is_public_domain]=true&fields=id,title,artist_title,artist_display,date_display,medium_display,image_id&limit=${limit}`;
         const res = await fetch(url);
         const json = await res.json();
-        const validWorks = (json.data || []).filter(item => item.image_id);
-
-        if (validWorks.length > 0) {
-          renderArtBank(validWorks);
-          selectArtItem(validWorks[0]);
-        } else {
-          bankList.innerHTML = '<p style="color:#ff3b30; font-size:12px;">No public domain paintings found with accessible high-res images.</p>';
-          indicator.innerText = "No public domain images available.";
-        }
-      } catch (err) {
-        console.error("Art fetch error:", err);
-        bankList.innerHTML = '<p style="color:#ff3b30; font-size:12px;">Error contacting museum database.</p>';
-        indicator.innerText = "Error loading artwork.";
+        return (json.data || []).filter(item => item.image_id).map(item => ({
+          id: `aic-${item.id}`,
+          title: item.title,
+          artist: item.artist_display || item.artist_title || 'Unknown Artist',
+          date: item.date_display || 'Date Unknown',
+          medium: item.medium_display || 'Oil on canvas / Painting',
+          imageUrl: `https://www.artic.edu/iiif/2/${item.image_id}/full/843,/0/default.jpg`,
+          museum: 'The Art Institute of Chicago'
+        }));
+      } catch (e) {
+        console.warn('AIC fetch issue:', e);
+        return [];
       }
     }
 
-    async function fetchRandomArt() {
-      const page = Math.floor(Math.random() * 25) + 1;
-      hasLoadedArtOnce = true;
-      const bankList = document.getElementById('artBankList');
-      const indicator = document.getElementById('artLoadingIndicator');
-      
-      bankList.innerHTML = '<p style="color:#aaa; font-size:12px; font-style:italic;">Selecting random collection items...</p>';
-      indicator.style.display = 'block';
-      indicator.innerText = "🎲 Curating random masterpieces...";
-      document.getElementById('mainArtworkImg').style.display = 'none';
-
+    async function fetchFromCMA(query, limit = 8) {
       try {
-        const url = `https://api.artic.edu/api/v1/artworks?query[term][is_public_domain]=true&fields=id,title,artist_title,artist_display,date_display,medium_display,image_id&page=${page}&limit=16`;
+        const url = `https://openaccess-api.clevelandart.org/api/artworks/?q=${encodeURIComponent(query)}&has_image=1&limit=${limit}`;
         const res = await fetch(url);
         const json = await res.json();
-        const validWorks = (json.data || []).filter(item => item.image_id);
-
-        if (validWorks.length > 0) {
-          renderArtBank(validWorks);
-          selectArtItem(validWorks[0]);
-        } else {
-          fetchMuseumArt('painting', 'Paintings');
-        }
-      } catch (err) {
-        bankList.innerHTML = '<p style="color:#ff3b30; font-size:12px;">Error fetching random items.</p>';
+        return (json.data || []).filter(item => item.images && item.images.web && item.images.web.url).map(item => ({
+          id: `cma-${item.id}`,
+          title: item.title,
+          artist: (item.creators && item.creators[0]) ? item.creators[0].description : 'Unknown Artist',
+          date: item.creation_date || 'Date Unknown',
+          medium: item.technique || 'Painting / Work on paper',
+          imageUrl: item.images.web.url,
+          museum: 'The Cleveland Museum of Art'
+        }));
+      } catch (e) {
+        console.warn('CMA fetch issue:', e);
+        return [];
       }
     }
 
-    async function searchArtCustom() {
+    async function fetchFromMet(query, limit = 6) {
+      try {
+        const searchUrl = `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=${encodeURIComponent(query)}`;
+        const searchRes = await fetch(searchUrl);
+        const searchJson = await searchRes.json();
+        if (!searchJson.objectIDs || searchJson.objectIDs.length === 0) return [];
+
+        const targetIds = searchJson.objectIDs.slice(0, limit);
+        const promises = targetIds.map(id => 
+          fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${id}`)
+            .then(r => r.ok ? r.json() : null)
+            .catch(() => null)
+        );
+
+        const records = await Promise.all(promises);
+        return records.filter(item => item && item.primaryImageSmall).map(item => ({
+          id: `met-${item.objectID}`,
+          title: item.title,
+          artist: item.artistDisplayName || 'Unknown Artist',
+          date: item.objectDate || 'Date Unknown',
+          medium: item.medium || 'Painting / European Collection',
+          imageUrl: item.primaryImageSmall,
+          museum: 'The Metropolitan Museum of Art (NYC)'
+        }));
+      } catch (e) {
+        console.warn('The Met fetch issue:', e);
+        return [];
+      }
+    }
+
+    async function triggerArtSearch(query, labelName) {
+      hasLoadedArtOnce = true;
+      lastArtQuery = query;
+
+      const bankList = document.getElementById('artBankList');
+      const indicator = document.getElementById('artLoadingIndicator');
+      bankList.innerHTML = '<p style="color:#aaa; font-size:12px; font-style:italic;">Querying museum collections...</p>';
+      indicator.style.display = 'block';
+      indicator.innerText = `⏳ Searching collections for "${labelName}"...`;
+      document.getElementById('mainArtworkImg').style.display = 'none';
+
+      let results = [];
+
+      if (currentMuseumScope === 'aic') {
+        results = await fetchFromAIC(query, 16);
+      } else if (currentMuseumScope === 'cma') {
+        results = await fetchFromCMA(query, 16);
+      } else if (currentMuseumScope === 'met') {
+        results = await fetchFromMet(query, 10);
+      } else {
+        const [aic, cma, met] = await Promise.all([
+          fetchFromAIC(query, 6),
+          fetchFromCMA(query, 6),
+          fetchFromMet(query, 4)
+        ]);
+        
+        const maxLength = Math.max(aic.length, cma.length, met.length);
+        for (let i = 0; i < maxLength; i++) {
+          if (aic[i]) results.push(aic[i]);
+          if (cma[i]) results.push(cma[i]);
+          if (met[i]) results.push(met[i]);
+        }
+      }
+
+      if (results.length > 0) {
+        renderArtBank(results);
+        selectArtItem(results[0]);
+      } else {
+        bankList.innerHTML = '<p style="color:#ff3b30; font-size:12px;">No open-access artworks found for this search.</p>';
+        indicator.innerText = "No artworks available.";
+      }
+    }
+
+    async function triggerArtRandom() {
+      const themes = ['landscape', 'portrait', 'still life', 'flowers', 'autumn', 'river', 'garden', 'ocean'];
+      const pick = themes[Math.floor(Math.random() * themes.length)];
+      triggerArtSearch(pick, `Discovery: ${pick}`);
+    }
+
+    function searchArtCustom() {
       const input = document.getElementById('customArtInput');
       const query = input.value.trim();
-      if (!query) return alert("Please enter an artist or title.");
-      fetchMuseumArt(query, query);
+      if (!query) return alert("Please enter an artist or title to search.");
+      triggerArtSearch(query, query);
     }
 
     function renderArtBank(artworks) {
@@ -1629,10 +1276,11 @@
       artworks.forEach((art, idx) => {
         const item = document.createElement('div');
         item.className = `art-bank-item ${idx === 0 ? 'active' : ''}`;
-        item.id = `art-item-${art.id}`;
+        item.id = `item-${art.id}`;
         item.innerHTML = `
           <span style="font-size:13px; font-weight:bold; color:#ffd60a; display:block;">🎨 ${art.title}</span>
-          <span style="font-size:11px; color:#aaa;">${art.artist_title || 'Unknown Artist'} (${art.date_display || 'N/D'})</span>
+          <span style="font-size:11px; color:#fff; display:block;">${art.artist}</span>
+          <span style="font-size:10px; color:#aaa;">${art.museum}</span>
         `;
         item.onclick = () => {
           document.querySelectorAll('.art-bank-item').forEach(el => el.classList.remove('active'));
@@ -1651,18 +1299,49 @@
       indicator.innerText = `⏳ Loading high-res stream for "${art.title}"...`;
       img.style.display = 'none';
 
-      const imageUrl = `https://www.artic.edu/iiif/2/${art.image_id}/full/843,/0/default.jpg`;
-      img.src = imageUrl;
-
+      img.src = art.imageUrl;
       document.getElementById('artCaptionTitle').innerText = art.title;
-      document.getElementById('artCaptionArtist').innerText = art.artist_display || art.artist_title || 'Unknown Artist';
-      document.getElementById('artCaptionMeta').innerText = `${art.date_display || 'Date Unknown'} • ${art.medium_display || 'Oil on canvas / Pigment'}`;
-      document.getElementById('artCaptionMuseum').innerText = "🏛️ The Art Institute of Chicago (Open Access Collection)";
+      document.getElementById('artCaptionArtist').innerText = art.artist;
+      document.getElementById('artCaptionMeta').innerText = `${art.date} • ${art.medium}`;
+      document.getElementById('artCaptionMuseum').innerText = `🏛️ Holding Collection: ${art.museum}`;
     }
 
     function onArtworkImageLoaded() {
       document.getElementById('artLoadingIndicator').style.display = 'none';
       document.getElementById('mainArtworkImg').style.display = 'block';
+    }
+
+    function startCallTimer() {
+      clearInterval(callTimerInterval);
+      callSecondsRemaining = MAX_CALL_DURATION_SEC;
+      updateTimerDisplay();
+
+      callTimerInterval = setInterval(() => {
+        callSecondsRemaining--;
+        updateTimerDisplay();
+
+        if (callSecondsRemaining <= 0) {
+          clearInterval(callTimerInterval);
+          hangUpCall();
+          alert("Your 15-minute free call session has ended. Upgrade to unlimited calling or start a new call!");
+        }
+      }, 1000);
+    }
+
+    function updateTimerDisplay() {
+      const display = document.getElementById('callTimerDisplay');
+      if (!display) return;
+      const mins = Math.floor(callSecondsRemaining / 60);
+      const secs = callSecondsRemaining % 60;
+      display.innerText = `⏱️ ${mins}:${secs < 10 ? '0' : ''}${secs}`;
+
+      if (callSecondsRemaining <= 120) {
+        display.style.borderColor = "#ff3b30";
+        display.style.color = "#ff3b30";
+      } else {
+        display.style.borderColor = "#30d158";
+        display.style.color = "#30d158";
+      }
     }
 
     function sendInvite(mode = 'video') {
@@ -1679,12 +1358,10 @@
         const subject = `ZeroPhone Invitation from ${name}`;
         const timeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
         const emailBody = `Hello!\n\n${name} is hoping to ${typeText} with you @ ${timeStr}.\n\nPress here to join directly:\n${inviteUrl}\n\nSee You Soon,\n${name}`;
-        
         window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
       } else {
         let typeActionText = 'have a video call with you';
         if (mode === 'text') typeActionText = 'text with you online for free';
-
         const smsMessage = `Knock, Knock!\n\n${name} would like to ${typeActionText}. Press here to join: ${inviteUrl}`;
         window.location.href = `sms:?&body=${encodeURIComponent(smsMessage)}`;
       }
@@ -1750,39 +1427,6 @@
         socket.emit('join-room', roomId);
         statusDiv.innerText = `Joined room: ${roomId}. Waiting for peers...`;
       });
-    }
-
-    function startCallTimer() {
-      clearInterval(callTimerInterval);
-      callSecondsRemaining = MAX_CALL_DURATION_SEC;
-      updateTimerDisplay();
-
-      callTimerInterval = setInterval(() => {
-        callSecondsRemaining--;
-        updateTimerDisplay();
-
-        if (callSecondsRemaining <= 0) {
-          clearInterval(callTimerInterval);
-          hangUpCall();
-          alert("Your 15-minute free call session has ended. Upgrade to unlimited calling or start a new call!");
-        }
-      }, 1000);
-    }
-
-    function updateTimerDisplay() {
-      const display = document.getElementById('callTimerDisplay');
-      if (!display) return;
-      const mins = Math.floor(callSecondsRemaining / 60);
-      const secs = callSecondsRemaining % 60;
-      display.innerText = `⏱️ ${mins}:${secs < 10 ? '0' : ''}${secs}`;
-
-      if (callSecondsRemaining <= 120) {
-        display.style.borderColor = "#ff3b30";
-        display.style.color = "#ff3b30";
-      } else {
-        display.style.borderColor = "#30d158";
-        display.style.color = "#30d158";
-      }
     }
 
     function toggleAudio() {
@@ -1981,7 +1625,6 @@
         }
         const videoEl = document.getElementById(`video-${targetSocketId}`);
         videoEl.srcObject = event.streams[0];
-        
         videoEl.play().catch(e => console.warn("Remote stream play trigger:", e));
         statusDiv.innerText = "Live Connected!";
       };
