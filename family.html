@@ -36,10 +36,7 @@
 
   <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
+    * { box-sizing: border-box; }
     body { 
       font-family: system-ui, -apple-system, sans-serif; 
       background: #121212; 
@@ -49,7 +46,6 @@
       overflow-x: hidden;
     }
 
-    /* Top Centered Header */
     .top-header {
       display: flex;
       flex-direction: column;
@@ -61,12 +57,7 @@
       gap: 12px;
     }
 
-    .brand-container {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
+    .brand-container { display: flex; align-items: center; gap: 10px; }
     .app-header-logo {
       width: 36px;
       height: 36px;
@@ -107,43 +98,24 @@
     }
 
     .tab-btn.active { opacity: 1.0; }
-
     .tab-level1-phone { background: #1b4d2e; border-top: 3px solid #30d158; }
     .tab-level1-phone.active { background: #30d158; color: #000; }
-
     .tab-level1-text { background: #267340; border-top: 3px solid #63e685; }
     .tab-level1-text.active { background: #63e685; color: #000; }
-
     .tab-level2 { background: #0a3663; border-top: 3px solid #0a84ff; }
     .tab-level2.active { background: #0a84ff; color: #fff; }
-
     .tab-maps { background: #5c3800; border-top: 3px solid #ff9500; }
     .tab-maps.active { background: #ff9500; color: #000; }
-
     .tab-seattle-wifi { background: #005a70; border-top: 3px solid #00c0f0; }
     .tab-seattle-wifi.active { background: #00c0f0; color: #000; }
-
     .tab-radio { background: #4a0072; border-top: 3px solid #e040fb; }
     .tab-radio.active { background: #e040fb; color: #000; }
 
-    .sub-tagline {
-      font-size: 11px;
-      display: block;
-      font-weight: normal;
-      margin-top: 2px;
-    }
-
-    .container {
-      padding: 10px 15px;
-      max-width: 100%;
-      margin: 0 auto;
-      text-align: center;
-    }
-
+    .sub-tagline { font-size: 11px; display: block; font-weight: normal; margin-top: 2px; }
+    .container { padding: 10px 15px; max-width: 100%; margin: 0 auto; text-align: center; }
     .tab-content { display: none; }
     .tab-content.active { display: block; }
 
-    /* REDESIGNED SIMPLIFIED LEVEL 1 WEBPHONE CARD */
     .webphone-simplified-card {
       background: #1c1c1e;
       border: 1px solid #333;
@@ -187,7 +159,6 @@
       text-align: left;
     }
 
-    /* ROUND ACTION BUTTONS */
     .btn-round-red {
       width: 56px;
       height: 56px;
@@ -234,7 +205,6 @@
     .btn-round-blue:hover { background: #0066cc; }
     .btn-round-blue:active { transform: scale(0.92); }
 
-    /* SQUARE RED START BUTTON FOR STEP 4 */
     .btn-square-start-red {
       width: 65px;
       height: 60px;
@@ -258,7 +228,6 @@
     .btn-square-start-red:hover { background: #d70015; }
     .btn-square-start-red:active { transform: scale(0.92); }
 
-    /* VINTAGE TOGGLE SWITCH CONTROL */
     .vintage-toggle-panel {
       display: flex;
       flex-direction: column;
@@ -289,7 +258,6 @@
       border: 1px solid #555;
       transition: background 0.2s, box-shadow 0.2s;
     }
-
     .indicator-light.active-red {
       background: #ff3b30;
       box-shadow: 0 0 6px #ff3b30, 0 0 10px #ff3b30;
@@ -300,13 +268,7 @@
       width: 22px;
       height: 44px;
     }
-
-    .switch-container input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-
+    .switch-container input { opacity: 0; width: 0; height: 0; }
     .slider-track {
       position: absolute;
       cursor: pointer;
@@ -316,7 +278,6 @@
       border-radius: 12px;
       transition: .2s;
     }
-
     .slider-track:before {
       position: absolute;
       content: "";
@@ -329,13 +290,11 @@
       box-shadow: 0 2px 4px rgba(0,0,0,0.6);
       transition: .2s;
     }
-
     input:checked + .slider-track:before {
       transform: translateY(20px);
       background-color: #ff3b30;
     }
 
-    /* IN-CALL CONTROLS BAR */
     .incall-controls-bar {
       display: flex;
       justify-content: center;
@@ -378,7 +337,6 @@
 
     #status { font-weight: bold; color: #30d158; margin-bottom: 4px; }
 
-    /* ALL-SCREEN SQUARE (1:1) DYNAMIC VIDEO GRID */
     .video-grid { 
       display: grid;
       grid-template-columns: minmax(0, 480px);
@@ -389,13 +347,7 @@
       width: 100%;
       max-width: 900px;
     }
-
-    /* 2 People: 2 Columns */
-    .video-grid.peers-2 {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    /* 3 or 4 People: Strict 2x2 Grid (Laptops, Tablets, and Small Phones) */
+    .video-grid.peers-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .video-grid.peers-3,
     .video-grid.peers-4 {
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -410,7 +362,6 @@
       position: relative;
     }
 
-    /* Strict 1:1 Square Framing on All Devices */
     video { 
       width: 100%; 
       aspect-ratio: 1 / 1; 
@@ -421,26 +372,30 @@
       display: block;
     }
 
-    #localVideo {
-      transform: scaleX(-1); /* Clean mirror preview */
+    #localVideo { transform: scaleX(-1); }
+
+    /* VOICE ONLY TURN BADGE */
+    .turn-badge {
+      display: none;
+      position: absolute;
+      top: 36px;
+      left: 10px;
+      background: rgba(255, 149, 0, 0.85);
+      color: #000;
+      font-size: 10px;
+      font-weight: 900;
+      padding: 3px 8px;
+      border-radius: 6px;
+      z-index: 10;
+      letter-spacing: 0.5px;
     }
 
-    /* Small Screen Optimization */
     @media (max-width: 520px) {
-      .video-grid {
-        gap: 8px;
-        margin-top: 6px;
-      }
-      video {
-        border-radius: 8px;
-      }
-      .video-card h3 {
-        font-size: 11px !important;
-        margin: 0 0 3px 0 !important;
-      }
+      .video-grid { gap: 8px; margin-top: 6px; }
+      video { border-radius: 8px; }
+      .video-card h3 { font-size: 11px !important; margin: 0 0 3px 0 !important; }
     }
 
-    /* FLOATING RETURN TO ZEROPHONE POPUP */
     .modal-return-overlay {
       display: none;
       position: fixed;
@@ -450,7 +405,6 @@
       justify-content: center;
       align-items: center;
     }
-
     .modal-return-content {
       background: #1c1c1e;
       border: 2px solid #30d158;
@@ -461,7 +415,6 @@
       text-align: center;
       box-shadow: 0 10px 30px rgba(0,0,0,0.9);
     }
-
     .btn-return-app {
       background: #30d158;
       color: #000;
@@ -474,7 +427,6 @@
       box-shadow: 0 4px 12px rgba(48, 209, 88, 0.4);
     }
 
-    /* SENIOR INVITE SINGLE BUTTON */
     #responderAccessBox {
       display: none;
       background: #1c1c1e;
@@ -486,7 +438,6 @@
       text-align: center;
       box-shadow: 0 10px 30px rgba(0,0,0,0.8);
     }
-
     .btn-mega-enter {
       background: #30d158;
       color: #000;
@@ -508,7 +459,6 @@
       max-width: 620px;
       margin: 0 auto;
     }
-
     #web-chat-thread {
       height: 260px;
       border: 1px solid #333;
@@ -528,7 +478,6 @@
       max-width: 900px;
       margin: 0 auto;
     }
-
     .maps-filter-bar {
       display: flex;
       gap: 8px;
@@ -536,7 +485,6 @@
       flex-wrap: wrap;
       margin-bottom: 15px;
     }
-
     .maps-filter-btn {
       background: #2c2c2e;
       color: #fff;
@@ -547,7 +495,6 @@
       border-radius: 8px;
       cursor: pointer;
     }
-
     .map-frame-container {
       width: 100%;
       height: 500px;
@@ -555,12 +502,7 @@
       overflow: hidden;
       border: 1px solid #444;
     }
-
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
+    iframe { width: 100%; height: 100%; border: none; }
 
     .radio-box {
       background: #1c1c1e;
@@ -570,7 +512,6 @@
       max-width: 950px;
       margin: 0 auto;
     }
-
     .radio-genre-bar {
       display: flex;
       gap: 8px;
@@ -578,7 +519,6 @@
       flex-wrap: wrap;
       margin-bottom: 20px;
     }
-
     .genre-btn {
       background: #2c2c2e;
       color: #fff;
@@ -589,14 +529,7 @@
       border-radius: 8px;
       cursor: pointer;
     }
-
-    .radio-layout {
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
-      flex-wrap: wrap;
-    }
-
+    .radio-layout { display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; }
     .station-bank-container {
       flex: 1;
       min-width: 280px;
@@ -606,7 +539,6 @@
       padding: 12px;
       text-align: left;
     }
-
     .station-bank-header {
       font-size: 13px;
       font-weight: bold;
@@ -614,7 +546,6 @@
       margin: 0 0 10px 0;
       text-transform: uppercase;
     }
-
     .station-bank-list {
       display: flex;
       flex-direction: column;
@@ -622,7 +553,6 @@
       max-height: 360px;
       overflow-y: auto;
     }
-
     .station-bank-item {
       background: #2c2c2e;
       border: 1px solid #444;
@@ -631,7 +561,6 @@
       cursor: pointer;
       text-align: left;
     }
-
     .radio-console {
       flex: 1.5;
       min-width: 320px;
@@ -644,26 +573,9 @@
       align-items: center;
       gap: 15px;
     }
-
-    .now-playing-title {
-      font-size: 20px;
-      font-weight: bold;
-      color: #e040fb;
-      margin: 0;
-    }
-
-    .now-playing-sub {
-      font-size: 13px;
-      color: #aaa;
-      margin-top: -6px;
-    }
-
-    audio {
-      width: 100%;
-      max-width: 480px;
-      border-radius: 8px;
-    }
-
+    .now-playing-title { font-size: 20px; font-weight: bold; color: #e040fb; margin: 0; }
+    .now-playing-sub { font-size: 13px; color: #aaa; margin-top: -6px; }
+    audio { width: 100%; max-width: 480px; border-radius: 8px; }
     .tuner-box {
       margin-top: 10px;
       padding-top: 15px;
@@ -672,7 +584,6 @@
       max-width: 480px;
       text-align: left;
     }
-
     .under-construction-box {
       background: #1c1c1e;
       border: 2px dashed #ff3b30;
@@ -681,8 +592,6 @@
       max-width: 500px;
       margin: 30px auto;
     }
-
-    /* PRIVACY FOOTER BADGE */
     .privacy-notice-badge {
       margin-top: 25px;
       font-size: 12px;
@@ -695,8 +604,6 @@
       max-width: 90%;
       line-height: 1.4;
     }
-
-    /* MODAL POPUP FOR LOCATION TROUBLESHOOTING */
     .location-modal-overlay {
       display: none;
       position: fixed;
@@ -706,7 +613,6 @@
       justify-content: center;
       align-items: center;
     }
-
     .location-modal-content {
       background: #1c1c1e;
       border: 2px solid #ff9500;
@@ -941,7 +847,6 @@
           <button id="btnUseGps" onclick="centerMapOnUser(true)" style="font-size: 13px; padding: 10px 20px; background: #30d158; color: #000; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">
             🎯 Refresh GPS Location
           </button>
-
           <span id="geoStatusText" style="font-size: 12px; color: #aaa;">Detecting location...</span>
         </div>
 
@@ -1064,7 +969,21 @@
     const webTextSenderNameInput = document.getElementById('webTextSenderName');
     const statusDiv = document.getElementById('status');
 
-    const rtcConfig = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] };
+    let rtcConfig = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] };
+
+    async function loadIceServers() {
+      try {
+        const res = await fetch(`${SIGNALING_SERVER}/api/ice-servers`);
+        if (res.ok) {
+          const data = await res.json();
+          if (data.iceServers && data.iceServers.length > 0) {
+            rtcConfig = { iceServers: data.iceServers };
+          }
+        }
+      } catch (err) {
+        console.warn("Using fallback STUN servers:", err);
+      }
+    }
 
     function ensureSocketConnected(onConnected) {
       if (socket.connected) {
@@ -1081,7 +1000,7 @@
       });
     }
 
-    // DYNAMIC GRID LAYOUT ADJUSTER (SQUARE FRAMES FOR 1, 2, 3, AND 4 PARTICIPANTS)
+    // DYNAMIC GRID LAYOUT ADJUSTER
     function updateGridLayout() {
       const grid = document.getElementById('videoStreamView');
       if (!grid) return;
@@ -1145,7 +1064,6 @@
       }
     }
 
-    // Sync Name Inputs
     callerNameInput.addEventListener('input', (e) => {
       webTextSenderNameInput.value = e.target.value;
     });
@@ -1153,7 +1071,6 @@
       callerNameInput.value = e.target.value;
     });
 
-    // STEP 3: TRIGGER CELL CALL & 10s RETURN POPUP
     function triggerCellCall(event) {
       const number = prompt("Enter phone number to call (optional):", "");
       const callLink = document.getElementById('callCellBtn');
@@ -1173,7 +1090,6 @@
       document.getElementById('returnModal').style.display = 'none';
     }
 
-    // TOGGLE MODE LOGIC (SMS vs EMAIL)
     function toggleInviteMode(type) {
       if (type === 'phone') {
         const isEmail = document.getElementById('phoneInviteToggle').checked;
@@ -1186,7 +1102,6 @@
       }
     }
 
-    // URL Parameter handling
     const urlParams = new URLSearchParams(window.location.search);
     const roomParam = urlParams.get('room');
     const modeParam = urlParams.get('mode');
@@ -1197,6 +1112,8 @@
     }
 
     window.addEventListener('DOMContentLoaded', () => {
+      loadIceServers();
+
       if (roomParam) {
         document.getElementById('mainHeader').style.display = 'none';
         document.getElementById('webphoneMainSection').style.display = 'none';
@@ -1263,7 +1180,6 @@
       }
     }
 
-    // MAP QUERY ENGINE FOR RESOURCE FILTER BUTTONS
     function loadMapQuery(resourceTerm, zoomLevel = 14) {
       const iframe = document.getElementById('googleMapIframe');
 
@@ -1274,7 +1190,6 @@
       }
     }
 
-    // GPS ENGINE & CONDITIONAL HELPER MODAL
     function centerMapOnUser(showTroubleshootingModal) {
       const geoStatus = document.getElementById('geoStatusText');
       if (geoStatus) geoStatus.innerText = "⏳ Requesting GPS location...";
@@ -1308,7 +1223,6 @@
       document.getElementById('locationModal').style.display = 'none';
     }
 
-    // Radio Engine
     const RADIO_API_BASE = "https://de1.api.radio-browser.info/json/stations/search";
 
     async function fetchRadioBrowserGenre(tag, labelName) {
@@ -1400,7 +1314,6 @@
       });
     }
 
-    // INVITATION DISPATCHER (SMS vs EMAIL DYNAMIC GENERATOR)
     function sendInvite(mode = 'video') {
       const name = callerNameInput.value.trim() || webTextSenderNameInput.value.trim() || 'Someone';
       const currentRoom = roomIdInput.value.trim() || document.getElementById('webTextRoomId').value.trim() || 'room1';
@@ -1437,25 +1350,19 @@
       statusDiv.style.color = "#ff9500";
     });
 
-    // START MULTI-PARTY VIDEO CALL WITH ANDROID-SAFE PERMISSIONS & FALLBACKS
     async function startCall() {
       const roomId = roomIdInput.value.trim();
       if (!roomId) return alert("Please enter a room name");
 
-      // Adaptive constraints compatible with Motorola / Android hardware
+      await loadIceServers();
+
       const mediaConfigs = [
         {
           audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true },
           video: { facingMode: 'user', width: { ideal: 640 }, height: { ideal: 640 } }
         },
-        {
-          audio: true,
-          video: { facingMode: 'user' }
-        },
-        {
-          audio: true,
-          video: true
-        }
+        { audio: true, video: { facingMode: 'user' } },
+        { audio: true, video: true }
       ];
 
       localStream = null;
@@ -1464,29 +1371,27 @@
           localStream = await navigator.mediaDevices.getUserMedia(config);
           if (localStream) break;
         } catch (e) {
-          console.warn("Attempting relaxed media constraints for device...", e);
+          console.warn("Attempting relaxed media constraints...", e);
         }
       }
 
       if (!localStream) {
-        return alert("Unable to access microphone/camera. Please check your browser and Android app permissions.");
+        return alert("Unable to access microphone/camera. Please check your browser permissions.");
       }
 
       const localVid = document.getElementById('localVideo');
       localVid.srcObject = localStream;
       
-      // Explicit play invocation required by Android/Mobile Chrome
       try {
         await localVid.play();
       } catch (err) {
-        console.warn("Autoplay interaction note:", err);
+        console.warn("Autoplay note:", err);
       }
 
       document.getElementById('videoStreamView').style.display = 'grid';
       document.getElementById('inCallControls').style.display = 'flex';
       document.getElementById('webphoneMainSection').style.display = 'none';
 
-      // Connect to Render only now
       ensureSocketConnected(() => {
         updateGridLayout();
         socket.emit('join-room', roomId);
@@ -1494,7 +1399,6 @@
       });
     }
 
-    // IN-CALL CONTROLS: AUDIO & VIDEO MUTE TOGGLES
     function toggleAudio() {
       if (localStream) {
         const audioTrack = localStream.getAudioTracks()[0];
@@ -1538,11 +1442,13 @@
       }
       
       Object.keys(peerConnections).forEach(id => {
-        if (peerConnections[id]) peerConnections[id].close();
+        if (peerConnections[id]) {
+          if (peerConnections[id].relayInterval) clearInterval(peerConnections[id].relayInterval);
+          peerConnections[id].close();
+        }
       });
       peerConnections = {};
 
-      // Disconnect socket from Render immediately on hangup
       if (socket && socket.connected) {
         socket.disconnect();
       }
@@ -1563,7 +1469,6 @@
       document.getElementById('mainHeader').style.display = 'flex';
       document.getElementById('webphoneMainSection').style.display = 'block';
 
-      // Reset Mute Buttons
       isAudioMuted = false;
       isVideoMuted = false;
       document.getElementById('toggleMicBtn').innerHTML = "🎙️";
@@ -1610,6 +1515,7 @@
 
     socket.on('user-disconnected', ({ socketId }) => {
       if (peerConnections[socketId]) {
+        if (peerConnections[socketId].relayInterval) clearInterval(peerConnections[socketId].relayInterval);
         peerConnections[socketId].close();
         delete peerConnections[socketId];
       }
@@ -1621,10 +1527,53 @@
       updateGridLayout();
     });
 
+    // MONITORS AND ENFORCES VOICE-ONLY FOR PEERS CONNECTED VIA TURN RELAY
+    function monitorPeerRelay(pc, targetSocketId) {
+      pc.relayInterval = setInterval(async () => {
+        if (pc.connectionState === 'closed') {
+          clearInterval(pc.relayInterval);
+          return;
+        }
+
+        try {
+          const stats = await pc.getStats();
+          stats.forEach(async report => {
+            if (report.type === 'candidate-pair' && report.state === 'succeeded') {
+              const localCandidate = stats.get(report.localCandidateId);
+              const remoteCandidate = stats.get(report.remoteCandidateId);
+
+              const isRelayed = (localCandidate && localCandidate.candidateType === 'relay') || 
+                                (remoteCandidate && remoteCandidate.candidateType === 'relay');
+
+              if (isRelayed && !pc.isVoiceRestricted) {
+                pc.isVoiceRestricted = true;
+
+                // Stop sending outbound video track to this relayed peer
+                const videoSender = pc.getSenders().find(s => s.track && s.track.kind === 'video');
+                if (videoSender) {
+                  await videoSender.replaceTrack(null);
+                }
+
+                // Show Voice Only badge
+                const badge = document.getElementById(`turn-badge-${targetSocketId}`);
+                if (badge) badge.style.display = 'block';
+
+                statusDiv.innerText = "Relay Network: Strict connection restricted to Voice-Only.";
+                statusDiv.style.color = "#ff9500";
+              }
+            }
+          });
+        } catch (e) {
+          console.warn("Stats check warning:", e);
+        }
+      }, 3000);
+    }
+
     function createPeerConnection(targetSocketId) {
       if (peerConnections[targetSocketId]) return peerConnections[targetSocketId];
 
       const pc = new RTCPeerConnection(rtcConfig);
+      pc.isVoiceRestricted = false;
       peerConnections[targetSocketId] = pc;
 
       if (localStream) {
@@ -1638,6 +1587,7 @@
           remoteCard.className = 'video-card';
           remoteCard.id = `card-${targetSocketId}`;
           remoteCard.innerHTML = `
+            <div id="turn-badge-${targetSocketId}" class="turn-badge">🎙️ Voice Only (Relayed)</div>
             <h3 style="margin: 0 0 8px 0; font-size: 14px;">Peer Stream</h3>
             <video id="video-${targetSocketId}" autoplay playsinline></video>
           `;
@@ -1647,7 +1597,6 @@
         const videoEl = document.getElementById(`video-${targetSocketId}`);
         videoEl.srcObject = event.streams[0];
         
-        // Explicit play for remote feeds on Android mobile
         videoEl.play().catch(e => console.warn("Remote stream play trigger:", e));
         statusDiv.innerText = "Live Connected!";
       };
@@ -1657,6 +1606,8 @@
           socket.emit('ice-candidate', { candidate: event.candidate, targetId: targetSocketId });
         }
       };
+
+      monitorPeerRelay(pc, targetSocketId);
 
       return pc;
     }

@@ -1,14 +1,47 @@
 const express = require('express');
 const http = require('http');
+const cors = require('cors');
 const { Server } = require('socket.io');
 
 const app = express();
+app.use(cors());
 const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
     origin: "*",
     methods: ["GET", "POST"]
+  }
+});
+
+// Twilio Client Setup (Environment Variables)
+const twilioSid = process.env.TWILIO_ACCOUNT_SID;
+const twilioAuthToken = process.env.TWILIO_AUTH_TOKEN;
+let twilioClient = null;
+
+if (twilioSid && twilioAuthToken) {
+  const twilio = require('twilio');
+  twilioClient = twilio(twilioSid, twilioAuthToken);
+  console.log('[Twilio] NTS TURN Service Initialized');
+} else {
+  console.warn('[Twilio] Credentials missing. Falling back to public STUN.');
+}
+
+// Endpoint to provide ephemeral ICE servers (STUN + TURN)
+app.get('/api/ice-servers', async (req, res) => {
+  const fallbackServers = [{ urls: 'stun:stun.l.google.com:19302' }];
+
+  if (!twilioClient) {
+    return res.json({ iceServers: fallbackServers });
+  }
+
+  try {
+    // Generate an ephemeral token valid for 4 hours (14400s)
+    const token = await twilioClient.tokens.create({ ttl: 14400 });
+    res.json({ iceServers: token.iceServers });
+  } catch (err) {
+    console.error('[Twilio Error] Failed to generate NTS Token:', err.message);
+    res.json({ iceServers: fallbackServers });
   }
 });
 
@@ -76,7 +109,7 @@ io.on('connection', (socket) => {
     socket.to(data.targetId).emit('ice-candidate', { candidate: data.candidate, senderId: socket.id });
   });
 
-  // WebText Relay (Forwards AES ciphertext, IV, plaintext fallback, and sender)
+  // WebText Relay
   socket.on('send-web-chat', (data) => {
     usageStats.totalWebTextsSent++;
     socket.to(data.roomId).emit('receive-web-chat', {
