@@ -320,6 +320,39 @@
       border: 1px solid #ffd60a; border-radius: 6px; padding: 4px 8px; font-size: 11px; font-weight: bold;
     }
 
+    /* ACTION BAR FOR FULLSCREEN & SLIDESHOW */
+    .art-actions-bar {
+      display: flex; gap: 10px; width: 100%; justify-content: center;
+    }
+    .btn-art-action {
+      background: #2c2c2e; color: #ffd60a; border: 1px solid #ffd60a; border-radius: 8px;
+      padding: 8px 16px; font-size: 13px; font-weight: bold; cursor: pointer; transition: all 0.2s;
+    }
+    .btn-art-action.playing {
+      background: #ffd60a; color: #000;
+    }
+
+    /* FULLSCREEN ART THEATER MODAL */
+    .art-fullscreen-modal {
+      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.96); z-index: 100000; flex-direction: column;
+      align-items: center; justify-content: center; padding: 20px;
+    }
+    .art-fullscreen-close-btn {
+      position: absolute; top: 20px; right: 25px; background: #ff3b30; color: #fff;
+      border: none; padding: 10px 18px; border-radius: 8px; font-size: 16px;
+      font-weight: 900; cursor: pointer; box-shadow: 0 4px 12px rgba(255, 59, 48, 0.5);
+    }
+    .art-fullscreen-img {
+      max-width: 92%; max-height: 82vh; object-fit: contain; border-radius: 8px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.9);
+    }
+    .art-fullscreen-caption {
+      margin-top: 14px; text-align: center; color: #fff; max-width: 80%;
+    }
+    .art-fullscreen-caption h3 { margin: 0 0 4px 0; color: #ffd60a; font-size: 18px; }
+    .art-fullscreen-caption p { margin: 0; color: #aaa; font-size: 13px; }
+
     .under-construction-box {
       background: #1c1c1e; border: 2px dashed #ff3b30; border-radius: 16px;
       padding: 50px 20px; max-width: 500px; margin: 30px auto;
@@ -339,6 +372,16 @@
   </style>
 </head>
 <body>
+
+  <!-- ART FULLSCREEN THEATER OVERLAY -->
+  <div id="artFullscreenModal" class="art-fullscreen-modal">
+    <button class="art-fullscreen-close-btn" onclick="closeArtFullscreen()">✕ ESC</button>
+    <img id="artFullscreenImg" class="art-fullscreen-img" src="" alt="Fullscreen Artwork">
+    <div class="art-fullscreen-caption">
+      <h3 id="artFsTitle">Painting Title</h3>
+      <p id="artFsDetails">Artist Name • Date • Museum</p>
+    </div>
+  </div>
 
   <div id="returnModal" class="modal-return-overlay">
     <div class="modal-return-content">
@@ -686,9 +729,9 @@
           <button class="art-genre-btn" onclick="triggerArtSearch('impressionism', 'Impressionism')">🎨 Impressionism</button>
           <button class="art-genre-btn" onclick="triggerArtSearch('renaissance', 'Renaissance')">⚜️ Renaissance</button>
           <button class="art-genre-btn" onclick="triggerArtSearch('baroque', 'Baroque')">🏛️ Baroque</button>
+          <button class="art-genre-btn" onclick="triggerArtSearch('symbolism', 'Symbolist Art')">🔮 Symbolism</button>
           <button class="art-genre-btn" onclick="triggerArtSearch('dutch', 'Dutch Masters')">🇳🇱 Dutch Masters</button>
           <button class="art-genre-btn" onclick="triggerArtSearch('japanese woodblock', 'Japanese Prints')">🌊 Japanese Prints</button>
-          <button class="art-genre-btn" onclick="triggerArtSearch('landscape', 'Landscapes')">🌲 Landscapes</button>
           <button class="art-genre-btn" style="background:#ffd60a; color:#000;" onclick="triggerArtRandom()">🎲 Discovery Mix</button>
         </div>
 
@@ -706,6 +749,12 @@
               <img id="mainArtworkImg" src="" alt="Painting Display" style="display: none;" onload="onArtworkImageLoaded()">
             </div>
 
+            <!-- ACTION BUTTONS: FULLSCREEN & SLIDESHOW -->
+            <div class="art-actions-bar">
+              <button class="btn-art-action" onclick="openArtFullscreen()">⛶ Fullscreen</button>
+              <button id="btnArtSlideshow" class="btn-art-action" onclick="toggleArtSlideshow()">▶️ Start Slideshow</button>
+            </div>
+
             <div id="artCaptionCard" class="art-caption-card">
               <h3 id="artCaptionTitle" class="art-caption-title">Painting Title</h3>
               <div id="artCaptionArtist" class="art-caption-artist">Artist Name</div>
@@ -715,10 +764,10 @@
 
             <div class="tuner-box" style="margin-top: 5px;">
               <label for="customArtInput" style="display:block; font-size: 12px; color: #aaa; font-weight: bold; margin-bottom: 6px;">
-                🏛️ Search Artist, Movement, or Title Across Museums:
+                🏛️ Search Artist, Movement, or Title:
               </label>
               <div style="display: flex; gap: 8px;">
-                <input type="text" id="customArtInput" placeholder="e.g., Monet, Rembrandt, Van Gogh, Homer, Hokusai..." style="flex: 1; text-align: left; background: #2c2c2e; border: 1px solid #555; color: #fff; padding: 8px 12px; border-radius: 6px;">
+                <input type="text" id="customArtInput" placeholder="e.g., Moreau, Symbolist, Turner, Monet..." style="flex: 1; text-align: left; background: #2c2c2e; border: 1px solid #555; color: #fff; padding: 8px 12px; border-radius: 6px;">
                 <button onclick="searchArtCustom()" class="btn-round-blue" style="width: auto; height: auto; font-size: 13px; padding: 8px 14px; border-radius: 6px;">Search</button>
               </div>
             </div>
@@ -891,6 +940,19 @@
 
     window.addEventListener('DOMContentLoaded', () => {
       loadIceServers();
+
+      // Enter key support for art search input
+      const artInput = document.getElementById('customArtInput');
+      if (artInput) {
+        artInput.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') searchArtCustom();
+        });
+      }
+
+      // ESC key to close fullscreen
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeArtFullscreen();
+      });
 
       if (roomParam) {
         document.getElementById('mainHeader').style.display = 'none';
@@ -1097,12 +1159,15 @@
       });
     }
 
-    // ==========================================
-    // MULTI-MUSEUM OPEN-ACCESS ARCHITECTURE
-    // ==========================================
+    // =======================================================
+    // MULTI-MUSEUM OPEN-ACCESS RANDOMIZED ART ARCHITECTURE
+    // =======================================================
     let hasLoadedArtOnce = false;
-    let currentMuseumScope = 'all'; // 'all', 'aic', 'met', 'cma'
+    let currentMuseumScope = 'all';
     let lastArtQuery = 'impressionism';
+    let currentArtworkList = [];
+    let currentArtworkIndex = 0;
+    let slideshowInterval = null;
 
     function setMuseumScope(scope) {
       currentMuseumScope = scope;
@@ -1115,10 +1180,20 @@
       triggerArtSearch(lastArtQuery, lastArtQuery);
     }
 
-    // 1. Fetch Art Institute of Chicago (AIC)
+    // Shuffle helper to randomize array results
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    // 1. Fetch Art Institute of Chicago (Randomized Page Offset)
     async function fetchFromAIC(query, limit = 8) {
       try {
-        const url = `https://api.artic.edu/api/v1/artworks/search?q=${encodeURIComponent(query)}&query[term][is_public_domain]=true&fields=id,title,artist_title,artist_display,date_display,medium_display,image_id&limit=${limit}`;
+        const randomPage = Math.floor(Math.random() * 8) + 1;
+        const url = `https://api.artic.edu/api/v1/artworks/search?q=${encodeURIComponent(query)}&query[term][is_public_domain]=true&fields=id,title,artist_title,artist_display,date_display,medium_display,image_id&page=${randomPage}&limit=${limit}`;
         const res = await fetch(url);
         const json = await res.json();
         return (json.data || []).filter(item => item.image_id).map(item => ({
@@ -1136,10 +1211,11 @@
       }
     }
 
-    // 2. Fetch Cleveland Museum of Art (CMA)
+    // 2. Fetch Cleveland Museum of Art (Randomized Skip Offset)
     async function fetchFromCMA(query, limit = 8) {
       try {
-        const url = `https://openaccess-api.clevelandart.org/api/artworks/?q=${encodeURIComponent(query)}&has_image=1&limit=${limit}`;
+        const randomSkip = Math.floor(Math.random() * 20);
+        const url = `https://openaccess-api.clevelandart.org/api/artworks/?q=${encodeURIComponent(query)}&has_image=1&skip=${randomSkip}&limit=${limit}`;
         const res = await fetch(url);
         const json = await res.json();
         return (json.data || []).filter(item => item.images && item.images.web && item.images.web.url).map(item => ({
@@ -1157,7 +1233,7 @@
       }
     }
 
-    // 3. Fetch The Metropolitan Museum of Art (The Met)
+    // 3. Fetch The Metropolitan Museum of Art (Randomized Selection from matched pool)
     async function fetchFromMet(query, limit = 6) {
       try {
         const searchUrl = `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=${encodeURIComponent(query)}`;
@@ -1165,21 +1241,22 @@
         const searchJson = await searchRes.json();
         if (!searchJson.objectIDs || searchJson.objectIDs.length === 0) return [];
 
-        const targetIds = searchJson.objectIDs.slice(0, limit);
-        const promises = targetIds.map(id => 
+        // Shuffle the IDs returned so repeated searches yield different works
+        const shuffledIds = shuffleArray(searchJson.objectIDs).slice(0, limit);
+        const promises = shuffledIds.map(id => 
           fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${id}`)
             .then(r => r.ok ? r.json() : null)
             .catch(() => null)
         );
 
         const records = await Promise.all(promises);
-        return records.filter(item => item && item.primaryImageSmall).map(item => ({
+        return records.filter(item => item && (item.primaryImage || item.primaryImageSmall)).map(item => ({
           id: `met-${item.objectID}`,
           title: item.title,
           artist: item.artistDisplayName || 'Unknown Artist',
           date: item.objectDate || 'Date Unknown',
           medium: item.medium || 'Painting / European Collection',
-          imageUrl: item.primaryImageSmall,
+          imageUrl: item.primaryImage || item.primaryImageSmall,
           museum: 'The Metropolitan Museum of Art (NYC)'
         }));
       } catch (e) {
@@ -1208,33 +1285,29 @@
       } else if (currentMuseumScope === 'met') {
         results = await fetchFromMet(query, 10);
       } else {
-        // Blended: query all three simultaneously
         const [aic, cma, met] = await Promise.all([
           fetchFromAIC(query, 6),
           fetchFromCMA(query, 6),
           fetchFromMet(query, 4)
         ]);
         
-        // Interleave results for a diverse gallery experience
-        const maxLength = Math.max(aic.length, cma.length, met.length);
-        for (let i = 0; i < maxLength; i++) {
-          if (aic[i]) results.push(aic[i]);
-          if (cma[i]) results.push(cma[i]);
-          if (met[i]) results.push(met[i]);
-        }
+        results = shuffleArray([...aic, ...cma, ...met]);
       }
 
       if (results.length > 0) {
+        currentArtworkList = results;
+        currentArtworkIndex = 0;
         renderArtBank(results);
-        selectArtItem(results[0]);
+        selectArtItem(results[0], 0);
       } else {
+        currentArtworkList = [];
         bankList.innerHTML = '<p style="color:#ff3b30; font-size:12px;">No open-access artworks found for this search.</p>';
         indicator.innerText = "No artworks available.";
       }
     }
 
     async function triggerArtRandom() {
-      const themes = ['landscape', 'portrait', 'still life', 'flowers', 'autumn', 'river', 'garden', 'ocean'];
+      const themes = ['mythology', 'landscape', 'portrait', 'still life', 'flowers', 'autumn', 'river', 'garden', 'ocean', 'philosophy', 'allegory'];
       const pick = themes[Math.floor(Math.random() * themes.length)];
       triggerArtSearch(pick, `Discovery: ${pick}`);
     }
@@ -1242,7 +1315,7 @@
     function searchArtCustom() {
       const input = document.getElementById('customArtInput');
       const query = input.value.trim();
-      if (!query) return alert("Please enter an artist or title to search.");
+      if (!query) return alert("Please enter an artist, movement, or title to search.");
       triggerArtSearch(query, query);
     }
 
@@ -1262,13 +1335,14 @@
         item.onclick = () => {
           document.querySelectorAll('.art-bank-item').forEach(el => el.classList.remove('active'));
           item.classList.add('active');
-          selectArtItem(art);
+          selectArtItem(art, idx);
         };
         bankList.appendChild(item);
       });
     }
 
-    function selectArtItem(art) {
+    function selectArtItem(art, index) {
+      currentArtworkIndex = index;
       const img = document.getElementById('mainArtworkImg');
       const indicator = document.getElementById('artLoadingIndicator');
 
@@ -1281,11 +1355,60 @@
       document.getElementById('artCaptionArtist').innerText = art.artist;
       document.getElementById('artCaptionMeta').innerText = `${art.date} • ${art.medium}`;
       document.getElementById('artCaptionMuseum').innerText = `🏛️ Holding Collection: ${art.museum}`;
+
+      // Synchronize Fullscreen elements if open
+      document.getElementById('artFullscreenImg').src = art.imageUrl;
+      document.getElementById('artFsTitle').innerText = art.title;
+      document.getElementById('artFsDetails').innerText = `${art.artist} • ${art.date} • ${art.museum}`;
+
+      // Update bank item highlight
+      document.querySelectorAll('.art-bank-item').forEach((el, i) => {
+        if (i === index) el.classList.add('active');
+        else el.classList.remove('active');
+      });
     }
 
     function onArtworkImageLoaded() {
       document.getElementById('artLoadingIndicator').style.display = 'none';
       document.getElementById('mainArtworkImg').style.display = 'block';
+    }
+
+    // FULLSCREEN THEATER ENGINE
+    function openArtFullscreen() {
+      const modal = document.getElementById('artFullscreenModal');
+      modal.style.display = 'flex';
+    }
+
+    function closeArtFullscreen() {
+      const modal = document.getElementById('artFullscreenModal');
+      modal.style.display = 'none';
+    }
+
+    // AUTOMATED RANDOMIZED SLIDESHOW ENGINE
+    function toggleArtSlideshow() {
+      const btn = document.getElementById('btnArtSlideshow');
+      if (slideshowInterval) {
+        clearInterval(slideshowInterval);
+        slideshowInterval = null;
+        btn.innerText = "▶️ Start Slideshow";
+        btn.classList.remove('playing');
+      } else {
+        btn.innerText = "⏸️ Pause Slideshow";
+        btn.classList.add('playing');
+        advanceSlideshow();
+        slideshowInterval = setInterval(advanceSlideshow, 6000);
+      }
+    }
+
+    function advanceSlideshow() {
+      if (!currentArtworkList || currentArtworkList.length === 0) return;
+      currentArtworkIndex++;
+      if (currentArtworkIndex >= currentArtworkList.length) {
+        // Automatically fetch another discovery mix when bank completes
+        triggerArtRandom();
+        return;
+      }
+      selectArtItem(currentArtworkList[currentArtworkIndex], currentArtworkIndex);
     }
 
     function sendInvite(mode = 'video') {
