@@ -1,4 +1,3 @@
-cat << 'EOF' > ~/Desktop/webrtc-server/family.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,8 +5,8 @@ cat << 'EOF' > ~/Desktop/webrtc-server/family.html
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   
   <title>ZeroPhone Family — Encrypted Browser Video Calling, WebText & Local Resources</title>
-  <meta name="description" content="ZeroPhone Family is a completely free, privacy-first web utility featuring end-to-end AES-256-GCM encrypted video calling, voice calls, free WebText, local Wi-Fi maps, live radio, world art museum collections, and wisdom texts.">
-  <meta name="keywords" content="ZeroPhone, fourthroom.org, AES-256 encryption, free video call, browser calling, WebRTC, free web text, local radio streams, public wifi maps, art museums, philosophy library">
+  <meta name="description" content="ZeroPhone Family is a completely free, privacy-first web utility featuring end-to-end AES-256-GCM encrypted video calling, voice calls, free WebText, local Wi-Fi maps, live radio, art museums, and community support resources.">
+  <meta name="keywords" content="ZeroPhone, fourthroom.org, AES-256 encryption, free video call, browser calling, WebRTC, free web text, local radio streams, public wifi maps, community resources">
   <meta name="author" content="FourthRoom">
   <link rel="canonical" href="https://fourthroom.org/family.html">
 
@@ -89,12 +88,10 @@ cat << 'EOF' > ~/Desktop/webrtc-server/family.html
     }
 
     .tab-btn.active { opacity: 1.0; }
-    .tab-level1-phone { background: #1b4d2e; border-top: 3px solid #30d158; }
-    .tab-level1-phone.active { background: #30d158; color: #000; }
-    .tab-level1-text { background: #267340; border-top: 3px solid #63e685; }
-    .tab-level1-text.active { background: #63e685; color: #000; }
-    .tab-level2 { background: #0a3663; border-top: 3px solid #0a84ff; }
-    .tab-level2.active { background: #0a84ff; color: #fff; }
+    .tab-phone { background: #1b4d2e; border-top: 3px solid #30d158; }
+    .tab-phone.active { background: #30d158; color: #000; }
+    .tab-text { background: #267340; border-top: 3px solid #63e685; }
+    .tab-text.active { background: #63e685; color: #000; }
     .tab-maps { background: #5c3800; border-top: 3px solid #ff9500; }
     .tab-maps.active { background: #ff9500; color: #000; }
     .tab-seattle-wifi { background: #005a70; border-top: 3px solid #00c0f0; }
@@ -103,8 +100,8 @@ cat << 'EOF' > ~/Desktop/webrtc-server/family.html
     .tab-radio.active { background: #e040fb; color: #000; }
     .tab-art { background: #4a3600; border-top: 3px solid #ffd60a; }
     .tab-art.active { background: #ffd60a; color: #000; }
-    .tab-wisdom { background: #1a3636; border-top: 3px solid #40e0d0; }
-    .tab-wisdom.active { background: #40e0d0; color: #000; }
+    .tab-help { background: #1c3d5a; border-top: 3px solid #38bdf8; }
+    .tab-help.active { background: #38bdf8; color: #000; }
 
     .sub-tagline { font-size: 11px; display: block; font-weight: normal; margin-top: 2px; }
     .container { padding: 10px 15px; max-width: 100%; margin: 0 auto; text-align: center; }
@@ -286,18 +283,22 @@ cat << 'EOF' > ~/Desktop/webrtc-server/family.html
       font-size: 12px; font-weight: 900; border-radius: 20px; cursor: pointer; transition: all 0.2s;
     }
     .museum-inst-btn.active { background: #ffd60a; color: #000; }
+
     .art-genre-bar { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
     .art-genre-btn {
       background: #2c2c2e; color: #fff; border: 1px solid #555; padding: 8px 12px;
-      font-size: 12px; font-weight: bold; border-radius: 8px; cursor: pointer;
+      font-size: 12px; font-weight: bold; border-radius: 8px; cursor: pointer; transition: all 0.2s;
     }
     .art-genre-btn:hover { background: #3a3a3c; }
+    .art-genre-btn.active { background: #ffd60a; color: #000; border-color: #ffd60a; font-weight: 900; }
+
     .art-layout { display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; }
     .art-bank-container { flex: 1; min-width: 280px; background: #121212; border: 1px solid #333; border-radius: 12px; padding: 12px; text-align: left; }
     .art-bank-header { font-size: 13px; font-weight: bold; color: #ffd60a; margin: 0 0 10px 0; text-transform: uppercase; }
     .art-bank-list { display: flex; flex-direction: column; gap: 8px; max-height: 480px; overflow-y: auto; }
     .art-bank-item { background: #2c2c2e; border: 1px solid #444; border-radius: 8px; padding: 10px; cursor: pointer; text-align: left; }
     .art-bank-item.active { border-color: #ffd60a; background: #332b00; }
+
     .art-display-console {
       flex: 2; min-width: 320px; background: #121212; border: 1px solid #333; border-radius: 12px;
       padding: 18px; display: flex; flex-direction: column; align-items: center; gap: 14px;
@@ -339,188 +340,226 @@ cat << 'EOF' > ~/Desktop/webrtc-server/family.html
     .art-fullscreen-caption h3 { margin: 0 0 4px 0; color: #ffd60a; font-size: 18px; }
     .art-fullscreen-caption p { margin: 0; color: #aaa; font-size: 13px; }
 
-    /* WISDOM TEXTS & PHILOSOPHY LIBRARY STYLES */
-    .wisdom-box {
+    /* 🤝 HELP & COMMUNITY RESOURCES DIRECTORY STYLES */
+    .help-box {
       background: #1c1c1e;
-      border: 1px solid #40e0d0;
+      border: 1px solid #38bdf8;
       border-radius: 12px;
       padding: 20px;
-      max-width: 1020px;
+      max-width: 1050px;
       margin: 0 auto;
     }
-    .wisdom-tradition-bar {
+    .help-location-bar {
       display: flex;
-      gap: 8px;
+      gap: 10px;
       justify-content: center;
+      align-items: center;
       flex-wrap: wrap;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
       padding-bottom: 14px;
       border-bottom: 1px solid #333;
     }
-    .wisdom-trad-btn {
+    .help-loc-input {
+      padding: 10px 14px;
+      font-size: 14px;
       background: #2c2c2e;
       color: #fff;
-      border: 1px solid #555;
-      padding: 8px 12px;
-      font-size: 12px;
+      border: 1px solid #444;
+      border-radius: 8px;
+      width: 220px;
+      text-align: left;
+    }
+    .btn-help-loc {
+      background: #38bdf8;
+      color: #000;
+      border: none;
+      padding: 10px 18px;
+      font-size: 13px;
       font-weight: bold;
       border-radius: 8px;
       cursor: pointer;
-      transition: background 0.2s, border 0.2s;
+      box-shadow: 0 2px 8px rgba(56, 189, 248, 0.3);
     }
-    .wisdom-trad-btn.active {
-      background: #40e0d0;
-      color: #000;
-      border-color: #40e0d0;
-      font-weight: 900;
-    }
-    .wisdom-layout { display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; }
-    .wisdom-bank-container {
+    .help-layout { display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; }
+    
+    .help-category-bank {
       flex: 1;
-      min-width: 280px;
+      min-width: 270px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
       background: #121212;
       border: 1px solid #333;
       border-radius: 12px;
       padding: 12px;
-      text-align: left;
     }
-    .wisdom-bank-header-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-    .wisdom-bank-header {
-      font-size: 13px;
-      font-weight: bold;
-      color: #40e0d0;
-      margin: 0;
-      text-transform: uppercase;
-    }
-    .btn-bank-back {
+    .help-category-btn {
       background: #2c2c2e;
-      color: #40e0d0;
-      border: 1px solid #40e0d0;
-      border-radius: 6px;
-      padding: 3px 8px;
-      font-size: 11px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .wisdom-bank-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      max-height: 480px;
-      overflow-y: auto;
-    }
-    .wisdom-bank-item {
-      background: #2c2c2e;
+      color: #fff;
       border: 1px solid #444;
       border-radius: 8px;
-      padding: 10px;
-      cursor: pointer;
+      padding: 12px 14px;
+      font-size: 13px;
+      font-weight: bold;
       text-align: left;
-      transition: background 0.15s;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s;
     }
-    .wisdom-bank-item.active {
-      border-color: #40e0d0;
-      background: #003333;
+    .help-category-btn:hover { background: #3a3a3c; }
+    .help-category-btn.active {
+      background: #0369a1;
+      color: #fff;
+      border-color: #38bdf8;
     }
-    .wisdom-console {
+    .help-category-btn.crisis {
+      border-color: #ef4444;
+      color: #fca5a5;
+    }
+    .help-category-btn.crisis.active {
+      background: #991b1b;
+      color: #fff;
+      border-color: #ef4444;
+    }
+
+    .help-results-console {
       flex: 2;
       min-width: 320px;
       background: #121212;
       border: 1px solid #333;
       border-radius: 12px;
-      padding: 18px;
+      padding: 16px;
       display: flex;
       flex-direction: column;
-      align-items: stretch;
-      gap: 14px;
-    }
-    .wisdom-reading-frame {
-      width: 100%;
-      height: 380px;
-      background: #000;
-      border-radius: 10px;
-      border: 1px solid #444;
-      padding: 20px;
+      gap: 12px;
+      max-height: 520px;
       overflow-y: auto;
-      text-align: left;
-      font-family: Georgia, serif;
-      font-size: 15px;
-      line-height: 1.7;
-      color: #eaeaea;
-      white-space: pre-wrap;
     }
-    .wisdom-summary-card {
+    .help-console-header {
+      font-size: 15px;
+      font-weight: 900;
+      color: #38bdf8;
+      text-align: left;
+      margin: 0 0 6px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .resource-card {
       background: #1c1c1e;
-      border: 1px solid #444;
+      border: 1px solid #333;
       border-radius: 10px;
       padding: 14px 16px;
       text-align: left;
-      font-size: 13px;
-      line-height: 1.5;
-    }
-    .wisdom-summary-title {
-      font-size: 17px;
-      font-weight: 900;
-      color: #40e0d0;
-      margin: 0 0 4px 0;
-    }
-    .wisdom-summary-meta { color: #fff; font-weight: bold; margin: 0 0 6px 0; }
-    .wisdom-summary-text { color: #aaa; font-size: 12px; margin: 0; }
-
-    /* QUOTE TICKER / SLIDESHOW PANEL */
-    .wisdom-quote-panel {
-      margin-top: 18px;
-      background: #151516;
-      border: 1px solid #40e0d0;
-      border-radius: 12px;
-      padding: 16px 20px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      text-align: center;
+      gap: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
     }
-    .wisdom-quote-text {
-      font-family: Georgia, serif;
-      font-style: italic;
+    .resource-card.crisis-card {
+      border-color: #ef4444;
+      background: #2b1111;
+    }
+    .resource-card-title {
       font-size: 16px;
+      font-weight: 900;
       color: #fff;
+      margin: 0;
+    }
+    .resource-card-desc {
+      font-size: 13px;
+      color: #ccc;
+      line-height: 1.4;
+      margin: 0;
+    }
+    .resource-card-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+    .btn-res-call {
+      background: #30d158;
+      color: #000;
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 900;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-res-map {
+      background: #ff9500;
+      color: #000;
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 900;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-res-crisis {
+      background: #ef4444;
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 900;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* PRACTICAL LIVING QUOTE TICKER */
+    .practical-quote-box {
+      margin-top: 20px;
+      background: #18222d;
+      border: 1px solid #38bdf8;
+      border-radius: 12px;
+      padding: 16px 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .practical-quote-text {
+      font-family: Georgia, serif;
+      font-size: 16px;
+      font-style: italic;
+      color: #f0fdfa;
       line-height: 1.5;
       margin: 0;
     }
-    .wisdom-quote-author {
-      font-size: 12px;
+    .practical-quote-author {
+      font-size: 13px;
       font-weight: bold;
-      color: #40e0d0;
+      color: #38bdf8;
       margin: 0;
     }
-    .wisdom-quote-controls {
+    .practical-quote-controls {
       display: flex;
       justify-content: center;
       gap: 10px;
-      align-items: center;
       margin-top: 4px;
     }
-    .btn-quote-action {
+    .btn-quote-step {
       background: #2c2c2e;
-      color: #40e0d0;
-      border: 1px solid #40e0d0;
+      color: #38bdf8;
+      border: 1px solid #38bdf8;
       border-radius: 6px;
       padding: 6px 14px;
       font-size: 12px;
       font-weight: bold;
       cursor: pointer;
     }
-    .btn-quote-action.active-run { background: #40e0d0; color: #000; }
 
-    .under-construction-box {
-      background: #1c1c1e; border: 2px dashed #ff3b30; border-radius: 16px;
-      padding: 50px 20px; max-width: 500px; margin: 30px auto;
-    }
     .privacy-notice-badge {
       margin-top: 25px; font-size: 12px; color: #888; background: #18181a; border: 1px solid #2a2a2d;
       border-radius: 20px; padding: 8px 16px; display: inline-block; max-width: 90%; line-height: 1.4;
@@ -561,7 +600,7 @@ cat << 'EOF' > ~/Desktop/webrtc-server/family.html
     <div class="location-modal-content">
       <h3 style="color: #ff9500; margin-top: 0; font-size: 20px;">📍 Enable Location Access</h3>
       <p style="color: #ccc; font-size: 14px; text-align: left; line-height: 1.5;">
-        To center maps on your current location, allow location access in your device settings:
+        To center maps and community resources on your current location, allow location access in your device settings:
       </p>
       <div style="background: #121212; border: 1px solid #333; border-radius: 8px; padding: 12px; text-align: left; font-size: 12px; color: #aaa; margin-bottom: 20px;">
         <strong>iPhone / iPad:</strong><br>
@@ -583,24 +622,21 @@ cat << 'EOF' > ~/Desktop/webrtc-server/family.html
       </h1>
     </div>
 
+    <!-- CLEANED UP TAB BAR -->
     <div class="tab-bar">
-      <button class="tab-btn tab-level1-phone active" onclick="switchTab('level1-phone')">
-        Level 1 - WebPhone
-        <span class="sub-tagline">Completely Free</span>
+      <button class="tab-btn tab-phone active" onclick="switchTab('phone')">
+        WebPhone
+        <span class="sub-tagline">Video Call</span>
       </button>
-      <button class="tab-btn tab-level1-text" onclick="switchTab('level1-text')">
-        Level 1 - WebText
-        <span class="sub-tagline">Completely Free</span>
-      </button>
-      <button class="tab-btn tab-level2" onclick="switchTab('level2')">
-        Level 2 - "CellPhone"
-        <span class="sub-tagline">Carrier Text & Calling</span>
+      <button class="tab-btn tab-text" onclick="switchTab('text')">
+        WebText
+        <span class="sub-tagline">Free Text</span>
       </button>
       <button class="tab-btn tab-maps" onclick="switchTab('maps')">
         📍 Maps
         <span class="sub-tagline">Wi-Fi & Resource Finder</span>
       </button>
-      <button class="tab-seattle-wifi tab-btn" onclick="switchTab('seattle-wifi')">
+      <button class="tab-btn tab-seattle-wifi" onclick="switchTab('seattle-wifi')">
         🌐 Seattle Wi-Fi
         <span class="sub-tagline">City Portal Map</span>
       </button>
@@ -612,9 +648,9 @@ cat << 'EOF' > ~/Desktop/webrtc-server/family.html
         🏛️ Art Gallery
         <span class="sub-tagline">World Masterpieces</span>
       </button>
-      <button class="tab-btn tab-wisdom" onclick="switchTab('wisdom')">
-        📜 Wisdom Texts
-        <span class="sub-tagline">Sacred Canon & Philosophy</span>
+      <button class="tab-btn tab-help" onclick="switchTab('help')">
+        🤝 Help & Resources
+        <span class="sub-tagline">Essential Community Aid</span>
       </button>
     </div>
   </div>
@@ -627,8 +663,8 @@ cat << 'EOF' > ~/Desktop/webrtc-server/family.html
       <button id="megaEnterBtn" class="btn-mega-enter">📹 Enter Video Call</button>
     </div>
 
-    <!-- LEVEL 1 PHONE TAB -->
-    <div id="tab-level1-phone" class="tab-content active">
+    <!-- WEBPHONE TAB -->
+    <div id="tab-phone" class="tab-content active">
       <div id="status">Ready to Call</div>
 
       <div id="webphoneMainSection">
@@ -708,10 +744,10 @@ cat << 'EOF' > ~/Desktop/webrtc-server/family.html
       </div>
     </div>
 
-    <!-- LEVEL 1 TEXT TAB -->
-    <div id="tab-level1-text" class="tab-content">
-      <h2 style="color: #63e685; margin-top: 0;">Level 1 - WebText</h2>
-      <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Completely Free Multi-User Web Texting</p>
+    <!-- WEBTEXT TAB -->
+    <div id="tab-text" class="tab-content">
+      <h2 style="color: #63e685; margin-top: 0;">WebText</h2>
+      <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Completely Free Web Text Messaging</p>
 
       <div class="web-chat-box">
         <div style="display: flex; gap: 12px; margin-bottom: 12px; justify-content: center; align-items: center; flex-wrap: wrap;">
@@ -746,22 +782,6 @@ cat << 'EOF' > ~/Desktop/webrtc-server/family.html
           <input type="text" id="webChatInput" placeholder="Type a free web message..." style="flex: 1; text-align: left; background: #2c2c2e; color: #fff; border: 1px solid #444; border-radius: 6px; padding: 8px 12px;">
           <button id="sendWebChatBtn" class="btn-round-blue" style="width: auto; height: auto; padding: 8px 18px; border-radius: 8px; font-size: 13px;">Send</button>
         </div>
-      </div>
-
-      <div class="privacy-notice-badge">
-        🔒 <b>End-to-End Encrypted (AES-256-GCM):</b> All video, voice, and web text are scrambled directly on your device before transmission. Zero data is logged, stored, or shared.
-      </div>
-    </div>
-
-    <!-- LEVEL 2 TAB -->
-    <div id="tab-level2" class="tab-content">
-      <div class="under-construction-box">
-        <h1 style="color: #ff3b30; font-size: 32px; font-weight: 900; margin: 0 0 10px 0; text-transform: uppercase;">
-          Under Construction
-        </h1>
-        <p style="color: #aaa; font-size: 15px; margin: 0;">
-          Level 2 Direct Carrier SMS & Ringing Console is currently being updated.
-        </p>
       </div>
 
       <div class="privacy-notice-badge">
@@ -897,14 +917,15 @@ cat << 'EOF' > ~/Desktop/webrtc-server/family.html
           <button id="btnMuseumCMA" class="museum-inst-btn" onclick="setMuseumScope('cma')">🏛️ Cleveland (CMA)</button>
         </div>
 
+        <!-- GENRE BAR WITH CLEAN DYNAMIC HIGHLIGHT -->
         <div class="art-genre-bar">
-          <button class="art-genre-btn" onclick="triggerArtSearch('impressionism', 'Impressionism')">🎨 Impressionism</button>
-          <button class="art-genre-btn" onclick="triggerArtSearch('renaissance', 'Renaissance')">⚜️ Renaissance</button>
-          <button class="art-genre-btn" onclick="triggerArtSearch('baroque', 'Baroque')">🏛️ Baroque</button>
-          <button class="art-genre-btn" onclick="triggerArtSearch('symbolism', 'Symbolist Art')">🔮 Symbolism</button>
-          <button class="art-genre-btn" onclick="triggerArtSearch('dutch', 'Dutch Masters')">🇳🇱 Dutch Masters</button>
-          <button class="art-genre-btn" onclick="triggerArtSearch('japanese woodblock', 'Japanese Prints')">🌊 Japanese Prints</button>
-          <button class="art-genre-btn" style="background:#ffd60a; color:#000;" onclick="triggerArtRandom()">🎲 Discovery Mix</button>
+          <button class="art-genre-btn active" onclick="triggerArtSearch('impressionism', 'Impressionism', this)">🎨 Impressionism</button>
+          <button class="art-genre-btn" onclick="triggerArtSearch('renaissance', 'Renaissance', this)">⚜️ Renaissance</button>
+          <button class="art-genre-btn" onclick="triggerArtSearch('baroque', 'Baroque', this)">🏛️ Baroque</button>
+          <button class="art-genre-btn" onclick="triggerArtSearch('symbolism', 'Symbolist Art', this)">🔮 Symbolism</button>
+          <button class="art-genre-btn" onclick="triggerArtSearch('dutch', 'Dutch Masters', this)">🇳🇱 Dutch Masters</button>
+          <button class="art-genre-btn" onclick="triggerArtSearch('japanese woodblock', 'Japanese Prints', this)">🌊 Japanese Prints</button>
+          <button class="art-genre-btn" onclick="triggerArtRandom(this)">🎲 Discovery Mix</button>
         </div>
 
         <div class="art-layout">
@@ -953,59 +974,52 @@ cat << 'EOF' > ~/Desktop/webrtc-server/family.html
       </div>
     </div>
 
-    <!-- WISDOM TEXTS & PHILOSOPHY LIBRARY TAB -->
-    <div id="tab-wisdom" class="tab-content">
-      <h2 style="color: #40e0d0; margin-top: 0;">📜 Sacred Wisdom Texts & Philosophy Library</h2>
-      <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Classical canonical root texts, translations, and an automated contemplative quote ticker</p>
+    <!-- 🤝 HELP & COMMUNITY RESOURCES TAB -->
+    <div id="tab-help" class="tab-content">
+      <h2 style="color: #38bdf8; margin-top: 0;">🤝 Essential Community Help & Well-Being Directory</h2>
+      <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Find physical, mental, and social support services with direct-dial and mapping links</p>
 
-      <div class="wisdom-box">
-        <div class="wisdom-tradition-bar">
-          <button class="wisdom-trad-btn active" onclick="selectWisdomTradition('western')">🏛️ Western Philosophy</button>
-          <button class="wisdom-trad-btn" onclick="selectWisdomTradition('eastern')">☯️ Eastern Philosophy</button>
-          <button class="wisdom-trad-btn" onclick="selectWisdomTradition('christianity')">✝️ Christianity</button>
-          <button class="wisdom-trad-btn" onclick="selectWisdomTradition('buddhism')">☸️ Buddhism</button>
-          <button class="wisdom-trad-btn" onclick="selectWisdomTradition('islam')">☪️ Islam</button>
-          <button class="wisdom-trad-btn" onclick="selectWisdomTradition('hinduism')">🕉️ Hinduism</button>
-          <button class="wisdom-trad-btn" onclick="selectWisdomTradition('misc')">✨ Misc. Religious</button>
+      <div class="help-box">
+        <!-- TOP LOCATION INPUT -->
+        <div class="help-location-bar">
+          <label for="helpLocationInput" style="font-size: 13px; font-weight: bold; color: #ccc;">Your City or Zip:</label>
+          <input type="text" id="helpLocationInput" class="help-loc-input" placeholder="e.g., Seattle, WA or 98101" value="Seattle, WA">
+          <button class="btn-help-loc" onclick="updateHelpLocation()">Update Location</button>
+          <button class="btn-help-loc" style="background:#30d158;" onclick="detectHelpGPS()">📍 Use GPS</button>
         </div>
 
-        <div class="wisdom-layout">
-          <div class="wisdom-bank-container">
-            <div class="wisdom-bank-header-row">
-              <h4 id="wisdomBankTitle" class="wisdom-bank-header">Lineages & Schools</h4>
-              <button id="wisdomBackBtn" class="btn-bank-back" style="display:none;" onclick="renderWisdomSchools()">← Back</button>
-            </div>
-            <div id="wisdomBankList" class="wisdom-bank-list">
-              <!-- Dynamically populated -->
-            </div>
+        <div class="help-layout">
+          <!-- LEFT BANK: CATEGORIES -->
+          <div class="help-category-bank">
+            <button class="help-category-btn active" onclick="selectHelpCategory('housing', this)">🏠 Housing & Shelter</button>
+            <button class="help-category-btn" onclick="selectHelpCategory('addiction', this)">💊 Drug Addiction & Recovery</button>
+            <button class="help-category-btn" onclick="selectHelpCategory('food', this)">🥫 Food Resources & Meals</button>
+            <button class="help-category-btn" onclick="selectHelpCategory('hygiene', this)">🚿 Hygiene & Showers</button>
+            <button class="help-category-btn" onclick="selectHelpCategory('financial', this)">💵 Financial & Utility Aid</button>
+            <button class="help-category-btn" onclick="selectHelpCategory('family', this)">🍼 Family & Pediatric Care</button>
+            <button class="help-category-btn" onclick="selectHelpCategory('mental', this)">🧠 Mental Health Services</button>
+            <button class="help-category-btn crisis" onclick="selectHelpCategory('suicide', this)">☎️ Crisis & Suicide (988)</button>
           </div>
 
-          <div class="wisdom-console">
-            <div id="wisdomReadingFrame" class="wisdom-reading-frame">
-              Select a school and text on the left to begin reading...
-            </div>
-
-            <div id="wisdomSummaryCard" class="wisdom-summary-card">
-              <h3 id="wisdomDocTitle" class="wisdom-summary-title">Text Title</h3>
-              <div id="wisdomDocMeta" class="wisdom-summary-meta">Tradition • Author / School</div>
-              <p id="wisdomDocSummary" class="wisdom-summary-text">Historical context and philosophical description will display here.</p>
-            </div>
+          <!-- RIGHT CONSOLE: CARDS -->
+          <div id="helpResultsConsole" class="help-results-console">
+            <!-- Dynamically populated -->
           </div>
         </div>
 
-        <div class="wisdom-quote-panel">
-          <p id="wisdomQuoteContent" class="wisdom-quote-text">"Loading contemplative quote..."</p>
-          <p id="wisdomQuoteCitation" class="wisdom-quote-author">— Author | Work | School</p>
-          <div class="wisdom-quote-controls">
-            <button id="btnRandomQuote" class="btn-quote-action" onclick="fetchRandomQuoteNow()">🎲 Random A Quote</button>
-            <button id="btnToggleQuoteTicker" class="btn-quote-action active-run" onclick="toggleQuoteTicker()">⏸ Pause 60s Ticker</button>
+        <!-- PRACTICAL LIVING & RESILIENCE QUOTE TICKER -->
+        <div class="practical-quote-box">
+          <p id="practicalQuoteText" class="practical-quote-text">"Energy and persistence conquer all things."</p>
+          <p id="practicalQuoteAuthor" class="practical-quote-author">— Benjamin Franklin</p>
+          <div class="practical-quote-controls">
+            <button class="btn-quote-step" onclick="cyclePracticalQuote()">🎲 Next Helpful Quote</button>
           </div>
         </div>
 
       </div>
 
       <div class="privacy-notice-badge">
-        🔒 <b>End-to-End Encrypted (AES-256-GCM):</b> All video, voice, and web text are scrambled directly on your device before transmission. Zero data is logged, stored, or shared.
+        🔒 <b>Community Support:</b> All emergency hotlines (988, 211, SAMHSA) are completely free, confidential, and accessible 24/7.
       </div>
     </div>
 
@@ -1167,7 +1181,8 @@ cat << 'EOF' > ~/Desktop/webrtc-server/family.html
 
     window.addEventListener('DOMContentLoaded', () => {
       loadIceServers();
-      initWisdomLibrary();
+      initHelpResources();
+      initPracticalQuotes();
 
       const artInput = document.getElementById('customArtInput');
       if (artInput) {
@@ -1207,7 +1222,7 @@ cat << 'EOF' > ~/Desktop/webrtc-server/family.html
       document.getElementById('responderAccessBox').style.display = 'none';
       document.getElementById('status').style.display = 'block';
       if (modeParam === 'text') {
-        switchTab('level1-text');
+        switchTab('text');
       } else {
         startCall();
       }
@@ -1217,40 +1232,37 @@ cat << 'EOF' > ~/Desktop/webrtc-server/family.html
       document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
       document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
 
-      if (tabName === 'level1-phone') {
+      if (tabName === 'phone') {
         document.querySelectorAll('.tab-btn')[0].classList.add('active');
-        document.getElementById('tab-level1-phone').classList.add('active');
-      } else if (tabName === 'level1-text') {
+        document.getElementById('tab-phone').classList.add('active');
+      } else if (tabName === 'text') {
         document.querySelectorAll('.tab-btn')[1].classList.add('active');
-        document.getElementById('tab-level1-text').classList.add('active');
+        document.getElementById('tab-text').classList.add('active');
         const r = document.getElementById('webTextRoomId').value.trim() || roomIdInput.value.trim();
         if (r) {
           ensureSocketConnected(() => {
             socket.emit('join-room', r);
           });
         }
-      } else if (tabName === 'level2') {
-        document.querySelectorAll('.tab-btn')[2].classList.add('active');
-        document.getElementById('tab-level2').classList.add('active');
       } else if (tabName === 'maps') {
-        document.querySelectorAll('.tab-btn')[3].classList.add('active');
+        document.querySelectorAll('.tab-btn')[2].classList.add('active');
         document.getElementById('tab-maps').classList.add('active');
         if (!currentCoords) centerMapOnUser(false);
       } else if (tabName === 'seattle-wifi') {
-        document.querySelectorAll('.tab-btn')[4].classList.add('active');
+        document.querySelectorAll('.tab-btn')[3].classList.add('active');
         document.getElementById('tab-seattle-wifi').classList.add('active');
       } else if (tabName === 'radio') {
-        document.querySelectorAll('.tab-btn')[5].classList.add('active');
+        document.querySelectorAll('.tab-btn')[4].classList.add('active');
         document.getElementById('tab-radio').classList.add('active');
       } else if (tabName === 'art') {
-        document.querySelectorAll('.tab-btn')[6].classList.add('active');
+        document.querySelectorAll('.tab-btn')[5].classList.add('active');
         document.getElementById('tab-art').classList.add('active');
         if (!hasLoadedArtOnce) {
           triggerArtSearch('impressionism', 'Impressionism');
         }
-      } else if (tabName === 'wisdom') {
-        document.querySelectorAll('.tab-btn')[7].classList.add('active');
-        document.getElementById('tab-wisdom').classList.add('active');
+      } else if (tabName === 'help') {
+        document.querySelectorAll('.tab-btn')[6].classList.add('active');
+        document.getElementById('tab-help').classList.add('active');
       }
     }
 
@@ -1389,7 +1401,7 @@ cat << 'EOF' > ~/Desktop/webrtc-server/family.html
     }
 
     // =======================================================
-    // MULTI-MUSEUM OPEN-ACCESS RANDOMIZED ART ARCHITECTURE
+    // MULTI-MUSEUM ART GALLERY ENGINE (WITH BUTTON HIGHLIGHT FIX)
     // =======================================================
     let hasLoadedArtOnce = false;
     let currentMuseumScope = 'all';
@@ -1433,7 +1445,6 @@ cat << 'EOF' > ~/Desktop/webrtc-server/family.html
           museum: 'The Art Institute of Chicago'
         }));
       } catch (e) {
-        console.warn('AIC fetch issue:', e);
         return [];
       }
     }
@@ -1454,7 +1465,6 @@ cat << 'EOF' > ~/Desktop/webrtc-server/family.html
           museum: 'The Cleveland Museum of Art'
         }));
       } catch (e) {
-        console.warn('CMA fetch issue:', e);
         return [];
       }
     }
@@ -1484,14 +1494,18 @@ cat << 'EOF' > ~/Desktop/webrtc-server/family.html
           museum: 'The Metropolitan Museum of Art (NYC)'
         }));
       } catch (e) {
-        console.warn('The Met fetch issue:', e);
         return [];
       }
     }
 
-    async function triggerArtSearch(query, labelName) {
+    async function triggerArtSearch(query, labelName, clickedBtn = null) {
       hasLoadedArtOnce = true;
       lastArtQuery = query;
+
+      if (clickedBtn) {
+        document.querySelectorAll('.art-genre-btn').forEach(btn => btn.classList.remove('active'));
+        clickedBtn.classList.add('active');
+      }
 
       const bankList = document.getElementById('artBankList');
       const indicator = document.getElementById('artLoadingIndicator');
@@ -1501,7 +1515,6 @@ cat << 'EOF' > ~/Desktop/webrtc-server/family.html
       document.getElementById('mainArtworkImg').style.display = 'none';
 
       let results = [];
-
       if (currentMuseumScope === 'aic') {
         results = await fetchFromAIC(query, 16);
       } else if (currentMuseumScope === 'cma') {
@@ -1514,7 +1527,6 @@ cat << 'EOF' > ~/Desktop/webrtc-server/family.html
           fetchFromCMA(query, 6),
           fetchFromMet(query, 4)
         ]);
-        
         results = shuffleArray([...aic, ...cma, ...met]);
       }
 
@@ -1530,16 +1542,17 @@ cat << 'EOF' > ~/Desktop/webrtc-server/family.html
       }
     }
 
-    async function triggerArtRandom() {
+    async function triggerArtRandom(clickedBtn = null) {
       const themes = ['mythology', 'landscape', 'portrait', 'still life', 'flowers', 'autumn', 'river', 'garden', 'ocean', 'philosophy', 'allegory'];
       const pick = themes[Math.floor(Math.random() * themes.length)];
-      triggerArtSearch(pick, `Discovery: ${pick}`);
+      triggerArtSearch(pick, `Discovery: ${pick}`, clickedBtn);
     }
 
     function searchArtCustom() {
       const input = document.getElementById('customArtInput');
       const query = input.value.trim();
       if (!query) return alert("Please enter an artist, movement, or title to search.");
+      document.querySelectorAll('.art-genre-btn').forEach(btn => btn.classList.remove('active'));
       triggerArtSearch(query, query);
     }
 
@@ -1596,13 +1609,11 @@ cat << 'EOF' > ~/Desktop/webrtc-server/family.html
     }
 
     function openArtFullscreen() {
-      const modal = document.getElementById('artFullscreenModal');
-      modal.style.display = 'flex';
+      document.getElementById('artFullscreenModal').style.display = 'flex';
     }
 
     function closeArtFullscreen() {
-      const modal = document.getElementById('artFullscreenModal');
-      modal.style.display = 'none';
+      document.getElementById('artFullscreenModal').style.display = 'none';
     }
 
     function toggleArtSlideshow() {
@@ -1631,303 +1642,286 @@ cat << 'EOF' > ~/Desktop/webrtc-server/family.html
     }
 
     // =======================================================
-    // WISDOM TEXTS & PHILOSOPHY LIBRARY ENGINE
+    // 🤝 HELP & COMMUNITY RESOURCES DIRECTORY ENGINE
     // =======================================================
-    const WISDOM_DATABASE = {
-      western: {
-        title: "Western Philosophy",
-        schools: {
-          classical: {
-            name: "Platonic & Socratic",
-            docs: [
-              {
-                title: "The Allegory of the Cave",
-                author: "Plato",
-                work: "The Republic (Book VII)",
-                summary: "Plato's central metaphor distinguishing between the shadowy world of sensory illusions and the true illuminated realm of eternal forms.",
-                content: "And now, I said, let me show in a figure how far our nature is enlightened or unenlightened:—Behold! human beings living in a underground cave, which has a mouth open towards the light and reaching all along the cave; here they have been from their childhood, and have their legs and necks chained so that they cannot move, and can only see before them, being prevented by the chains from turning round their heads. Above and behind them a fire is blazing at a distance, and between the fire and the prisoners there is a raised way; and you will see, if you look, a low wall built along the way, like the screen which marionette players have in front of them, over which they show the puppets.\n\nAnd do you see, I said, men passing along the wall carrying all sorts of vessels, and statues and figures of animals made of wood and stone and various materials, which appear over the wall?\n\nYou have shown me a strange image, and they are strange prisoners.\n\nLike ourselves, I replied; and they see only their own shadows, or the shadows of one another, which the fire throws on the opposite wall of the cave?"
-              },
-              {
-                title: "Ennead I, Treatise 6: On Beauty",
-                author: "Plotinus",
-                work: "The Enneads",
-                summary: "Foundational Neoplatonic treatise explaining how earthly beauty reflects divine intellect and ascends to the transcendent One.",
-                content: "Withdraw into yourself and look. And if you do not find yourself beautiful yet, act as does the creator of a statue that is to be made beautiful: he cuts away here, he smoothes there, he makes this line lighter, this other purer, until a lovely face has grown upon his work. So do you also: cut away all that is excessive, straighten all that is crooked, bring light to all that is overcast, labour to make all one glow of beauty and never cease chiselling your statue, until there shall shine out on you from it the godlike splendour of virtue.\n\nNever did eye see the sun unless it had first become sunlike, and never can the soul have vision of the First Beauty unless itself be beautiful."
-              }
-            ]
+    let currentHelpLocation = "Seattle, WA";
+    let activeHelpCategory = "housing";
+
+    const HELP_RESOURCES = {
+      housing: {
+        title: "🏠 Housing, Shelters & Eviction Defense",
+        cards: [
+          {
+            name: "National Emergency Shelter Locator (HUD)",
+            desc: "Immediate emergency shelter, transitional housing, and local rapid rehousing programs.",
+            phone: "211",
+            mapQuery: "emergency homeless shelter"
           },
-          stoicism: {
-            name: "Stoicism",
-            docs: [
-              {
-                title: "The Inner Citadel",
-                author: "Marcus Aurelius",
-                work: "Meditations (Book IV)",
-                summary: "Personal reflections on maintaining composure, recognizing the transience of life, and safeguarding the ruling center of consciousness.",
-                content: "People look for retreats for themselves, in the country, by the coast, or in the hills. There is nowhere that a person can find a more peaceful and trouble-free retreat than in his own mind, especially if he has within himself the kind of thoughts that he can dip into and immediately be at complete ease. So constantly grant yourself this retreat, and refresh yourself. Keep your rules of life brief and basic, and as soon as you whisper them to yourself they will wipe away your discontent."
-              }
-            ]
-          }
-        }
-      },
-      buddhism: {
-        title: "Buddhism",
-        schools: {
-          madhyamaka: {
-            name: "Madhyamaka & Prajñāpāramitā",
-            docs: [
-              {
-                title: "The Heart Sūtra (Prajñāpāramitā Hṛdaya)",
-                author: "Trans. Xuanzang / Red Pine",
-                work: "Prajñāpāramitā Canon",
-                summary: "The quintessential Mahāyāna distillation of śūnyatā (emptiness), establishing the non-duality of phenomena and ultimate reality.",
-                content: "Avalokiteśvara Bodhisattva, practicing deep Prajñāpāramitā, clearly saw that all five skandhas are empty, transforming all suffering and distress.\n\nŚāriputra, form is no other than emptiness, emptiness no other than form; form is exactly emptiness, emptiness exactly form. Sensation, perception, mental formations, and consciousness are also like this.\n\nŚāriputra, all dharmas are marked by emptiness: not arising, not ceasing; not defiled, not pure; not increasing, not decreasing. Therefore in emptiness there is no form, no sensation, perception, volition, consciousness..."
-              },
-              {
-                title: "Examination of Conditions (Chapter 1)",
-                author: "Nāgārjuna",
-                work: "Mūlamadhyamakakārikā",
-                summary: "Nāgārjuna's foundational dialectic demonstrating that nothing arises independently from itself, other, both, or without cause.",
-                content: "Neither from itself nor from another,\nNor from both, nor without a cause,\nDoes anything whatever, anywhere arise.\n\nThere are four conditions: efficient, objective, immediate, and dominant.\nThere is no fifth condition.\n\nThe essence of entities does not exist in conditions.\nIf an entity has no inherent existence, then other-existence cannot be found."
-              }
-            ]
+          {
+            name: "National Eviction Prevention & Rental Aid",
+            desc: "Emergency rental assistance, legal tenant defense, and eviction diversion programs.",
+            phone: "800-569-4287",
+            mapQuery: "housing authority rental assistance"
           },
-          tibetan: {
-            name: "Tibetan Tantra & Lamdré",
-            docs: [
-              {
-                title: "Vajra Verses of the Inherent Mind",
-                author: "Mahāsiddha Virūpa",
-                work: "Lamdré Root Lines",
-                summary: "The foundational esoteric verses of the Path and Its Fruit (Lamdré), explaining the inseparability of Saṃsāra and Nirvāṇa.",
-                content: "The external appearance is mind;\nMind is the illusion-like non-arising;\nWhen non-arising is realized as ineffable clarity,\nSaṃsāra and Nirvāṇa are experienced as indivisible.\n\nThe root of all phenomena is mind itself;\nMind itself has no origin, location, or destination;\nRemaining relaxed in that natural state without alteration\nis the supreme realization of the Mahāmudrā."
-              }
-            ]
+          {
+            name: "Youth & Young Adult Emergency Shelter Line",
+            desc: "24/7 dedicated crisis line and immediate shelter for runaway or housing-insecure youth.",
+            phone: "800-786-2929",
+            mapQuery: "youth shelter"
+          }
+        ]
+      },
+      addiction: {
+        title: "💊 Substance Use & Addiction Recovery",
+        cards: [
+          {
+            name: "SAMHSA National Recovery Helpline",
+            desc: "Free, confidential, 24/7 information service for individuals facing substance use disorders.",
+            phone: "800-662-4357",
+            mapQuery: "substance abuse treatment center"
           },
-          zen: {
-            name: "Zen / Chan",
-            docs: [
-              {
-                title: "Verses on the Mind-Mirror",
-                author: "Huineng & Shenxiu",
-                work: "Platform Sūtra",
-                summary: "The classic debate contrasting gradual cultivation against immediate non-dual awakening in early Chan Buddhism.",
-                content: "Shenxiu's Verse:\n'The body is the bodhi tree;\nThe mind is like a clear mirror stand.\nAt all times strive to polish it clean,\nAnd let no dust alight.'\n\nHuineng's Response:\n'Bodhi originally has no tree in it,\nNor does the clear mirror have a stand.\nOriginally there is not a single thing—\nWhere could any dust alight?'"
-              }
-            ]
+          {
+            name: "Local Detox & Withdrawal Management Centers",
+            desc: "Medically supervised detox, sobering centers, and inpatient stabilization programs.",
+            phone: "211",
+            mapQuery: "detox center"
+          },
+          {
+            name: "Harm Reduction, Syringe Exchange & Naloxone Sites",
+            desc: "Free overdose reversal supplies (Narcan/Naloxone), testing strips, and health navigation.",
+            phone: "211",
+            mapQuery: "harm reduction needle exchange"
           }
-        }
+        ]
       },
-      eastern: {
-        title: "Eastern Philosophy",
-        schools: {
-          daoism: {
-            name: "Daoism",
-            docs: [
-              {
-                title: "The Constant Tao (Chapter 1)",
-                author: "Laozi",
-                work: "Dao De Jing",
-                summary: "The paradoxical opening of the Dao De Jing defining wu wei, namelessness, and the mystery behind all manifest phenomena.",
-                content: "The Tao that can be spoken of is not the eternal Tao.\nThe name that can be named is not the eternal name.\nThe nameless is the origin of Heaven and Earth;\nThe named is the mother of all things.\n\nFree from desire, you realize the mystery.\nCaught in desire, you see only the manifestations.\nYet mystery and manifestations arise from the same source.\nThis source is called darkness. Darkness within darkness: the gateway to all understanding."
-              }
-            ]
+      food: {
+        title: "🥫 Food Banks, Soup Kitchens & Meal Programs",
+        cards: [
+          {
+            name: "Feeding America Community Food Pantry Network",
+            desc: "Weekly free grocery distribution, fresh produce boxes, and emergency dry food rations.",
+            phone: "211",
+            mapQuery: "food bank pantry"
+          },
+          {
+            name: "Daily Community Soup Kitchens & Hot Meals",
+            desc: "Daily hot lunch and dinner services open to all members of the community without ID.",
+            phone: "211",
+            mapQuery: "soup kitchen free hot meal"
+          },
+          {
+            name: "SNAP / EBT Emergency Food Assistance Office",
+            desc: "State emergency food stamps expedited applications for low-income and unhoused individuals.",
+            phone: "800-221-5689",
+            mapQuery: "DSHS community services SNAP food stamps"
           }
-        }
+        ]
       },
-      hinduism: {
-        title: "Hinduism",
-        schools: {
-          vedanta: {
-            name: "Advaita Vedānta & Gītā",
-            docs: [
-              {
-                title: "The Yoga of Knowledge (Sāṅkhya Yoga)",
-                author: "Krishna (Vyāsa)",
-                work: "Bhagavad Gītā (Chapter 2)",
-                summary: "Krishna instructs Arjuna on the eternal nature of the Ātman, which neither slays nor is slain, untouched by material decay.",
-                content: "Never was there a time when I did not exist, nor you, nor all these kings; nor in the future shall any of us cease to be.\n\nAs the embodied soul continuously passes, in this body, from boyhood to youth to old age, the soul similarly passes into another body at death. A sober person is not bewildered by such a change.\n\nWeapons cannot shred the soul, nor can fire burn it. Water cannot wet it, nor can the wind dry it. The soul is eternal, all-pervading, unchangeable, immovable, and eternally the same."
-              }
-            ]
+      hygiene: {
+        title: "🚿 Showers, Restrooms & Laundry Centers",
+        cards: [
+          {
+            name: "Day Center Free Showers & Hygiene Stations",
+            desc: "Access to private hot showers, hygiene kits, towels, and public restrooms.",
+            phone: "211",
+            mapQuery: "homeless day center showers"
+          },
+          {
+            name: "Community Free Laundry Programs",
+            desc: "Facilities offering free washer and dryer cycles and laundry detergent for low-income families.",
+            phone: "211",
+            mapQuery: "free laundry community center"
+          },
+          {
+            name: "Public Restrooms & Drinking Water Access",
+            desc: "Mapped municipal parks, community centers, and libraries with verified public restrooms.",
+            phone: "211",
+            mapQuery: "public library restroom"
           }
-        }
+        ]
       },
-      christianity: {
-        title: "Christianity",
-        schools: {
-          mysticism: {
-            name: "Christian Mysticism & Philokalia",
-            docs: [
-              {
-                title: "The Ground of the Soul",
-                author: "Meister Eckhart",
-                work: "German Sermons",
-                summary: "The breakthrough of consciousness into the divine ground where God and soul coalesce beyond form and multiplicity.",
-                content: "There is something in the soul that is uncreated and uncreatable; if the whole soul were such, it would be uncreated and uncreatable, and this is the Intellect. God's ground and my ground are one ground, one knowing, one love.\n\nIf you are to know God in divine fashion, your knowing must become pure un-knowing, a forgetting of yourself and of all creatures."
-              }
-            ]
+      financial: {
+        title: "💵 Financial Assistance & Utility Lifelines",
+        cards: [
+          {
+            name: "2-1-1 United Way Financial Relief Clearinghouse",
+            desc: "Emergency grants for past-due utility shut-offs, rent help, and transit vouchers.",
+            phone: "211",
+            mapQuery: "community action agency financial assistance"
+          },
+          {
+            name: "LIHEAP Electric & Heating Energy Grants",
+            desc: "Federal utility grant assistance to keep winter heat and summer electricity active.",
+            phone: "866-674-6327",
+            mapQuery: "LIHEAP utility assistance office"
+          },
+          {
+            name: "Government Lifeline Free Cellphone & Internet Aid",
+            desc: "Federal subsidies providing free monthly cellular service and discounted home internet.",
+            phone: "800-234-9473",
+            mapQuery: "lifeline assistance phone wireless"
           }
-        }
+        ]
       },
-      islam: {
-        title: "Islam",
-        schools: {
-          sufism: {
-            name: "Sufi Metaphysics",
-            docs: [
-              {
-                title: "The Unity of Being (Waḥdat al-Wujūd)",
-                author: "Ibn 'Arabī",
-                work: "The Ringstones of Wisdom (Fuṣūṣ al-Ḥikam)",
-                summary: "The metaphysical realization that existence belongs only to the divine reality, and creatures are manifestations of divine names.",
-                content: "Beware of being bound by one particular creed, disbelieving in everything else; for you would forfeit much good, indeed you would forfeit the true knowledge of reality. Be in yourself a receptive matter for all forms of belief, for God is wider and greater than to be confined to one belief to the exclusion of another."
-              }
-            ]
+      family: {
+        title: "🍼 Family, Diapers & Pediatric Care",
+        cards: [
+          {
+            name: "National Diaper Bank & Infant Essentials",
+            desc: "Free monthly allocations of infant diapers, baby wipes, and infant formula.",
+            phone: "211",
+            mapQuery: "diaper bank family resource center"
+          },
+          {
+            name: "Free Pediatric & Child Health Clinics",
+            desc: "Sliding-scale and free childhood immunizations, well-child checkups, and dental screenings.",
+            phone: "211",
+            mapQuery: "community health center pediatrics"
+          },
+          {
+            name: "Child Care Resource & Subsidy Agency",
+            desc: "Assistance finding subsidized childcare, Head Start programs, and emergency respite care.",
+            phone: "800-424-2246",
+            mapQuery: "head start child care resources"
           }
-        }
+        ]
       },
-      misc: {
-        title: "Misc. Religious & Esoteric",
-        schools: {
-          hermeticism: {
-            name: "Hermeticism & Esoteric",
-            docs: [
-              {
-                title: "The Emerald Tablet",
-                author: "Hermes Trismegistus",
-                work: "Tabula Smaragdina",
-                summary: "The root axioms of classical Western alchemy linking microcosm and macrocosm through one continuous substance.",
-                content: "Truly, without deceit, certainly and most verily: That which is Below corresponds to that which is Above, and that which is Above corresponds to that which is Below, to accomplish the miracles of the One Thing.\n\nAnd just as all things have come from One, by the mediation of One, so all things were born from this One Thing by adaptation."
-              }
-            ]
+      mental: {
+        title: "🧠 Mental Health Counseling & Community Clinics",
+        cards: [
+          {
+            name: "Community Mental Health Centers (Sliding Scale)",
+            desc: "Walk-in counseling, psychiatric evaluations, peer support groups, and trauma therapy.",
+            phone: "211",
+            mapQuery: "community mental health clinic"
+          },
+          {
+            name: "NAMI National Alliance on Mental Illness HelpLine",
+            desc: "Free peer-support service providing information, resource referrals, and community support.",
+            phone: "800-950-6264",
+            mapQuery: "NAMI mental health support"
           }
-        }
+        ]
+      },
+      suicide: {
+        title: "☎️ 24/7 Crisis & Suicide Lifelines (Dial 988)",
+        cards: [
+          {
+            name: "988 Suicide & Crisis Lifeline (National)",
+            desc: "Free, confidential 24/7 support for anyone in emotional distress, suicidal crisis, or substance panic.",
+            phone: "988",
+            isCrisis: true,
+            mapQuery: "crisis stabilization center"
+          },
+          {
+            name: "Veterans Crisis Line (Dial 988, Press 1)",
+            desc: "Confidential support specialized for military veterans, active service members, and families.",
+            phone: "988",
+            isCrisis: true,
+            mapQuery: "VA medical center mental health"
+          },
+          {
+            name: "The Trevor Project (LGBTQ Youth Crisis Line)",
+            desc: "24/7 suicide prevention and crisis counseling for LGBTQ youth and young adults.",
+            phone: "866-488-7386",
+            isCrisis: true,
+            mapQuery: "LGBTQ community center crisis"
+          }
+        ]
       }
     };
 
-    let activeTraditionKey = 'western';
-    let wisdomQuoteCorpus = [];
-    let quoteTickerTimer = null;
-    let isQuoteTickerRunning = true;
-
-    function initWisdomLibrary() {
-      renderWisdomSchools();
-      loadWisdomQuotes();
+    function initHelpResources() {
+      renderHelpCategory(activeHelpCategory);
     }
 
-    function selectWisdomTradition(tradKey) {
-      activeTraditionKey = tradKey;
-      document.querySelectorAll('.wisdom-trad-btn').forEach(btn => btn.classList.remove('active'));
-      const activeBtn = Array.from(document.querySelectorAll('.wisdom-trad-btn')).find(b => b.getAttribute('onclick').includes(tradKey));
-      if (activeBtn) activeBtn.classList.add('active');
-
-      renderWisdomSchools();
+    function selectHelpCategory(catKey, clickedBtn) {
+      activeHelpCategory = catKey;
+      document.querySelectorAll('.help-category-btn').forEach(btn => btn.classList.remove('active'));
+      if (clickedBtn) clickedBtn.classList.add('active');
+      renderHelpCategory(catKey);
     }
 
-    function renderWisdomSchools() {
-      const bankTitle = document.getElementById('wisdomBankTitle');
-      const backBtn = document.getElementById('wisdomBackBtn');
-      const list = document.getElementById('wisdomBankList');
+    function updateHelpLocation() {
+      const input = document.getElementById('helpLocationInput');
+      const val = input.value.trim();
+      if (!val) return alert("Please enter a valid city or zip code.");
+      currentHelpLocation = val;
+      renderHelpCategory(activeHelpCategory);
+    }
 
-      bankTitle.innerText = `${WISDOM_DATABASE[activeTraditionKey].title}: Schools`;
-      backBtn.style.display = 'none';
-      list.innerHTML = '';
+    function detectHelpGPS() {
+      if (!navigator.geolocation) return alert("Geolocation not supported on this browser.");
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          currentCoords = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+          currentHelpLocation = `${pos.coords.latitude.toFixed(3)}, ${pos.coords.longitude.toFixed(3)}`;
+          document.getElementById('helpLocationInput').value = "📍 Current GPS Location";
+          renderHelpCategory(activeHelpCategory);
+        },
+        () => alert("Unable to detect location. Please type your city or zip code.")
+      );
+    }
 
-      const schools = WISDOM_DATABASE[activeTraditionKey].schools;
-      Object.keys(schools).forEach((schoolKey, idx) => {
-        const school = schools[schoolKey];
-        const item = document.createElement('div');
-        item.className = `wisdom-bank-item ${idx === 0 ? 'active' : ''}`;
-        item.innerHTML = `
-          <span style="font-size:13px; font-weight:bold; color:#40e0d0; display:block;">📂 ${school.name}</span>
-          <span style="font-size:11px; color:#aaa;">${school.docs.length} canonical text(s)</span>
+    function renderHelpCategory(catKey) {
+      const consoleEl = document.getElementById('helpResultsConsole');
+      const data = HELP_RESOURCES[catKey];
+      if (!data) return;
+
+      let html = `<div class="help-console-header"><span>${data.title}</span><span style="font-size:12px; font-weight:normal; color:#aaa;">Near: ${currentHelpLocation}</span></div>`;
+
+      data.cards.forEach(card => {
+        const mapUrl = currentCoords 
+          ? `https://www.google.com/maps?q=${encodeURIComponent(card.mapQuery)}&ll=${currentCoords.lat},${currentCoords.lng}&z=14`
+          : `https://www.google.com/maps?q=${encodeURIComponent(card.mapQuery + ' in ' + currentHelpLocation)}&z=14`;
+
+        html += `
+          <div class="resource-card ${card.isCrisis ? 'crisis-card' : ''}">
+            <h3 class="resource-card-title">${card.name}</h3>
+            <p class="resource-card-desc">${card.desc}</p>
+            <div class="resource-card-actions">
+              <a href="tel:${card.phone}" class="${card.isCrisis ? 'btn-res-crisis' : 'btn-res-call'}">📞 Call ${card.phone}</a>
+              <a href="${mapUrl}" target="_blank" rel="noopener noreferrer" class="btn-res-map">📍 View Nearby Map</a>
+            </div>
+          </div>
         `;
-        item.onclick = () => renderWisdomDocuments(schoolKey);
-        list.appendChild(item);
       });
 
-      const firstSchoolKey = Object.keys(schools)[0];
-      if (firstSchoolKey && schools[firstSchoolKey].docs[0]) {
-        displayWisdomDoc(schools[firstSchoolKey].docs[0]);
-      }
+      consoleEl.innerHTML = html;
     }
 
-    function renderWisdomDocuments(schoolKey) {
-      const bankTitle = document.getElementById('wisdomBankTitle');
-      const backBtn = document.getElementById('wisdomBackBtn');
-      const list = document.getElementById('wisdomBankList');
+    // =======================================================
+    // PRACTICAL LIVING & RESILIENCE QUOTE TICKER (60 SECONDS)
+    // =======================================================
+    const PRACTICAL_QUOTES = [
+      { quote: "Energy and persistence conquer all things.", author: "Benjamin Franklin" },
+      { quote: "It’s not what happens to you, but how you react to it that matters.", author: "Epictetus" },
+      { quote: "You have power over your mind - not outside events. Realize this, and you will find strength.", author: "Marcus Aurelius" },
+      { quote: "The secret of getting ahead is getting started.", author: "Mark Twain" },
+      { quote: "Courage does not always roar. Sometimes courage is the quiet voice at the end of the day saying, 'I will try again tomorrow.'", author: "Mary Anne Radmacher" },
+      { quote: "Small deeds done are better than great deeds planned.", author: "Peter Marshall" },
+      { quote: "Do not let what you cannot do interfere with what you can do.", author: "John Wooden" },
+      { quote: "He who has a why to live can bear almost any how.", author: "Friedrich Nietzsche" },
+      { quote: "Fall seven times, stand up eight.", author: "Traditional Proverb" },
+      { quote: "Waste no more time arguing what a good man should be. Be one.", author: "Marcus Aurelius" },
+      { quote: "An ounce of practice is worth more than tons of preaching.", author: "Mahatma Gandhi" },
+      { quote: "When you come to the end of your rope, tie a knot and hang on.", author: "Franklin D. Roosevelt" }
+    ];
 
-      const school = WISDOM_DATABASE[activeTraditionKey].schools[schoolKey];
-      bankTitle.innerText = school.name;
-      backBtn.style.display = 'inline-block';
-      list.innerHTML = '';
+    let currentQuoteIdx = 0;
+    let quoteTimer = null;
 
-      school.docs.forEach((doc, idx) => {
-        const item = document.createElement('div');
-        item.className = `wisdom-bank-item ${idx === 0 ? 'active' : ''}`;
-        item.innerHTML = `
-          <span style="font-size:13px; font-weight:bold; color:#fff; display:block;">📜 ${doc.title}</span>
-          <span style="font-size:11px; color:#40e0d0;">${doc.author} (${doc.work})</span>
-        `;
-        item.onclick = () => {
-          document.querySelectorAll('.wisdom-bank-item').forEach(el => el.classList.remove('active'));
-          item.classList.add('active');
-          displayWisdomDoc(doc);
-        };
-        list.appendChild(item);
-      });
-
-      if (school.docs.length > 0) {
-        displayWisdomDoc(school.docs[0]);
-      }
+    function initPracticalQuotes() {
+      cyclePracticalQuote();
+      if (quoteTimer) clearInterval(quoteTimer);
+      quoteTimer = setInterval(cyclePracticalQuote, 60000);
     }
 
-    function displayWisdomDoc(doc) {
-      document.getElementById('wisdomReadingFrame').innerText = doc.content;
-      document.getElementById('wisdomDocTitle').innerText = doc.title;
-      document.getElementById('wisdomDocMeta').innerText = `${doc.author} • ${doc.work}`;
-      document.getElementById('wisdomDocSummary').innerText = doc.summary;
-    }
-
-    async function loadWisdomQuotes() {
-      try {
-        const res = await fetch('wisdom-quotes.json');
-        if (res.ok) {
-          wisdomQuoteCorpus = await res.json();
-          fetchRandomQuoteNow();
-          startQuoteTicker();
-        }
-      } catch (e) {
-        console.warn('Fallback quote loading', e);
-      }
-    }
-
-    function fetchRandomQuoteNow() {
-      if (!wisdomQuoteCorpus || wisdomQuoteCorpus.length === 0) return;
-      const pick = wisdomQuoteCorpus[Math.floor(Math.random() * wisdomQuoteCorpus.length)];
-      document.getElementById('wisdomQuoteContent').innerText = `"${pick.quote}"`;
-      document.getElementById('wisdomQuoteCitation').innerText = `— ${pick.author} | ${pick.work} (${pick.tradition} • ${pick.school})`;
-    }
-
-    function startQuoteTicker() {
-      clearInterval(quoteTickerTimer);
-      quoteTickerTimer = setInterval(fetchRandomQuoteNow, 60000);
-      isQuoteTickerRunning = true;
-      document.getElementById('btnToggleQuoteTicker').innerText = "⏸ Pause 60s Ticker";
-      document.getElementById('btnToggleQuoteTicker').classList.add('active-run');
-    }
-
-    function toggleQuoteTicker() {
-      const btn = document.getElementById('btnToggleQuoteTicker');
-      if (isQuoteTickerRunning) {
-        clearInterval(quoteTickerTimer);
-        isQuoteTickerRunning = false;
-        btn.innerText = "▶️ Start 60s Ticker";
-        btn.classList.remove('active-run');
-      } else {
-        fetchRandomQuoteNow();
-        startQuoteTicker();
-      }
+    function cyclePracticalQuote() {
+      currentQuoteIdx = Math.floor(Math.random() * PRACTICAL_QUOTES.length);
+      const pick = PRACTICAL_QUOTES[currentQuoteIdx];
+      document.getElementById('practicalQuoteText').innerText = `"${pick.quote}"`;
+      document.getElementById('practicalQuoteAuthor').innerText = `— ${pick.author}`;
     }
 
     function sendInvite(mode = 'video') {
@@ -2282,4 +2276,3 @@ cat << 'EOF' > ~/Desktop/webrtc-server/family.html
   </script>
 </body>
 </html>
-EOF
