@@ -1,10 +1,15 @@
 const express = require('express');
 const http = require('http');
 const cors = require('cors');
+const path = require('path');
 const { Server } = require('socket.io');
 
 const app = express();
 app.use(cors());
+
+// Serve all static files (HTML, CSS, JSON, images) from the current folder
+app.use(express.static(__dirname));
+
 const server = http.createServer(app);
 
 const io = new Server(server, {
@@ -36,7 +41,6 @@ app.get('/api/ice-servers', async (req, res) => {
   }
 
   try {
-    // Generate an ephemeral token valid for 4 hours (14400s)
     const token = await twilioClient.tokens.create({ ttl: 14400 });
     res.json({ iceServers: token.iceServers });
   } catch (err) {
@@ -58,7 +62,6 @@ const usageStats = {
   totalRoomsJoined: 0
 };
 
-// Public Stats Endpoint
 app.get('/stats', (req, res) => {
   const uptimeSeconds = process.uptime();
   const uptimeHours = parseFloat((uptimeSeconds / 3600).toFixed(4));
@@ -84,14 +87,12 @@ io.on('connection', (socket) => {
   usageStats.activeConnections++;
   console.log(`[Connect] Active sockets: ${usageStats.activeConnections}`);
 
-  // Room Joining
   socket.on('join-room', (roomId) => {
     socket.join(roomId);
     usageStats.totalRoomsJoined++;
     socket.to(roomId).emit('user-joined', { socketId: socket.id });
   });
 
-  // Call Handshakes (Increments Video vs Voice counters)
   socket.on('offer', (data) => {
     if (data.isAudioOnly) {
       usageStats.totalVoiceCallsStarted++;
@@ -109,7 +110,6 @@ io.on('connection', (socket) => {
     socket.to(data.targetId).emit('ice-candidate', { candidate: data.candidate, senderId: socket.id });
   });
 
-  // WebText Relay
   socket.on('send-web-chat', (data) => {
     usageStats.totalWebTextsSent++;
     socket.to(data.roomId).emit('receive-web-chat', {
@@ -120,7 +120,6 @@ io.on('connection', (socket) => {
     });
   });
 
-  // Disconnect Handling
   socket.on('disconnect', () => {
     usageStats.activeConnections = Math.max(0, usageStats.activeConnections - 1);
     console.log(`[Disconnect] Active sockets: ${usageStats.activeConnections}`);

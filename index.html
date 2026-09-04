@@ -1,3 +1,4 @@
+cat << 'EOF' > ~/Desktop/webrtc-server/index.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,13 +9,13 @@
   <meta name="description" content="ZeroPhone is a completely free, privacy-first web utility featuring end-to-end AES-256-GCM encrypted video calling, voice calls, free WebText, local Wi-Fi maps, live radio, world art museum collections, and wisdom texts.">
   <meta name="keywords" content="ZeroPhone, fourthroom.org, AES-256 encryption, free video call, browser calling, WebRTC, free web text, local radio streams, public wifi maps, art gallery, philosophy library">
   <meta name="author" content="FourthRoom">
-  <link rel="canonical" href="[https://fourthroom.org/](https://fourthroom.org/)">
+  <link rel="canonical" href="https://fourthroom.org/">
 
   <meta property="og:type" content="website">
-  <meta property="og:url" content="[https://fourthroom.org/](https://fourthroom.org/)">
+  <meta property="og:url" content="https://fourthroom.org/">
   <meta property="og:title" content="ZeroPhone — Encrypted Web Calling & WebText">
   <meta property="og:description" content="Instant, private video and voice calling right from your browser powered by AES-256-GCM encryption. No downloads or accounts required.">
-  <meta property="og:image" content="[https://fourthroom.org/icon.png](https://fourthroom.org/icon.png)">
+  <meta property="og:image" content="https://fourthroom.org/icon.png">
 
   <link rel="icon" type="image/png" href="icon.png">
   <link rel="shortcut icon" type="image/png" href="icon.png">
@@ -24,7 +25,7 @@
   <meta name="apple-mobile-web-app-title" content="ZeroPhone">
   <meta name="theme-color" content="#121212">
 
-  <script src="[https://cdn.socket.io/4.7.5/socket.io.min.js](https://cdn.socket.io/4.7.5/socket.io.min.js)"></script>
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
   <style>
     * { box-sizing: border-box; }
     body { 
@@ -617,7 +618,7 @@
         📍 Maps
         <span class="sub-tagline">Wi-Fi & Resource Finder</span>
       </button>
-      <button class="tab-btn tab-seattle-wifi" onclick="switchTab('seattle-wifi')">
+      <button class="tab-seattle-wifi tab-btn" onclick="switchTab('seattle-wifi')">
         🌐 Seattle Wi-Fi
         <span class="sub-tagline">City Portal Map</span>
       </button>
@@ -813,7 +814,7 @@
         </div>
 
         <div class="map-frame-container">
-          <iframe id="googleMapIframe" src="[https://www.google.com/maps?q=Seattle+WA&z=14&output=embed](https://www.google.com/maps?q=Seattle+WA&z=14&output=embed)" allowfullscreen></iframe>
+          <iframe id="googleMapIframe" src="https://www.google.com/maps?q=Seattle+WA&z=14&output=embed" allowfullscreen></iframe>
         </div>
       </div>
 
@@ -829,7 +830,7 @@
 
       <div class="maps-box" style="border-color: #00c0f0;">
         <div style="margin-bottom: 14px; display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap;">
-          <a href="[https://maps.seattle.gov/publicwifi/](https://maps.seattle.gov/publicwifi/)" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+          <a href="https://maps.seattle.gov/publicwifi/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
             <button style="font-size: 13px; padding: 10px 20px; background: #00c0f0; color: #000; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(0, 192, 240, 0.3);">
               ↗️ Launch Seattle Portal Fullscreen
             </button>
@@ -839,7 +840,7 @@
         <div class="map-frame-container" style="height: 550px; border-color: #007d99;">
           <iframe 
             id="seattleWifiIframe" 
-            src="[https://maps.seattle.gov/publicwifi/](https://maps.seattle.gov/publicwifi/)" 
+            src="https://maps.seattle.gov/publicwifi/" 
             title="Seattle Public Wi-Fi Map"
             loading="lazy"
             sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
@@ -1034,7 +1035,7 @@
   </div>
 
   <script>
-    const SIGNALING_SERVER = "[https://webrtc-signaling-do2l.onrender.com](https://webrtc-signaling-do2l.onrender.com)";
+    const SIGNALING_SERVER = "https://webrtc-signaling-do2l.onrender.com";
     
     const socket = io(SIGNALING_SERVER, { autoConnect: false });
     let localStream;
@@ -1283,9 +1284,9 @@
     function loadMapQuery(resourceTerm, zoomLevel = 14) {
       const iframe = document.getElementById('googleMapIframe');
       if (currentCoords) {
-        iframe.src = `[https://www.google.com/maps?q=$](https://www.google.com/maps?q=$){encodeURIComponent(resourceTerm)}&ll=${currentCoords.lat},${currentCoords.lng}&z=${zoomLevel}&output=embed`;
+        iframe.src = `https://www.google.com/maps?q=${encodeURIComponent(resourceTerm)}&ll=${currentCoords.lat},${currentCoords.lng}&z=${zoomLevel}&output=embed`;
       } else {
-        iframe.src = `[https://www.google.com/maps?q=$](https://www.google.com/maps?q=$){encodeURIComponent(resourceTerm + ' in Seattle WA')}&z=${zoomLevel}&output=embed`;
+        iframe.src = `https://www.google.com/maps?q=${encodeURIComponent(resourceTerm + ' in Seattle WA')}&z=${zoomLevel}&output=embed`;
       }
     }
 
@@ -1301,7 +1302,7 @@
               geoStatus.innerText = "📍 GPS Location Locked!";
               geoStatus.style.color = "#30d158";
             }
-            document.getElementById('googleMapIframe').src = `[https://www.google.com/maps?q=$](https://www.google.com/maps?q=$){currentCoords.lat},${currentCoords.lng}&z=${15}&output=embed`;
+            document.getElementById('googleMapIframe').src = `https://www.google.com/maps?q=${currentCoords.lat},${currentCoords.lng}&z=${15}&output=embed`;
           },
           (err) => {
             currentCoords = null;
@@ -1323,7 +1324,7 @@
     }
 
     // RADIO ENGINE
-    const RADIO_API_BASE = "[https://de1.api.radio-browser.info/json/stations/search](https://de1.api.radio-browser.info/json/stations/search)";
+    const RADIO_API_BASE = "https://de1.api.radio-browser.info/json/stations/search";
 
     async function fetchRadioBrowserGenre(tag, labelName) {
       const bankList = document.getElementById('stationBankList');
@@ -1446,7 +1447,7 @@
     async function fetchFromAIC(query, limit = 8) {
       try {
         const randomPage = Math.floor(Math.random() * 8) + 1;
-        const url = `[https://api.artic.edu/api/v1/artworks/search?q=$](https://api.artic.edu/api/v1/artworks/search?q=$){encodeURIComponent(query)}&query[term][is_public_domain]=true&fields=id,title,artist_title,artist_display,date_display,medium_display,image_id&page=${randomPage}&limit=${limit}`;
+        const url = `https://api.artic.edu/api/v1/artworks/search?q=${encodeURIComponent(query)}&query[term][is_public_domain]=true&fields=id,title,artist_title,artist_display,date_display,medium_display,image_id&page=${randomPage}&limit=${limit}`;
         const res = await fetch(url);
         const json = await res.json();
         return (json.data || []).filter(item => item.image_id).map(item => ({
@@ -1455,7 +1456,7 @@
           artist: item.artist_display || item.artist_title || 'Unknown Artist',
           date: item.date_display || 'Date Unknown',
           medium: item.medium_display || 'Oil on canvas / Painting',
-          imageUrl: `[https://www.artic.edu/iiif/2/$](https://www.artic.edu/iiif/2/$){item.image_id}/full/843,/0/default.jpg`,
+          imageUrl: `https://www.artic.edu/iiif/2/${item.image_id}/full/843,/0/default.jpg`,
           museum: 'The Art Institute of Chicago'
         }));
       } catch (e) {
@@ -1467,7 +1468,7 @@
     async function fetchFromCMA(query, limit = 8) {
       try {
         const randomSkip = Math.floor(Math.random() * 20);
-        const url = `[https://openaccess-api.clevelandart.org/api/artworks/?q=$](https://openaccess-api.clevelandart.org/api/artworks/?q=$){encodeURIComponent(query)}&has_image=1&skip=${randomSkip}&limit=${limit}`;
+        const url = `https://openaccess-api.clevelandart.org/api/artworks/?q=${encodeURIComponent(query)}&has_image=1&skip=${randomSkip}&limit=${limit}`;
         const res = await fetch(url);
         const json = await res.json();
         return (json.data || []).filter(item => item.images && item.images.web && item.images.web.url).map(item => ({
@@ -1487,14 +1488,14 @@
 
     async function fetchFromMet(query, limit = 6) {
       try {
-        const searchUrl = `[https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=$](https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=$){encodeURIComponent(query)}`;
+        const searchUrl = `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=${encodeURIComponent(query)}`;
         const searchRes = await fetch(searchUrl);
         const searchJson = await searchRes.json();
         if (!searchJson.objectIDs || searchJson.objectIDs.length === 0) return [];
 
         const shuffledIds = shuffleArray(searchJson.objectIDs).slice(0, limit);
         const promises = shuffledIds.map(id => 
-          fetch(`[https://collectionapi.metmuseum.org/public/collection/v1/objects/$](https://collectionapi.metmuseum.org/public/collection/v1/objects/$){id}`)
+          fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${id}`)
             .then(r => r.ok ? r.json() : null)
             .catch(() => null)
         );
@@ -2345,3 +2346,4 @@
   </script>
 </body>
 </html>
+EOF
