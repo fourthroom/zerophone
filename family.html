@@ -152,7 +152,7 @@
     .map-frame-container { width: 100%; height: 500px; border-radius: 10px; overflow: hidden; border: 1px solid #444; }
     iframe { width: 100%; height: 100%; border: none; }
 
-    /* RADIO TAB STYLES (RESTORED FROM COPY MODEL) */
+    /* RADIO TAB STYLES */
     .radio-box { background: #1c1c1e; border: 1px solid #e040fb; border-radius: 12px; padding: 20px; max-width: 950px; margin: 0 auto; }
     .radio-genre-bar { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
     .genre-btn { background: #2c2c2e; color: #fff; border: 1px solid #555; padding: 10px 14px; font-size: 13px; font-weight: bold; border-radius: 8px; cursor: pointer; }
@@ -375,7 +375,7 @@
       </div>
     </div>
 
-    <!-- RADIO TAB (FULLY REINSTATED WITH COPY MODEL) -->
+    <!-- RADIO TAB -->
     <div id="tab-radio" class="tab-content">
       <h2 style="color: #e040fb; margin-top: 0;">📻 Local Live Internet Radio</h2>
       <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Select a genre to populate the Left Station Bank</p>
@@ -465,12 +465,12 @@
             <img id="stream-frame" src="https://ids.thewalters.org/iiif/id/W.537_000001/full/800,/0/default.jpg" alt="Illuminated Sacred Folio">
           </div>
           <div class="streamer-info">
-            <h3 id="folio-title">Eusebian Canon Table Arches</h3>
-            <p id="folio-provenance">Walters MS W.537 (12th c. Gospels) • Byzantine Christian Illumination</p>
+            <h3 id="folio-title">Loading IIIF Repository Stream...</h3>
+            <p id="folio-provenance">Walters, Bodleian, Gallica & Getty Automated Synchronized Vault</p>
           </div>
           <div style="display:flex; justify-content:space-between; align-items:center; margin-top:12px; padding:0 15px;">
             <button onclick="prevIllumination()" style="background:#222; border:1px solid #444; color:#d4af37; padding:6px 14px; border-radius:4px; cursor:pointer; font-weight:bold;">◀ Previous</button>
-            <span id="folio-counter" style="color:#aaa; font-size:0.8rem; font-weight:bold;">1 / 5</span>
+            <span id="folio-counter" style="color:#aaa; font-size:0.8rem; font-weight:bold;">1 / 1</span>
             <button onclick="nextIllumination()" style="background:#222; border:1px solid #444; color:#d4af37; padding:6px 14px; border-radius:4px; cursor:pointer; font-weight:bold;">Next Folio ▶</button>
           </div>
         </div>
@@ -542,49 +542,41 @@
       } else if (tabName === 'meditations') {
         document.querySelectorAll('.tab-btn')[5].classList.add('active');
         document.getElementById('tab-meditations').classList.add('active');
+        if (sacredIlluminations.length <= 1) initManuscriptStreamer();
       }
     }
 
-    // 5 PREMIER IIIF REPOSITORY DIRECT IMAGE STREAMER
-    const sacredIlluminations = [
+    // IIIF AUTOMATED STREAMING REPOSITORY (WALTERS, BODLEIAN, GALLICA, GETTY)
+    let sacredIlluminations = [
       {
         title: "Eusebian Canon Table Arches",
-        manuscript: "Walters MS W.537 (12th c. Gospels)",
+        manuscript: "Walters MS W.537",
         tradition: "Byzantine Christian Illumination",
         streamUrl: "https://ids.thewalters.org/iiif/id/W.537_000001/full/800,/0/default.jpg"
-      },
-      {
-        title: "Gospel of Saint Mark Incipit",
-        manuscript: "Bibliothèque nationale de France (Gallica, Lat 10514)",
-        tradition: "Romanesque Scriptorium",
-        streamUrl: "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8423840f/f13/full/800,/0/native.jpg"
-      },
-      {
-        title: "Armenian Illuminated Gospels",
-        manuscript: "Bodleian Libraries, Oxford (MS. Arm. d. 13)",
-        tradition: "Eastern Christian Manuscript",
-        streamUrl: "https://digital.bodleian.ox.ac.uk/iiif/image/5b95542a-430c-45cf-8177-33f7c4ea78e3/full/800,/0/default.jpg"
-      },
-      {
-        title: "Foliated Arabesque Border",
-        manuscript: "The Getty Research Institute (86.XA.148)",
-        tradition: "Islamic Illumination",
-        streamUrl: "https://media.getty.edu/iiif/image/938a49ff-1202-46be-912b-31211e40a000/full/800,/0/default.jpg"
-      },
-      {
-        title: "Medieval Choir Psalter Leaf",
-        manuscript: "The Morgan Library & Museum (M.909)",
-        tradition: "Western Gothic Illumination",
-        streamUrl: "https://okapi.themorgan.org/iiif/3/L1110A/full/800,/0/default.jpg"
       }
     ];
 
     let currentFolioIndex = 0;
 
+    async function initManuscriptStreamer() {
+      try {
+        const res = await fetch('manuscripts.json');
+        if (res.ok) {
+          const data = await res.json();
+          if (Array.isArray(data) && data.length > 0) {
+            sacredIlluminations = data;
+          }
+        }
+      } catch (e) {
+        console.warn("Using fallback IIIF records, manuscripts.json not loaded yet.");
+      }
+      renderFolio(currentFolioIndex);
+    }
+
     function renderFolio(index) {
       const frame = document.getElementById('stream-frame');
-      if (!frame) return;
-      const item = sacredIlluminations[index];
+      if (!frame || sacredIlluminations.length === 0) return;
+      const item = sacredIlluminations[index % sacredIlluminations.length];
       
       frame.style.opacity = '0';
       setTimeout(() => {
@@ -607,6 +599,7 @@
     }
 
     setInterval(nextIllumination, 45000);
+    window.addEventListener('DOMContentLoaded', () => { initManuscriptStreamer(); });
 
     // FLAT SCRIPTURE PATHS
     const localCanons = {
@@ -653,7 +646,7 @@
         view.innerText = raw.replace(/<[^>]*>/g, '').trim() || raw;
         view.scrollTop = 0;
       } catch (err) {
-        view.innerText = `Could not load file at "${path}". Run curl to download it into your scriptures folder and push to GitHub.`;
+        view.innerText = `Could not load file at "${path}". Ensure it is present in your scriptures folder.`;
       }
     }
 
@@ -665,7 +658,7 @@
     }
     function stopSustainedScroll() { if (scrollInterval) { clearInterval(scrollInterval); scrollInterval = null; } }
 
-    // RADIO-BROWSER API ENGINE (REINSTATED)
+    // RADIO-BROWSER API ENGINE
     const RADIO_API_BASE = "https://de1.api.radio-browser.info/json/stations/search";
 
     async function fetchRadioBrowserGenre(tag, labelName) {
@@ -812,13 +805,17 @@
       document.getElementById('mainArtworkImg').style.display = 'block';
     }
 
-    // VIDEO CALL ENGINE
+    // WEBRTC VIDEO CALL ENGINE
     async function startCall() {
-      const roomId = roomIdInput.value.trim();
+      const roomId = document.getElementById('roomId').value.trim();
       if (!roomId) return alert("Please enter a room name");
+      
       try {
         localStream = await navigator.mediaDevices.getUserMedia({ audio: true, video: { facingMode: 'user' } });
-      } catch (e) { return alert("Unable to access camera/microphone."); }
+      } catch (e) { 
+        return alert("Unable to access camera/microphone."); 
+      }
+      
       const localVid = document.getElementById('localVideo');
       localVid.srcObject = localStream;
       localVid.play().catch(e => console.warn(e));
@@ -826,7 +823,110 @@
       document.getElementById('videoStreamView').style.display = 'grid';
       document.getElementById('inCallControls').style.display = 'flex';
       document.getElementById('webphoneMainSection').style.display = 'none';
+      
       socket.emit('join-room', roomId);
+    }
+
+    socket.on('user-joined', async ({ socketId }) => {
+      const pc = createPeerConnection(socketId);
+      const offer = await pc.createOffer();
+      await pc.setLocalDescription(offer);
+      socket.emit('offer', { targetId: socketId, offer });
+    });
+
+    socket.on('offer', async ({ senderId, offer }) => {
+      const pc = createPeerConnection(senderId);
+      await pc.setRemoteDescription(new RTCSessionDescription(offer));
+      const answer = await pc.createAnswer();
+      await pc.setLocalDescription(answer);
+      socket.emit('answer', { targetId: senderId, answer });
+    });
+
+    socket.on('answer', async ({ senderId, answer }) => {
+      const pc = peerConnections[senderId];
+      if (pc) {
+        await pc.setRemoteDescription(new RTCSessionDescription(answer));
+      }
+    });
+
+    socket.on('ice-candidate', async ({ senderId, candidate }) => {
+      const pc = peerConnections[senderId];
+      if (pc && candidate) {
+        await pc.addIceCandidate(new RTCIceCandidate(candidate));
+      }
+    });
+
+    socket.on('user-disconnected', ({ socketId }) => {
+      if (peerConnections[socketId]) {
+        peerConnections[socketId].close();
+        delete peerConnections[socketId];
+      }
+      const remoteCard = document.getElementById(`remote-card-${socketId}`);
+      if (remoteCard) remoteCard.remove();
+    });
+
+    function createPeerConnection(targetId) {
+      const config = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] };
+      const pc = new RTCPeerConnection(config);
+      peerConnections[targetId] = pc;
+
+      localStream.getTracks().forEach(track => pc.addTrack(track, localStream));
+
+      pc.onicecandidate = event => {
+        if (event.candidate) {
+          socket.emit('ice-candidate', { targetId, candidate: event.candidate });
+        }
+      };
+
+      pc.ontrack = event => {
+        let remoteCard = document.getElementById(`remote-card-${targetId}`);
+        if (!remoteCard) {
+          const grid = document.getElementById('videoStreamView');
+          remoteCard = document.createElement('div');
+          remoteCard.className = 'video-card';
+          remoteCard.id = `remote-card-${targetId}`;
+          remoteCard.innerHTML = `<h3 style="margin: 0 0 8px 0; font-size: 14px;">Remote Stream</h3><video autoplay playsinline></video>`;
+          grid.appendChild(remoteCard);
+          grid.className = `video-grid peers-${Object.keys(peerConnections).length + 1}`;
+        }
+        remoteCard.querySelector('video').srcObject = event.streams[0];
+      };
+
+      return pc;
+    }
+
+    function toggleAudio() {
+      const audioTrack = localStream.getAudioTracks()[0];
+      if (audioTrack) {
+        audioTrack.enabled = !audioTrack.enabled;
+        document.getElementById('toggleMicBtn').classList.toggle('muted', !audioTrack.enabled);
+      }
+    }
+
+    function toggleVideo() {
+      const videoTrack = localStream.getVideoTracks()[0];
+      if (videoTrack) {
+        videoTrack.enabled = !videoTrack.enabled;
+        document.getElementById('toggleCamBtn').classList.toggle('muted', !videoTrack.enabled);
+      }
+    }
+
+    function hangUpCall() {
+      if (localStream) {
+        localStream.getTracks().forEach(track => track.stop());
+      }
+      Object.values(peerConnections).forEach(pc => pc.close());
+      peerConnections = {};
+      
+      document.getElementById('videoStreamView').innerHTML = `
+        <div class="video-card">
+          <h3 style="margin: 0 0 8px 0; font-size: 14px;">Local Stream (You)</h3>
+          <video id="localVideo" autoplay playsinline muted></video>
+        </div>`;
+      document.getElementById('videoStreamView').style.display = 'none';
+      document.getElementById('inCallControls').style.display = 'none';
+      document.getElementById('webphoneMainSection').style.display = 'block';
+      window.location.reload();
     }
   </script>
 </body>
