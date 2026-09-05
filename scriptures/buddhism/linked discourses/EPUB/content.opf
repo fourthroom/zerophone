@@ -1,0 +1,613 @@
+<?xml version='1.0' encoding='utf-8'?>
+<package xmlns="http://www.idpf.org/2007/opf" unique-identifier="id" version="3.0" prefix="rendition: http://www.idpf.org/vocab/rendition/#">
+  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
+    <meta property="dcterms:modified">2026-08-26T04:12:34Z</meta>
+    <meta name="generator" content="Ebook-lib 0.17.1"/>
+    <dc:identifier id="id">sn-en-sujato_scpub4-ed2-epub_2022-02-10</dc:identifier>
+    <dc:title>Linked Discourses</dc:title>
+    <dc:language>en</dc:language>
+    <dc:creator id="creator">Bhikkhu Sujato</dc:creator>
+    <meta name="cover" content="cover-img"></meta>
+  </metadata>
+  <manifest>
+    <item href="cover.jpg" id="cover-img" media-type="image/jpeg" properties="cover-image"/>
+    <item href="cover.xhtml" id="cover" media-type="application/xhtml+xml"/>
+    <item href="style/default.css" id="style_default" media-type="text/css"/>
+    <item href="images/sclogo.png" id="sclogo" media-type="image/png"/>
+    <item href="halftitlepage.xhtml" id="chapter_0" media-type="application/xhtml+xml"/>
+    <item href="imprint.xhtml" id="chapter_1" media-type="application/xhtml+xml"/>
+    <item href="epigraph.xhtml" id="chapter_2" media-type="application/xhtml+xml"/>
+    <item href="foreword.xhtml" id="chapter_3" media-type="application/xhtml+xml"/>
+    <item href="preface.xhtml" id="chapter_4" media-type="application/xhtml+xml"/>
+    <item href="introduction.xhtml" id="chapter_5" media-type="application/xhtml+xml"/>
+    <item href="acknowledgements.xhtml" id="chapter_6" media-type="application/xhtml+xml"/>
+    <item href="sn-sagathavaggasamyutta.xhtml" id="chapter_7" media-type="application/xhtml+xml"/>
+    <item href="sn1-nalavagga.xhtml" id="chapter_8" media-type="application/xhtml+xml"/>
+    <item href="sn1-nandanavagga.xhtml" id="chapter_9" media-type="application/xhtml+xml"/>
+    <item href="sn1-sattivagga.xhtml" id="chapter_10" media-type="application/xhtml+xml"/>
+    <item href="sn1-satullapakayikavagga.xhtml" id="chapter_11" media-type="application/xhtml+xml"/>
+    <item href="sn1-adittavagga.xhtml" id="chapter_12" media-type="application/xhtml+xml"/>
+    <item href="sn1-jaravagga.xhtml" id="chapter_13" media-type="application/xhtml+xml"/>
+    <item href="sn1-addhavagga.xhtml" id="chapter_14" media-type="application/xhtml+xml"/>
+    <item href="sn1-chetvavagga.xhtml" id="chapter_15" media-type="application/xhtml+xml"/>
+    <item href="sn2.xhtml" id="chapter_16" media-type="application/xhtml+xml"/>
+    <item href="sn2-pathamavagga.xhtml" id="chapter_17" media-type="application/xhtml+xml"/>
+    <item href="sn2-anathapindikavagga.xhtml" id="chapter_18" media-type="application/xhtml+xml"/>
+    <item href="sn2-nanatitthiyavagga.xhtml" id="chapter_19" media-type="application/xhtml+xml"/>
+    <item href="sn3.xhtml" id="chapter_20" media-type="application/xhtml+xml"/>
+    <item href="sn3-pathamavagga.xhtml" id="chapter_21" media-type="application/xhtml+xml"/>
+    <item href="sn3-dutiyavagga.xhtml" id="chapter_22" media-type="application/xhtml+xml"/>
+    <item href="sn3-tatiyavagga.xhtml" id="chapter_23" media-type="application/xhtml+xml"/>
+    <item href="sn4.xhtml" id="chapter_24" media-type="application/xhtml+xml"/>
+    <item href="sn4-pathamavagga.xhtml" id="chapter_25" media-type="application/xhtml+xml"/>
+    <item href="sn4-dutiyavagga.xhtml" id="chapter_26" media-type="application/xhtml+xml"/>
+    <item href="sn4-tatiyavagga.xhtml" id="chapter_27" media-type="application/xhtml+xml"/>
+    <item href="sn5.xhtml" id="chapter_28" media-type="application/xhtml+xml"/>
+    <item href="sn5-bhikkhunivagga.xhtml" id="chapter_29" media-type="application/xhtml+xml"/>
+    <item href="sn6.xhtml" id="chapter_30" media-type="application/xhtml+xml"/>
+    <item href="sn6-pathamavagga.xhtml" id="chapter_31" media-type="application/xhtml+xml"/>
+    <item href="sn6-dutiyavagga.xhtml" id="chapter_32" media-type="application/xhtml+xml"/>
+    <item href="sn7.xhtml" id="chapter_33" media-type="application/xhtml+xml"/>
+    <item href="sn7-arahantavagga.xhtml" id="chapter_34" media-type="application/xhtml+xml"/>
+    <item href="sn7-upasakavagga.xhtml" id="chapter_35" media-type="application/xhtml+xml"/>
+    <item href="sn8.xhtml" id="chapter_36" media-type="application/xhtml+xml"/>
+    <item href="sn8-vangisavagga.xhtml" id="chapter_37" media-type="application/xhtml+xml"/>
+    <item href="sn9.xhtml" id="chapter_38" media-type="application/xhtml+xml"/>
+    <item href="sn9-vanavagga.xhtml" id="chapter_39" media-type="application/xhtml+xml"/>
+    <item href="sn10.xhtml" id="chapter_40" media-type="application/xhtml+xml"/>
+    <item href="sn10-indakavagga.xhtml" id="chapter_41" media-type="application/xhtml+xml"/>
+    <item href="sn11.xhtml" id="chapter_42" media-type="application/xhtml+xml"/>
+    <item href="sn11-pathamavagga.xhtml" id="chapter_43" media-type="application/xhtml+xml"/>
+    <item href="sn11-dutiyavagga.xhtml" id="chapter_44" media-type="application/xhtml+xml"/>
+    <item href="sn11-tatiyavagga.xhtml" id="chapter_45" media-type="application/xhtml+xml"/>
+    <item href="sn-nidanavaggasamyutta.xhtml" id="chapter_46" media-type="application/xhtml+xml"/>
+    <item href="sn12-buddhavagga.xhtml" id="chapter_47" media-type="application/xhtml+xml"/>
+    <item href="sn12-aharavagga.xhtml" id="chapter_48" media-type="application/xhtml+xml"/>
+    <item href="sn12-dasabalavagga.xhtml" id="chapter_49" media-type="application/xhtml+xml"/>
+    <item href="sn12-kalarakhattiyavagga.xhtml" id="chapter_50" media-type="application/xhtml+xml"/>
+    <item href="sn12-gahapativagga.xhtml" id="chapter_51" media-type="application/xhtml+xml"/>
+    <item href="sn12-dukkhavagga.xhtml" id="chapter_52" media-type="application/xhtml+xml"/>
+    <item href="sn12-mahavagga.xhtml" id="chapter_53" media-type="application/xhtml+xml"/>
+    <item href="sn12-samanabrahmanavagga.xhtml" id="chapter_54" media-type="application/xhtml+xml"/>
+    <item href="sn12-antarapeyyala.xhtml" id="chapter_55" media-type="application/xhtml+xml"/>
+    <item href="sn12-sikkhasuttadipeyyalaekadasaka.xhtml" id="chapter_56" media-type="application/xhtml+xml"/>
+    <item href="sn13.xhtml" id="chapter_57" media-type="application/xhtml+xml"/>
+    <item href="sn13-abhisamayavagga.xhtml" id="chapter_58" media-type="application/xhtml+xml"/>
+    <item href="sn14.xhtml" id="chapter_59" media-type="application/xhtml+xml"/>
+    <item href="sn14-nanattavagga.xhtml" id="chapter_60" media-type="application/xhtml+xml"/>
+    <item href="sn14-dutiyavagga.xhtml" id="chapter_61" media-type="application/xhtml+xml"/>
+    <item href="sn14-kammapathavagga.xhtml" id="chapter_62" media-type="application/xhtml+xml"/>
+    <item href="sn14-catutthavagga.xhtml" id="chapter_63" media-type="application/xhtml+xml"/>
+    <item href="sn15.xhtml" id="chapter_64" media-type="application/xhtml+xml"/>
+    <item href="sn15-pathamavagga.xhtml" id="chapter_65" media-type="application/xhtml+xml"/>
+    <item href="sn15-dutiyavagga.xhtml" id="chapter_66" media-type="application/xhtml+xml"/>
+    <item href="sn16.xhtml" id="chapter_67" media-type="application/xhtml+xml"/>
+    <item href="sn16-kassapavagga.xhtml" id="chapter_68" media-type="application/xhtml+xml"/>
+    <item href="sn17.xhtml" id="chapter_69" media-type="application/xhtml+xml"/>
+    <item href="sn17-pathamavagga.xhtml" id="chapter_70" media-type="application/xhtml+xml"/>
+    <item href="sn17-dutiyavagga.xhtml" id="chapter_71" media-type="application/xhtml+xml"/>
+    <item href="sn17-tatiyavagga.xhtml" id="chapter_72" media-type="application/xhtml+xml"/>
+    <item href="sn17-catutthavagga.xhtml" id="chapter_73" media-type="application/xhtml+xml"/>
+    <item href="sn18.xhtml" id="chapter_74" media-type="application/xhtml+xml"/>
+    <item href="sn18-pathamavagga.xhtml" id="chapter_75" media-type="application/xhtml+xml"/>
+    <item href="sn18-dutiyavagga.xhtml" id="chapter_76" media-type="application/xhtml+xml"/>
+    <item href="sn19.xhtml" id="chapter_77" media-type="application/xhtml+xml"/>
+    <item href="sn19-pathamavagga.xhtml" id="chapter_78" media-type="application/xhtml+xml"/>
+    <item href="sn19-dutiyavagga.xhtml" id="chapter_79" media-type="application/xhtml+xml"/>
+    <item href="sn20.xhtml" id="chapter_80" media-type="application/xhtml+xml"/>
+    <item href="sn20-opammavagga.xhtml" id="chapter_81" media-type="application/xhtml+xml"/>
+    <item href="sn21.xhtml" id="chapter_82" media-type="application/xhtml+xml"/>
+    <item href="sn21-bhikkhuvagga.xhtml" id="chapter_83" media-type="application/xhtml+xml"/>
+    <item href="sn-khandhavaggasamyutta.xhtml" id="chapter_84" media-type="application/xhtml+xml"/>
+    <item href="sn22-mulapannasaka.xhtml" id="chapter_85" media-type="application/xhtml+xml"/>
+    <item href="sn22-aniccavagga.xhtml" id="chapter_86" media-type="application/xhtml+xml"/>
+    <item href="sn22-bharavagga.xhtml" id="chapter_87" media-type="application/xhtml+xml"/>
+    <item href="sn22-natumhakavagga.xhtml" id="chapter_88" media-type="application/xhtml+xml"/>
+    <item href="sn22-attadipavagga.xhtml" id="chapter_89" media-type="application/xhtml+xml"/>
+    <item href="sn22-majjhimapannasaka.xhtml" id="chapter_90" media-type="application/xhtml+xml"/>
+    <item href="sn22-arahantavagga.xhtml" id="chapter_91" media-type="application/xhtml+xml"/>
+    <item href="sn22-khajjaniyavagga.xhtml" id="chapter_92" media-type="application/xhtml+xml"/>
+    <item href="sn22-theravagga.xhtml" id="chapter_93" media-type="application/xhtml+xml"/>
+    <item href="sn22-pupphavagga.xhtml" id="chapter_94" media-type="application/xhtml+xml"/>
+    <item href="sn22-uparipannasaka.xhtml" id="chapter_95" media-type="application/xhtml+xml"/>
+    <item href="sn22-dhammakathikavagga.xhtml" id="chapter_96" media-type="application/xhtml+xml"/>
+    <item href="sn22-avijjavagga.xhtml" id="chapter_97" media-type="application/xhtml+xml"/>
+    <item href="sn22-kukkulavagga.xhtml" id="chapter_98" media-type="application/xhtml+xml"/>
+    <item href="sn22-ditthivagga.xhtml" id="chapter_99" media-type="application/xhtml+xml"/>
+    <item href="sn23.xhtml" id="chapter_100" media-type="application/xhtml+xml"/>
+    <item href="sn23-pathamamaravagga.xhtml" id="chapter_101" media-type="application/xhtml+xml"/>
+    <item href="sn23-dutiyamaravagga.xhtml" id="chapter_102" media-type="application/xhtml+xml"/>
+    <item href="sn23-ayacanavagga.xhtml" id="chapter_103" media-type="application/xhtml+xml"/>
+    <item href="sn23-upanisinnavagga.xhtml" id="chapter_104" media-type="application/xhtml+xml"/>
+    <item href="sn24.xhtml" id="chapter_105" media-type="application/xhtml+xml"/>
+    <item href="sn24-sotapattivagga.xhtml" id="chapter_106" media-type="application/xhtml+xml"/>
+    <item href="sn24-dutiyagamanavagga.xhtml" id="chapter_107" media-type="application/xhtml+xml"/>
+    <item href="sn24-tatiyagamanavagga.xhtml" id="chapter_108" media-type="application/xhtml+xml"/>
+    <item href="sn24-catutthagamanavagga.xhtml" id="chapter_109" media-type="application/xhtml+xml"/>
+    <item href="sn25.xhtml" id="chapter_110" media-type="application/xhtml+xml"/>
+    <item href="sn25-cakkhuvagga.xhtml" id="chapter_111" media-type="application/xhtml+xml"/>
+    <item href="sn26.xhtml" id="chapter_112" media-type="application/xhtml+xml"/>
+    <item href="sn26-uppadavagga.xhtml" id="chapter_113" media-type="application/xhtml+xml"/>
+    <item href="sn27.xhtml" id="chapter_114" media-type="application/xhtml+xml"/>
+    <item href="sn27-kilesavagga.xhtml" id="chapter_115" media-type="application/xhtml+xml"/>
+    <item href="sn28.xhtml" id="chapter_116" media-type="application/xhtml+xml"/>
+    <item href="sn28-sariputtavagga.xhtml" id="chapter_117" media-type="application/xhtml+xml"/>
+    <item href="sn29.xhtml" id="chapter_118" media-type="application/xhtml+xml"/>
+    <item href="sn29-nagavagga.xhtml" id="chapter_119" media-type="application/xhtml+xml"/>
+    <item href="sn30.xhtml" id="chapter_120" media-type="application/xhtml+xml"/>
+    <item href="sn30-supannavagga.xhtml" id="chapter_121" media-type="application/xhtml+xml"/>
+    <item href="sn31.xhtml" id="chapter_122" media-type="application/xhtml+xml"/>
+    <item href="sn31-gandhabbavagga.xhtml" id="chapter_123" media-type="application/xhtml+xml"/>
+    <item href="sn32.xhtml" id="chapter_124" media-type="application/xhtml+xml"/>
+    <item href="sn32-valahakavagga.xhtml" id="chapter_125" media-type="application/xhtml+xml"/>
+    <item href="sn33.xhtml" id="chapter_126" media-type="application/xhtml+xml"/>
+    <item href="sn33-vacchagottavagga.xhtml" id="chapter_127" media-type="application/xhtml+xml"/>
+    <item href="sn34.xhtml" id="chapter_128" media-type="application/xhtml+xml"/>
+    <item href="sn34-jhanavagga.xhtml" id="chapter_129" media-type="application/xhtml+xml"/>
+    <item href="sn-salayatanavaggasamyutta.xhtml" id="chapter_130" media-type="application/xhtml+xml"/>
+    <item href="sn35-pathamapannasaka.xhtml" id="chapter_131" media-type="application/xhtml+xml"/>
+    <item href="sn35-yamakavagga.xhtml" id="chapter_132" media-type="application/xhtml+xml"/>
+    <item href="sn35-sabbavagga.xhtml" id="chapter_133" media-type="application/xhtml+xml"/>
+    <item href="sn35-jatidhammavagga.xhtml" id="chapter_134" media-type="application/xhtml+xml"/>
+    <item href="sn35-sabbaaniccavagga.xhtml" id="chapter_135" media-type="application/xhtml+xml"/>
+    <item href="sn35-dutiyapannasaka.xhtml" id="chapter_136" media-type="application/xhtml+xml"/>
+    <item href="sn35-migajalavagga.xhtml" id="chapter_137" media-type="application/xhtml+xml"/>
+    <item href="sn35-gilanavagga.xhtml" id="chapter_138" media-type="application/xhtml+xml"/>
+    <item href="sn35-channavagga.xhtml" id="chapter_139" media-type="application/xhtml+xml"/>
+    <item href="sn35-salavagga.xhtml" id="chapter_140" media-type="application/xhtml+xml"/>
+    <item href="sn35-tatiyapannasaka.xhtml" id="chapter_141" media-type="application/xhtml+xml"/>
+    <item href="sn35-lokakamagunavagga.xhtml" id="chapter_142" media-type="application/xhtml+xml"/>
+    <item href="sn35-gahapativagga.xhtml" id="chapter_143" media-type="application/xhtml+xml"/>
+    <item href="sn35-devadahavagga.xhtml" id="chapter_144" media-type="application/xhtml+xml"/>
+    <item href="sn35-navapuranavagga.xhtml" id="chapter_145" media-type="application/xhtml+xml"/>
+    <item href="sn35-catutthapannasaka.xhtml" id="chapter_146" media-type="application/xhtml+xml"/>
+    <item href="sn35-satthipeyyalavagga.xhtml" id="chapter_147" media-type="application/xhtml+xml"/>
+    <item href="sn35-samuddavagga.xhtml" id="chapter_148" media-type="application/xhtml+xml"/>
+    <item href="sn35-asivisavagga.xhtml" id="chapter_149" media-type="application/xhtml+xml"/>
+    <item href="sn36.xhtml" id="chapter_150" media-type="application/xhtml+xml"/>
+    <item href="sn36-sagathavagga.xhtml" id="chapter_151" media-type="application/xhtml+xml"/>
+    <item href="sn36-rahogatavagga.xhtml" id="chapter_152" media-type="application/xhtml+xml"/>
+    <item href="sn36-atthasatapariyayavagga.xhtml" id="chapter_153" media-type="application/xhtml+xml"/>
+    <item href="sn37.xhtml" id="chapter_154" media-type="application/xhtml+xml"/>
+    <item href="sn37-pathamapeyyalavagga.xhtml" id="chapter_155" media-type="application/xhtml+xml"/>
+    <item href="sn37-dutiyapeyyalavagga.xhtml" id="chapter_156" media-type="application/xhtml+xml"/>
+    <item href="sn37-balavagga.xhtml" id="chapter_157" media-type="application/xhtml+xml"/>
+    <item href="sn38.xhtml" id="chapter_158" media-type="application/xhtml+xml"/>
+    <item href="sn38-jambukhadakavagga.xhtml" id="chapter_159" media-type="application/xhtml+xml"/>
+    <item href="sn39.xhtml" id="chapter_160" media-type="application/xhtml+xml"/>
+    <item href="sn39-samandakavagga.xhtml" id="chapter_161" media-type="application/xhtml+xml"/>
+    <item href="sn40.xhtml" id="chapter_162" media-type="application/xhtml+xml"/>
+    <item href="sn40-moggallanavagga.xhtml" id="chapter_163" media-type="application/xhtml+xml"/>
+    <item href="sn41.xhtml" id="chapter_164" media-type="application/xhtml+xml"/>
+    <item href="sn41-cittavagga.xhtml" id="chapter_165" media-type="application/xhtml+xml"/>
+    <item href="sn42.xhtml" id="chapter_166" media-type="application/xhtml+xml"/>
+    <item href="sn42-gamanivagga.xhtml" id="chapter_167" media-type="application/xhtml+xml"/>
+    <item href="sn43.xhtml" id="chapter_168" media-type="application/xhtml+xml"/>
+    <item href="sn43-pathamavagga.xhtml" id="chapter_169" media-type="application/xhtml+xml"/>
+    <item href="sn43-dutiyavagga.xhtml" id="chapter_170" media-type="application/xhtml+xml"/>
+    <item href="sn44.xhtml" id="chapter_171" media-type="application/xhtml+xml"/>
+    <item href="sn44-abyakatavagga.xhtml" id="chapter_172" media-type="application/xhtml+xml"/>
+    <item href="sn-mahavaggasamyutta.xhtml" id="chapter_173" media-type="application/xhtml+xml"/>
+    <item href="sn45-avijjavagga.xhtml" id="chapter_174" media-type="application/xhtml+xml"/>
+    <item href="sn45-viharavagga.xhtml" id="chapter_175" media-type="application/xhtml+xml"/>
+    <item href="sn45-micchattavagga.xhtml" id="chapter_176" media-type="application/xhtml+xml"/>
+    <item href="sn45-patipattivagga.xhtml" id="chapter_177" media-type="application/xhtml+xml"/>
+    <item href="sn45-annatitthiyapeyyalavagga.xhtml" id="chapter_178" media-type="application/xhtml+xml"/>
+    <item href="sn45-suriyapeyyalavagga.xhtml" id="chapter_179" media-type="application/xhtml+xml"/>
+    <item href="sn45-ekadhammapeyyalavagga.xhtml" id="chapter_180" media-type="application/xhtml+xml"/>
+    <item href="sn45-dutiyaekadhammapeyyalavagga.xhtml" id="chapter_181" media-type="application/xhtml+xml"/>
+    <item href="sn45-gangapeyyalavagga.xhtml" id="chapter_182" media-type="application/xhtml+xml"/>
+    <item href="sn45-dutiyagangapeyyalavagga.xhtml" id="chapter_183" media-type="application/xhtml+xml"/>
+    <item href="sn45-appamadapeyyalavagga.xhtml" id="chapter_184" media-type="application/xhtml+xml"/>
+    <item href="sn45-balakaraniyavagga.xhtml" id="chapter_185" media-type="application/xhtml+xml"/>
+    <item href="sn45-esanavagga.xhtml" id="chapter_186" media-type="application/xhtml+xml"/>
+    <item href="sn45-oghavagga.xhtml" id="chapter_187" media-type="application/xhtml+xml"/>
+    <item href="sn46.xhtml" id="chapter_188" media-type="application/xhtml+xml"/>
+    <item href="sn46-pabbatavagga.xhtml" id="chapter_189" media-type="application/xhtml+xml"/>
+    <item href="sn46-gilanavagga.xhtml" id="chapter_190" media-type="application/xhtml+xml"/>
+    <item href="sn46-udayivagga.xhtml" id="chapter_191" media-type="application/xhtml+xml"/>
+    <item href="sn46-nivaranavagga.xhtml" id="chapter_192" media-type="application/xhtml+xml"/>
+    <item href="sn46-cakkavattivagga.xhtml" id="chapter_193" media-type="application/xhtml+xml"/>
+    <item href="sn46-sakacchavagga.xhtml" id="chapter_194" media-type="application/xhtml+xml"/>
+    <item href="sn46-anapanavagga.xhtml" id="chapter_195" media-type="application/xhtml+xml"/>
+    <item href="sn46-nirodhavagga.xhtml" id="chapter_196" media-type="application/xhtml+xml"/>
+    <item href="sn46-gangapeyyalavagga.xhtml" id="chapter_197" media-type="application/xhtml+xml"/>
+    <item href="sn46-appamadavagga.xhtml" id="chapter_198" media-type="application/xhtml+xml"/>
+    <item href="sn46-balakaraniyavagga.xhtml" id="chapter_199" media-type="application/xhtml+xml"/>
+    <item href="sn46-esanavagga.xhtml" id="chapter_200" media-type="application/xhtml+xml"/>
+    <item href="sn46-oghavagga.xhtml" id="chapter_201" media-type="application/xhtml+xml"/>
+    <item href="sn46-punagangapeyyalavagga.xhtml" id="chapter_202" media-type="application/xhtml+xml"/>
+    <item href="sn46-punaappamadavagga.xhtml" id="chapter_203" media-type="application/xhtml+xml"/>
+    <item href="sn46-punabalakaraniyavagga.xhtml" id="chapter_204" media-type="application/xhtml+xml"/>
+    <item href="sn46-punaesanavagga.xhtml" id="chapter_205" media-type="application/xhtml+xml"/>
+    <item href="sn46-punaoghavagga.xhtml" id="chapter_206" media-type="application/xhtml+xml"/>
+    <item href="sn47.xhtml" id="chapter_207" media-type="application/xhtml+xml"/>
+    <item href="sn47-ambapalivagga.xhtml" id="chapter_208" media-type="application/xhtml+xml"/>
+    <item href="sn47-nalandavagga.xhtml" id="chapter_209" media-type="application/xhtml+xml"/>
+    <item href="sn47-silatthitivagga.xhtml" id="chapter_210" media-type="application/xhtml+xml"/>
+    <item href="sn47-ananussutavagga.xhtml" id="chapter_211" media-type="application/xhtml+xml"/>
+    <item href="sn47-amatavagga.xhtml" id="chapter_212" media-type="application/xhtml+xml"/>
+    <item href="sn47-gangapeyyalavagga.xhtml" id="chapter_213" media-type="application/xhtml+xml"/>
+    <item href="sn47-appamadavagga.xhtml" id="chapter_214" media-type="application/xhtml+xml"/>
+    <item href="sn47-balakaraniyavagga.xhtml" id="chapter_215" media-type="application/xhtml+xml"/>
+    <item href="sn47-esanavagga.xhtml" id="chapter_216" media-type="application/xhtml+xml"/>
+    <item href="sn47-oghavagga.xhtml" id="chapter_217" media-type="application/xhtml+xml"/>
+    <item href="sn48.xhtml" id="chapter_218" media-type="application/xhtml+xml"/>
+    <item href="sn48-suddhikavagga.xhtml" id="chapter_219" media-type="application/xhtml+xml"/>
+    <item href="sn48-mudutaravagga.xhtml" id="chapter_220" media-type="application/xhtml+xml"/>
+    <item href="sn48-chalindriyavagga.xhtml" id="chapter_221" media-type="application/xhtml+xml"/>
+    <item href="sn48-sukhindriyavagga.xhtml" id="chapter_222" media-type="application/xhtml+xml"/>
+    <item href="sn48-jaravagga.xhtml" id="chapter_223" media-type="application/xhtml+xml"/>
+    <item href="sn48-sukarakhatavagga.xhtml" id="chapter_224" media-type="application/xhtml+xml"/>
+    <item href="sn48-bodhipakkhiyavagga.xhtml" id="chapter_225" media-type="application/xhtml+xml"/>
+    <item href="sn48-gangapeyyalavagga.xhtml" id="chapter_226" media-type="application/xhtml+xml"/>
+    <item href="sn48-appamadavagga.xhtml" id="chapter_227" media-type="application/xhtml+xml"/>
+    <item href="sn48-balakaraniyavagga.xhtml" id="chapter_228" media-type="application/xhtml+xml"/>
+    <item href="sn48-esanavagga.xhtml" id="chapter_229" media-type="application/xhtml+xml"/>
+    <item href="sn48-oghavagga.xhtml" id="chapter_230" media-type="application/xhtml+xml"/>
+    <item href="sn48-punagangapeyyalavagga.xhtml" id="chapter_231" media-type="application/xhtml+xml"/>
+    <item href="sn48-punaappamadavagga.xhtml" id="chapter_232" media-type="application/xhtml+xml"/>
+    <item href="sn48-punabalakaraniyavagga.xhtml" id="chapter_233" media-type="application/xhtml+xml"/>
+    <item href="sn48-punaesanavagga.xhtml" id="chapter_234" media-type="application/xhtml+xml"/>
+    <item href="sn48-punaoghavagga.xhtml" id="chapter_235" media-type="application/xhtml+xml"/>
+    <item href="sn49.xhtml" id="chapter_236" media-type="application/xhtml+xml"/>
+    <item href="sn49-gangapeyyalavagga.xhtml" id="chapter_237" media-type="application/xhtml+xml"/>
+    <item href="sn49-appamadavagga.xhtml" id="chapter_238" media-type="application/xhtml+xml"/>
+    <item href="sn49-balakaraniyavagga.xhtml" id="chapter_239" media-type="application/xhtml+xml"/>
+    <item href="sn49-esanavagga.xhtml" id="chapter_240" media-type="application/xhtml+xml"/>
+    <item href="sn49-oghavagga.xhtml" id="chapter_241" media-type="application/xhtml+xml"/>
+    <item href="sn50.xhtml" id="chapter_242" media-type="application/xhtml+xml"/>
+    <item href="sn50-gangapeyyalavagga.xhtml" id="chapter_243" media-type="application/xhtml+xml"/>
+    <item href="sn50-appamadavagga.xhtml" id="chapter_244" media-type="application/xhtml+xml"/>
+    <item href="sn50-balakaraniyavagga.xhtml" id="chapter_245" media-type="application/xhtml+xml"/>
+    <item href="sn50-esanavagga.xhtml" id="chapter_246" media-type="application/xhtml+xml"/>
+    <item href="sn50-oghavagga.xhtml" id="chapter_247" media-type="application/xhtml+xml"/>
+    <item href="sn50-punagangapeyyalavagga.xhtml" id="chapter_248" media-type="application/xhtml+xml"/>
+    <item href="sn50-punaappamadavagga.xhtml" id="chapter_249" media-type="application/xhtml+xml"/>
+    <item href="sn50-punabalakaraniyavagga.xhtml" id="chapter_250" media-type="application/xhtml+xml"/>
+    <item href="sn50-punaesanavagga.xhtml" id="chapter_251" media-type="application/xhtml+xml"/>
+    <item href="sn50-punaoghavagga.xhtml" id="chapter_252" media-type="application/xhtml+xml"/>
+    <item href="sn51.xhtml" id="chapter_253" media-type="application/xhtml+xml"/>
+    <item href="sn51-capalavagga.xhtml" id="chapter_254" media-type="application/xhtml+xml"/>
+    <item href="sn51-pasadakampanavagga.xhtml" id="chapter_255" media-type="application/xhtml+xml"/>
+    <item href="sn51-ayogulavagga.xhtml" id="chapter_256" media-type="application/xhtml+xml"/>
+    <item href="sn51-gangapeyyalavagga.xhtml" id="chapter_257" media-type="application/xhtml+xml"/>
+    <item href="sn51-appamadavagga.xhtml" id="chapter_258" media-type="application/xhtml+xml"/>
+    <item href="sn51-balakaraniyavagga.xhtml" id="chapter_259" media-type="application/xhtml+xml"/>
+    <item href="sn51-esanavagga.xhtml" id="chapter_260" media-type="application/xhtml+xml"/>
+    <item href="sn51-oghavagga.xhtml" id="chapter_261" media-type="application/xhtml+xml"/>
+    <item href="sn52.xhtml" id="chapter_262" media-type="application/xhtml+xml"/>
+    <item href="sn52-rahogatavagga.xhtml" id="chapter_263" media-type="application/xhtml+xml"/>
+    <item href="sn52-dutiyavagga.xhtml" id="chapter_264" media-type="application/xhtml+xml"/>
+    <item href="sn53.xhtml" id="chapter_265" media-type="application/xhtml+xml"/>
+    <item href="sn53-gangapeyyalavagga.xhtml" id="chapter_266" media-type="application/xhtml+xml"/>
+    <item href="sn53-appamadavagga.xhtml" id="chapter_267" media-type="application/xhtml+xml"/>
+    <item href="sn53-balakaraniyavagga.xhtml" id="chapter_268" media-type="application/xhtml+xml"/>
+    <item href="sn53-esanavagga.xhtml" id="chapter_269" media-type="application/xhtml+xml"/>
+    <item href="sn53-oghavagga.xhtml" id="chapter_270" media-type="application/xhtml+xml"/>
+    <item href="sn54.xhtml" id="chapter_271" media-type="application/xhtml+xml"/>
+    <item href="sn54-ekadhammavagga.xhtml" id="chapter_272" media-type="application/xhtml+xml"/>
+    <item href="sn54-dutiyavagga.xhtml" id="chapter_273" media-type="application/xhtml+xml"/>
+    <item href="sn55.xhtml" id="chapter_274" media-type="application/xhtml+xml"/>
+    <item href="sn55-veludvaravagga.xhtml" id="chapter_275" media-type="application/xhtml+xml"/>
+    <item href="sn55-rajakaramavagga.xhtml" id="chapter_276" media-type="application/xhtml+xml"/>
+    <item href="sn55-sarananivagga.xhtml" id="chapter_277" media-type="application/xhtml+xml"/>
+    <item href="sn55-punnabhisandavagga.xhtml" id="chapter_278" media-type="application/xhtml+xml"/>
+    <item href="sn55-sagathakapunnabhisandavagga.xhtml" id="chapter_279" media-type="application/xhtml+xml"/>
+    <item href="sn55-sappannavagga.xhtml" id="chapter_280" media-type="application/xhtml+xml"/>
+    <item href="sn55-mahapannavagga.xhtml" id="chapter_281" media-type="application/xhtml+xml"/>
+    <item href="sn56.xhtml" id="chapter_282" media-type="application/xhtml+xml"/>
+    <item href="sn56-samadhivagga.xhtml" id="chapter_283" media-type="application/xhtml+xml"/>
+    <item href="sn56-dhammacakkappavattanavagga.xhtml" id="chapter_284" media-type="application/xhtml+xml"/>
+    <item href="sn56-kotigamavagga.xhtml" id="chapter_285" media-type="application/xhtml+xml"/>
+    <item href="sn56-sisapavanavagga.xhtml" id="chapter_286" media-type="application/xhtml+xml"/>
+    <item href="sn56-papatavagga.xhtml" id="chapter_287" media-type="application/xhtml+xml"/>
+    <item href="sn56-abhisamayavagga.xhtml" id="chapter_288" media-type="application/xhtml+xml"/>
+    <item href="sn56-pathamaamakadhannapeyyalavagga.xhtml" id="chapter_289" media-type="application/xhtml+xml"/>
+    <item href="sn56-dutiyaamakadhannapeyyalavagga.xhtml" id="chapter_290" media-type="application/xhtml+xml"/>
+    <item href="sn56-tatiyaamakadhannapeyyalavagga.xhtml" id="chapter_291" media-type="application/xhtml+xml"/>
+    <item href="sn56-catutthaamakadhannapeyyalavagga.xhtml" id="chapter_292" media-type="application/xhtml+xml"/>
+    <item href="sn56-pancagatipeyyalavagga.xhtml" id="chapter_293" media-type="application/xhtml+xml"/>
+    <item href="colophon.xhtml" id="chapter_294" media-type="application/xhtml+xml"/>
+    <item href="toc.ncx" id="ncx" media-type="application/x-dtbncx+xml"/>
+    <item href="nav.xhtml" id="nav" media-type="application/xhtml+xml" properties="nav"/>
+  </manifest>
+  <spine toc="ncx">
+    <itemref idref="nav"/>
+    <itemref idref="chapter_0"/>
+    <itemref idref="chapter_1"/>
+    <itemref idref="chapter_2"/>
+    <itemref idref="chapter_3"/>
+    <itemref idref="chapter_4"/>
+    <itemref idref="chapter_5"/>
+    <itemref idref="chapter_6"/>
+    <itemref idref="chapter_7"/>
+    <itemref idref="chapter_8"/>
+    <itemref idref="chapter_9"/>
+    <itemref idref="chapter_10"/>
+    <itemref idref="chapter_11"/>
+    <itemref idref="chapter_12"/>
+    <itemref idref="chapter_13"/>
+    <itemref idref="chapter_14"/>
+    <itemref idref="chapter_15"/>
+    <itemref idref="chapter_16"/>
+    <itemref idref="chapter_17"/>
+    <itemref idref="chapter_18"/>
+    <itemref idref="chapter_19"/>
+    <itemref idref="chapter_20"/>
+    <itemref idref="chapter_21"/>
+    <itemref idref="chapter_22"/>
+    <itemref idref="chapter_23"/>
+    <itemref idref="chapter_24"/>
+    <itemref idref="chapter_25"/>
+    <itemref idref="chapter_26"/>
+    <itemref idref="chapter_27"/>
+    <itemref idref="chapter_28"/>
+    <itemref idref="chapter_29"/>
+    <itemref idref="chapter_30"/>
+    <itemref idref="chapter_31"/>
+    <itemref idref="chapter_32"/>
+    <itemref idref="chapter_33"/>
+    <itemref idref="chapter_34"/>
+    <itemref idref="chapter_35"/>
+    <itemref idref="chapter_36"/>
+    <itemref idref="chapter_37"/>
+    <itemref idref="chapter_38"/>
+    <itemref idref="chapter_39"/>
+    <itemref idref="chapter_40"/>
+    <itemref idref="chapter_41"/>
+    <itemref idref="chapter_42"/>
+    <itemref idref="chapter_43"/>
+    <itemref idref="chapter_44"/>
+    <itemref idref="chapter_45"/>
+    <itemref idref="chapter_46"/>
+    <itemref idref="chapter_47"/>
+    <itemref idref="chapter_48"/>
+    <itemref idref="chapter_49"/>
+    <itemref idref="chapter_50"/>
+    <itemref idref="chapter_51"/>
+    <itemref idref="chapter_52"/>
+    <itemref idref="chapter_53"/>
+    <itemref idref="chapter_54"/>
+    <itemref idref="chapter_55"/>
+    <itemref idref="chapter_56"/>
+    <itemref idref="chapter_57"/>
+    <itemref idref="chapter_58"/>
+    <itemref idref="chapter_59"/>
+    <itemref idref="chapter_60"/>
+    <itemref idref="chapter_61"/>
+    <itemref idref="chapter_62"/>
+    <itemref idref="chapter_63"/>
+    <itemref idref="chapter_64"/>
+    <itemref idref="chapter_65"/>
+    <itemref idref="chapter_66"/>
+    <itemref idref="chapter_67"/>
+    <itemref idref="chapter_68"/>
+    <itemref idref="chapter_69"/>
+    <itemref idref="chapter_70"/>
+    <itemref idref="chapter_71"/>
+    <itemref idref="chapter_72"/>
+    <itemref idref="chapter_73"/>
+    <itemref idref="chapter_74"/>
+    <itemref idref="chapter_75"/>
+    <itemref idref="chapter_76"/>
+    <itemref idref="chapter_77"/>
+    <itemref idref="chapter_78"/>
+    <itemref idref="chapter_79"/>
+    <itemref idref="chapter_80"/>
+    <itemref idref="chapter_81"/>
+    <itemref idref="chapter_82"/>
+    <itemref idref="chapter_83"/>
+    <itemref idref="chapter_84"/>
+    <itemref idref="chapter_85"/>
+    <itemref idref="chapter_86"/>
+    <itemref idref="chapter_87"/>
+    <itemref idref="chapter_88"/>
+    <itemref idref="chapter_89"/>
+    <itemref idref="chapter_90"/>
+    <itemref idref="chapter_91"/>
+    <itemref idref="chapter_92"/>
+    <itemref idref="chapter_93"/>
+    <itemref idref="chapter_94"/>
+    <itemref idref="chapter_95"/>
+    <itemref idref="chapter_96"/>
+    <itemref idref="chapter_97"/>
+    <itemref idref="chapter_98"/>
+    <itemref idref="chapter_99"/>
+    <itemref idref="chapter_100"/>
+    <itemref idref="chapter_101"/>
+    <itemref idref="chapter_102"/>
+    <itemref idref="chapter_103"/>
+    <itemref idref="chapter_104"/>
+    <itemref idref="chapter_105"/>
+    <itemref idref="chapter_106"/>
+    <itemref idref="chapter_107"/>
+    <itemref idref="chapter_108"/>
+    <itemref idref="chapter_109"/>
+    <itemref idref="chapter_110"/>
+    <itemref idref="chapter_111"/>
+    <itemref idref="chapter_112"/>
+    <itemref idref="chapter_113"/>
+    <itemref idref="chapter_114"/>
+    <itemref idref="chapter_115"/>
+    <itemref idref="chapter_116"/>
+    <itemref idref="chapter_117"/>
+    <itemref idref="chapter_118"/>
+    <itemref idref="chapter_119"/>
+    <itemref idref="chapter_120"/>
+    <itemref idref="chapter_121"/>
+    <itemref idref="chapter_122"/>
+    <itemref idref="chapter_123"/>
+    <itemref idref="chapter_124"/>
+    <itemref idref="chapter_125"/>
+    <itemref idref="chapter_126"/>
+    <itemref idref="chapter_127"/>
+    <itemref idref="chapter_128"/>
+    <itemref idref="chapter_129"/>
+    <itemref idref="chapter_130"/>
+    <itemref idref="chapter_131"/>
+    <itemref idref="chapter_132"/>
+    <itemref idref="chapter_133"/>
+    <itemref idref="chapter_134"/>
+    <itemref idref="chapter_135"/>
+    <itemref idref="chapter_136"/>
+    <itemref idref="chapter_137"/>
+    <itemref idref="chapter_138"/>
+    <itemref idref="chapter_139"/>
+    <itemref idref="chapter_140"/>
+    <itemref idref="chapter_141"/>
+    <itemref idref="chapter_142"/>
+    <itemref idref="chapter_143"/>
+    <itemref idref="chapter_144"/>
+    <itemref idref="chapter_145"/>
+    <itemref idref="chapter_146"/>
+    <itemref idref="chapter_147"/>
+    <itemref idref="chapter_148"/>
+    <itemref idref="chapter_149"/>
+    <itemref idref="chapter_150"/>
+    <itemref idref="chapter_151"/>
+    <itemref idref="chapter_152"/>
+    <itemref idref="chapter_153"/>
+    <itemref idref="chapter_154"/>
+    <itemref idref="chapter_155"/>
+    <itemref idref="chapter_156"/>
+    <itemref idref="chapter_157"/>
+    <itemref idref="chapter_158"/>
+    <itemref idref="chapter_159"/>
+    <itemref idref="chapter_160"/>
+    <itemref idref="chapter_161"/>
+    <itemref idref="chapter_162"/>
+    <itemref idref="chapter_163"/>
+    <itemref idref="chapter_164"/>
+    <itemref idref="chapter_165"/>
+    <itemref idref="chapter_166"/>
+    <itemref idref="chapter_167"/>
+    <itemref idref="chapter_168"/>
+    <itemref idref="chapter_169"/>
+    <itemref idref="chapter_170"/>
+    <itemref idref="chapter_171"/>
+    <itemref idref="chapter_172"/>
+    <itemref idref="chapter_173"/>
+    <itemref idref="chapter_174"/>
+    <itemref idref="chapter_175"/>
+    <itemref idref="chapter_176"/>
+    <itemref idref="chapter_177"/>
+    <itemref idref="chapter_178"/>
+    <itemref idref="chapter_179"/>
+    <itemref idref="chapter_180"/>
+    <itemref idref="chapter_181"/>
+    <itemref idref="chapter_182"/>
+    <itemref idref="chapter_183"/>
+    <itemref idref="chapter_184"/>
+    <itemref idref="chapter_185"/>
+    <itemref idref="chapter_186"/>
+    <itemref idref="chapter_187"/>
+    <itemref idref="chapter_188"/>
+    <itemref idref="chapter_189"/>
+    <itemref idref="chapter_190"/>
+    <itemref idref="chapter_191"/>
+    <itemref idref="chapter_192"/>
+    <itemref idref="chapter_193"/>
+    <itemref idref="chapter_194"/>
+    <itemref idref="chapter_195"/>
+    <itemref idref="chapter_196"/>
+    <itemref idref="chapter_197"/>
+    <itemref idref="chapter_198"/>
+    <itemref idref="chapter_199"/>
+    <itemref idref="chapter_200"/>
+    <itemref idref="chapter_201"/>
+    <itemref idref="chapter_202"/>
+    <itemref idref="chapter_203"/>
+    <itemref idref="chapter_204"/>
+    <itemref idref="chapter_205"/>
+    <itemref idref="chapter_206"/>
+    <itemref idref="chapter_207"/>
+    <itemref idref="chapter_208"/>
+    <itemref idref="chapter_209"/>
+    <itemref idref="chapter_210"/>
+    <itemref idref="chapter_211"/>
+    <itemref idref="chapter_212"/>
+    <itemref idref="chapter_213"/>
+    <itemref idref="chapter_214"/>
+    <itemref idref="chapter_215"/>
+    <itemref idref="chapter_216"/>
+    <itemref idref="chapter_217"/>
+    <itemref idref="chapter_218"/>
+    <itemref idref="chapter_219"/>
+    <itemref idref="chapter_220"/>
+    <itemref idref="chapter_221"/>
+    <itemref idref="chapter_222"/>
+    <itemref idref="chapter_223"/>
+    <itemref idref="chapter_224"/>
+    <itemref idref="chapter_225"/>
+    <itemref idref="chapter_226"/>
+    <itemref idref="chapter_227"/>
+    <itemref idref="chapter_228"/>
+    <itemref idref="chapter_229"/>
+    <itemref idref="chapter_230"/>
+    <itemref idref="chapter_231"/>
+    <itemref idref="chapter_232"/>
+    <itemref idref="chapter_233"/>
+    <itemref idref="chapter_234"/>
+    <itemref idref="chapter_235"/>
+    <itemref idref="chapter_236"/>
+    <itemref idref="chapter_237"/>
+    <itemref idref="chapter_238"/>
+    <itemref idref="chapter_239"/>
+    <itemref idref="chapter_240"/>
+    <itemref idref="chapter_241"/>
+    <itemref idref="chapter_242"/>
+    <itemref idref="chapter_243"/>
+    <itemref idref="chapter_244"/>
+    <itemref idref="chapter_245"/>
+    <itemref idref="chapter_246"/>
+    <itemref idref="chapter_247"/>
+    <itemref idref="chapter_248"/>
+    <itemref idref="chapter_249"/>
+    <itemref idref="chapter_250"/>
+    <itemref idref="chapter_251"/>
+    <itemref idref="chapter_252"/>
+    <itemref idref="chapter_253"/>
+    <itemref idref="chapter_254"/>
+    <itemref idref="chapter_255"/>
+    <itemref idref="chapter_256"/>
+    <itemref idref="chapter_257"/>
+    <itemref idref="chapter_258"/>
+    <itemref idref="chapter_259"/>
+    <itemref idref="chapter_260"/>
+    <itemref idref="chapter_261"/>
+    <itemref idref="chapter_262"/>
+    <itemref idref="chapter_263"/>
+    <itemref idref="chapter_264"/>
+    <itemref idref="chapter_265"/>
+    <itemref idref="chapter_266"/>
+    <itemref idref="chapter_267"/>
+    <itemref idref="chapter_268"/>
+    <itemref idref="chapter_269"/>
+    <itemref idref="chapter_270"/>
+    <itemref idref="chapter_271"/>
+    <itemref idref="chapter_272"/>
+    <itemref idref="chapter_273"/>
+    <itemref idref="chapter_274"/>
+    <itemref idref="chapter_275"/>
+    <itemref idref="chapter_276"/>
+    <itemref idref="chapter_277"/>
+    <itemref idref="chapter_278"/>
+    <itemref idref="chapter_279"/>
+    <itemref idref="chapter_280"/>
+    <itemref idref="chapter_281"/>
+    <itemref idref="chapter_282"/>
+    <itemref idref="chapter_283"/>
+    <itemref idref="chapter_284"/>
+    <itemref idref="chapter_285"/>
+    <itemref idref="chapter_286"/>
+    <itemref idref="chapter_287"/>
+    <itemref idref="chapter_288"/>
+    <itemref idref="chapter_289"/>
+    <itemref idref="chapter_290"/>
+    <itemref idref="chapter_291"/>
+    <itemref idref="chapter_292"/>
+    <itemref idref="chapter_293"/>
+    <itemref idref="chapter_294"/>
+  </spine>
+</package>

@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1">
+  <head>
+    <meta content="an-en-sujato_scpub5-ed2-epub_2022-02-10" name="dtb:uid"/>
+    <meta content="0" name="dtb:depth"/>
+    <meta content="0" name="dtb:totalPageCount"/>
+    <meta content="0" name="dtb:maxPageNumber"/>
+  </head>
+  <docTitle>
+    <text>Numbered Discourses</text>
+  </docTitle>
+  <navMap>
+    <navPoint id="imprint">
+      <navLabel>
+        <text>Imprint</text>
+      </navLabel>
+      <content src="imprint.xhtml#imprint"/>
+    </navPoint>
+    <navPoint id="foreword">
+      <navLabel>
+        <text>Foreword</text>
+      </navLabel>
+      <content src="foreword.xhtml#foreword"/>
+    </navPoint>
+    <navPoint id="preface">
+      <navLabel>
+        <text>Preface</text>
+      </navLabel>
+      <content src="preface.xhtml#preface"/>
+    </navPoint>
+    <navPoint id="introduction">
+      <navLabel>
+        <text>Introduction</text>
+      </navLabel>
+      <content src="introduction.xhtml#introduction"/>
+    </navPoint>
+    <navPoint id="acknowledgements">
+      <navLabel>
+        <text>Acknowledgements</text>
+      </navLabel>
+      <content src="acknowledgements.xhtml#acknowledgements"/>
+    </navPoint>
+    <navPoint id="sep_0">
+      <navLabel>
+        <text>The Book of the Ones </text>
+      </navLabel>
+      <content src="an1.xhtml#an1"/>
+    </navPoint>
+    <navPoint id="sep_1">
+      <navLabel>
+        <text>The Book of the Twos </text>
+      </navLabel>
+      <content src="an2.xhtml#an2"/>
+    </navPoint>
+    <navPoint id="sep_2">
+      <navLabel>
+        <text>The Book of the Threes </text>
+      </navLabel>
+      <content src="an3.xhtml#an3"/>
+    </navPoint>
+    <navPoint id="sep_3">
+      <navLabel>
+        <text>The Book of the Fours </text>
+      </navLabel>
+      <content src="an4.xhtml#an4"/>
+    </navPoint>
+    <navPoint id="sep_4">
+      <navLabel>
+        <text>The Book of the Fives </text>
+      </navLabel>
+      <content src="an5.xhtml#an5"/>
+    </navPoint>
+    <navPoint id="sep_5">
+      <navLabel>
+        <text>The Book of the Sixes </text>
+      </navLabel>
+      <content src="an6.xhtml#an6"/>
+    </navPoint>
+    <navPoint id="sep_6">
+      <navLabel>
+        <text>The Book of the Sevens </text>
+      </navLabel>
+      <content src="an7.xhtml#an7"/>
+    </navPoint>
+    <navPoint id="sep_7">
+      <navLabel>
+        <text>The Book of the Eights </text>
+      </navLabel>
+      <content src="an8.xhtml#an8"/>
+    </navPoint>
+    <navPoint id="sep_8">
+      <navLabel>
+        <text>The Book of the Nines </text>
+      </navLabel>
+      <content src="an9.xhtml#an9"/>
+    </navPoint>
+    <navPoint id="sep_9">
+      <navLabel>
+        <text>The Book of the Tens </text>
+      </navLabel>
+      <content src="an10.xhtml#an10"/>
+    </navPoint>
+    <navPoint id="sep_10">
+      <navLabel>
+        <text>The Book of the Elevens </text>
+      </navLabel>
+      <content src="an11.xhtml#an11"/>
+    </navPoint>
+    <navPoint id="colophon">
+      <navLabel>
+        <text>Colophon</text>
+      </navLabel>
+      <content src="colophon.xhtml#colophon"/>
+    </navPoint>
+  </navMap>
+</ncx>

@@ -1,0 +1,416 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1">
+  <head>
+    <meta content="sn-en-sujato_scpub4-ed2-epub_2022-02-10" name="dtb:uid"/>
+    <meta content="0" name="dtb:depth"/>
+    <meta content="0" name="dtb:totalPageCount"/>
+    <meta content="0" name="dtb:maxPageNumber"/>
+  </head>
+  <docTitle>
+    <text>Linked Discourses</text>
+  </docTitle>
+  <navMap>
+    <navPoint id="imprint">
+      <navLabel>
+        <text>Imprint</text>
+      </navLabel>
+      <content src="imprint.xhtml#imprint"/>
+    </navPoint>
+    <navPoint id="foreword">
+      <navLabel>
+        <text>Foreword</text>
+      </navLabel>
+      <content src="foreword.xhtml#foreword"/>
+    </navPoint>
+    <navPoint id="preface">
+      <navLabel>
+        <text>Preface</text>
+      </navLabel>
+      <content src="preface.xhtml#preface"/>
+    </navPoint>
+    <navPoint id="introduction">
+      <navLabel>
+        <text>Introduction</text>
+      </navLabel>
+      <content src="introduction.xhtml#introduction"/>
+    </navPoint>
+    <navPoint id="acknowledgements">
+      <navLabel>
+        <text>Acknowledgements</text>
+      </navLabel>
+      <content src="acknowledgements.xhtml#acknowledgements"/>
+    </navPoint>
+    <navPoint id="sep_0">
+      <navLabel>
+        <text>The Group of Linked Discourses With Verses </text>
+      </navLabel>
+      <content src="sn-sagathavaggasamyutta.xhtml#sn-sagathavaggasamyutta"/>
+      <navPoint id="sep_1">
+        <navLabel>
+          <text>SN 1: Linked Discourses With Deities </text>
+        </navLabel>
+        <content src="sn-sagathavaggasamyutta.xhtml#sn1"/>
+      </navPoint>
+      <navPoint id="sep_2">
+        <navLabel>
+          <text>SN 2: Linked Discourses on Godlings </text>
+        </navLabel>
+        <content src="sn2.xhtml#sn2"/>
+      </navPoint>
+      <navPoint id="sep_3">
+        <navLabel>
+          <text>SN 3: Linked Discourses With King Pasenadi of Kosala </text>
+        </navLabel>
+        <content src="sn3.xhtml#sn3"/>
+      </navPoint>
+      <navPoint id="sep_4">
+        <navLabel>
+          <text>SN 4: Linked Discourses With Māra </text>
+        </navLabel>
+        <content src="sn4.xhtml#sn4"/>
+      </navPoint>
+      <navPoint id="sep_5">
+        <navLabel>
+          <text>SN 5: Linked Discourses With Nuns </text>
+        </navLabel>
+        <content src="sn5.xhtml#sn5"/>
+      </navPoint>
+      <navPoint id="sep_6">
+        <navLabel>
+          <text>SN 6: Linked Discourses With Divinities </text>
+        </navLabel>
+        <content src="sn6.xhtml#sn6"/>
+      </navPoint>
+      <navPoint id="sep_7">
+        <navLabel>
+          <text>SN 7: Linked Discourses with Brahmins </text>
+        </navLabel>
+        <content src="sn7.xhtml#sn7"/>
+      </navPoint>
+      <navPoint id="sep_8">
+        <navLabel>
+          <text>SN 8: Linked Discourses With Vaṅgīsa </text>
+        </navLabel>
+        <content src="sn8.xhtml#sn8"/>
+      </navPoint>
+      <navPoint id="sep_9">
+        <navLabel>
+          <text>SN 9: Linked Discourses in the Woods </text>
+        </navLabel>
+        <content src="sn9.xhtml#sn9"/>
+      </navPoint>
+      <navPoint id="sep_10">
+        <navLabel>
+          <text>SN 10: Linked Discourses with Spirits </text>
+        </navLabel>
+        <content src="sn10.xhtml#sn10"/>
+      </navPoint>
+      <navPoint id="sep_11">
+        <navLabel>
+          <text>SN 11: Linked Discourses with Sakka </text>
+        </navLabel>
+        <content src="sn11.xhtml#sn11"/>
+      </navPoint>
+    </navPoint>
+    <navPoint id="sep_12">
+      <navLabel>
+        <text>The Group of Linked Discourses Beginning With Causation </text>
+      </navLabel>
+      <content src="sn-nidanavaggasamyutta.xhtml#sn-nidanavaggasamyutta"/>
+      <navPoint id="sep_13">
+        <navLabel>
+          <text>SN 12: Linked Discourses on Causation </text>
+        </navLabel>
+        <content src="sn-nidanavaggasamyutta.xhtml#sn12"/>
+      </navPoint>
+      <navPoint id="sep_14">
+        <navLabel>
+          <text>SN 13: Linked Discourses on Comprehension </text>
+        </navLabel>
+        <content src="sn13.xhtml#sn13"/>
+      </navPoint>
+      <navPoint id="sep_15">
+        <navLabel>
+          <text>SN 14: Linked Discourses on the Elements </text>
+        </navLabel>
+        <content src="sn14.xhtml#sn14"/>
+      </navPoint>
+      <navPoint id="sep_16">
+        <navLabel>
+          <text>SN 15: Linked Discourses on the Unknowable Beginning </text>
+        </navLabel>
+        <content src="sn15.xhtml#sn15"/>
+      </navPoint>
+      <navPoint id="sep_17">
+        <navLabel>
+          <text>SN 16: Linked Discourses with Kassapa </text>
+        </navLabel>
+        <content src="sn16.xhtml#sn16"/>
+      </navPoint>
+      <navPoint id="sep_18">
+        <navLabel>
+          <text>SN 17: Linked Discourses on Gains and Honor </text>
+        </navLabel>
+        <content src="sn17.xhtml#sn17"/>
+      </navPoint>
+      <navPoint id="sep_19">
+        <navLabel>
+          <text>SN 18: Linked Discourses with Rāhula </text>
+        </navLabel>
+        <content src="sn18.xhtml#sn18"/>
+      </navPoint>
+      <navPoint id="sep_20">
+        <navLabel>
+          <text>SN 19: Linked Discourses with Lakkhaṇa </text>
+        </navLabel>
+        <content src="sn19.xhtml#sn19"/>
+      </navPoint>
+      <navPoint id="sep_21">
+        <navLabel>
+          <text>SN 20: Linked Discourses with Similes </text>
+        </navLabel>
+        <content src="sn20.xhtml#sn20"/>
+      </navPoint>
+      <navPoint id="sep_22">
+        <navLabel>
+          <text>SN 21: Linked Discourses with Monks </text>
+        </navLabel>
+        <content src="sn21.xhtml#sn21"/>
+      </navPoint>
+    </navPoint>
+    <navPoint id="sep_23">
+      <navLabel>
+        <text>The Group of Linked Discourses Beginning With the Aggregates </text>
+      </navLabel>
+      <content src="sn-khandhavaggasamyutta.xhtml#sn-khandhavaggasamyutta"/>
+      <navPoint id="sep_24">
+        <navLabel>
+          <text>SN 22: Linked Discourses on the Aggregates </text>
+        </navLabel>
+        <content src="sn-khandhavaggasamyutta.xhtml#sn22"/>
+      </navPoint>
+      <navPoint id="sep_25">
+        <navLabel>
+          <text>SN 23: Linked Discourses with Rādha </text>
+        </navLabel>
+        <content src="sn23.xhtml#sn23"/>
+      </navPoint>
+      <navPoint id="sep_26">
+        <navLabel>
+          <text>SN 24: Linked Discourses on Views </text>
+        </navLabel>
+        <content src="sn24.xhtml#sn24"/>
+      </navPoint>
+      <navPoint id="sep_27">
+        <navLabel>
+          <text>SN 25: Linked Discourses on Stepping Into </text>
+        </navLabel>
+        <content src="sn25.xhtml#sn25"/>
+      </navPoint>
+      <navPoint id="sep_28">
+        <navLabel>
+          <text>SN 26: Linked Discourses on Arising </text>
+        </navLabel>
+        <content src="sn26.xhtml#sn26"/>
+      </navPoint>
+      <navPoint id="sep_29">
+        <navLabel>
+          <text>SN 27: Linked Discourses on Corruptions </text>
+        </navLabel>
+        <content src="sn27.xhtml#sn27"/>
+      </navPoint>
+      <navPoint id="sep_30">
+        <navLabel>
+          <text>SN 28: Linked Discourses with Sāriputta </text>
+        </navLabel>
+        <content src="sn28.xhtml#sn28"/>
+      </navPoint>
+      <navPoint id="sep_31">
+        <navLabel>
+          <text>SN 29: Linked Discourses on Dragons </text>
+        </navLabel>
+        <content src="sn29.xhtml#sn29"/>
+      </navPoint>
+      <navPoint id="sep_32">
+        <navLabel>
+          <text>SN 30: Linked Discourses on Phoenixes </text>
+        </navLabel>
+        <content src="sn30.xhtml#sn30"/>
+      </navPoint>
+      <navPoint id="sep_33">
+        <navLabel>
+          <text>SN 31: Linked Discourses on Centaurs </text>
+        </navLabel>
+        <content src="sn31.xhtml#sn31"/>
+      </navPoint>
+      <navPoint id="sep_34">
+        <navLabel>
+          <text>SN 32: Linked Discourses on Cloud Gods </text>
+        </navLabel>
+        <content src="sn32.xhtml#sn32"/>
+      </navPoint>
+      <navPoint id="sep_35">
+        <navLabel>
+          <text>SN 33: Linked Discourses with Vacchagotta </text>
+        </navLabel>
+        <content src="sn33.xhtml#sn33"/>
+      </navPoint>
+      <navPoint id="sep_36">
+        <navLabel>
+          <text>SN 34: Linked Discourses on Absorption </text>
+        </navLabel>
+        <content src="sn34.xhtml#sn34"/>
+      </navPoint>
+    </navPoint>
+    <navPoint id="sep_37">
+      <navLabel>
+        <text>The Group of Linked Discourses Beginning With the Six Sense Fields </text>
+      </navLabel>
+      <content src="sn-salayatanavaggasamyutta.xhtml#sn-salayatanavaggasamyutta"/>
+      <navPoint id="sep_38">
+        <navLabel>
+          <text>SN 35: Linked Discourses on the Six Sense Fields </text>
+        </navLabel>
+        <content src="sn-salayatanavaggasamyutta.xhtml#sn35"/>
+      </navPoint>
+      <navPoint id="sep_39">
+        <navLabel>
+          <text>SN 36: Linked Discourses on Feelings </text>
+        </navLabel>
+        <content src="sn36.xhtml#sn36"/>
+      </navPoint>
+      <navPoint id="sep_40">
+        <navLabel>
+          <text>SN 37: Linked Discourses on Females </text>
+        </navLabel>
+        <content src="sn37.xhtml#sn37"/>
+      </navPoint>
+      <navPoint id="sep_41">
+        <navLabel>
+          <text>SN 38: Linked Discourses with Jambukhādaka </text>
+        </navLabel>
+        <content src="sn38.xhtml#sn38"/>
+      </navPoint>
+      <navPoint id="sep_42">
+        <navLabel>
+          <text>SN 39: Linked Discourses with Sāmaṇḍaka </text>
+        </navLabel>
+        <content src="sn39.xhtml#sn39"/>
+      </navPoint>
+      <navPoint id="sep_43">
+        <navLabel>
+          <text>SN 40: Linked Discourses with Moggallāna </text>
+        </navLabel>
+        <content src="sn40.xhtml#sn40"/>
+      </navPoint>
+      <navPoint id="sep_44">
+        <navLabel>
+          <text>SN 41: Linked Discourses with Citta the Householder </text>
+        </navLabel>
+        <content src="sn41.xhtml#sn41"/>
+      </navPoint>
+      <navPoint id="sep_45">
+        <navLabel>
+          <text>SN 42: Linked Discourses with Chiefs </text>
+        </navLabel>
+        <content src="sn42.xhtml#sn42"/>
+      </navPoint>
+      <navPoint id="sep_46">
+        <navLabel>
+          <text>SN 43: Linked Discourses on the Unconditioned </text>
+        </navLabel>
+        <content src="sn43.xhtml#sn43"/>
+      </navPoint>
+      <navPoint id="sep_47">
+        <navLabel>
+          <text>SN 44: Linked Discourses on the Undeclared </text>
+        </navLabel>
+        <content src="sn44.xhtml#sn44"/>
+      </navPoint>
+    </navPoint>
+    <navPoint id="sep_48">
+      <navLabel>
+        <text>The Group of Linked Discourses on the Path </text>
+      </navLabel>
+      <content src="sn-mahavaggasamyutta.xhtml#sn-mahavaggasamyutta"/>
+      <navPoint id="sep_49">
+        <navLabel>
+          <text>SN 45: Linked Discourses on the Eightfold Path </text>
+        </navLabel>
+        <content src="sn-mahavaggasamyutta.xhtml#sn45"/>
+      </navPoint>
+      <navPoint id="sep_50">
+        <navLabel>
+          <text>SN 46: Linked Discourses on the Awakening Factors </text>
+        </navLabel>
+        <content src="sn46.xhtml#sn46"/>
+      </navPoint>
+      <navPoint id="sep_51">
+        <navLabel>
+          <text>SN 47: Linked Discourses on Mindfulness Meditation </text>
+        </navLabel>
+        <content src="sn47.xhtml#sn47"/>
+      </navPoint>
+      <navPoint id="sep_52">
+        <navLabel>
+          <text>SN 48: Linked Discourses on the Faculties </text>
+        </navLabel>
+        <content src="sn48.xhtml#sn48"/>
+      </navPoint>
+      <navPoint id="sep_53">
+        <navLabel>
+          <text>SN 49: Linked Discourses on the Right Efforts </text>
+        </navLabel>
+        <content src="sn49.xhtml#sn49"/>
+      </navPoint>
+      <navPoint id="sep_54">
+        <navLabel>
+          <text>SN 50: Linked Discourses on the Five Powers </text>
+        </navLabel>
+        <content src="sn50.xhtml#sn50"/>
+      </navPoint>
+      <navPoint id="sep_55">
+        <navLabel>
+          <text>SN 51: Linked Discourses on the Bases of Psychic Power </text>
+        </navLabel>
+        <content src="sn51.xhtml#sn51"/>
+      </navPoint>
+      <navPoint id="sep_56">
+        <navLabel>
+          <text>SN 52: Linked Discourses with Anuruddha </text>
+        </navLabel>
+        <content src="sn52.xhtml#sn52"/>
+      </navPoint>
+      <navPoint id="sep_57">
+        <navLabel>
+          <text>SN 53: Linked Discourses on Absorption </text>
+        </navLabel>
+        <content src="sn53.xhtml#sn53"/>
+      </navPoint>
+      <navPoint id="sep_58">
+        <navLabel>
+          <text>SN 54: Linked Discourses on Breath Meditation </text>
+        </navLabel>
+        <content src="sn54.xhtml#sn54"/>
+      </navPoint>
+      <navPoint id="sep_59">
+        <navLabel>
+          <text>SN 55: Linked Discourses on Stream-Entry </text>
+        </navLabel>
+        <content src="sn55.xhtml#sn55"/>
+      </navPoint>
+      <navPoint id="sep_60">
+        <navLabel>
+          <text>SN 56: Linked Discourses on the Truths </text>
+        </navLabel>
+        <content src="sn56.xhtml#sn56"/>
+      </navPoint>
+    </navPoint>
+    <navPoint id="colophon">
+      <navLabel>
+        <text>Colophon</text>
+      </navLabel>
+      <content src="colophon.xhtml#colophon"/>
+    </navPoint>
+  </navMap>
+</ncx>

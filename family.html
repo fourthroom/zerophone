@@ -4,16 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   
-  <title>ZeroPhone Family — Encrypted Browser Video Calling, WebText & Local Resources</title>
-  <meta name="description" content="ZeroPhone Family is a completely free, privacy-first web utility featuring end-to-end AES-256-GCM encrypted video calling, voice calls, free WebText, local Wi-Fi maps, live radio, art museums, and community support resources.">
-  <meta name="keywords" content="ZeroPhone, fourthroom.org, AES-256 encryption, free video call, browser calling, WebRTC, free web text, local radio streams, public wifi maps, community resources">
+  <title>ZeroPhone Family — Encrypted Browser Video Calling, WebText & Meditations</title>
+  <meta name="description" content="ZeroPhone Family is a completely free, privacy-first web utility featuring end-to-end AES-256-GCM encrypted video calling, voice calls, free WebText, local Wi-Fi maps, live radio, art galleries, and Meditations sacred texts reader.">
   <meta name="author" content="FourthRoom">
   <link rel="canonical" href="https://fourthroom.org/family.html">
 
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://fourthroom.org/family.html">
-  <meta property="og:title" content="ZeroPhone Family — Encrypted Web Calling & WebText">
-  <meta property="og:description" content="Instant, private video and voice calling right from your browser powered by AES-256-GCM encryption. No downloads or accounts required.">
+  <meta property="og:title" content="ZeroPhone Family — Encrypted Web Calling & Meditations">
+  <meta property="og:description" content="Instant, private video and voice calling right from your browser powered by AES-256-GCM encryption, alongside sacred text readings and global museum galleries.">
   <meta property="og:image" content="https://fourthroom.org/family-icon.svg">
 
   <link rel="icon" type="image/svg+xml" href="family-icon.svg">
@@ -94,69 +93,182 @@
     .tab-text.active { background: #63e685; color: #000; }
     .tab-maps { background: #5c3800; border-top: 3px solid #ff9500; }
     .tab-maps.active { background: #ff9500; color: #000; }
-    .tab-seattle-wifi { background: #005a70; border-top: 3px solid #00c0f0; }
-    .tab-seattle-wifi.active { background: #00c0f0; color: #000; }
     .tab-radio { background: #4a0072; border-top: 3px solid #e040fb; }
     .tab-radio.active { background: #e040fb; color: #000; }
+    .tab-meditations { background: #3d2f00; border-top: 3px solid #d4af37; }
+    .tab-meditations.active { background: #d4af37; color: #000; }
     .tab-art { background: #4a3600; border-top: 3px solid #ffd60a; }
     .tab-art.active { background: #ffd60a; color: #000; }
-    .tab-help { background: #1c3d5a; border-top: 3px solid #38bdf8; }
-    .tab-help.active { background: #38bdf8; color: #000; }
 
     .sub-tagline { font-size: 11px; display: block; font-weight: normal; margin-top: 2px; }
     .container { padding: 10px 15px; max-width: 100%; margin: 0 auto; text-align: center; }
     .tab-content { display: none; }
     .tab-content.active { display: block; }
 
-    .webphone-simplified-card {
+    /* MEDITATIONS TAB STYLES */
+    .meditations-wrapper {
       background: #1c1c1e;
-      border: 1px solid #333;
-      border-radius: 16px;
-      max-width: 580px;
-      margin: 15px auto;
-      padding: 24px 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      border: 1px solid #d4af37;
+      border-radius: 14px;
+      max-width: 1100px;
+      margin: 10px auto;
+      overflow: hidden;
+      text-align: left;
     }
-
-    .step-row-item {
+    .meditation-streamer {
+      background: #000;
+      border-bottom: 1px solid #333;
+      padding: 16px;
+      text-align: center;
+    }
+    .streamer-frame-box {
+      position: relative;
+      width: 100%;
+      max-width: 520px;
+      height: 320px;
+      margin: 0 auto;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      background: #151516;
-      border: 1px solid #2a2a2d;
-      border-radius: 10px;
-      padding: 12px 14px;
+      justify-content: center;
+      background: #050505;
+      border: 1px solid #333;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .streamer-frame-box img {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+      transition: opacity 0.8s ease;
+    }
+    .streamer-info { margin-top: 8px; }
+    .streamer-info h3 { margin: 2px 0; color: #d4af37; font-size: 1rem; font-family: Georgia, serif; }
+    .streamer-info p { margin: 0; font-size: 0.8rem; color: #888; font-style: italic; }
+
+    .canon-nav {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      background: #141416;
+      padding: 12px;
+      border-bottom: 1px solid #333;
+      flex-wrap: wrap;
+    }
+    .canon-btn {
+      background: #222226;
+      border: 1px solid #444;
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: bold;
+      font-family: Georgia, serif;
+      transition: all 0.2s;
+    }
+    .canon-btn:hover, .canon-btn.active {
+      border-color: #d4af37;
+      color: #d4af37;
+      background: #2a2a30;
     }
 
+    .meditation-workspace {
+      display: flex;
+      height: 520px;
+      background: #121212;
+    }
+    .med-toc-bank {
+      width: 300px;
+      background: #161618;
+      border-right: 1px solid #333;
+      overflow-y: auto;
+      padding: 14px;
+    }
+    .med-toc-bank h4 {
+      margin-top: 0;
+      color: #d4af37;
+      border-bottom: 1px solid #333;
+      padding-bottom: 6px;
+      font-size: 0.95rem;
+      font-family: Georgia, serif;
+    }
+    .med-toc-list { list-style: none; padding: 0; margin: 0; }
+    .med-toc-item {
+      padding: 8px 10px;
+      cursor: pointer;
+      border-radius: 4px;
+      font-size: 0.88rem;
+      color: #ccc;
+      font-family: Georgia, serif;
+      transition: background 0.15s;
+    }
+    .med-toc-item:hover { background: #222228; color: #fff; }
+
+    .med-reader-main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .med-reader-header {
+      padding: 10px 16px;
+      background: #18181b;
+      border-bottom: 1px solid #333;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .med-reader-controls { display: flex; gap: 8px; }
+    .med-ctrl-btn {
+      background: #2c2c2e;
+      border: 1px solid #444;
+      color: #fff;
+      padding: 5px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+    .med-ctrl-btn:hover { border-color: #d4af37; }
+    .med-reader-content {
+      flex: 1;
+      padding: 24px 36px;
+      overflow-y: auto;
+      line-height: 1.7;
+      font-size: 1rem;
+      font-family: Georgia, serif;
+      color: #e0e0e0;
+      white-space: pre-wrap;
+    }
+
+    /* WEBPHONE STYLES */
+    .webphone-simplified-card {
+      background: #1c1c1e; border: 1px solid #333; border-radius: 16px; max-width: 580px;
+      margin: 15px auto; padding: 24px 20px; display: flex; flex-direction: column; gap: 18px;
+    }
+    .step-row-item {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      background: #151516; border: 1px solid #2a2a2d; border-radius: 10px; padding: 12px 14px;
+    }
     .step-title-green { color: #30d158; font-weight: bold; font-size: 14px; white-space: nowrap; text-align: left; }
     .webphone-input-field {
       flex: 1; padding: 8px 12px; font-size: 14px; border-radius: 6px;
       background: #2c2c2e; color: #fff; border: 1px solid #444; text-align: left;
     }
-
     .btn-round-red {
       width: 56px; height: 56px; border-radius: 50%; background: #ff3b30; color: #fff;
       font-size: 10px; font-weight: 900; border: none; cursor: pointer; display: flex;
-      flex-direction: column; align-items: center; justify-content: center;
-      box-shadow: 0 4px 10px rgba(255, 59, 48, 0.35); text-decoration: none;
+      flex-direction: column; align-items: center; justify-content: center; text-decoration: none;
     }
     .btn-round-blue {
       width: 56px; height: 56px; border-radius: 50%; background: #0a84ff; color: #fff;
       font-size: 10px; font-weight: 900; border: none; cursor: pointer; display: flex;
-      flex-direction: column; align-items: center; justify-content: center;
-      box-shadow: 0 4px 10px rgba(10, 132, 255, 0.35); text-decoration: none;
+      flex-direction: column; align-items: center; justify-content: center; text-decoration: none;
     }
     .btn-square-start-red {
       width: 65px; height: 60px; background: #ff3b30; color: #fff; font-size: 10px;
       font-weight: 900; border-radius: 10px; border: none; cursor: pointer; display: flex;
       flex-direction: column; align-items: center; justify-content: center; gap: 2px;
-      box-shadow: 0 4px 12px rgba(255, 59, 48, 0.4);
     }
-
     .vintage-toggle-panel {
       display: flex; flex-direction: column; align-items: center; background: #1c1c1e;
       border: 1px solid #444; border-radius: 10px; padding: 6px 8px; gap: 4px;
@@ -175,403 +287,80 @@
       background-color: #aaa; border-radius: 6px; transition: .2s;
     }
     input:checked + .slider-track:before { transform: translateY(20px); background-color: #ff3b30; }
-
     .incall-controls-bar { display: flex; justify-content: center; align-items: center; gap: 15px; margin-top: 15px; }
     .btn-media-toggle {
       background: #2c2c2e; color: #fff; border: 1px solid #555; border-radius: 50%;
       width: 52px; height: 52px; font-size: 20px; display: flex; align-items: center; justify-content: center; cursor: pointer;
     }
     .btn-media-toggle.muted { background: #ff3b30; border-color: #d70015; }
-    .btn-red-end { 
-      background: #ff3b30; color: white; cursor: pointer; font-weight: bold; 
-      font-size: 16px; padding: 12px 24px; border-radius: 10px; border: none;
-    }
-
+    .btn-red-end { background: #ff3b30; color: white; cursor: pointer; font-weight: bold; font-size: 16px; padding: 12px 24px; border-radius: 10px; border: none; }
     #status { font-weight: bold; color: #30d158; margin-bottom: 4px; }
-
-    .video-grid { 
-      display: grid; grid-template-columns: minmax(0, 480px); gap: 12px; 
-      justify-content: center; align-content: center; margin: 10px auto; width: 100%; max-width: 900px;
-    }
-    .video-grid.peers-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .video-grid.peers-3, .video-grid.peers-4 {
-      grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, auto);
-    }
-    .video-card { width: 100%; display: flex; flex-direction: column; align-items: center; position: relative; }
-    video { 
-      width: 100%; aspect-ratio: 1 / 1; background: #000; border-radius: 14px; 
-      border: 2px solid #333; object-fit: cover; display: block;
-    }
+    .video-grid { display: grid; grid-template-columns: minmax(0, 480px); gap: 12px; justify-content: center; margin: 10px auto; width: 100%; max-width: 900px; }
+    video { width: 100%; aspect-ratio: 1 / 1; background: #000; border-radius: 14px; border: 2px solid #333; object-fit: cover; display: block; }
     #localVideo { transform: scaleX(-1); }
 
-    .turn-badge {
-      display: none; position: absolute; top: 36px; left: 10px; background: rgba(255, 149, 0, 0.85);
-      color: #000; font-size: 10px; font-weight: 900; padding: 3px 8px; border-radius: 6px; z-index: 10;
-    }
-
-    @media (max-width: 520px) {
-      .video-grid { gap: 8px; margin-top: 6px; }
-      video { border-radius: 8px; }
-      .video-card h3 { font-size: 11px !important; margin: 0 0 3px 0 !important; }
-    }
-
-    .modal-return-overlay {
-      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.85); z-index: 99999; justify-content: center; align-items: center;
-    }
-    .modal-return-content {
-      background: #1c1c1e; border: 2px solid #30d158; border-radius: 16px; padding: 30px 20px;
-      max-width: 360px; width: 85%; text-align: center;
-    }
-    .btn-return-app {
-      background: #30d158; color: #000; border: none; padding: 14px 28px; border-radius: 10px;
-      font-size: 16px; font-weight: 900; cursor: pointer;
-    }
-
-    #responderAccessBox {
-      display: none; background: #1c1c1e; border: 2px solid #30d158; border-radius: 20px;
-      padding: 40px 20px; max-width: 450px; margin: 40px auto; text-align: center;
-    }
-    .btn-mega-enter {
-      background: #30d158; color: #000; font-size: 24px; font-weight: 900; padding: 20px 32px;
-      border-radius: 14px; border: none; cursor: pointer; width: 100%;
-    }
+    .modal-return-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 99999; justify-content: center; align-items: center; }
+    .modal-return-content { background: #1c1c1e; border: 2px solid #30d158; border-radius: 16px; padding: 30px 20px; max-width: 360px; width: 85%; text-align: center; }
+    .btn-return-app { background: #30d158; color: #000; border: none; padding: 14px 28px; border-radius: 10px; font-size: 16px; font-weight: 900; cursor: pointer; }
+    #responderAccessBox { display: none; background: #1c1c1e; border: 2px solid #30d158; border-radius: 20px; padding: 40px 20px; max-width: 450px; margin: 40px auto; text-align: center; }
+    .btn-mega-enter { background: #30d158; color: #000; font-size: 24px; font-weight: 900; padding: 20px 32px; border-radius: 14px; border: none; cursor: pointer; width: 100%; }
 
     .web-chat-box { background: #1c1c1e; border: 1px solid #63e685; border-radius: 12px; padding: 15px; max-width: 620px; margin: 0 auto; }
-    #web-chat-thread {
-      height: 260px; border: 1px solid #333; border-radius: 8px; padding: 10px;
-      overflow-y: auto; background: #121212; text-align: left; margin-bottom: 12px;
-    }
+    #web-chat-thread { height: 260px; border: 1px solid #333; border-radius: 8px; padding: 10px; overflow-y: auto; background: #121212; text-align: left; margin-bottom: 12px; }
 
     .maps-box { background: #1c1c1e; border: 1px solid #ff9500; border-radius: 12px; padding: 15px; max-width: 900px; margin: 0 auto; }
     .maps-filter-bar { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 15px; }
-    .maps-filter-btn {
-      background: #2c2c2e; color: #fff; border: 1px solid #555; padding: 8px 12px;
-      font-size: 13px; font-weight: bold; border-radius: 8px; cursor: pointer;
-    }
+    .maps-filter-btn { background: #2c2c2e; color: #fff; border: 1px solid #555; padding: 8px 12px; font-size: 13px; font-weight: bold; border-radius: 8px; cursor: pointer; }
     .map-frame-container { width: 100%; height: 500px; border-radius: 10px; overflow: hidden; border: 1px solid #444; }
     iframe { width: 100%; height: 100%; border: none; }
 
     .radio-box { background: #1c1c1e; border: 1px solid #e040fb; border-radius: 12px; padding: 20px; max-width: 950px; margin: 0 auto; }
     .radio-genre-bar { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
-    .genre-btn {
-      background: #2c2c2e; color: #fff; border: 1px solid #555; padding: 10px 14px;
-      font-size: 13px; font-weight: bold; border-radius: 8px; cursor: pointer;
-    }
+    .genre-btn { background: #2c2c2e; color: #fff; border: 1px solid #555; padding: 10px 14px; font-size: 13px; font-weight: bold; border-radius: 8px; cursor: pointer; }
     .radio-layout { display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; }
     .station-bank-container { flex: 1; min-width: 280px; background: #121212; border: 1px solid #333; border-radius: 12px; padding: 12px; text-align: left; }
     .station-bank-header { font-size: 13px; font-weight: bold; color: #e040fb; margin: 0 0 10px 0; text-transform: uppercase; }
     .station-bank-list { display: flex; flex-direction: column; gap: 8px; max-height: 360px; overflow-y: auto; }
     .station-bank-item { background: #2c2c2e; border: 1px solid #444; border-radius: 8px; padding: 10px; cursor: pointer; text-align: left; }
-    .radio-console {
-      flex: 1.5; min-width: 320px; background: #121212; border: 1px solid #333; border-radius: 12px;
-      padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 15px;
-    }
+    .radio-console { flex: 1.5; min-width: 320px; background: #121212; border: 1px solid #333; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 15px; }
     .now-playing-title { font-size: 20px; font-weight: bold; color: #e040fb; margin: 0; }
     .now-playing-sub { font-size: 13px; color: #aaa; margin-top: -6px; }
     audio { width: 100%; max-width: 480px; border-radius: 8px; }
     .tuner-box { margin-top: 10px; padding-top: 15px; border-top: 1px solid #333; width: 100%; max-width: 480px; text-align: left; }
 
-    /* MULTI-MUSEUM ART GALLERY STYLES */
+    /* ART GALLERY STYLES */
     .art-box { background: #1c1c1e; border: 1px solid #ffd60a; border-radius: 12px; padding: 20px; max-width: 1000px; margin: 0 auto; }
-    .museum-institution-bar {
-      display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 12px;
-      padding-bottom: 12px; border-bottom: 1px solid #333;
-    }
-    .museum-inst-btn {
-      background: #18181a; color: #ffd60a; border: 1px solid #ffd60a; padding: 8px 14px;
-      font-size: 12px; font-weight: 900; border-radius: 20px; cursor: pointer; transition: all 0.2s;
-    }
+    .museum-institution-bar { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #333; }
+    .museum-inst-btn { background: #18181a; color: #ffd60a; border: 1px solid #ffd60a; padding: 8px 14px; font-size: 12px; font-weight: 900; border-radius: 20px; cursor: pointer; }
     .museum-inst-btn.active { background: #ffd60a; color: #000; }
-
     .art-genre-bar { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
-    .art-genre-btn {
-      background: #2c2c2e; color: #fff; border: 1px solid #555; padding: 8px 12px;
-      font-size: 12px; font-weight: bold; border-radius: 8px; cursor: pointer; transition: all 0.2s;
-    }
-    .art-genre-btn:hover { background: #3a3a3c; }
+    .art-genre-btn { background: #2c2c2e; color: #fff; border: 1px solid #555; padding: 8px 12px; font-size: 12px; font-weight: bold; border-radius: 8px; cursor: pointer; }
     .art-genre-btn.active { background: #ffd60a; color: #000; border-color: #ffd60a; font-weight: 900; }
-
     .art-layout { display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; }
     .art-bank-container { flex: 1; min-width: 280px; background: #121212; border: 1px solid #333; border-radius: 12px; padding: 12px; text-align: left; }
     .art-bank-header { font-size: 13px; font-weight: bold; color: #ffd60a; margin: 0 0 10px 0; text-transform: uppercase; }
     .art-bank-list { display: flex; flex-direction: column; gap: 8px; max-height: 480px; overflow-y: auto; }
     .art-bank-item { background: #2c2c2e; border: 1px solid #444; border-radius: 8px; padding: 10px; cursor: pointer; text-align: left; }
     .art-bank-item.active { border-color: #ffd60a; background: #332b00; }
-
-    .art-display-console {
-      flex: 2; min-width: 320px; background: #121212; border: 1px solid #333; border-radius: 12px;
-      padding: 18px; display: flex; flex-direction: column; align-items: center; gap: 14px;
-    }
-    .art-image-frame {
-      width: 100%; min-height: 380px; max-height: 520px; background: #000; border-radius: 10px;
-      border: 1px solid #444; display: flex; align-items: center; justify-content: center; overflow: hidden;
-    }
+    .art-display-console { flex: 2; min-width: 320px; background: #121212; border: 1px solid #333; border-radius: 12px; padding: 18px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+    .art-image-frame { width: 100%; min-height: 380px; max-height: 520px; background: #000; border-radius: 10px; border: 1px solid #444; display: flex; align-items: center; justify-content: center; overflow: hidden; }
     .art-image-frame img { max-width: 100%; max-height: 500px; object-fit: contain; border-radius: 8px; }
-    .art-caption-card {
-      width: 100%; background: #1c1c1e; border: 1px solid #444; border-radius: 10px;
-      padding: 14px 16px; text-align: left; font-size: 13px; line-height: 1.5;
-    }
+    .art-caption-card { width: 100%; background: #1c1c1e; border: 1px solid #444; border-radius: 10px; padding: 14px 16px; text-align: left; font-size: 13px; line-height: 1.5; }
     .art-caption-title { font-size: 18px; font-weight: 900; color: #ffd60a; margin: 0 0 4px 0; }
     .art-caption-artist { font-size: 14px; font-weight: bold; color: #fff; margin: 0 0 6px 0; }
     .art-caption-meta { color: #aaa; font-size: 12px; margin: 0; }
-    .art-museum-badge {
-      display: inline-block; margin-top: 8px; background: #2a2400; color: #ffd60a;
-      border: 1px solid #ffd60a; border-radius: 6px; padding: 4px 8px; font-size: 11px; font-weight: bold;
-    }
+    .art-museum-badge { display: inline-block; margin-top: 8px; background: #2a2400; color: #ffd60a; border: 1px solid #ffd60a; border-radius: 6px; padding: 4px 8px; font-size: 11px; font-weight: bold; }
     .art-actions-bar { display: flex; gap: 10px; width: 100%; justify-content: center; }
-    .btn-art-action {
-      background: #2c2c2e; color: #ffd60a; border: 1px solid #ffd60a; border-radius: 8px;
-      padding: 8px 16px; font-size: 13px; font-weight: bold; cursor: pointer; transition: all 0.2s;
-    }
+    .btn-art-action { background: #2c2c2e; color: #ffd60a; border: 1px solid #ffd60a; border-radius: 8px; padding: 8px 16px; font-size: 13px; font-weight: bold; cursor: pointer; }
     .btn-art-action.playing { background: #ffd60a; color: #000; }
-    .art-fullscreen-modal {
-      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.96); z-index: 100000; flex-direction: column;
-      align-items: center; justify-content: center; padding: 20px;
-    }
-    .art-fullscreen-close-btn {
-      position: absolute; top: 20px; right: 25px; background: #ff3b30; color: #fff;
-      border: none; padding: 10px 18px; border-radius: 8px; font-size: 16px;
-      font-weight: 900; cursor: pointer;
-    }
+    .art-fullscreen-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.96); z-index: 100000; flex-direction: column; align-items: center; justify-content: center; padding: 20px; }
+    .art-fullscreen-close-btn { position: absolute; top: 20px; right: 25px; background: #ff3b30; color: #fff; border: none; padding: 10px 18px; border-radius: 8px; font-size: 16px; font-weight: 900; cursor: pointer; }
     .art-fullscreen-img { max-width: 92%; max-height: 82vh; object-fit: contain; border-radius: 8px; }
     .art-fullscreen-caption { margin-top: 14px; text-align: center; color: #fff; max-width: 80%; }
-    .art-fullscreen-caption h3 { margin: 0 0 4px 0; color: #ffd60a; font-size: 18px; }
-    .art-fullscreen-caption p { margin: 0; color: #aaa; font-size: 13px; }
 
-    /* 🤝 HELP & COMMUNITY RESOURCES DIRECTORY STYLES */
-    .help-box {
-      background: #1c1c1e;
-      border: 1px solid #38bdf8;
-      border-radius: 12px;
-      padding: 20px;
-      max-width: 1050px;
-      margin: 0 auto;
-    }
-    .help-location-bar {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      margin-bottom: 18px;
-      padding-bottom: 14px;
-      border-bottom: 1px solid #333;
-    }
-    .help-loc-input {
-      padding: 10px 14px;
-      font-size: 14px;
-      background: #2c2c2e;
-      color: #fff;
-      border: 1px solid #444;
-      border-radius: 8px;
-      width: 220px;
-      text-align: left;
-    }
-    .btn-help-loc {
-      background: #38bdf8;
-      color: #000;
-      border: none;
-      padding: 10px 18px;
-      font-size: 13px;
-      font-weight: bold;
-      border-radius: 8px;
-      cursor: pointer;
-      box-shadow: 0 2px 8px rgba(56, 189, 248, 0.3);
-    }
-    .help-layout { display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; }
-    
-    .help-category-bank {
-      flex: 1;
-      min-width: 270px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      background: #121212;
-      border: 1px solid #333;
-      border-radius: 12px;
-      padding: 12px;
-    }
-    .help-category-btn {
-      background: #2c2c2e;
-      color: #fff;
-      border: 1px solid #444;
-      border-radius: 8px;
-      padding: 12px 14px;
-      font-size: 13px;
-      font-weight: bold;
-      text-align: left;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      transition: all 0.2s;
-    }
-    .help-category-btn:hover { background: #3a3a3c; }
-    .help-category-btn.active {
-      background: #0369a1;
-      color: #fff;
-      border-color: #38bdf8;
-    }
-    .help-category-btn.crisis {
-      border-color: #ef4444;
-      color: #fca5a5;
-    }
-    .help-category-btn.crisis.active {
-      background: #991b1b;
-      color: #fff;
-      border-color: #ef4444;
-    }
-
-    .help-results-console {
-      flex: 2;
-      min-width: 320px;
-      background: #121212;
-      border: 1px solid #333;
-      border-radius: 12px;
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      max-height: 520px;
-      overflow-y: auto;
-    }
-    .help-console-header {
-      font-size: 15px;
-      font-weight: 900;
-      color: #38bdf8;
-      text-align: left;
-      margin: 0 0 6px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .resource-card {
-      background: #1c1c1e;
-      border: 1px solid #333;
-      border-radius: 10px;
-      padding: 14px 16px;
-      text-align: left;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
-    }
-    .resource-card.crisis-card {
-      border-color: #ef4444;
-      background: #2b1111;
-    }
-    .resource-card-title {
-      font-size: 16px;
-      font-weight: 900;
-      color: #fff;
-      margin: 0;
-    }
-    .resource-card-desc {
-      font-size: 13px;
-      color: #ccc;
-      line-height: 1.4;
-      margin: 0;
-    }
-    .resource-card-actions {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-top: 4px;
-    }
-    .btn-res-call {
-      background: #30d158;
-      color: #000;
-      text-decoration: none;
-      padding: 8px 14px;
-      border-radius: 6px;
-      font-size: 12px;
-      font-weight: 900;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .btn-res-map {
-      background: #ff9500;
-      color: #000;
-      text-decoration: none;
-      padding: 8px 14px;
-      border-radius: 6px;
-      font-size: 12px;
-      font-weight: 900;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .btn-res-crisis {
-      background: #ef4444;
-      color: #fff;
-      text-decoration: none;
-      padding: 8px 14px;
-      border-radius: 6px;
-      font-size: 12px;
-      font-weight: 900;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    /* PRACTICAL LIVING QUOTE TICKER */
-    .practical-quote-box {
-      margin-top: 20px;
-      background: #18222d;
-      border: 1px solid #38bdf8;
-      border-radius: 12px;
-      padding: 16px 20px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .practical-quote-text {
-      font-family: Georgia, serif;
-      font-size: 16px;
-      font-style: italic;
-      color: #f0fdfa;
-      line-height: 1.5;
-      margin: 0;
-    }
-    .practical-quote-author {
-      font-size: 13px;
-      font-weight: bold;
-      color: #38bdf8;
-      margin: 0;
-    }
-    .practical-quote-controls {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 4px;
-    }
-    .btn-quote-step {
-      background: #2c2c2e;
-      color: #38bdf8;
-      border: 1px solid #38bdf8;
-      border-radius: 6px;
-      padding: 6px 14px;
-      font-size: 12px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .privacy-notice-badge {
-      margin-top: 25px; font-size: 12px; color: #888; background: #18181a; border: 1px solid #2a2a2d;
-      border-radius: 20px; padding: 8px 16px; display: inline-block; max-width: 90%; line-height: 1.4;
-    }
-    .location-modal-overlay {
-      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.85); z-index: 9999; justify-content: center; align-items: center;
-    }
-    .location-modal-content {
-      background: #1c1c1e; border: 2px solid #ff9500; border-radius: 16px;
-      padding: 25px; max-width: 420px; width: 85%; text-align: center;
-    }
+    .privacy-notice-badge { margin-top: 25px; font-size: 12px; color: #888; background: #18181a; border: 1px solid #2a2a2d; border-radius: 20px; padding: 8px 16px; display: inline-block; max-width: 90%; line-height: 1.4; }
+    .location-modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; justify-content: center; align-items: center; }
+    .location-modal-content { background: #1c1c1e; border: 2px solid #ff9500; border-radius: 16px; padding: 25px; max-width: 420px; width: 85%; text-align: center; }
   </style>
 </head>
 <body>
@@ -600,7 +389,7 @@
     <div class="location-modal-content">
       <h3 style="color: #ff9500; margin-top: 0; font-size: 20px;">📍 Enable Location Access</h3>
       <p style="color: #ccc; font-size: 14px; text-align: left; line-height: 1.5;">
-        To center maps and community resources on your current location, allow location access in your device settings:
+        To center maps on your current location, allow location access in your device settings:
       </p>
       <div style="background: #121212; border: 1px solid #333; border-radius: 8px; padding: 12px; text-align: left; font-size: 12px; color: #aaa; margin-bottom: 20px;">
         <strong>iPhone / iPad:</strong><br>
@@ -622,7 +411,7 @@
       </h1>
     </div>
 
-    <!-- CLEANED UP TAB BAR -->
+    <!-- TAB BAR -->
     <div class="tab-bar">
       <button class="tab-btn tab-phone active" onclick="switchTab('phone')">
         WebPhone
@@ -636,21 +425,17 @@
         📍 Maps
         <span class="sub-tagline">Wi-Fi & Resource Finder</span>
       </button>
-      <button class="tab-btn tab-seattle-wifi" onclick="switchTab('seattle-wifi')">
-        🌐 Seattle Wi-Fi
-        <span class="sub-tagline">City Portal Map</span>
-      </button>
       <button class="tab-btn tab-radio" onclick="switchTab('radio')">
         📻 Radio
         <span class="sub-tagline">Local Live Streams</span>
       </button>
+      <button class="tab-btn tab-meditations" onclick="switchTab('meditations')">
+        📖 Meditations
+        <span class="sub-tagline">Sacred Texts Reader</span>
+      </button>
       <button class="tab-btn tab-art" onclick="switchTab('art')">
         🏛️ Art Gallery
         <span class="sub-tagline">World Masterpieces</span>
-      </button>
-      <button class="tab-btn tab-help" onclick="switchTab('help')">
-        🤝 Help & Resources
-        <span class="sub-tagline">Essential Community Aid</span>
       </button>
     </div>
   </div>
@@ -669,17 +454,14 @@
 
       <div id="webphoneMainSection">
         <div class="webphone-simplified-card">
-          
           <div class="step-row-item">
             <span class="step-title-green">Step 1:</span>
             <input type="text" id="callerName" class="webphone-input-field" placeholder="Enter Your Name">
           </div>
-
           <div class="step-row-item">
             <span class="step-title-green">Step 2:</span>
             <input type="text" id="roomId" class="webphone-input-field" placeholder="Enter Room Name">
           </div>
-
           <div class="step-row-item">
             <span class="step-title-green">Step 3: Call Cell To Invite:</span>
             <a id="callCellBtn" href="tel:" class="btn-round-red" onclick="triggerCellCall(event)">
@@ -687,7 +469,6 @@
               <span>Call Cell</span>
             </a>
           </div>
-
           <div class="step-row-item">
             <span class="step-title-green">Send Text/E-mail Invite:</span>
             <div style="display:flex; align-items:center; gap:12px;">
@@ -695,18 +476,15 @@
                 <span style="font-size:14px;">✉️</span>
                 <span>Send<br>Invite</span>
               </button>
-
               <div class="vintage-toggle-panel">
                 <div class="toggle-label-group">
                   <span id="textLightPhone" class="indicator-light active-red"></span>
                   <span>Text</span>
                 </div>
-
                 <label class="switch-container">
                   <input type="checkbox" id="phoneInviteToggle" onchange="toggleInviteMode('phone')">
                   <span class="slider-track"></span>
                 </label>
-
                 <div class="toggle-label-group">
                   <span id="emailLightPhone" class="indicator-light"></span>
                   <span>E-mail</span>
@@ -714,7 +492,6 @@
               </div>
             </div>
           </div>
-
           <div class="step-row-item">
             <span class="step-title-green" style="font-size: 15px;">Step 4: Start Video Call</span>
             <button id="joinVideoBtn" class="btn-square-start-red" onclick="startCall()">
@@ -722,7 +499,6 @@
               <span>Start Call</span>
             </button>
           </div>
-
         </div>
       </div>
 
@@ -753,20 +529,16 @@
         <div style="display: flex; gap: 12px; margin-bottom: 12px; justify-content: center; align-items: center; flex-wrap: wrap;">
           <input type="text" id="webTextSenderName" placeholder="Your Name" style="background: #2c2c2e; color: #fff; border: 1px solid #444; border-radius: 6px; padding: 10px 12px; width: 120px; text-align: center;">
           <input type="text" id="webTextRoomId" placeholder="Room Name" style="background: #2c2c2e; color: #fff; border: 1px solid #444; border-radius: 6px; padding: 10px 12px; width: 120px; text-align: center;">
-          
           <button id="inviteTextBtn" class="btn-round-blue" style="font-size: 11px; width: 50px; height: 50px;" onclick="sendTextTabInvite()">💬<br>Invite</button>
-
           <div class="vintage-toggle-panel">
             <div class="toggle-label-group">
               <span id="textLightText" class="indicator-light active-red"></span>
               <span>Text</span>
             </div>
-
             <label class="switch-container">
               <input type="checkbox" id="textInviteToggle" onchange="toggleInviteMode('text')">
               <span class="slider-track"></span>
             </label>
-
             <div class="toggle-label-group">
               <span id="emailLightText" class="indicator-light"></span>
               <span>E-mail</span>
@@ -820,37 +592,6 @@
       </div>
     </div>
 
-    <!-- SEATTLE WI-FI TAB -->
-    <div id="tab-seattle-wifi" class="tab-content">
-      <h2 style="color: #00c0f0; margin-top: 0;">🌐 City of Seattle Public Wi-Fi Portal</h2>
-      <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Official municipal database for city libraries, civic centers, and public hotspots</p>
-
-      <div class="maps-box" style="border-color: #00c0f0;">
-        <div style="margin-bottom: 14px; display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap;">
-          <a href="https://maps.seattle.gov/publicwifi/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
-            <button style="font-size: 13px; padding: 10px 20px; background: #00c0f0; color: #000; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(0, 192, 240, 0.3);">
-              ↗️ Launch Seattle Portal Fullscreen
-            </button>
-          </a>
-        </div>
-
-        <div class="map-frame-container" style="height: 550px; border-color: #007d99;">
-          <iframe 
-            id="seattleWifiIframe" 
-            src="https://maps.seattle.gov/publicwifi/" 
-            title="Seattle Public Wi-Fi Map"
-            loading="lazy"
-            sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
-            allowfullscreen>
-          </iframe>
-        </div>
-      </div>
-
-      <div class="privacy-notice-badge">
-        🔒 <b>End-to-End Encrypted (AES-256-GCM):</b> All video, voice, and web text are scrambled directly on your device before transmission. Zero data is logged, stored, or shared.
-      </div>
-    </div>
-
     <!-- RADIO TAB -->
     <div id="tab-radio" class="tab-content">
       <h2 style="color: #e040fb; margin-top: 0;">📻 Local Live Internet Radio</h2>
@@ -877,11 +618,7 @@
           <div class="radio-console">
             <h3 id="radioStationTitle" class="now-playing-title">📻 Select a Station</h3>
             <span id="radioStationLocation" class="now-playing-sub">Choose a station from the Bank on the left</span>
-
-            <audio id="radioAudioPlayer" controls preload="none">
-              Your browser does not support the audio element.
-            </audio>
-
+            <audio id="radioAudioPlayer" controls preload="none">Your browser does not support the audio element.</audio>
             <p id="radioStatusText" style="font-size: 12px; color: #aaa; margin: 0; font-weight: bold;">● Ready to Tune</p>
 
             <div class="tuner-box">
@@ -893,10 +630,8 @@
                 <button onclick="searchRadioBrowserCustom()" class="btn-round-blue" style="width: auto; height: auto; font-size: 13px; padding: 8px 14px; border-radius: 6px;">Tune In</button>
               </div>
             </div>
-
           </div>
         </div>
-
       </div>
 
       <div class="privacy-notice-badge">
@@ -904,10 +639,62 @@
       </div>
     </div>
 
-    <!-- ART GALLERY TAB -->
+    <!-- 📖 MEDITATIONS TAB (LOCAL SCRIPTURES READER + IIIF STREAMER) -->
+    <div id="tab-meditations" class="tab-content">
+      <div class="meditations-wrapper">
+        <div class="meditation-streamer">
+          <div class="streamer-frame-box">
+            <img id="stream-frame" src="" alt="Illuminated Sacred Folio">
+          </div>
+          <div class="streamer-info">
+            <h3 id="folio-title"></h3>
+            <p id="folio-provenance"></p>
+          </div>
+        </div>
+
+        <nav class="canon-nav">
+          <button class="canon-btn" onclick="loadLocalCanon('bible')">Bible</button>
+          <button class="canon-btn" onclick="loadLocalCanon('koran')">Koran</button>
+          <button class="canon-btn" onclick="loadLocalCanon('vedas')">Vedas</button>
+          <button class="canon-btn" onclick="loadLocalCanon('upanishads')">Upanishads</button>
+          <button class="canon-btn" onclick="loadLocalCanon('buddhist')">Buddhist Scripture</button>
+          <button class="canon-btn" onclick="loadLocalCanon('sggs')">Sri Guru Granth Sahib</button>
+        </nav>
+
+        <div class="meditation-workspace">
+          <div class="med-toc-bank">
+            <h4 id="toc-heading">Table of Contents</h4>
+            <ul id="toc-list" class="med-toc-list">
+              <li class="med-toc-item" style="color: #666; font-style: italic;">Select a tradition above...</li>
+            </ul>
+          </div>
+
+          <div class="med-reader-main">
+            <div class="med-reader-header">
+              <span id="current-chapter-title" style="font-style: italic; color: #d4af37; font-size: 0.9rem;">Select a text to begin contemplation.</span>
+              <div class="med-reader-controls">
+                <button class="med-ctrl-btn" onclick="scrollReader(-300)">Scroll Up</button>
+                <button class="med-ctrl-btn" onclick="scrollReader(300)">Scroll Down</button>
+              </div>
+            </div>
+            <div id="reader-view" class="med-reader-content">
+              <p style="text-align: center; color: #666; margin-top: 60px;">
+                Choose a canon from the navigation bar above, then select a text file from the left bank.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="privacy-notice-badge">
+        📖 <b>Local Scriptures Repository:</b> Loading direct text files from your `/scriptures/` directory.
+      </div>
+    </div>
+
+    <!-- 🏛️ ART GALLERY TAB -->
     <div id="tab-art" class="tab-content">
       <h2 style="color: #ffd60a; margin-top: 0;">🏛️ World Art Museum Collections</h2>
-      <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Direct open-access digital collections from premier international museums</p>
+      <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Direct open-access digital collections from premier European & American museums</p>
 
       <div class="art-box">
         <div class="museum-institution-bar">
@@ -917,7 +704,6 @@
           <button id="btnMuseumCMA" class="museum-inst-btn" onclick="setMuseumScope('cma')">🏛️ Cleveland (CMA)</button>
         </div>
 
-        <!-- GENRE BAR WITH CLEAN DYNAMIC HIGHLIGHT -->
         <div class="art-genre-bar">
           <button class="art-genre-btn active" onclick="triggerArtSearch('impressionism', 'Impressionism', this)">🎨 Impressionism</button>
           <button class="art-genre-btn" onclick="triggerArtSearch('renaissance', 'Renaissance', this)">⚜️ Renaissance</button>
@@ -963,63 +749,12 @@
                 <button onclick="searchArtCustom()" class="btn-round-blue" style="width: auto; height: auto; font-size: 13px; padding: 8px 14px; border-radius: 6px;">Search</button>
               </div>
             </div>
-
           </div>
         </div>
-
       </div>
 
       <div class="privacy-notice-badge">
-        🔒 <b>End-to-End Encrypted (AES-256-GCM):</b> All video, voice, and web text are scrambled directly on your device before transmission. Zero data is logged, stored, or shared.
-      </div>
-    </div>
-
-    <!-- 🤝 HELP & COMMUNITY RESOURCES TAB -->
-    <div id="tab-help" class="tab-content">
-      <h2 style="color: #38bdf8; margin-top: 0;">🤝 Essential Community Help & Well-Being Directory</h2>
-      <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Find physical, mental, and social support services with direct-dial and mapping links</p>
-
-      <div class="help-box">
-        <!-- TOP LOCATION INPUT -->
-        <div class="help-location-bar">
-          <label for="helpLocationInput" style="font-size: 13px; font-weight: bold; color: #ccc;">Your City or Zip:</label>
-          <input type="text" id="helpLocationInput" class="help-loc-input" placeholder="e.g., Seattle, WA or 98101" value="Seattle, WA">
-          <button class="btn-help-loc" onclick="updateHelpLocation()">Update Location</button>
-          <button class="btn-help-loc" style="background:#30d158;" onclick="detectHelpGPS()">📍 Use GPS</button>
-        </div>
-
-        <div class="help-layout">
-          <!-- LEFT BANK: CATEGORIES -->
-          <div class="help-category-bank">
-            <button class="help-category-btn active" onclick="selectHelpCategory('housing', this)">🏠 Housing & Shelter</button>
-            <button class="help-category-btn" onclick="selectHelpCategory('addiction', this)">💊 Drug Addiction & Recovery</button>
-            <button class="help-category-btn" onclick="selectHelpCategory('food', this)">🥫 Food Resources & Meals</button>
-            <button class="help-category-btn" onclick="selectHelpCategory('hygiene', this)">🚿 Hygiene & Showers</button>
-            <button class="help-category-btn" onclick="selectHelpCategory('financial', this)">💵 Financial & Utility Aid</button>
-            <button class="help-category-btn" onclick="selectHelpCategory('family', this)">🍼 Family & Pediatric Care</button>
-            <button class="help-category-btn" onclick="selectHelpCategory('mental', this)">🧠 Mental Health Services</button>
-            <button class="help-category-btn crisis" onclick="selectHelpCategory('suicide', this)">☎️ Crisis & Suicide (988)</button>
-          </div>
-
-          <!-- RIGHT CONSOLE: CARDS -->
-          <div id="helpResultsConsole" class="help-results-console">
-            <!-- Dynamically populated -->
-          </div>
-        </div>
-
-        <!-- PRACTICAL LIVING & RESILIENCE QUOTE TICKER -->
-        <div class="practical-quote-box">
-          <p id="practicalQuoteText" class="practical-quote-text">"Energy and persistence conquer all things."</p>
-          <p id="practicalQuoteAuthor" class="practical-quote-author">— Benjamin Franklin</p>
-          <div class="practical-quote-controls">
-            <button class="btn-quote-step" onclick="cyclePracticalQuote()">🎲 Next Helpful Quote</button>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="privacy-notice-badge">
-        🔒 <b>Community Support:</b> All emergency hotlines (988, 211, SAMHSA) are completely free, confidential, and accessible 24/7.
+        🔒 <b>Open Access Art:</b> High-resolution open-access images provided courtesy of public museum APIs.
       </div>
     </div>
 
@@ -1181,8 +916,6 @@
 
     window.addEventListener('DOMContentLoaded', () => {
       loadIceServers();
-      initHelpResources();
-      initPracticalQuotes();
 
       const artInput = document.getElementById('customArtInput');
       if (artInput) {
@@ -1248,21 +981,18 @@
         document.querySelectorAll('.tab-btn')[2].classList.add('active');
         document.getElementById('tab-maps').classList.add('active');
         if (!currentCoords) centerMapOnUser(false);
-      } else if (tabName === 'seattle-wifi') {
-        document.querySelectorAll('.tab-btn')[3].classList.add('active');
-        document.getElementById('tab-seattle-wifi').classList.add('active');
       } else if (tabName === 'radio') {
-        document.querySelectorAll('.tab-btn')[4].classList.add('active');
+        document.querySelectorAll('.tab-btn')[3].classList.add('active');
         document.getElementById('tab-radio').classList.add('active');
+      } else if (tabName === 'meditations') {
+        document.querySelectorAll('.tab-btn')[4].classList.add('active');
+        document.getElementById('tab-meditations').classList.add('active');
       } else if (tabName === 'art') {
         document.querySelectorAll('.tab-btn')[5].classList.add('active');
         document.getElementById('tab-art').classList.add('active');
         if (!hasLoadedArtOnce) {
           triggerArtSearch('impressionism', 'Impressionism');
         }
-      } else if (tabName === 'help') {
-        document.querySelectorAll('.tab-btn')[6].classList.add('active');
-        document.getElementById('tab-help').classList.add('active');
       }
     }
 
@@ -1401,7 +1131,112 @@
     }
 
     // =======================================================
-    // MULTI-MUSEUM ART GALLERY ENGINE (WITH BUTTON HIGHLIGHT FIX)
+    // 📖 MEDITATIONS SCRIPTURE READER & IIIF STREAMER ENGINE
+    // =======================================================
+    const sacredIlluminations = [
+      {
+        title: "Eusebian Canon Table Arches",
+        manuscript: "Walters MS W.537 (12th c. Gospels)",
+        tradition: "Byzantine Christian Illumination",
+        url: "https://manuscripts.thewalters.org/iiif/W.537/canvas/p1r"
+      },
+      {
+        title: "Illuminated Opening Rosette",
+        manuscript: "Walters MS W.563 (Ottoman Qur'an)",
+        tradition: "Islamic Manuscript Illumination",
+        url: "https://manuscripts.thewalters.org/iiif/W.563/canvas/p2r"
+      },
+      {
+        title: "Incipit Page of Saint Mark",
+        manuscript: "Bibliothèque nationale de France (Latin 10514)",
+        tradition: "Romanesque Scriptorium",
+        url: "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8423840f/f13/full/1000,/0/native.jpg"
+      }
+    ];
+
+    let currentFolioIndex = 0;
+    function cycleIlluminations() {
+      const frame = document.getElementById('stream-frame');
+      if (!frame) return;
+      const item = sacredIlluminations[currentFolioIndex];
+      
+      frame.style.opacity = '0';
+      setTimeout(() => {
+        frame.src = item.url;
+        document.getElementById('folio-title').innerText = item.title;
+        document.getElementById('folio-provenance').innerText = `${item.manuscript} • ${item.tradition}`;
+        frame.onload = () => { frame.style.opacity = '1'; };
+      }, 400);
+
+      currentFolioIndex = (currentFolioIndex + 1) % sacredIlluminations.length;
+    }
+    setInterval(cycleIlluminations, 15000);
+    window.addEventListener('DOMContentLoaded', cycleIlluminations);
+
+    // MAPPING CANONS TO LOCAL SCRIPTURE PATHS
+    const localCanonPaths = {
+      bible: {
+        title: "King James Bible",
+        path: "scriptures/kjv-bible.txt"
+      },
+      koran: {
+        title: "The Quran (Rodwell)",
+        path: "scriptures/quran-rodwell.txt"
+      },
+      vedas: {
+        title: "Rigveda (Griffith)",
+        path: "scriptures/rigveda-complete.txt"
+      },
+      upanishads: {
+        title: "Thirteen Principal Upanishads",
+        path: "scriptures/thirteenprincipa028442mbp_djvu.txt"
+      },
+      buddhist: {
+        title: "Buddhist Scripture",
+        path: "scriptures/buddhism/long discourses/OEBPS/text/digha-nikaya.xhtml"
+      },
+      sggs: {
+        title: "Sri Guru Granth Sahib",
+        path: "scriptures/sggs_english.txt"
+      }
+    };
+
+    async function loadLocalCanon(key) {
+      const canon = localCanonPaths[key];
+      if (!canon) return;
+
+      document.getElementById('toc-heading').innerText = canon.title;
+      const listEl = document.getElementById('toc-list');
+      listEl.innerHTML = `<li class="med-toc-item" style="color:#d4af37;">Loading ${canon.title}...</li>`;
+
+      document.getElementById('current-chapter-title').innerText = canon.title;
+      document.getElementById('reader-view').innerText = "Loading scripture text from server...";
+
+      try {
+        const response = await fetch(canon.path);
+        if (!response.ok) throw new Error("File not found on server.");
+        const text = await response.text();
+
+        // Populate Left TOC Bank with simple section indicator
+        listEl.innerHTML = `
+          <li class="med-toc-item" style="color:#fff; font-weight:bold;">📄 Full Document View</li>
+          <li class="med-toc-item" style="color:#888; font-size:0.8rem; margin-top:6px;">Path: ${canon.path}</li>
+        `;
+
+        document.getElementById('reader-view').innerText = text;
+      } catch (err) {
+        listEl.innerHTML = `<li class="med-toc-item" style="color:#ff3b30;">Failed to load text. Ensure file is pushed to repository.</li>`;
+        document.getElementById('reader-view').innerText = `Error loading ${canon.path}. Make sure the file exists in your scriptures folder and has been pushed to GitHub.`;
+      }
+    }
+
+    function scrollReader(amount) {
+      const view = document.getElementById('reader-view');
+      view.scrollBy({ top: amount, behavior: 'smooth' });
+    }
+
+    // =======================================================
+    // MULTI-MUSEUM ART GALLERY ENGINE
     // =======================================================
     let hasLoadedArtOnce = false;
     let currentMuseumScope = 'all';
@@ -1444,9 +1279,7 @@
           imageUrl: `https://www.artic.edu/iiif/2/${item.image_id}/full/843,/0/default.jpg`,
           museum: 'The Art Institute of Chicago'
         }));
-      } catch (e) {
-        return [];
-      }
+      } catch (e) { return []; }
     }
 
     async function fetchFromCMA(query, limit = 8) {
@@ -1464,9 +1297,7 @@
           imageUrl: item.images.web.url,
           museum: 'The Cleveland Museum of Art'
         }));
-      } catch (e) {
-        return [];
-      }
+      } catch (e) { return []; }
     }
 
     async function fetchFromMet(query, limit = 6) {
@@ -1493,9 +1324,7 @@
           imageUrl: item.primaryImage || item.primaryImageSmall,
           museum: 'The Metropolitan Museum of Art (NYC)'
         }));
-      } catch (e) {
-        return [];
-      }
+      } catch (e) { return []; }
     }
 
     async function triggerArtSearch(query, labelName, clickedBtn = null) {
@@ -1640,639 +1469,6 @@
       }
       selectArtItem(currentArtworkList[currentArtworkIndex], currentArtworkIndex);
     }
-
-    // =======================================================
-    // 🤝 HELP & COMMUNITY RESOURCES DIRECTORY ENGINE
-    // =======================================================
-    let currentHelpLocation = "Seattle, WA";
-    let activeHelpCategory = "housing";
-
-    const HELP_RESOURCES = {
-      housing: {
-        title: "🏠 Housing, Shelters & Eviction Defense",
-        cards: [
-          {
-            name: "National Emergency Shelter Locator (HUD)",
-            desc: "Immediate emergency shelter, transitional housing, and local rapid rehousing programs.",
-            phone: "211",
-            mapQuery: "emergency homeless shelter"
-          },
-          {
-            name: "National Eviction Prevention & Rental Aid",
-            desc: "Emergency rental assistance, legal tenant defense, and eviction diversion programs.",
-            phone: "800-569-4287",
-            mapQuery: "housing authority rental assistance"
-          },
-          {
-            name: "Youth & Young Adult Emergency Shelter Line",
-            desc: "24/7 dedicated crisis line and immediate shelter for runaway or housing-insecure youth.",
-            phone: "800-786-2929",
-            mapQuery: "youth shelter"
-          }
-        ]
-      },
-      addiction: {
-        title: "💊 Substance Use & Addiction Recovery",
-        cards: [
-          {
-            name: "SAMHSA National Recovery Helpline",
-            desc: "Free, confidential, 24/7 information service for individuals facing substance use disorders.",
-            phone: "800-662-4357",
-            mapQuery: "substance abuse treatment center"
-          },
-          {
-            name: "Local Detox & Withdrawal Management Centers",
-            desc: "Medically supervised detox, sobering centers, and inpatient stabilization programs.",
-            phone: "211",
-            mapQuery: "detox center"
-          },
-          {
-            name: "Harm Reduction, Syringe Exchange & Naloxone Sites",
-            desc: "Free overdose reversal supplies (Narcan/Naloxone), testing strips, and health navigation.",
-            phone: "211",
-            mapQuery: "harm reduction needle exchange"
-          }
-        ]
-      },
-      food: {
-        title: "🥫 Food Banks, Soup Kitchens & Meal Programs",
-        cards: [
-          {
-            name: "Feeding America Community Food Pantry Network",
-            desc: "Weekly free grocery distribution, fresh produce boxes, and emergency dry food rations.",
-            phone: "211",
-            mapQuery: "food bank pantry"
-          },
-          {
-            name: "Daily Community Soup Kitchens & Hot Meals",
-            desc: "Daily hot lunch and dinner services open to all members of the community without ID.",
-            phone: "211",
-            mapQuery: "soup kitchen free hot meal"
-          },
-          {
-            name: "SNAP / EBT Emergency Food Assistance Office",
-            desc: "State emergency food stamps expedited applications for low-income and unhoused individuals.",
-            phone: "800-221-5689",
-            mapQuery: "DSHS community services SNAP food stamps"
-          }
-        ]
-      },
-      hygiene: {
-        title: "🚿 Showers, Restrooms & Laundry Centers",
-        cards: [
-          {
-            name: "Day Center Free Showers & Hygiene Stations",
-            desc: "Access to private hot showers, hygiene kits, towels, and public restrooms.",
-            phone: "211",
-            mapQuery: "homeless day center showers"
-          },
-          {
-            name: "Community Free Laundry Programs",
-            desc: "Facilities offering free washer and dryer cycles and laundry detergent for low-income families.",
-            phone: "211",
-            mapQuery: "free laundry community center"
-          },
-          {
-            name: "Public Restrooms & Drinking Water Access",
-            desc: "Mapped municipal parks, community centers, and libraries with verified public restrooms.",
-            phone: "211",
-            mapQuery: "public library restroom"
-          }
-        ]
-      },
-      financial: {
-        title: "💵 Financial Assistance & Utility Lifelines",
-        cards: [
-          {
-            name: "2-1-1 United Way Financial Relief Clearinghouse",
-            desc: "Emergency grants for past-due utility shut-offs, rent help, and transit vouchers.",
-            phone: "211",
-            mapQuery: "community action agency financial assistance"
-          },
-          {
-            name: "LIHEAP Electric & Heating Energy Grants",
-            desc: "Federal utility grant assistance to keep winter heat and summer electricity active.",
-            phone: "866-674-6327",
-            mapQuery: "LIHEAP utility assistance office"
-          },
-          {
-            name: "Government Lifeline Free Cellphone & Internet Aid",
-            desc: "Federal subsidies providing free monthly cellular service and discounted home internet.",
-            phone: "800-234-9473",
-            mapQuery: "lifeline assistance phone wireless"
-          }
-        ]
-      },
-      family: {
-        title: "🍼 Family, Diapers & Pediatric Care",
-        cards: [
-          {
-            name: "National Diaper Bank & Infant Essentials",
-            desc: "Free monthly allocations of infant diapers, baby wipes, and infant formula.",
-            phone: "211",
-            mapQuery: "diaper bank family resource center"
-          },
-          {
-            name: "Free Pediatric & Child Health Clinics",
-            desc: "Sliding-scale and free childhood immunizations, well-child checkups, and dental screenings.",
-            phone: "211",
-            mapQuery: "community health center pediatrics"
-          },
-          {
-            name: "Child Care Resource & Subsidy Agency",
-            desc: "Assistance finding subsidized childcare, Head Start programs, and emergency respite care.",
-            phone: "800-424-2246",
-            mapQuery: "head start child care resources"
-          }
-        ]
-      },
-      mental: {
-        title: "🧠 Mental Health Counseling & Community Clinics",
-        cards: [
-          {
-            name: "Community Mental Health Centers (Sliding Scale)",
-            desc: "Walk-in counseling, psychiatric evaluations, peer support groups, and trauma therapy.",
-            phone: "211",
-            mapQuery: "community mental health clinic"
-          },
-          {
-            name: "NAMI National Alliance on Mental Illness HelpLine",
-            desc: "Free peer-support service providing information, resource referrals, and community support.",
-            phone: "800-950-6264",
-            mapQuery: "NAMI mental health support"
-          }
-        ]
-      },
-      suicide: {
-        title: "☎️ 24/7 Crisis & Suicide Lifelines (Dial 988)",
-        cards: [
-          {
-            name: "988 Suicide & Crisis Lifeline (National)",
-            desc: "Free, confidential 24/7 support for anyone in emotional distress, suicidal crisis, or substance panic.",
-            phone: "988",
-            isCrisis: true,
-            mapQuery: "crisis stabilization center"
-          },
-          {
-            name: "Veterans Crisis Line (Dial 988, Press 1)",
-            desc: "Confidential support specialized for military veterans, active service members, and families.",
-            phone: "988",
-            isCrisis: true,
-            mapQuery: "VA medical center mental health"
-          },
-          {
-            name: "The Trevor Project (LGBTQ Youth Crisis Line)",
-            desc: "24/7 suicide prevention and crisis counseling for LGBTQ youth and young adults.",
-            phone: "866-488-7386",
-            isCrisis: true,
-            mapQuery: "LGBTQ community center crisis"
-          }
-        ]
-      }
-    };
-
-    function initHelpResources() {
-      renderHelpCategory(activeHelpCategory);
-    }
-
-    function selectHelpCategory(catKey, clickedBtn) {
-      activeHelpCategory = catKey;
-      document.querySelectorAll('.help-category-btn').forEach(btn => btn.classList.remove('active'));
-      if (clickedBtn) clickedBtn.classList.add('active');
-      renderHelpCategory(catKey);
-    }
-
-    function updateHelpLocation() {
-      const input = document.getElementById('helpLocationInput');
-      const val = input.value.trim();
-      if (!val) return alert("Please enter a valid city or zip code.");
-      currentHelpLocation = val;
-      renderHelpCategory(activeHelpCategory);
-    }
-
-    function detectHelpGPS() {
-      if (!navigator.geolocation) return alert("Geolocation not supported on this browser.");
-      navigator.geolocation.getCurrentPosition(
-        (pos) => {
-          currentCoords = { lat: pos.coords.latitude, lng: pos.coords.longitude };
-          currentHelpLocation = `${pos.coords.latitude.toFixed(3)}, ${pos.coords.longitude.toFixed(3)}`;
-          document.getElementById('helpLocationInput').value = "📍 Current GPS Location";
-          renderHelpCategory(activeHelpCategory);
-        },
-        () => alert("Unable to detect location. Please type your city or zip code.")
-      );
-    }
-
-    function renderHelpCategory(catKey) {
-      const consoleEl = document.getElementById('helpResultsConsole');
-      const data = HELP_RESOURCES[catKey];
-      if (!data) return;
-
-      let html = `<div class="help-console-header"><span>${data.title}</span><span style="font-size:12px; font-weight:normal; color:#aaa;">Near: ${currentHelpLocation}</span></div>`;
-
-      data.cards.forEach(card => {
-        const mapUrl = currentCoords 
-          ? `https://www.google.com/maps?q=${encodeURIComponent(card.mapQuery)}&ll=${currentCoords.lat},${currentCoords.lng}&z=14`
-          : `https://www.google.com/maps?q=${encodeURIComponent(card.mapQuery + ' in ' + currentHelpLocation)}&z=14`;
-
-        html += `
-          <div class="resource-card ${card.isCrisis ? 'crisis-card' : ''}">
-            <h3 class="resource-card-title">${card.name}</h3>
-            <p class="resource-card-desc">${card.desc}</p>
-            <div class="resource-card-actions">
-              <a href="tel:${card.phone}" class="${card.isCrisis ? 'btn-res-crisis' : 'btn-res-call'}">📞 Call ${card.phone}</a>
-              <a href="${mapUrl}" target="_blank" rel="noopener noreferrer" class="btn-res-map">📍 View Nearby Map</a>
-            </div>
-          </div>
-        `;
-      });
-
-      consoleEl.innerHTML = html;
-    }
-
-    // =======================================================
-    // PRACTICAL LIVING & RESILIENCE QUOTE TICKER (60 SECONDS)
-    // =======================================================
-    const PRACTICAL_QUOTES = [
-      { quote: "Energy and persistence conquer all things.", author: "Benjamin Franklin" },
-      { quote: "It’s not what happens to you, but how you react to it that matters.", author: "Epictetus" },
-      { quote: "You have power over your mind - not outside events. Realize this, and you will find strength.", author: "Marcus Aurelius" },
-      { quote: "The secret of getting ahead is getting started.", author: "Mark Twain" },
-      { quote: "Courage does not always roar. Sometimes courage is the quiet voice at the end of the day saying, 'I will try again tomorrow.'", author: "Mary Anne Radmacher" },
-      { quote: "Small deeds done are better than great deeds planned.", author: "Peter Marshall" },
-      { quote: "Do not let what you cannot do interfere with what you can do.", author: "John Wooden" },
-      { quote: "He who has a why to live can bear almost any how.", author: "Friedrich Nietzsche" },
-      { quote: "Fall seven times, stand up eight.", author: "Traditional Proverb" },
-      { quote: "Waste no more time arguing what a good man should be. Be one.", author: "Marcus Aurelius" },
-      { quote: "An ounce of practice is worth more than tons of preaching.", author: "Mahatma Gandhi" },
-      { quote: "When you come to the end of your rope, tie a knot and hang on.", author: "Franklin D. Roosevelt" }
-    ];
-
-    let currentQuoteIdx = 0;
-    let quoteTimer = null;
-
-    function initPracticalQuotes() {
-      cyclePracticalQuote();
-      if (quoteTimer) clearInterval(quoteTimer);
-      quoteTimer = setInterval(cyclePracticalQuote, 60000);
-    }
-
-    function cyclePracticalQuote() {
-      currentQuoteIdx = Math.floor(Math.random() * PRACTICAL_QUOTES.length);
-      const pick = PRACTICAL_QUOTES[currentQuoteIdx];
-      document.getElementById('practicalQuoteText').innerText = `"${pick.quote}"`;
-      document.getElementById('practicalQuoteAuthor').innerText = `— ${pick.author}`;
-    }
-
-    function sendInvite(mode = 'video') {
-      const name = callerNameInput.value.trim() || webTextSenderNameInput.value.trim() || 'Someone';
-      const currentRoom = roomIdInput.value.trim() || document.getElementById('webTextRoomId').value.trim() || 'room1';
-      const inviteUrl = `${window.location.origin}${window.location.pathname}?room=${encodeURIComponent(currentRoom)}&mode=${mode}`;
-      
-      const isEmail = mode === 'text' ? document.getElementById('textInviteToggle').checked : document.getElementById('phoneInviteToggle').checked;
-
-      let typeText = 'Video Call';
-      if (mode === 'text') typeText = 'WebText Chat';
-
-      if (isEmail) {
-        const subject = `ZeroPhone Invitation from ${name}`;
-        const timeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-        const emailBody = `Hello!\n\n${name} is hoping to ${typeText} with you @ ${timeStr}.\n\nPress here to join directly:\n${inviteUrl}\n\nSee You Soon,\n${name}`;
-        window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
-      } else {
-        let typeActionText = 'have a video call with you';
-        if (mode === 'text') typeActionText = 'text with you online for free';
-        const smsMessage = `Knock, Knock!\n\n${name} would like to ${typeActionText}. Press here to join: ${inviteUrl}`;
-        window.location.href = `sms:?&body=${encodeURIComponent(smsMessage)}`;
-      }
-    }
-
-    function sendTextTabInvite() {
-      const room = document.getElementById('webTextRoomId').value.trim() || 'room1';
-      roomIdInput.value = room;
-      sendInvite('text');
-    }
-
-    socket.on('connect_error', () => {
-      statusDiv.innerText = "Waking up server (please wait)...";
-      statusDiv.style.color = "#ff9500";
-    });
-
-    async function startCall() {
-      const roomId = roomIdInput.value.trim();
-      if (!roomId) return alert("Please enter a room name");
-
-      await loadIceServers();
-
-      const mediaConfigs = [
-        {
-          audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true },
-          video: { facingMode: 'user', width: { ideal: 640 }, height: { ideal: 640 } }
-        },
-        { audio: true, video: { facingMode: 'user' } },
-        { audio: true, video: true }
-      ];
-
-      localStream = null;
-      for (const config of mediaConfigs) {
-        try {
-          localStream = await navigator.mediaDevices.getUserMedia(config);
-          if (localStream) break;
-        } catch (e) {
-          console.warn("Attempting relaxed media constraints...", e);
-        }
-      }
-
-      if (!localStream) {
-        return alert("Unable to access microphone/camera. Please check your browser permissions.");
-      }
-
-      const localVid = document.getElementById('localVideo');
-      localVid.srcObject = localStream;
-      
-      try {
-        await localVid.play();
-      } catch (err) {
-        console.warn("Autoplay note:", err);
-      }
-
-      document.getElementById('videoStreamView').style.display = 'grid';
-      document.getElementById('inCallControls').style.display = 'flex';
-      document.getElementById('webphoneMainSection').style.display = 'none';
-
-      ensureSocketConnected(() => {
-        updateGridLayout();
-        socket.emit('join-room', roomId);
-        statusDiv.innerText = `Joined room: ${roomId}. Waiting for peers...`;
-      });
-    }
-
-    function toggleAudio() {
-      if (localStream) {
-        const audioTrack = localStream.getAudioTracks()[0];
-        if (audioTrack) {
-          isAudioMuted = !isAudioMuted;
-          audioTrack.enabled = !isAudioMuted;
-          const micBtn = document.getElementById('toggleMicBtn');
-          if (isAudioMuted) {
-            micBtn.innerHTML = "🎙️🚫";
-            micBtn.classList.add('muted');
-          } else {
-            micBtn.innerHTML = "🎙️";
-            micBtn.classList.remove('muted');
-          }
-        }
-      }
-    }
-
-    function toggleVideo() {
-      if (localStream) {
-        const videoTrack = localStream.getVideoTracks()[0];
-        if (videoTrack) {
-          isVideoMuted = !isVideoMuted;
-          videoTrack.enabled = !isVideoMuted;
-          const camBtn = document.getElementById('toggleCamBtn');
-          if (isVideoMuted) {
-            camBtn.innerHTML = "📹🚫";
-            camBtn.classList.add('muted');
-          } else {
-            camBtn.innerHTML = "📹";
-            camBtn.classList.remove('muted');
-          }
-        }
-      }
-    }
-
-    function hangUpCall() {
-      if (localStream) {
-        localStream.getTracks().forEach(track => track.stop());
-        localStream = null;
-      }
-      
-      Object.keys(peerConnections).forEach(id => {
-        if (peerConnections[id]) {
-          if (peerConnections[id].relayInterval) clearInterval(peerConnections[id].relayInterval);
-          peerConnections[id].close();
-        }
-      });
-      peerConnections = {};
-
-      if (socket && socket.connected) {
-        socket.disconnect();
-      }
-
-      const grid = document.getElementById('videoStreamView');
-      grid.innerHTML = `
-        <div class="video-card">
-          <h3 style="margin: 0 0 8px 0; font-size: 14px;">Local Stream (You)</h3>
-          <video id="localVideo" autoplay playsinline muted></video>
-        </div>
-      `;
-
-      statusDiv.innerText = "Call ended.";
-      statusDiv.style.color = "#ff3b30";
-      
-      document.getElementById('inCallControls').style.display = 'none';
-      document.getElementById('videoStreamView').style.display = 'none';
-      document.getElementById('mainHeader').style.display = 'flex';
-      document.getElementById('webphoneMainSection').style.display = 'block';
-
-      isAudioMuted = false;
-      isVideoMuted = false;
-      document.getElementById('toggleMicBtn').innerHTML = "🎙️";
-      document.getElementById('toggleMicBtn').classList.remove('muted');
-      document.getElementById('toggleCamBtn').innerHTML = "📹";
-      document.getElementById('toggleCamBtn').classList.remove('muted');
-      
-      updateGridLayout();
-    }
-
-    socket.on('user-joined', async ({ socketId }) => {
-      statusDiv.innerText = "Peer joining... Connecting media!";
-      const pc = createPeerConnection(socketId);
-
-      const offer = await pc.createOffer();
-      await pc.setLocalDescription(offer);
-      socket.emit('offer', { offer, targetId: socketId, isAudioOnly: false });
-    });
-
-    socket.on('offer', async ({ offer, senderId }) => {
-      statusDiv.innerText = "Connecting media stream...";
-      const pc = createPeerConnection(senderId);
-
-      await pc.setRemoteDescription(new RTCSessionDescription(offer));
-      const answer = await pc.createAnswer();
-      await pc.setLocalDescription(answer);
-
-      socket.emit('answer', { answer, targetId: senderId });
-    });
-
-    socket.on('answer', async ({ answer, senderId }) => {
-      statusDiv.innerText = "Live Connected!";
-      statusDiv.style.color = "#30d158";
-      if (peerConnections[senderId]) {
-        await peerConnections[senderId].setRemoteDescription(new RTCSessionDescription(answer));
-      }
-    });
-
-    socket.on('ice-candidate', async ({ candidate, senderId }) => {
-      if (peerConnections[senderId]) {
-        await peerConnections[senderId].addIceCandidate(new RTCIceCandidate(candidate));
-      }
-    });
-
-    socket.on('user-disconnected', ({ socketId }) => {
-      if (peerConnections[socketId]) {
-        if (peerConnections[socketId].relayInterval) clearInterval(peerConnections[socketId].relayInterval);
-        peerConnections[socketId].close();
-        delete peerConnections[socketId];
-      }
-      const remoteCard = document.getElementById(`card-${socketId}`);
-      if (remoteCard) remoteCard.remove();
-      
-      const count = Object.keys(peerConnections).length;
-      statusDiv.innerText = count > 0 ? `Connected with ${count} peer(s)` : "Waiting for peers...";
-      updateGridLayout();
-    });
-
-    function monitorPeerRelay(pc, targetSocketId) {
-      pc.relayInterval = setInterval(async () => {
-        if (pc.connectionState === 'closed') {
-          clearInterval(pc.relayInterval);
-          return;
-        }
-
-        try {
-          const stats = await pc.getStats();
-          stats.forEach(async report => {
-            if (report.type === 'candidate-pair' && report.state === 'succeeded') {
-              const localCandidate = stats.get(report.localCandidateId);
-              const remoteCandidate = stats.get(report.remoteCandidateId);
-
-              const isRelayed = (localCandidate && localCandidate.candidateType === 'relay') || 
-                                (remoteCandidate && remoteCandidate.candidateType === 'relay');
-
-              if (isRelayed && !pc.isVoiceRestricted) {
-                pc.isVoiceRestricted = true;
-
-                const videoSender = pc.getSenders().find(s => s.track && s.track.kind === 'video');
-                if (videoSender) {
-                  await videoSender.replaceTrack(null);
-                }
-
-                const badge = document.getElementById(`turn-badge-${targetSocketId}`);
-                if (badge) badge.style.display = 'block';
-
-                statusDiv.innerText = "Relay Network: Strict connection restricted to Voice-Only.";
-                statusDiv.style.color = "#ff9500";
-              }
-            }
-          });
-        } catch (e) {
-          console.warn("Stats check warning:", e);
-        }
-      }, 3000);
-    }
-
-    function createPeerConnection(targetSocketId) {
-      if (peerConnections[targetSocketId]) return peerConnections[targetSocketId];
-
-      const pc = new RTCPeerConnection(rtcConfig);
-      pc.isVoiceRestricted = false;
-      peerConnections[targetSocketId] = pc;
-
-      if (localStream) {
-        localStream.getTracks().forEach(track => pc.addTrack(track, localStream));
-      }
-
-      pc.ontrack = (event) => {
-        let remoteCard = document.getElementById(`card-${targetSocketId}`);
-        if (!remoteCard) {
-          remoteCard = document.createElement('div');
-          remoteCard.className = 'video-card';
-          remoteCard.id = `card-${targetSocketId}`;
-          remoteCard.innerHTML = `
-            <div id="turn-badge-${targetSocketId}" class="turn-badge">🎙️ Voice Only (Relayed)</div>
-            <h3 style="margin: 0 0 8px 0; font-size: 14px;">Peer Stream</h3>
-            <video id="video-${targetSocketId}" autoplay playsinline></video>
-          `;
-          document.getElementById('videoStreamView').appendChild(remoteCard);
-          updateGridLayout();
-        }
-        const videoEl = document.getElementById(`video-${targetSocketId}`);
-        videoEl.srcObject = event.streams[0];
-        videoEl.play().catch(e => console.warn("Remote stream play trigger:", e));
-        statusDiv.innerText = "Live Connected!";
-      };
-
-      pc.onicecandidate = (event) => {
-        if (event.candidate) {
-          socket.emit('ice-candidate', { candidate: event.candidate, targetId: targetSocketId });
-        }
-      };
-
-      monitorPeerRelay(pc, targetSocketId);
-
-      return pc;
-    }
-
-    function appendWebMessage(sender, text) {
-      const thread = document.getElementById('web-chat-thread');
-      const placeholder = thread.querySelector('p');
-      if (placeholder) thread.innerHTML = '';
-
-      const msgBox = document.createElement('div');
-      msgBox.style.marginBottom = '8px';
-      msgBox.style.padding = '8px 12px';
-      msgBox.style.borderRadius = '6px';
-      msgBox.style.backgroundColor = '#2c2c2e';
-      msgBox.style.color = '#fff';
-
-      msgBox.innerHTML = '<strong style="color:#63e685;">' + sender + ':</strong> ' + text;
-      thread.appendChild(msgBox);
-      thread.scrollTop = thread.scrollHeight;
-    }
-
-    async function sendWebChatMessage() {
-      const input = document.getElementById('webChatInput');
-      const msg = input.value.trim();
-      const sender = webTextSenderNameInput.value.trim() || callerNameInput.value.trim() || 'Anonymous';
-      const roomId = document.getElementById('webTextRoomId').value.trim() || 'room1';
-
-      if (msg) {
-        ensureSocketConnected(async () => {
-          socket.emit('join-room', roomId);
-          const encrypted = await encryptPayload(msg, roomId);
-          socket.emit('send-web-chat', { roomId: roomId, cipher: encrypted.cipher, iv: encrypted.iv, sender: sender });
-          appendWebMessage(sender, msg);
-          input.value = '';
-        });
-      }
-    }
-
-    document.getElementById('sendWebChatBtn').addEventListener('click', sendWebChatMessage);
-    document.getElementById('webChatInput').addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') sendWebChatMessage();
-    });
-
-    socket.on('receive-web-chat', async ({ cipher, iv, message, sender }) => {
-      const currentUser = webTextSenderNameInput.value.trim() || callerNameInput.value.trim() || 'Anonymous';
-      const roomId = document.getElementById('webTextRoomId').value.trim() || 'room1';
-      if (sender !== currentUser) {
-        const decryptedText = cipher ? await decryptPayload(cipher, iv, roomId) : message;
-        appendWebMessage(sender, decryptedText);
-      }
-    });
-
-    socket.on('load-chat-history', async (history) => {
-      const thread = document.getElementById('web-chat-thread');
-      const roomId = document.getElementById('webTextRoomId').value.trim() || 'room1';
-      thread.innerHTML = '';
-      for (const item of history) {
-        const text = item.cipher ? await decryptPayload(item.cipher, item.iv, roomId) : item.message;
-        appendWebMessage(item.sender, text);
-      }
-    });
   </script>
 </body>
 </html>

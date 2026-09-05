@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='utf-8'?>
+<package xmlns="http://www.idpf.org/2007/opf" unique-identifier="id" version="3.0" prefix="rendition: http://www.idpf.org/vocab/rendition/#">
+  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
+    <meta property="dcterms:modified">2026-08-26T03:31:57Z</meta>
+    <meta name="generator" content="Ebook-lib 0.17.1"/>
+    <dc:identifier id="id">mn-en-sujato_scpub3-ed2-epub_2022-02-10</dc:identifier>
+    <dc:title>Middle Discourses</dc:title>
+    <dc:language>en</dc:language>
+    <dc:creator id="creator">Bhikkhu Sujato</dc:creator>
+    <meta name="cover" content="cover-img"></meta>
+  </metadata>
+  <manifest>
+    <item href="cover.jpg" id="cover-img" media-type="image/jpeg" properties="cover-image"/>
+    <item href="cover.xhtml" id="cover" media-type="application/xhtml+xml"/>
+    <item href="style/default.css" id="style_default" media-type="text/css"/>
+    <item href="images/sclogo.png" id="sclogo" media-type="image/png"/>
+    <item href="halftitlepage.xhtml" id="chapter_0" media-type="application/xhtml+xml"/>
+    <item href="imprint.xhtml" id="chapter_1" media-type="application/xhtml+xml"/>
+    <item href="epigraph.xhtml" id="chapter_2" media-type="application/xhtml+xml"/>
+    <item href="foreword.xhtml" id="chapter_3" media-type="application/xhtml+xml"/>
+    <item href="preface.xhtml" id="chapter_4" media-type="application/xhtml+xml"/>
+    <item href="introduction.xhtml" id="chapter_5" media-type="application/xhtml+xml"/>
+    <item href="acknowledgements.xhtml" id="chapter_6" media-type="application/xhtml+xml"/>
+    <item href="blurbs.xhtml" id="chapter_7" media-type="application/xhtml+xml"/>
+    <item href="mn-mulapannasa.xhtml" id="chapter_8" media-type="application/xhtml+xml"/>
+    <item href="mn-sihanadavagga.xhtml" id="chapter_9" media-type="application/xhtml+xml"/>
+    <item href="mn-opammavagga.xhtml" id="chapter_10" media-type="application/xhtml+xml"/>
+    <item href="mn-mahayamakavagga.xhtml" id="chapter_11" media-type="application/xhtml+xml"/>
+    <item href="mn-culayamakavagga.xhtml" id="chapter_12" media-type="application/xhtml+xml"/>
+    <item href="mn-majjhimapannasa.xhtml" id="chapter_13" media-type="application/xhtml+xml"/>
+    <item href="mn-bhikkhuvagga.xhtml" id="chapter_14" media-type="application/xhtml+xml"/>
+    <item href="mn-paribbajakavagga.xhtml" id="chapter_15" media-type="application/xhtml+xml"/>
+    <item href="mn-rajavagga.xhtml" id="chapter_16" media-type="application/xhtml+xml"/>
+    <item href="mn-brahmanavagga.xhtml" id="chapter_17" media-type="application/xhtml+xml"/>
+    <item href="mn-uparipannasa.xhtml" id="chapter_18" media-type="application/xhtml+xml"/>
+    <item href="mn-anupadavagga.xhtml" id="chapter_19" media-type="application/xhtml+xml"/>
+    <item href="mn-sunnatavagga.xhtml" id="chapter_20" media-type="application/xhtml+xml"/>
+    <item href="mn-vibhangavagga.xhtml" id="chapter_21" media-type="application/xhtml+xml"/>
+    <item href="mn-salayatanavagga.xhtml" id="chapter_22" media-type="application/xhtml+xml"/>
+    <item href="endnotes.xhtml" id="chapter_23" media-type="application/xhtml+xml"/>
+    <item href="colophon.xhtml" id="chapter_24" media-type="application/xhtml+xml"/>
+    <item href="toc.ncx" id="ncx" media-type="application/x-dtbncx+xml"/>
+    <item href="nav.xhtml" id="nav" media-type="application/xhtml+xml" properties="nav"/>
+  </manifest>
+  <spine toc="ncx">
+    <itemref idref="nav"/>
+    <itemref idref="chapter_0"/>
+    <itemref idref="chapter_1"/>
+    <itemref idref="chapter_2"/>
+    <itemref idref="chapter_3"/>
+    <itemref idref="chapter_4"/>
+    <itemref idref="chapter_5"/>
+    <itemref idref="chapter_6"/>
+    <itemref idref="chapter_7"/>
+    <itemref idref="chapter_8"/>
+    <itemref idref="chapter_9"/>
+    <itemref idref="chapter_10"/>
+    <itemref idref="chapter_11"/>
+    <itemref idref="chapter_12"/>
+    <itemref idref="chapter_13"/>
+    <itemref idref="chapter_14"/>
+    <itemref idref="chapter_15"/>
+    <itemref idref="chapter_16"/>
+    <itemref idref="chapter_17"/>
+    <itemref idref="chapter_18"/>
+    <itemref idref="chapter_19"/>
+    <itemref idref="chapter_20"/>
+    <itemref idref="chapter_21"/>
+    <itemref idref="chapter_22"/>
+    <itemref idref="chapter_23"/>
+    <itemref idref="chapter_24"/>
+  </spine>
+</package>

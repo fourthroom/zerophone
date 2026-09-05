@@ -1,0 +1,206 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1">
+  <head>
+    <meta content="dhp-en-sujato_scpub7-ed2-epub_2022-02-10" name="dtb:uid"/>
+    <meta content="0" name="dtb:depth"/>
+    <meta content="0" name="dtb:totalPageCount"/>
+    <meta content="0" name="dtb:maxPageNumber"/>
+  </head>
+  <docTitle>
+    <text>Sayings of the Dhamma</text>
+  </docTitle>
+  <navMap>
+    <navPoint id="imprint">
+      <navLabel>
+        <text>Imprint</text>
+      </navLabel>
+      <content src="imprint.xhtml#imprint"/>
+    </navPoint>
+    <navPoint id="foreword">
+      <navLabel>
+        <text>Foreword</text>
+      </navLabel>
+      <content src="foreword.xhtml#foreword"/>
+    </navPoint>
+    <navPoint id="preface">
+      <navLabel>
+        <text>Preface</text>
+      </navLabel>
+      <content src="preface.xhtml#preface"/>
+    </navPoint>
+    <navPoint id="introduction">
+      <navLabel>
+        <text>Introduction</text>
+      </navLabel>
+      <content src="introduction.xhtml#introduction"/>
+    </navPoint>
+    <navPoint id="acknowledgements">
+      <navLabel>
+        <text>Acknowledgements</text>
+      </navLabel>
+      <content src="acknowledgements.xhtml#acknowledgements"/>
+    </navPoint>
+    <navPoint id="dhp1-20">
+      <navLabel>
+        <text>Dhp 1–20: 1. Pairs — Yamakavagga</text>
+      </navLabel>
+      <content src="dhp1-20.xhtml#dhp1-20"/>
+    </navPoint>
+    <navPoint id="dhp21-32">
+      <navLabel>
+        <text>Dhp 21–32: 2. Diligence — Appamādavagga</text>
+      </navLabel>
+      <content src="dhp1-20.xhtml#dhp21-32"/>
+    </navPoint>
+    <navPoint id="dhp33-43">
+      <navLabel>
+        <text>Dhp 33–43: 3. The Mind — Cittavagga</text>
+      </navLabel>
+      <content src="dhp1-20.xhtml#dhp33-43"/>
+    </navPoint>
+    <navPoint id="dhp44-59">
+      <navLabel>
+        <text>Dhp 44–59: 4. Flowers — Pupphavagga</text>
+      </navLabel>
+      <content src="dhp1-20.xhtml#dhp44-59"/>
+    </navPoint>
+    <navPoint id="dhp60-75">
+      <navLabel>
+        <text>Dhp 60–75: 5. The Fool — Bālavagga</text>
+      </navLabel>
+      <content src="dhp1-20.xhtml#dhp60-75"/>
+    </navPoint>
+    <navPoint id="dhp76-89">
+      <navLabel>
+        <text>Dhp 76–89: 6. The Astute — Paṇḍitavagga</text>
+      </navLabel>
+      <content src="dhp1-20.xhtml#dhp76-89"/>
+    </navPoint>
+    <navPoint id="dhp90-99">
+      <navLabel>
+        <text>Dhp 90–99: 7. The Perfected Ones — Arahantavagga</text>
+      </navLabel>
+      <content src="dhp1-20.xhtml#dhp90-99"/>
+    </navPoint>
+    <navPoint id="dhp100-115">
+      <navLabel>
+        <text>Dhp 100–115: 8. The Thousands — Sahassavagga</text>
+      </navLabel>
+      <content src="dhp1-20.xhtml#dhp100-115"/>
+    </navPoint>
+    <navPoint id="dhp116-128">
+      <navLabel>
+        <text>Dhp 116–128: 9. Wickedness — Pāpavagga</text>
+      </navLabel>
+      <content src="dhp1-20.xhtml#dhp116-128"/>
+    </navPoint>
+    <navPoint id="dhp129-145">
+      <navLabel>
+        <text>Dhp 129–145: 10. The Rod — Daṇḍavagga</text>
+      </navLabel>
+      <content src="dhp1-20.xhtml#dhp129-145"/>
+    </navPoint>
+    <navPoint id="dhp146-156">
+      <navLabel>
+        <text>Dhp 146–156: 11. Old Age — Jarāvagga</text>
+      </navLabel>
+      <content src="dhp1-20.xhtml#dhp146-156"/>
+    </navPoint>
+    <navPoint id="dhp157-166">
+      <navLabel>
+        <text>Dhp 157–166: 12. The Self — Attavagga</text>
+      </navLabel>
+      <content src="dhp1-20.xhtml#dhp157-166"/>
+    </navPoint>
+    <navPoint id="dhp167-178">
+      <navLabel>
+        <text>Dhp 167–178: 13. The World — Lokavagga</text>
+      </navLabel>
+      <content src="dhp1-20.xhtml#dhp167-178"/>
+    </navPoint>
+    <navPoint id="dhp179-196">
+      <navLabel>
+        <text>Dhp 179–196: 14. The Buddhas — Buddhavagga</text>
+      </navLabel>
+      <content src="dhp1-20.xhtml#dhp179-196"/>
+    </navPoint>
+    <navPoint id="dhp197-208">
+      <navLabel>
+        <text>Dhp 197–208: 15. Happiness — Sukhavagga</text>
+      </navLabel>
+      <content src="dhp1-20.xhtml#dhp197-208"/>
+    </navPoint>
+    <navPoint id="dhp209-220">
+      <navLabel>
+        <text>Dhp 209–220: 16. The Beloved — Piyavagga</text>
+      </navLabel>
+      <content src="dhp1-20.xhtml#dhp209-220"/>
+    </navPoint>
+    <navPoint id="dhp221-234">
+      <navLabel>
+        <text>Dhp 221–234: 17. Anger — Kodhavagga</text>
+      </navLabel>
+      <content src="dhp1-20.xhtml#dhp221-234"/>
+    </navPoint>
+    <navPoint id="dhp235-255">
+      <navLabel>
+        <text>Dhp 235–255: 18. Stains — Malavagga</text>
+      </navLabel>
+      <content src="dhp1-20.xhtml#dhp235-255"/>
+    </navPoint>
+    <navPoint id="dhp256-272">
+      <navLabel>
+        <text>Dhp 256–272: 19. The Just — Dhammaṭṭhavagga</text>
+      </navLabel>
+      <content src="dhp1-20.xhtml#dhp256-272"/>
+    </navPoint>
+    <navPoint id="dhp273-289">
+      <navLabel>
+        <text>Dhp 273–289: 20. The Path — Maggavagga</text>
+      </navLabel>
+      <content src="dhp1-20.xhtml#dhp273-289"/>
+    </navPoint>
+    <navPoint id="dhp290-305">
+      <navLabel>
+        <text>Dhp 290–305: 21. Miscellaneous — Pakiṇṇakavagga</text>
+      </navLabel>
+      <content src="dhp1-20.xhtml#dhp290-305"/>
+    </navPoint>
+    <navPoint id="dhp306-319">
+      <navLabel>
+        <text>Dhp 306–319: 22. Hell — Nirayavagga</text>
+      </navLabel>
+      <content src="dhp1-20.xhtml#dhp306-319"/>
+    </navPoint>
+    <navPoint id="dhp320-333">
+      <navLabel>
+        <text>Dhp 320–333: 23. Elephants — Nāgavagga</text>
+      </navLabel>
+      <content src="dhp1-20.xhtml#dhp320-333"/>
+    </navPoint>
+    <navPoint id="dhp334-359">
+      <navLabel>
+        <text>Dhp 334–359: 24. Craving — Taṇhāvagga</text>
+      </navLabel>
+      <content src="dhp1-20.xhtml#dhp334-359"/>
+    </navPoint>
+    <navPoint id="dhp360-382">
+      <navLabel>
+        <text>Dhp 360–382: 25. Mendicants — Bhikkhuvagga</text>
+      </navLabel>
+      <content src="dhp1-20.xhtml#dhp360-382"/>
+    </navPoint>
+    <navPoint id="dhp383-423">
+      <navLabel>
+        <text>Dhp 383–423: 26. Brahmins — Brāhmaṇavagga</text>
+      </navLabel>
+      <content src="dhp1-20.xhtml#dhp383-423"/>
+    </navPoint>
+    <navPoint id="colophon">
+      <navLabel>
+        <text>Colophon</text>
+      </navLabel>
+      <content src="colophon.xhtml#colophon"/>
+    </navPoint>
+  </navMap>
+</ncx>

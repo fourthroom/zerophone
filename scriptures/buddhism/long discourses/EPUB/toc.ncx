@@ -1,0 +1,290 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1">
+  <head>
+    <meta content="dn-en-sujato_scpub2-ed2-epub_2022-02-10" name="dtb:uid"/>
+    <meta content="0" name="dtb:depth"/>
+    <meta content="0" name="dtb:totalPageCount"/>
+    <meta content="0" name="dtb:maxPageNumber"/>
+  </head>
+  <docTitle>
+    <text>Long Discourses</text>
+  </docTitle>
+  <navMap>
+    <navPoint id="imprint">
+      <navLabel>
+        <text>Imprint</text>
+      </navLabel>
+      <content src="imprint.xhtml#imprint"/>
+    </navPoint>
+    <navPoint id="foreword">
+      <navLabel>
+        <text>Foreword</text>
+      </navLabel>
+      <content src="foreword.xhtml#foreword"/>
+    </navPoint>
+    <navPoint id="preface">
+      <navLabel>
+        <text>Preface</text>
+      </navLabel>
+      <content src="preface.xhtml#preface"/>
+    </navPoint>
+    <navPoint id="general_introduction">
+      <navLabel>
+        <text>General Introduction</text>
+      </navLabel>
+      <content src="general_introduction.xhtml#general_introduction"/>
+    </navPoint>
+    <navPoint id="introduction">
+      <navLabel>
+        <text>Introduction</text>
+      </navLabel>
+      <content src="introduction.xhtml#introduction"/>
+    </navPoint>
+    <navPoint id="acknowledgements">
+      <navLabel>
+        <text>Acknowledgements</text>
+      </navLabel>
+      <content src="acknowledgements.xhtml#acknowledgements"/>
+    </navPoint>
+    <navPoint id="blurbs">
+      <navLabel>
+        <text>Summary of Contents</text>
+      </navLabel>
+      <content src="blurbs.xhtml#blurbs"/>
+    </navPoint>
+    <navPoint id="sep_0">
+      <navLabel>
+        <text>The Chapter on the Entire Spectrum of Ethics </text>
+      </navLabel>
+      <content src="dn-silakkhandhavagga.xhtml#dn-silakkhandhavagga"/>
+      <navPoint id="dn1">
+        <navLabel>
+          <text>DN 1: The Divine Net — Brahmajālasutta</text>
+        </navLabel>
+        <content src="dn-silakkhandhavagga.xhtml#dn1"/>
+      </navPoint>
+      <navPoint id="dn2">
+        <navLabel>
+          <text>DN 2: The Fruits of the Ascetic Life — Sāmaññaphalasutta</text>
+        </navLabel>
+        <content src="dn-silakkhandhavagga.xhtml#dn2"/>
+      </navPoint>
+      <navPoint id="dn3">
+        <navLabel>
+          <text>DN 3: With Ambaṭṭha — Ambaṭṭhasutta</text>
+        </navLabel>
+        <content src="dn-silakkhandhavagga.xhtml#dn3"/>
+      </navPoint>
+      <navPoint id="dn4">
+        <navLabel>
+          <text>DN 4: With Soṇadaṇḍa — Soṇadaṇḍasutta</text>
+        </navLabel>
+        <content src="dn-silakkhandhavagga.xhtml#dn4"/>
+      </navPoint>
+      <navPoint id="dn5">
+        <navLabel>
+          <text>DN 5: With Kūṭadanta — Kūṭadantasutta</text>
+        </navLabel>
+        <content src="dn-silakkhandhavagga.xhtml#dn5"/>
+      </navPoint>
+      <navPoint id="dn6">
+        <navLabel>
+          <text>DN 6: With Mahāli — Mahālisutta</text>
+        </navLabel>
+        <content src="dn-silakkhandhavagga.xhtml#dn6"/>
+      </navPoint>
+      <navPoint id="dn7">
+        <navLabel>
+          <text>DN 7: With Jāliya — Jāliyasutta</text>
+        </navLabel>
+        <content src="dn-silakkhandhavagga.xhtml#dn7"/>
+      </navPoint>
+      <navPoint id="dn8">
+        <navLabel>
+          <text>DN 8: The Lion’s Roar to the Naked Ascetic Kassapa — Mahāsīhanādasutta</text>
+        </navLabel>
+        <content src="dn-silakkhandhavagga.xhtml#dn8"/>
+      </navPoint>
+      <navPoint id="dn9">
+        <navLabel>
+          <text>DN 9: With Poṭṭhapāda — Poṭṭhapādasutta</text>
+        </navLabel>
+        <content src="dn-silakkhandhavagga.xhtml#dn9"/>
+      </navPoint>
+      <navPoint id="dn10">
+        <navLabel>
+          <text>DN 10: With Subha — Subhasutta</text>
+        </navLabel>
+        <content src="dn-silakkhandhavagga.xhtml#dn10"/>
+      </navPoint>
+      <navPoint id="dn11">
+        <navLabel>
+          <text>DN 11: With Kevaḍḍha — Kevaṭṭasutta</text>
+        </navLabel>
+        <content src="dn-silakkhandhavagga.xhtml#dn11"/>
+      </navPoint>
+      <navPoint id="dn12">
+        <navLabel>
+          <text>DN 12: With Lohicca — Lohiccasutta</text>
+        </navLabel>
+        <content src="dn-silakkhandhavagga.xhtml#dn12"/>
+      </navPoint>
+      <navPoint id="dn13">
+        <navLabel>
+          <text>DN 13: Experts in the Three Vedas — Tevijjasutta</text>
+        </navLabel>
+        <content src="dn-silakkhandhavagga.xhtml#dn13"/>
+      </navPoint>
+    </navPoint>
+    <navPoint id="sep_1">
+      <navLabel>
+        <text>The Great Chapter </text>
+      </navLabel>
+      <content src="dn-mahavagga.xhtml#dn-mahavagga"/>
+      <navPoint id="dn14">
+        <navLabel>
+          <text>DN 14: The Great Discourse on Traces Left Behind — Mahāpadānasutta</text>
+        </navLabel>
+        <content src="dn-mahavagga.xhtml#dn14"/>
+      </navPoint>
+      <navPoint id="dn15">
+        <navLabel>
+          <text>DN 15: The Great Discourse on Causation — Mahānidānasutta</text>
+        </navLabel>
+        <content src="dn-mahavagga.xhtml#dn15"/>
+      </navPoint>
+      <navPoint id="dn16">
+        <navLabel>
+          <text>DN 16: The Great Discourse on the Buddha’s Extinguishment — Mahāparinibbānasutta</text>
+        </navLabel>
+        <content src="dn-mahavagga.xhtml#dn16"/>
+      </navPoint>
+      <navPoint id="dn17">
+        <navLabel>
+          <text>DN 17: King Mahāsudassana — Mahāsudassanasutta</text>
+        </navLabel>
+        <content src="dn-mahavagga.xhtml#dn17"/>
+      </navPoint>
+      <navPoint id="dn18">
+        <navLabel>
+          <text>DN 18: With Janavasabha — Janavasabhasutta</text>
+        </navLabel>
+        <content src="dn-mahavagga.xhtml#dn18"/>
+      </navPoint>
+      <navPoint id="dn19">
+        <navLabel>
+          <text>DN 19: The Great Steward — Mahāgovindasutta</text>
+        </navLabel>
+        <content src="dn-mahavagga.xhtml#dn19"/>
+      </navPoint>
+      <navPoint id="dn20">
+        <navLabel>
+          <text>DN 20: The Great Congregation — Mahāsamayasutta</text>
+        </navLabel>
+        <content src="dn-mahavagga.xhtml#dn20"/>
+      </navPoint>
+      <navPoint id="dn21">
+        <navLabel>
+          <text>DN 21: Sakka’s Questions — Sakkapañhasutta</text>
+        </navLabel>
+        <content src="dn-mahavagga.xhtml#dn21"/>
+      </navPoint>
+      <navPoint id="dn22">
+        <navLabel>
+          <text>DN 22: The Longer Discourse on Mindfulness Meditation — Mahāsatipaṭṭhānasutta</text>
+        </navLabel>
+        <content src="dn-mahavagga.xhtml#dn22"/>
+      </navPoint>
+      <navPoint id="dn23">
+        <navLabel>
+          <text>DN 23: With Pāyāsi — Pāyāsisutta</text>
+        </navLabel>
+        <content src="dn-mahavagga.xhtml#dn23"/>
+      </navPoint>
+    </navPoint>
+    <navPoint id="sep_2">
+      <navLabel>
+        <text>The Chapter with Pāṭikaputta </text>
+      </navLabel>
+      <content src="dn-pathikavagga.xhtml#dn-pathikavagga"/>
+      <navPoint id="dn24">
+        <navLabel>
+          <text>DN 24: About Pāṭikaputta — Pāthikasutta</text>
+        </navLabel>
+        <content src="dn-pathikavagga.xhtml#dn24"/>
+      </navPoint>
+      <navPoint id="dn25">
+        <navLabel>
+          <text>DN 25: The Lion’s Roar at the Monastery of Lady Udumbarikā — Udumbarikasutta</text>
+        </navLabel>
+        <content src="dn-pathikavagga.xhtml#dn25"/>
+      </navPoint>
+      <navPoint id="dn26">
+        <navLabel>
+          <text>DN 26: The Wheel-Turning Monarch — Cakkavattisutta</text>
+        </navLabel>
+        <content src="dn-pathikavagga.xhtml#dn26"/>
+      </navPoint>
+      <navPoint id="dn27">
+        <navLabel>
+          <text>DN 27: What Came First — Aggaññasutta</text>
+        </navLabel>
+        <content src="dn-pathikavagga.xhtml#dn27"/>
+      </navPoint>
+      <navPoint id="dn28">
+        <navLabel>
+          <text>DN 28: Inspiring Confidence — Sampasādanīyasutta</text>
+        </navLabel>
+        <content src="dn-pathikavagga.xhtml#dn28"/>
+      </navPoint>
+      <navPoint id="dn29">
+        <navLabel>
+          <text>DN 29: An Impressive Discourse — Pāsādikasutta</text>
+        </navLabel>
+        <content src="dn-pathikavagga.xhtml#dn29"/>
+      </navPoint>
+      <navPoint id="dn30">
+        <navLabel>
+          <text>DN 30: The Marks of a Great Man — Lakkhaṇasutta</text>
+        </navLabel>
+        <content src="dn-pathikavagga.xhtml#dn30"/>
+      </navPoint>
+      <navPoint id="dn31">
+        <navLabel>
+          <text>DN 31: Advice to Sigālaka — Siṅgālasutta</text>
+        </navLabel>
+        <content src="dn-pathikavagga.xhtml#dn31"/>
+      </navPoint>
+      <navPoint id="dn32">
+        <navLabel>
+          <text>DN 32: The Āṭānāṭiya Protection — Āṭānāṭiyasutta</text>
+        </navLabel>
+        <content src="dn-pathikavagga.xhtml#dn32"/>
+      </navPoint>
+      <navPoint id="dn33">
+        <navLabel>
+          <text>DN 33: Reciting in Concert — Saṅgītisutta</text>
+        </navLabel>
+        <content src="dn-pathikavagga.xhtml#dn33"/>
+      </navPoint>
+      <navPoint id="dn34">
+        <navLabel>
+          <text>DN 34: Up to Ten — Dasuttarasutta</text>
+        </navLabel>
+        <content src="dn-pathikavagga.xhtml#dn34"/>
+      </navPoint>
+    </navPoint>
+    <navPoint id="endnotes">
+      <navLabel>
+        <text>Endnotes</text>
+      </navLabel>
+      <content src="endnotes.xhtml#endnotes"/>
+    </navPoint>
+    <navPoint id="colophon">
+      <navLabel>
+        <text>Colophon</text>
+      </navLabel>
+      <content src="colophon.xhtml#colophon"/>
+    </navPoint>
+  </navMap>
+</ncx>

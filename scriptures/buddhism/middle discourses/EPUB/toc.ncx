@@ -1,0 +1,1082 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1">
+  <head>
+    <meta content="mn-en-sujato_scpub3-ed2-epub_2022-02-10" name="dtb:uid"/>
+    <meta content="0" name="dtb:depth"/>
+    <meta content="0" name="dtb:totalPageCount"/>
+    <meta content="0" name="dtb:maxPageNumber"/>
+  </head>
+  <docTitle>
+    <text>Middle Discourses</text>
+  </docTitle>
+  <navMap>
+    <navPoint id="imprint">
+      <navLabel>
+        <text>Imprint</text>
+      </navLabel>
+      <content src="imprint.xhtml#imprint"/>
+    </navPoint>
+    <navPoint id="foreword">
+      <navLabel>
+        <text>Foreword</text>
+      </navLabel>
+      <content src="foreword.xhtml#foreword"/>
+    </navPoint>
+    <navPoint id="preface">
+      <navLabel>
+        <text>Preface</text>
+      </navLabel>
+      <content src="preface.xhtml#preface"/>
+    </navPoint>
+    <navPoint id="introduction">
+      <navLabel>
+        <text>Introduction</text>
+      </navLabel>
+      <content src="introduction.xhtml#introduction"/>
+    </navPoint>
+    <navPoint id="acknowledgements">
+      <navLabel>
+        <text>Acknowledgements</text>
+      </navLabel>
+      <content src="acknowledgements.xhtml#acknowledgements"/>
+    </navPoint>
+    <navPoint id="blurbs">
+      <navLabel>
+        <text>Summary of Contents</text>
+      </navLabel>
+      <content src="blurbs.xhtml#blurbs"/>
+    </navPoint>
+    <navPoint id="sep_0">
+      <navLabel>
+        <text>The First Fifty </text>
+      </navLabel>
+      <content src="mn-mulapannasa.xhtml#mn-mulapannasa"/>
+      <navPoint id="sep_1">
+        <navLabel>
+          <text>The Chapter on the Root of All Things </text>
+        </navLabel>
+        <content src="mn-mulapannasa.xhtml#mn-mulapariyayavagga"/>
+        <navPoint id="mn1">
+          <navLabel>
+            <text>MN 1: The Root of All Things — Mūlapariyāyasutta</text>
+          </navLabel>
+          <content src="mn-mulapannasa.xhtml#mn1"/>
+        </navPoint>
+        <navPoint id="mn2">
+          <navLabel>
+            <text>MN 2: All the Defilements — Sabbāsavasutta</text>
+          </navLabel>
+          <content src="mn-mulapannasa.xhtml#mn2"/>
+        </navPoint>
+        <navPoint id="mn3">
+          <navLabel>
+            <text>MN 3: Heirs in the Teaching — Dhammadāyādasutta</text>
+          </navLabel>
+          <content src="mn-mulapannasa.xhtml#mn3"/>
+        </navPoint>
+        <navPoint id="mn4">
+          <navLabel>
+            <text>MN 4: Fear and Dread — Bhayabheravasutta</text>
+          </navLabel>
+          <content src="mn-mulapannasa.xhtml#mn4"/>
+        </navPoint>
+        <navPoint id="mn5">
+          <navLabel>
+            <text>MN 5: Unblemished — Anaṅgaṇasutta</text>
+          </navLabel>
+          <content src="mn-mulapannasa.xhtml#mn5"/>
+        </navPoint>
+        <navPoint id="mn6">
+          <navLabel>
+            <text>MN 6: One Might Wish — Ākaṅkheyyasutta</text>
+          </navLabel>
+          <content src="mn-mulapannasa.xhtml#mn6"/>
+        </navPoint>
+        <navPoint id="mn7">
+          <navLabel>
+            <text>MN 7: The Simile of the Cloth — Vatthasutta</text>
+          </navLabel>
+          <content src="mn-mulapannasa.xhtml#mn7"/>
+        </navPoint>
+        <navPoint id="mn8">
+          <navLabel>
+            <text>MN 8: Self-Effacement — Sallekhasutta</text>
+          </navLabel>
+          <content src="mn-mulapannasa.xhtml#mn8"/>
+        </navPoint>
+        <navPoint id="mn9">
+          <navLabel>
+            <text>MN 9: Right View — Sammādiṭṭhisutta</text>
+          </navLabel>
+          <content src="mn-mulapannasa.xhtml#mn9"/>
+        </navPoint>
+        <navPoint id="mn10">
+          <navLabel>
+            <text>MN 10: Mindfulness Meditation — Satipaṭṭhānasutta</text>
+          </navLabel>
+          <content src="mn-mulapannasa.xhtml#mn10"/>
+        </navPoint>
+      </navPoint>
+      <navPoint id="sep_2">
+        <navLabel>
+          <text>The Chapter on the Lion’s Roar </text>
+        </navLabel>
+        <content src="mn-sihanadavagga.xhtml#mn-sihanadavagga"/>
+        <navPoint id="mn11">
+          <navLabel>
+            <text>MN 11: The Shorter Discourse on the Lion’s Roar — Cūḷasīhanādasutta</text>
+          </navLabel>
+          <content src="mn-sihanadavagga.xhtml#mn11"/>
+        </navPoint>
+        <navPoint id="mn12">
+          <navLabel>
+            <text>MN 12: The Longer Discourse on the Lion’s Roar — Mahāsīhanādasutta</text>
+          </navLabel>
+          <content src="mn-sihanadavagga.xhtml#mn12"/>
+        </navPoint>
+        <navPoint id="mn13">
+          <navLabel>
+            <text>MN 13: The Longer Discourse on the Mass of Suffering — Mahādukkhakkhandhasutta</text>
+          </navLabel>
+          <content src="mn-sihanadavagga.xhtml#mn13"/>
+        </navPoint>
+        <navPoint id="mn14">
+          <navLabel>
+            <text>MN 14: The Shorter Discourse on the Mass of Suffering — Cūḷadukkhakkhandhasutta</text>
+          </navLabel>
+          <content src="mn-sihanadavagga.xhtml#mn14"/>
+        </navPoint>
+        <navPoint id="mn15">
+          <navLabel>
+            <text>MN 15: Measuring Up — Anumānasutta</text>
+          </navLabel>
+          <content src="mn-sihanadavagga.xhtml#mn15"/>
+        </navPoint>
+        <navPoint id="mn16">
+          <navLabel>
+            <text>MN 16: Hard-heartedness — Cetokhilasutta</text>
+          </navLabel>
+          <content src="mn-sihanadavagga.xhtml#mn16"/>
+        </navPoint>
+        <navPoint id="mn17">
+          <navLabel>
+            <text>MN 17: Jungle Thickets — Vanapatthasutta</text>
+          </navLabel>
+          <content src="mn-sihanadavagga.xhtml#mn17"/>
+        </navPoint>
+        <navPoint id="mn18">
+          <navLabel>
+            <text>MN 18: The Honey-Cake — Madhupiṇḍikasutta</text>
+          </navLabel>
+          <content src="mn-sihanadavagga.xhtml#mn18"/>
+        </navPoint>
+        <navPoint id="mn19">
+          <navLabel>
+            <text>MN 19: Two Kinds of Thought — Dvedhāvitakkasutta</text>
+          </navLabel>
+          <content src="mn-sihanadavagga.xhtml#mn19"/>
+        </navPoint>
+        <navPoint id="mn20">
+          <navLabel>
+            <text>MN 20: How to Stop Thinking — Vitakkasaṇṭhānasutta</text>
+          </navLabel>
+          <content src="mn-sihanadavagga.xhtml#mn20"/>
+        </navPoint>
+      </navPoint>
+      <navPoint id="sep_3">
+        <navLabel>
+          <text>The Chapter of Similes </text>
+        </navLabel>
+        <content src="mn-opammavagga.xhtml#mn-opammavagga"/>
+        <navPoint id="mn21">
+          <navLabel>
+            <text>MN 21: The Simile of the Saw — Kakacūpamasutta</text>
+          </navLabel>
+          <content src="mn-opammavagga.xhtml#mn21"/>
+        </navPoint>
+        <navPoint id="mn22">
+          <navLabel>
+            <text>MN 22: The Simile of the Cobra — Alagaddūpamasutta</text>
+          </navLabel>
+          <content src="mn-opammavagga.xhtml#mn22"/>
+        </navPoint>
+        <navPoint id="mn23">
+          <navLabel>
+            <text>MN 23: The Termite Mound — Vammikasutta</text>
+          </navLabel>
+          <content src="mn-opammavagga.xhtml#mn23"/>
+        </navPoint>
+        <navPoint id="mn24">
+          <navLabel>
+            <text>MN 24: Chariots at the Ready — Rathavinītasutta</text>
+          </navLabel>
+          <content src="mn-opammavagga.xhtml#mn24"/>
+        </navPoint>
+        <navPoint id="mn25">
+          <navLabel>
+            <text>MN 25: Sowing — Nivāpasutta</text>
+          </navLabel>
+          <content src="mn-opammavagga.xhtml#mn25"/>
+        </navPoint>
+        <navPoint id="mn26">
+          <navLabel>
+            <text>MN 26: The Noble Quest — Pāsarāsisutta</text>
+          </navLabel>
+          <content src="mn-opammavagga.xhtml#mn26"/>
+        </navPoint>
+        <navPoint id="mn27">
+          <navLabel>
+            <text>MN 27: The Shorter Simile of the Elephant’s Footprint — Cūḷahatthipadopamasutta</text>
+          </navLabel>
+          <content src="mn-opammavagga.xhtml#mn27"/>
+        </navPoint>
+        <navPoint id="mn28">
+          <navLabel>
+            <text>MN 28: The Longer Simile of the Elephant’s Footprint — Mahāhatthipadopamasutta</text>
+          </navLabel>
+          <content src="mn-opammavagga.xhtml#mn28"/>
+        </navPoint>
+        <navPoint id="mn29">
+          <navLabel>
+            <text>MN 29: The Longer Simile of the Heartwood — Mahāsāropamasutta</text>
+          </navLabel>
+          <content src="mn-opammavagga.xhtml#mn29"/>
+        </navPoint>
+        <navPoint id="mn30">
+          <navLabel>
+            <text>MN 30: The Shorter Simile of the Heartwood — Cūḷasāropamasutta</text>
+          </navLabel>
+          <content src="mn-opammavagga.xhtml#mn30"/>
+        </navPoint>
+      </navPoint>
+      <navPoint id="sep_4">
+        <navLabel>
+          <text>The Greater Chapter on Pairs </text>
+        </navLabel>
+        <content src="mn-mahayamakavagga.xhtml#mn-mahayamakavagga"/>
+        <navPoint id="mn31">
+          <navLabel>
+            <text>MN 31: The Shorter Discourse at Gosiṅga — Cūḷagosiṅgasutta</text>
+          </navLabel>
+          <content src="mn-mahayamakavagga.xhtml#mn31"/>
+        </navPoint>
+        <navPoint id="mn32">
+          <navLabel>
+            <text>MN 32: The Longer Discourse at Gosiṅga — Mahāgosiṅgasutta</text>
+          </navLabel>
+          <content src="mn-mahayamakavagga.xhtml#mn32"/>
+        </navPoint>
+        <navPoint id="mn33">
+          <navLabel>
+            <text>MN 33: The Longer Discourse on the Cowherd — Mahāgopālakasutta</text>
+          </navLabel>
+          <content src="mn-mahayamakavagga.xhtml#mn33"/>
+        </navPoint>
+        <navPoint id="mn34">
+          <navLabel>
+            <text>MN 34: The Shorter Discourse on the Cowherd — Cūḷagopālakasutta</text>
+          </navLabel>
+          <content src="mn-mahayamakavagga.xhtml#mn34"/>
+        </navPoint>
+        <navPoint id="mn35">
+          <navLabel>
+            <text>MN 35: The Shorter Discourse With Saccaka — Cūḷasaccakasutta</text>
+          </navLabel>
+          <content src="mn-mahayamakavagga.xhtml#mn35"/>
+        </navPoint>
+        <navPoint id="mn36">
+          <navLabel>
+            <text>MN 36: The Longer Discourse With Saccaka — Mahāsaccakasutta</text>
+          </navLabel>
+          <content src="mn-mahayamakavagga.xhtml#mn36"/>
+        </navPoint>
+        <navPoint id="mn37">
+          <navLabel>
+            <text>MN 37: The Shorter Discourse on the Ending of Craving — Cūḷataṇhāsaṅkhayasutta</text>
+          </navLabel>
+          <content src="mn-mahayamakavagga.xhtml#mn37"/>
+        </navPoint>
+        <navPoint id="mn38">
+          <navLabel>
+            <text>MN 38: The Longer Discourse on the Ending of Craving — Mahātaṇhāsaṅkhayasutta</text>
+          </navLabel>
+          <content src="mn-mahayamakavagga.xhtml#mn38"/>
+        </navPoint>
+        <navPoint id="mn39">
+          <navLabel>
+            <text>MN 39: The Longer Discourse at Assapura — Mahāassapurasutta</text>
+          </navLabel>
+          <content src="mn-mahayamakavagga.xhtml#mn39"/>
+        </navPoint>
+        <navPoint id="mn40">
+          <navLabel>
+            <text>MN 40: The Shorter Discourse at Assapura — Cūḷaassapurasutta</text>
+          </navLabel>
+          <content src="mn-mahayamakavagga.xhtml#mn40"/>
+        </navPoint>
+      </navPoint>
+      <navPoint id="sep_5">
+        <navLabel>
+          <text>The Lesser Chapter on Pairs </text>
+        </navLabel>
+        <content src="mn-culayamakavagga.xhtml#mn-culayamakavagga"/>
+        <navPoint id="mn41">
+          <navLabel>
+            <text>MN 41: The People of Sālā — Sāleyyakasutta</text>
+          </navLabel>
+          <content src="mn-culayamakavagga.xhtml#mn41"/>
+        </navPoint>
+        <navPoint id="mn42">
+          <navLabel>
+            <text>MN 42: The People of Verañjā — Verañjakasutta</text>
+          </navLabel>
+          <content src="mn-culayamakavagga.xhtml#mn42"/>
+        </navPoint>
+        <navPoint id="mn43">
+          <navLabel>
+            <text>MN 43: The Great Elaboration — Mahāvedallasutta</text>
+          </navLabel>
+          <content src="mn-culayamakavagga.xhtml#mn43"/>
+        </navPoint>
+        <navPoint id="mn44">
+          <navLabel>
+            <text>MN 44: The Shorter Elaboration — Cūḷavedallasutta</text>
+          </navLabel>
+          <content src="mn-culayamakavagga.xhtml#mn44"/>
+        </navPoint>
+        <navPoint id="mn45">
+          <navLabel>
+            <text>MN 45: The Shorter Discourse on Taking Up Practices — Cūḷadhammasamādānasutta</text>
+          </navLabel>
+          <content src="mn-culayamakavagga.xhtml#mn45"/>
+        </navPoint>
+        <navPoint id="mn46">
+          <navLabel>
+            <text>MN 46: The Great Discourse on Taking Up Practices — Mahādhammasamādānasutta</text>
+          </navLabel>
+          <content src="mn-culayamakavagga.xhtml#mn46"/>
+        </navPoint>
+        <navPoint id="mn47">
+          <navLabel>
+            <text>MN 47: The Inquirer — Vīmaṁsakasutta</text>
+          </navLabel>
+          <content src="mn-culayamakavagga.xhtml#mn47"/>
+        </navPoint>
+        <navPoint id="mn48">
+          <navLabel>
+            <text>MN 48: The Mendicants of Kosambī — Kosambiyasutta</text>
+          </navLabel>
+          <content src="mn-culayamakavagga.xhtml#mn48"/>
+        </navPoint>
+        <navPoint id="mn49">
+          <navLabel>
+            <text>MN 49: On the Invitation of Divinity — Brahmanimantanikasutta</text>
+          </navLabel>
+          <content src="mn-culayamakavagga.xhtml#mn49"/>
+        </navPoint>
+        <navPoint id="mn50">
+          <navLabel>
+            <text>MN 50: The Warning to Māra — Māratajjanīyasutta</text>
+          </navLabel>
+          <content src="mn-culayamakavagga.xhtml#mn50"/>
+        </navPoint>
+      </navPoint>
+    </navPoint>
+    <navPoint id="sep_6">
+      <navLabel>
+        <text>The Middle Fifty </text>
+      </navLabel>
+      <content src="mn-majjhimapannasa.xhtml#mn-majjhimapannasa"/>
+      <navPoint id="sep_7">
+        <navLabel>
+          <text>The Chapter on Householders </text>
+        </navLabel>
+        <content src="mn-majjhimapannasa.xhtml#mn-gahapativagga"/>
+        <navPoint id="mn51">
+          <navLabel>
+            <text>MN 51: With Kandaraka — Kandarakasutta</text>
+          </navLabel>
+          <content src="mn-majjhimapannasa.xhtml#mn51"/>
+        </navPoint>
+        <navPoint id="mn52">
+          <navLabel>
+            <text>MN 52: The Wealthy Citizen — Aṭṭhakanāgarasutta</text>
+          </navLabel>
+          <content src="mn-majjhimapannasa.xhtml#mn52"/>
+        </navPoint>
+        <navPoint id="mn53">
+          <navLabel>
+            <text>MN 53: A Trainee — Sekhasutta</text>
+          </navLabel>
+          <content src="mn-majjhimapannasa.xhtml#mn53"/>
+        </navPoint>
+        <navPoint id="mn54">
+          <navLabel>
+            <text>MN 54: With Potaliya the Householder — Potaliyasutta</text>
+          </navLabel>
+          <content src="mn-majjhimapannasa.xhtml#mn54"/>
+        </navPoint>
+        <navPoint id="mn55">
+          <navLabel>
+            <text>MN 55: With Jīvaka — Jīvakasutta</text>
+          </navLabel>
+          <content src="mn-majjhimapannasa.xhtml#mn55"/>
+        </navPoint>
+        <navPoint id="mn56">
+          <navLabel>
+            <text>MN 56: With Upāli — Upālisutta</text>
+          </navLabel>
+          <content src="mn-majjhimapannasa.xhtml#mn56"/>
+        </navPoint>
+        <navPoint id="mn57">
+          <navLabel>
+            <text>MN 57: The Ascetic Who Behaved Like a Dog — Kukkuravatikasutta</text>
+          </navLabel>
+          <content src="mn-majjhimapannasa.xhtml#mn57"/>
+        </navPoint>
+        <navPoint id="mn58">
+          <navLabel>
+            <text>MN 58: With Prince Abhaya — Abhayarājakumārasutta</text>
+          </navLabel>
+          <content src="mn-majjhimapannasa.xhtml#mn58"/>
+        </navPoint>
+        <navPoint id="mn59">
+          <navLabel>
+            <text>MN 59: The Many Kinds of Feeling — Bahuvedanīyasutta</text>
+          </navLabel>
+          <content src="mn-majjhimapannasa.xhtml#mn59"/>
+        </navPoint>
+        <navPoint id="mn60">
+          <navLabel>
+            <text>MN 60: A  Sure Bet — Apaṇṇakasutta</text>
+          </navLabel>
+          <content src="mn-majjhimapannasa.xhtml#mn60"/>
+        </navPoint>
+      </navPoint>
+      <navPoint id="sep_8">
+        <navLabel>
+          <text>The Chapter on Mendicants </text>
+        </navLabel>
+        <content src="mn-bhikkhuvagga.xhtml#mn-bhikkhuvagga"/>
+        <navPoint id="mn61">
+          <navLabel>
+            <text>MN 61: Advice to Rāhula at Ambalaṭṭhika — Ambalaṭṭhikarāhulovādasutta</text>
+          </navLabel>
+          <content src="mn-bhikkhuvagga.xhtml#mn61"/>
+        </navPoint>
+        <navPoint id="mn62">
+          <navLabel>
+            <text>MN 62: The Longer Advice to Rāhula — Mahārāhulovādasutta</text>
+          </navLabel>
+          <content src="mn-bhikkhuvagga.xhtml#mn62"/>
+        </navPoint>
+        <navPoint id="mn63">
+          <navLabel>
+            <text>MN 63: The Shorter Discourse With Māluṅkyaputta — Cūḷamālukyasutta</text>
+          </navLabel>
+          <content src="mn-bhikkhuvagga.xhtml#mn63"/>
+        </navPoint>
+        <navPoint id="mn64">
+          <navLabel>
+            <text>MN 64: The Longer Discourse With Māluṅkya — Mahāmālukyasutta</text>
+          </navLabel>
+          <content src="mn-bhikkhuvagga.xhtml#mn64"/>
+        </navPoint>
+        <navPoint id="mn65">
+          <navLabel>
+            <text>MN 65: With Bhaddāli — Bhaddālisutta</text>
+          </navLabel>
+          <content src="mn-bhikkhuvagga.xhtml#mn65"/>
+        </navPoint>
+        <navPoint id="mn66">
+          <navLabel>
+            <text>MN 66: The Simile of the Quail — Laṭukikopamasutta</text>
+          </navLabel>
+          <content src="mn-bhikkhuvagga.xhtml#mn66"/>
+        </navPoint>
+        <navPoint id="mn67">
+          <navLabel>
+            <text>MN 67: At Cātumā — Cātumasutta</text>
+          </navLabel>
+          <content src="mn-bhikkhuvagga.xhtml#mn67"/>
+        </navPoint>
+        <navPoint id="mn68">
+          <navLabel>
+            <text>MN 68: At Naḷakapāna — Naḷakapānasutta</text>
+          </navLabel>
+          <content src="mn-bhikkhuvagga.xhtml#mn68"/>
+        </navPoint>
+        <navPoint id="mn69">
+          <navLabel>
+            <text>MN 69: With Gulissāni — Goliyānisutta</text>
+          </navLabel>
+          <content src="mn-bhikkhuvagga.xhtml#mn69"/>
+        </navPoint>
+        <navPoint id="mn70">
+          <navLabel>
+            <text>MN 70: At Kīṭāgiri — Kīṭāgirisutta</text>
+          </navLabel>
+          <content src="mn-bhikkhuvagga.xhtml#mn70"/>
+        </navPoint>
+      </navPoint>
+      <navPoint id="sep_9">
+        <navLabel>
+          <text>The Chapter on Wanderers </text>
+        </navLabel>
+        <content src="mn-paribbajakavagga.xhtml#mn-paribbajakavagga"/>
+        <navPoint id="mn71">
+          <navLabel>
+            <text>MN 71: To Vacchagotta on the Three Knowledges — Tevijjavacchasutta</text>
+          </navLabel>
+          <content src="mn-paribbajakavagga.xhtml#mn71"/>
+        </navPoint>
+        <navPoint id="mn72">
+          <navLabel>
+            <text>MN 72: With Vacchagotta on Fire — Aggivacchasutta</text>
+          </navLabel>
+          <content src="mn-paribbajakavagga.xhtml#mn72"/>
+        </navPoint>
+        <navPoint id="mn73">
+          <navLabel>
+            <text>MN 73: The Longer Discourse With Vacchagotta — Mahāvacchasutta</text>
+          </navLabel>
+          <content src="mn-paribbajakavagga.xhtml#mn73"/>
+        </navPoint>
+        <navPoint id="mn74">
+          <navLabel>
+            <text>MN 74: With Dīghanakha — Dīghanakhasutta</text>
+          </navLabel>
+          <content src="mn-paribbajakavagga.xhtml#mn74"/>
+        </navPoint>
+        <navPoint id="mn75">
+          <navLabel>
+            <text>MN 75: With Māgaṇḍiya — Māgaṇḍiyasutta</text>
+          </navLabel>
+          <content src="mn-paribbajakavagga.xhtml#mn75"/>
+        </navPoint>
+        <navPoint id="mn76">
+          <navLabel>
+            <text>MN 76: With Sandaka — Sandakasutta</text>
+          </navLabel>
+          <content src="mn-paribbajakavagga.xhtml#mn76"/>
+        </navPoint>
+        <navPoint id="mn77">
+          <navLabel>
+            <text>MN 77: The Longer Discourse with Sakuludāyī — Mahāsakuludāyisutta</text>
+          </navLabel>
+          <content src="mn-paribbajakavagga.xhtml#mn77"/>
+        </navPoint>
+        <navPoint id="mn78">
+          <navLabel>
+            <text>MN 78: With Uggāhamāna Samaṇamaṇḍikāputta — Samaṇamuṇḍikasutta</text>
+          </navLabel>
+          <content src="mn-paribbajakavagga.xhtml#mn78"/>
+        </navPoint>
+        <navPoint id="mn79">
+          <navLabel>
+            <text>MN 79: The Shorter Discourse With Sakuludāyī — Cūḷasakuludāyisutta</text>
+          </navLabel>
+          <content src="mn-paribbajakavagga.xhtml#mn79"/>
+        </navPoint>
+        <navPoint id="mn80">
+          <navLabel>
+            <text>MN 80: With Vekhanasa — Vekhanasasutta</text>
+          </navLabel>
+          <content src="mn-paribbajakavagga.xhtml#mn80"/>
+        </navPoint>
+      </navPoint>
+      <navPoint id="sep_10">
+        <navLabel>
+          <text>The Chapter on Kings </text>
+        </navLabel>
+        <content src="mn-rajavagga.xhtml#mn-rajavagga"/>
+        <navPoint id="mn81">
+          <navLabel>
+            <text>MN 81: With Ghaṭīkāra — Ghaṭikārasutta</text>
+          </navLabel>
+          <content src="mn-rajavagga.xhtml#mn81"/>
+        </navPoint>
+        <navPoint id="mn82">
+          <navLabel>
+            <text>MN 82: With Raṭṭhapāla — Raṭṭhapālasutta</text>
+          </navLabel>
+          <content src="mn-rajavagga.xhtml#mn82"/>
+        </navPoint>
+        <navPoint id="mn83">
+          <navLabel>
+            <text>MN 83: About King Maghadeva — Maghadevasutta</text>
+          </navLabel>
+          <content src="mn-rajavagga.xhtml#mn83"/>
+        </navPoint>
+        <navPoint id="mn84">
+          <navLabel>
+            <text>MN 84: At Madhurā — Madhurasutta</text>
+          </navLabel>
+          <content src="mn-rajavagga.xhtml#mn84"/>
+        </navPoint>
+        <navPoint id="mn85">
+          <navLabel>
+            <text>MN 85: With Prince Bodhi — Bodhirājakumārasutta</text>
+          </navLabel>
+          <content src="mn-rajavagga.xhtml#mn85"/>
+        </navPoint>
+        <navPoint id="mn86">
+          <navLabel>
+            <text>MN 86: With Aṅgulimāla — Aṅgulimālasutta</text>
+          </navLabel>
+          <content src="mn-rajavagga.xhtml#mn86"/>
+        </navPoint>
+        <navPoint id="mn87">
+          <navLabel>
+            <text>MN 87: Born From the Beloved — Piyajātikasutta</text>
+          </navLabel>
+          <content src="mn-rajavagga.xhtml#mn87"/>
+        </navPoint>
+        <navPoint id="mn88">
+          <navLabel>
+            <text>MN 88: The Foreign Cloth — Bāhitikasutta</text>
+          </navLabel>
+          <content src="mn-rajavagga.xhtml#mn88"/>
+        </navPoint>
+        <navPoint id="mn89">
+          <navLabel>
+            <text>MN 89: Shrines to the Teaching — Dhammacetiyasutta</text>
+          </navLabel>
+          <content src="mn-rajavagga.xhtml#mn89"/>
+        </navPoint>
+        <navPoint id="mn90">
+          <navLabel>
+            <text>MN 90: At Kaṇṇakatthala — Kaṇṇakatthalasutta</text>
+          </navLabel>
+          <content src="mn-rajavagga.xhtml#mn90"/>
+        </navPoint>
+      </navPoint>
+      <navPoint id="sep_11">
+        <navLabel>
+          <text>The Chapter on Brahmins </text>
+        </navLabel>
+        <content src="mn-brahmanavagga.xhtml#mn-brahmanavagga"/>
+        <navPoint id="mn91">
+          <navLabel>
+            <text>MN 91: With Brahmāyu — Brahmāyusutta</text>
+          </navLabel>
+          <content src="mn-brahmanavagga.xhtml#mn91"/>
+        </navPoint>
+        <navPoint id="mn92">
+          <navLabel>
+            <text>MN 92: With Sela — Selasutta</text>
+          </navLabel>
+          <content src="mn-brahmanavagga.xhtml#mn92"/>
+        </navPoint>
+        <navPoint id="mn93">
+          <navLabel>
+            <text>MN 93: With Assalāyana — Assalāyanasutta</text>
+          </navLabel>
+          <content src="mn-brahmanavagga.xhtml#mn93"/>
+        </navPoint>
+        <navPoint id="mn94">
+          <navLabel>
+            <text>MN 94: With Ghoṭamukha — Ghoṭamukhasutta</text>
+          </navLabel>
+          <content src="mn-brahmanavagga.xhtml#mn94"/>
+        </navPoint>
+        <navPoint id="mn95">
+          <navLabel>
+            <text>MN 95: With Caṅkī — Caṅkīsutta</text>
+          </navLabel>
+          <content src="mn-brahmanavagga.xhtml#mn95"/>
+        </navPoint>
+        <navPoint id="mn96">
+          <navLabel>
+            <text>MN 96: With Esukārī — Esukārīsutta</text>
+          </navLabel>
+          <content src="mn-brahmanavagga.xhtml#mn96"/>
+        </navPoint>
+        <navPoint id="mn97">
+          <navLabel>
+            <text>MN 97: With Dhanañjāni — Dhanañjānisutta</text>
+          </navLabel>
+          <content src="mn-brahmanavagga.xhtml#mn97"/>
+        </navPoint>
+        <navPoint id="mn98">
+          <navLabel>
+            <text>MN 98: With Vāseṭṭha — Vāseṭṭhasutta</text>
+          </navLabel>
+          <content src="mn-brahmanavagga.xhtml#mn98"/>
+        </navPoint>
+        <navPoint id="mn99">
+          <navLabel>
+            <text>MN 99: With Subha — Subhasutta</text>
+          </navLabel>
+          <content src="mn-brahmanavagga.xhtml#mn99"/>
+        </navPoint>
+        <navPoint id="mn100">
+          <navLabel>
+            <text>MN 100: With Saṅgārava — Saṅgāravasutta</text>
+          </navLabel>
+          <content src="mn-brahmanavagga.xhtml#mn100"/>
+        </navPoint>
+      </navPoint>
+    </navPoint>
+    <navPoint id="sep_12">
+      <navLabel>
+        <text>The Final Fifty </text>
+      </navLabel>
+      <content src="mn-uparipannasa.xhtml#mn-uparipannasa"/>
+      <navPoint id="sep_13">
+        <navLabel>
+          <text>The Chapter Beginning With Devadaha </text>
+        </navLabel>
+        <content src="mn-uparipannasa.xhtml#mn-devadahavagga"/>
+        <navPoint id="mn101">
+          <navLabel>
+            <text>MN 101: At Devadaha — Devadahasutta</text>
+          </navLabel>
+          <content src="mn-uparipannasa.xhtml#mn101"/>
+        </navPoint>
+        <navPoint id="mn102">
+          <navLabel>
+            <text>MN 102: The Five and Three — Pañcattayasutta</text>
+          </navLabel>
+          <content src="mn-uparipannasa.xhtml#mn102"/>
+        </navPoint>
+        <navPoint id="mn103">
+          <navLabel>
+            <text>MN 103: Is This What You Think Of Me? — Kintisutta</text>
+          </navLabel>
+          <content src="mn-uparipannasa.xhtml#mn103"/>
+        </navPoint>
+        <navPoint id="mn104">
+          <navLabel>
+            <text>MN 104: At Sāmagāma — Sāmagāmasutta</text>
+          </navLabel>
+          <content src="mn-uparipannasa.xhtml#mn104"/>
+        </navPoint>
+        <navPoint id="mn105">
+          <navLabel>
+            <text>MN 105: With Sunakkhatta — Sunakkhattasutta</text>
+          </navLabel>
+          <content src="mn-uparipannasa.xhtml#mn105"/>
+        </navPoint>
+        <navPoint id="mn106">
+          <navLabel>
+            <text>MN 106: Conducive to the Imperturbable — Āneñjasappāyasutta</text>
+          </navLabel>
+          <content src="mn-uparipannasa.xhtml#mn106"/>
+        </navPoint>
+        <navPoint id="mn107">
+          <navLabel>
+            <text>MN 107: With Moggallāna the Accountant — Gaṇakamoggallānasutta</text>
+          </navLabel>
+          <content src="mn-uparipannasa.xhtml#mn107"/>
+        </navPoint>
+        <navPoint id="mn108">
+          <navLabel>
+            <text>MN 108: With Moggallāna the Guardian — Gopakamoggallānasutta</text>
+          </navLabel>
+          <content src="mn-uparipannasa.xhtml#mn108"/>
+        </navPoint>
+        <navPoint id="mn109">
+          <navLabel>
+            <text>MN 109: The Longer Discourse on the Full-Moon Night — Mahāpuṇṇamasutta</text>
+          </navLabel>
+          <content src="mn-uparipannasa.xhtml#mn109"/>
+        </navPoint>
+        <navPoint id="mn110">
+          <navLabel>
+            <text>MN 110: The Shorter Discourse on the Full-Moon Night — Cūḷapuṇṇamasutta</text>
+          </navLabel>
+          <content src="mn-uparipannasa.xhtml#mn110"/>
+        </navPoint>
+      </navPoint>
+      <navPoint id="sep_14">
+        <navLabel>
+          <text>The Chapter Beginning with One By One </text>
+        </navLabel>
+        <content src="mn-anupadavagga.xhtml#mn-anupadavagga"/>
+        <navPoint id="mn111">
+          <navLabel>
+            <text>MN 111: One by One — Anupadasutta</text>
+          </navLabel>
+          <content src="mn-anupadavagga.xhtml#mn111"/>
+        </navPoint>
+        <navPoint id="mn112">
+          <navLabel>
+            <text>MN 112: The Sixfold Purification — Chabbisodhanasutta</text>
+          </navLabel>
+          <content src="mn-anupadavagga.xhtml#mn112"/>
+        </navPoint>
+        <navPoint id="mn113">
+          <navLabel>
+            <text>MN 113: A True Person — Sappurisasutta</text>
+          </navLabel>
+          <content src="mn-anupadavagga.xhtml#mn113"/>
+        </navPoint>
+        <navPoint id="mn114">
+          <navLabel>
+            <text>MN 114: What Should and Should Not Be Cultivated — Sevitabbāsevitabbasutta</text>
+          </navLabel>
+          <content src="mn-anupadavagga.xhtml#mn114"/>
+        </navPoint>
+        <navPoint id="mn115">
+          <navLabel>
+            <text>MN 115: Many Elements — Bahudhātukasutta</text>
+          </navLabel>
+          <content src="mn-anupadavagga.xhtml#mn115"/>
+        </navPoint>
+        <navPoint id="mn116">
+          <navLabel>
+            <text>MN 116: At Isigili — Isigilisutta</text>
+          </navLabel>
+          <content src="mn-anupadavagga.xhtml#mn116"/>
+        </navPoint>
+        <navPoint id="mn117">
+          <navLabel>
+            <text>MN 117: The Great Forty — Mahācattārīsakasutta</text>
+          </navLabel>
+          <content src="mn-anupadavagga.xhtml#mn117"/>
+        </navPoint>
+        <navPoint id="mn118">
+          <navLabel>
+            <text>MN 118: Mindfulness of Breathing — Ānāpānassatisutta</text>
+          </navLabel>
+          <content src="mn-anupadavagga.xhtml#mn118"/>
+        </navPoint>
+        <navPoint id="mn119">
+          <navLabel>
+            <text>MN 119: Mindfulness of the Body — Kāyagatāsatisutta</text>
+          </navLabel>
+          <content src="mn-anupadavagga.xhtml#mn119"/>
+        </navPoint>
+        <navPoint id="mn120">
+          <navLabel>
+            <text>MN 120: Rebirth by Choice — Saṅkhārupapattisutta</text>
+          </navLabel>
+          <content src="mn-anupadavagga.xhtml#mn120"/>
+        </navPoint>
+      </navPoint>
+      <navPoint id="sep_15">
+        <navLabel>
+          <text>The Chapter Beginning with Emptiness </text>
+        </navLabel>
+        <content src="mn-sunnatavagga.xhtml#mn-sunnatavagga"/>
+        <navPoint id="mn121">
+          <navLabel>
+            <text>MN 121: The Shorter Discourse on Emptiness — Cūḷasuññatasutta</text>
+          </navLabel>
+          <content src="mn-sunnatavagga.xhtml#mn121"/>
+        </navPoint>
+        <navPoint id="mn122">
+          <navLabel>
+            <text>MN 122: The Longer Discourse on Emptiness — Mahāsuññatasutta</text>
+          </navLabel>
+          <content src="mn-sunnatavagga.xhtml#mn122"/>
+        </navPoint>
+        <navPoint id="mn123">
+          <navLabel>
+            <text>MN 123: Incredible and Amazing — Acchariyaabbhutasutta</text>
+          </navLabel>
+          <content src="mn-sunnatavagga.xhtml#mn123"/>
+        </navPoint>
+        <navPoint id="mn124">
+          <navLabel>
+            <text>MN 124: With Bakkula — Bākulasutta</text>
+          </navLabel>
+          <content src="mn-sunnatavagga.xhtml#mn124"/>
+        </navPoint>
+        <navPoint id="mn125">
+          <navLabel>
+            <text>MN 125: The Level of the Tamed — Dantabhūmisutta</text>
+          </navLabel>
+          <content src="mn-sunnatavagga.xhtml#mn125"/>
+        </navPoint>
+        <navPoint id="mn126">
+          <navLabel>
+            <text>MN 126: With Bhūmija — Bhūmijasutta</text>
+          </navLabel>
+          <content src="mn-sunnatavagga.xhtml#mn126"/>
+        </navPoint>
+        <navPoint id="mn127">
+          <navLabel>
+            <text>MN 127: With Anuruddha — Anuruddhasutta</text>
+          </navLabel>
+          <content src="mn-sunnatavagga.xhtml#mn127"/>
+        </navPoint>
+        <navPoint id="mn128">
+          <navLabel>
+            <text>MN 128: Corruptions — Upakkilesasutta</text>
+          </navLabel>
+          <content src="mn-sunnatavagga.xhtml#mn128"/>
+        </navPoint>
+        <navPoint id="mn129">
+          <navLabel>
+            <text>MN 129: The Foolish and the Astute — Bālapaṇḍitasutta</text>
+          </navLabel>
+          <content src="mn-sunnatavagga.xhtml#mn129"/>
+        </navPoint>
+        <navPoint id="mn130">
+          <navLabel>
+            <text>MN 130: Messengers of the Gods — Devadūtasutta</text>
+          </navLabel>
+          <content src="mn-sunnatavagga.xhtml#mn130"/>
+        </navPoint>
+      </navPoint>
+      <navPoint id="sep_16">
+        <navLabel>
+          <text>The Chapter on Analysis </text>
+        </navLabel>
+        <content src="mn-vibhangavagga.xhtml#mn-vibhangavagga"/>
+        <navPoint id="mn131">
+          <navLabel>
+            <text>MN 131: One Fine Night — Bhaddekarattasutta</text>
+          </navLabel>
+          <content src="mn-vibhangavagga.xhtml#mn131"/>
+        </navPoint>
+        <navPoint id="mn132">
+          <navLabel>
+            <text>MN 132: Ānanda and One Fine Night — Ānandabhaddekarattasutta</text>
+          </navLabel>
+          <content src="mn-vibhangavagga.xhtml#mn132"/>
+        </navPoint>
+        <navPoint id="mn133">
+          <navLabel>
+            <text>MN 133: Mahākaccāna and One Fine Night — Mahākaccānabhaddekarattasutta</text>
+          </navLabel>
+          <content src="mn-vibhangavagga.xhtml#mn133"/>
+        </navPoint>
+        <navPoint id="mn134">
+          <navLabel>
+            <text>MN 134: Lomasakaṅgiya and One Fine Night — Lomasakaṅgiyabhaddekarattasutta</text>
+          </navLabel>
+          <content src="mn-vibhangavagga.xhtml#mn134"/>
+        </navPoint>
+        <navPoint id="mn135">
+          <navLabel>
+            <text>MN 135: The Shorter Analysis of Deeds — Cūḷakammavibhaṅgasutta</text>
+          </navLabel>
+          <content src="mn-vibhangavagga.xhtml#mn135"/>
+        </navPoint>
+        <navPoint id="mn136">
+          <navLabel>
+            <text>MN 136: The Longer Analysis of Deeds — Mahākammavibhaṅgasutta</text>
+          </navLabel>
+          <content src="mn-vibhangavagga.xhtml#mn136"/>
+        </navPoint>
+        <navPoint id="mn137">
+          <navLabel>
+            <text>MN 137: The Analysis of the Six Sense Fields — Saḷāyatanavibhaṅgasutta</text>
+          </navLabel>
+          <content src="mn-vibhangavagga.xhtml#mn137"/>
+        </navPoint>
+        <navPoint id="mn138">
+          <navLabel>
+            <text>MN 138: A Summary Recital and its Analysis — Uddesavibhaṅgasutta</text>
+          </navLabel>
+          <content src="mn-vibhangavagga.xhtml#mn138"/>
+        </navPoint>
+        <navPoint id="mn139">
+          <navLabel>
+            <text>MN 139: The Analysis of No Strife — Araṇavibhaṅgasutta</text>
+          </navLabel>
+          <content src="mn-vibhangavagga.xhtml#mn139"/>
+        </navPoint>
+        <navPoint id="mn140">
+          <navLabel>
+            <text>MN 140: The Analysis of the Elements — Dhātuvibhaṅgasutta</text>
+          </navLabel>
+          <content src="mn-vibhangavagga.xhtml#mn140"/>
+        </navPoint>
+        <navPoint id="mn141">
+          <navLabel>
+            <text>MN 141: The Analysis of the Truths — Saccavibhaṅgasutta</text>
+          </navLabel>
+          <content src="mn-vibhangavagga.xhtml#mn141"/>
+        </navPoint>
+        <navPoint id="mn142">
+          <navLabel>
+            <text>MN 142: The Analysis of Religious Donations — Dakkhiṇāvibhaṅgasutta</text>
+          </navLabel>
+          <content src="mn-vibhangavagga.xhtml#mn142"/>
+        </navPoint>
+      </navPoint>
+      <navPoint id="sep_17">
+        <navLabel>
+          <text>The Chapter on the Six Senses</text>
+        </navLabel>
+        <content src="mn-salayatanavagga.xhtml#mn-salayatanavagga"/>
+        <navPoint id="mn143">
+          <navLabel>
+            <text>MN 143: Advice to Anāthapiṇḍika — Anāthapiṇḍikovādasutta</text>
+          </navLabel>
+          <content src="mn-salayatanavagga.xhtml#mn143"/>
+        </navPoint>
+        <navPoint id="mn144">
+          <navLabel>
+            <text>MN 144: Advice to Channa — Channovādasutta</text>
+          </navLabel>
+          <content src="mn-salayatanavagga.xhtml#mn144"/>
+        </navPoint>
+        <navPoint id="mn145">
+          <navLabel>
+            <text>MN 145: Advice to Puṇṇa — Puṇṇovādasutta</text>
+          </navLabel>
+          <content src="mn-salayatanavagga.xhtml#mn145"/>
+        </navPoint>
+        <navPoint id="mn146">
+          <navLabel>
+            <text>MN 146: Advice from Nandaka — Nandakovādasutta</text>
+          </navLabel>
+          <content src="mn-salayatanavagga.xhtml#mn146"/>
+        </navPoint>
+        <navPoint id="mn147">
+          <navLabel>
+            <text>MN 147: The Shorter Advice to Rāhula — Cūḷarāhulovādasutta</text>
+          </navLabel>
+          <content src="mn-salayatanavagga.xhtml#mn147"/>
+        </navPoint>
+        <navPoint id="mn148">
+          <navLabel>
+            <text>MN 148: Six By Six — Chachakkasutta</text>
+          </navLabel>
+          <content src="mn-salayatanavagga.xhtml#mn148"/>
+        </navPoint>
+        <navPoint id="mn149">
+          <navLabel>
+            <text>MN 149: The Great Discourse on What Relates to the Six Sense Fields — Mahāsaḷāyatanikasutta</text>
+          </navLabel>
+          <content src="mn-salayatanavagga.xhtml#mn149"/>
+        </navPoint>
+        <navPoint id="mn150">
+          <navLabel>
+            <text>MN 150: With the People of Nagaravinda — Nagaravindeyyasutta</text>
+          </navLabel>
+          <content src="mn-salayatanavagga.xhtml#mn150"/>
+        </navPoint>
+        <navPoint id="mn151">
+          <navLabel>
+            <text>MN 151: The Purification of Alms — Piṇḍapātapārisuddhisutta</text>
+          </navLabel>
+          <content src="mn-salayatanavagga.xhtml#mn151"/>
+        </navPoint>
+        <navPoint id="mn152">
+          <navLabel>
+            <text>MN 152: The Development of the Faculties — Indriyabhāvanāsutta</text>
+          </navLabel>
+          <content src="mn-salayatanavagga.xhtml#mn152"/>
+        </navPoint>
+      </navPoint>
+    </navPoint>
+    <navPoint id="endnotes">
+      <navLabel>
+        <text>Endnotes</text>
+      </navLabel>
+      <content src="endnotes.xhtml#endnotes"/>
+    </navPoint>
+    <navPoint id="colophon">
+      <navLabel>
+        <text>Colophon</text>
+      </navLabel>
+      <content src="colophon.xhtml#colophon"/>
+    </navPoint>
+  </navMap>
+</ncx>
