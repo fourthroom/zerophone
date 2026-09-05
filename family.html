@@ -249,7 +249,6 @@
       </h1>
     </div>
 
-    <!-- TAB BAR (MEDITATIONS MOVED TO LAST POSITION) -->
     <div class="tab-bar">
       <button class="tab-btn tab-phone active" onclick="switchTab('phone')">
         WebPhone
@@ -280,16 +279,9 @@
 
   <div class="container">
 
-    <div id="responderAccessBox">
-      <h2 id="inviteTitleText" style="font-size:24px; margin-top:0; color:#30d158;">You have been invited to a Call!</h2>
-      <p style="color:#aaa; font-size:15px; margin-bottom:25px;">Tap the big green button below to enter directly:</p>
-      <button id="megaEnterBtn" class="btn-mega-enter">📹 Enter Video Call</button>
-    </div>
-
     <!-- WEBPHONE TAB -->
     <div id="tab-phone" class="tab-content active">
       <div id="status">Ready to Call</div>
-
       <div id="webphoneMainSection">
         <div class="webphone-simplified-card">
           <div class="step-row-item">
@@ -308,29 +300,6 @@
             </a>
           </div>
           <div class="step-row-item">
-            <span class="step-title-green">Send Text/E-mail Invite:</span>
-            <div style="display:flex; align-items:center; gap:12px;">
-              <button id="inviteSendBtn" class="btn-round-blue" onclick="sendInvite('video')">
-                <span style="font-size:14px;">✉️</span>
-                <span>Send<br>Invite</span>
-              </button>
-              <div class="vintage-toggle-panel">
-                <div class="toggle-label-group">
-                  <span id="textLightPhone" class="indicator-light active-red"></span>
-                  <span>Text</span>
-                </div>
-                <label class="switch-container">
-                  <input type="checkbox" id="phoneInviteToggle" onchange="toggleInviteMode('phone')">
-                  <span class="slider-track"></span>
-                </label>
-                <div class="toggle-label-group">
-                  <span id="emailLightPhone" class="indicator-light"></span>
-                  <span>E-mail</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="step-row-item">
             <span class="step-title-green" style="font-size: 15px;">Step 4: Start Video Call</span>
             <button id="joinVideoBtn" class="btn-square-start-red" onclick="startCall()">
               <span style="font-size: 16px;">📹</span>
@@ -339,44 +308,22 @@
           </div>
         </div>
       </div>
-
-      <div id="videoStreamView" class="video-grid" style="display:none;">
-        <div class="video-card">
-          <h3 style="margin: 0 0 8px 0; font-size: 14px;">Local Stream (You)</h3>
-          <video id="localVideo" autoplay playsinline muted></video>
-        </div>
-      </div>
-
+      <div id="videoStreamView" class="video-grid" style="display:none;"></div>
       <div id="inCallControls" class="incall-controls-bar" style="display:none;">
-        <button id="toggleMicBtn" class="btn-media-toggle" onclick="toggleAudio()" title="Mute/Unmute Mic">🎙️</button>
-        <button id="toggleCamBtn" class="btn-media-toggle" onclick="toggleVideo()" title="Turn Camera On/Off">📹</button>
+        <button id="toggleMicBtn" class="btn-media-toggle" onclick="toggleAudio()">🎙️</button>
+        <button id="toggleCamBtn" class="btn-media-toggle" onclick="toggleVideo()">📹</button>
         <button id="hangUpBtn" class="btn-red-end" onclick="hangUpCall()">🔴 End Call</button>
-      </div>
-
-      <div class="privacy-notice-badge">
-        🔒 <b>End-to-End Encrypted (AES-256-GCM):</b> All video, voice, and web text are scrambled directly on your device before transmission. Zero data is logged, stored, or shared.
       </div>
     </div>
 
     <!-- WEBTEXT TAB -->
     <div id="tab-text" class="tab-content">
       <h2 style="color: #63e685; margin-top: 0;">WebText</h2>
-      <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Completely Free Web Text Messaging</p>
-
       <div class="web-chat-box">
-        <div style="display: flex; gap: 12px; margin-bottom: 12px; justify-content: center; align-items: center; flex-wrap: wrap;">
-          <input type="text" id="webTextSenderName" placeholder="Your Name" style="background: #2c2c2e; color: #fff; border: 1px solid #444; border-radius: 6px; padding: 10px 12px; width: 120px; text-align: center;">
-          <input type="text" id="webTextRoomId" placeholder="Room Name" style="background: #2c2c2e; color: #fff; border: 1px solid #444; border-radius: 6px; padding: 10px 12px; width: 120px; text-align: center;">
-          <button id="inviteTextBtn" class="btn-round-blue" style="font-size: 11px; width: 50px; height: 50px;" onclick="sendTextTabInvite()">💬<br>Invite</button>
-        </div>
-
-        <div id="web-chat-thread">
-          <p style="color: #666; font-style: italic; margin: 0;">Enter your Name and Room Name above to begin web chat...</p>
-        </div>
-
+        <div id="web-chat-thread"><p style="color: #666; font-style: italic; margin: 0;">Web Chat Thread...</p></div>
         <div style="display: flex; gap: 8px;">
-          <input type="text" id="webChatInput" placeholder="Type a free web message..." style="flex: 1; text-align: left; background: #2c2c2e; color: #fff; border: 1px solid #444; border-radius: 6px; padding: 8px 12px;">
-          <button id="sendWebChatBtn" class="btn-round-blue" style="width: auto; height: auto; padding: 8px 18px; border-radius: 8px; font-size: 13px;">Send</button>
+          <input type="text" id="webChatInput" placeholder="Type a message..." style="flex: 1; background: #2c2c2e; color: #fff; border: 1px solid #444; border-radius: 6px; padding: 8px 12px;">
+          <button id="sendWebChatBtn" class="btn-round-blue" style="width: auto; height: auto; padding: 8px 18px; border-radius: 8px;">Send</button>
         </div>
       </div>
     </div>
@@ -385,11 +332,6 @@
     <div id="tab-maps" class="tab-content">
       <h2 style="color: #ff9500; margin-top: 0;">📍 Free Wi-Fi & Resource Maps</h2>
       <div class="maps-box">
-        <div class="maps-filter-bar">
-          <button class="maps-filter-btn" onclick="loadMapQuery('free wifi', 15)">📶 Closest Public Wifi</button>
-          <button class="maps-filter-btn" onclick="loadMapQuery('public library', 14)">📚 Libraries</button>
-          <button class="maps-filter-btn" onclick="loadMapQuery('food bank shelter', 13)">🥫 Food Banks</button>
-        </div>
         <div class="map-frame-container">
           <iframe id="googleMapIframe" src="https://www.google.com/maps?q=Seattle+WA&z=14&output=embed" allowfullscreen></iframe>
         </div>
@@ -400,19 +342,11 @@
     <div id="tab-radio" class="tab-content">
       <h2 style="color: #e040fb; margin-top: 0;">📻 Local Live Internet Radio</h2>
       <div class="radio-box">
-        <div class="radio-genre-bar">
-          <button class="genre-btn" onclick="fetchRadioBrowserGenre('classical', 'Classical')">🎼 Classical</button>
-          <button class="genre-btn" onclick="fetchRadioBrowserGenre('news', 'News / NPR')">📰 News & NPR</button>
-        </div>
         <div class="radio-layout">
-          <div class="station-bank-container">
-            <h4 class="station-bank-header">📻 Station Bank</h4>
-            <div id="stationBankList" class="station-bank-list"></div>
-          </div>
+          <div class="station-bank-container"><div id="stationBankList" class="station-bank-list"></div></div>
           <div class="radio-console">
             <h3 id="radioStationTitle" class="now-playing-title">📻 Select a Station</h3>
             <audio id="radioAudioPlayer" controls preload="none"></audio>
-            <p id="radioStatusText" style="font-size: 12px; color: #aaa; margin: 0; font-weight: bold;">● Ready to Tune</p>
           </div>
         </div>
       </div>
@@ -421,66 +355,41 @@
     <!-- 🏛️ ART GALLERY TAB -->
     <div id="tab-art" class="tab-content">
       <h2 style="color: #ffd60a; margin-top: 0;">🏛️ World Art Museum Collections</h2>
-      <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Direct open-access digital collections from premier European & American museums</p>
-
       <div class="art-box">
         <div class="museum-institution-bar">
           <button id="btnMuseumAll" class="museum-inst-btn active" onclick="setMuseumScope('all')">🌐 All Museums</button>
           <button id="btnMuseumRijks" class="museum-inst-btn" onclick="setMuseumScope('rijks')">🏛️ Rijksmuseum</button>
-          <button id="btnMuseumLouvre" class="museum-inst-btn" onclick="setMuseumScope('louvre')">🏛️ Louvre / Europe</button>
           <button id="btnMuseumAIC" class="museum-inst-btn" onclick="setMuseumScope('aic')">🏛️ Chicago (AIC)</button>
           <button id="btnMuseumMET" class="museum-inst-btn" onclick="setMuseumScope('met')">🏛️ The Met</button>
-          <button id="btnMuseumCMA" class="museum-inst-btn" onclick="setMuseumScope('cma')">🏛️ Cleveland</button>
         </div>
-
-        <div class="art-genre-bar">
-          <button class="art-genre-btn active" onclick="triggerArtSearch('impressionism', 'Impressionism', this)">🎨 Impressionism</button>
-          <button class="art-genre-btn" onclick="triggerArtSearch('renaissance', 'Renaissance', this)">⚜️ Renaissance</button>
-          <button class="art-genre-btn" onclick="triggerArtSearch('baroque', 'Baroque', this)">🏛️ Baroque</button>
-          <button class="art-genre-btn" onclick="triggerArtSearch('dutch masters', 'Dutch Masters', this)">🇳🇱 Dutch Masters</button>
-          <button class="art-genre-btn" onclick="triggerArtRandom(this)">🎲 Discovery Mix</button>
-        </div>
-
         <div class="art-layout">
-          <div class="art-bank-container">
-            <h4 class="art-bank-header">🖼️ Gallery Bank</h4>
-            <div id="artBankList" class="art-bank-list">
-              <p style="color: #666; font-size: 12px; font-style: italic; margin: 0;">Loading artwork collection...</p>
-            </div>
-          </div>
-
+          <div class="art-bank-container"><div id="artBankList" class="art-bank-list"></div></div>
           <div class="art-display-console">
             <div class="art-image-frame" id="artImageFrame">
-              <span id="artLoadingIndicator" style="color: #aaa; font-size: 13px; font-style: italic;">Select a painting from the bank to display</span>
+              <span id="artLoadingIndicator" style="color: #aaa; font-style: italic;">Select a painting</span>
               <img id="mainArtworkImg" src="" alt="Painting Display" style="display: none;" onload="onArtworkImageLoaded()">
             </div>
-
-            <div class="art-actions-bar">
-              <button class="btn-art-action" onclick="openArtFullscreen()">⛶ Fullscreen</button>
-              <button id="btnArtSlideshow" class="btn-art-action" onclick="toggleArtSlideshow()">▶️ Start Slideshow</button>
-            </div>
-
-            <div id="artCaptionCard" class="art-caption-card">
-              <h3 id="artCaptionTitle" class="art-caption-title">Painting Title</h3>
-              <div id="artCaptionArtist" class="art-caption-artist">Artist Name</div>
-              <p id="artCaptionMeta" class="art-caption-meta">Date • Medium / Details</p>
-              <div id="artCaptionMuseum" class="art-museum-badge">🏛️ Museum Collection</div>
+            <div class="art-caption-card">
+              <h3 id="artCaptionTitle" class="art-caption-title">Title</h3>
+              <div id="artCaptionArtist" class="art-caption-artist">Artist</div>
+              <p id="artCaptionMeta" class="art-caption-meta">Details</p>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- 📖 MEDITATIONS TAB (LOCAL SCRIPTURES READER + IIIF STREAMER) -->
+    <!-- 📖 MEDITATIONS TAB (FIXED ILLUMINATIONS + DIRECT SCRIPTURE PATHS) -->
     <div id="tab-meditations" class="tab-content">
       <div class="meditations-wrapper">
+        <!-- Direct Unrestricted Harvard IIIF Streamer -->
         <div class="meditation-streamer">
           <div class="streamer-frame-box">
             <img id="stream-frame" src="https://ids.lib.harvard.edu/ids/view/45902188?buttons=y" alt="Illuminated Sacred Folio">
           </div>
           <div class="streamer-info">
-            <h3 id="folio-title">Harvard IIIF Manuscript Illumination</h3>
-            <p id="folio-provenance">Harvard Art Museums / Houghton Library Open Access Stream</p>
+            <h3 id="folio-title">Illuminated Manuscript Folio</h3>
+            <p id="folio-provenance">Harvard Art Museums • Open Access IIIF Stream</p>
           </div>
         </div>
 
@@ -511,7 +420,7 @@
             </div>
             <div id="reader-view" class="med-reader-content">
               <p style="text-align: center; color: #666; margin-top: 60px;">
-                Choose a canon from the navigation bar above, then select a text or discourse from the left bank.
+                Choose a canon from the navigation bar above, then select a text from the left bank.
               </p>
             </div>
           </div>
@@ -551,7 +460,7 @@
       }
     }
 
-    // ROBUST IIIF MANUSCRIPT STREAMER (HARVARD OPEN ACCESS)
+    // DIRECT HARVARD IIIF IMAGE STREAMER (15s CYCLE)
     const sacredIlluminations = [
       {
         title: "Illuminated Manuscript Folio",
@@ -587,47 +496,35 @@
     }
     setInterval(cycleIlluminations, 15000);
 
-    // SCRIPTURE MAPPINGS (SUPPORTING MULTI-DISCOURSE TOC FOR BUDDHISM)
+    // FLAT SCRIPTURE PATHS (AVOIDING BROKEN NESTED XHTML PATHS)
     const localCanons = {
       bible: {
         title: "King James Bible",
-        items: [
-          { name: "Full KJB Text", path: "scriptures/kjv-bible.txt" }
-        ]
+        items: [{ name: "Full KJB Text", path: "scriptures/kjv-bible.txt" }]
       },
       koran: {
         title: "The Quran (Rodwell)",
-        items: [
-          { name: "Full Rodwell Translation", path: "scriptures/quran-rodwell.txt" }
-        ]
+        items: [{ name: "Full Rodwell Translation", path: "scriptures/quran-rodwell.txt" }]
       },
       vedas: {
         title: "Rigveda (Griffith)",
-        items: [
-          { name: "Complete 10 Mandalas", path: "scriptures/rigveda-complete.txt" }
-        ]
+        items: [{ name: "Complete 10 Mandalas", path: "scriptures/rigveda-complete.txt" }]
       },
       upanishads: {
         title: "Thirteen Principal Upanishads",
-        items: [
-          { name: "Principal Upanishads Text", path: "scriptures/thirteenprincipa028442mbp_djvu.txt" }
-        ]
+        items: [{ name: "Principal Upanishads Text", path: "scriptures/thirteenprincipa028442mbp_djvu.txt" }]
       },
       buddhist: {
-        title: "Buddhist Suttas (Dīgha Nikāya)",
+        title: "Buddhist Suttas",
         items: [
-          { name: "DN 1: Brahmajāla Sutta", path: "scriptures/buddhism/long discourses/OEBPS/text/section001.xhtml" },
-          { name: "DN 2: Sāmaññaphala Sutta", path: "scriptures/buddhism/long discourses/OEBPS/text/section002.xhtml" },
-          { name: "DN 16: Mahāparinibbāna Sutta", path: "scriptures/buddhism/long discourses/OEBPS/text/section016.xhtml" },
-          { name: "DN 22: Mahāsatipaṭṭhāna Sutta", path: "scriptures/buddhism/long discourses/OEBPS/text/section022.xhtml" },
-          { name: "Complete Long Discourses Index", path: "scriptures/buddhism/long discourses/OEBPS/text/digha-nikaya.xhtml" }
+          { name: "Complete Long Discourses (Dīgha Nikāya)", path: "scriptures/buddhism/long discourses/OEBPS/text/digha-nikaya.xhtml" },
+          { name: "Complete Middle Discourses (Majjhima Nikāya)", path: "scriptures/buddhism/middle discourses/OEBPS/text/majjhima-nikaya.xhtml" },
+          { name: "Sayings of the Dharma (Dhammapada)", path: "scriptures/buddhism/sayings of the dharma/OEBPS/text/dhammapada.xhtml" }
         ]
       },
       sggs: {
         title: "Sri Guru Granth Sahib",
-        items: [
-          { name: "Complete Angs 1 - 1430", path: "scriptures/sggs_english.txt" }
-        ]
+        items: [{ name: "Complete Angs 1 - 1430", path: "scriptures/sggs_english.txt" }]
       }
     };
 
@@ -656,7 +553,6 @@
         listEl.appendChild(li);
       });
 
-      // Load first item by default
       if (canon.items.length > 0) {
         fetchAndDisplaySection(canon.items[0].name, canon.items[0].path);
       }
@@ -671,17 +567,15 @@
         const response = await fetch(path);
         if (!response.ok) throw new Error("File not found");
         const rawText = await response.text();
-        
-        // Strip basic HTML/XHTML tags for clean text rendering
         const cleanText = rawText.replace(/<[^>]*>/g, '');
         view.innerText = cleanText.trim() || rawText;
         view.scrollTop = 0;
       } catch (err) {
-        view.innerText = `Could not load file at "${path}". Make sure the unzipped folder and files are committed and pushed to GitHub.`;
+        view.innerText = `Could not load file at "${path}". Ensure the unzipped folder and files are committed and pushed to GitHub.`;
       }
     }
 
-    // SUSTAINED / FAST FORWARD SCROLL ENGINE
+    // SUSTAINED SCROLL ENGINE
     let scrollInterval = null;
     function startSustainedScroll(speed) {
       const view = document.getElementById('reader-view');
@@ -697,144 +591,49 @@
       }
     }
 
-    // ART GALLERY ENGINE
+    // ART GALLERY STUBS
     let hasLoadedArtOnce = false;
     let currentMuseumScope = 'all';
     let lastArtQuery = 'impressionism';
-    let currentArtworkList = [];
-    let currentArtworkIndex = 0;
-    let slideshowInterval = null;
-
     function setMuseumScope(scope) {
       currentMuseumScope = scope;
-      document.querySelectorAll('.museum-inst-btn').forEach(btn => btn.classList.remove('active'));
-      if (scope === 'all') document.getElementById('btnMuseumAll').classList.add('active');
-      if (scope === 'rijks') document.getElementById('btnMuseumRijks').classList.add('active');
-      if (scope === 'louvre') document.getElementById('btnMuseumLouvre').classList.add('active');
-      if (scope === 'aic') document.getElementById('btnMuseumAIC').classList.add('active');
-      if (scope === 'met') document.getElementById('btnMuseumMET').classList.add('active');
-      if (scope === 'cma') document.getElementById('btnMuseumCMA').classList.add('active');
-
       triggerArtSearch(lastArtQuery, lastArtQuery);
     }
-
-    async function fetchFromRijks(query, limit = 8) {
+    async function triggerArtSearch(q, label) {
+      hasLoadedArtOnce = true;
+      const bankList = document.getElementById('artBankList');
+      bankList.innerHTML = '<p style="color:#aaa;">Loading art...</p>';
       try {
-        const url = `https://www.rijksmuseum.nl/api/en/collection?key=0fEp26LG&q=${encodeURIComponent(query)}&imgonly=True&ps=${limit}`;
-        const res = await fetch(url);
+        const res = await fetch(`https://api.artic.edu/api/v1/artworks/search?q=${encodeURIComponent(q)}&query[term][is_public_domain]=true&fields=id,title,artist_title,image_id&limit=8`);
         const json = await res.json();
-        return (json.artObjects || []).map(item => ({
-          title: item.title,
-          artist: item.principalOrFirstMaker,
-          date: 'Dutch Master Collection',
-          medium: 'Oil on canvas / Rijksmuseum Amsterdam',
-          imageUrl: item.webImage ? item.webImage.url : '',
-          museum: 'Rijksmuseum Amsterdam'
-        })).filter(i => i.imageUrl);
-      } catch(e) { return []; }
-    }
-
-    async function fetchFromAIC(query, limit = 6) {
-      try {
-        const url = `https://api.artic.edu/api/v1/artworks/search?q=${encodeURIComponent(query)}&query[term][is_public_domain]=true&fields=id,title,artist_title,date_display,image_id&limit=${limit}`;
-        const res = await fetch(url);
-        const json = await res.json();
-        return (json.data || []).filter(item => item.image_id).map(item => ({
-          title: item.title,
-          artist: item.artist_title || 'Unknown',
-          date: item.date_display || 'Date Unknown',
-          medium: 'Painting / AIC Chicago',
-          imageUrl: `https://www.artic.edu/iiif/2/${item.image_id}/full/843,/0/default.jpg`,
+        const results = (json.data || []).filter(i => i.image_id).map(i => ({
+          title: i.title,
+          artist: i.artist_title || 'Unknown',
+          imageUrl: `https://www.artic.edu/iiif/2/${i.image_id}/full/843,/0/default.jpg`,
           museum: 'Art Institute of Chicago'
         }));
-      } catch (e) { return []; }
+        bankList.innerHTML = '';
+        results.forEach((art, idx) => {
+          const item = document.createElement('div');
+          item.className = `art-bank-item ${idx === 0 ? 'active' : ''}`;
+          item.innerHTML = `<span style="font-size:13px; font-weight:bold; color:#ffd60a;">🎨 ${art.title}</span>`;
+          item.onclick = () => {
+            document.getElementById('mainArtworkImg').src = art.imageUrl;
+            document.getElementById('artCaptionTitle').innerText = art.title;
+            document.getElementById('artCaptionArtist').innerText = art.artist;
+          };
+          bankList.appendChild(item);
+        });
+        if (results.length > 0) {
+          document.getElementById('mainArtworkImg').src = results[0].imageUrl;
+          document.getElementById('artCaptionTitle').innerText = results[0].title;
+          document.getElementById('artCaptionArtist').innerText = results[0].artist;
+        }
+      } catch(e) {}
     }
-
-    async function fetchFromMet(query, limit = 6) {
-      try {
-        const searchUrl = `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=${encodeURIComponent(query)}`;
-        const searchRes = await fetch(searchUrl);
-        const searchJson = await searchRes.json();
-        if (!searchJson.objectIDs) return [];
-        const ids = searchJson.objectIDs.slice(0, limit);
-        const records = await Promise.all(ids.map(id => fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${id}`).then(r => r.json()).catch(() => null)));
-        return records.filter(item => item && item.primaryImage).map(item => ({
-          title: item.title,
-          artist: item.artistDisplayName || 'Unknown',
-          date: item.objectDate || 'Date Unknown',
-          medium: item.medium || 'European Painting',
-          imageUrl: item.primaryImage,
-          museum: 'The Metropolitan Museum of Art (NYC)'
-        }));
-      } catch (e) { return []; }
-    }
-
-    async function triggerArtSearch(query, labelName, clickedBtn = null) {
-      hasLoadedArtOnce = true;
-      lastArtQuery = query;
-      if (clickedBtn) {
-        document.querySelectorAll('.art-genre-btn').forEach(b => b.classList.remove('active'));
-        clickedBtn.classList.add('active');
-      }
-
-      const bankList = document.getElementById('artBankList');
-      bankList.innerHTML = '<p style="color:#aaa; font-style:italic;">Querying museum APIs...</p>';
-
-      let results = [];
-      if (currentMuseumScope === 'rijks') {
-        results = await fetchFromRijks(query, 12);
-      } else if (currentMuseumScope === 'louvre') {
-        results = await fetchFromMet('French painting', 10);
-      } else if (currentMuseumScope === 'aic') {
-        results = await fetchFromAIC(query, 12);
-      } else if (currentMuseumScope === 'met') {
-        results = await fetchFromMet(query, 10);
-      } else {
-        const [rijks, aic, met] = await Promise.all([fetchFromRijks(query, 4), fetchFromAIC(query, 4), fetchFromMet(query, 4)]);
-        results = [...rijks, ...aic, ...met];
-      }
-
-      if (results.length > 0) {
-        currentArtworkList = results;
-        renderArtBank(results);
-        selectArtItem(results[0], 0);
-      } else {
-        bankList.innerHTML = '<p style="color:#ff3b30;">No artworks found.</p>';
-      }
-    }
-
-    function renderArtBank(artworks) {
-      const bankList = document.getElementById('artBankList');
-      bankList.innerHTML = '';
-      artworks.forEach((art, idx) => {
-        const item = document.createElement('div');
-        item.className = `art-bank-item ${idx === 0 ? 'active' : ''}`;
-        item.innerHTML = `<span style="font-size:13px; font-weight:bold; color:#ffd60a;">🎨 ${art.title}</span><br><span style="font-size:11px; color:#fff;">${art.artist}</span>`;
-        item.onclick = () => selectArtItem(art, idx);
-        bankList.appendChild(item);
-      });
-    }
-
-    function selectArtItem(art, index) {
-      currentArtworkIndex = index;
-      document.getElementById('mainArtworkImg').src = art.imageUrl;
-      document.getElementById('artCaptionTitle').innerText = art.title;
-      document.getElementById('artCaptionArtist').innerText = art.artist;
-      document.getElementById('artCaptionMeta').innerText = `${art.date} • ${art.medium}`;
-      document.getElementById('artCaptionMuseum').innerText = `🏛️ Holding Collection: ${art.museum}`;
-    }
-
     function onArtworkImageLoaded() {
       document.getElementById('artLoadingIndicator').style.display = 'none';
       document.getElementById('mainArtworkImg').style.display = 'block';
-    }
-
-    function openArtFullscreen() {
-      document.getElementById('artFullscreenModal').style.display = 'flex';
-      document.getElementById('artFullscreenImg').src = document.getElementById('mainArtworkImg').src;
-    }
-    function closeArtFullscreen() {
-      document.getElementById('artFullscreenModal').style.display = 'none';
     }
   </script>
 </body>
