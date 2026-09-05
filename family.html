@@ -152,6 +152,7 @@
     .map-frame-container { width: 100%; height: 500px; border-radius: 10px; overflow: hidden; border: 1px solid #444; }
     iframe { width: 100%; height: 100%; border: none; }
 
+    /* RADIO TAB STYLES (RESTORED FROM COPY MODEL) */
     .radio-box { background: #1c1c1e; border: 1px solid #e040fb; border-radius: 12px; padding: 20px; max-width: 950px; margin: 0 auto; }
     .radio-genre-bar { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
     .genre-btn { background: #2c2c2e; color: #fff; border: 1px solid #555; padding: 10px 14px; font-size: 13px; font-weight: bold; border-radius: 8px; cursor: pointer; }
@@ -160,6 +161,7 @@
     .station-bank-header { font-size: 13px; font-weight: bold; color: #e040fb; margin: 0 0 10px 0; text-transform: uppercase; }
     .station-bank-list { display: flex; flex-direction: column; gap: 8px; max-height: 360px; overflow-y: auto; }
     .station-bank-item { background: #2c2c2e; border: 1px solid #444; border-radius: 8px; padding: 10px; cursor: pointer; text-align: left; }
+    .station-bank-item.active { border-color: #e040fb; background: #300030; }
     .radio-console { flex: 1.5; min-width: 320px; background: #121212; border: 1px solid #333; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 15px; }
     .now-playing-title { font-size: 20px; font-weight: bold; color: #e040fb; margin: 0; }
     .now-playing-sub { font-size: 13px; color: #aaa; margin-top: -6px; }
@@ -187,10 +189,6 @@
     .art-caption-title { font-size: 18px; font-weight: 900; color: #ffd60a; margin: 0 0 4px 0; }
     .art-caption-artist { font-size: 14px; font-weight: bold; color: #fff; margin: 0 0 6px 0; }
     .art-caption-meta { color: #aaa; font-size: 12px; margin: 0; }
-    .art-museum-badge { display: inline-block; margin-top: 8px; background: #2a2400; color: #ffd60a; border: 1px solid #ffd60a; border-radius: 6px; padding: 4px 8px; font-size: 11px; font-weight: bold; }
-    .art-actions-bar { display: flex; gap: 10px; width: 100%; justify-content: center; }
-    .btn-art-action { background: #2c2c2e; color: #ffd60a; border: 1px solid #ffd60a; border-radius: 8px; padding: 8px 16px; font-size: 13px; font-weight: bold; cursor: pointer; }
-    .btn-art-action.playing { background: #ffd60a; color: #000; }
     .art-fullscreen-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.96); z-index: 100000; flex-direction: column; align-items: center; justify-content: center; padding: 20px; }
     .art-fullscreen-close-btn { position: absolute; top: 20px; right: 25px; background: #ff3b30; color: #fff; border: none; padding: 10px 18px; border-radius: 8px; font-size: 16px; font-weight: 900; cursor: pointer; }
     .art-fullscreen-img { max-width: 92%; max-height: 82vh; object-fit: contain; border-radius: 8px; }
@@ -241,7 +239,7 @@
       </h1>
     </div>
 
-    <!-- TAB BAR (6 TABS, MEDITATIONS LAST) -->
+    <!-- TAB BAR (6 TABS) -->
     <div class="tab-bar">
       <button class="tab-btn tab-phone active" onclick="switchTab('phone')">
         WebPhone
@@ -377,20 +375,56 @@
       </div>
     </div>
 
-    <!-- RADIO TAB -->
+    <!-- RADIO TAB (FULLY REINSTATED WITH COPY MODEL) -->
     <div id="tab-radio" class="tab-content">
       <h2 style="color: #e040fb; margin-top: 0;">📻 Local Live Internet Radio</h2>
+      <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Select a genre to populate the Left Station Bank</p>
+
       <div class="radio-box">
+        <div class="radio-genre-bar">
+          <button class="genre-btn" onclick="fetchRadioBrowserGenre('classical', 'Classical')">🎼 Classical</button>
+          <button class="genre-btn" onclick="fetchRadioBrowserGenre('pop', 'Pop / Indie')">🎤 Pop</button>
+          <button class="genre-btn" onclick="fetchRadioBrowserGenre('rock', 'Classic Rock')">🎸 Rock N' Roll</button>
+          <button class="genre-btn" onclick="fetchRadioBrowserGenre('country', 'Country')">🤠 Country</button>
+          <button class="genre-btn" onclick="fetchRadioBrowserGenre('jazz', 'Jazz')">🎷 Jazz</button>
+          <button class="genre-btn" onclick="fetchRadioBrowserGenre('news', 'News / NPR')">📰 News & NPR</button>
+        </div>
+
         <div class="radio-layout">
           <div class="station-bank-container">
             <h4 class="station-bank-header">📻 Station Bank</h4>
-            <div id="stationBankList" class="station-bank-list"></div>
+            <div id="stationBankList" class="station-bank-list">
+              <p style="color: #666; font-size: 12px; font-style: italic; margin: 0;">Select a genre above to load stations into this bank...</p>
+            </div>
           </div>
+
           <div class="radio-console">
             <h3 id="radioStationTitle" class="now-playing-title">📻 Select a Station</h3>
-            <audio id="radioAudioPlayer" controls preload="none"></audio>
+            <span id="radioStationLocation" class="now-playing-sub">Choose a station from the Bank on the left</span>
+
+            <audio id="radioAudioPlayer" controls preload="none">
+              Your browser does not support the audio element.
+            </audio>
+
+            <p id="radioStatusText" style="font-size: 12px; color: #aaa; margin: 0; font-weight: bold;">● Ready to Tune</p>
+
+            <div class="tuner-box">
+              <label for="customStreamInput" style="display:block; font-size: 12px; color: #aaa; font-weight: bold; margin-bottom: 6px;">
+                📻 Search Station Name / Call Letters:
+              </label>
+              <div style="display: flex; gap: 8px;">
+                <input type="text" id="customStreamInput" placeholder="e.g., KEXP, KING, KNKX, KUOW..." style="flex: 1; text-align: left; background: #2c2c2e; border: 1px solid #555; color: #fff; padding: 8px 12px; border-radius: 6px;">
+                <button onclick="searchRadioBrowserCustom()" class="btn-round-blue" style="width: auto; height: auto; font-size: 13px; padding: 8px 14px; border-radius: 6px;">Tune In</button>
+              </div>
+            </div>
+
           </div>
         </div>
+
+      </div>
+
+      <div class="privacy-notice-badge">
+        🔒 <b>End-to-End Encrypted (AES-256-GCM):</b> All video, voice, and web text are scrambled directly on your device before transmission. Zero data is logged, stored, or shared.
       </div>
     </div>
 
@@ -423,12 +457,11 @@
       </div>
     </div>
 
-    <!-- MEDITATIONS TAB (WITH 5-REPOSITORY DIRECT IIIF MANIFEST STREAMER) -->
+    <!-- MEDITATIONS TAB -->
     <div id="tab-meditations" class="tab-content">
       <div class="meditations-wrapper">
         <div class="meditation-streamer">
           <div class="streamer-frame-box">
-            <!-- Initial Walters MS W.537 IIIF Direct Image Endpoint -->
             <img id="stream-frame" src="https://ids.thewalters.org/iiif/id/W.537_000001/full/800,/0/default.jpg" alt="Illuminated Sacred Folio">
           </div>
           <div class="streamer-info">
@@ -512,7 +545,7 @@
       }
     }
 
-    // 5 PREMIER IIIF REPOSITORY DIRECT IMAGE STREAMER (WALTERS, GALLICA, BODLEIAN, GETTY, MORGAN)
+    // 5 PREMIER IIIF REPOSITORY DIRECT IMAGE STREAMER
     const sacredIlluminations = [
       {
         title: "Eusebian Canon Table Arches",
@@ -573,7 +606,6 @@
       renderFolio(currentFolioIndex);
     }
 
-    // Auto-advance feed every 45 seconds
     setInterval(nextIllumination, 45000);
 
     // FLAT SCRIPTURE PATHS
@@ -632,6 +664,102 @@
       scrollInterval = setInterval(() => { view.scrollBy({ top: speed, behavior: 'auto' }); }, 30);
     }
     function stopSustainedScroll() { if (scrollInterval) { clearInterval(scrollInterval); scrollInterval = null; } }
+
+    // RADIO-BROWSER API ENGINE (REINSTATED)
+    const RADIO_API_BASE = "https://de1.api.radio-browser.info/json/stations/search";
+
+    async function fetchRadioBrowserGenre(tag, labelName) {
+      const bankList = document.getElementById('stationBankList');
+      const statusText = document.getElementById('radioStatusText');
+
+      statusText.innerText = "⏳ Loading station bank...";
+      statusText.style.color = "#ff9500";
+      bankList.innerHTML = '<p style="color:#aaa; font-size:12px; font-style:italic;">Fetching streams...</p>';
+
+      try {
+        const response = await fetch(`${RADIO_API_BASE}?tag=${tag}&countrycode=US&limit=15&is_https=true&order=votes&reverse=true`);
+        const stations = await response.json();
+        const httpsStations = stations.filter(s => s.url_resolved && s.url_resolved.startsWith('https://'));
+
+        if (httpsStations.length > 0) {
+          renderStationBank(httpsStations);
+          selectStationItem(httpsStations[0]);
+        } else {
+          bankList.innerHTML = '<p style="color:#ff3b30; font-size:12px;">No HTTPS stations found.</p>';
+        }
+      } catch (err) {
+        bankList.innerHTML = '<p style="color:#ff3b30; font-size:12px;">Failed to load stations.</p>';
+      }
+    }
+
+    async function searchRadioBrowserCustom() {
+      const queryInput = document.getElementById('customStreamInput');
+      const query = queryInput.value.trim();
+      if (!query) return alert("Please enter a station name or call letters.");
+
+      const bankList = document.getElementById('stationBankList');
+      const statusText = document.getElementById('radioStatusText');
+
+      statusText.innerText = `⏳ Searching database for "${query}"...`;
+      statusText.style.color = "#ff9500";
+
+      try {
+        const response = await fetch(`${RADIO_API_BASE}?name=${encodeURIComponent(query)}&limit=15&is_https=true&order=votes&reverse=true`);
+        const stations = await response.json();
+        const httpsStations = stations.filter(s => s.url_resolved && s.url_resolved.startsWith('https://'));
+
+        if (httpsStations.length > 0) {
+          renderStationBank(httpsStations);
+          selectStationItem(httpsStations[0]);
+        } else {
+          alert("Station Not In Database");
+          statusText.innerText = "● Ready to Tune";
+          statusText.style.color = "#aaa";
+        }
+      } catch (err) {
+        alert("Station Not In Database");
+        statusText.innerText = "● Ready to Tune";
+        statusText.style.color = "#aaa";
+      }
+    }
+
+    function renderStationBank(stations) {
+      const bankList = document.getElementById('stationBankList');
+      bankList.innerHTML = '';
+
+      stations.forEach((st, index) => {
+        const item = document.createElement('div');
+        item.className = `station-bank-item ${index === 0 ? 'active' : ''}`;
+        item.innerHTML = `<span style="font-size:14px; font-weight:bold; color:#fff; display:block;">📻 ${st.name}</span><span style="font-size:11px; color:#aaa;">${st.state || 'Live'} • ${st.codec || 'MP3'}</span>`;
+        item.onclick = () => {
+          document.querySelectorAll('.station-bank-item').forEach(el => el.classList.remove('active'));
+          item.classList.add('active');
+          selectStationItem(st);
+        };
+        bankList.appendChild(item);
+      });
+    }
+
+    function selectStationItem(st) {
+      document.getElementById('radioStationTitle').innerText = `📻 ${st.name}`;
+      document.getElementById('radioStationLocation').innerText = `${st.state || 'Live Stream'} • ${st.codec || 'MP3'}`;
+      playRadioStream(st.url_resolved || st.url);
+    }
+
+    function playRadioStream(streamUrl) {
+      const player = document.getElementById('radioAudioPlayer');
+      const statusText = document.getElementById('radioStatusText');
+      player.pause();
+      player.src = streamUrl;
+      player.load();
+      player.play().then(() => {
+        statusText.innerText = "● Live Streaming";
+        statusText.style.color = "#30d158";
+      }).catch(() => {
+        statusText.innerText = "Tap Play arrow on player to listen";
+        statusText.style.color = "#e040fb";
+      });
+    }
 
     // ART GALLERY ENGINE
     let currentMuseumScope = 'all';
