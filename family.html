@@ -69,10 +69,10 @@
     .tab-maps.active { background: #ff9500; color: #000; }
     .tab-radio { background: #4a0072; border-top: 3px solid #e040fb; }
     .tab-radio.active { background: #e040fb; color: #000; }
-    .tab-meditations { background: #3d2f00; border-top: 3px solid #d4af37; }
-    .tab-meditations.active { background: #d4af37; color: #000; }
     .tab-art { background: #4a3600; border-top: 3px solid #ffd60a; }
     .tab-art.active { background: #ffd60a; color: #000; }
+    .tab-meditations { background: #3d2f00; border-top: 3px solid #d4af37; }
+    .tab-meditations.active { background: #d4af37; color: #000; }
 
     .sub-tagline { font-size: 11px; display: block; font-weight: normal; margin-top: 2px; }
     .container { padding: 10px 15px; max-width: 100%; margin: 0 auto; text-align: center; }
@@ -113,16 +113,14 @@
     .med-reader-main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
     .med-reader-header { padding: 10px 16px; background: #18181b; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center; }
     .med-reader-controls { display: flex; gap: 8px; }
-    .med-ctrl-btn { background: #2c2c2e; border: 1px solid #444; color: #fff; padding: 5px 12px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; }
-    .med-ctrl-btn:hover { border-color: #d4af37; }
+    .med-ctrl-btn { background: #2c2c2e; border: 1px solid #444; color: #fff; padding: 5px 12px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; user-select: none; }
+    .med-ctrl-btn:hover { border-color: #d4af37; background: #3a3a3c; }
     .med-reader-content {
       flex: 1; padding: 24px 36px; overflow-y: auto; line-height: 1.7; font-size: 1rem; font-family: Georgia, serif; color: #e0e0e0; white-space: pre-wrap;
     }
 
-    /* WEBPHONE STYLES */
-    .webphone-simplified-card {
-      background: #1c1c1e; border: 1px solid #333; border-radius: 16px; max-width: 580px; margin: 15px auto; padding: 24px 20px; display: flex; flex-direction: column; gap: 18px;
-    }
+    /* WEBPHONE & OTHER STYLES */
+    .webphone-simplified-card { background: #1c1c1e; border: 1px solid #333; border-radius: 16px; max-width: 580px; margin: 15px auto; padding: 24px 20px; display: flex; flex-direction: column; gap: 18px; }
     .step-row-item { display: flex; align-items: center; justify-content: space-between; gap: 12px; background: #151516; border: 1px solid #2a2a2d; border-radius: 10px; padding: 12px 14px; }
     .step-title-green { color: #30d158; font-weight: bold; font-size: 14px; white-space: nowrap; text-align: left; }
     .webphone-input-field { flex: 1; padding: 8px 12px; font-size: 14px; border-radius: 6px; background: #2c2c2e; color: #fff; border: 1px solid #444; text-align: left; }
@@ -251,7 +249,7 @@
       </h1>
     </div>
 
-    <!-- TAB BAR -->
+    <!-- TAB BAR (MEDITATIONS MOVED TO LAST POSITION) -->
     <div class="tab-bar">
       <button class="tab-btn tab-phone active" onclick="switchTab('phone')">
         WebPhone
@@ -269,13 +267,13 @@
         📻 Radio
         <span class="sub-tagline">Local Live Streams</span>
       </button>
-      <button class="tab-btn tab-meditations" onclick="switchTab('meditations')">
-        📖 Meditations
-        <span class="sub-tagline">Sacred Texts Reader</span>
-      </button>
       <button class="tab-btn tab-art" onclick="switchTab('art')">
         🏛️ Art Gallery
         <span class="sub-tagline">World Masterpieces</span>
+      </button>
+      <button class="tab-btn tab-meditations" onclick="switchTab('meditations')">
+        📖 Meditations
+        <span class="sub-tagline">Sacred Texts Reader</span>
       </button>
     </div>
   </div>
@@ -420,55 +418,7 @@
       </div>
     </div>
 
-    <!-- 📖 MEDITATIONS TAB (LOCAL SCRIPTURES READER + IIIF STREAMER) -->
-    <div id="tab-meditations" class="tab-content">
-      <div class="meditations-wrapper">
-        <div class="meditation-streamer">
-          <div class="streamer-frame-box">
-            <img id="stream-frame" src="https://manuscripts.thewalters.org/iiif/W.537/canvas/p1r" alt="Illuminated Sacred Folio">
-          </div>
-          <div class="streamer-info">
-            <h3 id="folio-title">Eusebian Canon Table Arches</h3>
-            <p id="folio-provenance">Walters MS W.537 (12th c. Gospels) • Byzantine Christian Illumination</p>
-          </div>
-        </div>
-
-        <nav class="canon-nav">
-          <button class="canon-btn" onclick="loadLocalCanon('bible', this)">Bible</button>
-          <button class="canon-btn" onclick="loadLocalCanon('koran', this)">Koran</button>
-          <button class="canon-btn" onclick="loadLocalCanon('vedas', this)">Vedas</button>
-          <button class="canon-btn" onclick="loadLocalCanon('upanishads', this)">Upanishads</button>
-          <button class="canon-btn" onclick="loadLocalCanon('buddhist', this)">Buddhist Scripture</button>
-          <button class="canon-btn" onclick="loadLocalCanon('sggs', this)">Sri Guru Granth Sahib</button>
-        </nav>
-
-        <div class="meditation-workspace">
-          <div class="med-toc-bank">
-            <h4 id="toc-heading">Table of Contents</h4>
-            <ul id="toc-list" class="med-toc-list">
-              <li class="med-toc-item" style="color: #666; font-style: italic;">Select a tradition above...</li>
-            </ul>
-          </div>
-
-          <div class="med-reader-main">
-            <div class="med-reader-header">
-              <span id="current-chapter-title" style="font-style: italic; color: #d4af37; font-size: 0.9rem;">Select a text to begin contemplation.</span>
-              <div class="med-reader-controls">
-                <button class="med-ctrl-btn" onclick="scrollReader(-300)">Scroll Up</button>
-                <button class="med-ctrl-btn" onclick="scrollReader(300)">Scroll Down</button>
-              </div>
-            </div>
-            <div id="reader-view" class="med-reader-content">
-              <p style="text-align: center; color: #666; margin-top: 60px;">
-                Choose a canon from the navigation bar above, then select a text from the left bank.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 🏛️ ART GALLERY TAB (WITH EURO MUSEUMS) -->
+    <!-- 🏛️ ART GALLERY TAB -->
     <div id="tab-art" class="tab-content">
       <h2 style="color: #ffd60a; margin-top: 0;">🏛️ World Art Museum Collections</h2>
       <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Direct open-access digital collections from premier European & American museums</p>
@@ -521,6 +471,54 @@
       </div>
     </div>
 
+    <!-- 📖 MEDITATIONS TAB (LOCAL SCRIPTURES READER + IIIF STREAMER) -->
+    <div id="tab-meditations" class="tab-content">
+      <div class="meditations-wrapper">
+        <div class="meditation-streamer">
+          <div class="streamer-frame-box">
+            <img id="stream-frame" src="https://ids.lib.harvard.edu/ids/view/45902188?buttons=y" alt="Illuminated Sacred Folio">
+          </div>
+          <div class="streamer-info">
+            <h3 id="folio-title">Harvard IIIF Manuscript Illumination</h3>
+            <p id="folio-provenance">Harvard Art Museums / Houghton Library Open Access Stream</p>
+          </div>
+        </div>
+
+        <nav class="canon-nav">
+          <button class="canon-btn" onclick="loadLocalCanon('bible', this)">Bible</button>
+          <button class="canon-btn" onclick="loadLocalCanon('koran', this)">Koran</button>
+          <button class="canon-btn" onclick="loadLocalCanon('vedas', this)">Vedas</button>
+          <button class="canon-btn" onclick="loadLocalCanon('upanishads', this)">Upanishads</button>
+          <button class="canon-btn" onclick="loadLocalCanon('buddhist', this)">Buddhist Suttas</button>
+          <button class="canon-btn" onclick="loadLocalCanon('sggs', this)">Sri Guru Granth Sahib</button>
+        </nav>
+
+        <div class="meditation-workspace">
+          <div class="med-toc-bank">
+            <h4 id="toc-heading">Table of Contents</h4>
+            <ul id="toc-list" class="med-toc-list">
+              <li class="med-toc-item" style="color: #666; font-style: italic;">Select a tradition above...</li>
+            </ul>
+          </div>
+
+          <div class="med-reader-main">
+            <div class="med-reader-header">
+              <span id="current-chapter-title" style="font-style: italic; color: #d4af37; font-size: 0.9rem;">Select a text to begin contemplation.</span>
+              <div class="med-reader-controls">
+                <button class="med-ctrl-btn" onmousedown="startSustainedScroll(-15)" onmouseup="stopSustainedScroll()" onmouseleave="stopSustainedScroll()" ontouchstart="startSustainedScroll(-15)" ontouchend="stopSustainedScroll()">▲ Scroll Up</button>
+                <button class="med-ctrl-btn" onmousedown="startSustainedScroll(15)" onmouseup="stopSustainedScroll()" onmouseleave="stopSustainedScroll()" ontouchstart="startSustainedScroll(15)" ontouchend="stopSustainedScroll()">▼ Scroll Down</button>
+              </div>
+            </div>
+            <div id="reader-view" class="med-reader-content">
+              <p style="text-align: center; color: #666; margin-top: 60px;">
+                Choose a canon from the navigation bar above, then select a text or discourse from the left bank.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <script>
@@ -543,35 +541,32 @@
       } else if (tabName === 'radio') {
         document.querySelectorAll('.tab-btn')[3].classList.add('active');
         document.getElementById('tab-radio').classList.add('active');
-      } else if (tabName === 'meditations') {
-        document.querySelectorAll('.tab-btn')[4].classList.add('active');
-        document.getElementById('tab-meditations').classList.add('active');
       } else if (tabName === 'art') {
-        document.querySelectorAll('.tab-btn')[5].classList.add('active');
+        document.querySelectorAll('.tab-btn')[4].classList.add('active');
         document.getElementById('tab-art').classList.add('active');
         if (!hasLoadedArtOnce) triggerArtSearch('impressionism', 'Impressionism');
+      } else if (tabName === 'meditations') {
+        document.querySelectorAll('.tab-btn')[5].classList.add('active');
+        document.getElementById('tab-meditations').classList.add('active');
       }
     }
 
-    // IIIF ILLUMINATION STREAMER (15s ROTATION)
+    // ROBUST IIIF MANUSCRIPT STREAMER (HARVARD OPEN ACCESS)
     const sacredIlluminations = [
       {
-        title: "Eusebian Canon Table Arches",
-        manuscript: "Walters MS W.537 (12th c. Gospels)",
-        tradition: "Byzantine Christian Illumination",
-        url: "https://manuscripts.thewalters.org/iiif/W.537/canvas/p1r"
+        title: "Illuminated Manuscript Folio",
+        provenance: "Harvard Art Museums • Islamic & Near Eastern Collection",
+        url: "https://ids.lib.harvard.edu/ids/view/45902188?buttons=y"
       },
       {
-        title: "Illuminated Opening Rosette",
-        manuscript: "Walters MS W.563 (Ottoman Qur'an)",
-        tradition: "Islamic Manuscript Illumination",
-        url: "https://manuscripts.thewalters.org/iiif/W.563/canvas/p2r"
+        title: "Medieval Psalter Illumination",
+        provenance: "Houghton Library, Harvard University • MS Lat 249",
+        url: "https://ids.lib.harvard.edu/ids/view/48011242?buttons=y"
       },
       {
-        title: "Incipit Page of Saint Mark",
-        manuscript: "Bibliothèque nationale de France (Latin 10514)",
-        tradition: "Romanesque Scriptorium",
-        url: "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8423840f/f13/full/1000,/0/native.jpg"
+        title: "Sanskrit Manuscript Leaf",
+        provenance: "Harvard Sanskrit Manuscript Collection • Indic Illumination",
+        url: "https://ids.lib.harvard.edu/ids/view/25565251?buttons=y"
       }
     ];
 
@@ -586,20 +581,54 @@
       setTimeout(() => {
         frame.src = item.url;
         document.getElementById('folio-title').innerText = item.title;
-        document.getElementById('folio-provenance').innerText = `${item.manuscript} • ${item.tradition}`;
+        document.getElementById('folio-provenance').innerText = item.provenance;
         frame.onload = () => { frame.style.opacity = '1'; };
       }, 400);
     }
     setInterval(cycleIlluminations, 15000);
 
-    // LOCAL SCRIPTURES TOC & FETCHING
-    const localCanonFiles = {
-      bible: { title: "King James Bible", path: "scriptures/kjv-bible.txt" },
-      koran: { title: "The Quran (Rodwell)", path: "scriptures/quran-rodwell.txt" },
-      vedas: { title: "Rigveda (Griffith)", path: "scriptures/rigveda-complete.txt" },
-      upanishads: { title: "Thirteen Principal Upanishads", path: "scriptures/thirteenprincipa028442mbp_djvu.txt" },
-      buddhist: { title: "Buddhist Scripture (Dīgha Nikāya)", path: "scriptures/buddhism/long discourses/OEBPS/text/digha-nikaya.xhtml" },
-      sggs: { title: "Sri Guru Granth Sahib", path: "scriptures/sggs_english.txt" }
+    // SCRIPTURE MAPPINGS (SUPPORTING MULTI-DISCOURSE TOC FOR BUDDHISM)
+    const localCanons = {
+      bible: {
+        title: "King James Bible",
+        items: [
+          { name: "Full KJB Text", path: "scriptures/kjv-bible.txt" }
+        ]
+      },
+      koran: {
+        title: "The Quran (Rodwell)",
+        items: [
+          { name: "Full Rodwell Translation", path: "scriptures/quran-rodwell.txt" }
+        ]
+      },
+      vedas: {
+        title: "Rigveda (Griffith)",
+        items: [
+          { name: "Complete 10 Mandalas", path: "scriptures/rigveda-complete.txt" }
+        ]
+      },
+      upanishads: {
+        title: "Thirteen Principal Upanishads",
+        items: [
+          { name: "Principal Upanishads Text", path: "scriptures/thirteenprincipa028442mbp_djvu.txt" }
+        ]
+      },
+      buddhist: {
+        title: "Buddhist Suttas (Dīgha Nikāya)",
+        items: [
+          { name: "DN 1: Brahmajāla Sutta", path: "scriptures/buddhism/long discourses/OEBPS/text/section001.xhtml" },
+          { name: "DN 2: Sāmaññaphala Sutta", path: "scriptures/buddhism/long discourses/OEBPS/text/section002.xhtml" },
+          { name: "DN 16: Mahāparinibbāna Sutta", path: "scriptures/buddhism/long discourses/OEBPS/text/section016.xhtml" },
+          { name: "DN 22: Mahāsatipaṭṭhāna Sutta", path: "scriptures/buddhism/long discourses/OEBPS/text/section022.xhtml" },
+          { name: "Complete Long Discourses Index", path: "scriptures/buddhism/long discourses/OEBPS/text/digha-nikaya.xhtml" }
+        ]
+      },
+      sggs: {
+        title: "Sri Guru Granth Sahib",
+        items: [
+          { name: "Complete Angs 1 - 1430", path: "scriptures/sggs_english.txt" }
+        ]
+      }
     };
 
     async function loadLocalCanon(key, btnElem) {
@@ -608,31 +637,67 @@
         btnElem.classList.add('active');
       }
 
-      const canon = localCanonFiles[key];
+      const canon = localCanons[key];
       if (!canon) return;
 
       document.getElementById('toc-heading').innerText = canon.title;
       const listEl = document.getElementById('toc-list');
-      listEl.innerHTML = `<li class="med-toc-item active">📄 ${canon.title} (Full Text)</li>`;
+      listEl.innerHTML = '';
 
-      document.getElementById('current-chapter-title').innerText = canon.title;
-      document.getElementById('reader-view').innerText = "Loading text from server...";
+      canon.items.forEach((item, idx) => {
+        const li = document.createElement('li');
+        li.className = `med-toc-item ${idx === 0 ? 'active' : ''}`;
+        li.innerText = `📄 ${item.name}`;
+        li.onclick = () => {
+          document.querySelectorAll('.med-toc-item').forEach(el => el.classList.remove('active'));
+          li.classList.add('active');
+          fetchAndDisplaySection(item.name, item.path);
+        };
+        listEl.appendChild(li);
+      });
 
-      try {
-        const response = await fetch(canon.path);
-        if (!response.ok) throw new Error("File not found");
-        const text = await response.text();
-        document.getElementById('reader-view').innerText = text;
-      } catch (err) {
-        document.getElementById('reader-view').innerText = `Could not load ${canon.path}. Ensure the file is pushed to GitHub.`;
+      // Load first item by default
+      if (canon.items.length > 0) {
+        fetchAndDisplaySection(canon.items[0].name, canon.items[0].path);
       }
     }
 
-    function scrollReader(amount) {
-      document.getElementById('reader-view').scrollBy({ top: amount, behavior: 'smooth' });
+    async function fetchAndDisplaySection(title, path) {
+      document.getElementById('current-chapter-title').innerText = title;
+      const view = document.getElementById('reader-view');
+      view.innerText = `Loading ${title}...`;
+
+      try {
+        const response = await fetch(path);
+        if (!response.ok) throw new Error("File not found");
+        const rawText = await response.text();
+        
+        // Strip basic HTML/XHTML tags for clean text rendering
+        const cleanText = rawText.replace(/<[^>]*>/g, '');
+        view.innerText = cleanText.trim() || rawText;
+        view.scrollTop = 0;
+      } catch (err) {
+        view.innerText = `Could not load file at "${path}". Make sure the unzipped folder and files are committed and pushed to GitHub.`;
+      }
     }
 
-    // ART GALLERY ENGINE WITH EUROPEAN MUSEUMS
+    // SUSTAINED / FAST FORWARD SCROLL ENGINE
+    let scrollInterval = null;
+    function startSustainedScroll(speed) {
+      const view = document.getElementById('reader-view');
+      if (scrollInterval) clearInterval(scrollInterval);
+      scrollInterval = setInterval(() => {
+        view.scrollBy({ top: speed, behavior: 'auto' });
+      }, 30);
+    }
+    function stopSustainedScroll() {
+      if (scrollInterval) {
+        clearInterval(scrollInterval);
+        scrollInterval = null;
+      }
+    }
+
+    // ART GALLERY ENGINE
     let hasLoadedArtOnce = false;
     let currentMuseumScope = 'all';
     let lastArtQuery = 'impressionism';
@@ -659,7 +724,6 @@
         const res = await fetch(url);
         const json = await res.json();
         return (json.artObjects || []).map(item => ({
-          id: `rijks-${item.objectNumber}`,
           title: item.title,
           artist: item.principalOrFirstMaker,
           date: 'Dutch Master Collection',
@@ -676,7 +740,6 @@
         const res = await fetch(url);
         const json = await res.json();
         return (json.data || []).filter(item => item.image_id).map(item => ({
-          id: `aic-${item.id}`,
           title: item.title,
           artist: item.artist_title || 'Unknown',
           date: item.date_display || 'Date Unknown',
@@ -696,7 +759,6 @@
         const ids = searchJson.objectIDs.slice(0, limit);
         const records = await Promise.all(ids.map(id => fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${id}`).then(r => r.json()).catch(() => null)));
         return records.filter(item => item && item.primaryImage).map(item => ({
-          id: `met-${item.objectID}`,
           title: item.title,
           artist: item.artistDisplayName || 'Unknown',
           date: item.objectDate || 'Date Unknown',
@@ -722,7 +784,7 @@
       if (currentMuseumScope === 'rijks') {
         results = await fetchFromRijks(query, 12);
       } else if (currentMuseumScope === 'louvre') {
-        results = await fetchFromMet('French painting', 10); // European master fallback
+        results = await fetchFromMet('French painting', 10);
       } else if (currentMuseumScope === 'aic') {
         results = await fetchFromAIC(query, 12);
       } else if (currentMuseumScope === 'met') {
