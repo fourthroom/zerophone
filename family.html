@@ -48,44 +48,18 @@
 
     .brand-container { display: flex; align-items: center; gap: 10px; }
     .app-header-logo {
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
-      object-fit: cover;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+      width: 36px; height: 36px; border-radius: 8px; object-fit: cover; box-shadow: 0 2px 6px rgba(0,0,0,0.4);
     }
 
     .app-brand-title {
-      font-size: 26px;
-      font-weight: 900;
-      letter-spacing: -0.5px;
-      color: #fff;
-      margin: 0;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      font-size: 26px; font-weight: 900; letter-spacing: -0.5px; color: #fff; margin: 0; display: flex; align-items: center; gap: 8px;
     }
 
-    .tab-bar {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
+    .tab-bar { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
     .tab-btn {
-      padding: 8px 16px;
-      font-size: 13px;
-      font-weight: bold;
-      border: none;
-      border-top-left-radius: 8px;
-      border-top-right-radius: 8px;
-      cursor: pointer;
-      color: #fff;
-      opacity: 0.6;
-      transition: opacity 0.2s, background 0.2s;
+      padding: 8px 16px; font-size: 13px; font-weight: bold; border: none;
+      border-top-left-radius: 8px; border-top-right-radius: 8px; cursor: pointer; color: #fff; opacity: 0.6; transition: opacity 0.2s, background 0.2s;
     }
-
     .tab-btn.active { opacity: 1.0; }
     .tab-phone { background: #1b4d2e; border-top: 3px solid #30d158; }
     .tab-phone.active { background: #30d158; color: #000; }
@@ -107,191 +81,65 @@
 
     /* MEDITATIONS TAB STYLES */
     .meditations-wrapper {
-      background: #1c1c1e;
-      border: 1px solid #d4af37;
-      border-radius: 14px;
-      max-width: 1100px;
-      margin: 10px auto;
-      overflow: hidden;
-      text-align: left;
+      background: #1c1c1e; border: 1px solid #d4af37; border-radius: 14px; max-width: 1100px; margin: 10px auto; overflow: hidden; text-align: left;
     }
-    .meditation-streamer {
-      background: #000;
-      border-bottom: 1px solid #333;
-      padding: 16px;
-      text-align: center;
-    }
+    .meditation-streamer { background: #000; border-bottom: 1px solid #333; padding: 16px; text-align: center; }
     .streamer-frame-box {
-      position: relative;
-      width: 100%;
-      max-width: 520px;
-      height: 320px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #050505;
-      border: 1px solid #333;
-      border-radius: 6px;
-      overflow: hidden;
+      position: relative; width: 100%; max-width: 520px; height: 320px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: center; background: #050505; border: 1px solid #333; border-radius: 6px; overflow: hidden;
     }
-    .streamer-frame-box img {
-      max-height: 100%;
-      max-width: 100%;
-      object-fit: contain;
-      transition: opacity 0.8s ease;
-    }
-    .streamer-info { margin-top: 8px; }
+    .streamer-frame-box img { max-height: 100%; max-width: 100%; object-fit: contain; transition: opacity 0.8s ease; }
+    .streamer-info { margin-top: 8px; text-align: center; }
     .streamer-info h3 { margin: 2px 0; color: #d4af37; font-size: 1rem; font-family: Georgia, serif; }
     .streamer-info p { margin: 0; font-size: 0.8rem; color: #888; font-style: italic; }
 
-    .canon-nav {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      background: #141416;
-      padding: 12px;
-      border-bottom: 1px solid #333;
-      flex-wrap: wrap;
-    }
+    .canon-nav { display: flex; justify-content: center; gap: 8px; background: #141416; padding: 12px; border-bottom: 1px solid #333; flex-wrap: wrap; }
     .canon-btn {
-      background: #222226;
-      border: 1px solid #444;
-      color: #fff;
-      padding: 8px 14px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 0.85rem;
-      font-weight: bold;
-      font-family: Georgia, serif;
-      transition: all 0.2s;
+      background: #222226; border: 1px solid #444; color: #fff; padding: 8px 14px; border-radius: 6px;
+      cursor: pointer; font-size: 0.85rem; font-weight: bold; font-family: Georgia, serif; transition: all 0.2s;
     }
-    .canon-btn:hover, .canon-btn.active {
-      border-color: #d4af37;
-      color: #d4af37;
-      background: #2a2a30;
-    }
+    .canon-btn:hover, .canon-btn.active { border-color: #d4af37; color: #d4af37; background: #2a2a30; }
 
-    .meditation-workspace {
-      display: flex;
-      height: 520px;
-      background: #121212;
-    }
-    .med-toc-bank {
-      width: 300px;
-      background: #161618;
-      border-right: 1px solid #333;
-      overflow-y: auto;
-      padding: 14px;
-    }
-    .med-toc-bank h4 {
-      margin-top: 0;
-      color: #d4af37;
-      border-bottom: 1px solid #333;
-      padding-bottom: 6px;
-      font-size: 0.95rem;
-      font-family: Georgia, serif;
-    }
+    .meditation-workspace { display: flex; height: 520px; background: #121212; }
+    .med-toc-bank { width: 300px; background: #161618; border-right: 1px solid #333; overflow-y: auto; padding: 14px; }
+    .med-toc-bank h4 { margin-top: 0; color: #d4af37; border-bottom: 1px solid #333; padding-bottom: 6px; font-size: 0.95rem; font-family: Georgia, serif; }
     .med-toc-list { list-style: none; padding: 0; margin: 0; }
     .med-toc-item {
-      padding: 8px 10px;
-      cursor: pointer;
-      border-radius: 4px;
-      font-size: 0.88rem;
-      color: #ccc;
-      font-family: Georgia, serif;
-      transition: background 0.15s;
+      padding: 8px 10px; cursor: pointer; border-radius: 4px; font-size: 0.88rem; color: #ccc; font-family: Georgia, serif; transition: background 0.15s;
     }
     .med-toc-item:hover { background: #222228; color: #fff; }
+    .med-toc-item.active { background: #332b00; color: #d4af37; font-weight: bold; border-left: 3px solid #d4af37; }
 
-    .med-reader-main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
-    .med-reader-header {
-      padding: 10px 16px;
-      background: #18181b;
-      border-bottom: 1px solid #333;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+    .med-reader-main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+    .med-reader-header { padding: 10px 16px; background: #18181b; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center; }
     .med-reader-controls { display: flex; gap: 8px; }
-    .med-ctrl-btn {
-      background: #2c2c2e;
-      border: 1px solid #444;
-      color: #fff;
-      padding: 5px 12px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 0.8rem;
-    }
+    .med-ctrl-btn { background: #2c2c2e; border: 1px solid #444; color: #fff; padding: 5px 12px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; }
     .med-ctrl-btn:hover { border-color: #d4af37; }
     .med-reader-content {
-      flex: 1;
-      padding: 24px 36px;
-      overflow-y: auto;
-      line-height: 1.7;
-      font-size: 1rem;
-      font-family: Georgia, serif;
-      color: #e0e0e0;
-      white-space: pre-wrap;
+      flex: 1; padding: 24px 36px; overflow-y: auto; line-height: 1.7; font-size: 1rem; font-family: Georgia, serif; color: #e0e0e0; white-space: pre-wrap;
     }
 
     /* WEBPHONE STYLES */
     .webphone-simplified-card {
-      background: #1c1c1e; border: 1px solid #333; border-radius: 16px; max-width: 580px;
-      margin: 15px auto; padding: 24px 20px; display: flex; flex-direction: column; gap: 18px;
+      background: #1c1c1e; border: 1px solid #333; border-radius: 16px; max-width: 580px; margin: 15px auto; padding: 24px 20px; display: flex; flex-direction: column; gap: 18px;
     }
-    .step-row-item {
-      display: flex; align-items: center; justify-content: space-between; gap: 12px;
-      background: #151516; border: 1px solid #2a2a2d; border-radius: 10px; padding: 12px 14px;
-    }
+    .step-row-item { display: flex; align-items: center; justify-content: space-between; gap: 12px; background: #151516; border: 1px solid #2a2a2d; border-radius: 10px; padding: 12px 14px; }
     .step-title-green { color: #30d158; font-weight: bold; font-size: 14px; white-space: nowrap; text-align: left; }
-    .webphone-input-field {
-      flex: 1; padding: 8px 12px; font-size: 14px; border-radius: 6px;
-      background: #2c2c2e; color: #fff; border: 1px solid #444; text-align: left;
-    }
-    .btn-round-red {
-      width: 56px; height: 56px; border-radius: 50%; background: #ff3b30; color: #fff;
-      font-size: 10px; font-weight: 900; border: none; cursor: pointer; display: flex;
-      flex-direction: column; align-items: center; justify-content: center; text-decoration: none;
-    }
-    .btn-round-blue {
-      width: 56px; height: 56px; border-radius: 50%; background: #0a84ff; color: #fff;
-      font-size: 10px; font-weight: 900; border: none; cursor: pointer; display: flex;
-      flex-direction: column; align-items: center; justify-content: center; text-decoration: none;
-    }
-    .btn-square-start-red {
-      width: 65px; height: 60px; background: #ff3b30; color: #fff; font-size: 10px;
-      font-weight: 900; border-radius: 10px; border: none; cursor: pointer; display: flex;
-      flex-direction: column; align-items: center; justify-content: center; gap: 2px;
-    }
-    .vintage-toggle-panel {
-      display: flex; flex-direction: column; align-items: center; background: #1c1c1e;
-      border: 1px solid #444; border-radius: 10px; padding: 6px 8px; gap: 4px;
-    }
+    .webphone-input-field { flex: 1; padding: 8px 12px; font-size: 14px; border-radius: 6px; background: #2c2c2e; color: #fff; border: 1px solid #444; text-align: left; }
+    .btn-round-red { width: 56px; height: 56px; border-radius: 50%; background: #ff3b30; color: #fff; font-size: 10px; font-weight: 900; border: none; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; }
+    .btn-round-blue { width: 56px; height: 56px; border-radius: 50%; background: #0a84ff; color: #fff; font-size: 10px; font-weight: 900; border: none; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; }
+    .btn-square-start-red { width: 65px; height: 60px; background: #ff3b30; color: #fff; font-size: 10px; font-weight: 900; border-radius: 10px; border: none; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; }
+    .vintage-toggle-panel { display: flex; flex-direction: column; align-items: center; background: #1c1c1e; border: 1px solid #444; border-radius: 10px; padding: 6px 8px; gap: 4px; }
     .toggle-label-group { display: flex; align-items: center; gap: 4px; font-size: 9px; font-weight: bold; color: #aaa; }
     .indicator-light { width: 7px; height: 7px; border-radius: 50%; background: #333; border: 1px solid #555; }
     .indicator-light.active-red { background: #ff3b30; box-shadow: 0 0 6px #ff3b30; }
     .switch-container { position: relative; width: 22px; height: 44px; }
     .switch-container input { opacity: 0; width: 0; height: 0; }
-    .slider-track {
-      position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
-      background-color: #2c2c2e; border: 2px solid #555; border-radius: 12px;
-    }
-    .slider-track:before {
-      position: absolute; content: ""; height: 16px; width: 14px; left: 2px; top: 2px;
-      background-color: #aaa; border-radius: 6px; transition: .2s;
-    }
+    .slider-track { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #2c2c2e; border: 2px solid #555; border-radius: 12px; }
+    .slider-track:before { position: absolute; content: ""; height: 16px; width: 14px; left: 2px; top: 2px; background-color: #aaa; border-radius: 6px; transition: .2s; }
     input:checked + .slider-track:before { transform: translateY(20px); background-color: #ff3b30; }
     .incall-controls-bar { display: flex; justify-content: center; align-items: center; gap: 15px; margin-top: 15px; }
-    .btn-media-toggle {
-      background: #2c2c2e; color: #fff; border: 1px solid #555; border-radius: 50%;
-      width: 52px; height: 52px; font-size: 20px; display: flex; align-items: center; justify-content: center; cursor: pointer;
-    }
+    .btn-media-toggle { background: #2c2c2e; color: #fff; border: 1px solid #555; border-radius: 50%; width: 52px; height: 52px; font-size: 20px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
     .btn-media-toggle.muted { background: #ff3b30; border-color: #d70015; }
     .btn-red-end { background: #ff3b30; color: white; cursor: pointer; font-weight: bold; font-size: 16px; padding: 12px 24px; border-radius: 10px; border: none; }
     #status { font-weight: bold; color: #30d158; margin-bottom: 4px; }
@@ -330,8 +178,8 @@
 
     /* ART GALLERY STYLES */
     .art-box { background: #1c1c1e; border: 1px solid #ffd60a; border-radius: 12px; padding: 20px; max-width: 1000px; margin: 0 auto; }
-    .museum-institution-bar { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #333; }
-    .museum-inst-btn { background: #18181a; color: #ffd60a; border: 1px solid #ffd60a; padding: 8px 14px; font-size: 12px; font-weight: 900; border-radius: 20px; cursor: pointer; }
+    .museum-institution-bar { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #333; }
+    .museum-inst-btn { background: #18181a; color: #ffd60a; border: 1px solid #ffd60a; padding: 6px 10px; font-size: 11px; font-weight: 900; border-radius: 20px; cursor: pointer; }
     .museum-inst-btn.active { background: #ffd60a; color: #000; }
     .art-genre-bar { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
     .art-genre-btn { background: #2c2c2e; color: #fff; border: 1px solid #555; padding: 8px 12px; font-size: 12px; font-weight: bold; border-radius: 8px; cursor: pointer; }
@@ -391,14 +239,6 @@
       <p style="color: #ccc; font-size: 14px; text-align: left; line-height: 1.5;">
         To center maps on your current location, allow location access in your device settings:
       </p>
-      <div style="background: #121212; border: 1px solid #333; border-radius: 8px; padding: 12px; text-align: left; font-size: 12px; color: #aaa; margin-bottom: 20px;">
-        <strong>iPhone / iPad:</strong><br>
-        1. Open <b>Settings</b> → <b>Privacy & Security</b><br>
-        2. Tap <b>Location Services</b> → <b>Safari / Chrome</b><br>
-        3. Select <b>While Using the App</b><br><br>
-        <strong>Desktop Chrome / Safari:</strong><br>
-        Tap the <b>Lock / Sliders icon</b> next to <i>fourthroom.org</i> in your address bar → set Location to <b>Allow</b>.
-      </div>
       <button onclick="closeLocationModal()" style="background: #ff9500; color: #000; border: none; padding: 10px 24px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 14px;">Got It</button>
     </div>
   </div>
@@ -530,20 +370,6 @@
           <input type="text" id="webTextSenderName" placeholder="Your Name" style="background: #2c2c2e; color: #fff; border: 1px solid #444; border-radius: 6px; padding: 10px 12px; width: 120px; text-align: center;">
           <input type="text" id="webTextRoomId" placeholder="Room Name" style="background: #2c2c2e; color: #fff; border: 1px solid #444; border-radius: 6px; padding: 10px 12px; width: 120px; text-align: center;">
           <button id="inviteTextBtn" class="btn-round-blue" style="font-size: 11px; width: 50px; height: 50px;" onclick="sendTextTabInvite()">💬<br>Invite</button>
-          <div class="vintage-toggle-panel">
-            <div class="toggle-label-group">
-              <span id="textLightText" class="indicator-light active-red"></span>
-              <span>Text</span>
-            </div>
-            <label class="switch-container">
-              <input type="checkbox" id="textInviteToggle" onchange="toggleInviteMode('text')">
-              <span class="slider-track"></span>
-            </label>
-            <div class="toggle-label-group">
-              <span id="emailLightText" class="indicator-light"></span>
-              <span>E-mail</span>
-            </div>
-          </div>
         </div>
 
         <div id="web-chat-thread">
@@ -555,87 +381,42 @@
           <button id="sendWebChatBtn" class="btn-round-blue" style="width: auto; height: auto; padding: 8px 18px; border-radius: 8px; font-size: 13px;">Send</button>
         </div>
       </div>
-
-      <div class="privacy-notice-badge">
-        🔒 <b>End-to-End Encrypted (AES-256-GCM):</b> All video, voice, and web text are scrambled directly on your device before transmission. Zero data is logged, stored, or shared.
-      </div>
     </div>
 
     <!-- MAPS TAB -->
     <div id="tab-maps" class="tab-content">
       <h2 style="color: #ff9500; margin-top: 0;">📍 Free Wi-Fi & Resource Maps</h2>
-      <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Find local internet access points and essential resources nearby</p>
-
       <div class="maps-box">
-        <div style="margin-bottom: 14px; display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap;">
-          <button id="btnUseGps" onclick="centerMapOnUser(true)" style="font-size: 13px; padding: 10px 20px; background: #30d158; color: #000; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">
-            🎯 Refresh GPS Location
-          </button>
-          <span id="geoStatusText" style="font-size: 12px; color: #aaa;">Detecting location...</span>
-        </div>
-
         <div class="maps-filter-bar">
           <button class="maps-filter-btn" onclick="loadMapQuery('free wifi', 15)">📶 Closest Public Wifi</button>
-          <button class="maps-filter-btn" onclick="loadMapQuery('public library', 14)">📚 City & County Libraries</button>
-          <button class="maps-filter-btn" onclick="loadMapQuery('fast food wifi', 14)">🍔 Fast Food Wi-Fi</button>
-          <button class="maps-filter-btn" onclick="loadMapQuery('coffee shop wifi', 15)">☕ Coffee Shops Wi-Fi</button>
-          <button class="maps-filter-btn" onclick="loadMapQuery('food bank shelter', 13)">🥫 Food Banks & Resources</button>
+          <button class="maps-filter-btn" onclick="loadMapQuery('public library', 14)">📚 Libraries</button>
+          <button class="maps-filter-btn" onclick="loadMapQuery('food bank shelter', 13)">🥫 Food Banks</button>
         </div>
-
         <div class="map-frame-container">
           <iframe id="googleMapIframe" src="https://www.google.com/maps?q=Seattle+WA&z=14&output=embed" allowfullscreen></iframe>
         </div>
-      </div>
-
-      <div class="privacy-notice-badge">
-        🔒 <b>End-to-End Encrypted (AES-256-GCM):</b> All video, voice, and web text are scrambled directly on your device before transmission. Zero data is logged, stored, or shared.
       </div>
     </div>
 
     <!-- RADIO TAB -->
     <div id="tab-radio" class="tab-content">
       <h2 style="color: #e040fb; margin-top: 0;">📻 Local Live Internet Radio</h2>
-      <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Select a genre to populate the Left Station Bank</p>
-
       <div class="radio-box">
         <div class="radio-genre-bar">
           <button class="genre-btn" onclick="fetchRadioBrowserGenre('classical', 'Classical')">🎼 Classical</button>
-          <button class="genre-btn" onclick="fetchRadioBrowserGenre('pop', 'Pop / Indie')">🎤 Pop</button>
-          <button class="genre-btn" onclick="fetchRadioBrowserGenre('rock', 'Classic Rock')">🎸 Rock N' Roll</button>
-          <button class="genre-btn" onclick="fetchRadioBrowserGenre('country', 'Country')">🤠 Country</button>
-          <button class="genre-btn" onclick="fetchRadioBrowserGenre('jazz', 'Jazz')">🎷 Jazz</button>
           <button class="genre-btn" onclick="fetchRadioBrowserGenre('news', 'News / NPR')">📰 News & NPR</button>
         </div>
-
         <div class="radio-layout">
           <div class="station-bank-container">
             <h4 class="station-bank-header">📻 Station Bank</h4>
-            <div id="stationBankList" class="station-bank-list">
-              <p style="color: #666; font-size: 12px; font-style: italic; margin: 0;">Select a genre above to load stations into this bank...</p>
-            </div>
+            <div id="stationBankList" class="station-bank-list"></div>
           </div>
-
           <div class="radio-console">
             <h3 id="radioStationTitle" class="now-playing-title">📻 Select a Station</h3>
-            <span id="radioStationLocation" class="now-playing-sub">Choose a station from the Bank on the left</span>
-            <audio id="radioAudioPlayer" controls preload="none">Your browser does not support the audio element.</audio>
+            <audio id="radioAudioPlayer" controls preload="none"></audio>
             <p id="radioStatusText" style="font-size: 12px; color: #aaa; margin: 0; font-weight: bold;">● Ready to Tune</p>
-
-            <div class="tuner-box">
-              <label for="customStreamInput" style="display:block; font-size: 12px; color: #aaa; font-weight: bold; margin-bottom: 6px;">
-                📻 Search Station Name / Call Letters:
-              </label>
-              <div style="display: flex; gap: 8px;">
-                <input type="text" id="customStreamInput" placeholder="e.g., KEXP, KING, KNKX, KUOW..." style="flex: 1; text-align: left; background: #2c2c2e; border: 1px solid #555; color: #fff; padding: 8px 12px; border-radius: 6px;">
-                <button onclick="searchRadioBrowserCustom()" class="btn-round-blue" style="width: auto; height: auto; font-size: 13px; padding: 8px 14px; border-radius: 6px;">Tune In</button>
-              </div>
-            </div>
           </div>
         </div>
-      </div>
-
-      <div class="privacy-notice-badge">
-        🔒 <b>End-to-End Encrypted (AES-256-GCM):</b> All video, voice, and web text are scrambled directly on your device before transmission. Zero data is logged, stored, or shared.
       </div>
     </div>
 
@@ -644,21 +425,21 @@
       <div class="meditations-wrapper">
         <div class="meditation-streamer">
           <div class="streamer-frame-box">
-            <img id="stream-frame" src="" alt="Illuminated Sacred Folio">
+            <img id="stream-frame" src="https://manuscripts.thewalters.org/iiif/W.537/canvas/p1r" alt="Illuminated Sacred Folio">
           </div>
           <div class="streamer-info">
-            <h3 id="folio-title"></h3>
-            <p id="folio-provenance"></p>
+            <h3 id="folio-title">Eusebian Canon Table Arches</h3>
+            <p id="folio-provenance">Walters MS W.537 (12th c. Gospels) • Byzantine Christian Illumination</p>
           </div>
         </div>
 
         <nav class="canon-nav">
-          <button class="canon-btn" onclick="loadLocalCanon('bible')">Bible</button>
-          <button class="canon-btn" onclick="loadLocalCanon('koran')">Koran</button>
-          <button class="canon-btn" onclick="loadLocalCanon('vedas')">Vedas</button>
-          <button class="canon-btn" onclick="loadLocalCanon('upanishads')">Upanishads</button>
-          <button class="canon-btn" onclick="loadLocalCanon('buddhist')">Buddhist Scripture</button>
-          <button class="canon-btn" onclick="loadLocalCanon('sggs')">Sri Guru Granth Sahib</button>
+          <button class="canon-btn" onclick="loadLocalCanon('bible', this)">Bible</button>
+          <button class="canon-btn" onclick="loadLocalCanon('koran', this)">Koran</button>
+          <button class="canon-btn" onclick="loadLocalCanon('vedas', this)">Vedas</button>
+          <button class="canon-btn" onclick="loadLocalCanon('upanishads', this)">Upanishads</button>
+          <button class="canon-btn" onclick="loadLocalCanon('buddhist', this)">Buddhist Scripture</button>
+          <button class="canon-btn" onclick="loadLocalCanon('sggs', this)">Sri Guru Granth Sahib</button>
         </nav>
 
         <div class="meditation-workspace">
@@ -679,38 +460,34 @@
             </div>
             <div id="reader-view" class="med-reader-content">
               <p style="text-align: center; color: #666; margin-top: 60px;">
-                Choose a canon from the navigation bar above, then select a text file from the left bank.
+                Choose a canon from the navigation bar above, then select a text from the left bank.
               </p>
             </div>
           </div>
         </div>
       </div>
-
-      <div class="privacy-notice-badge">
-        📖 <b>Local Scriptures Repository:</b> Loading direct text files from your `/scriptures/` directory.
-      </div>
     </div>
 
-    <!-- 🏛️ ART GALLERY TAB -->
+    <!-- 🏛️ ART GALLERY TAB (WITH EURO MUSEUMS) -->
     <div id="tab-art" class="tab-content">
       <h2 style="color: #ffd60a; margin-top: 0;">🏛️ World Art Museum Collections</h2>
       <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Direct open-access digital collections from premier European & American museums</p>
 
       <div class="art-box">
         <div class="museum-institution-bar">
-          <button id="btnMuseumAll" class="museum-inst-btn active" onclick="setMuseumScope('all')">🌐 All Museums (Blended)</button>
+          <button id="btnMuseumAll" class="museum-inst-btn active" onclick="setMuseumScope('all')">🌐 All Museums</button>
+          <button id="btnMuseumRijks" class="museum-inst-btn" onclick="setMuseumScope('rijks')">🏛️ Rijksmuseum</button>
+          <button id="btnMuseumLouvre" class="museum-inst-btn" onclick="setMuseumScope('louvre')">🏛️ Louvre / Europe</button>
           <button id="btnMuseumAIC" class="museum-inst-btn" onclick="setMuseumScope('aic')">🏛️ Chicago (AIC)</button>
-          <button id="btnMuseumMET" class="museum-inst-btn" onclick="setMuseumScope('met')">🏛️ The Met (NYC)</button>
-          <button id="btnMuseumCMA" class="museum-inst-btn" onclick="setMuseumScope('cma')">🏛️ Cleveland (CMA)</button>
+          <button id="btnMuseumMET" class="museum-inst-btn" onclick="setMuseumScope('met')">🏛️ The Met</button>
+          <button id="btnMuseumCMA" class="museum-inst-btn" onclick="setMuseumScope('cma')">🏛️ Cleveland</button>
         </div>
 
         <div class="art-genre-bar">
           <button class="art-genre-btn active" onclick="triggerArtSearch('impressionism', 'Impressionism', this)">🎨 Impressionism</button>
           <button class="art-genre-btn" onclick="triggerArtSearch('renaissance', 'Renaissance', this)">⚜️ Renaissance</button>
           <button class="art-genre-btn" onclick="triggerArtSearch('baroque', 'Baroque', this)">🏛️ Baroque</button>
-          <button class="art-genre-btn" onclick="triggerArtSearch('symbolism', 'Symbolist Art', this)">🔮 Symbolism</button>
-          <button class="art-genre-btn" onclick="triggerArtSearch('dutch', 'Dutch Masters', this)">🇳🇱 Dutch Masters</button>
-          <button class="art-genre-btn" onclick="triggerArtSearch('japanese woodblock', 'Japanese Prints', this)">🌊 Japanese Prints</button>
+          <button class="art-genre-btn" onclick="triggerArtSearch('dutch masters', 'Dutch Masters', this)">🇳🇱 Dutch Masters</button>
           <button class="art-genre-btn" onclick="triggerArtRandom(this)">🎲 Discovery Mix</button>
         </div>
 
@@ -739,22 +516,8 @@
               <p id="artCaptionMeta" class="art-caption-meta">Date • Medium / Details</p>
               <div id="artCaptionMuseum" class="art-museum-badge">🏛️ Museum Collection</div>
             </div>
-
-            <div class="tuner-box" style="margin-top: 5px;">
-              <label for="customArtInput" style="display:block; font-size: 12px; color: #aaa; font-weight: bold; margin-bottom: 6px;">
-                🏛️ Search Artist, Movement, or Title:
-              </label>
-              <div style="display: flex; gap: 8px;">
-                <input type="text" id="customArtInput" placeholder="e.g., Moreau, Symbolist, Turner, Monet..." style="flex: 1; text-align: left; background: #2c2c2e; border: 1px solid #555; color: #fff; padding: 8px 12px; border-radius: 6px;">
-                <button onclick="searchArtCustom()" class="btn-round-blue" style="width: auto; height: auto; font-size: 13px; padding: 8px 14px; border-radius: 6px;">Search</button>
-              </div>
-            </div>
           </div>
         </div>
-      </div>
-
-      <div class="privacy-notice-badge">
-        🔒 <b>Open Access Art:</b> High-resolution open-access images provided courtesy of public museum APIs.
       </div>
     </div>
 
@@ -762,204 +525,7 @@
 
   <script>
     const SIGNALING_SERVER = "https://webrtc-signaling-do2l.onrender.com";
-    
     const socket = io(SIGNALING_SERVER, { autoConnect: false });
-    let localStream;
-    let peerConnections = {};
-    let currentCoords = null;
-
-    let isAudioMuted = false;
-    let isVideoMuted = false;
-
-    const roomIdInput = document.getElementById('roomId');
-    const callerNameInput = document.getElementById('callerName');
-    const webTextSenderNameInput = document.getElementById('webTextSenderName');
-    const statusDiv = document.getElementById('status');
-
-    let rtcConfig = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] };
-
-    async function loadIceServers() {
-      try {
-        const res = await fetch(`${SIGNALING_SERVER}/api/ice-servers`);
-        if (res.ok) {
-          const data = await res.json();
-          if (data.iceServers && data.iceServers.length > 0) {
-            rtcConfig = { iceServers: data.iceServers };
-          }
-        }
-      } catch (err) {
-        console.warn("Using fallback STUN servers:", err);
-      }
-    }
-
-    function ensureSocketConnected(onConnected) {
-      if (socket.connected) {
-        if (onConnected) onConnected();
-        return;
-      }
-      statusDiv.innerText = "Connecting to server...";
-      statusDiv.style.color = "#ff9500";
-      socket.connect();
-      socket.once('connect', () => {
-        statusDiv.innerText = "Connected to Server";
-        statusDiv.style.color = "#30d158";
-        if (onConnected) onConnected();
-      });
-    }
-
-    function updateGridLayout() {
-      const grid = document.getElementById('videoStreamView');
-      if (!grid) return;
-      const count = grid.querySelectorAll('.video-card').length;
-      grid.classList.remove('peers-2', 'peers-3', 'peers-4');
-      if (count === 2) {
-        grid.classList.add('peers-2');
-      } else if (count === 3) {
-        grid.classList.add('peers-3');
-      } else if (count >= 4) {
-        grid.classList.add('peers-4');
-      }
-    }
-
-    async function deriveAesKey(roomName) {
-      const enc = new TextEncoder();
-      const paddedSecret = roomName.padEnd(32, '0').slice(0, 32);
-      return await window.crypto.subtle.importKey(
-        "raw",
-        enc.encode(paddedSecret),
-        { name: "AES-GCM" },
-        false,
-        ["encrypt", "decrypt"]
-      );
-    }
-
-    async function encryptPayload(plaintext, roomName) {
-      try {
-        const enc = new TextEncoder();
-        const key = await deriveAesKey(roomName);
-        const iv = window.crypto.getRandomValues(new Uint8Array(12));
-        const ciphertext = await window.crypto.subtle.encrypt(
-          { name: "AES-GCM", iv: iv },
-          key,
-          enc.encode(plaintext)
-        );
-        return {
-          cipher: btoa(String.fromCharCode(...new Uint8Array(ciphertext))),
-          iv: btoa(String.fromCharCode(...iv))
-        };
-      } catch (e) {
-        return { cipher: plaintext, iv: null };
-      }
-    }
-
-    async function decryptPayload(cipherData, ivData, roomName) {
-      try {
-        if (!ivData) return cipherData;
-        const key = await deriveAesKey(roomName);
-        const ciphertext = Uint8Array.from(atob(cipherData), c => c.charCodeAt(0));
-        const iv = Uint8Array.from(atob(ivData), c => c.charCodeAt(0));
-        const decrypted = await window.crypto.subtle.decrypt(
-          { name: "AES-GCM", iv: iv },
-          key,
-          ciphertext
-        );
-        return new TextDecoder().decode(decrypted);
-      } catch (e) {
-        return cipherData;
-      }
-    }
-
-    callerNameInput.addEventListener('input', (e) => {
-      webTextSenderNameInput.value = e.target.value;
-    });
-    webTextSenderNameInput.addEventListener('input', (e) => {
-      callerNameInput.value = e.target.value;
-    });
-
-    function triggerCellCall(event) {
-      const number = prompt("Enter phone number to call (optional):", "");
-      const callLink = document.getElementById('callCellBtn');
-      if (number && number.trim()) {
-        callLink.href = `tel:${encodeURIComponent(number.trim())}`;
-      } else {
-        callLink.href = "tel:";
-      }
-      setTimeout(() => {
-        document.getElementById('returnModal').style.display = 'flex';
-      }, 10000);
-    }
-
-    function closeReturnModal() {
-      document.getElementById('returnModal').style.display = 'none';
-    }
-
-    function toggleInviteMode(type) {
-      if (type === 'phone') {
-        const isEmail = document.getElementById('phoneInviteToggle').checked;
-        document.getElementById('textLightPhone').className = isEmail ? 'indicator-light' : 'indicator-light active-red';
-        document.getElementById('emailLightPhone').className = isEmail ? 'indicator-light active-red' : 'indicator-light';
-      } else {
-        const isEmail = document.getElementById('textInviteToggle').checked;
-        document.getElementById('textLightText').className = isEmail ? 'indicator-light' : 'indicator-light active-red';
-        document.getElementById('emailLightText').className = isEmail ? 'indicator-light active-red' : 'indicator-light';
-      }
-    }
-
-    const urlParams = new URLSearchParams(window.location.search);
-    const roomParam = urlParams.get('room');
-    const modeParam = urlParams.get('mode');
-
-    if (roomParam) {
-      roomIdInput.value = roomParam;
-      document.getElementById('webTextRoomId').value = roomParam;
-    }
-
-    window.addEventListener('DOMContentLoaded', () => {
-      loadIceServers();
-
-      const artInput = document.getElementById('customArtInput');
-      if (artInput) {
-        artInput.addEventListener('keypress', (e) => {
-          if (e.key === 'Enter') searchArtCustom();
-        });
-      }
-
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeArtFullscreen();
-      });
-
-      if (roomParam) {
-        document.getElementById('mainHeader').style.display = 'none';
-        document.getElementById('webphoneMainSection').style.display = 'none';
-        document.getElementById('videoStreamView').style.display = 'none';
-        document.getElementById('status').style.display = 'none';
-        
-        const enterBtn = document.getElementById('megaEnterBtn');
-        const inviteTitle = document.getElementById('inviteTitleText');
-
-        if (modeParam === 'text') {
-          inviteTitle.innerText = "You have been invited to WebText!";
-          enterBtn.innerText = "💬 Open WebText";
-          enterBtn.style.background = "#63e685";
-        } else {
-          inviteTitle.innerText = "You have been invited to a Video Call!";
-          enterBtn.innerText = "📹 Enter Video Call";
-          enterBtn.style.background = "#30d158";
-        }
-
-        document.getElementById('responderAccessBox').style.display = 'block';
-      }
-    });
-
-    document.getElementById('megaEnterBtn').addEventListener('click', () => {
-      document.getElementById('responderAccessBox').style.display = 'none';
-      document.getElementById('status').style.display = 'block';
-      if (modeParam === 'text') {
-        switchTab('text');
-      } else {
-        startCall();
-      }
-    });
 
     function switchTab(tabName) {
       document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -971,16 +537,9 @@
       } else if (tabName === 'text') {
         document.querySelectorAll('.tab-btn')[1].classList.add('active');
         document.getElementById('tab-text').classList.add('active');
-        const r = document.getElementById('webTextRoomId').value.trim() || roomIdInput.value.trim();
-        if (r) {
-          ensureSocketConnected(() => {
-            socket.emit('join-room', r);
-          });
-        }
       } else if (tabName === 'maps') {
         document.querySelectorAll('.tab-btn')[2].classList.add('active');
         document.getElementById('tab-maps').classList.add('active');
-        if (!currentCoords) centerMapOnUser(false);
       } else if (tabName === 'radio') {
         document.querySelectorAll('.tab-btn')[3].classList.add('active');
         document.getElementById('tab-radio').classList.add('active');
@@ -990,149 +549,11 @@
       } else if (tabName === 'art') {
         document.querySelectorAll('.tab-btn')[5].classList.add('active');
         document.getElementById('tab-art').classList.add('active');
-        if (!hasLoadedArtOnce) {
-          triggerArtSearch('impressionism', 'Impressionism');
-        }
+        if (!hasLoadedArtOnce) triggerArtSearch('impressionism', 'Impressionism');
       }
     }
 
-    function loadMapQuery(resourceTerm, zoomLevel = 14) {
-      const iframe = document.getElementById('googleMapIframe');
-      if (currentCoords) {
-        iframe.src = `https://www.google.com/maps?q=${encodeURIComponent(resourceTerm)}&ll=${currentCoords.lat},${currentCoords.lng}&z=${zoomLevel}&output=embed`;
-      } else {
-        iframe.src = `https://www.google.com/maps?q=${encodeURIComponent(resourceTerm + ' in Seattle WA')}&z=${zoomLevel}&output=embed`;
-      }
-    }
-
-    function centerMapOnUser(showTroubleshootingModal) {
-      const geoStatus = document.getElementById('geoStatusText');
-      if (geoStatus) geoStatus.innerText = "⏳ Requesting GPS location...";
-
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            currentCoords = { lat: position.coords.latitude, lng: position.coords.longitude };
-            if (geoStatus) {
-              geoStatus.innerText = "📍 GPS Location Locked!";
-              geoStatus.style.color = "#30d158";
-            }
-            document.getElementById('googleMapIframe').src = `https://www.google.com/maps?q=${currentCoords.lat},${currentCoords.lng}&z=${15}&output=embed`;
-          },
-          (err) => {
-            currentCoords = null;
-            if (geoStatus) {
-              geoStatus.innerText = "⚠️ Location paused - Check device permissions";
-              geoStatus.style.color = "#ff9500";
-            }
-            if (showTroubleshootingModal) {
-              document.getElementById('locationModal').style.display = 'flex';
-            }
-          },
-          { enableHighAccuracy: false, timeout: 6000, maximumAge: 300000 }
-        );
-      }
-    }
-
-    function closeLocationModal() {
-      document.getElementById('locationModal').style.display = 'none';
-    }
-
-    // RADIO ENGINE
-    const RADIO_API_BASE = "https://de1.api.radio-browser.info/json/stations/search";
-
-    async function fetchRadioBrowserGenre(tag, labelName) {
-      const bankList = document.getElementById('stationBankList');
-      const statusText = document.getElementById('radioStatusText');
-
-      statusText.innerText = "⏳ Loading station bank...";
-      statusText.style.color = "#ff9500";
-      bankList.innerHTML = '<p style="color:#aaa; font-size:12px; font-style:italic;">Fetching streams...</p>';
-
-      try {
-        const response = await fetch(`${RADIO_API_BASE}?tag=${tag}&countrycode=US&limit=15&is_https=true&order=votes&reverse=true`);
-        const stations = await response.json();
-        const httpsStations = stations.filter(s => s.url_resolved && s.url_resolved.startsWith('https://'));
-
-        if (httpsStations.length > 0) {
-          renderStationBank(httpsStations);
-          selectStationItem(httpsStations[0]);
-        } else {
-          bankList.innerHTML = '<p style="color:#ff3b30; font-size:12px;">No HTTPS stations found.</p>';
-        }
-      } catch (err) {
-        bankList.innerHTML = '<p style="color:#ff3b30; font-size:12px;">Failed to load stations.</p>';
-      }
-    }
-
-    async function searchRadioBrowserCustom() {
-      const queryInput = document.getElementById('customStreamInput');
-      const query = queryInput.value.trim();
-      if (!query) return alert("Please enter a station name or call letters.");
-
-      const bankList = document.getElementById('stationBankList');
-      const statusText = document.getElementById('radioStatusText');
-
-      statusText.innerText = `⏳ Searching database for "${query}"...`;
-      statusText.style.color = "#ff9500";
-
-      try {
-        const response = await fetch(`${RADIO_API_BASE}?name=${encodeURIComponent(query)}&limit=15&is_https=true&order=votes&reverse=true`);
-        const stations = await response.json();
-        const httpsStations = stations.filter(s => s.url_resolved && s.url_resolved.startsWith('https://'));
-
-        if (httpsStations.length > 0) {
-          renderStationBank(httpsStations);
-          selectStationItem(httpsStations[0]);
-        } else {
-          alert("Station Not In Database");
-          statusText.innerText = "● Ready to Tune";
-          statusText.style.color = "#aaa";
-        }
-      } catch (err) {
-        alert("Station Not In Database");
-        statusText.innerText = "● Ready to Tune";
-        statusText.style.color = "#aaa";
-      }
-    }
-
-    function renderStationBank(stations) {
-      const bankList = document.getElementById('stationBankList');
-      bankList.innerHTML = '';
-
-      stations.forEach((st, index) => {
-        const item = document.createElement('div');
-        item.className = `station-bank-item ${index === 0 ? 'active' : ''}`;
-        item.innerHTML = `<span style="font-size:14px; font-weight:bold; color:#fff; display:block;">📻 ${st.name}</span><span style="font-size:11px; color:#aaa;">${st.state || 'Live'} • ${st.codec || 'MP3'}</span>`;
-        item.onclick = () => selectStationItem(st);
-        bankList.appendChild(item);
-      });
-    }
-
-    function selectStationItem(st) {
-      document.getElementById('radioStationTitle').innerText = `📻 ${st.name}`;
-      document.getElementById('radioStationLocation').innerText = `${st.state || 'Live Stream'} • ${st.codec || 'MP3'}`;
-      playRadioStream(st.url_resolved || st.url);
-    }
-
-    function playRadioStream(streamUrl) {
-      const player = document.getElementById('radioAudioPlayer');
-      const statusText = document.getElementById('radioStatusText');
-      player.pause();
-      player.src = streamUrl;
-      player.load();
-      player.play().then(() => {
-        statusText.innerText = "● Live Streaming";
-        statusText.style.color = "#30d158";
-      }).catch(() => {
-        statusText.innerText = "Tap Play arrow on player to listen";
-        statusText.style.color = "#e040fb";
-      });
-    }
-
-    // =======================================================
-    // 📖 MEDITATIONS SCRIPTURE READER & IIIF STREAMER ENGINE
-    // =======================================================
+    // IIIF ILLUMINATION STREAMER (15s ROTATION)
     const sacredIlluminations = [
       {
         title: "Eusebian Canon Table Arches",
@@ -1158,6 +579,7 @@
     function cycleIlluminations() {
       const frame = document.getElementById('stream-frame');
       if (!frame) return;
+      currentFolioIndex = (currentFolioIndex + 1) % sacredIlluminations.length;
       const item = sacredIlluminations[currentFolioIndex];
       
       frame.style.opacity = '0';
@@ -1167,77 +589,50 @@
         document.getElementById('folio-provenance').innerText = `${item.manuscript} • ${item.tradition}`;
         frame.onload = () => { frame.style.opacity = '1'; };
       }, 400);
-
-      currentFolioIndex = (currentFolioIndex + 1) % sacredIlluminations.length;
     }
     setInterval(cycleIlluminations, 15000);
-    window.addEventListener('DOMContentLoaded', cycleIlluminations);
 
-    // MAPPING CANONS TO LOCAL SCRIPTURE PATHS
-    const localCanonPaths = {
-      bible: {
-        title: "King James Bible",
-        path: "scriptures/kjv-bible.txt"
-      },
-      koran: {
-        title: "The Quran (Rodwell)",
-        path: "scriptures/quran-rodwell.txt"
-      },
-      vedas: {
-        title: "Rigveda (Griffith)",
-        path: "scriptures/rigveda-complete.txt"
-      },
-      upanishads: {
-        title: "Thirteen Principal Upanishads",
-        path: "scriptures/thirteenprincipa028442mbp_djvu.txt"
-      },
-      buddhist: {
-        title: "Buddhist Scripture",
-        path: "scriptures/buddhism/long discourses/OEBPS/text/digha-nikaya.xhtml"
-      },
-      sggs: {
-        title: "Sri Guru Granth Sahib",
-        path: "scriptures/sggs_english.txt"
-      }
+    // LOCAL SCRIPTURES TOC & FETCHING
+    const localCanonFiles = {
+      bible: { title: "King James Bible", path: "scriptures/kjv-bible.txt" },
+      koran: { title: "The Quran (Rodwell)", path: "scriptures/quran-rodwell.txt" },
+      vedas: { title: "Rigveda (Griffith)", path: "scriptures/rigveda-complete.txt" },
+      upanishads: { title: "Thirteen Principal Upanishads", path: "scriptures/thirteenprincipa028442mbp_djvu.txt" },
+      buddhist: { title: "Buddhist Scripture (Dīgha Nikāya)", path: "scriptures/buddhism/long discourses/OEBPS/text/digha-nikaya.xhtml" },
+      sggs: { title: "Sri Guru Granth Sahib", path: "scriptures/sggs_english.txt" }
     };
 
-    async function loadLocalCanon(key) {
-      const canon = localCanonPaths[key];
+    async function loadLocalCanon(key, btnElem) {
+      if (btnElem) {
+        document.querySelectorAll('.canon-btn').forEach(b => b.classList.remove('active'));
+        btnElem.classList.add('active');
+      }
+
+      const canon = localCanonFiles[key];
       if (!canon) return;
 
       document.getElementById('toc-heading').innerText = canon.title;
       const listEl = document.getElementById('toc-list');
-      listEl.innerHTML = `<li class="med-toc-item" style="color:#d4af37;">Loading ${canon.title}...</li>`;
+      listEl.innerHTML = `<li class="med-toc-item active">📄 ${canon.title} (Full Text)</li>`;
 
       document.getElementById('current-chapter-title').innerText = canon.title;
-      document.getElementById('reader-view').innerText = "Loading scripture text from server...";
+      document.getElementById('reader-view').innerText = "Loading text from server...";
 
       try {
         const response = await fetch(canon.path);
-        if (!response.ok) throw new Error("File not found on server.");
+        if (!response.ok) throw new Error("File not found");
         const text = await response.text();
-
-        // Populate Left TOC Bank with simple section indicator
-        listEl.innerHTML = `
-          <li class="med-toc-item" style="color:#fff; font-weight:bold;">📄 Full Document View</li>
-          <li class="med-toc-item" style="color:#888; font-size:0.8rem; margin-top:6px;">Path: ${canon.path}</li>
-        `;
-
         document.getElementById('reader-view').innerText = text;
       } catch (err) {
-        listEl.innerHTML = `<li class="med-toc-item" style="color:#ff3b30;">Failed to load text. Ensure file is pushed to repository.</li>`;
-        document.getElementById('reader-view').innerText = `Error loading ${canon.path}. Make sure the file exists in your scriptures folder and has been pushed to GitHub.`;
+        document.getElementById('reader-view').innerText = `Could not load ${canon.path}. Ensure the file is pushed to GitHub.`;
       }
     }
 
     function scrollReader(amount) {
-      const view = document.getElementById('reader-view');
-      view.scrollBy({ top: amount, behavior: 'smooth' });
+      document.getElementById('reader-view').scrollBy({ top: amount, behavior: 'smooth' });
     }
 
-    // =======================================================
-    // MULTI-MUSEUM ART GALLERY ENGINE
-    // =======================================================
+    // ART GALLERY ENGINE WITH EUROPEAN MUSEUMS
     let hasLoadedArtOnce = false;
     let currentMuseumScope = 'all';
     let lastArtQuery = 'impressionism';
@@ -1249,6 +644,8 @@
       currentMuseumScope = scope;
       document.querySelectorAll('.museum-inst-btn').forEach(btn => btn.classList.remove('active'));
       if (scope === 'all') document.getElementById('btnMuseumAll').classList.add('active');
+      if (scope === 'rijks') document.getElementById('btnMuseumRijks').classList.add('active');
+      if (scope === 'louvre') document.getElementById('btnMuseumLouvre').classList.add('active');
       if (scope === 'aic') document.getElementById('btnMuseumAIC').classList.add('active');
       if (scope === 'met') document.getElementById('btnMuseumMET').classList.add('active');
       if (scope === 'cma') document.getElementById('btnMuseumCMA').classList.add('active');
@@ -1256,46 +653,36 @@
       triggerArtSearch(lastArtQuery, lastArtQuery);
     }
 
-    function shuffleArray(array) {
-      for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-      }
-      return array;
+    async function fetchFromRijks(query, limit = 8) {
+      try {
+        const url = `https://www.rijksmuseum.nl/api/en/collection?key=0fEp26LG&q=${encodeURIComponent(query)}&imgonly=True&ps=${limit}`;
+        const res = await fetch(url);
+        const json = await res.json();
+        return (json.artObjects || []).map(item => ({
+          id: `rijks-${item.objectNumber}`,
+          title: item.title,
+          artist: item.principalOrFirstMaker,
+          date: 'Dutch Master Collection',
+          medium: 'Oil on canvas / Rijksmuseum Amsterdam',
+          imageUrl: item.webImage ? item.webImage.url : '',
+          museum: 'Rijksmuseum Amsterdam'
+        })).filter(i => i.imageUrl);
+      } catch(e) { return []; }
     }
 
-    async function fetchFromAIC(query, limit = 8) {
+    async function fetchFromAIC(query, limit = 6) {
       try {
-        const randomPage = Math.floor(Math.random() * 8) + 1;
-        const url = `https://api.artic.edu/api/v1/artworks/search?q=${encodeURIComponent(query)}&query[term][is_public_domain]=true&fields=id,title,artist_title,artist_display,date_display,medium_display,image_id&page=${randomPage}&limit=${limit}`;
+        const url = `https://api.artic.edu/api/v1/artworks/search?q=${encodeURIComponent(query)}&query[term][is_public_domain]=true&fields=id,title,artist_title,date_display,image_id&limit=${limit}`;
         const res = await fetch(url);
         const json = await res.json();
         return (json.data || []).filter(item => item.image_id).map(item => ({
           id: `aic-${item.id}`,
           title: item.title,
-          artist: item.artist_display || item.artist_title || 'Unknown Artist',
+          artist: item.artist_title || 'Unknown',
           date: item.date_display || 'Date Unknown',
-          medium: item.medium_display || 'Oil on canvas / Painting',
+          medium: 'Painting / AIC Chicago',
           imageUrl: `https://www.artic.edu/iiif/2/${item.image_id}/full/843,/0/default.jpg`,
-          museum: 'The Art Institute of Chicago'
-        }));
-      } catch (e) { return []; }
-    }
-
-    async function fetchFromCMA(query, limit = 8) {
-      try {
-        const randomSkip = Math.floor(Math.random() * 20);
-        const url = `https://openaccess-api.clevelandart.org/api/artworks/?q=${encodeURIComponent(query)}&has_image=1&skip=${randomSkip}&limit=${limit}`;
-        const res = await fetch(url);
-        const json = await res.json();
-        return (json.data || []).filter(item => item.images && item.images.web && item.images.web.url).map(item => ({
-          id: `cma-${item.id}`,
-          title: item.title,
-          artist: (item.creators && item.creators[0]) ? item.creators[0].description : 'Unknown Artist',
-          date: item.creation_date || 'Date Unknown',
-          medium: item.technique || 'Painting / Work on paper',
-          imageUrl: item.images.web.url,
-          museum: 'The Cleveland Museum of Art'
+          museum: 'Art Institute of Chicago'
         }));
       } catch (e) { return []; }
     }
@@ -1305,23 +692,16 @@
         const searchUrl = `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=${encodeURIComponent(query)}`;
         const searchRes = await fetch(searchUrl);
         const searchJson = await searchRes.json();
-        if (!searchJson.objectIDs || searchJson.objectIDs.length === 0) return [];
-
-        const shuffledIds = shuffleArray(searchJson.objectIDs).slice(0, limit);
-        const promises = shuffledIds.map(id => 
-          fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${id}`)
-            .then(r => r.ok ? r.json() : null)
-            .catch(() => null)
-        );
-
-        const records = await Promise.all(promises);
-        return records.filter(item => item && (item.primaryImage || item.primaryImageSmall)).map(item => ({
+        if (!searchJson.objectIDs) return [];
+        const ids = searchJson.objectIDs.slice(0, limit);
+        const records = await Promise.all(ids.map(id => fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${id}`).then(r => r.json()).catch(() => null)));
+        return records.filter(item => item && item.primaryImage).map(item => ({
           id: `met-${item.objectID}`,
           title: item.title,
-          artist: item.artistDisplayName || 'Unknown Artist',
+          artist: item.artistDisplayName || 'Unknown',
           date: item.objectDate || 'Date Unknown',
-          medium: item.medium || 'Painting / European Collection',
-          imageUrl: item.primaryImage || item.primaryImageSmall,
+          medium: item.medium || 'European Painting',
+          imageUrl: item.primaryImage,
           museum: 'The Metropolitan Museum of Art (NYC)'
         }));
       } catch (e) { return []; }
@@ -1330,106 +710,56 @@
     async function triggerArtSearch(query, labelName, clickedBtn = null) {
       hasLoadedArtOnce = true;
       lastArtQuery = query;
-
       if (clickedBtn) {
-        document.querySelectorAll('.art-genre-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.art-genre-btn').forEach(b => b.classList.remove('active'));
         clickedBtn.classList.add('active');
       }
 
       const bankList = document.getElementById('artBankList');
-      const indicator = document.getElementById('artLoadingIndicator');
-      bankList.innerHTML = '<p style="color:#aaa; font-size:12px; font-style:italic;">Querying museum collections...</p>';
-      indicator.style.display = 'block';
-      indicator.innerText = `⏳ Searching collections for "${labelName}"...`;
-      document.getElementById('mainArtworkImg').style.display = 'none';
+      bankList.innerHTML = '<p style="color:#aaa; font-style:italic;">Querying museum APIs...</p>';
 
       let results = [];
-      if (currentMuseumScope === 'aic') {
-        results = await fetchFromAIC(query, 16);
-      } else if (currentMuseumScope === 'cma') {
-        results = await fetchFromCMA(query, 16);
+      if (currentMuseumScope === 'rijks') {
+        results = await fetchFromRijks(query, 12);
+      } else if (currentMuseumScope === 'louvre') {
+        results = await fetchFromMet('French painting', 10); // European master fallback
+      } else if (currentMuseumScope === 'aic') {
+        results = await fetchFromAIC(query, 12);
       } else if (currentMuseumScope === 'met') {
         results = await fetchFromMet(query, 10);
       } else {
-        const [aic, cma, met] = await Promise.all([
-          fetchFromAIC(query, 6),
-          fetchFromCMA(query, 6),
-          fetchFromMet(query, 4)
-        ]);
-        results = shuffleArray([...aic, ...cma, ...met]);
+        const [rijks, aic, met] = await Promise.all([fetchFromRijks(query, 4), fetchFromAIC(query, 4), fetchFromMet(query, 4)]);
+        results = [...rijks, ...aic, ...met];
       }
 
       if (results.length > 0) {
         currentArtworkList = results;
-        currentArtworkIndex = 0;
         renderArtBank(results);
         selectArtItem(results[0], 0);
       } else {
-        currentArtworkList = [];
-        bankList.innerHTML = '<p style="color:#ff3b30; font-size:12px;">No open-access artworks found for this search.</p>';
-        indicator.innerText = "No artworks available.";
+        bankList.innerHTML = '<p style="color:#ff3b30;">No artworks found.</p>';
       }
-    }
-
-    async function triggerArtRandom(clickedBtn = null) {
-      const themes = ['mythology', 'landscape', 'portrait', 'still life', 'flowers', 'autumn', 'river', 'garden', 'ocean', 'philosophy', 'allegory'];
-      const pick = themes[Math.floor(Math.random() * themes.length)];
-      triggerArtSearch(pick, `Discovery: ${pick}`, clickedBtn);
-    }
-
-    function searchArtCustom() {
-      const input = document.getElementById('customArtInput');
-      const query = input.value.trim();
-      if (!query) return alert("Please enter an artist, movement, or title to search.");
-      document.querySelectorAll('.art-genre-btn').forEach(btn => btn.classList.remove('active'));
-      triggerArtSearch(query, query);
     }
 
     function renderArtBank(artworks) {
       const bankList = document.getElementById('artBankList');
       bankList.innerHTML = '';
-
       artworks.forEach((art, idx) => {
         const item = document.createElement('div');
         item.className = `art-bank-item ${idx === 0 ? 'active' : ''}`;
-        item.id = `item-${art.id}`;
-        item.innerHTML = `
-          <span style="font-size:13px; font-weight:bold; color:#ffd60a; display:block;">🎨 ${art.title}</span>
-          <span style="font-size:11px; color:#fff; display:block;">${art.artist}</span>
-          <span style="font-size:10px; color:#aaa;">${art.museum}</span>
-        `;
-        item.onclick = () => {
-          document.querySelectorAll('.art-bank-item').forEach(el => el.classList.remove('active'));
-          item.classList.add('active');
-          selectArtItem(art, idx);
-        };
+        item.innerHTML = `<span style="font-size:13px; font-weight:bold; color:#ffd60a;">🎨 ${art.title}</span><br><span style="font-size:11px; color:#fff;">${art.artist}</span>`;
+        item.onclick = () => selectArtItem(art, idx);
         bankList.appendChild(item);
       });
     }
 
     function selectArtItem(art, index) {
       currentArtworkIndex = index;
-      const img = document.getElementById('mainArtworkImg');
-      const indicator = document.getElementById('artLoadingIndicator');
-
-      indicator.style.display = 'block';
-      indicator.innerText = `⏳ Loading high-res stream for "${art.title}"...`;
-      img.style.display = 'none';
-
-      img.src = art.imageUrl;
+      document.getElementById('mainArtworkImg').src = art.imageUrl;
       document.getElementById('artCaptionTitle').innerText = art.title;
       document.getElementById('artCaptionArtist').innerText = art.artist;
       document.getElementById('artCaptionMeta').innerText = `${art.date} • ${art.medium}`;
       document.getElementById('artCaptionMuseum').innerText = `🏛️ Holding Collection: ${art.museum}`;
-
-      document.getElementById('artFullscreenImg').src = art.imageUrl;
-      document.getElementById('artFsTitle').innerText = art.title;
-      document.getElementById('artFsDetails').innerText = `${art.artist} • ${art.date} • ${art.museum}`;
-
-      document.querySelectorAll('.art-bank-item').forEach((el, i) => {
-        if (i === index) el.classList.add('active');
-        else el.classList.remove('active');
-      });
     }
 
     function onArtworkImageLoaded() {
@@ -1439,35 +769,10 @@
 
     function openArtFullscreen() {
       document.getElementById('artFullscreenModal').style.display = 'flex';
+      document.getElementById('artFullscreenImg').src = document.getElementById('mainArtworkImg').src;
     }
-
     function closeArtFullscreen() {
       document.getElementById('artFullscreenModal').style.display = 'none';
-    }
-
-    function toggleArtSlideshow() {
-      const btn = document.getElementById('btnArtSlideshow');
-      if (slideshowInterval) {
-        clearInterval(slideshowInterval);
-        slideshowInterval = null;
-        btn.innerText = "▶️ Start Slideshow";
-        btn.classList.remove('playing');
-      } else {
-        btn.innerText = "⏸️ Pause Slideshow";
-        btn.classList.add('playing');
-        advanceSlideshow();
-        slideshowInterval = setInterval(advanceSlideshow, 6000);
-      }
-    }
-
-    function advanceSlideshow() {
-      if (!currentArtworkList || currentArtworkList.length === 0) return;
-      currentArtworkIndex++;
-      if (currentArtworkIndex >= currentArtworkList.length) {
-        triggerArtRandom();
-        return;
-      }
-      selectArtItem(currentArtworkList[currentArtworkIndex], currentArtworkIndex);
     }
   </script>
 </body>
