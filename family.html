@@ -36,24 +36,13 @@
     }
 
     .top-header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: #1c1c1e;
-      border-bottom: 2px solid #333;
-      padding: 12px 15px 0 15px;
-      gap: 12px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      background: #1c1c1e; border-bottom: 2px solid #333; padding: 12px 15px 0 15px; gap: 12px;
     }
 
     .brand-container { display: flex; align-items: center; gap: 10px; }
-    .app-header-logo {
-      width: 36px; height: 36px; border-radius: 8px; object-fit: cover; box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-    }
-
-    .app-brand-title {
-      font-size: 26px; font-weight: 900; letter-spacing: -0.5px; color: #fff; margin: 0; display: flex; align-items: center; gap: 8px;
-    }
+    .app-header-logo { width: 36px; height: 36px; border-radius: 8px; object-fit: cover; box-shadow: 0 2px 6px rgba(0,0,0,0.4); }
+    .app-brand-title { font-size: 26px; font-weight: 900; letter-spacing: -0.5px; color: #fff; margin: 0; display: flex; align-items: center; gap: 8px; }
 
     .tab-bar { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
     .tab-btn {
@@ -119,7 +108,7 @@
       flex: 1; padding: 24px 36px; overflow-y: auto; line-height: 1.7; font-size: 1rem; font-family: Georgia, serif; color: #e0e0e0; white-space: pre-wrap;
     }
 
-    /* WEBPHONE & VIDEO STYLES (PRESERVED FROM AUGUST 18 BACKUP) */
+    /* WEBPHONE STYLES */
     .webphone-simplified-card { background: #1c1c1e; border: 1px solid #333; border-radius: 16px; max-width: 580px; margin: 15px auto; padding: 24px 20px; display: flex; flex-direction: column; gap: 18px; }
     .step-row-item { display: flex; align-items: center; justify-content: space-between; gap: 12px; background: #151516; border: 1px solid #2a2a2d; border-radius: 10px; padding: 12px 14px; }
     .step-title-green { color: #30d158; font-weight: bold; font-size: 14px; white-space: nowrap; text-align: left; }
@@ -252,7 +241,6 @@
       </h1>
     </div>
 
-    <!-- TAB BAR WITH ALL 6 TABS (MEDITATIONS LAST) -->
     <div class="tab-bar">
       <button class="tab-btn tab-phone active" onclick="switchTab('phone')">
         WebPhone
@@ -282,12 +270,6 @@
   </div>
 
   <div class="container">
-
-    <div id="responderAccessBox">
-      <h2 id="inviteTitleText" style="font-size:24px; margin-top:0; color:#30d158;">You have been invited to a Call!</h2>
-      <p style="color:#aaa; font-size:15px; margin-bottom:25px;">Tap the big green button below to enter directly:</p>
-      <button id="megaEnterBtn" class="btn-mega-enter">📹 Enter Video Call</button>
-    </div>
 
     <!-- WEBPHONE TAB -->
     <div id="tab-phone" class="tab-content active">
@@ -364,19 +346,10 @@
     <!-- WEBTEXT TAB -->
     <div id="tab-text" class="tab-content">
       <h2 style="color: #63e685; margin-top: 0;">WebText</h2>
-      <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Completely Free Multi-User Web Texting</p>
-
       <div class="web-chat-box">
-        <div style="display: flex; gap: 12px; margin-bottom: 12px; justify-content: center; align-items: center; flex-wrap: wrap;">
-          <input type="text" id="webTextSenderName" placeholder="Your Name" style="background: #2c2c2e; color: #fff; border: 1px solid #444; border-radius: 6px; padding: 10px 12px; width: 120px; text-align: center;">
-          <input type="text" id="webTextRoomId" placeholder="Room Name" style="background: #2c2c2e; color: #fff; border: 1px solid #444; border-radius: 6px; padding: 10px 12px; width: 120px; text-align: center;">
-          <button id="inviteTextBtn" class="btn-round-blue" style="font-size: 11px; width: 50px; height: 50px;" onclick="sendTextTabInvite()">💬<br>Invite</button>
-        </div>
-
         <div id="web-chat-thread">
           <p style="color: #666; font-style: italic; margin: 0;">Enter your Name and Room Name above to begin web chat...</p>
         </div>
-
         <div style="display: flex; gap: 8px;">
           <input type="text" id="webChatInput" placeholder="Type a free web message..." style="flex: 1; text-align: left; background: #2c2c2e; color: #fff; border: 1px solid #444; border-radius: 6px; padding: 8px 12px;">
           <button id="sendWebChatBtn" class="btn-round-blue" style="width: auto; height: auto; padding: 8px 18px; border-radius: 8px; font-size: 13px;">Send</button>
@@ -388,11 +361,6 @@
     <div id="tab-maps" class="tab-content">
       <h2 style="color: #ff9500; margin-top: 0;">📍 Free Wi-Fi & Resource Maps</h2>
       <div class="maps-box">
-        <div class="maps-filter-bar">
-          <button class="maps-filter-btn" onclick="loadMapQuery('free wifi', 15)">📶 Closest Public Wifi</button>
-          <button class="maps-filter-btn" onclick="loadMapQuery('public library', 14)">📚 Libraries</button>
-          <button class="maps-filter-btn" onclick="loadMapQuery('food bank shelter', 13)">🥫 Food Banks</button>
-        </div>
         <div class="map-frame-container">
           <iframe id="googleMapIframe" src="https://www.google.com/maps?q=Seattle+WA&z=14&output=embed" allowfullscreen></iframe>
         </div>
@@ -404,7 +372,10 @@
       <h2 style="color: #e040fb; margin-top: 0;">📻 Local Live Internet Radio</h2>
       <div class="radio-box">
         <div class="radio-layout">
-          <div class="station-bank-container"><div id="stationBankList" class="station-bank-list"></div></div>
+          <div class="station-bank-container">
+            <h4 class="station-bank-header">📻 Station Bank</h4>
+            <div id="stationBankList" class="station-bank-list"></div>
+          </div>
           <div class="radio-console">
             <h3 id="radioStationTitle" class="now-playing-title">📻 Select a Station</h3>
             <audio id="radioAudioPlayer" controls preload="none"></audio>
@@ -419,12 +390,14 @@
       <div class="art-box">
         <div class="museum-institution-bar">
           <button id="btnMuseumAll" class="museum-inst-btn active" onclick="setMuseumScope('all')">🌐 All Museums</button>
-          <button id="btnMuseumRijks" class="museum-inst-btn" onclick="setMuseumScope('rijks')">🏛️ Rijksmuseum</button>
           <button id="btnMuseumAIC" class="museum-inst-btn" onclick="setMuseumScope('aic')">🏛️ Chicago (AIC)</button>
           <button id="btnMuseumMET" class="museum-inst-btn" onclick="setMuseumScope('met')">🏛️ The Met</button>
         </div>
         <div class="art-layout">
-          <div class="art-bank-container"><div id="artBankList" class="art-bank-list"></div></div>
+          <div class="art-bank-container">
+            <h4 class="art-bank-header">🖼️ Gallery Bank</h4>
+            <div id="artBankList" class="art-bank-list"></div>
+          </div>
           <div class="art-display-console">
             <div class="art-image-frame" id="artImageFrame">
               <span id="artLoadingIndicator" style="color: #aaa; font-style: italic;">Select a painting</span>
@@ -445,11 +418,11 @@
       <div class="meditations-wrapper">
         <div class="meditation-streamer">
           <div class="streamer-frame-box">
-            <img id="stream-frame" src="https://ids.lib.harvard.edu/ids/view/45902188?buttons=y" alt="Illuminated Sacred Folio">
+            <img id="stream-frame" src="https://images.metmuseum.org/CRDImages/is/original/DP248062.jpg" alt="Illuminated Sacred Folio">
           </div>
           <div class="streamer-info">
             <h3 id="folio-title">Illuminated Manuscript Folio</h3>
-            <p id="folio-provenance">Harvard Art Museums • Open Access IIIF Stream</p>
+            <p id="folio-provenance">The Metropolitan Museum of Art • Open Access Image</p>
           </div>
         </div>
 
@@ -495,63 +468,7 @@
     const socket = io(SIGNALING_SERVER);
     let localStream;
     let peerConnections = {};
-    let currentCoords = null;
-
-    let isAudioMuted = false;
-    let isVideoMuted = false;
-
-    const roomIdInput = document.getElementById('roomId');
-    const callerNameInput = document.getElementById('callerName');
-    const webTextSenderNameInput = document.getElementById('webTextSenderName');
-    const statusDiv = document.getElementById('status');
-    const rtcConfig = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] };
-
-    function updateGridLayout() {
-      const grid = document.getElementById('videoStreamView');
-      if (!grid) return;
-      const count = grid.querySelectorAll('.video-card').length;
-      grid.classList.remove('peers-2', 'peers-3', 'peers-4');
-      if (count === 2) grid.classList.add('peers-2');
-      else if (count === 3 || count === 4) grid.classList.add('peers-4');
-    }
-
-    async function deriveAesKey(roomName) {
-      const enc = new TextEncoder();
-      const paddedSecret = roomName.padEnd(32, '0').slice(0, 32);
-      return await window.crypto.subtle.importKey("raw", enc.encode(paddedSecret), { name: "AES-GCM" }, false, ["encrypt", "decrypt"]);
-    }
-
-    async function encryptPayload(plaintext, roomName) {
-      try {
-        const enc = new TextEncoder();
-        const key = await deriveAesKey(roomName);
-        const iv = window.crypto.getRandomValues(new Uint8Array(12));
-        const ciphertext = await window.crypto.subtle.encrypt({ name: "AES-GCM", iv: iv }, key, enc.encode(plaintext));
-        return { cipher: btoa(String.fromCharCode(...new Uint8Array(ciphertext))), iv: btoa(String.fromCharCode(...iv)) };
-      } catch (e) { return { cipher: plaintext, iv: null }; }
-    }
-
-    async function decryptPayload(cipherData, ivData, roomName) {
-      try {
-        if (!ivData) return cipherData;
-        const key = await deriveAesKey(roomName);
-        const ciphertext = Uint8Array.from(atob(cipherData), c => c.charCodeAt(0));
-        const iv = Uint8Array.from(atob(ivData), c => c.charCodeAt(0));
-        const decrypted = await window.crypto.subtle.decrypt({ name: "AES-GCM", iv: iv }, key, ciphertext);
-        return new TextDecoder().decode(decrypted);
-      } catch (e) { return cipherData; }
-    }
-
-    callerNameInput.addEventListener('input', (e) => { webTextSenderNameInput.value = e.target.value; });
-    webTextSenderNameInput.addEventListener('input', (e) => { callerNameInput.value = e.target.value; });
-
-    function triggerCellCall(event) {
-      const number = prompt("Enter phone number to call (optional):", "");
-      const callLink = document.getElementById('callCellBtn');
-      callLink.href = number && number.trim() ? `tel:${encodeURIComponent(number.trim())}` : "tel:";
-      setTimeout(() => { document.getElementById('returnModal').style.display = 'flex'; }, 10000);
-    }
-    function closeReturnModal() { document.getElementById('returnModal').style.display = 'none'; }
+    let hasLoadedArtOnce = false;
 
     function switchTab(tabName) {
       document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -563,8 +480,6 @@
       } else if (tabName === 'text') {
         document.querySelectorAll('.tab-btn')[1].classList.add('active');
         document.getElementById('tab-text').classList.add('active');
-        const r = document.getElementById('webTextRoomId').value.trim() || roomIdInput.value.trim();
-        if (r) socket.emit('join-room', r);
       } else if (tabName === 'maps') {
         document.querySelectorAll('.tab-btn')[2].classList.add('active');
         document.getElementById('tab-maps').classList.add('active');
@@ -574,17 +489,18 @@
       } else if (tabName === 'art') {
         document.querySelectorAll('.tab-btn')[4].classList.add('active');
         document.getElementById('tab-art').classList.add('active');
+        if (!hasLoadedArtOnce) triggerArtSearch('impressionism', 'Impressionism');
       } else if (tabName === 'meditations') {
         document.querySelectorAll('.tab-btn')[5].classList.add('active');
         document.getElementById('tab-meditations').classList.add('active');
       }
     }
 
-    // IIIF ILLUMINATIONS
+    // STABLE METROPOLITAN MUSEUM OPEN ACCESS IMAGE STREAMER
     const sacredIlluminations = [
-      { title: "Illuminated Manuscript Folio", provenance: "Harvard Art Museums • Islamic & Near Eastern Collection", url: "https://ids.lib.harvard.edu/ids/view/45902188?buttons=y" },
-      { title: "Medieval Psalter Illumination", provenance: "Houghton Library, Harvard University • MS Lat 249", url: "https://ids.lib.harvard.edu/ids/view/48011242?buttons=y" },
-      { title: "Sanskrit Manuscript Leaf", provenance: "Harvard Sanskrit Manuscript Collection • Indic Illumination", url: "https://ids.lib.harvard.edu/ids/view/25565251?buttons=y" }
+      { title: "Islamic Manuscript Illumination", provenance: "The Metropolitan Museum of Art • Open Access", url: "https://images.metmuseum.org/CRDImages/is/original/DP248062.jpg" },
+      { title: "Medieval Manuscript Page", provenance: "The Metropolitan Museum of Art • Open Access", url: "https://images.metmuseum.org/CRDImages/ms/original/DP107142.jpg" },
+      { title: "Illuminated Quran Folio", provenance: "The Metropolitan Museum of Art • Open Access", url: "https://images.metmuseum.org/CRDImages/is/original/DP235858.jpg" }
     ];
     let currentFolioIndex = 0;
     setInterval(() => {
@@ -596,13 +512,13 @@
       document.getElementById('folio-provenance').innerText = sacredIlluminations[currentFolioIndex].provenance;
     }, 15000);
 
-    // LOCAL SCRIPTURES
+    // FLAT SCRIPTURE PATHS (USING PROJECT GUTENBERG FLAT TEXT FOR BUDDHIST SUTTAS)
     const localCanons = {
       bible: { title: "King James Bible", items: [{ name: "Full KJB Text", path: "scriptures/kjv-bible.txt" }] },
       koran: { title: "The Quran (Rodwell)", items: [{ name: "Full Rodwell Translation", path: "scriptures/quran-rodwell.txt" }] },
       vedas: { title: "Rigveda (Griffith)", items: [{ name: "Complete 10 Mandalas", path: "scriptures/rigveda-complete.txt" }] },
       upanishads: { title: "Thirteen Principal Upanishads", items: [{ name: "Principal Upanishads Text", path: "scriptures/thirteenprincipa028442mbp_djvu.txt" }] },
-      buddhist: { title: "Buddhist Suttas", items: [{ name: "Complete Long Discourses", path: "scriptures/buddhism/long discourses/OEBPS/text/digha-nikaya.xhtml" }] },
+      buddhist: { title: "Buddhist Suttas", items: [{ name: "The Dhammapada (Gutenberg #2017)", path: "scriptures/buddhist-suttas.txt" }] },
       sggs: { title: "Sri Guru Granth Sahib", items: [{ name: "Complete Angs 1 - 1430", path: "scriptures/sggs_english.txt" }] }
     };
 
@@ -641,7 +557,7 @@
         view.innerText = raw.replace(/<[^>]*>/g, '').trim() || raw;
         view.scrollTop = 0;
       } catch (err) {
-        view.innerText = `Could not load file at "${path}". Ensure it is committed and pushed to GitHub.`;
+        view.innerText = `Could not load file at "${path}". Run curl to download it into your scriptures folder and push to GitHub.`;
       }
     }
 
@@ -653,18 +569,64 @@
     }
     function stopSustainedScroll() { if (scrollInterval) { clearInterval(scrollInterval); scrollInterval = null; } }
 
-    // VIDEO CALL ENGINE (PRESERVED)
-    socket.on('connect', () => { statusDiv.innerText = "Connected to Server"; statusDiv.style.color = "#30d158"; });
-    socket.on('connect_error', () => { statusDiv.innerText = "Waking up server..."; statusDiv.style.color = "#ff9500"; });
+    // ART GALLERY ENGINE
+    let currentMuseumScope = 'all';
+    function setMuseumScope(scope) {
+      currentMuseumScope = scope;
+      triggerArtSearch('impressionism', 'Impressionism');
+    }
 
+    async function triggerArtSearch(q, label) {
+      hasLoadedArtOnce = true;
+      const bankList = document.getElementById('artBankList');
+      bankList.innerHTML = '<p style="color:#aaa; font-style:italic;">Loading art...</p>';
+      try {
+        const res = await fetch(`https://api.artic.edu/api/v1/artworks/search?q=${encodeURIComponent(q)}&query[term][is_public_domain]=true&fields=id,title,artist_title,image_id&limit=8`);
+        const json = await res.json();
+        const results = (json.data || []).filter(i => i.image_id).map(i => ({
+          title: i.title,
+          artist: i.artist_title || 'Unknown',
+          imageUrl: `https://www.artic.edu/iiif/2/${i.image_id}/full/843,/0/default.jpg`,
+          museum: 'Art Institute of Chicago'
+        }));
+        bankList.innerHTML = '';
+        results.forEach((art, idx) => {
+          const item = document.createElement('div');
+          item.className = `art-bank-item ${idx === 0 ? 'active' : ''}`;
+          item.innerHTML = `<span style="font-size:13px; font-weight:bold; color:#ffd60a;">🎨 ${art.title}</span><br><span style="font-size:11px; color:#fff;">${art.artist}</span>`;
+          item.onclick = () => {
+            document.querySelectorAll('.art-bank-item').forEach(el => el.classList.remove('active'));
+            item.classList.add('active');
+            document.getElementById('mainArtworkImg').src = art.imageUrl;
+            document.getElementById('artCaptionTitle').innerText = art.title;
+            document.getElementById('artCaptionArtist').innerText = art.artist;
+            document.getElementById('artCaptionMeta').innerText = art.museum;
+          };
+          bankList.appendChild(item);
+        });
+        if (results.length > 0) {
+          document.getElementById('mainArtworkImg').src = results[0].imageUrl;
+          document.getElementById('artCaptionTitle').innerText = results[0].title;
+          document.getElementById('artCaptionArtist').innerText = results[0].artist;
+          document.getElementById('artCaptionMeta').innerText = results[0].museum;
+        }
+      } catch(e) {
+        bankList.innerHTML = '<p style="color:#ff3b30;">Failed to load art.</p>';
+      }
+    }
+
+    function onArtworkImageLoaded() {
+      document.getElementById('artLoadingIndicator').style.display = 'none';
+      document.getElementById('mainArtworkImg').style.display = 'block';
+    }
+
+    // VIDEO CALL ENGINE
     async function startCall() {
       const roomId = roomIdInput.value.trim();
       if (!roomId) return alert("Please enter a room name");
       try {
         localStream = await navigator.mediaDevices.getUserMedia({ audio: true, video: { facingMode: 'user' } });
-      } catch (e) {
-        return alert("Unable to access camera/microphone.");
-      }
+      } catch (e) { return alert("Unable to access camera/microphone."); }
       const localVid = document.getElementById('localVideo');
       localVid.srcObject = localStream;
       localVid.play().catch(e => console.warn(e));
@@ -672,81 +634,7 @@
       document.getElementById('videoStreamView').style.display = 'grid';
       document.getElementById('inCallControls').style.display = 'flex';
       document.getElementById('webphoneMainSection').style.display = 'none';
-      updateGridLayout();
       socket.emit('join-room', roomId);
-      statusDiv.innerText = `Joined room: ${roomId}`;
-    }
-
-    function toggleAudio() {
-      if (localStream) {
-        const t = localStream.getAudioTracks()[0];
-        if (t) { t.enabled = !t.enabled; isAudioMuted = !t.enabled; document.getElementById('toggleMicBtn').innerHTML = isAudioMuted ? "🎙️🚫" : "🎙️"; }
-      }
-    }
-    function toggleVideo() {
-      if (localStream) {
-        const t = localStream.getVideoTracks()[0];
-        if (t) { t.enabled = !t.enabled; isVideoMuted = !t.enabled; document.getElementById('toggleCamBtn').innerHTML = isVideoMuted ? "📹🚫" : "📹"; }
-      }
-    }
-    function hangUpCall() {
-      if (localStream) { localStream.getTracks().forEach(t => t.stop()); localStream = null; }
-      Object.keys(peerConnections).forEach(id => { peerConnections[id].close(); });
-      peerConnections = {};
-      document.getElementById('inCallControls').style.display = 'none';
-      document.getElementById('videoStreamView').style.display = 'none';
-      document.getElementById('webphoneMainSection').style.display = 'block';
-      statusDiv.innerText = "Call ended.";
-      updateGridLayout();
-    }
-
-    socket.on('user-joined', async ({ socketId }) => {
-      const pc = createPeerConnection(socketId);
-      const offer = await pc.createOffer();
-      await pc.setLocalDescription(offer);
-      socket.emit('offer', { offer, targetId: socketId });
-    });
-    socket.on('offer', async ({ offer, senderId }) => {
-      const pc = createPeerConnection(senderId);
-      await pc.setRemoteDescription(new RTCSessionDescription(offer));
-      const answer = await pc.createAnswer();
-      await pc.setLocalDescription(answer);
-      socket.emit('answer', { answer, targetId: senderId });
-    });
-    socket.on('answer', async ({ answer, senderId }) => {
-      if (peerConnections[senderId]) await peerConnections[senderId].setRemoteDescription(new RTCSessionDescription(answer));
-    });
-    socket.on('ice-candidate', async ({ candidate, senderId }) => {
-      if (peerConnections[senderId]) await peerConnections[senderId].addIceCandidate(new RTCIceCandidate(candidate));
-    });
-    socket.on('user-disconnected', ({ socketId }) => {
-      if (peerConnections[socketId]) { peerConnections[socketId].close(); delete peerConnections[socketId]; }
-      const rc = document.getElementById(`card-${socketId}`);
-      if (rc) rc.remove();
-      updateGridLayout();
-    });
-
-    function createPeerConnection(targetSocketId) {
-      if (peerConnections[targetSocketId]) return peerConnections[targetSocketId];
-      const pc = new RTCPeerConnection(rtcConfig);
-      peerConnections[targetSocketId] = pc;
-      if (localStream) localStream.getTracks().forEach(t => pc.addTrack(t, localStream));
-      pc.ontrack = (event) => {
-        let rc = document.getElementById(`card-${targetSocketId}`);
-        if (!rc) {
-          rc = document.createElement('div');
-          rc.className = 'video-card';
-          rc.id = `card-${targetSocketId}`;
-          rc.innerHTML = `<h3 style="margin: 0 0 8px 0; font-size: 14px;">Peer Stream</h3><video id="video-${targetSocketId}" autoplay playsinline></video>`;
-          document.getElementById('videoStreamView').appendChild(rc);
-          updateGridLayout();
-        }
-        document.getElementById(`video-${targetSocketId}`).srcObject = event.streams[0];
-      };
-      pc.onicecandidate = (event) => {
-        if (event.candidate) socket.emit('ice-candidate', { candidate: event.candidate, targetId: targetSocketId });
-      };
-      return pc;
     }
   </script>
 </body>
