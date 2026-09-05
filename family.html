@@ -1382,25 +1382,18 @@
       statusDiv.style.color = "#ff9500";
     });
 
-    // START MULTI-PARTY VIDEO CALL WITH ANDROID-SAFE PERMISSIONS & FALLBACKS
+    // START MULTI-PARTY VIDEO CALL WITH ROBUST HARDWARE FALLBACKS
     async function startCall() {
       const roomId = roomIdInput.value.trim();
       if (!roomId) return alert("Please enter a room name");
 
-      // Adaptive constraints compatible with Motorola / Android hardware
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        return alert("Camera and microphone access require a secure connection (HTTPS) or localhost.");
+      }
+
       const mediaConfigs = [
-        {
-          audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true },
-          video: { facingMode: 'user', width: { ideal: 640 }, height: { ideal: 640 } }
-        },
-        {
-          audio: true,
-          video: { facingMode: 'user' }
-        },
-        {
-          audio: true,
-          video: true
-        }
+        { audio: true, video: true },
+        { audio: true, video: { facingMode: 'user' } }
       ];
 
       localStream = null;
@@ -1409,22 +1402,21 @@
           localStream = await navigator.mediaDevices.getUserMedia(config);
           if (localStream) break;
         } catch (e) {
-          console.warn("Attempting relaxed media constraints for device...", e);
+          console.warn("Attempting relaxed media constraints...", e);
         }
       }
 
       if (!localStream) {
-        return alert("Unable to access microphone/camera. Please check your browser and Android app permissions.");
+        return alert("Unable to access camera or microphone. Please check browser permissions and ensure no other application is using your camera.");
       }
 
       const localVid = document.getElementById('localVideo');
       localVid.srcObject = localStream;
       
-      // Explicit play invocation required by Android/Mobile Chrome
       try {
         await localVid.play();
       } catch (err) {
-        console.warn("Autoplay interaction note:", err);
+        console.warn("Autoplay notice:", err);
       }
 
       document.getElementById('videoStreamView').style.display = 'grid';
@@ -1584,7 +1576,6 @@
         const videoEl = document.getElementById(`video-${targetSocketId}`);
         videoEl.srcObject = event.streams[0];
         
-        // Explicit play for remote feeds on Android mobile
         videoEl.play().catch(e => console.warn("Remote stream play trigger:", e));
         statusDiv.innerText = "Live Connected!";
       };
