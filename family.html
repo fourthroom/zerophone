@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   
-  <title>ZeroPhone Family — Encrypted Browser Video Calling, WebText & Sacred Canon Library</title>
-  <meta name="description" content="ZeroPhone Family is a completely free, privacy-first web utility featuring end-to-end AES-256-GCM encrypted video calling, voice calls, free WebText, local Wi-Fi maps, live radio, world art museum collections, and classical scholastic wisdom texts.">
-  <meta name="keywords" content="ZeroPhone, fourthroom.org, AES-256 encryption, free video call, browser calling, WebRTC, free web text, local radio streams, public wifi maps, art gallery, philosophy library, sacred texts">
+  <title>ZeroPhone Family — Encrypted Browser Video Calling, WebText & Local Resources</title>
+  <meta name="description" content="ZeroPhone Family is a completely free, privacy-first web utility featuring end-to-end AES-256-GCM encrypted video calling, voice calls, free WebText, local Wi-Fi maps, live radio, art museums, and community support resources.">
+  <meta name="keywords" content="ZeroPhone, fourthroom.org, AES-256 encryption, free video call, browser calling, WebRTC, free web text, local radio streams, public wifi maps, community resources">
   <meta name="author" content="FourthRoom">
   <link rel="canonical" href="https://fourthroom.org/family.html">
 
@@ -100,8 +100,8 @@
     .tab-radio.active { background: #e040fb; color: #000; }
     .tab-art { background: #4a3600; border-top: 3px solid #ffd60a; }
     .tab-art.active { background: #ffd60a; color: #000; }
-    .tab-canon { background: #18332f; border-top: 3px solid #2dd4bf; }
-    .tab-canon.active { background: #2dd4bf; color: #000; }
+    .tab-help { background: #1c3d5a; border-top: 3px solid #38bdf8; }
+    .tab-help.active { background: #38bdf8; color: #000; }
 
     .sub-tagline { font-size: 11px; display: block; font-weight: normal; margin-top: 2px; }
     .container { padding: 10px 15px; max-width: 100%; margin: 0 auto; text-align: center; }
@@ -340,217 +340,224 @@
     .art-fullscreen-caption h3 { margin: 0 0 4px 0; color: #ffd60a; font-size: 18px; }
     .art-fullscreen-caption p { margin: 0; color: #aaa; font-size: 13px; }
 
-    /* 📜 SCHOLASTIC CANON & PHILOSOPHY RESEARCH LIBRARY STYLES */
-    .canon-box {
+    /* 🤝 HELP & COMMUNITY RESOURCES DIRECTORY STYLES */
+    .help-box {
       background: #1c1c1e;
-      border: 1px solid #2dd4bf;
+      border: 1px solid #38bdf8;
       border-radius: 12px;
       padding: 20px;
-      max-width: 1100px;
+      max-width: 1050px;
       margin: 0 auto;
     }
-    .canon-umbrella-bar {
+    .help-location-bar {
       display: flex;
-      gap: 8px;
+      gap: 10px;
       justify-content: center;
+      align-items: center;
       flex-wrap: wrap;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
       padding-bottom: 14px;
       border-bottom: 1px solid #333;
     }
-    .canon-umb-btn {
+    .help-loc-input {
+      padding: 10px 14px;
+      font-size: 14px;
       background: #2c2c2e;
       color: #fff;
-      border: 1px solid #555;
-      padding: 8px 12px;
-      font-size: 12px;
+      border: 1px solid #444;
+      border-radius: 8px;
+      width: 220px;
+      text-align: left;
+    }
+    .btn-help-loc {
+      background: #38bdf8;
+      color: #000;
+      border: none;
+      padding: 10px 18px;
+      font-size: 13px;
       font-weight: bold;
       border-radius: 8px;
       cursor: pointer;
-      transition: background 0.2s, border 0.2s;
+      box-shadow: 0 2px 8px rgba(56, 189, 248, 0.3);
     }
-    .canon-umb-btn.active {
-      background: #2dd4bf;
-      color: #000;
-      border-color: #2dd4bf;
-      font-weight: 900;
-    }
-    .canon-layout { display: flex; gap: 18px; align-items: flex-start; flex-wrap: wrap; }
+    .help-layout { display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; }
     
-    .canon-nav-bank {
+    .help-category-bank {
       flex: 1;
       min-width: 270px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
       background: #121212;
       border: 1px solid #333;
       border-radius: 12px;
       padding: 12px;
-      text-align: left;
     }
-    .canon-bank-header-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-    .canon-bank-header {
+    .help-category-btn {
+      background: #2c2c2e;
+      color: #fff;
+      border: 1px solid #444;
+      border-radius: 8px;
+      padding: 12px 14px;
       font-size: 13px;
       font-weight: bold;
-      color: #2dd4bf;
-      margin: 0;
-      text-transform: uppercase;
-    }
-    .btn-canon-back {
-      background: #2c2c2e;
-      color: #2dd4bf;
-      border: 1px solid #2dd4bf;
-      border-radius: 6px;
-      padding: 3px 8px;
-      font-size: 11px;
-      font-weight: bold;
+      text-align: left;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s;
     }
-    .canon-bank-list {
+    .help-category-btn:hover { background: #3a3a3c; }
+    .help-category-btn.active {
+      background: #0369a1;
+      color: #fff;
+      border-color: #38bdf8;
+    }
+    .help-category-btn.crisis {
+      border-color: #ef4444;
+      color: #fca5a5;
+    }
+    .help-category-btn.crisis.active {
+      background: #991b1b;
+      color: #fff;
+      border-color: #ef4444;
+    }
+
+    .help-results-console {
+      flex: 2;
+      min-width: 320px;
+      background: #121212;
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 16px;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 12px;
       max-height: 520px;
       overflow-y: auto;
     }
-    .canon-bank-item {
-      background: #2c2c2e;
-      border: 1px solid #444;
-      border-radius: 8px;
-      padding: 10px;
-      cursor: pointer;
+    .help-console-header {
+      font-size: 15px;
+      font-weight: 900;
+      color: #38bdf8;
       text-align: left;
-      transition: background 0.15s;
+      margin: 0 0 6px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-    .canon-bank-item.active {
-      border-color: #2dd4bf;
-      background: #0d332d;
-    }
-
-    .canon-study-desk {
-      flex: 2.3;
-      min-width: 320px;
+    .resource-card {
+      background: #1c1c1e;
+      border: 1px solid #333;
+      border-radius: 10px;
+      padding: 14px 16px;
+      text-align: left;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
     }
-    .canon-meta-card {
-      background: #151516;
-      border: 1px solid #333;
-      border-radius: 12px;
-      padding: 14px 18px;
-      text-align: left;
+    .resource-card.crisis-card {
+      border-color: #ef4444;
+      background: #2b1111;
     }
-    .canon-work-title {
-      font-size: 20px;
+    .resource-card-title {
+      font-size: 16px;
       font-weight: 900;
-      color: #2dd4bf;
-      margin: 0 0 2px 0;
+      color: #fff;
+      margin: 0;
     }
-    .canon-work-root {
+    .resource-card-desc {
       font-size: 13px;
-      font-weight: bold;
-      color: #aaa;
-      margin-bottom: 8px;
+      color: #ccc;
+      line-height: 1.4;
+      margin: 0;
     }
-    .canon-meta-badges {
+    .resource-card-actions {
       display: flex;
       gap: 8px;
       flex-wrap: wrap;
-      margin-bottom: 8px;
+      margin-top: 4px;
     }
-    .meta-badge {
-      background: #2c2c2e;
-      color: #fff;
-      border: 1px solid #555;
-      padding: 4px 8px;
+    .btn-res-call {
+      background: #30d158;
+      color: #000;
+      text-decoration: none;
+      padding: 8px 14px;
       border-radius: 6px;
-      font-size: 11px;
-      font-weight: bold;
-    }
-    .canon-work-blurb {
-      font-size: 13px;
-      line-height: 1.5;
-      color: #ddd;
-      margin: 0;
-    }
-
-    /* DUAL STUDY PANE */
-    .canon-dual-pane {
-      display: flex;
-      gap: 12px;
-      width: 100%;
-      height: 400px;
-    }
-    .canon-outline-pane {
-      flex: 1;
-      background: #111;
-      border: 1px solid #333;
-      border-radius: 10px;
-      padding: 14px;
-      overflow-y: auto;
-      text-align: left;
-      font-size: 13px;
-      line-height: 1.6;
-      color: #ccc;
-    }
-    .canon-outline-title {
       font-size: 12px;
       font-weight: 900;
-      color: #2dd4bf;
-      text-transform: uppercase;
-      margin: 0 0 8px 0;
-      border-bottom: 1px solid #222;
-      padding-bottom: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
-    .canon-outline-pane ul {
-      margin: 0;
-      padding-left: 18px;
+    .btn-res-map {
+      background: #ff9500;
+      color: #000;
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 900;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
-    .canon-outline-pane li {
-      margin-bottom: 6px;
-    }
-    .canon-text-pane {
-      flex: 1.4;
-      background: #000;
-      border: 1px solid #333;
-      border-radius: 10px;
-      padding: 16px 18px;
-      overflow-y: auto;
-      text-align: left;
-      font-family: Georgia, serif;
-      font-size: 15px;
-      line-height: 1.7;
-      color: #eaeaea;
-      white-space: pre-wrap;
+    .btn-res-crisis {
+      background: #ef4444;
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 900;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
 
-    .wisdom-quote-panel {
-      margin-top: 18px;
-      background: #151516;
-      border: 1px solid #2dd4bf;
+    /* PRACTICAL LIVING QUOTE TICKER */
+    .practical-quote-box {
+      margin-top: 20px;
+      background: #18222d;
+      border: 1px solid #38bdf8;
       border-radius: 12px;
-      padding: 14px 20px;
+      padding: 16px 20px;
+      text-align: center;
       display: flex;
       flex-direction: column;
-      gap: 6px;
-      text-align: center;
+      gap: 8px;
     }
-    .wisdom-quote-text {
+    .practical-quote-text {
       font-family: Georgia, serif;
+      font-size: 16px;
       font-style: italic;
-      font-size: 15px;
-      color: #fff;
+      color: #f0fdfa;
+      line-height: 1.5;
       margin: 0;
     }
-    .wisdom-quote-author {
+    .practical-quote-author {
+      font-size: 13px;
+      font-weight: bold;
+      color: #38bdf8;
+      margin: 0;
+    }
+    .practical-quote-controls {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 4px;
+    }
+    .btn-quote-step {
+      background: #2c2c2e;
+      color: #38bdf8;
+      border: 1px solid #38bdf8;
+      border-radius: 6px;
+      padding: 6px 14px;
       font-size: 12px;
       font-weight: bold;
-      color: #2dd4bf;
-      margin: 0;
+      cursor: pointer;
     }
 
     .privacy-notice-badge {
@@ -593,7 +600,7 @@
     <div class="location-modal-content">
       <h3 style="color: #ff9500; margin-top: 0; font-size: 20px;">📍 Enable Location Access</h3>
       <p style="color: #ccc; font-size: 14px; text-align: left; line-height: 1.5;">
-        To center maps on your current location, allow location access in your device settings:
+        To center maps and community resources on your current location, allow location access in your device settings:
       </p>
       <div style="background: #121212; border: 1px solid #333; border-radius: 8px; padding: 12px; text-align: left; font-size: 12px; color: #aaa; margin-bottom: 20px;">
         <strong>iPhone / iPad:</strong><br>
@@ -615,7 +622,7 @@
       </h1>
     </div>
 
-    <!-- 7-TAB SUITE: CLEAN WEBPHONE, WEBTEXT, CANON TAB -->
+    <!-- CLEANED UP TAB BAR -->
     <div class="tab-bar">
       <button class="tab-btn tab-phone active" onclick="switchTab('phone')">
         WebPhone
@@ -641,9 +648,9 @@
         🏛️ Art Gallery
         <span class="sub-tagline">World Masterpieces</span>
       </button>
-      <button class="tab-btn tab-canon" onclick="switchTab('canon')">
-        📜 Sacred Canon
-        <span class="sub-tagline">8 Root Traditions</span>
+      <button class="tab-btn tab-help" onclick="switchTab('help')">
+        🤝 Help & Resources
+        <span class="sub-tagline">Essential Community Aid</span>
       </button>
     </div>
   </div>
@@ -910,6 +917,7 @@
           <button id="btnMuseumCMA" class="museum-inst-btn" onclick="setMuseumScope('cma')">🏛️ Cleveland (CMA)</button>
         </div>
 
+        <!-- GENRE BAR WITH CLEAN DYNAMIC HIGHLIGHT -->
         <div class="art-genre-bar">
           <button class="art-genre-btn active" onclick="triggerArtSearch('impressionism', 'Impressionism', this)">🎨 Impressionism</button>
           <button class="art-genre-btn" onclick="triggerArtSearch('renaissance', 'Renaissance', this)">⚜️ Renaissance</button>
@@ -966,77 +974,52 @@
       </div>
     </div>
 
-    <!-- 📜 SACRED CANON & SCHOLASTIC RESEARCH TAB -->
-    <div id="tab-canon" class="tab-content">
-      <h2 style="color: #2dd4bf; margin-top: 0;">📜 Sacred Wisdom Canon & Scholastic Research Base</h2>
-      <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Select an umbrella tradition to explore lineages, systematizers, outlines, and translations</p>
+    <!-- 🤝 HELP & COMMUNITY RESOURCES TAB -->
+    <div id="tab-help" class="tab-content">
+      <h2 style="color: #38bdf8; margin-top: 0;">🤝 Essential Community Help & Well-Being Directory</h2>
+      <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Find physical, mental, and social support services with direct-dial and mapping links</p>
 
-      <div class="canon-box">
-        <!-- 8 GRAND UMBRELLAS -->
-        <div class="canon-umbrella-bar">
-          <button class="canon-umb-btn" onclick="selectUmbrella('christianity', this)">✝️ Christianity</button>
-          <button class="canon-umb-btn active" onclick="selectUmbrella('buddhism', this)">☸️ Buddhism</button>
-          <button class="canon-umb-btn" onclick="selectUmbrella('hinduism', this)">🕉️ Hinduism</button>
-          <button class="canon-umb-btn" onclick="selectUmbrella('islam', this)">☪️ Islam</button>
-          <button class="canon-umb-btn" onclick="selectUmbrella('western', this)">🏛️ Western Phil</button>
-          <button class="canon-umb-btn" onclick="selectUmbrella('eastern', this)">☯️ Eastern Phil</button>
-          <button class="canon-umb-btn" onclick="selectUmbrella('esoteric', this)">🔮 Esotericism</button>
-          <button class="canon-umb-btn" onclick="selectUmbrella('tantra', this)">🔱 Yoga & Śaivism</button>
+      <div class="help-box">
+        <!-- TOP LOCATION INPUT -->
+        <div class="help-location-bar">
+          <label for="helpLocationInput" style="font-size: 13px; font-weight: bold; color: #ccc;">Your City or Zip:</label>
+          <input type="text" id="helpLocationInput" class="help-loc-input" placeholder="e.g., Seattle, WA or 98101" value="Seattle, WA">
+          <button class="btn-help-loc" onclick="updateHelpLocation()">Update Location</button>
+          <button class="btn-help-loc" style="background:#30d158;" onclick="detectHelpGPS()">📍 Use GPS</button>
         </div>
 
-        <div class="canon-layout">
-          <!-- LEFT BANK: DRILLDOWN -->
-          <div class="canon-nav-bank">
-            <div class="canon-bank-header-row">
-              <h4 id="canonBankTitle" class="canon-bank-header">Lineages & Schools</h4>
-              <button id="canonBackBtn" class="btn-canon-back" style="display:none;" onclick="navBackOneLevel()">← Back</button>
-            </div>
-            <div id="canonBankList" class="canon-bank-list">
-              <!-- Populated dynamically -->
-            </div>
+        <div class="help-layout">
+          <!-- LEFT BANK: CATEGORIES -->
+          <div class="help-category-bank">
+            <button class="help-category-btn active" onclick="selectHelpCategory('housing', this)">🏠 Housing & Shelter</button>
+            <button class="help-category-btn" onclick="selectHelpCategory('addiction', this)">💊 Drug Addiction & Recovery</button>
+            <button class="help-category-btn" onclick="selectHelpCategory('food', this)">🥫 Food Resources & Meals</button>
+            <button class="help-category-btn" onclick="selectHelpCategory('hygiene', this)">🚿 Hygiene & Showers</button>
+            <button class="help-category-btn" onclick="selectHelpCategory('financial', this)">💵 Financial & Utility Aid</button>
+            <button class="help-category-btn" onclick="selectHelpCategory('family', this)">🍼 Family & Pediatric Care</button>
+            <button class="help-category-btn" onclick="selectHelpCategory('mental', this)">🧠 Mental Health Services</button>
+            <button class="help-category-btn crisis" onclick="selectHelpCategory('suicide', this)">☎️ Crisis & Suicide (988)</button>
           </div>
 
-          <!-- RIGHT STUDY DESK: DUAL OUTLINE + TRANSLATION PANE -->
-          <div class="canon-study-desk">
-            <div id="canonMetaCard" class="canon-meta-card">
-              <h3 id="canonWorkTitle" class="canon-work-title">Mūlamadhyamakakārikā</h3>
-              <div id="canonWorkRoot" class="canon-work-root">Fundamental Verses on the Middle Way</div>
-              <div class="canon-meta-badges">
-                <span id="badgeAuthor" class="meta-badge">Nāgārjuna (c. 150 – 250 CE)</span>
-                <span id="badgeSchool" class="meta-badge">Madhyamaka</span>
-                <span id="badgeRole" class="meta-badge">Root Systematizer of Emptiness</span>
-              </div>
-              <p id="canonWorkBlurb" class="canon-work-blurb">
-                The cornerstone treatise of the Middle Way school. Deconstructs all assertions of inherent existence (svabhāva), proving that dependent co-arising and emptiness are identical.
-              </p>
-            </div>
-
-            <!-- DUAL PANE -->
-            <div class="canon-dual-pane">
-              <div class="canon-outline-pane">
-                <div class="canon-outline-title">📌 Structural Idea Outline</div>
-                <div id="canonOutlineContent">
-                  <!-- Populated dynamically -->
-                </div>
-              </div>
-
-              <div id="canonTextPane" class="canon-text-pane">
-                <!-- Populated dynamically -->
-              </div>
-            </div>
+          <!-- RIGHT CONSOLE: CARDS -->
+          <div id="helpResultsConsole" class="help-results-console">
+            <!-- Dynamically populated -->
           </div>
         </div>
 
-        <!-- 60-SECOND QUOTE TICKER -->
-        <div class="wisdom-quote-panel">
-          <p id="canonQuoteText" class="wisdom-quote-text">"Whatever is dependently co-arisen, that is explained to be emptiness."</p>
-          <p id="canonQuoteCitation" class="wisdom-quote-author">— Nāgārjuna | Mūlamadhyamakakārikā (Madhyamaka)</p>
+        <!-- PRACTICAL LIVING & RESILIENCE QUOTE TICKER -->
+        <div class="practical-quote-box">
+          <p id="practicalQuoteText" class="practical-quote-text">"Energy and persistence conquer all things."</p>
+          <p id="practicalQuoteAuthor" class="practical-quote-author">— Benjamin Franklin</p>
+          <div class="practical-quote-controls">
+            <button class="btn-quote-step" onclick="cyclePracticalQuote()">🎲 Next Helpful Quote</button>
+          </div>
         </div>
 
       </div>
 
       <div class="privacy-notice-badge">
-        🔒 <b>End-to-End Encrypted (AES-256-GCM):</b> All video, voice, and web text are scrambled directly on your device before transmission. Zero data is logged, stored, or shared.
+        🔒 <b>Community Support:</b> All emergency hotlines (988, 211, SAMHSA) are completely free, confidential, and accessible 24/7.
       </div>
     </div>
 
@@ -1198,7 +1181,8 @@
 
     window.addEventListener('DOMContentLoaded', () => {
       loadIceServers();
-      initCanonEngine();
+      initHelpResources();
+      initPracticalQuotes();
 
       const artInput = document.getElementById('customArtInput');
       if (artInput) {
@@ -1276,9 +1260,9 @@
         if (!hasLoadedArtOnce) {
           triggerArtSearch('impressionism', 'Impressionism');
         }
-      } else if (tabName === 'canon') {
+      } else if (tabName === 'help') {
         document.querySelectorAll('.tab-btn')[6].classList.add('active');
-        document.getElementById('tab-canon').classList.add('active');
+        document.getElementById('tab-help').classList.add('active');
       }
     }
 
@@ -1417,7 +1401,7 @@
     }
 
     // =======================================================
-    // MULTI-MUSEUM ART GALLERY ENGINE (BUTTON HIGHLIGHT FIX)
+    // MULTI-MUSEUM ART GALLERY ENGINE (WITH BUTTON HIGHLIGHT FIX)
     // =======================================================
     let hasLoadedArtOnce = false;
     let currentMuseumScope = 'all';
@@ -1658,450 +1642,286 @@
     }
 
     // =======================================================
-    // 📜 8 GRAND UMBRELLAS SCHOLASTIC CANON & STUDY ENGINE
+    // 🤝 HELP & COMMUNITY RESOURCES DIRECTORY ENGINE
     // =======================================================
-    const CANON_INDEX = {
-      buddhism: {
-        label: "Buddhism",
-        schools: [
+    let currentHelpLocation = "Seattle, WA";
+    let activeHelpCategory = "housing";
+
+    const HELP_RESOURCES = {
+      housing: {
+        title: "🏠 Housing, Shelters & Eviction Defense",
+        cards: [
           {
-            name: "Madhyamaka (Middle Way)",
-            blurb: "The dialectic of universal emptiness (śūnyatā), demonstrating that all phenomena arise dependently and lack inherent essence.",
-            authors: [
-              {
-                name: "Nāgārjuna",
-                era: "c. 150 – 250 CE",
-                role: "Root Systematizer of Emptiness",
-                works: [
-                  {
-                    title: "Mūlamadhyamakakārikā",
-                    rootMeaning: "Fundamental Verses on the Middle Way",
-                    importance: "Deconstructs all assertions of inherent existence (svabhāva), proving that dependent co-arising and emptiness are identical.",
-                    outline: [
-                      "I. Refutation of Conditions: Entities never arise from self, other, both, or without cause.",
-                      "II. Examination of Motion: The mover does not move, the non-mover does not move, nor does that being moved move.",
-                      "III. The Two Truths: The Buddha's teaching relies on Conventional Truth and Ultimate Truth.",
-                      "IV. Equivalence of Saṃsāra and Nirvāṇa: Not the slightest difference exists between the limits of cyclic existence and peace."
-                    ],
-                    text: "1. Neither from itself nor from another, nor from both, nor without a cause, does anything whatever, anywhere arise.\n\n2. There are four conditions: efficient, objective, immediate, and dominant. There is no fifth condition.\n\n3. The self-nature of entities does not exist in conditions. If inherent self-nature does not exist, other-nature cannot exist.\n\n4. Whatever is dependently co-arisen, that is explained to be emptiness. That, being a dependent designation, is itself the Middle Way."
-                  }
-                ]
-              }
-            ]
+            name: "National Emergency Shelter Locator (HUD)",
+            desc: "Immediate emergency shelter, transitional housing, and local rapid rehousing programs.",
+            phone: "211",
+            mapQuery: "emergency homeless shelter"
           },
           {
-            name: "Tibetan Vajrayāna (Lamdré / Tantra)",
-            blurb: "The non-dual integration of clear light and emptiness centered on the Path with Its Fruit.",
-            authors: [
-              {
-                name: "Mahāsiddha Virūpa",
-                era: "c. 9th Century CE",
-                role: "Originator of the Lamdré Tradition",
-                works: [
-                  {
-                    title: "Vajra Verses of the Inherent Mind",
-                    rootMeaning: "Vajra Couplets of Path and Fruit",
-                    importance: "The foundational lines outlining the threefold vision and the indivisibility of mind and appearance.",
-                    outline: [
-                      "I. External Appearance: Everything appearing to the senses is an expression of mind.",
-                      "II. Nature of Mind: Mind itself is unborn, devoid of center, edge, coming, or going.",
-                      "III. Non-Duality: Realizing clarity without contrivance is the realization of the Great Seal (Mahāmudrā)."
-                    ],
-                    text: "The external appearance is mind;\nMind is the illusion-like non-arising;\nWhen non-arising is recognized as ineffable clarity,\nSaṃsāra and Nirvāṇa are experienced as indivisible.\n\nThe root of all phenomena is mind itself;\nMind itself has no origin, location, or destination;\nRemaining relaxed in that natural state without alteration\nis the supreme realization."
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      christianity: {
-        label: "Christianity",
-        schools: [
-          {
-            name: "Apophatic & Rhineland Mysticism",
-            blurb: "Contemplative negative theology and the breakthrough of the soul into the uncreated divine ground.",
-            authors: [
-              {
-                name: "Meister Eckhart",
-                era: "c. 1260 – 1328 CE",
-                role: "Rhineland Contemplative Systematizer",
-                works: [
-                  {
-                    title: "Sermon: Qui Audit Me",
-                    rootMeaning: "The Breakthrough into the Divine Ground",
-                    importance: "Examines the uncreated eye of consciousness where the soul and God share identical knowledge and love.",
-                    outline: [
-                      "I. The Aristocratic Soul: A divine particle within humanity that remains forever uncreated.",
-                      "II. Detachment (Gelassenheit): Renouncing all forms, images, and conceptual crutches.",
-                      "III. The Single Eye: The eye through which I see God is the very eye through which God sees me."
-                    ],
-                    text: "The eye through which I see God is the same eye through which God sees me; my eye and God's eye are one eye, one seeing, one knowing, one love.\n\nThere is something in the soul that is uncreated and uncreatable. If the whole soul were such, it would be uncreated and uncreatable, and this is the Intellect.\n\nBe silent, and do not chatter about God; for in speaking about Him in concepts, you lie."
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      hinduism: {
-        label: "Hinduism",
-        schools: [
-          {
-            name: "Advaita Vedānta",
-            blurb: "Absolute non-dualism establishing that the individual witness (Ātman) and the supreme reality (Brahman) are identical.",
-            authors: [
-              {
-                name: "Ādi Śaṅkarācārya",
-                era: "c. 8th Century CE",
-                role: "Consolidator of Advaita Non-Dualism",
-                works: [
-                  {
-                    title: "Vivekacūḍāmaṇi",
-                    rootMeaning: "Crest-Jewel of Discrimination",
-                    importance: "The definitive pedagogical handbook on separating the immortal witness from the five empirical sheaths.",
-                    outline: [
-                      "I. The Qualification of the Aspirant: Cultivating discrimination (viveka) and dispassion (vairāgya).",
-                      "II. Analysis of the Five Sheaths (Pañca-Kośa): Deconstructing body, breath, mind, intellect, and bliss.",
-                      "III. The Witness (Sākṣin): Consciousness shines untainted by the modifications of nature."
-                    ],
-                    text: "Brahman is the absolute reality; the manifest world is an empirical appearance; the individual self is non-different from Brahman alone.\n\nThat which is the witness of the waking, dream, and dreamless sleep states, which perceives the mind and its operations, know that to be your real Self.\n\nJust as iron infused with fire appears as fire, so the intellect illuminated by consciousness appears conscious."
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      islam: {
-        label: "Islam",
-        schools: [
-          {
-            name: "Sufi Metaphysics (ʿIrfān)",
-            blurb: "The doctrine of the Unity of Existence (Waḥdat al-Wujūd) and the contemplation of the Divine Names.",
-            authors: [
-              {
-                name: "Ibn ʿArabī",
-                era: "1165 – 1240 CE",
-                role: "Al-Shaykh al-Akbar (The Greatest Master)",
-                works: [
-                  {
-                    title: "Fuṣūṣ al-Ḥikam",
-                    rootMeaning: "The Ringstones of Wisdom",
-                    importance: "Outlines how each prophet represents a specific jewel of divine consciousness within the primordial human mirror.",
-                    outline: [
-                      "I. The Mirror of Creation: The cosmos as an unpolished mirror until Adam's realization.",
-                      "II. The Divine Names: Manifest multiplicity is the self-disclosure (tajallī) of the One.",
-                      "III. Universal Reception: The heart of the gnostic expands to receive all forms of spiritual belief."
-                    ],
-                    text: "My heart has become capable of every form: a pasture for gazelles and a convent for Christian monks,\nAnd a temple for idols and the pilgrim's Kaʿba, and the tables of the Torah and the book of the Quran.\nI follow the religion of Love: whatever way Love's camels take, that is my religion and my faith."
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      western: {
-        label: "Western Philosophy",
-        schools: [
-          {
-            name: "Neoplatonism & Classical Dialectic",
-            blurb: "The ascent of the soul through beauty, intellectual forms, and unification with the transcendent One.",
-            authors: [
-              {
-                name: "Plotinus",
-                era: "c. 204 – 270 CE",
-                role: "Architect of Neoplatonic Metaphysics",
-                works: [
-                  {
-                    title: "The Enneads (Treatise I.6: On Beauty)",
-                    rootMeaning: "Ascent from the Material to the Intelligible",
-                    importance: "Argues that material symmetry is only a shadow of internal intelligible beauty, requiring moral sculpting of the soul.",
-                    outline: [
-                      "I. Critique of Pure Symmetry: Formless virtues (justice, bravery) are beautiful without physical balance.",
-                      "II. Sculpting the Statue: Stripping away excess until internal divine virtue shines forth.",
-                      "III. The Flight of the Alone to the Alone: Transcending Intellect into communion with the One."
-                    ],
-                    text: "Withdraw into yourself and look. And if you do not find yourself beautiful yet, act as does the creator of a statue that is to be made beautiful: he cuts away here, he smoothes there, he makes this line lighter, this other purer, until a lovely face has grown upon his work.\n\nNever did eye see the sun unless it had first become sunlike, and never can the soul have vision of the First Beauty unless itself be beautiful."
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      eastern: {
-        label: "Eastern Philosophy",
-        schools: [
-          {
-            name: "Daoism (Classic Metaphysical)",
-            blurb: "Effortless action (Wu Wei), nameless spontaneity (Ziran), and return to the uncarved block (Pu).",
-            authors: [
-              {
-                name: "Laozi",
-                era: "c. 4th Century BCE",
-                role: "Patriarch of Classical Daoism",
-                works: [
-                  {
-                    title: "Dao De Jing",
-                    rootMeaning: "The Classic of the Way and Its Virtue",
-                    importance: "The foundational text establishing paradox, yieldingness, and harmony with natural law over rigid social convention.",
-                    outline: [
-                      "I. The Ineffable Source: The named is the mother of ten thousand things; the nameless is eternal.",
-                      "II. The Principle of Non-Contriving: Practice non-action, and nothing remains ungoverned.",
-                      "III. The Power of Yielding: Water benefits all things and does not compete, settling where none wish to be."
-                    ],
-                    text: "The Tao that can be spoken of is not the eternal Tao.\nThe name that can be named is not the eternal name.\n\nThe highest good is like water.\nWater gives life to the ten thousand things and does not strive.\nIt flows in places men reject and so is like the Tao.\n\nIn dwelling, live close to the ground.\nIn thinking, keep to what is simple.\nIn conflict, be fair and generous."
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      esoteric: {
-        label: "Esotericism & Mysticism",
-        schools: [
-          {
-            name: "Hermeticism & Inner Cosmology",
-            blurb: "Cosmic correspondences, mental alchemy, and the regeneration of spiritual vision through universal law.",
-            authors: [
-              {
-                name: "Hermes Trismegistus",
-                era: "Alexandrian Canon",
-                role: "Patriarch of Hermetic Philosophy",
-                works: [
-                  {
-                    title: "Tabula Smaragdina (The Emerald Tablet)",
-                    rootMeaning: "The Axioms of Universal Transmutation",
-                    importance: "The classical formula uniting microcosm and macrocosm through the operation of the One Substance.",
-                    outline: [
-                      "I. The Axiom of Correspondence: That which is Below matches that which is Above.",
-                      "II. The Parentage of the Work: Its father is the Sun, its mother the Moon, the Wind carried it in its belly.",
-                      "III. The Separation of the Subtle: Gently separate the fine from the gross with great ingenuity."
-                    ],
-                    text: "Tis true without lying, certain and most true.\nThat which is below is like that which is above, and that which is above is like that which is below, to do the miracles of one only thing.\n\nAnd as all things have been and arose from one by the meditation of one: so all things have their birth from this one thing by adaptation.\n\nThe Sun is its father, the Moon its mother, the Wind hath carried it in its belly, the Earth is its nurse."
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      tantra: {
-        label: "Yoga, Śaivism & Tantra",
-        schools: [
-          {
-            name: "Non-Dual Kashmir Śaivism (Trika)",
-            blurb: "Recognition (Pratyabhijñā) of all reality as the playful, pulsating vibration (Spanda) of pure universal consciousness (Śiva-Śakti).",
-            authors: [
-              {
-                name: "Abhinavagupta",
-                era: "c. 975 – 1025 CE",
-                role: "Master Synthesizer of Non-Dual Tantra",
-                works: [
-                  {
-                    title: "Bodhadakṣiṇā (Anubhava-stotra)",
-                    rootMeaning: "Direct Experience of Consciousness",
-                    importance: "Condenses the expansive Tantrāloka into direct recognition that the entire cosmos is the self-radiant light (Prakāśa) of Śiva.",
-                    outline: [
-                      "I. The Error of Division: Bondage consists in conceptualizing oneself as isolated from the universe.",
-                      "II. Spanda (Cosmic Pulsation): Consciousness is not inert; it vibrates dynamically as all appearances.",
-                      "III. Sudden Recognition (Pratyabhijñā): Realizing that whatever is seen, felt, or known is your own expansive self."
-                    ],
-                    text: "You are the one universal consciousness shining forth in myriad forms.\nThere is no world outside of You, nor are You separated from the world.\n\nJust as a reflection appears inside a mirror without adding to it or diminishing it,\nso the entire universe shines inside the mirror of your own supreme awareness.\n\nRecognize this, and be free at this very moment."
-                  }
-                ]
-              }
-            ]
+            name: "National Eviction Prevention & Rental Aid",
+            desc: "Emergency rental assistance, legal tenant defense, and eviction diversion programs.",
+            phone: "800-569-4287",
+            mapQuery: "housing authority rental assistance"
           },
           {
-            name: "Classical Rāja Yoga",
-            blurb: "The stilling of the cognitive fluctuations of awareness to reveal the seer in its true immutable nature.",
-            authors: [
-              {
-                name: "Patañjali",
-                era: "c. 2nd Century BCE - 4th Century CE",
-                role: "Codifier of Classical Yoga",
-                works: [
-                  {
-                    title: "Yoga Sūtras (Samādhi Pāda)",
-                    rootMeaning: "Aphorisms on Spiritual Unification",
-                    importance: "Lays down the psychological foundation of citta-vṛtti-nirodha (cessation of mental turnings) and absorption.",
-                    outline: [
-                      "I. Definition: Yoga is the cessation of the modifications of the mind-field.",
-                      "II. The Witness: Then the Seer abides in its own authentic essential nature.",
-                      "III. Identification: At other times, the Seer conforms to the movements of thought."
-                    ],
-                    text: "1. Atha yogānuśāsanam: Now, the authoritative instruction on Yoga.\n\n2. Yogaś citta-vṛtti-nirodhaḥ: Yoga is the resolution of the fluctuations of consciousness.\n\n3. Tadā draṣṭuḥ svarūpe 'vasthānam: Then the Seer abides in its own true, uncontaminated nature.\n\n4. Vṛtti-sārūpyam itaratra: At other times, consciousness mistakenly identifies with its passing thoughts."
-                  }
-                ]
-              }
-            ]
+            name: "Youth & Young Adult Emergency Shelter Line",
+            desc: "24/7 dedicated crisis line and immediate shelter for runaway or housing-insecure youth.",
+            phone: "800-786-2929",
+            mapQuery: "youth shelter"
+          }
+        ]
+      },
+      addiction: {
+        title: "💊 Substance Use & Addiction Recovery",
+        cards: [
+          {
+            name: "SAMHSA National Recovery Helpline",
+            desc: "Free, confidential, 24/7 information service for individuals facing substance use disorders.",
+            phone: "800-662-4357",
+            mapQuery: "substance abuse treatment center"
+          },
+          {
+            name: "Local Detox & Withdrawal Management Centers",
+            desc: "Medically supervised detox, sobering centers, and inpatient stabilization programs.",
+            phone: "211",
+            mapQuery: "detox center"
+          },
+          {
+            name: "Harm Reduction, Syringe Exchange & Naloxone Sites",
+            desc: "Free overdose reversal supplies (Narcan/Naloxone), testing strips, and health navigation.",
+            phone: "211",
+            mapQuery: "harm reduction needle exchange"
+          }
+        ]
+      },
+      food: {
+        title: "🥫 Food Banks, Soup Kitchens & Meal Programs",
+        cards: [
+          {
+            name: "Feeding America Community Food Pantry Network",
+            desc: "Weekly free grocery distribution, fresh produce boxes, and emergency dry food rations.",
+            phone: "211",
+            mapQuery: "food bank pantry"
+          },
+          {
+            name: "Daily Community Soup Kitchens & Hot Meals",
+            desc: "Daily hot lunch and dinner services open to all members of the community without ID.",
+            phone: "211",
+            mapQuery: "soup kitchen free hot meal"
+          },
+          {
+            name: "SNAP / EBT Emergency Food Assistance Office",
+            desc: "State emergency food stamps expedited applications for low-income and unhoused individuals.",
+            phone: "800-221-5689",
+            mapQuery: "DSHS community services SNAP food stamps"
+          }
+        ]
+      },
+      hygiene: {
+        title: "🚿 Showers, Restrooms & Laundry Centers",
+        cards: [
+          {
+            name: "Day Center Free Showers & Hygiene Stations",
+            desc: "Access to private hot showers, hygiene kits, towels, and public restrooms.",
+            phone: "211",
+            mapQuery: "homeless day center showers"
+          },
+          {
+            name: "Community Free Laundry Programs",
+            desc: "Facilities offering free washer and dryer cycles and laundry detergent for low-income families.",
+            phone: "211",
+            mapQuery: "free laundry community center"
+          },
+          {
+            name: "Public Restrooms & Drinking Water Access",
+            desc: "Mapped municipal parks, community centers, and libraries with verified public restrooms.",
+            phone: "211",
+            mapQuery: "public library restroom"
+          }
+        ]
+      },
+      financial: {
+        title: "💵 Financial Assistance & Utility Lifelines",
+        cards: [
+          {
+            name: "2-1-1 United Way Financial Relief Clearinghouse",
+            desc: "Emergency grants for past-due utility shut-offs, rent help, and transit vouchers.",
+            phone: "211",
+            mapQuery: "community action agency financial assistance"
+          },
+          {
+            name: "LIHEAP Electric & Heating Energy Grants",
+            desc: "Federal utility grant assistance to keep winter heat and summer electricity active.",
+            phone: "866-674-6327",
+            mapQuery: "LIHEAP utility assistance office"
+          },
+          {
+            name: "Government Lifeline Free Cellphone & Internet Aid",
+            desc: "Federal subsidies providing free monthly cellular service and discounted home internet.",
+            phone: "800-234-9473",
+            mapQuery: "lifeline assistance phone wireless"
+          }
+        ]
+      },
+      family: {
+        title: "🍼 Family, Diapers & Pediatric Care",
+        cards: [
+          {
+            name: "National Diaper Bank & Infant Essentials",
+            desc: "Free monthly allocations of infant diapers, baby wipes, and infant formula.",
+            phone: "211",
+            mapQuery: "diaper bank family resource center"
+          },
+          {
+            name: "Free Pediatric & Child Health Clinics",
+            desc: "Sliding-scale and free childhood immunizations, well-child checkups, and dental screenings.",
+            phone: "211",
+            mapQuery: "community health center pediatrics"
+          },
+          {
+            name: "Child Care Resource & Subsidy Agency",
+            desc: "Assistance finding subsidized childcare, Head Start programs, and emergency respite care.",
+            phone: "800-424-2246",
+            mapQuery: "head start child care resources"
+          }
+        ]
+      },
+      mental: {
+        title: "🧠 Mental Health Counseling & Community Clinics",
+        cards: [
+          {
+            name: "Community Mental Health Centers (Sliding Scale)",
+            desc: "Walk-in counseling, psychiatric evaluations, peer support groups, and trauma therapy.",
+            phone: "211",
+            mapQuery: "community mental health clinic"
+          },
+          {
+            name: "NAMI National Alliance on Mental Illness HelpLine",
+            desc: "Free peer-support service providing information, resource referrals, and community support.",
+            phone: "800-950-6264",
+            mapQuery: "NAMI mental health support"
+          }
+        ]
+      },
+      suicide: {
+        title: "☎️ 24/7 Crisis & Suicide Lifelines (Dial 988)",
+        cards: [
+          {
+            name: "988 Suicide & Crisis Lifeline (National)",
+            desc: "Free, confidential 24/7 support for anyone in emotional distress, suicidal crisis, or substance panic.",
+            phone: "988",
+            isCrisis: true,
+            mapQuery: "crisis stabilization center"
+          },
+          {
+            name: "Veterans Crisis Line (Dial 988, Press 1)",
+            desc: "Confidential support specialized for military veterans, active service members, and families.",
+            phone: "988",
+            isCrisis: true,
+            mapQuery: "VA medical center mental health"
+          },
+          {
+            name: "The Trevor Project (LGBTQ Youth Crisis Line)",
+            desc: "24/7 suicide prevention and crisis counseling for LGBTQ youth and young adults.",
+            phone: "866-488-7386",
+            isCrisis: true,
+            mapQuery: "LGBTQ community center crisis"
           }
         ]
       }
     };
 
-    let activeUmbrella = 'buddhism';
-    let navState = { level: 'schools', school: null, author: null, work: null };
-
-    function initCanonEngine() {
-      renderSchoolsNav();
-      initCanonQuoteTicker();
+    function initHelpResources() {
+      renderHelpCategory(activeHelpCategory);
     }
 
-    function selectUmbrella(umbKey, clickedBtn) {
-      activeUmbrella = umbKey;
-      document.querySelectorAll('.canon-umb-btn').forEach(btn => btn.classList.remove('active'));
+    function selectHelpCategory(catKey, clickedBtn) {
+      activeHelpCategory = catKey;
+      document.querySelectorAll('.help-category-btn').forEach(btn => btn.classList.remove('active'));
       if (clickedBtn) clickedBtn.classList.add('active');
-
-      navState = { level: 'schools', school: null, author: null, work: null };
-      renderSchoolsNav();
+      renderHelpCategory(catKey);
     }
 
-    function renderSchoolsNav() {
-      const bankTitle = document.getElementById('canonBankTitle');
-      const backBtn = document.getElementById('canonBackBtn');
-      const list = document.getElementById('canonBankList');
+    function updateHelpLocation() {
+      const input = document.getElementById('helpLocationInput');
+      const val = input.value.trim();
+      if (!val) return alert("Please enter a valid city or zip code.");
+      currentHelpLocation = val;
+      renderHelpCategory(activeHelpCategory);
+    }
 
-      bankTitle.innerText = `${CANON_INDEX[activeUmbrella].label}: Lineages`;
-      backBtn.style.display = 'none';
-      list.innerHTML = '';
+    function detectHelpGPS() {
+      if (!navigator.geolocation) return alert("Geolocation not supported on this browser.");
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          currentCoords = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+          currentHelpLocation = `${pos.coords.latitude.toFixed(3)}, ${pos.coords.longitude.toFixed(3)}`;
+          document.getElementById('helpLocationInput').value = "📍 Current GPS Location";
+          renderHelpCategory(activeHelpCategory);
+        },
+        () => alert("Unable to detect location. Please type your city or zip code.")
+      );
+    }
 
-      const schools = CANON_INDEX[activeUmbrella].schools;
-      schools.forEach((school, idx) => {
-        const item = document.createElement('div');
-        item.className = `canon-bank-item ${idx === 0 ? 'active' : ''}`;
-        item.innerHTML = `
-          <span style="font-size:13px; font-weight:bold; color:#2dd4bf; display:block;">📂 ${school.name}</span>
-          <span style="font-size:11px; color:#aaa; line-height:1.4; display:block; margin-top:2px;">${school.blurb}</span>
+    function renderHelpCategory(catKey) {
+      const consoleEl = document.getElementById('helpResultsConsole');
+      const data = HELP_RESOURCES[catKey];
+      if (!data) return;
+
+      let html = `<div class="help-console-header"><span>${data.title}</span><span style="font-size:12px; font-weight:normal; color:#aaa;">Near: ${currentHelpLocation}</span></div>`;
+
+      data.cards.forEach(card => {
+        const mapUrl = currentCoords 
+          ? `https://www.google.com/maps?q=${encodeURIComponent(card.mapQuery)}&ll=${currentCoords.lat},${currentCoords.lng}&z=14`
+          : `https://www.google.com/maps?q=${encodeURIComponent(card.mapQuery + ' in ' + currentHelpLocation)}&z=14`;
+
+        html += `
+          <div class="resource-card ${card.isCrisis ? 'crisis-card' : ''}">
+            <h3 class="resource-card-title">${card.name}</h3>
+            <p class="resource-card-desc">${card.desc}</p>
+            <div class="resource-card-actions">
+              <a href="tel:${card.phone}" class="${card.isCrisis ? 'btn-res-crisis' : 'btn-res-call'}">📞 Call ${card.phone}</a>
+              <a href="${mapUrl}" target="_blank" rel="noopener noreferrer" class="btn-res-map">📍 View Nearby Map</a>
+            </div>
+          </div>
         `;
-        item.onclick = () => renderAuthorsNav(school);
-        list.appendChild(item);
       });
 
-      if (schools.length > 0 && schools[0].authors.length > 0) {
-        displayWork(schools[0].authors[0].works[0], schools[0].authors[0], schools[0]);
-      }
+      consoleEl.innerHTML = html;
     }
 
-    function renderAuthorsNav(school) {
-      navState.level = 'authors';
-      navState.school = school;
-
-      const bankTitle = document.getElementById('canonBankTitle');
-      const backBtn = document.getElementById('canonBackBtn');
-      const list = document.getElementById('canonBankList');
-
-      bankTitle.innerText = `${school.name}: Systematizers`;
-      backBtn.style.display = 'inline-block';
-      list.innerHTML = '';
-
-      school.authors.forEach((author, idx) => {
-        const item = document.createElement('div');
-        item.className = `canon-bank-item ${idx === 0 ? 'active' : ''}`;
-        item.innerHTML = `
-          <span style="font-size:13px; font-weight:bold; color:#fff; display:block;">👤 ${author.name}</span>
-          <span style="font-size:11px; color:#2dd4bf; display:block;">${author.era}</span>
-          <span style="font-size:10px; color:#aaa;">${author.role}</span>
-        `;
-        item.onclick = () => renderWorksNav(author, school);
-        list.appendChild(item);
-      });
-
-      if (school.authors.length > 0 && school.authors[0].works.length > 0) {
-        displayWork(school.authors[0].works[0], school.authors[0], school);
-      }
-    }
-
-    function renderWorksNav(author, school) {
-      navState.level = 'works';
-      navState.author = author;
-
-      const bankTitle = document.getElementById('canonBankTitle');
-      const backBtn = document.getElementById('canonBackBtn');
-      const list = document.getElementById('canonBankList');
-
-      bankTitle.innerText = `${author.name}: Treatises`;
-      backBtn.style.display = 'inline-block';
-      list.innerHTML = '';
-
-      author.works.forEach((work, idx) => {
-        const item = document.createElement('div');
-        item.className = `canon-bank-item ${idx === 0 ? 'active' : ''}`;
-        item.innerHTML = `
-          <span style="font-size:13px; font-weight:bold; color:#2dd4bf; display:block;">📜 ${work.title}</span>
-          <span style="font-size:11px; color:#fff;">${work.rootMeaning}</span>
-        `;
-        item.onclick = () => {
-          document.querySelectorAll('.canon-bank-item').forEach(el => el.classList.remove('active'));
-          item.classList.add('active');
-          displayWork(work, author, school);
-        };
-        list.appendChild(item);
-      });
-
-      if (author.works.length > 0) {
-        displayWork(author.works[0], author, school);
-      }
-    }
-
-    function navBackOneLevel() {
-      if (navState.level === 'works') {
-        renderAuthorsNav(navState.school);
-      } else if (navState.level === 'authors') {
-        renderSchoolsNav();
-      }
-    }
-
-    function displayWork(work, author, school) {
-      document.getElementById('canonWorkTitle').innerText = work.title;
-      document.getElementById('canonWorkRoot').innerText = work.rootMeaning;
-      document.getElementById('badgeAuthor').innerText = `${author.name} (${author.era})`;
-      document.getElementById('badgeSchool').innerText = school.name;
-      document.getElementById('badgeRole').innerText = author.role;
-      document.getElementById('canonWorkBlurb').innerText = work.importance;
-
-      // Left Outline
-      const outlineEl = document.getElementById('canonOutlineContent');
-      let outlineHtml = '<ul>';
-      work.outline.forEach(pt => {
-        outlineHtml += `<li>${pt}</li>`;
-      });
-      outlineHtml += '</ul>';
-      outlineEl.innerHTML = outlineHtml;
-
-      // Right Primary Translation
-      document.getElementById('canonTextPane').innerText = work.text;
-    }
-
-    // 60-SECOND QUOTE ENGINE
-    const CANON_QUOTES = [
-      { quote: "Whatever is dependently co-arisen, that is explained to be emptiness.", cite: "Nāgārjuna | Mūlamadhyamakakārikā (Madhyamaka)" },
-      { quote: "Appearances and mind are non-dual; when mind is recognized as unborn, appearance is freed into its own nature.", cite: "Virūpa | Vajra Verses (Sakya Lamdré)" },
-      { quote: "The eye through which I see God is the same eye through which God sees me; my eye and God's eye are one.", cite: "Meister Eckhart | German Sermons (Apophatic Mysticism)" },
-      { quote: "Brahman is the absolute reality; the world is an appearance; the individual self is non-different from Brahman.", cite: "Ādi Śaṅkara | Vivekacūḍāmaṇi (Advaita Vedānta)" },
-      { quote: "My heart has become capable of every form: a cloister for monks, a temple for idols, a Ka'ba for pilgrims.", cite: "Ibn ʿArabī | Fuṣūṣ al-Ḥikam (Sufi ʿIrfān)" },
-      { quote: "Never did eye see the sun unless it had first become sunlike; nor can any soul see beauty without being itself beautiful.", cite: "Plotinus | Enneads (Neoplatonism)" },
-      { quote: "Water gives life to the ten thousand things and does not strive. It settles where none wish to be.", cite: "Laozi | Dao De Jing (Classical Daoism)" },
-      { quote: "That which is Below corresponds to that which is Above, and that which is Above corresponds to that which is Below.", cite: "Hermes Trismegistus | The Emerald Tablet (Hermeticism)" },
-      { quote: "Just as a reflection appears inside a mirror without adding to it, so the entire universe shines inside your own awareness.", cite: "Abhinavagupta | Bodhadakṣiṇā (Kashmir Śaivism)" },
-      { quote: "Yoga is the resolution of the fluctuating motions of consciousness. Then the Seer rests in its true nature.", cite: "Patañjali | Yoga Sūtras (Rāja Yoga)" }
+    // =======================================================
+    // PRACTICAL LIVING & RESILIENCE QUOTE TICKER (60 SECONDS)
+    // =======================================================
+    const PRACTICAL_QUOTES = [
+      { quote: "Energy and persistence conquer all things.", author: "Benjamin Franklin" },
+      { quote: "It’s not what happens to you, but how you react to it that matters.", author: "Epictetus" },
+      { quote: "You have power over your mind - not outside events. Realize this, and you will find strength.", author: "Marcus Aurelius" },
+      { quote: "The secret of getting ahead is getting started.", author: "Mark Twain" },
+      { quote: "Courage does not always roar. Sometimes courage is the quiet voice at the end of the day saying, 'I will try again tomorrow.'", author: "Mary Anne Radmacher" },
+      { quote: "Small deeds done are better than great deeds planned.", author: "Peter Marshall" },
+      { quote: "Do not let what you cannot do interfere with what you can do.", author: "John Wooden" },
+      { quote: "He who has a why to live can bear almost any how.", author: "Friedrich Nietzsche" },
+      { quote: "Fall seven times, stand up eight.", author: "Traditional Proverb" },
+      { quote: "Waste no more time arguing what a good man should be. Be one.", author: "Marcus Aurelius" },
+      { quote: "An ounce of practice is worth more than tons of preaching.", author: "Mahatma Gandhi" },
+      { quote: "When you come to the end of your rope, tie a knot and hang on.", author: "Franklin D. Roosevelt" }
     ];
 
-    let quoteIdx = 0;
-    function initCanonQuoteTicker() {
-      cycleCanonQuote();
-      setInterval(cycleCanonQuote, 60000);
+    let currentQuoteIdx = 0;
+    let quoteTimer = null;
+
+    function initPracticalQuotes() {
+      cyclePracticalQuote();
+      if (quoteTimer) clearInterval(quoteTimer);
+      quoteTimer = setInterval(cyclePracticalQuote, 60000);
     }
 
-    function cycleCanonQuote() {
-      quoteIdx = Math.floor(Math.random() * CANON_QUOTES.length);
-      const q = CANON_QUOTES[quoteIdx];
-      document.getElementById('canonQuoteText').innerText = `"${q.quote}"`;
-      document.getElementById('canonQuoteCitation').innerText = `— ${q.cite}`;
+    function cyclePracticalQuote() {
+      currentQuoteIdx = Math.floor(Math.random() * PRACTICAL_QUOTES.length);
+      const pick = PRACTICAL_QUOTES[currentQuoteIdx];
+      document.getElementById('practicalQuoteText').innerText = `"${pick.quote}"`;
+      document.getElementById('practicalQuoteAuthor').innerText = `— ${pick.author}`;
     }
 
     function sendInvite(mode = 'video') {
