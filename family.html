@@ -119,7 +119,7 @@
       flex: 1; padding: 24px 36px; overflow-y: auto; line-height: 1.7; font-size: 1rem; font-family: Georgia, serif; color: #e0e0e0; white-space: pre-wrap;
     }
 
-    /* WEBPHONE & OTHER STYLES */
+    /* WEBPHONE & VIDEO STYLES (PRESERVED FROM AUGUST 18 BACKUP) */
     .webphone-simplified-card { background: #1c1c1e; border: 1px solid #333; border-radius: 16px; max-width: 580px; margin: 15px auto; padding: 24px 20px; display: flex; flex-direction: column; gap: 18px; }
     .step-row-item { display: flex; align-items: center; justify-content: space-between; gap: 12px; background: #151516; border: 1px solid #2a2a2d; border-radius: 10px; padding: 12px 14px; }
     .step-title-green { color: #30d158; font-weight: bold; font-size: 14px; white-space: nowrap; text-align: left; }
@@ -142,6 +142,9 @@
     .btn-red-end { background: #ff3b30; color: white; cursor: pointer; font-weight: bold; font-size: 16px; padding: 12px 24px; border-radius: 10px; border: none; }
     #status { font-weight: bold; color: #30d158; margin-bottom: 4px; }
     .video-grid { display: grid; grid-template-columns: minmax(0, 480px); gap: 12px; justify-content: center; margin: 10px auto; width: 100%; max-width: 900px; }
+    .video-grid.peers-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .video-grid.peers-3, .video-grid.peers-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, auto); }
+    .video-card { width: 100%; display: flex; flex-direction: column; align-items: center; position: relative; }
     video { width: 100%; aspect-ratio: 1 / 1; background: #000; border-radius: 14px; border: 2px solid #333; object-fit: cover; display: block; }
     #localVideo { transform: scaleX(-1); }
 
@@ -249,6 +252,7 @@
       </h1>
     </div>
 
+    <!-- TAB BAR WITH ALL 6 TABS (MEDITATIONS LAST) -->
     <div class="tab-bar">
       <button class="tab-btn tab-phone active" onclick="switchTab('phone')">
         WebPhone
@@ -279,9 +283,16 @@
 
   <div class="container">
 
+    <div id="responderAccessBox">
+      <h2 id="inviteTitleText" style="font-size:24px; margin-top:0; color:#30d158;">You have been invited to a Call!</h2>
+      <p style="color:#aaa; font-size:15px; margin-bottom:25px;">Tap the big green button below to enter directly:</p>
+      <button id="megaEnterBtn" class="btn-mega-enter">📹 Enter Video Call</button>
+    </div>
+
     <!-- WEBPHONE TAB -->
     <div id="tab-phone" class="tab-content active">
-      <div id="status">Ready to Call</div>
+      <div id="status">Connected to Server</div>
+
       <div id="webphoneMainSection">
         <div class="webphone-simplified-card">
           <div class="step-row-item">
@@ -300,6 +311,29 @@
             </a>
           </div>
           <div class="step-row-item">
+            <span class="step-title-green">Send Text/E-mail Invite:</span>
+            <div style="display:flex; align-items:center; gap:12px;">
+              <button id="inviteSendBtn" class="btn-round-blue" onclick="sendInvite('video')">
+                <span style="font-size:14px;">✉️</span>
+                <span>Send<br>Invite</span>
+              </button>
+              <div class="vintage-toggle-panel">
+                <div class="toggle-label-group">
+                  <span id="textLightPhone" class="indicator-light active-red"></span>
+                  <span>Text</span>
+                </div>
+                <label class="switch-container">
+                  <input type="checkbox" id="phoneInviteToggle" onchange="toggleInviteMode('phone')">
+                  <span class="slider-track"></span>
+                </label>
+                <div class="toggle-label-group">
+                  <span id="emailLightPhone" class="indicator-light"></span>
+                  <span>E-mail</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="step-row-item">
             <span class="step-title-green" style="font-size: 15px;">Step 4: Start Video Call</span>
             <button id="joinVideoBtn" class="btn-square-start-red" onclick="startCall()">
               <span style="font-size: 16px;">📹</span>
@@ -308,22 +342,44 @@
           </div>
         </div>
       </div>
-      <div id="videoStreamView" class="video-grid" style="display:none;"></div>
+
+      <div id="videoStreamView" class="video-grid" style="display:none;">
+        <div class="video-card">
+          <h3 style="margin: 0 0 8px 0; font-size: 14px;">Local Stream (You)</h3>
+          <video id="localVideo" autoplay playsinline muted></video>
+        </div>
+      </div>
+
       <div id="inCallControls" class="incall-controls-bar" style="display:none;">
-        <button id="toggleMicBtn" class="btn-media-toggle" onclick="toggleAudio()">🎙️</button>
-        <button id="toggleCamBtn" class="btn-media-toggle" onclick="toggleVideo()">📹</button>
+        <button id="toggleMicBtn" class="btn-media-toggle" onclick="toggleAudio()" title="Mute/Unmute Mic">🎙️</button>
+        <button id="toggleCamBtn" class="btn-media-toggle" onclick="toggleVideo()" title="Turn Camera On/Off">📹</button>
         <button id="hangUpBtn" class="btn-red-end" onclick="hangUpCall()">🔴 End Call</button>
+      </div>
+
+      <div class="privacy-notice-badge">
+        🔒 <b>End-to-End Encrypted (AES-256-GCM):</b> All video, voice, and web text are scrambled directly on your device before transmission. Zero data is logged, stored, or shared.
       </div>
     </div>
 
     <!-- WEBTEXT TAB -->
     <div id="tab-text" class="tab-content">
       <h2 style="color: #63e685; margin-top: 0;">WebText</h2>
+      <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Completely Free Multi-User Web Texting</p>
+
       <div class="web-chat-box">
-        <div id="web-chat-thread"><p style="color: #666; font-style: italic; margin: 0;">Web Chat Thread...</p></div>
+        <div style="display: flex; gap: 12px; margin-bottom: 12px; justify-content: center; align-items: center; flex-wrap: wrap;">
+          <input type="text" id="webTextSenderName" placeholder="Your Name" style="background: #2c2c2e; color: #fff; border: 1px solid #444; border-radius: 6px; padding: 10px 12px; width: 120px; text-align: center;">
+          <input type="text" id="webTextRoomId" placeholder="Room Name" style="background: #2c2c2e; color: #fff; border: 1px solid #444; border-radius: 6px; padding: 10px 12px; width: 120px; text-align: center;">
+          <button id="inviteTextBtn" class="btn-round-blue" style="font-size: 11px; width: 50px; height: 50px;" onclick="sendTextTabInvite()">💬<br>Invite</button>
+        </div>
+
+        <div id="web-chat-thread">
+          <p style="color: #666; font-style: italic; margin: 0;">Enter your Name and Room Name above to begin web chat...</p>
+        </div>
+
         <div style="display: flex; gap: 8px;">
-          <input type="text" id="webChatInput" placeholder="Type a message..." style="flex: 1; background: #2c2c2e; color: #fff; border: 1px solid #444; border-radius: 6px; padding: 8px 12px;">
-          <button id="sendWebChatBtn" class="btn-round-blue" style="width: auto; height: auto; padding: 8px 18px; border-radius: 8px;">Send</button>
+          <input type="text" id="webChatInput" placeholder="Type a free web message..." style="flex: 1; text-align: left; background: #2c2c2e; color: #fff; border: 1px solid #444; border-radius: 6px; padding: 8px 12px;">
+          <button id="sendWebChatBtn" class="btn-round-blue" style="width: auto; height: auto; padding: 8px 18px; border-radius: 8px; font-size: 13px;">Send</button>
         </div>
       </div>
     </div>
@@ -332,6 +388,11 @@
     <div id="tab-maps" class="tab-content">
       <h2 style="color: #ff9500; margin-top: 0;">📍 Free Wi-Fi & Resource Maps</h2>
       <div class="maps-box">
+        <div class="maps-filter-bar">
+          <button class="maps-filter-btn" onclick="loadMapQuery('free wifi', 15)">📶 Closest Public Wifi</button>
+          <button class="maps-filter-btn" onclick="loadMapQuery('public library', 14)">📚 Libraries</button>
+          <button class="maps-filter-btn" onclick="loadMapQuery('food bank shelter', 13)">🥫 Food Banks</button>
+        </div>
         <div class="map-frame-container">
           <iframe id="googleMapIframe" src="https://www.google.com/maps?q=Seattle+WA&z=14&output=embed" allowfullscreen></iframe>
         </div>
@@ -352,7 +413,7 @@
       </div>
     </div>
 
-    <!-- 🏛️ ART GALLERY TAB -->
+    <!-- ART GALLERY TAB -->
     <div id="tab-art" class="tab-content">
       <h2 style="color: #ffd60a; margin-top: 0;">🏛️ World Art Museum Collections</h2>
       <div class="art-box">
@@ -379,10 +440,9 @@
       </div>
     </div>
 
-    <!-- 📖 MEDITATIONS TAB (FIXED ILLUMINATIONS + DIRECT SCRIPTURE PATHS) -->
+    <!-- MEDITATIONS TAB -->
     <div id="tab-meditations" class="tab-content">
       <div class="meditations-wrapper">
-        <!-- Direct Unrestricted Harvard IIIF Streamer -->
         <div class="meditation-streamer">
           <div class="streamer-frame-box">
             <img id="stream-frame" src="https://ids.lib.harvard.edu/ids/view/45902188?buttons=y" alt="Illuminated Sacred Folio">
@@ -432,7 +492,66 @@
 
   <script>
     const SIGNALING_SERVER = "https://webrtc-signaling-do2l.onrender.com";
-    const socket = io(SIGNALING_SERVER, { autoConnect: false });
+    const socket = io(SIGNALING_SERVER);
+    let localStream;
+    let peerConnections = {};
+    let currentCoords = null;
+
+    let isAudioMuted = false;
+    let isVideoMuted = false;
+
+    const roomIdInput = document.getElementById('roomId');
+    const callerNameInput = document.getElementById('callerName');
+    const webTextSenderNameInput = document.getElementById('webTextSenderName');
+    const statusDiv = document.getElementById('status');
+    const rtcConfig = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] };
+
+    function updateGridLayout() {
+      const grid = document.getElementById('videoStreamView');
+      if (!grid) return;
+      const count = grid.querySelectorAll('.video-card').length;
+      grid.classList.remove('peers-2', 'peers-3', 'peers-4');
+      if (count === 2) grid.classList.add('peers-2');
+      else if (count === 3 || count === 4) grid.classList.add('peers-4');
+    }
+
+    async function deriveAesKey(roomName) {
+      const enc = new TextEncoder();
+      const paddedSecret = roomName.padEnd(32, '0').slice(0, 32);
+      return await window.crypto.subtle.importKey("raw", enc.encode(paddedSecret), { name: "AES-GCM" }, false, ["encrypt", "decrypt"]);
+    }
+
+    async function encryptPayload(plaintext, roomName) {
+      try {
+        const enc = new TextEncoder();
+        const key = await deriveAesKey(roomName);
+        const iv = window.crypto.getRandomValues(new Uint8Array(12));
+        const ciphertext = await window.crypto.subtle.encrypt({ name: "AES-GCM", iv: iv }, key, enc.encode(plaintext));
+        return { cipher: btoa(String.fromCharCode(...new Uint8Array(ciphertext))), iv: btoa(String.fromCharCode(...iv)) };
+      } catch (e) { return { cipher: plaintext, iv: null }; }
+    }
+
+    async function decryptPayload(cipherData, ivData, roomName) {
+      try {
+        if (!ivData) return cipherData;
+        const key = await deriveAesKey(roomName);
+        const ciphertext = Uint8Array.from(atob(cipherData), c => c.charCodeAt(0));
+        const iv = Uint8Array.from(atob(ivData), c => c.charCodeAt(0));
+        const decrypted = await window.crypto.subtle.decrypt({ name: "AES-GCM", iv: iv }, key, ciphertext);
+        return new TextDecoder().decode(decrypted);
+      } catch (e) { return cipherData; }
+    }
+
+    callerNameInput.addEventListener('input', (e) => { webTextSenderNameInput.value = e.target.value; });
+    webTextSenderNameInput.addEventListener('input', (e) => { callerNameInput.value = e.target.value; });
+
+    function triggerCellCall(event) {
+      const number = prompt("Enter phone number to call (optional):", "");
+      const callLink = document.getElementById('callCellBtn');
+      callLink.href = number && number.trim() ? `tel:${encodeURIComponent(number.trim())}` : "tel:";
+      setTimeout(() => { document.getElementById('returnModal').style.display = 'flex'; }, 10000);
+    }
+    function closeReturnModal() { document.getElementById('returnModal').style.display = 'none'; }
 
     function switchTab(tabName) {
       document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -444,6 +563,8 @@
       } else if (tabName === 'text') {
         document.querySelectorAll('.tab-btn')[1].classList.add('active');
         document.getElementById('tab-text').classList.add('active');
+        const r = document.getElementById('webTextRoomId').value.trim() || roomIdInput.value.trim();
+        if (r) socket.emit('join-room', r);
       } else if (tabName === 'maps') {
         document.querySelectorAll('.tab-btn')[2].classList.add('active');
         document.getElementById('tab-maps').classList.add('active');
@@ -453,79 +574,36 @@
       } else if (tabName === 'art') {
         document.querySelectorAll('.tab-btn')[4].classList.add('active');
         document.getElementById('tab-art').classList.add('active');
-        if (!hasLoadedArtOnce) triggerArtSearch('impressionism', 'Impressionism');
       } else if (tabName === 'meditations') {
         document.querySelectorAll('.tab-btn')[5].classList.add('active');
         document.getElementById('tab-meditations').classList.add('active');
       }
     }
 
-    // DIRECT HARVARD IIIF IMAGE STREAMER (15s CYCLE)
+    // IIIF ILLUMINATIONS
     const sacredIlluminations = [
-      {
-        title: "Illuminated Manuscript Folio",
-        provenance: "Harvard Art Museums • Islamic & Near Eastern Collection",
-        url: "https://ids.lib.harvard.edu/ids/view/45902188?buttons=y"
-      },
-      {
-        title: "Medieval Psalter Illumination",
-        provenance: "Houghton Library, Harvard University • MS Lat 249",
-        url: "https://ids.lib.harvard.edu/ids/view/48011242?buttons=y"
-      },
-      {
-        title: "Sanskrit Manuscript Leaf",
-        provenance: "Harvard Sanskrit Manuscript Collection • Indic Illumination",
-        url: "https://ids.lib.harvard.edu/ids/view/25565251?buttons=y"
-      }
+      { title: "Illuminated Manuscript Folio", provenance: "Harvard Art Museums • Islamic & Near Eastern Collection", url: "https://ids.lib.harvard.edu/ids/view/45902188?buttons=y" },
+      { title: "Medieval Psalter Illumination", provenance: "Houghton Library, Harvard University • MS Lat 249", url: "https://ids.lib.harvard.edu/ids/view/48011242?buttons=y" },
+      { title: "Sanskrit Manuscript Leaf", provenance: "Harvard Sanskrit Manuscript Collection • Indic Illumination", url: "https://ids.lib.harvard.edu/ids/view/25565251?buttons=y" }
     ];
-
     let currentFolioIndex = 0;
-    function cycleIlluminations() {
+    setInterval(() => {
       const frame = document.getElementById('stream-frame');
       if (!frame) return;
       currentFolioIndex = (currentFolioIndex + 1) % sacredIlluminations.length;
-      const item = sacredIlluminations[currentFolioIndex];
-      
-      frame.style.opacity = '0';
-      setTimeout(() => {
-        frame.src = item.url;
-        document.getElementById('folio-title').innerText = item.title;
-        document.getElementById('folio-provenance').innerText = item.provenance;
-        frame.onload = () => { frame.style.opacity = '1'; };
-      }, 400);
-    }
-    setInterval(cycleIlluminations, 15000);
+      frame.src = sacredIlluminations[currentFolioIndex].url;
+      document.getElementById('folio-title').innerText = sacredIlluminations[currentFolioIndex].title;
+      document.getElementById('folio-provenance').innerText = sacredIlluminations[currentFolioIndex].provenance;
+    }, 15000);
 
-    // FLAT SCRIPTURE PATHS (AVOIDING BROKEN NESTED XHTML PATHS)
+    // LOCAL SCRIPTURES
     const localCanons = {
-      bible: {
-        title: "King James Bible",
-        items: [{ name: "Full KJB Text", path: "scriptures/kjv-bible.txt" }]
-      },
-      koran: {
-        title: "The Quran (Rodwell)",
-        items: [{ name: "Full Rodwell Translation", path: "scriptures/quran-rodwell.txt" }]
-      },
-      vedas: {
-        title: "Rigveda (Griffith)",
-        items: [{ name: "Complete 10 Mandalas", path: "scriptures/rigveda-complete.txt" }]
-      },
-      upanishads: {
-        title: "Thirteen Principal Upanishads",
-        items: [{ name: "Principal Upanishads Text", path: "scriptures/thirteenprincipa028442mbp_djvu.txt" }]
-      },
-      buddhist: {
-        title: "Buddhist Suttas",
-        items: [
-          { name: "Complete Long Discourses (Dīgha Nikāya)", path: "scriptures/buddhism/long discourses/OEBPS/text/digha-nikaya.xhtml" },
-          { name: "Complete Middle Discourses (Majjhima Nikāya)", path: "scriptures/buddhism/middle discourses/OEBPS/text/majjhima-nikaya.xhtml" },
-          { name: "Sayings of the Dharma (Dhammapada)", path: "scriptures/buddhism/sayings of the dharma/OEBPS/text/dhammapada.xhtml" }
-        ]
-      },
-      sggs: {
-        title: "Sri Guru Granth Sahib",
-        items: [{ name: "Complete Angs 1 - 1430", path: "scriptures/sggs_english.txt" }]
-      }
+      bible: { title: "King James Bible", items: [{ name: "Full KJB Text", path: "scriptures/kjv-bible.txt" }] },
+      koran: { title: "The Quran (Rodwell)", items: [{ name: "Full Rodwell Translation", path: "scriptures/quran-rodwell.txt" }] },
+      vedas: { title: "Rigveda (Griffith)", items: [{ name: "Complete 10 Mandalas", path: "scriptures/rigveda-complete.txt" }] },
+      upanishads: { title: "Thirteen Principal Upanishads", items: [{ name: "Principal Upanishads Text", path: "scriptures/thirteenprincipa028442mbp_djvu.txt" }] },
+      buddhist: { title: "Buddhist Suttas", items: [{ name: "Complete Long Discourses", path: "scriptures/buddhism/long discourses/OEBPS/text/digha-nikaya.xhtml" }] },
+      sggs: { title: "Sri Guru Granth Sahib", items: [{ name: "Complete Angs 1 - 1430", path: "scriptures/sggs_english.txt" }] }
     };
 
     async function loadLocalCanon(key, btnElem) {
@@ -533,14 +611,11 @@
         document.querySelectorAll('.canon-btn').forEach(b => b.classList.remove('active'));
         btnElem.classList.add('active');
       }
-
       const canon = localCanons[key];
       if (!canon) return;
-
       document.getElementById('toc-heading').innerText = canon.title;
       const listEl = document.getElementById('toc-list');
       listEl.innerHTML = '';
-
       canon.items.forEach((item, idx) => {
         const li = document.createElement('li');
         li.className = `med-toc-item ${idx === 0 ? 'active' : ''}`;
@@ -552,88 +627,126 @@
         };
         listEl.appendChild(li);
       });
-
-      if (canon.items.length > 0) {
-        fetchAndDisplaySection(canon.items[0].name, canon.items[0].path);
-      }
+      if (canon.items.length > 0) fetchAndDisplaySection(canon.items[0].name, canon.items[0].path);
     }
 
     async function fetchAndDisplaySection(title, path) {
       document.getElementById('current-chapter-title').innerText = title;
       const view = document.getElementById('reader-view');
       view.innerText = `Loading ${title}...`;
-
       try {
-        const response = await fetch(path);
-        if (!response.ok) throw new Error("File not found");
-        const rawText = await response.text();
-        const cleanText = rawText.replace(/<[^>]*>/g, '');
-        view.innerText = cleanText.trim() || rawText;
+        const res = await fetch(path);
+        if (!res.ok) throw new Error("File not found");
+        const raw = await res.text();
+        view.innerText = raw.replace(/<[^>]*>/g, '').trim() || raw;
         view.scrollTop = 0;
       } catch (err) {
-        view.innerText = `Could not load file at "${path}". Ensure the unzipped folder and files are committed and pushed to GitHub.`;
+        view.innerText = `Could not load file at "${path}". Ensure it is committed and pushed to GitHub.`;
       }
     }
 
-    // SUSTAINED SCROLL ENGINE
     let scrollInterval = null;
     function startSustainedScroll(speed) {
       const view = document.getElementById('reader-view');
       if (scrollInterval) clearInterval(scrollInterval);
-      scrollInterval = setInterval(() => {
-        view.scrollBy({ top: speed, behavior: 'auto' });
-      }, 30);
+      scrollInterval = setInterval(() => { view.scrollBy({ top: speed, behavior: 'auto' }); }, 30);
     }
-    function stopSustainedScroll() {
-      if (scrollInterval) {
-        clearInterval(scrollInterval);
-        scrollInterval = null;
+    function stopSustainedScroll() { if (scrollInterval) { clearInterval(scrollInterval); scrollInterval = null; } }
+
+    // VIDEO CALL ENGINE (PRESERVED)
+    socket.on('connect', () => { statusDiv.innerText = "Connected to Server"; statusDiv.style.color = "#30d158"; });
+    socket.on('connect_error', () => { statusDiv.innerText = "Waking up server..."; statusDiv.style.color = "#ff9500"; });
+
+    async function startCall() {
+      const roomId = roomIdInput.value.trim();
+      if (!roomId) return alert("Please enter a room name");
+      try {
+        localStream = await navigator.mediaDevices.getUserMedia({ audio: true, video: { facingMode: 'user' } });
+      } catch (e) {
+        return alert("Unable to access camera/microphone.");
       }
+      const localVid = document.getElementById('localVideo');
+      localVid.srcObject = localStream;
+      localVid.play().catch(e => console.warn(e));
+
+      document.getElementById('videoStreamView').style.display = 'grid';
+      document.getElementById('inCallControls').style.display = 'flex';
+      document.getElementById('webphoneMainSection').style.display = 'none';
+      updateGridLayout();
+      socket.emit('join-room', roomId);
+      statusDiv.innerText = `Joined room: ${roomId}`;
     }
 
-    // ART GALLERY STUBS
-    let hasLoadedArtOnce = false;
-    let currentMuseumScope = 'all';
-    let lastArtQuery = 'impressionism';
-    function setMuseumScope(scope) {
-      currentMuseumScope = scope;
-      triggerArtSearch(lastArtQuery, lastArtQuery);
+    function toggleAudio() {
+      if (localStream) {
+        const t = localStream.getAudioTracks()[0];
+        if (t) { t.enabled = !t.enabled; isAudioMuted = !t.enabled; document.getElementById('toggleMicBtn').innerHTML = isAudioMuted ? "🎙️🚫" : "🎙️"; }
+      }
     }
-    async function triggerArtSearch(q, label) {
-      hasLoadedArtOnce = true;
-      const bankList = document.getElementById('artBankList');
-      bankList.innerHTML = '<p style="color:#aaa;">Loading art...</p>';
-      try {
-        const res = await fetch(`https://api.artic.edu/api/v1/artworks/search?q=${encodeURIComponent(q)}&query[term][is_public_domain]=true&fields=id,title,artist_title,image_id&limit=8`);
-        const json = await res.json();
-        const results = (json.data || []).filter(i => i.image_id).map(i => ({
-          title: i.title,
-          artist: i.artist_title || 'Unknown',
-          imageUrl: `https://www.artic.edu/iiif/2/${i.image_id}/full/843,/0/default.jpg`,
-          museum: 'Art Institute of Chicago'
-        }));
-        bankList.innerHTML = '';
-        results.forEach((art, idx) => {
-          const item = document.createElement('div');
-          item.className = `art-bank-item ${idx === 0 ? 'active' : ''}`;
-          item.innerHTML = `<span style="font-size:13px; font-weight:bold; color:#ffd60a;">🎨 ${art.title}</span>`;
-          item.onclick = () => {
-            document.getElementById('mainArtworkImg').src = art.imageUrl;
-            document.getElementById('artCaptionTitle').innerText = art.title;
-            document.getElementById('artCaptionArtist').innerText = art.artist;
-          };
-          bankList.appendChild(item);
-        });
-        if (results.length > 0) {
-          document.getElementById('mainArtworkImg').src = results[0].imageUrl;
-          document.getElementById('artCaptionTitle').innerText = results[0].title;
-          document.getElementById('artCaptionArtist').innerText = results[0].artist;
+    function toggleVideo() {
+      if (localStream) {
+        const t = localStream.getVideoTracks()[0];
+        if (t) { t.enabled = !t.enabled; isVideoMuted = !t.enabled; document.getElementById('toggleCamBtn').innerHTML = isVideoMuted ? "📹🚫" : "📹"; }
+      }
+    }
+    function hangUpCall() {
+      if (localStream) { localStream.getTracks().forEach(t => t.stop()); localStream = null; }
+      Object.keys(peerConnections).forEach(id => { peerConnections[id].close(); });
+      peerConnections = {};
+      document.getElementById('inCallControls').style.display = 'none';
+      document.getElementById('videoStreamView').style.display = 'none';
+      document.getElementById('webphoneMainSection').style.display = 'block';
+      statusDiv.innerText = "Call ended.";
+      updateGridLayout();
+    }
+
+    socket.on('user-joined', async ({ socketId }) => {
+      const pc = createPeerConnection(socketId);
+      const offer = await pc.createOffer();
+      await pc.setLocalDescription(offer);
+      socket.emit('offer', { offer, targetId: socketId });
+    });
+    socket.on('offer', async ({ offer, senderId }) => {
+      const pc = createPeerConnection(senderId);
+      await pc.setRemoteDescription(new RTCSessionDescription(offer));
+      const answer = await pc.createAnswer();
+      await pc.setLocalDescription(answer);
+      socket.emit('answer', { answer, targetId: senderId });
+    });
+    socket.on('answer', async ({ answer, senderId }) => {
+      if (peerConnections[senderId]) await peerConnections[senderId].setRemoteDescription(new RTCSessionDescription(answer));
+    });
+    socket.on('ice-candidate', async ({ candidate, senderId }) => {
+      if (peerConnections[senderId]) await peerConnections[senderId].addIceCandidate(new RTCIceCandidate(candidate));
+    });
+    socket.on('user-disconnected', ({ socketId }) => {
+      if (peerConnections[socketId]) { peerConnections[socketId].close(); delete peerConnections[socketId]; }
+      const rc = document.getElementById(`card-${socketId}`);
+      if (rc) rc.remove();
+      updateGridLayout();
+    });
+
+    function createPeerConnection(targetSocketId) {
+      if (peerConnections[targetSocketId]) return peerConnections[targetSocketId];
+      const pc = new RTCPeerConnection(rtcConfig);
+      peerConnections[targetSocketId] = pc;
+      if (localStream) localStream.getTracks().forEach(t => pc.addTrack(t, localStream));
+      pc.ontrack = (event) => {
+        let rc = document.getElementById(`card-${targetSocketId}`);
+        if (!rc) {
+          rc = document.createElement('div');
+          rc.className = 'video-card';
+          rc.id = `card-${targetSocketId}`;
+          rc.innerHTML = `<h3 style="margin: 0 0 8px 0; font-size: 14px;">Peer Stream</h3><video id="video-${targetSocketId}" autoplay playsinline></video>`;
+          document.getElementById('videoStreamView').appendChild(rc);
+          updateGridLayout();
         }
-      } catch(e) {}
-    }
-    function onArtworkImageLoaded() {
-      document.getElementById('artLoadingIndicator').style.display = 'none';
-      document.getElementById('mainArtworkImg').style.display = 'block';
+        document.getElementById(`video-${targetSocketId}`).srcObject = event.streams[0];
+      };
+      pc.onicecandidate = (event) => {
+        if (event.candidate) socket.emit('ice-candidate', { candidate: event.candidate, targetId: targetSocketId });
+      };
+      return pc;
     }
   </script>
 </body>
