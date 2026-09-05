@@ -241,6 +241,7 @@
       </h1>
     </div>
 
+    <!-- TAB BAR (6 TABS, MEDITATIONS LAST) -->
     <div class="tab-bar">
       <button class="tab-btn tab-phone active" onclick="switchTab('phone')">
         WebPhone
@@ -346,10 +347,19 @@
     <!-- WEBTEXT TAB -->
     <div id="tab-text" class="tab-content">
       <h2 style="color: #63e685; margin-top: 0;">WebText</h2>
+      <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Completely Free Multi-User Web Texting</p>
+
       <div class="web-chat-box">
+        <div style="display: flex; gap: 12px; margin-bottom: 12px; justify-content: center; align-items: center; flex-wrap: wrap;">
+          <input type="text" id="webTextSenderName" placeholder="Your Name" style="background: #2c2c2e; color: #fff; border: 1px solid #444; border-radius: 6px; padding: 10px 12px; width: 120px; text-align: center;">
+          <input type="text" id="webTextRoomId" placeholder="Room Name" style="background: #2c2c2e; color: #fff; border: 1px solid #444; border-radius: 6px; padding: 10px 12px; width: 120px; text-align: center;">
+          <button id="inviteTextBtn" class="btn-round-blue" style="font-size: 11px; width: 50px; height: 50px;" onclick="sendTextTabInvite()">💬<br>Invite</button>
+        </div>
+
         <div id="web-chat-thread">
           <p style="color: #666; font-style: italic; margin: 0;">Enter your Name and Room Name above to begin web chat...</p>
         </div>
+
         <div style="display: flex; gap: 8px;">
           <input type="text" id="webChatInput" placeholder="Type a free web message..." style="flex: 1; text-align: left; background: #2c2c2e; color: #fff; border: 1px solid #444; border-radius: 6px; padding: 8px 12px;">
           <button id="sendWebChatBtn" class="btn-round-blue" style="width: auto; height: auto; padding: 8px 18px; border-radius: 8px; font-size: 13px;">Send</button>
@@ -413,16 +423,22 @@
       </div>
     </div>
 
-    <!-- MEDITATIONS TAB -->
+    <!-- MEDITATIONS TAB (WITH 5-REPOSITORY DIRECT IIIF MANIFEST STREAMER) -->
     <div id="tab-meditations" class="tab-content">
       <div class="meditations-wrapper">
         <div class="meditation-streamer">
           <div class="streamer-frame-box">
-            <img id="stream-frame" src="https://images.metmuseum.org/CRDImages/is/original/DP248062.jpg" alt="Illuminated Sacred Folio">
+            <!-- Initial Walters MS W.537 IIIF Direct Image Endpoint -->
+            <img id="stream-frame" src="https://ids.thewalters.org/iiif/id/W.537_000001/full/800,/0/default.jpg" alt="Illuminated Sacred Folio">
           </div>
           <div class="streamer-info">
-            <h3 id="folio-title">Illuminated Manuscript Folio</h3>
-            <p id="folio-provenance">The Metropolitan Museum of Art • Open Access Image</p>
+            <h3 id="folio-title">Eusebian Canon Table Arches</h3>
+            <p id="folio-provenance">Walters MS W.537 (12th c. Gospels) • Byzantine Christian Illumination</p>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:12px; padding:0 15px;">
+            <button onclick="prevIllumination()" style="background:#222; border:1px solid #444; color:#d4af37; padding:6px 14px; border-radius:4px; cursor:pointer; font-weight:bold;">◀ Previous</button>
+            <span id="folio-counter" style="color:#aaa; font-size:0.8rem; font-weight:bold;">1 / 5</span>
+            <button onclick="nextIllumination()" style="background:#222; border:1px solid #444; color:#d4af37; padding:6px 14px; border-radius:4px; cursor:pointer; font-weight:bold;">Next Folio ▶</button>
           </div>
         </div>
 
@@ -496,21 +512,69 @@
       }
     }
 
-    // STABLE METROPOLITAN MUSEUM OPEN ACCESS IMAGE STREAMER
+    // 5 PREMIER IIIF REPOSITORY DIRECT IMAGE STREAMER (WALTERS, GALLICA, BODLEIAN, GETTY, MORGAN)
     const sacredIlluminations = [
-      { title: "Islamic Manuscript Illumination", provenance: "The Metropolitan Museum of Art • Open Access", url: "https://images.metmuseum.org/CRDImages/is/original/DP248062.jpg" },
-      { title: "Medieval Manuscript Page", provenance: "The Metropolitan Museum of Art • Open Access", url: "https://images.metmuseum.org/CRDImages/ms/original/DP107142.jpg" },
-      { title: "Illuminated Quran Folio", provenance: "The Metropolitan Museum of Art • Open Access", url: "https://images.metmuseum.org/CRDImages/is/original/DP235858.jpg" }
+      {
+        title: "Eusebian Canon Table Arches",
+        manuscript: "Walters MS W.537 (12th c. Gospels)",
+        tradition: "Byzantine Christian Illumination",
+        streamUrl: "https://ids.thewalters.org/iiif/id/W.537_000001/full/800,/0/default.jpg"
+      },
+      {
+        title: "Gospel of Saint Mark Incipit",
+        manuscript: "Bibliothèque nationale de France (Gallica, Lat 10514)",
+        tradition: "Romanesque Scriptorium",
+        streamUrl: "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8423840f/f13/full/800,/0/native.jpg"
+      },
+      {
+        title: "Armenian Illuminated Gospels",
+        manuscript: "Bodleian Libraries, Oxford (MS. Arm. d. 13)",
+        tradition: "Eastern Christian Manuscript",
+        streamUrl: "https://digital.bodleian.ox.ac.uk/iiif/image/5b95542a-430c-45cf-8177-33f7c4ea78e3/full/800,/0/default.jpg"
+      },
+      {
+        title: "Foliated Arabesque Border",
+        manuscript: "The Getty Research Institute (86.XA.148)",
+        tradition: "Islamic Illumination",
+        streamUrl: "https://media.getty.edu/iiif/image/938a49ff-1202-46be-912b-31211e40a000/full/800,/0/default.jpg"
+      },
+      {
+        title: "Medieval Choir Psalter Leaf",
+        manuscript: "The Morgan Library & Museum (M.909)",
+        tradition: "Western Gothic Illumination",
+        streamUrl: "https://okapi.themorgan.org/iiif/3/L1110A/full/800,/0/default.jpg"
+      }
     ];
+
     let currentFolioIndex = 0;
-    setInterval(() => {
+
+    function renderFolio(index) {
       const frame = document.getElementById('stream-frame');
       if (!frame) return;
+      const item = sacredIlluminations[index];
+      
+      frame.style.opacity = '0';
+      setTimeout(() => {
+        frame.src = item.streamUrl;
+        document.getElementById('folio-title').innerText = item.title;
+        document.getElementById('folio-provenance').innerText = `${item.manuscript} • ${item.tradition}`;
+        document.getElementById('folio-counter').innerText = `${index + 1} / ${sacredIlluminations.length}`;
+        frame.onload = () => { frame.style.opacity = '1'; };
+      }, 400);
+    }
+
+    function nextIllumination() {
       currentFolioIndex = (currentFolioIndex + 1) % sacredIlluminations.length;
-      frame.src = sacredIlluminations[currentFolioIndex].url;
-      document.getElementById('folio-title').innerText = sacredIlluminations[currentFolioIndex].title;
-      document.getElementById('folio-provenance').innerText = sacredIlluminations[currentFolioIndex].provenance;
-    }, 15000);
+      renderFolio(currentFolioIndex);
+    }
+
+    function prevIllumination() {
+      currentFolioIndex = (currentFolioIndex - 1 + sacredIlluminations.length) % sacredIlluminations.length;
+      renderFolio(currentFolioIndex);
+    }
+
+    // Auto-advance feed every 45 seconds
+    setInterval(nextIllumination, 45000);
 
     // FLAT SCRIPTURE PATHS
     const localCanons = {
