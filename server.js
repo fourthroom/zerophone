@@ -7,7 +7,12 @@ const { Server } = require('socket.io');
 const app = express();
 app.use(cors());
 
-// Serve all static files (HTML, CSS, JSON, images) from the current folder
+// Serve test page at fourthroom.org/test[cite: 2]
+app.get('/test', (req, res) => {
+  res.sendFile(path.join(__dirname, 'test.html'));
+});
+
+// Serve all static files (HTML, CSS, JSON, images) from the current folder[cite: 2]
 app.use(express.static(__dirname));
 
 const server = http.createServer(app);
@@ -19,7 +24,7 @@ const io = new Server(server, {
   }
 });
 
-// Twilio Client Setup (Environment Variables)
+// Twilio Client Setup (Environment Variables)[cite: 2]
 const twilioSid = process.env.TWILIO_ACCOUNT_SID;
 const twilioAuthToken = process.env.TWILIO_AUTH_TOKEN;
 let twilioClient = null;
@@ -32,7 +37,7 @@ if (twilioSid && twilioAuthToken) {
   console.warn('[Twilio] Credentials missing. Falling back to public STUN.');
 }
 
-// Endpoint to provide ephemeral ICE servers (STUN + TURN)
+// Endpoint to provide ephemeral ICE servers (STUN + TURN)[cite: 2]
 app.get('/api/ice-servers', async (req, res) => {
   const fallbackServers = [{ urls: 'stun:stun.l.google.com:19302' }];
 
@@ -49,11 +54,11 @@ app.get('/api/ice-servers', async (req, res) => {
   }
 });
 
-// TOTAL MONTHLY RENDER FREE TIER HOURS ALLOWANCE
+// TOTAL MONTHLY RENDER FREE TIER HOURS ALLOWANCE[cite: 2]
 const MONTHLY_RENDER_HOURS_LIMIT = 750;
 const serverStartTime = new Date();
 
-// ANONYMOUS IN-MEMORY USAGE STATS
+// ANONYMOUS IN-MEMORY USAGE STATS[cite: 2]
 const usageStats = {
   activeConnections: 0,
   totalVideoCallsStarted: 0,

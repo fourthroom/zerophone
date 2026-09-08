@@ -1,0 +1,2363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  
+  <title>ZeroPhone — Encrypted Browser Video Calling, WebText & Local Resources</title>
+  <meta name="description" content="ZeroPhone is a completely free, privacy-first web utility featuring end-to-end AES-256-GCM encrypted video calling, voice calls, free WebText, local Wi-Fi maps, live radio, art museums, and community support resources.">
+  <meta name="keywords" content="ZeroPhone, fourthroom.org, AES-256 encryption, free video call, browser calling, WebRTC, free web text, local radio streams, public wifi maps, community resources">
+  <meta name="author" content="FourthRoom">
+  <link rel="canonical" href="https://fourthroom.org/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://fourthroom.org/">
+  <meta property="og:title" content="ZeroPhone — Encrypted Web Calling & WebText">
+  <meta property="og:description" content="Instant, private video and voice calling right from your browser powered by AES-256-GCM encryption. No downloads or accounts required.">
+  <meta property="og:image" content="https://fourthroom.org/icon.png">
+
+  <link rel="icon" type="image/png" href="icon.png">
+  <link rel="shortcut icon" type="image/png" href="icon.png">
+  <link rel="apple-touch-icon" href="icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="ZeroPhone">
+  <meta name="theme-color" content="#121212">
+
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+  <style>
+    * { box-sizing: border-box; }
+    body { 
+      font-family: system-ui, -apple-system, sans-serif; 
+      background: #121212; 
+      color: #fff; 
+      margin: 0; 
+      padding: 0; 
+      overflow-x: hidden;
+    }
+
+    .top-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #1c1c1e;
+      border-bottom: 2px solid #333;
+      padding: 12px 15px 0 15px;
+      gap: 12px;
+    }
+
+    .brand-container { display: flex; align-items: center; gap: 10px; }
+    .app-header-logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      object-fit: cover;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    }
+
+    .app-brand-title {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      color: #fff;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tab-bar {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: bold;
+      border: none;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      cursor: pointer;
+      color: #fff;
+      opacity: 0.6;
+      transition: opacity 0.2s, background 0.2s;
+    }
+
+    .tab-btn.active { opacity: 1.0; }
+    .tab-phone { background: #1b4d2e; border-top: 3px solid #30d158; }
+    .tab-phone.active { background: #30d158; color: #000; }
+    .tab-text { background: #267340; border-top: 3px solid #63e685; }
+    .tab-text.active { background: #63e685; color: #000; }
+    .tab-maps { background: #5c3800; border-top: 3px solid #ff9500; }
+    .tab-maps.active { background: #ff9500; color: #000; }
+    .tab-seattle-wifi { background: #005a70; border-top: 3px solid #00c0f0; }
+    .tab-seattle-wifi.active { background: #00c0f0; color: #000; }
+    .tab-radio { background: #4a0072; border-top: 3px solid #e040fb; }
+    .tab-radio.active { background: #e040fb; color: #000; }
+    .tab-art { background: #4a3600; border-top: 3px solid #ffd60a; }
+    .tab-art.active { background: #ffd60a; color: #000; }
+    .tab-help { background: #1c3d5a; border-top: 3px solid #38bdf8; }
+    .tab-help.active { background: #38bdf8; color: #000; }
+
+    .sub-tagline { font-size: 11px; display: block; font-weight: normal; margin-top: 2px; }
+    .container { padding: 10px 15px; max-width: 100%; margin: 0 auto; text-align: center; }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    .pricing-announcement-card {
+      background: #18221b;
+      border: 1px solid #30d158;
+      border-radius: 12px;
+      max-width: 580px;
+      margin: 10px auto 14px auto;
+      padding: 12px 16px;
+      font-size: 13px;
+      line-height: 1.45;
+      color: #e2e8f0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+    .pricing-announcement-card b { color: #30d158; }
+
+    .webphone-simplified-card {
+      background: #1c1c1e;
+      border: 1px solid #333;
+      border-radius: 16px;
+      max-width: 580px;
+      margin: 15px auto;
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+
+    .step-row-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: #151516;
+      border: 1px solid #2a2a2d;
+      border-radius: 10px;
+      padding: 12px 14px;
+    }
+
+    .step-title-green { color: #30d158; font-weight: bold; font-size: 14px; white-space: nowrap; text-align: left; }
+    .webphone-input-field {
+      flex: 1; padding: 8px 12px; font-size: 14px; border-radius: 6px;
+      background: #2c2c2e; color: #fff; border: 1px solid #444; text-align: left;
+    }
+
+    .btn-round-red {
+      width: 56px; height: 56px; border-radius: 50%; background: #ff3b30; color: #fff;
+      font-size: 10px; font-weight: 900; border: none; cursor: pointer; display: flex;
+      flex-direction: column; align-items: center; justify-content: center;
+      box-shadow: 0 4px 10px rgba(255, 59, 48, 0.35); text-decoration: none;
+    }
+    .btn-round-blue {
+      width: 56px; height: 56px; border-radius: 50%; background: #0a84ff; color: #fff;
+      font-size: 10px; font-weight: 900; border: none; cursor: pointer; display: flex;
+      flex-direction: column; align-items: center; justify-content: center;
+      box-shadow: 0 4px 10px rgba(10, 132, 255, 0.35); text-decoration: none;
+    }
+    .btn-square-start-red {
+      width: 65px; height: 60px; background: #ff3b30; color: #fff; font-size: 10px;
+      font-weight: 900; border-radius: 10px; border: none; cursor: pointer; display: flex;
+      flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+      box-shadow: 0 4px 12px rgba(255, 59, 48, 0.4);
+    }
+
+    .vintage-toggle-panel {
+      display: flex; flex-direction: column; align-items: center; background: #1c1c1e;
+      border: 1px solid #444; border-radius: 10px; padding: 6px 8px; gap: 4px;
+    }
+    .toggle-label-group { display: flex; align-items: center; gap: 4px; font-size: 9px; font-weight: bold; color: #aaa; }
+    .indicator-light { width: 7px; height: 7px; border-radius: 50%; background: #333; border: 1px solid #555; }
+    .indicator-light.active-red { background: #ff3b30; box-shadow: 0 0 6px #ff3b30; }
+    .switch-container { position: relative; width: 22px; height: 44px; }
+    .switch-container input { opacity: 0; width: 0; height: 0; }
+    .slider-track {
+      position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #2c2c2e; border: 2px solid #555; border-radius: 12px;
+    }
+    .slider-track:before {
+      position: absolute; content: ""; height: 16px; width: 14px; left: 2px; top: 2px;
+      background-color: #aaa; border-radius: 6px; transition: .2s;
+    }
+    input:checked + .slider-track:before { transform: translateY(20px); background-color: #ff3b30; }
+
+    .incall-controls-bar { display: flex; justify-content: center; align-items: center; gap: 15px; margin-top: 15px; flex-wrap: wrap; }
+    .call-timer-badge {
+      background: #1c1c1e; border: 1px solid #30d158; border-radius: 20px;
+      padding: 6px 14px; font-size: 13px; font-weight: bold; color: #30d158;
+    }
+    .btn-media-toggle {
+      background: #2c2c2e; color: #fff; border: 1px solid #555; border-radius: 50%;
+      width: 52px; height: 52px; font-size: 20px; display: flex; align-items: center; justify-content: center; cursor: pointer;
+    }
+    .btn-media-toggle.muted { background: #ff3b30; border-color: #d70015; }
+    .btn-red-end { 
+      background: #ff3b30; color: white; cursor: pointer; font-weight: bold; 
+      font-size: 16px; padding: 12px 24px; border-radius: 10px; border: none;
+    }
+
+    #status { font-weight: bold; color: #30d158; margin-bottom: 4px; }
+
+    .video-grid { 
+      display: grid; grid-template-columns: minmax(0, 480px); gap: 12px; 
+      justify-content: center; align-content: center; margin: 10px auto; width: 100%; max-width: 900px;
+    }
+    .video-grid.peers-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .video-grid.peers-3, .video-grid.peers-4 {
+      grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, auto);
+    }
+    .video-card { width: 100%; display: flex; flex-direction: column; align-items: center; position: relative; }
+    video { 
+      width: 100%; aspect-ratio: 1 / 1; background: #000; border-radius: 14px; 
+      border: 2px solid #333; object-fit: cover; display: block;
+    }
+    #localVideo { transform: scaleX(-1); }
+
+    .turn-badge {
+      display: none; position: absolute; top: 36px; left: 10px; background: rgba(255, 149, 0, 0.85);
+      color: #000; font-size: 10px; font-weight: 900; padding: 3px 8px; border-radius: 6px; z-index: 10;
+    }
+
+    @media (max-width: 520px) {
+      .video-grid { gap: 8px; margin-top: 6px; }
+      video { border-radius: 8px; }
+      .video-card h3 { font-size: 11px !important; margin: 0 0 3px 0 !important; }
+    }
+
+    .modal-return-overlay {
+      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.85); z-index: 99999; justify-content: center; align-items: center;
+    }
+    .modal-return-content {
+      background: #1c1c1e; border: 2px solid #30d158; border-radius: 16px; padding: 30px 20px;
+      max-width: 360px; width: 85%; text-align: center;
+    }
+    .btn-return-app {
+      background: #30d158; color: #000; border: none; padding: 14px 28px; border-radius: 10px;
+      font-size: 16px; font-weight: 900; cursor: pointer;
+    }
+
+    #responderAccessBox {
+      display: none; background: #1c1c1e; border: 2px solid #30d158; border-radius: 20px;
+      padding: 40px 20px; max-width: 450px; margin: 40px auto; text-align: center;
+    }
+    .btn-mega-enter {
+      background: #30d158; color: #000; font-size: 24px; font-weight: 900; padding: 20px 32px;
+      border-radius: 14px; border: none; cursor: pointer; width: 100%;
+    }
+
+    .web-chat-box { background: #1c1c1e; border: 1px solid #63e685; border-radius: 12px; padding: 15px; max-width: 620px; margin: 0 auto; }
+    #web-chat-thread {
+      height: 260px; border: 1px solid #333; border-radius: 8px; padding: 10px;
+      overflow-y: auto; background: #121212; text-align: left; margin-bottom: 12px;
+    }
+
+    .maps-box { background: #1c1c1e; border: 1px solid #ff9500; border-radius: 12px; padding: 15px; max-width: 900px; margin: 0 auto; }
+    .maps-filter-bar { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 15px; }
+    .maps-filter-btn {
+      background: #2c2c2e; color: #fff; border: 1px solid #555; padding: 8px 12px;
+      font-size: 13px; font-weight: bold; border-radius: 8px; cursor: pointer;
+    }
+    .map-frame-container { width: 100%; height: 500px; border-radius: 10px; overflow: hidden; border: 1px solid #444; }
+    iframe { width: 100%; height: 100%; border: none; }
+
+    .radio-box { background: #1c1c1e; border: 1px solid #e040fb; border-radius: 12px; padding: 20px; max-width: 950px; margin: 0 auto; }
+    .radio-genre-bar { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+    .genre-btn {
+      background: #2c2c2e; color: #fff; border: 1px solid #555; padding: 10px 14px;
+      font-size: 13px; font-weight: bold; border-radius: 8px; cursor: pointer;
+    }
+    .radio-layout { display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; }
+    .station-bank-container { flex: 1; min-width: 280px; background: #121212; border: 1px solid #333; border-radius: 12px; padding: 12px; text-align: left; }
+    .station-bank-header { font-size: 13px; font-weight: bold; color: #e040fb; margin: 0 0 10px 0; text-transform: uppercase; }
+    .station-bank-list { display: flex; flex-direction: column; gap: 8px; max-height: 360px; overflow-y: auto; }
+    .station-bank-item { background: #2c2c2e; border: 1px solid #444; border-radius: 8px; padding: 10px; cursor: pointer; text-align: left; }
+    .radio-console {
+      flex: 1.5; min-width: 320px; background: #121212; border: 1px solid #333; border-radius: 12px;
+      padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 15px;
+    }
+    .now-playing-title { font-size: 20px; font-weight: bold; color: #e040fb; margin: 0; }
+    .now-playing-sub { font-size: 13px; color: #aaa; margin-top: -6px; }
+    audio { width: 100%; max-width: 480px; border-radius: 8px; }
+    .tuner-box { margin-top: 10px; padding-top: 15px; border-top: 1px solid #333; width: 100%; max-width: 480px; text-align: left; }
+
+    /* MULTI-MUSEUM ART GALLERY STYLES */
+    .art-box { background: #1c1c1e; border: 1px solid #ffd60a; border-radius: 12px; padding: 20px; max-width: 1000px; margin: 0 auto; }
+    .museum-institution-bar {
+      display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 12px;
+      padding-bottom: 12px; border-bottom: 1px solid #333;
+    }
+    .museum-inst-btn {
+      background: #18181a; color: #ffd60a; border: 1px solid #ffd60a; padding: 8px 14px;
+      font-size: 12px; font-weight: 900; border-radius: 20px; cursor: pointer; transition: all 0.2s;
+    }
+    .museum-inst-btn.active { background: #ffd60a; color: #000; }
+
+    .art-genre-bar { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+    .art-genre-btn {
+      background: #2c2c2e; color: #fff; border: 1px solid #555; padding: 8px 12px;
+      font-size: 12px; font-weight: bold; border-radius: 8px; cursor: pointer; transition: all 0.2s;
+    }
+    .art-genre-btn:hover { background: #3a3a3c; }
+    .art-genre-btn.active { background: #ffd60a; color: #000; border-color: #ffd60a; font-weight: 900; }
+
+    .art-layout { display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; }
+    .art-bank-container { flex: 1; min-width: 280px; background: #121212; border: 1px solid #333; border-radius: 12px; padding: 12px; text-align: left; }
+    .art-bank-header { font-size: 13px; font-weight: bold; color: #ffd60a; margin: 0 0 10px 0; text-transform: uppercase; }
+    .art-bank-list { display: flex; flex-direction: column; gap: 8px; max-height: 480px; overflow-y: auto; }
+    .art-bank-item { background: #2c2c2e; border: 1px solid #444; border-radius: 8px; padding: 10px; cursor: pointer; text-align: left; }
+    .art-bank-item.active { border-color: #ffd60a; background: #332b00; }
+
+    .art-display-console {
+      flex: 2; min-width: 320px; background: #121212; border: 1px solid #333; border-radius: 12px;
+      padding: 18px; display: flex; flex-direction: column; align-items: center; gap: 14px;
+    }
+    .art-image-frame {
+      width: 100%; min-height: 380px; max-height: 520px; background: #000; border-radius: 10px;
+      border: 1px solid #444; display: flex; align-items: center; justify-content: center; overflow: hidden;
+    }
+    .art-image-frame img { max-width: 100%; max-height: 500px; object-fit: contain; border-radius: 8px; }
+    .art-caption-card {
+      width: 100%; background: #1c1c1e; border: 1px solid #444; border-radius: 10px;
+      padding: 14px 16px; text-align: left; font-size: 13px; line-height: 1.5;
+    }
+    .art-caption-title { font-size: 18px; font-weight: 900; color: #ffd60a; margin: 0 0 4px 0; }
+    .art-caption-artist { font-size: 14px; font-weight: bold; color: #fff; margin: 0 0 6px 0; }
+    .art-caption-meta { color: #aaa; font-size: 12px; margin: 0; }
+    .art-museum-badge {
+      display: inline-block; margin-top: 8px; background: #2a2400; color: #ffd60a;
+      border: 1px solid #ffd60a; border-radius: 6px; padding: 4px 8px; font-size: 11px; font-weight: bold;
+    }
+    .art-actions-bar { display: flex; gap: 10px; width: 100%; justify-content: center; }
+    .btn-art-action {
+      background: #2c2c2e; color: #ffd60a; border: 1px solid #ffd60a; border-radius: 8px;
+      padding: 8px 16px; font-size: 13px; font-weight: bold; cursor: pointer; transition: all 0.2s;
+    }
+    .btn-art-action.playing { background: #ffd60a; color: #000; }
+    .art-fullscreen-modal {
+      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.96); z-index: 100000; flex-direction: column;
+      align-items: center; justify-content: center; padding: 20px;
+    }
+    .art-fullscreen-close-btn {
+      position: absolute; top: 20px; right: 25px; background: #ff3b30; color: #fff;
+      border: none; padding: 10px 18px; border-radius: 8px; font-size: 16px;
+      font-weight: 900; cursor: pointer;
+    }
+    .art-fullscreen-img { max-width: 92%; max-height: 82vh; object-fit: contain; border-radius: 8px; }
+    .art-fullscreen-caption { margin-top: 14px; text-align: center; color: #fff; max-width: 80%; }
+    .art-fullscreen-caption h3 { margin: 0 0 4px 0; color: #ffd60a; font-size: 18px; }
+    .art-fullscreen-caption p { margin: 0; color: #aaa; font-size: 13px; }
+
+    /* 🤝 HELP & COMMUNITY RESOURCES DIRECTORY STYLES */
+    .help-box {
+      background: #1c1c1e;
+      border: 1px solid #38bdf8;
+      border-radius: 12px;
+      padding: 20px;
+      max-width: 1050px;
+      margin: 0 auto;
+    }
+    .help-location-bar {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #333;
+    }
+    .help-loc-input {
+      padding: 10px 14px;
+      font-size: 14px;
+      background: #2c2c2e;
+      color: #fff;
+      border: 1px solid #444;
+      border-radius: 8px;
+      width: 220px;
+      text-align: left;
+    }
+    .btn-help-loc {
+      background: #38bdf8;
+      color: #000;
+      border: none;
+      padding: 10px 18px;
+      font-size: 13px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(56, 189, 248, 0.3);
+    }
+    .help-layout { display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; }
+    
+    .help-category-bank {
+      flex: 1;
+      min-width: 270px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      background: #121212;
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 12px;
+    }
+    .help-category-btn {
+      background: #2c2c2e;
+      color: #fff;
+      border: 1px solid #444;
+      border-radius: 8px;
+      padding: 12px 14px;
+      font-size: 13px;
+      font-weight: bold;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s;
+    }
+    .help-category-btn:hover { background: #3a3a3c; }
+    .help-category-btn.active {
+      background: #0369a1;
+      color: #fff;
+      border-color: #38bdf8;
+    }
+    .help-category-btn.crisis {
+      border-color: #ef4444;
+      color: #fca5a5;
+    }
+    .help-category-btn.crisis.active {
+      background: #991b1b;
+      color: #fff;
+      border-color: #ef4444;
+    }
+
+    .help-results-console {
+      flex: 2;
+      min-width: 320px;
+      background: #121212;
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-height: 520px;
+      overflow-y: auto;
+    }
+    .help-console-header {
+      font-size: 15px;
+      font-weight: 900;
+      color: #38bdf8;
+      text-align: left;
+      margin: 0 0 6px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .resource-card {
+      background: #1c1c1e;
+      border: 1px solid #333;
+      border-radius: 10px;
+      padding: 14px 16px;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    }
+    .resource-card.crisis-card {
+      border-color: #ef4444;
+      background: #2b1111;
+    }
+    .resource-card-title {
+      font-size: 16px;
+      font-weight: 900;
+      color: #fff;
+      margin: 0;
+    }
+    .resource-card-desc {
+      font-size: 13px;
+      color: #ccc;
+      line-height: 1.4;
+      margin: 0;
+    }
+    .resource-card-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+    .btn-res-call {
+      background: #30d158;
+      color: #000;
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 900;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-res-map {
+      background: #ff9500;
+      color: #000;
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 900;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-res-crisis {
+      background: #ef4444;
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 900;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* PRACTICAL LIVING QUOTE TICKER */
+    .practical-quote-box {
+      margin-top: 20px;
+      background: #18222d;
+      border: 1px solid #38bdf8;
+      border-radius: 12px;
+      padding: 16px 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .practical-quote-text {
+      font-family: Georgia, serif;
+      font-size: 16px;
+      font-style: italic;
+      color: #f0fdfa;
+      line-height: 1.5;
+      margin: 0;
+    }
+    .practical-quote-author {
+      font-size: 13px;
+      font-weight: bold;
+      color: #38bdf8;
+      margin: 0;
+    }
+    .practical-quote-controls {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 4px;
+    }
+    .btn-quote-step {
+      background: #2c2c2e;
+      color: #38bdf8;
+      border: 1px solid #38bdf8;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .under-construction-box {
+      background: #1c1c1e; border: 2px dashed #ff3b30; border-radius: 16px;
+      padding: 50px 20px; max-width: 500px; margin: 30px auto;
+    }
+    .privacy-notice-badge {
+      margin-top: 25px; font-size: 12px; color: #888; background: #18181a; border: 1px solid #2a2a2d;
+      border-radius: 20px; padding: 8px 16px; display: inline-block; max-width: 90%; line-height: 1.4;
+    }
+    .location-modal-overlay {
+      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.85); z-index: 9999; justify-content: center; align-items: center;
+    }
+    .location-modal-content {
+      background: #1c1c1e; border: 2px solid #ff9500; border-radius: 16px;
+      padding: 25px; max-width: 420px; width: 85%; text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ART FULLSCREEN THEATER OVERLAY -->
+  <div id="artFullscreenModal" class="art-fullscreen-modal">
+    <button class="art-fullscreen-close-btn" onclick="closeArtFullscreen()">✕ ESC</button>
+    <img id="artFullscreenImg" class="art-fullscreen-img" src="" alt="Fullscreen Artwork">
+    <div class="art-fullscreen-caption">
+      <h3 id="artFsTitle">Painting Title</h3>
+      <p id="artFsDetails">Artist Name • Date • Museum</p>
+    </div>
+  </div>
+
+  <div id="returnModal" class="modal-return-overlay">
+    <div class="modal-return-content">
+      <h3 style="color: #30d158; margin-top: 0; font-size: 20px;">📞 Call Cell Initiated</h3>
+      <p style="color: #ccc; font-size: 14px; margin-bottom: 20px;">
+        When finished notifying your party, return to start your secure video call.
+      </p>
+      <button class="btn-return-app" onclick="closeReturnModal()">Return To ZeroPhone</button>
+    </div>
+  </div>
+
+  <div id="locationModal" class="location-modal-overlay">
+    <div class="location-modal-content">
+      <h3 style="color: #ff9500; margin-top: 0; font-size: 20px;">📍 Enable Location Access</h3>
+      <p style="color: #ccc; font-size: 14px; text-align: left; line-height: 1.5;">
+        To center maps on your current location, allow location access in your device settings:
+      </p>
+      <div style="background: #121212; border: 1px solid #333; border-radius: 8px; padding: 12px; text-align: left; font-size: 12px; color: #aaa; margin-bottom: 20px;">
+        <strong>iPhone / iPad:</strong><br>
+        1. Open <b>Settings</b> → <b>Privacy & Security</b><br>
+        2. Tap <b>Location Services</b> → <b>Safari / Chrome</b><br>
+        3. Select <b>While Using the App</b><br><br>
+        <strong>Desktop Chrome / Safari:</strong><br>
+        Tap the <b>Lock / Sliders icon</b> next to <i>fourthroom.org</i> in your address bar → set Location to <b>Allow</b>.
+      </div>
+      <button onclick="closeLocationModal()" style="background: #ff9500; color: #000; border: none; padding: 10px 24px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 14px;">Got It</button>
+    </div>
+  </div>
+
+  <div id="mainHeader" class="top-header">
+    <div class="brand-container">
+      <h1 class="app-brand-title">
+        <img src="icon.png" alt="Cabin Icon" class="app-header-logo" onerror="this.style.display='none'">
+        ZeroPhone
+      </h1>
+    </div>
+
+    <!-- CLEANED UP TAB BAR -->
+    <div class="tab-bar">
+      <button class="tab-btn tab-phone active" onclick="switchTab('phone')">
+        WebPhone
+        <span class="sub-tagline">Video Call</span>
+      </button>
+      <button class="tab-btn tab-text" onclick="switchTab('text')">
+        WebText
+        <span class="sub-tagline">Free Text</span>
+      </button>
+      <button class="tab-btn tab-maps" onclick="switchTab('maps')">
+        📍 Maps
+        <span class="sub-tagline">Wi-Fi & Resource Finder</span>
+      </button>
+      <button class="tab-btn tab-seattle-wifi" onclick="switchTab('seattle-wifi')">
+        🌐 Seattle Wi-Fi
+        <span class="sub-tagline">City Portal Map</span>
+      </button>
+      <button class="tab-btn tab-radio" onclick="switchTab('radio')">
+        📻 Radio
+        <span class="sub-tagline">Local Live Streams</span>
+      </button>
+      <button class="tab-btn tab-art" onclick="switchTab('art')">
+        🏛️ Art Gallery
+        <span class="sub-tagline">World Masterpieces</span>
+      </button>
+      <button class="tab-btn tab-help" onclick="switchTab('help')">
+        🤝 Help & Resources
+        <span class="sub-tagline">Essential Community Aid</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <div id="responderAccessBox">
+      <h2 id="inviteTitleText" style="font-size:24px; margin-top:0; color:#30d158;">You have been invited to a Call!</h2>
+      <p style="color:#aaa; font-size:15px; margin-bottom:25px;">Tap the big green button below to enter directly:</p>
+      <button id="megaEnterBtn" class="btn-mega-enter">📹 Enter Video Call</button>
+    </div>
+
+    <!-- WEBPHONE TAB -->
+    <div id="tab-phone" class="tab-content active">
+      <div id="status">Ready to Call</div>
+
+      <div class="pricing-announcement-card">
+        ZeroPhone is a free app for making video calls and sending texts, as well as free Maps, Radio, Art Gallery, and Community Support Resources. The <b>Free Tier</b> allows the user to make <b>15 minute video calls</b>. For a <b>$5 fee</b>, the user can make an entire month (31 days) of unlimited calls.
+      </div>
+
+      <div id="webphoneMainSection">
+        <div class="webphone-simplified-card">
+          
+          <div class="step-row-item">
+            <span class="step-title-green">Step 1:</span>
+            <input type="text" id="callerName" class="webphone-input-field" placeholder="Enter Your Name">
+          </div>
+
+          <div class="step-row-item">
+            <span class="step-title-green">Step 2:</span>
+            <input type="text" id="roomId" class="webphone-input-field" placeholder="Enter Room Name">
+          </div>
+
+          <div class="step-row-item">
+            <span class="step-title-green">Step 3: Call Cell To Invite:</span>
+            <a id="callCellBtn" href="tel:" class="btn-round-red" onclick="triggerCellCall(event)">
+              <span style="font-size:14px;">📞</span>
+              <span>Call Cell</span>
+            </a>
+          </div>
+
+          <div class="step-row-item">
+            <span class="step-title-green">Send Text/E-mail Invite:</span>
+            <div style="display:flex; align-items:center; gap:12px;">
+              <button id="inviteSendBtn" class="btn-round-blue" onclick="sendInvite('video')">
+                <span style="font-size:14px;">✉️</span>
+                <span>Send<br>Invite</span>
+              </button>
+
+              <div class="vintage-toggle-panel">
+                <div class="toggle-label-group">
+                  <span id="textLightPhone" class="indicator-light active-red"></span>
+                  <span>Text</span>
+                </div>
+
+                <label class="switch-container">
+                  <input type="checkbox" id="phoneInviteToggle" onchange="toggleInviteMode('phone')">
+                  <span class="slider-track"></span>
+                </label>
+
+                <div class="toggle-label-group">
+                  <span id="emailLightPhone" class="indicator-light"></span>
+                  <span>E-mail</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="step-row-item">
+            <span class="step-title-green" style="font-size: 15px;">Step 4: Start Video Call</span>
+            <button id="joinVideoBtn" class="btn-square-start-red" onclick="startCall()">
+              <span style="font-size: 16px;">📹</span>
+              <span>Start Call</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <div id="videoStreamView" class="video-grid" style="display:none;">
+        <div class="video-card">
+          <h3 style="margin: 0 0 8px 0; font-size: 14px;">Local Stream (You)</h3>
+          <video id="localVideo" autoplay playsinline muted></video>
+        </div>
+      </div>
+
+      <div id="inCallControls" class="incall-controls-bar" style="display:none;">
+        <div id="callTimerDisplay" class="call-timer-badge">⏱️ 15:00</div>
+        <button id="toggleMicBtn" class="btn-media-toggle" onclick="toggleAudio()" title="Mute/Unmute Mic">🎙️</button>
+        <button id="toggleCamBtn" class="btn-media-toggle" onclick="toggleVideo()" title="Turn Camera On/Off">📹</button>
+        <button id="hangUpBtn" class="btn-red-end" onclick="hangUpCall()">🔴 End Call</button>
+      </div>
+
+      <div class="privacy-notice-badge">
+        🔒 <b>End-to-End Encrypted (AES-256-GCM):</b> All video, voice, and web text are scrambled directly on your device before transmission. Zero data is logged, stored, or shared.
+      </div>
+    </div>
+
+    <!-- WEBTEXT TAB -->
+    <div id="tab-text" class="tab-content">
+      <h2 style="color: #63e685; margin-top: 0;">WebText</h2>
+      <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Completely Free Web Text Messaging</p>
+
+      <div class="web-chat-box">
+        <div style="display: flex; gap: 12px; margin-bottom: 12px; justify-content: center; align-items: center; flex-wrap: wrap;">
+          <input type="text" id="webTextSenderName" placeholder="Your Name" style="background: #2c2c2e; color: #fff; border: 1px solid #444; border-radius: 6px; padding: 10px 12px; width: 120px; text-align: center;">
+          <input type="text" id="webTextRoomId" placeholder="Room Name" style="background: #2c2c2e; color: #fff; border: 1px solid #444; border-radius: 6px; padding: 10px 12px; width: 120px; text-align: center;">
+          
+          <button id="inviteTextBtn" class="btn-round-blue" style="font-size: 11px; width: 50px; height: 50px;" onclick="sendTextTabInvite()">💬<br>Invite</button>
+
+          <div class="vintage-toggle-panel">
+            <div class="toggle-label-group">
+              <span id="textLightText" class="indicator-light active-red"></span>
+              <span>Text</span>
+            </div>
+
+            <label class="switch-container">
+              <input type="checkbox" id="textInviteToggle" onchange="toggleInviteMode('text')">
+              <span class="slider-track"></span>
+            </label>
+
+            <div class="toggle-label-group">
+              <span id="emailLightText" class="indicator-light"></span>
+              <span>E-mail</span>
+            </div>
+          </div>
+        </div>
+
+        <div id="web-chat-thread">
+          <p style="color: #666; font-style: italic; margin: 0;">Enter your Name and Room Name above to begin web chat...</p>
+        </div>
+
+        <div style="display: flex; gap: 8px;">
+          <input type="text" id="webChatInput" placeholder="Type a free web message..." style="flex: 1; text-align: left; background: #2c2c2e; color: #fff; border: 1px solid #444; border-radius: 6px; padding: 8px 12px;">
+          <button id="sendWebChatBtn" class="btn-round-blue" style="width: auto; height: auto; padding: 8px 18px; border-radius: 8px; font-size: 13px;">Send</button>
+        </div>
+      </div>
+
+      <div class="privacy-notice-badge">
+        🔒 <b>End-to-End Encrypted (AES-256-GCM):</b> All video, voice, and web text are scrambled directly on your device before transmission. Zero data is logged, stored, or shared.
+      </div>
+    </div>
+
+    <!-- MAPS TAB -->
+    <div id="tab-maps" class="tab-content">
+      <h2 style="color: #ff9500; margin-top: 0;">📍 Free Wi-Fi & Resource Maps</h2>
+      <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Find local internet access points and essential resources nearby</p>
+
+      <div class="maps-box">
+        <div style="margin-bottom: 14px; display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap;">
+          <button id="btnUseGps" onclick="centerMapOnUser(true)" style="font-size: 13px; padding: 10px 20px; background: #30d158; color: #000; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">
+            🎯 Refresh GPS Location
+          </button>
+          <span id="geoStatusText" style="font-size: 12px; color: #aaa;">Detecting location...</span>
+        </div>
+
+        <div class="maps-filter-bar">
+          <button class="maps-filter-btn" onclick="loadMapQuery('free wifi', 15)">📶 Closest Public Wifi</button>
+          <button class="maps-filter-btn" onclick="loadMapQuery('public library', 14)">📚 City & County Libraries</button>
+          <button class="maps-filter-btn" onclick="loadMapQuery('fast food wifi', 14)">🍔 Fast Food Wi-Fi</button>
+          <button class="maps-filter-btn" onclick="loadMapQuery('coffee shop wifi', 15)">☕ Coffee Shops Wi-Fi</button>
+          <button class="maps-filter-btn" onclick="loadMapQuery('food bank shelter', 13)">🥫 Food Banks & Resources</button>
+        </div>
+
+        <div class="map-frame-container">
+          <iframe id="googleMapIframe" src="https://www.google.com/maps?q=Seattle+WA&z=14&output=embed" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div class="privacy-notice-badge">
+        🔒 <b>End-to-End Encrypted (AES-256-GCM):</b> All video, voice, and web text are scrambled directly on your device before transmission. Zero data is logged, stored, or shared.
+      </div>
+    </div>
+
+    <!-- SEATTLE WI-FI TAB -->
+    <div id="tab-seattle-wifi" class="tab-content">
+      <h2 style="color: #00c0f0; margin-top: 0;">🌐 City of Seattle Public Wi-Fi Portal</h2>
+      <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Official municipal database for city libraries, civic centers, and public hotspots</p>
+
+      <div class="maps-box" style="border-color: #00c0f0;">
+        <div style="margin-bottom: 14px; display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap;">
+          <a href="https://maps.seattle.gov/publicwifi/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+            <button style="font-size: 13px; padding: 10px 20px; background: #00c0f0; color: #000; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(0, 192, 240, 0.3);">
+              ↗️ Launch Seattle Portal Fullscreen
+            </button>
+          </a>
+        </div>
+
+        <div class="map-frame-container" style="height: 550px; border-color: #007d99;">
+          <iframe 
+            id="seattleWifiIframe" 
+            src="https://maps.seattle.gov/publicwifi/" 
+            title="Seattle Public Wi-Fi Map"
+            loading="lazy"
+            sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <div class="privacy-notice-badge">
+        🔒 <b>End-to-End Encrypted (AES-256-GCM):</b> All video, voice, and web text are scrambled directly on your device before transmission. Zero data is logged, stored, or shared.
+      </div>
+    </div>
+
+    <!-- RADIO TAB -->
+    <div id="tab-radio" class="tab-content">
+      <h2 style="color: #e040fb; margin-top: 0;">📻 Local Live Internet Radio</h2>
+      <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Select a genre to populate the Left Station Bank</p>
+
+      <div class="radio-box">
+        <div class="radio-genre-bar">
+          <button class="genre-btn" onclick="fetchRadioBrowserGenre('classical', 'Classical')">🎼 Classical</button>
+          <button class="genre-btn" onclick="fetchRadioBrowserGenre('pop', 'Pop / Indie')">🎤 Pop</button>
+          <button class="genre-btn" onclick="fetchRadioBrowserGenre('rock', 'Classic Rock')">🎸 Rock N' Roll</button>
+          <button class="genre-btn" onclick="fetchRadioBrowserGenre('country', 'Country')">🤠 Country</button>
+          <button class="genre-btn" onclick="fetchRadioBrowserGenre('jazz', 'Jazz')">🎷 Jazz</button>
+          <button class="genre-btn" onclick="fetchRadioBrowserGenre('news', 'News / NPR')">📰 News & NPR</button>
+        </div>
+
+        <div class="radio-layout">
+          <div class="station-bank-container">
+            <h4 class="station-bank-header">📻 Station Bank</h4>
+            <div id="stationBankList" class="station-bank-list">
+              <p style="color: #666; font-size: 12px; font-style: italic; margin: 0;">Select a genre above to load stations into this bank...</p>
+            </div>
+          </div>
+
+          <div class="radio-console">
+            <h3 id="radioStationTitle" class="now-playing-title">📻 Select a Station</h3>
+            <span id="radioStationLocation" class="now-playing-sub">Choose a station from the Bank on the left</span>
+
+            <audio id="radioAudioPlayer" controls preload="none">
+              Your browser does not support the audio element.
+            </audio>
+
+            <p id="radioStatusText" style="font-size: 12px; color: #aaa; margin: 0; font-weight: bold;">● Ready to Tune</p>
+
+            <div class="tuner-box">
+              <label for="customStreamInput" style="display:block; font-size: 12px; color: #aaa; font-weight: bold; margin-bottom: 6px;">
+                📻 Search Station Name / Call Letters:
+              </label>
+              <div style="display: flex; gap: 8px;">
+                <input type="text" id="customStreamInput" placeholder="e.g., KEXP, KING, KNKX, KUOW..." style="flex: 1; text-align: left; background: #2c2c2e; border: 1px solid #555; color: #fff; padding: 8px 12px; border-radius: 6px;">
+                <button onclick="searchRadioBrowserCustom()" class="btn-round-blue" style="width: auto; height: auto; font-size: 13px; padding: 8px 14px; border-radius: 6px;">Tune In</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="privacy-notice-badge">
+        🔒 <b>End-to-End Encrypted (AES-256-GCM):</b> All video, voice, and web text are scrambled directly on your device before transmission. Zero data is logged, stored, or shared.
+      </div>
+    </div>
+
+    <!-- ART GALLERY TAB (WITH RIJKSMUSEUM ADDED) -->
+    <div id="tab-art" class="tab-content">
+      <h2 style="color: #ffd60a; margin-top: 0;">🏛️ World Art Museum Collections</h2>
+      <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Direct open-access digital collections from premier international museums</p>
+
+      <div class="art-box">
+        <div class="museum-institution-bar">
+          <button id="btnMuseumAll" class="museum-inst-btn active" onclick="setMuseumScope('all')">🌐 All Museums (Blended)</button>
+          <button id="btnMuseumRijks" class="museum-inst-btn" onclick="setMuseumScope('rijks')">🏛️ Rijksmuseum</button>
+          <button id="btnMuseumAIC" class="museum-inst-btn" onclick="setMuseumScope('aic')">🏛️ Chicago (AIC)</button>
+          <button id="btnMuseumMET" class="museum-inst-btn" onclick="setMuseumScope('met')">🏛️ The Met (NYC)</button>
+          <button id="btnMuseumCMA" class="museum-inst-btn" onclick="setMuseumScope('cma')">🏛️ Cleveland (CMA)</button>
+        </div>
+
+        <div class="art-genre-bar">
+          <button class="art-genre-btn active" onclick="triggerArtSearch('impressionism', 'Impressionism', this)">🎨 Impressionism</button>
+          <button class="art-genre-btn" onclick="triggerArtSearch('renaissance', 'Renaissance', this)">⚜️ Renaissance</button>
+          <button class="art-genre-btn" onclick="triggerArtSearch('baroque', 'Baroque', this)">🏛️ Baroque</button>
+          <button class="art-genre-btn" onclick="triggerArtSearch('symbolism', 'Symbolist Art', this)">🔮 Symbolism</button>
+          <button class="art-genre-btn" onclick="triggerArtSearch('dutch', 'Dutch Masters', this)">🇳🇱 Dutch Masters</button>
+          <button class="art-genre-btn" onclick="triggerArtSearch('japanese woodblock', 'Japanese Prints', this)">🌊 Japanese Prints</button>
+          <button class="art-genre-btn" onclick="triggerArtRandom(this)">🎲 Discovery Mix</button>
+        </div>
+
+        <div class="art-layout">
+          <div class="art-bank-container">
+            <h4 class="art-bank-header">🖼️ Gallery Bank</h4>
+            <div id="artBankList" class="art-bank-list">
+              <p style="color: #666; font-size: 12px; font-style: italic; margin: 0;">Loading artwork collection...</p>
+            </div>
+          </div>
+
+          <div class="art-display-console">
+            <div class="art-image-frame" id="artImageFrame">
+              <span id="artLoadingIndicator" style="color: #aaa; font-size: 13px; font-style: italic;">Select a painting from the bank to display</span>
+              <img id="mainArtworkImg" src="" alt="Painting Display" style="display: none;" onload="onArtworkImageLoaded()">
+            </div>
+
+            <div class="art-actions-bar">
+              <button class="btn-art-action" onclick="openArtFullscreen()">⛶ Fullscreen</button>
+              <button id="btnArtSlideshow" class="btn-art-action" onclick="toggleArtSlideshow()">▶️ Start Slideshow</button>
+            </div>
+
+            <div id="artCaptionCard" class="art-caption-card">
+              <h3 id="artCaptionTitle" class="art-caption-title">Painting Title</h3>
+              <div id="artCaptionArtist" class="art-caption-artist">Artist Name</div>
+              <p id="artCaptionMeta" class="art-caption-meta">Date • Medium / Details</p>
+              <div id="artCaptionMuseum" class="art-museum-badge">🏛️ Museum Collection</div>
+            </div>
+
+            <div class="tuner-box" style="margin-top: 5px;">
+              <label for="customArtInput" style="display:block; font-size: 12px; color: #aaa; font-weight: bold; margin-bottom: 6px;">
+                🏛️ Search Artist, Movement, or Title:
+              </label>
+              <div style="display: flex; gap: 8px;">
+                <input type="text" id="customArtInput" placeholder="e.g., Rembrandt, Vermeer, Monet, Turner..." style="flex: 1; text-align: left; background: #2c2c2e; border: 1px solid #555; color: #fff; padding: 8px 12px; border-radius: 6px;">
+                <button onclick="searchArtCustom()" class="btn-round-blue" style="width: auto; height: auto; font-size: 13px; padding: 8px 14px; border-radius: 6px;">Search</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="privacy-notice-badge">
+        🔒 <b>End-to-End Encrypted (AES-256-GCM):</b> All video, voice, and web text are scrambled directly on your device before transmission. Zero data is logged, stored, or shared.
+      </div>
+    </div>
+
+    <!-- 🤝 HELP & COMMUNITY RESOURCES TAB -->
+    <div id="tab-help" class="tab-content">
+      <h2 style="color: #38bdf8; margin-top: 0;">🤝 Essential Community Help & Well-Being Directory</h2>
+      <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Find physical, mental, and social support services with direct-dial and mapping links</p>
+
+      <div class="help-box">
+        <div class="help-location-bar">
+          <label for="helpLocationInput" style="font-size: 13px; font-weight: bold; color: #ccc;">Your City or Zip:</label>
+          <input type="text" id="helpLocationInput" class="help-loc-input" placeholder="e.g., Seattle, WA or 98101" value="Seattle, WA">
+          <button class="btn-help-loc" onclick="updateHelpLocation()">Update Location</button>
+          <button class="btn-help-loc" style="background:#30d158;" onclick="detectHelpGPS()">📍 Use GPS</button>
+        </div>
+
+        <div class="help-layout">
+          <div class="help-category-bank">
+            <button class="help-category-btn active" onclick="selectHelpCategory('housing', this)">🏠 Housing & Shelter</button>
+            <button class="help-category-btn" onclick="selectHelpCategory('addiction', this)">💊 Drug Addiction & Recovery</button>
+            <button class="help-category-btn" onclick="selectHelpCategory('food', this)">🥫 Food Resources & Meals</button>
+            <button class="help-category-btn" onclick="selectHelpCategory('hygiene', this)">🚿 Hygiene & Showers</button>
+            <button class="help-category-btn" onclick="selectHelpCategory('financial', this)">💵 Financial & Utility Aid</button>
+            <button class="help-category-btn" onclick="selectHelpCategory('family', this)">🍼 Family & Pediatric Care</button>
+            <button class="help-category-btn" onclick="selectHelpCategory('mental', this)">🧠 Mental Health Services</button>
+            <button class="help-category-btn crisis" onclick="selectHelpCategory('suicide', this)">☎️ Crisis & Suicide (988)</button>
+          </div>
+
+          <div id="helpResultsConsole" class="help-results-console"></div>
+        </div>
+
+        <div class="practical-quote-box">
+          <p id="practicalQuoteText" class="practical-quote-text">"Energy and persistence conquer all things."</p>
+          <p id="practicalQuoteAuthor" class="practical-quote-author">— Benjamin Franklin</p>
+          <div class="practical-quote-controls">
+            <button class="btn-quote-step" onclick="cyclePracticalQuote()">🎲 Next Helpful Quote</button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="privacy-notice-badge">
+        🔒 <b>Community Support:</b> All emergency hotlines (988, 211, SAMHSA) are completely free, confidential, and accessible 24/7.
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const SIGNALING_SERVER = "https://webrtc-signaling-do2l.onrender.com";
+    
+    const socket = io(SIGNALING_SERVER, { autoConnect: false });
+    let localStream;
+    let peerConnections = {};
+    let currentCoords = null;
+
+    let isAudioMuted = false;
+    let isVideoMuted = false;
+
+    const MAX_CALL_DURATION_SEC = 15 * 60;
+    let callTimerInterval = null;
+    let callSecondsRemaining = MAX_CALL_DURATION_SEC;
+
+    const roomIdInput = document.getElementById('roomId');
+    const callerNameInput = document.getElementById('callerName');
+    const webTextSenderNameInput = document.getElementById('webTextSenderName');
+    const statusDiv = document.getElementById('status');
+
+    let rtcConfig = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] };
+
+    async function loadIceServers() {
+      try {
+        const res = await fetch(`${SIGNALING_SERVER}/api/ice-servers`);
+        if (res.ok) {
+          const data = await res.json();
+          if (data.iceServers && data.iceServers.length > 0) {
+            rtcConfig = { iceServers: data.iceServers };
+          }
+        }
+      } catch (err) {
+        console.warn("Using fallback STUN servers:", err);
+      }
+    }
+
+    function ensureSocketConnected(onConnected) {
+      if (socket.connected) {
+        if (onConnected) onConnected();
+        return;
+      }
+      statusDiv.innerText = "Connecting to server...";
+      statusDiv.style.color = "#ff9500";
+      socket.connect();
+      socket.once('connect', () => {
+        statusDiv.innerText = "Connected to Server";
+        statusDiv.style.color = "#30d158";
+        if (onConnected) onConnected();
+      });
+    }
+
+    function updateGridLayout() {
+      const grid = document.getElementById('videoStreamView');
+      if (!grid) return;
+      const count = grid.querySelectorAll('.video-card').length;
+      grid.classList.remove('peers-2', 'peers-3', 'peers-4');
+      if (count === 2) {
+        grid.classList.add('peers-2');
+      } else if (count === 3) {
+        grid.classList.add('peers-3');
+      } else if (count >= 4) {
+        grid.classList.add('peers-4');
+      }
+    }
+
+    async function deriveAesKey(roomName) {
+      const enc = new TextEncoder();
+      const paddedSecret = roomName.padEnd(32, '0').slice(0, 32);
+      return await window.crypto.subtle.importKey(
+        "raw",
+        enc.encode(paddedSecret),
+        { name: "AES-GCM" },
+        false,
+        ["encrypt", "decrypt"]
+      );
+    }
+
+    async function encryptPayload(plaintext, roomName) {
+      try {
+        const enc = new TextEncoder();
+        const key = await deriveAesKey(roomName);
+        const iv = window.crypto.getRandomValues(new Uint8Array(12));
+        const ciphertext = await window.crypto.subtle.encrypt(
+          { name: "AES-GCM", iv: iv },
+          key,
+          enc.encode(plaintext)
+        );
+        return {
+          cipher: btoa(String.fromCharCode(...new Uint8Array(ciphertext))),
+          iv: btoa(String.fromCharCode(...iv))
+        };
+      } catch (e) {
+        return { cipher: plaintext, iv: null };
+      }
+    }
+
+    async function decryptPayload(cipherData, ivData, roomName) {
+      try {
+        if (!ivData) return cipherData;
+        const key = await deriveAesKey(roomName);
+        const ciphertext = Uint8Array.from(atob(cipherData), c => c.charCodeAt(0));
+        const iv = Uint8Array.from(atob(ivData), c => c.charCodeAt(0));
+        const decrypted = await window.crypto.subtle.decrypt(
+          { name: "AES-GCM", iv: iv },
+          key,
+          ciphertext
+        );
+        return new TextDecoder().decode(decrypted);
+      } catch (e) {
+        return cipherData;
+      }
+    }
+
+    callerNameInput.addEventListener('input', (e) => {
+      webTextSenderNameInput.value = e.target.value;
+    });
+    webTextSenderNameInput.addEventListener('input', (e) => {
+      callerNameInput.value = e.target.value;
+    });
+
+    function triggerCellCall(event) {
+      const number = prompt("Enter phone number to call (optional):", "");
+      const callLink = document.getElementById('callCellBtn');
+      if (number && number.trim()) {
+        callLink.href = `tel:${encodeURIComponent(number.trim())}`;
+      } else {
+        callLink.href = "tel:";
+      }
+      setTimeout(() => {
+        document.getElementById('returnModal').style.display = 'flex';
+      }, 10000);
+    }
+
+    function closeReturnModal() {
+      document.getElementById('returnModal').style.display = 'none';
+    }
+
+    function toggleInviteMode(type) {
+      if (type === 'phone') {
+        const isEmail = document.getElementById('phoneInviteToggle').checked;
+        document.getElementById('textLightPhone').className = isEmail ? 'indicator-light' : 'indicator-light active-red';
+        document.getElementById('emailLightPhone').className = isEmail ? 'indicator-light active-red' : 'indicator-light';
+      } else {
+        const isEmail = document.getElementById('textInviteToggle').checked;
+        document.getElementById('textLightText').className = isEmail ? 'indicator-light' : 'indicator-light active-red';
+        document.getElementById('emailLightText').className = isEmail ? 'indicator-light active-red' : 'indicator-light';
+      }
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const roomParam = urlParams.get('room');
+    const modeParam = urlParams.get('mode');
+
+    if (roomParam) {
+      roomIdInput.value = roomParam;
+      document.getElementById('webTextRoomId').value = roomParam;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadIceServers();
+      initHelpResources();
+      initPracticalQuotes();
+
+      const artInput = document.getElementById('customArtInput');
+      if (artInput) {
+        artInput.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') searchArtCustom();
+        });
+      }
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeArtFullscreen();
+      });
+
+      if (roomParam) {
+        document.getElementById('mainHeader').style.display = 'none';
+        document.getElementById('webphoneMainSection').style.display = 'none';
+        document.getElementById('videoStreamView').style.display = 'none';
+        document.getElementById('status').style.display = 'none';
+        
+        const enterBtn = document.getElementById('megaEnterBtn');
+        const inviteTitle = document.getElementById('inviteTitleText');
+
+        if (modeParam === 'text') {
+          inviteTitle.innerText = "You have been invited to WebText!";
+          enterBtn.innerText = "💬 Open WebText";
+          enterBtn.style.background = "#63e685";
+        } else {
+          inviteTitle.innerText = "You have been invited to a Video Call!";
+          enterBtn.innerText = "📹 Enter Video Call";
+          enterBtn.style.background = "#30d158";
+        }
+
+        document.getElementById('responderAccessBox').style.display = 'block';
+      }
+    });
+
+    document.getElementById('megaEnterBtn').addEventListener('click', () => {
+      document.getElementById('responderAccessBox').style.display = 'none';
+      document.getElementById('status').style.display = 'block';
+      if (modeParam === 'text') {
+        switchTab('text');
+      } else {
+        startCall();
+      }
+    });
+
+    function switchTab(tabName) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+      if (tabName === 'phone') {
+        document.querySelectorAll('.tab-btn')[0].classList.add('active');
+        document.getElementById('tab-phone').classList.add('active');
+      } else if (tabName === 'text') {
+        document.querySelectorAll('.tab-btn')[1].classList.add('active');
+        document.getElementById('tab-text').classList.add('active');
+        const r = document.getElementById('webTextRoomId').value.trim() || roomIdInput.value.trim();
+        if (r) {
+          ensureSocketConnected(() => {
+            socket.emit('join-room', r);
+          });
+        }
+      } else if (tabName === 'maps') {
+        document.querySelectorAll('.tab-btn')[2].classList.add('active');
+        document.getElementById('tab-maps').classList.add('active');
+        if (!currentCoords) centerMapOnUser(false);
+      } else if (tabName === 'seattle-wifi') {
+        document.querySelectorAll('.tab-btn')[3].classList.add('active');
+        document.getElementById('tab-seattle-wifi').classList.add('active');
+      } else if (tabName === 'radio') {
+        document.querySelectorAll('.tab-btn')[4].classList.add('active');
+        document.getElementById('tab-radio').classList.add('active');
+      } else if (tabName === 'art') {
+        document.querySelectorAll('.tab-btn')[5].classList.add('active');
+        document.getElementById('tab-art').classList.add('active');
+        if (!hasLoadedArtOnce) {
+          triggerArtSearch('impressionism', 'Impressionism');
+        }
+      } else if (tabName === 'help') {
+        document.querySelectorAll('.tab-btn')[6].classList.add('active');
+        document.getElementById('tab-help').classList.add('active');
+      }
+    }
+
+    function loadMapQuery(resourceTerm, zoomLevel = 14) {
+      const iframe = document.getElementById('googleMapIframe');
+      if (currentCoords) {
+        iframe.src = `https://www.google.com/maps?q=${encodeURIComponent(resourceTerm)}&ll=${currentCoords.lat},${currentCoords.lng}&z=${zoomLevel}&output=embed`;
+      } else {
+        iframe.src = `https://www.google.com/maps?q=${encodeURIComponent(resourceTerm + ' in Seattle WA')}&z=${zoomLevel}&output=embed`;
+      }
+    }
+
+    function centerMapOnUser(showTroubleshootingModal) {
+      const geoStatus = document.getElementById('geoStatusText');
+      if (geoStatus) geoStatus.innerText = "⏳ Requesting GPS location...";
+
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            currentCoords = { lat: position.coords.latitude, lng: position.coords.longitude };
+            if (geoStatus) {
+              geoStatus.innerText = "📍 GPS Location Locked!";
+              geoStatus.style.color = "#30d158";
+            }
+            document.getElementById('googleMapIframe').src = `https://www.google.com/maps?q=${currentCoords.lat},${currentCoords.lng}&z=${15}&output=embed`;
+          },
+          (err) => {
+            currentCoords = null;
+            if (geoStatus) {
+              geoStatus.innerText = "⚠️ Location paused - Check device permissions";
+              geoStatus.style.color = "#ff9500";
+            }
+            if (showTroubleshootingModal) {
+              document.getElementById('locationModal').style.display = 'flex';
+            }
+          },
+          { enableHighAccuracy: false, timeout: 6000, maximumAge: 300000 }
+        );
+      }
+    }
+
+    function closeLocationModal() {
+      document.getElementById('locationModal').style.display = 'none';
+    }
+
+    // RADIO ENGINE
+    const RADIO_API_BASE = "https://de1.api.radio-browser.info/json/stations/search";
+
+    async function fetchRadioBrowserGenre(tag, labelName) {
+      const bankList = document.getElementById('stationBankList');
+      const statusText = document.getElementById('radioStatusText');
+
+      statusText.innerText = "⏳ Loading station bank...";
+      statusText.style.color = "#ff9500";
+      bankList.innerHTML = '<p style="color:#aaa; font-size:12px; font-style:italic;">Fetching streams...</p>';
+
+      try {
+        const response = await fetch(`${RADIO_API_BASE}?tag=${tag}&countrycode=US&limit=15&is_https=true&order=votes&reverse=true`);
+        const stations = await response.json();
+        const httpsStations = stations.filter(s => s.url_resolved && s.url_resolved.startsWith('https://'));
+
+        if (httpsStations.length > 0) {
+          renderStationBank(httpsStations);
+          selectStationItem(httpsStations[0]);
+        } else {
+          bankList.innerHTML = '<p style="color:#ff3b30; font-size:12px;">No HTTPS stations found.</p>';
+        }
+      } catch (err) {
+        bankList.innerHTML = '<p style="color:#ff3b30; font-size:12px;">Failed to load stations.</p>';
+      }
+    }
+
+    async function searchRadioBrowserCustom() {
+      const queryInput = document.getElementById('customStreamInput');
+      const query = queryInput.value.trim();
+      if (!query) return alert("Please enter a station name or call letters.");
+
+      const bankList = document.getElementById('stationBankList');
+      const statusText = document.getElementById('radioStatusText');
+
+      statusText.innerText = `⏳ Searching database for "${query}"...`;
+      statusText.style.color = "#ff9500";
+
+      try {
+        const response = await fetch(`${RADIO_API_BASE}?name=${encodeURIComponent(query)}&limit=15&is_https=true&order=votes&reverse=true`);
+        const stations = await response.json();
+        const httpsStations = stations.filter(s => s.url_resolved && s.url_resolved.startsWith('https://'));
+
+        if (httpsStations.length > 0) {
+          renderStationBank(httpsStations);
+          selectStationItem(httpsStations[0]);
+        } else {
+          alert("Station Not In Database");
+          statusText.innerText = "● Ready to Tune";
+          statusText.style.color = "#aaa";
+        }
+      } catch (err) {
+        alert("Station Not In Database");
+        statusText.innerText = "● Ready to Tune";
+        statusText.style.color = "#aaa";
+      }
+    }
+
+    function renderStationBank(stations) {
+      const bankList = document.getElementById('stationBankList');
+      bankList.innerHTML = '';
+
+      stations.forEach((st, index) => {
+        const item = document.createElement('div');
+        item.className = `station-bank-item ${index === 0 ? 'active' : ''}`;
+        item.innerHTML = `<span style="font-size:14px; font-weight:bold; color:#fff; display:block;">📻 ${st.name}</span><span style="font-size:11px; color:#aaa;">${st.state || 'Live'} • ${st.codec || 'MP3'}</span>`;
+        item.onclick = () => selectStationItem(st);
+        bankList.appendChild(item);
+      });
+    }
+
+    function selectStationItem(st) {
+      document.getElementById('radioStationTitle').innerText = `📻 ${st.name}`;
+      document.getElementById('radioStationLocation').innerText = `${st.state || 'Live Stream'} • ${st.codec || 'MP3'}`;
+      playRadioStream(st.url_resolved || st.url);
+    }
+
+    function playRadioStream(streamUrl) {
+      const player = document.getElementById('radioAudioPlayer');
+      const statusText = document.getElementById('radioStatusText');
+      player.pause();
+      player.src = streamUrl;
+      player.load();
+      player.play().then(() => {
+        statusText.innerText = "● Live Streaming";
+        statusText.style.color = "#30d158";
+      }).catch(() => {
+        statusText.innerText = "Tap Play arrow on player to listen";
+        statusText.style.color = "#e040fb";
+      });
+    }
+
+    // =======================================================
+    // MULTI-MUSEUM ART GALLERY ENGINE (WITH RIJKSMUSEUM)
+    // =======================================================
+    let hasLoadedArtOnce = false;
+    let currentMuseumScope = 'all';
+    let lastArtQuery = 'impressionism';
+    let currentArtworkList = [];
+    let currentArtworkIndex = 0;
+    let slideshowInterval = null;
+
+    function setMuseumScope(scope) {
+      currentMuseumScope = scope;
+      document.querySelectorAll('.museum-inst-btn').forEach(btn => btn.classList.remove('active'));
+      if (scope === 'all') document.getElementById('btnMuseumAll').classList.add('active');
+      if (scope === 'rijks') document.getElementById('btnMuseumRijks').classList.add('active');
+      if (scope === 'aic') document.getElementById('btnMuseumAIC').classList.add('active');
+      if (scope === 'met') document.getElementById('btnMuseumMET').classList.add('active');
+      if (scope === 'cma') document.getElementById('btnMuseumCMA').classList.add('active');
+
+      triggerArtSearch(lastArtQuery, lastArtQuery);
+    }
+
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    async function fetchFromRijks(query, limit = 8) {
+      try {
+        const url = `https://www.rijksmuseum.nl/api/en/collection?key=0fWuMvx4&q=${encodeURIComponent(query)}&ps=${limit}&imgonly=true`;
+        const res = await fetch(url);
+        const json = await res.json();
+        return (json.artObjects || []).filter(item => item.webImage && item.webImage.url).map(item => ({
+          id: `rijks-${item.objectNumber}`,
+          title: item.title,
+          artist: item.principalOrFirstMaker || 'Unknown Artist',
+          date: item.longTitle || 'Dutch Masterpiece',
+          medium: 'Oil on canvas / Museum Collection',
+          imageUrl: item.webImage.url,
+          museum: 'Rijksmuseum (Amsterdam)'
+        }));
+      } catch (e) {
+        return [];
+      }
+    }
+
+    async function fetchFromAIC(query, limit = 8) {
+      try {
+        const randomPage = Math.floor(Math.random() * 8) + 1;
+        const url = `https://api.artic.edu/api/v1/artworks/search?q=${encodeURIComponent(query)}&query[term][is_public_domain]=true&fields=id,title,artist_title,artist_display,date_display,medium_display,image_id&page=${randomPage}&limit=${limit}`;
+        const res = await fetch(url);
+        const json = await res.json();
+        return (json.data || []).filter(item => item.image_id).map(item => ({
+          id: `aic-${item.id}`,
+          title: item.title,
+          artist: item.artist_display || item.artist_title || 'Unknown Artist',
+          date: item.date_display || 'Date Unknown',
+          medium: item.medium_display || 'Oil on canvas / Painting',
+          imageUrl: `https://www.artic.edu/iiif/2/${item.image_id}/full/843,/0/default.jpg`,
+          museum: 'The Art Institute of Chicago'
+        }));
+      } catch (e) {
+        return [];
+      }
+    }
+
+    async function fetchFromCMA(query, limit = 8) {
+      try {
+        const randomSkip = Math.floor(Math.random() * 20);
+        const url = `https://openaccess-api.clevelandart.org/api/artworks/?q=${encodeURIComponent(query)}&has_image=1&skip=${randomSkip}&limit=${limit}`;
+        const res = await fetch(url);
+        const json = await res.json();
+        return (json.data || []).filter(item => item.images && item.images.web && item.images.web.url).map(item => ({
+          id: `cma-${item.id}`,
+          title: item.title,
+          artist: (item.creators && item.creators[0]) ? item.creators[0].description : 'Unknown Artist',
+          date: item.creation_date || 'Date Unknown',
+          medium: item.technique || 'Painting / Work on paper',
+          imageUrl: item.images.web.url,
+          museum: 'The Cleveland Museum of Art'
+        }));
+      } catch (e) {
+        return [];
+      }
+    }
+
+    async function fetchFromMet(query, limit = 6) {
+      try {
+        const searchUrl = `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=${encodeURIComponent(query)}`;
+        const searchRes = await fetch(searchUrl);
+        const searchJson = await searchRes.json();
+        if (!searchJson.objectIDs || searchJson.objectIDs.length === 0) return [];
+
+        const shuffledIds = shuffleArray(searchJson.objectIDs).slice(0, limit);
+        const promises = shuffledIds.map(id => 
+          fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${id}`)
+            .then(r => r.ok ? r.json() : null)
+            .catch(() => null)
+        );
+
+        const records = await Promise.all(promises);
+        return records.filter(item => item && (item.primaryImage || item.primaryImageSmall)).map(item => ({
+          id: `met-${item.objectID}`,
+          title: item.title,
+          artist: item.artistDisplayName || 'Unknown Artist',
+          date: item.objectDate || 'Date Unknown',
+          medium: item.medium || 'Painting / European Collection',
+          imageUrl: item.primaryImage || item.primaryImageSmall,
+          museum: 'The Metropolitan Museum of Art (NYC)'
+        }));
+      } catch (e) {
+        return [];
+      }
+    }
+
+    async function triggerArtSearch(query, labelName, clickedBtn = null) {
+      hasLoadedArtOnce = true;
+      lastArtQuery = query;
+
+      if (clickedBtn) {
+        document.querySelectorAll('.art-genre-btn').forEach(btn => btn.classList.remove('active'));
+        clickedBtn.classList.add('active');
+      }
+
+      const bankList = document.getElementById('artBankList');
+      const indicator = document.getElementById('artLoadingIndicator');
+      bankList.innerHTML = '<p style="color:#aaa; font-size:12px; font-style:italic;">Querying museum collections...</p>';
+      indicator.style.display = 'block';
+      indicator.innerText = `⏳ Searching collections for "${labelName}"...`;
+      document.getElementById('mainArtworkImg').style.display = 'none';
+
+      let results = [];
+      if (currentMuseumScope === 'rijks') {
+        results = await fetchFromRijks(query, 16);
+      } else if (currentMuseumScope === 'aic') {
+        results = await fetchFromAIC(query, 16);
+      } else if (currentMuseumScope === 'cma') {
+        results = await fetchFromCMA(query, 16);
+      } else if (currentMuseumScope === 'met') {
+        results = await fetchFromMet(query, 10);
+      } else {
+        const [rijks, aic, cma, met] = await Promise.all([
+          fetchFromRijks(query, 4),
+          fetchFromAIC(query, 4),
+          fetchFromCMA(query, 4),
+          fetchFromMet(query, 3)
+        ]);
+        results = shuffleArray([...rijks, ...aic, ...cma, ...met]);
+      }
+
+      if (results.length > 0) {
+        currentArtworkList = results;
+        currentArtworkIndex = 0;
+        renderArtBank(results);
+        selectArtItem(results[0], 0);
+      } else {
+        currentArtworkList = [];
+        bankList.innerHTML = '<p style="color:#ff3b30; font-size:12px;">No open-access artworks found for this search.</p>';
+        indicator.innerText = "No artworks available.";
+      }
+    }
+
+    async function triggerArtRandom(clickedBtn = null) {
+      const themes = ['rembrandt', 'vermeer', 'landscape', 'portrait', 'still life', 'flowers', 'autumn', 'river', 'garden', 'ocean', 'night watch'];
+      const pick = themes[Math.floor(Math.random() * themes.length)];
+      triggerArtSearch(pick, `Discovery: ${pick}`, clickedBtn);
+    }
+
+    function searchArtCustom() {
+      const input = document.getElementById('customArtInput');
+      const query = input.value.trim();
+      if (!query) return alert("Please enter an artist, movement, or title to search.");
+      document.querySelectorAll('.art-genre-btn').forEach(btn => btn.classList.remove('active'));
+      triggerArtSearch(query, query);
+    }
+
+    function renderArtBank(artworks) {
+      const bankList = document.getElementById('artBankList');
+      bankList.innerHTML = '';
+
+      artworks.forEach((art, idx) => {
+        const item = document.createElement('div');
+        item.className = `art-bank-item ${idx === 0 ? 'active' : ''}`;
+        item.id = `item-${art.id}`;
+        item.innerHTML = `
+          <span style="font-size:13px; font-weight:bold; color:#ffd60a; display:block;">🎨 ${art.title}</span>
+          <span style="font-size:11px; color:#fff; display:block;">${art.artist}</span>
+          <span style="font-size:10px; color:#aaa;">${art.museum}</span>
+        `;
+        item.onclick = () => {
+          document.querySelectorAll('.art-bank-item').forEach(el => el.classList.remove('active'));
+          item.classList.add('active');
+          selectArtItem(art, idx);
+        };
+        bankList.appendChild(item);
+      });
+    }
+
+    function selectArtItem(art, index) {
+      currentArtworkIndex = index;
+      const img = document.getElementById('mainArtworkImg');
+      const indicator = document.getElementById('artLoadingIndicator');
+
+      indicator.style.display = 'block';
+      indicator.innerText = `⏳ Loading high-res stream for "${art.title}"...`;
+      img.style.display = 'none';
+
+      img.src = art.imageUrl;
+      document.getElementById('artCaptionTitle').innerText = art.title;
+      document.getElementById('artCaptionArtist').innerText = art.artist;
+      document.getElementById('artCaptionMeta').innerText = `${art.date} • ${art.medium}`;
+      document.getElementById('artCaptionMuseum').innerText = `🏛️ Holding Collection: ${art.museum}`;
+
+      document.getElementById('artFullscreenImg').src = art.imageUrl;
+      document.getElementById('artFsTitle').innerText = art.title;
+      document.getElementById('artFsDetails').innerText = `${art.artist} • ${art.date} • ${art.museum}`;
+
+      document.querySelectorAll('.art-bank-item').forEach((el, i) => {
+        if (i === index) el.classList.add('active');
+        else el.classList.remove('active');
+      });
+    }
+
+    function onArtworkImageLoaded() {
+      document.getElementById('artLoadingIndicator').style.display = 'none';
+      document.getElementById('mainArtworkImg').style.display = 'block';
+    }
+
+    function openArtFullscreen() {
+      document.getElementById('artFullscreenModal').style.display = 'flex';
+    }
+
+    function closeArtFullscreen() {
+      document.getElementById('artFullscreenModal').style.display = 'none';
+    }
+
+    function toggleArtSlideshow() {
+      const btn = document.getElementById('btnArtSlideshow');
+      if (slideshowInterval) {
+        clearInterval(slideshowInterval);
+        slideshowInterval = null;
+        btn.innerText = "▶️ Start Slideshow";
+        btn.classList.remove('playing');
+      } else {
+        btn.innerText = "⏸️ Pause Slideshow";
+        btn.classList.add('playing');
+        advanceSlideshow();
+        slideshowInterval = setInterval(advanceSlideshow, 6000);
+      }
+    }
+
+    function advanceSlideshow() {
+      if (!currentArtworkList || currentArtworkList.length === 0) return;
+      currentArtworkIndex++;
+      if (currentArtworkIndex >= currentArtworkList.length) {
+        triggerArtRandom();
+        return;
+      }
+      selectArtItem(currentArtworkList[currentArtworkIndex], currentArtworkIndex);
+    }
+
+    // =======================================================
+    // 🤝 HELP & COMMUNITY RESOURCES DIRECTORY ENGINE
+    // =======================================================
+    let currentHelpLocation = "Seattle, WA";
+    let activeHelpCategory = "housing";
+
+    const HELP_RESOURCES = {
+      housing: {
+        title: "🏠 Housing, Shelters & Eviction Defense",
+        cards: [
+          {
+            name: "National Emergency Shelter Locator (HUD)",
+            desc: "Immediate emergency shelter, transitional housing, and local rapid rehousing programs.",
+            phone: "211",
+            mapQuery: "emergency homeless shelter"
+          },
+          {
+            name: "National Eviction Prevention & Rental Aid",
+            desc: "Emergency rental assistance, legal tenant defense, and eviction diversion programs.",
+            phone: "800-569-4287",
+            mapQuery: "housing authority rental assistance"
+          },
+          {
+            name: "Youth & Young Adult Emergency Shelter Line",
+            desc: "24/7 dedicated crisis line and immediate shelter for runaway or housing-insecure youth.",
+            phone: "800-786-2929",
+            mapQuery: "youth shelter"
+          }
+        ]
+      },
+      addiction: {
+        title: "💊 Substance Use & Addiction Recovery",
+        cards: [
+          {
+            name: "SAMHSA National Recovery Helpline",
+            desc: "Free, confidential, 24/7 information service for individuals facing substance use disorders.",
+            phone: "800-662-4357",
+            mapQuery: "substance abuse treatment center"
+          },
+          {
+            name: "Local Detox & Withdrawal Management Centers",
+            desc: "Medically supervised detox, sobering centers, and inpatient stabilization programs.",
+            phone: "211",
+            mapQuery: "detox center"
+          },
+          {
+            name: "Harm Reduction, Syringe Exchange & Naloxone Sites",
+            desc: "Free overdose reversal supplies (Narcan/Naloxone), testing strips, and health navigation.",
+            phone: "211",
+            mapQuery: "harm reduction needle exchange"
+          }
+        ]
+      },
+      food: {
+        title: "🥫 Food Banks, Soup Kitchens & Meal Programs",
+        cards: [
+          {
+            name: "Feeding America Community Food Pantry Network",
+            desc: "Weekly free grocery distribution, fresh produce boxes, and emergency dry food rations.",
+            phone: "211",
+            mapQuery: "food bank pantry"
+          },
+          {
+            name: "Daily Community Soup Kitchens & Hot Meals",
+            desc: "Daily hot lunch and dinner services open to all members of the community without ID.",
+            phone: "211",
+            mapQuery: "soup kitchen free hot meal"
+          },
+          {
+            name: "SNAP / EBT Emergency Food Assistance Office",
+            desc: "State emergency food stamps expedited applications for low-income and unhoused individuals.",
+            phone: "800-221-5689",
+            mapQuery: "DSHS community services SNAP food stamps"
+          }
+        ]
+      },
+      hygiene: {
+        title: "🚿 Showers, Restrooms & Laundry Centers",
+        cards: [
+          {
+            name: "Day Center Free Showers & Hygiene Stations",
+            desc: "Access to private hot showers, hygiene kits, towels, and public restrooms.",
+            phone: "211",
+            mapQuery: "homeless day center showers"
+          },
+          {
+            name: "Community Free Laundry Programs",
+            desc: "Facilities offering free washer and dryer cycles and laundry detergent for low-income families.",
+            phone: "211",
+            mapQuery: "free laundry community center"
+          },
+          {
+            name: "Public Restrooms & Drinking Water Access",
+            desc: "Mapped municipal parks, community centers, and libraries with verified public restrooms.",
+            phone: "211",
+            mapQuery: "public library restroom"
+          }
+        ]
+      },
+      financial: {
+        title: "💵 Financial Assistance & Utility Lifelines",
+        cards: [
+          {
+            name: "2-1-1 United Way Financial Relief Clearinghouse",
+            desc: "Emergency grants for past-due utility shut-offs, rent help, and transit vouchers.",
+            phone: "211",
+            mapQuery: "community action agency financial assistance"
+          },
+          {
+            name: "LIHEAP Electric & Heating Energy Grants",
+            desc: "Federal utility grant assistance to keep winter heat and summer electricity active.",
+            phone: "866-674-6327",
+            mapQuery: "LIHEAP utility assistance office"
+          },
+          {
+            name: "Government Lifeline Free Cellphone & Internet Aid",
+            desc: "Federal subsidies providing free monthly cellular service and discounted home internet.",
+            phone: "800-234-9473",
+            mapQuery: "lifeline assistance phone wireless"
+          }
+        ]
+      },
+      family: {
+        title: "🍼 Family, Diapers & Pediatric Care",
+        cards: [
+          {
+            name: "National Diaper Bank & Infant Essentials",
+            desc: "Free monthly allocations of infant diapers, baby wipes, and infant formula.",
+            phone: "211",
+            mapQuery: "diaper bank family resource center"
+          },
+          {
+            name: "Free Pediatric & Child Health Clinics",
+            desc: "Sliding-scale and free childhood immunizations, well-child checkups, and dental screenings.",
+            phone: "211",
+            mapQuery: "community health center pediatrics"
+          },
+          {
+            name: "Child Care Resource & Subsidy Agency",
+            desc: "Assistance finding subsidized childcare, Head Start programs, and emergency respite care.",
+            phone: "800-424-2246",
+            mapQuery: "head start child care resources"
+          }
+        ]
+      },
+      mental: {
+        title: "🧠 Mental Health Counseling & Community Clinics",
+        cards: [
+          {
+            name: "Community Mental Health Centers (Sliding Scale)",
+            desc: "Walk-in counseling, psychiatric evaluations, peer support groups, and trauma therapy.",
+            phone: "211",
+            mapQuery: "community mental health clinic"
+          },
+          {
+            name: "NAMI National Alliance on Mental Illness HelpLine",
+            desc: "Free peer-support service providing information, resource referrals, and community support.",
+            phone: "800-950-6264",
+            mapQuery: "NAMI mental health support"
+          }
+        ]
+      },
+      suicide: {
+        title: "☎️ 24/7 Crisis & Suicide Lifelines (Dial 988)",
+        cards: [
+          {
+            name: "988 Suicide & Crisis Lifeline (National)",
+            desc: "Free, confidential 24/7 support for anyone in emotional distress, suicidal crisis, or substance panic.",
+            phone: "988",
+            isCrisis: true,
+            mapQuery: "crisis stabilization center"
+          },
+          {
+            name: "Veterans Crisis Line (Dial 988, Press 1)",
+            desc: "Confidential support specialized for military veterans, active service members, and families.",
+            phone: "988",
+            isCrisis: true,
+            mapQuery: "VA medical center mental health"
+          },
+          {
+            name: "The Trevor Project (LGBTQ Youth Crisis Line)",
+            desc: "24/7 suicide prevention and crisis counseling for LGBTQ youth and young adults.",
+            phone: "866-488-7386",
+            isCrisis: true,
+            mapQuery: "LGBTQ community center crisis"
+          }
+        ]
+      }
+    };
+
+    function initHelpResources() {
+      renderHelpCategory(activeHelpCategory);
+    }
+
+    function selectHelpCategory(catKey, clickedBtn) {
+      activeHelpCategory = catKey;
+      document.querySelectorAll('.help-category-btn').forEach(btn => btn.classList.remove('active'));
+      if (clickedBtn) clickedBtn.classList.add('active');
+      renderHelpCategory(catKey);
+    }
+
+    function updateHelpLocation() {
+      const input = document.getElementById('helpLocationInput');
+      const val = input.value.trim();
+      if (!val) return alert("Please enter a valid city or zip code.");
+      currentHelpLocation = val;
+      renderHelpCategory(activeHelpCategory);
+    }
+
+    function detectHelpGPS() {
+      if (!navigator.geolocation) return alert("Geolocation not supported on this browser.");
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          currentCoords = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+          currentHelpLocation = `${pos.coords.latitude.toFixed(3)}, ${pos.coords.longitude.toFixed(3)}`;
+          document.getElementById('helpLocationInput').value = "📍 Current GPS Location";
+          renderHelpCategory(activeHelpCategory);
+        },
+        () => alert("Unable to detect location. Please type your city or zip code.")
+      );
+    }
+
+    function renderHelpCategory(catKey) {
+      const consoleEl = document.getElementById('helpResultsConsole');
+      const data = HELP_RESOURCES[catKey];
+      if (!data) return;
+
+      let html = `<div class="help-console-header"><span>${data.title}</span><span style="font-size:12px; font-weight:normal; color:#aaa;">Near: ${currentHelpLocation}</span></div>`;
+
+      data.cards.forEach(card => {
+        const mapUrl = currentCoords 
+          ? `https://www.google.com/maps?q=${encodeURIComponent(card.mapQuery)}&ll=${currentCoords.lat},${currentCoords.lng}&z=14`
+          : `https://www.google.com/maps?q=${encodeURIComponent(card.mapQuery + ' in ' + currentHelpLocation)}&z=14`;
+
+        html += `
+          <div class="resource-card ${card.isCrisis ? 'crisis-card' : ''}">
+            <h3 class="resource-card-title">${card.name}</h3>
+            <p class="resource-card-desc">${card.desc}</p>
+            <div class="resource-card-actions">
+              <a href="tel:${card.phone}" class="${card.isCrisis ? 'btn-res-crisis' : 'btn-res-call'}">📞 Call ${card.phone}</a>
+              <a href="${mapUrl}" target="_blank" rel="noopener noreferrer" class="btn-res-map">📍 View Nearby Map</a>
+            </div>
+          </div>
+        `;
+      });
+
+      consoleEl.innerHTML = html;
+    }
+
+    // =======================================================
+    // PRACTICAL LIVING & RESILIENCE QUOTE TICKER (60 SECONDS)
+    // =======================================================
+    const PRACTICAL_QUOTES = [
+      { quote: "Energy and persistence conquer all things.", author: "Benjamin Franklin" },
+      { quote: "It’s not what happens to you, but how you react to it that matters.", author: "Epictetus" },
+      { quote: "You have power over your mind - not outside events. Realize this, and you will find strength.", author: "Marcus Aurelius" },
+      { quote: "The secret of getting ahead is getting started.", author: "Mark Twain" },
+      { quote: "Courage does not always roar. Sometimes courage is the quiet voice at the end of the day saying, 'I will try again tomorrow.'", author: "Mary Anne Radmacher" },
+      { quote: "Small deeds done are better than great deeds planned.", author: "Peter Marshall" },
+      { quote: "Do not let what you cannot do interfere with what you can do.", author: "John Wooden" },
+      { quote: "He who has a why to live can bear almost any how.", author: "Friedrich Nietzsche" },
+      { quote: "Fall seven times, stand up eight.", author: "Traditional Proverb" },
+      { quote: "Waste no more time arguing what a good man should be. Be one.", author: "Marcus Aurelius" },
+      { quote: "An ounce of practice is worth more than tons of preaching.", author: "Mahatma Gandhi" },
+      { quote: "When you come to the end of your rope, tie a knot and hang on.", author: "Franklin D. Roosevelt" }
+    ];
+
+    let currentQuoteIdx = 0;
+    let quoteTimer = null;
+
+    function initPracticalQuotes() {
+      cyclePracticalQuote();
+      if (quoteTimer) clearInterval(quoteTimer);
+      quoteTimer = setInterval(cyclePracticalQuote, 60000);
+    }
+
+    function cyclePracticalQuote() {
+      currentQuoteIdx = Math.floor(Math.random() * PRACTICAL_QUOTES.length);
+      const pick = PRACTICAL_QUOTES[currentQuoteIdx];
+      document.getElementById('practicalQuoteText').innerText = `"${pick.quote}"`;
+      document.getElementById('practicalQuoteAuthor').innerText = `— ${pick.author}`;
+    }
+
+    function startCallTimer() {
+      clearInterval(callTimerInterval);
+      callSecondsRemaining = MAX_CALL_DURATION_SEC;
+      updateTimerDisplay();
+
+      callTimerInterval = setInterval(() => {
+        callSecondsRemaining--;
+        updateTimerDisplay();
+
+        if (callSecondsRemaining <= 0) {
+          clearInterval(callTimerInterval);
+          hangUpCall();
+          alert("Your 15-minute free call session has ended. Upgrade to unlimited calling or start a new call!");
+        }
+      }, 1000);
+    }
+
+    function updateTimerDisplay() {
+      const display = document.getElementById('callTimerDisplay');
+      if (!display) return;
+      const mins = Math.floor(callSecondsRemaining / 60);
+      const secs = callSecondsRemaining % 60;
+      display.innerText = `⏱️ ${mins}:${secs < 10 ? '0' : ''}${secs}`;
+
+      if (callSecondsRemaining <= 120) {
+        display.style.borderColor = "#ff3b30";
+        display.style.color = "#ff3b30";
+      } else {
+        display.style.borderColor = "#30d158";
+        display.style.color = "#30d158";
+      }
+    }
+
+    function sendInvite(mode = 'video') {
+      const name = callerNameInput.value.trim() || webTextSenderNameInput.value.trim() || 'Someone';
+      const currentRoom = roomIdInput.value.trim() || document.getElementById('webTextRoomId').value.trim() || 'room1';
+      const inviteUrl = `${window.location.origin}${window.location.pathname}?room=${encodeURIComponent(currentRoom)}&mode=${mode}`;
+      
+      const isEmail = mode === 'text' ? document.getElementById('textInviteToggle').checked : document.getElementById('phoneInviteToggle').checked;
+
+      let typeText = 'Video Call';
+      if (mode === 'text') typeText = 'WebText Chat';
+
+      if (isEmail) {
+        const subject = `ZeroPhone Invitation from ${name}`;
+        const timeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        const emailBody = `Hello!\n\n${name} is hoping to ${typeText} with you @ ${timeStr}.\n\nPress here to join directly:\n${inviteUrl}\n\nSee You Soon,\n${name}`;
+        window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+      } else {
+        let typeActionText = 'have a video call with you';
+        if (mode === 'text') typeActionText = 'text with you online for free';
+        const smsMessage = `Knock, Knock!\n\n${name} would like to ${typeActionText}. Press here to join: ${inviteUrl}`;
+        window.location.href = `sms:?&body=${encodeURIComponent(smsMessage)}`;
+      }
+    }
+
+    function sendTextTabInvite() {
+      const room = document.getElementById('webTextRoomId').value.trim() || 'room1';
+      roomIdInput.value = room;
+      sendInvite('text');
+    }
+
+    socket.on('connect_error', () => {
+      statusDiv.innerText = "Waking up server (please wait)...";
+      statusDiv.style.color = "#ff9500";
+    });
+
+    async function startCall() {
+      const roomId = roomIdInput.value.trim();
+      if (!roomId) return alert("Please enter a room name");
+
+      await loadIceServers();
+
+      const mediaConfigs = [
+        {
+          audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true },
+          video: { facingMode: 'user', width: { ideal: 640 }, height: { ideal: 640 } }
+        },
+        { audio: true, video: { facingMode: 'user' } },
+        { audio: true, video: true }
+      ];
+
+      localStream = null;
+      for (const config of mediaConfigs) {
+        try {
+          localStream = await navigator.mediaDevices.getUserMedia(config);
+          if (localStream) break;
+        } catch (e) {
+          console.warn("Attempting relaxed media constraints...", e);
+        }
+      }
+
+      if (!localStream) {
+        return alert("Unable to access microphone/camera. Please check your browser permissions.");
+      }
+
+      const localVid = document.getElementById('localVideo');
+      localVid.srcObject = localStream;
+      
+      try {
+        await localVid.play();
+      } catch (err) {
+        console.warn("Autoplay note:", err);
+      }
+
+      document.getElementById('videoStreamView').style.display = 'grid';
+      document.getElementById('inCallControls').style.display = 'flex';
+      document.getElementById('webphoneMainSection').style.display = 'none';
+
+      startCallTimer();
+
+      ensureSocketConnected(() => {
+        updateGridLayout();
+        socket.emit('join-room', roomId);
+        statusDiv.innerText = `Joined room: ${roomId}. Waiting for peers...`;
+      });
+    }
+
+    function toggleAudio() {
+      if (localStream) {
+        const audioTrack = localStream.getAudioTracks()[0];
+        if (audioTrack) {
+          isAudioMuted = !isAudioMuted;
+          audioTrack.enabled = !isAudioMuted;
+          const micBtn = document.getElementById('toggleMicBtn');
+          if (isAudioMuted) {
+            micBtn.innerHTML = "🎙️🚫";
+            micBtn.classList.add('muted');
+          } else {
+            micBtn.innerHTML = "🎙️";
+            micBtn.classList.remove('muted');
+          }
+        }
+      }
+    }
+
+    function toggleVideo() {
+      if (localStream) {
+        const videoTrack = localStream.getVideoTracks()[0];
+        if (videoTrack) {
+          isVideoMuted = !isVideoMuted;
+          videoTrack.enabled = !isVideoMuted;
+          const camBtn = document.getElementById('toggleCamBtn');
+          if (isVideoMuted) {
+            camBtn.innerHTML = "📹🚫";
+            camBtn.classList.add('muted');
+          } else {
+            camBtn.innerHTML = "📹";
+            camBtn.classList.remove('muted');
+          }
+        }
+      }
+    }
+
+    function hangUpCall() {
+      clearInterval(callTimerInterval);
+
+      if (localStream) {
+        localStream.getTracks().forEach(track => track.stop());
+        localStream = null;
+      }
+      
+      Object.keys(peerConnections).forEach(id => {
+        if (peerConnections[id]) {
+          if (peerConnections[id].relayInterval) clearInterval(peerConnections[id].relayInterval);
+          peerConnections[id].close();
+        }
+      });
+      peerConnections = {};
+
+      if (socket && socket.connected) {
+        socket.disconnect();
+      }
+
+      const grid = document.getElementById('videoStreamView');
+      grid.innerHTML = `
+        <div class="video-card">
+          <h3 style="margin: 0 0 8px 0; font-size: 14px;">Local Stream (You)</h3>
+          <video id="localVideo" autoplay playsinline muted></video>
+        </div>
+      `;
+
+      statusDiv.innerText = "Call ended.";
+      statusDiv.style.color = "#ff3b30";
+      
+      document.getElementById('inCallControls').style.display = 'none';
+      document.getElementById('videoStreamView').style.display = 'none';
+      document.getElementById('mainHeader').style.display = 'flex';
+      document.getElementById('webphoneMainSection').style.display = 'block';
+
+      isAudioMuted = false;
+      isVideoMuted = false;
+      document.getElementById('toggleMicBtn').innerHTML = "🎙️";
+      document.getElementById('toggleMicBtn').classList.remove('muted');
+      document.getElementById('toggleCamBtn').innerHTML = "📹";
+      document.getElementById('toggleCamBtn').classList.remove('muted');
+      
+      updateGridLayout();
+    }
+
+    socket.on('user-joined', async ({ socketId }) => {
+      statusDiv.innerText = "Peer joining... Connecting media!";
+      const pc = createPeerConnection(socketId);
+
+      const offer = await pc.createOffer();
+      await pc.setLocalDescription(offer);
+      socket.emit('offer', { offer, targetId: socketId, isAudioOnly: false });
+    });
+
+    socket.on('offer', async ({ offer, senderId }) => {
+      statusDiv.innerText = "Connecting media stream...";
+      const pc = createPeerConnection(senderId);
+
+      await pc.setRemoteDescription(new RTCSessionDescription(offer));
+      const answer = await pc.createAnswer();
+      await pc.setLocalDescription(answer);
+
+      socket.emit('answer', { answer, targetId: senderId });
+    });
+
+    socket.on('answer', async ({ answer, senderId }) => {
+      statusDiv.innerText = "Live Connected!";
+      statusDiv.style.color = "#30d158";
+      if (peerConnections[senderId]) {
+        await peerConnections[senderId].setRemoteDescription(new RTCSessionDescription(answer));
+      }
+    });
+
+    socket.on('ice-candidate', async ({ candidate, senderId }) => {
+      if (peerConnections[senderId]) {
+        await peerConnections[senderId].addIceCandidate(new RTCIceCandidate(candidate));
+      }
+    });
+
+    socket.on('user-disconnected', ({ socketId }) => {
+      if (peerConnections[socketId]) {
+        if (peerConnections[socketId].relayInterval) clearInterval(peerConnections[socketId].relayInterval);
+        peerConnections[socketId].close();
+        delete peerConnections[socketId];
+      }
+      const remoteCard = document.getElementById(`card-${socketId}`);
+      if (remoteCard) remoteCard.remove();
+      
+      const count = Object.keys(peerConnections).length;
+      statusDiv.innerText = count > 0 ? `Connected with ${count} peer(s)` : "Waiting for peers...";
+      updateGridLayout();
+    });
+
+    function monitorPeerRelay(pc, targetSocketId) {
+      pc.relayInterval = setInterval(async () => {
+        if (pc.connectionState === 'closed') {
+          clearInterval(pc.relayInterval);
+          return;
+        }
+
+        try {
+          const stats = await pc.getStats();
+          stats.forEach(async report => {
+            if (report.type === 'candidate-pair' && report.state === 'succeeded') {
+              const localCandidate = stats.get(report.localCandidateId);
+              const remoteCandidate = stats.get(report.remoteCandidateId);
+
+              const isRelayed = (localCandidate && localCandidate.candidateType === 'relay') || 
+                                (remoteCandidate && remoteCandidate.candidateType === 'relay');
+
+              if (isRelayed && !pc.isVoiceRestricted) {
+                pc.isVoiceRestricted = true;
+
+                const videoSender = pc.getSenders().find(s => s.track && s.track.kind === 'video');
+                if (videoSender) {
+                  await videoSender.replaceTrack(null);
+                }
+
+                const badge = document.getElementById(`turn-badge-${targetSocketId}`);
+                if (badge) badge.style.display = 'block';
+
+                statusDiv.innerText = "Relay Network: Strict connection restricted to Voice-Only.";
+                statusDiv.style.color = "#ff9500";
+              }
+            }
+          });
+        } catch (e) {
+          console.warn("Stats check warning:", e);
+        }
+      }, 3000);
+    }
+
+    function createPeerConnection(targetSocketId) {
+      if (peerConnections[targetSocketId]) return peerConnections[targetSocketId];
+
+      const pc = new RTCPeerConnection(rtcConfig);
+      pc.isVoiceRestricted = false;
+      peerConnections[targetSocketId] = pc;
+
+      if (localStream) {
+        localStream.getTracks().forEach(track => pc.addTrack(track, localStream));
+      }
+
+      pc.ontrack = (event) => {
+        let remoteCard = document.getElementById(`card-${targetSocketId}`);
+        if (!remoteCard) {
+          remoteCard = document.createElement('div');
+          remoteCard.className = 'video-card';
+          remoteCard.id = `card-${targetSocketId}`;
+          remoteCard.innerHTML = `
+            <div id="turn-badge-${targetSocketId}" class="turn-badge">🎙️ Voice Only (Relayed)</div>
+            <h3 style="margin: 0 0 8px 0; font-size: 14px;">Peer Stream</h3>
+            <video id="video-${targetSocketId}" autoplay playsinline></video>
+          `;
+          document.getElementById('videoStreamView').appendChild(remoteCard);
+          updateGridLayout();
+        }
+        const videoEl = document.getElementById(`video-${targetSocketId}`);
+        videoEl.srcObject = event.streams[0];
+        videoEl.play().catch(e => console.warn("Remote stream play trigger:", e));
+        statusDiv.innerText = "Live Connected!";
+      };
+
+      pc.onicecandidate = (event) => {
+        if (event.candidate) {
+          socket.emit('ice-candidate', { candidate: event.candidate, targetId: targetSocketId });
+        }
+      };
+
+      monitorPeerRelay(pc, targetSocketId);
+
+      return pc;
+    }
+
+    function appendWebMessage(sender, text) {
+      const thread = document.getElementById('web-chat-thread');
+      const placeholder = thread.querySelector('p');
+      if (placeholder) thread.innerHTML = '';
+
+      const msgBox = document.createElement('div');
+      msgBox.style.marginBottom = '8px';
+      msgBox.style.padding = '8px 12px';
+      msgBox.style.borderRadius = '6px';
+      msgBox.style.backgroundColor = '#2c2c2e';
+      msgBox.style.color = '#fff';
+
+      msgBox.innerHTML = '<strong style="color:#63e685;">' + sender + ':</strong> ' + text;
+      thread.appendChild(msgBox);
+      thread.scrollTop = thread.scrollHeight;
+    }
+
+    async function sendWebChatMessage() {
+      const input = document.getElementById('webChatInput');
+      const msg = input.value.trim();
+      const sender = webTextSenderNameInput.value.trim() || callerNameInput.value.trim() || 'Anonymous';
+      const roomId = document.getElementById('webTextRoomId').value.trim() || 'room1';
+
+      if (msg) {
+        ensureSocketConnected(async () => {
+          socket.emit('join-room', roomId);
+          const encrypted = await encryptPayload(msg, roomId);
+          socket.emit('send-web-chat', { roomId: roomId, cipher: encrypted.cipher, iv: encrypted.iv, sender: sender });
+          appendWebMessage(sender, msg);
+          input.value = '';
+        });
+      }
+    }
+
+    document.getElementById('sendWebChatBtn').addEventListener('click', sendWebChatMessage);
+    document.getElementById('webChatInput').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') sendWebChatMessage();
+    });
+
+    socket.on('receive-web-chat', async ({ cipher, iv, message, sender }) => {
+      const currentUser = webTextSenderNameInput.value.trim() || callerNameInput.value.trim() || 'Anonymous';
+      const roomId = document.getElementById('webTextRoomId').value.trim() || 'room1';
+      if (sender !== currentUser) {
+        const decryptedText = cipher ? await decryptPayload(cipher, iv, roomId) : message;
+        appendWebMessage(sender, decryptedText);
+      }
+    });
+
+    socket.on('load-chat-history', async (history) => {
+      const thread = document.getElementById('web-chat-thread');
+      const roomId = document.getElementById('webTextRoomId').value.trim() || 'room1';
+      thread.innerHTML = '';
+      for (const item of history) {
+        const text = item.cipher ? await decryptPayload(item.cipher, item.iv, roomId) : item.message;
+        appendWebMessage(item.sender, text);
+      }
+    });
+  </script>
+</body>
+</html>
