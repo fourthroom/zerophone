@@ -4,15 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   
-  <title>ZeroPhone — Encrypted Browser Video Calling, WebText & Local Resources</title>
-  <meta name="description" content="ZeroPhone is a completely free, privacy-first web utility featuring end-to-end AES-256-GCM encrypted video calling, voice calls, free WebText, local Wi-Fi maps, live radio, art museums, and community support resources.">
-  <meta name="keywords" content="ZeroPhone, fourthroom.org, AES-256 encryption, free video call, browser calling, WebRTC, free web text, local radio streams, public wifi maps, community resources">
+  <title>ZeroPhone — Encrypted Browser Video Calling, WebText & Scriptures Reader</title>
+  <meta name="description" content="ZeroPhone is a completely free, privacy-first web utility featuring end-to-end AES-256-GCM encrypted video calling, voice calls, free WebText, sacred scriptures reader, local Wi-Fi maps, live radio, art museums, and community support resources.">
+  <meta name="keywords" content="ZeroPhone, fourthroom.org, AES-256 encryption, free video call, browser calling, WebRTC, free web text, sacred texts reader, scriptures viewer">
   <meta name="author" content="FourthRoom">
   <link rel="canonical" href="https://fourthroom.org/">
 
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://fourthroom.org/">
-  <meta property="og:title" content="ZeroPhone — Encrypted Web Calling & WebText">
+  <meta property="og:title" content="ZeroPhone — Encrypted Web Calling & Scriptures Reader">
   <meta property="og:description" content="Instant, private video and voice calling right from your browser powered by AES-256-GCM encryption. No downloads or accounts required.">
   <meta property="og:image" content="https://fourthroom.org/icon.png">
 
@@ -92,6 +92,8 @@
     .tab-phone.active { background: #30d158; color: #000; }
     .tab-text { background: #267340; border-top: 3px solid #63e685; }
     .tab-text.active { background: #63e685; color: #000; }
+    .tab-scriptures { background: #3b2f2f; border-top: 3px solid #f59e0b; }
+    .tab-scriptures.active { background: #f59e0b; color: #000; }
     .tab-maps { background: #5c3800; border-top: 3px solid #ff9500; }
     .tab-maps.active { background: #ff9500; color: #000; }
     .tab-seattle-wifi { background: #005a70; border-top: 3px solid #00c0f0; }
@@ -261,6 +263,43 @@
       overflow-y: auto; background: #121212; text-align: left; margin-bottom: 12px;
     }
 
+    /* SCRIPTURES TAB STYLES */
+    .scripture-box {
+      background: #1c1c1e; border: 1px solid #f59e0b; border-radius: 12px;
+      padding: 15px; max-width: 950px; margin: 0 auto; text-align: left;
+    }
+    .scripture-btn-row {
+      display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 15px;
+    }
+    .scripture-sel-btn {
+      background: #2c2c2e; color: #fff; border: 1px solid #555; padding: 8px 12px;
+      font-size: 13px; font-weight: bold; border-radius: 8px; cursor: pointer; transition: all 0.2s;
+    }
+    .scripture-sel-btn:hover { background: #3a3a3c; }
+    .scripture-sel-btn.active { background: #f59e0b; color: #000; border-color: #f59e0b; font-weight: 900; }
+
+    .scripture-toc-panel {
+      max-height: 180px; overflow-y: auto; background: #121212; border: 1px solid #333;
+      border-radius: 8px; padding: 10px; margin-bottom: 12px; display: flex; flex-direction: column; gap: 6px;
+    }
+    .toc-item-link {
+      font-size: 13px; color: #f59e0b; cursor: pointer; padding: 4px 6px; border-radius: 4px;
+    }
+    .toc-item-link:hover { background: #2c2c2e; color: #fff; }
+
+    .reader-controls-bar {
+      display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap;
+    }
+    .btn-reader-nav {
+      background: #2c2c2e; color: #fff; border: 1px solid #555; padding: 6px 12px;
+      font-size: 12px; font-weight: bold; border-radius: 6px; cursor: pointer;
+    }
+    .btn-reader-nav:hover { background: #3a3a3c; }
+    .scripture-reader-console {
+      height: 400px; overflow-y: auto; background: #121212; border: 1px solid #333;
+      border-radius: 8px; padding: 15px; font-family: monospace; font-size: 13px; line-height: 1.6; white-space: pre-wrap; color: #e2e8f0;
+    }
+
     .maps-box { background: #1c1c1e; border: 1px solid #ff9500; border-radius: 12px; padding: 15px; max-width: 900px; margin: 0 auto; }
     .maps-filter-bar { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 15px; }
     .maps-filter-btn {
@@ -290,7 +329,6 @@
     audio { width: 100%; max-width: 480px; border-radius: 8px; }
     .tuner-box { margin-top: 10px; padding-top: 15px; border-top: 1px solid #333; width: 100%; max-width: 480px; text-align: left; }
 
-    /* MULTI-MUSEUM ART GALLERY STYLES */
     .art-box { background: #1c1c1e; border: 1px solid #ffd60a; border-radius: 12px; padding: 20px; max-width: 1000px; margin: 0 auto; }
     .museum-institution-bar {
       display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; margin-bottom: 12px;
@@ -358,7 +396,6 @@
     .art-fullscreen-caption h3 { margin: 0 0 4px 0; color: #ffd60a; font-size: 18px; }
     .art-fullscreen-caption p { margin: 0; color: #aaa; font-size: 13px; }
 
-    /* 🤝 HELP & COMMUNITY RESOURCES DIRECTORY STYLES */
     .help-box {
       background: #1c1c1e;
       border: 1px solid #38bdf8;
@@ -535,7 +572,6 @@
       gap: 6px;
     }
 
-    /* PRACTICAL LIVING QUOTE TICKER */
     .practical-quote-box {
       margin-top: 20px;
       background: #18222d;
@@ -578,10 +614,6 @@
       cursor: pointer;
     }
 
-    .under-construction-box {
-      background: #1c1c1e; border: 2px dashed #ff3b30; border-radius: 16px;
-      padding: 50px 20px; max-width: 500px; margin: 30px auto;
-    }
     .privacy-notice-badge {
       margin-top: 25px; font-size: 12px; color: #888; background: #18181a; border: 1px solid #2a2a2d;
       border-radius: 20px; padding: 8px 16px; display: inline-block; max-width: 90%; line-height: 1.4;
@@ -652,6 +684,10 @@
       <button class="tab-btn tab-text" onclick="switchTab('text')">
         WebText
         <span class="sub-tagline">Free Text</span>
+      </button>
+      <button class="tab-btn tab-scriptures" onclick="switchTab('scriptures')">
+        📖 Scriptures
+        <span class="sub-tagline">Sacred Texts</span>
       </button>
       <button class="tab-btn tab-maps" onclick="switchTab('maps')">
         📍 Maps
@@ -815,6 +851,43 @@
       </div>
     </div>
 
+    <!-- SCRIPTURES TAB -->
+    <div id="tab-scriptures" class="tab-content">
+      <h2 style="color: #f59e0b; margin-top: 0;">📖 Sacred Scriptures Reader</h2>
+      <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Select a scripture to load its table of contents and reader</p>
+
+      <div class="scripture-box">
+        <div class="scripture-btn-row">
+          <button id="btnScripBible" class="scripture-sel-btn" onclick="loadScripture('bible', 'kjv.json', 'kjv_bible_complete.txt', this)">Bible</button>
+          <button id="btnScripKoran" class="scripture-sel-btn" onclick="loadScripture('koran', 'koran.json', 'en.yusufali.txt', this)">Koran</button>
+          <button id="btnScripSuttas" class="scripture-sel-btn" onclick="loadScripture('suttas', 'suttas_toc.json', 'suttas-complete.txt', this)">Buddhist Sutras</button>
+          <button id="btnScripSggs" class="scripture-sel-btn" onclick="loadScripture('sggs', 'sggs_english.json', 'sggs_english.txt', this)">Sri Guru Granth Sahib</button>
+          <button id="btnScripUpanishads" class="scripture-sel-btn" onclick="loadScripture('upanishads', 'upanishads_all_toc_3.json', 'muller_upanishads_vol1_2.txt', this)">Upanishads</button>
+          <button id="btnScripRigveda" class="scripture-sel-btn" onclick="loadScripture('rigveda', 'rig-vedas.json', 'rigveda-complete.txt', this)">Rig Vedas</button>
+        </div>
+
+        <div id="scriptureTocContainer" class="scripture-toc-panel">
+          <p style="color: #666; font-style: italic; margin: 0;">Select a scripture above to load its table of contents...</p>
+        </div>
+
+        <div class="reader-controls-bar">
+          <button class="btn-reader-nav" onclick="scrollReader(-100)">⏪ Fast Back</button>
+          <button class="btn-reader-nav" onclick="scrollReader(-20)">◀️ Back</button>
+          <span id="readerPositionIndicator" style="font-size: 12px; color: #aaa;">Line: 1</span>
+          <button class="btn-reader-nav" onclick="scrollReader(20)">Forward ▶️</button>
+          <button class="btn-reader-nav" onclick="scrollReader(100)">Fast Fwd ⏩</button>
+        </div>
+
+        <div id="scriptureReaderBox" class="scripture-reader-console">
+          <p style="color: #666; font-style: italic;">Text viewer ready...</p>
+        </div>
+      </div>
+
+      <div class="privacy-notice-badge">
+        🔒 <b>Sacred Archives:</b> Fully searchable line-indexed public domain texts.
+      </div>
+    </div>
+
     <!-- MAPS TAB -->
     <div id="tab-maps" class="tab-content">
       <h2 style="color: #ff9500; margin-top: 0;">📍 Free Wi-Fi & Resource Maps</h2>
@@ -931,7 +1004,7 @@
       </div>
     </div>
 
-    <!-- ART GALLERY TAB (UPDATED FOR GUARANTEED API SUCCESS) -->
+    <!-- ART GALLERY TAB -->
     <div id="tab-art" class="tab-content">
       <h2 style="color: #ffd60a; margin-top: 0;">🏛️ World Art Museum Collections</h2>
       <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Direct open-access digital collections from premier international museums</p>
@@ -1001,7 +1074,7 @@
       </div>
     </div>
 
-    <!-- 🤝 HELP & COMMUNITY RESOURCES TAB -->
+    <!-- HELP & COMMUNITY RESOURCES TAB -->
     <div id="tab-help" class="tab-content">
       <h2 style="color: #38bdf8; margin-top: 0;">🤝 Essential Community Help & Well-Being Directory</h2>
       <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Find physical, mental, and social support services with direct-dial and mapping links</p>
@@ -1067,6 +1140,108 @@
     const statusDiv = document.getElementById('status');
 
     let rtcConfig = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] };
+
+    // =======================================================
+    // SCRIPTURES READER STATE & ENGINE
+    // =======================================================
+    let currentScriptureLines = [];
+    let currentLineIndex = 0;
+
+    async function loadScripture(key, jsonFile, txtFile, btnEl) {
+      if (btnEl) {
+        document.querySelectorAll('.scripture-sel-btn').forEach(b => b.classList.remove('active'));
+        btnEl.classList.add('active');
+      }
+
+      const tocContainer = document.getElementById('scriptureTocContainer');
+      const readerBox = document.getElementById('scriptureReaderBox');
+
+      tocContainer.innerHTML = '<p style="color:#aaa; font-style:italic; margin:0;">Loading Table of Contents...</p>';
+      readerBox.innerHTML = '<p style="color:#aaa; font-style:italic;">Loading text file...</p>';
+
+      try {
+        const txtRes = await fetch(txtFile);
+        const txtText = await txtRes.text();
+        currentScriptureLines = txtText.split('\n');
+
+        const jsonRes = await fetch(jsonFile);
+        const jsonData = await jsonRes.json();
+
+        renderTableOfContents(jsonData, key);
+        jumpToLine(0);
+      } catch (err) {
+        tocContainer.innerHTML = '<p style="color:#ff3b30; margin:0;">Failed to load scripture data files.</p>';
+        readerBox.innerText = "Error loading text or JSON index file. Make sure both files are in your scriptures/app directory.";
+      }
+    }
+
+    function renderTableOfContents(jsonData, key) {
+      const tocContainer = document.getElementById('scriptureTocContainer');
+      tocContainer.innerHTML = '';
+
+      let items = [];
+      if (key === 'bible') {
+        if (jsonData.testaments) {
+          ['old_testament', 'new_testament'].forEach(testament => {
+            if (jsonData.testaments[testament]) {
+              jsonData.testaments[testament].forEach(book => {
+                if (book.chapters && book.chapters.length > 0) {
+                  book.chapters.forEach(ch => {
+                    items.push({ title: `${book.name} Ch. ${ch.chapter}`, line: ch.start_line || 1 });
+                  });
+                }
+              });
+            }
+          });
+        }
+      } else if (key === 'sggs') {
+        if (jsonData.sections) {
+          jsonData.sections.forEach(sec => {
+            if (sec.parts) {
+              sec.parts.forEach(p => {
+                items.push({ title: `${sec.section_name} — ${p.part_name}`, line: p.line_number });
+              });
+            }
+          });
+        }
+      } else {
+        items = (jsonData || []).map(item => ({
+          title: item.title || item.name || 'Chapter',
+          line: item.line || item.start_line || 1
+        }));
+      }
+
+      if (items.length === 0) {
+        tocContainer.innerHTML = '<p style="color:#ff3b30; margin:0;">No table of contents entries found.</p>';
+        return;
+      }
+
+      items.forEach(entry => {
+        const div = document.createElement('div');
+        div.className = 'toc-item-link';
+        div.innerText = entry.title;
+        div.onclick = () => jumpToLine(entry.line - 1);
+        tocContainer.appendChild(div);
+      });
+    }
+
+    function jumpToLine(lineIdx) {
+      if (!currentScriptureLines.length) return;
+      currentLineIndex = Math.max(0, Math.min(lineIdx, currentScriptureLines.length - 1));
+      
+      const readerBox = document.getElementById('scriptureReaderBox');
+      const sliceCount = 350;
+      const slice = currentScriptureLines.slice(currentLineIndex, currentLineIndex + sliceCount).join('\n');
+      
+      readerBox.innerText = slice;
+      readerBox.scrollTop = 0;
+      document.getElementById('readerPositionIndicator').innerText = `Line: ${currentLineIndex + 1}`;
+    }
+
+    function scrollReader(offset) {
+      jumpToLine(currentLineIndex + offset);
+    }
+    // =======================================================
 
     async function loadIceServers() {
       try {
@@ -1209,6 +1384,9 @@
       initHelpResources();
       initPracticalQuotes();
 
+      // Auto-load first scripture (Bible) preview by default on startup
+      loadScripture('bible', 'kjv.json', 'kjv_bible_complete.txt', document.getElementById('btnScripBible'));
+
       const artInput = document.getElementById('customArtInput');
       if (artInput) {
         artInput.addEventListener('keypress', (e) => {
@@ -1258,10 +1436,10 @@
       document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
 
       if (tabName === 'phone') {
-        document.querySelectorAll('.tab-btn')[0].classList.add('active');
+        document.querySelector('.tab-phone').classList.add('active');
         document.getElementById('tab-phone').classList.add('active');
       } else if (tabName === 'text') {
-        document.querySelectorAll('.tab-btn')[1].classList.add('active');
+        document.querySelector('.tab-text').classList.add('active');
         document.getElementById('tab-text').classList.add('active');
         const r = document.getElementById('webTextRoomId').value.trim() || roomIdInput.value.trim();
         if (r) {
@@ -1269,24 +1447,27 @@
             socket.emit('join-room', r);
           });
         }
+      } else if (tabName === 'scriptures') {
+        document.querySelector('.tab-scriptures').classList.add('active');
+        document.getElementById('tab-scriptures').classList.add('active');
       } else if (tabName === 'maps') {
-        document.querySelectorAll('.tab-btn')[2].classList.add('active');
+        document.querySelector('.tab-maps').classList.add('active');
         document.getElementById('tab-maps').classList.add('active');
         if (!currentCoords) centerMapOnUser(false);
       } else if (tabName === 'seattle-wifi') {
-        document.querySelectorAll('.tab-btn')[3].classList.add('active');
+        document.querySelector('.tab-seattle-wifi').classList.add('active');
         document.getElementById('tab-seattle-wifi').classList.add('active');
       } else if (tabName === 'radio') {
-        document.querySelectorAll('.tab-btn')[4].classList.add('active');
+        document.querySelector('.tab-radio').classList.add('active');
         document.getElementById('tab-radio').classList.add('active');
       } else if (tabName === 'art') {
-        document.querySelectorAll('.tab-btn')[5].classList.add('active');
+        document.querySelector('.tab-art').classList.add('active');
         document.getElementById('tab-art').classList.add('active');
         if (!hasLoadedArtOnce) {
           triggerArtSearch('impressionism', 'Impressionism');
         }
       } else if (tabName === 'help') {
-        document.querySelectorAll('.tab-btn')[6].classList.add('active');
+        document.querySelector('.tab-help').classList.add('active');
         document.getElementById('tab-help').classList.add('active');
       }
     }
@@ -1944,9 +2125,7 @@
       consoleEl.innerHTML = html;
     }
 
-    // =======================================================
     // PRACTICAL LIVING & RESILIENCE QUOTE TICKER (60 SECONDS)
-    // =======================================================
     const PRACTICAL_QUOTES = [
       { quote: "Energy and persistence conquer all things.", author: "Benjamin Franklin" },
       { quote: "It’s not what happens to you, but how you react to it that matters.", author: "Epictetus" },

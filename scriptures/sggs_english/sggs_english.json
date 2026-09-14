@@ -1,0 +1,129 @@
+{
+  "source": "sggs_english.txt",
+  "opus": "Siri Guru Granth Sahib",
+  "sections": [
+    {
+      "section_number": 1,
+      "section_name": "Introductory Metadata & Credits",
+      "start_line": 1,
+      "parts": [
+        { "part_name": "Title and Transliteration Credits", "line_number": 1 }
+      ]
+    },
+    {
+      "section_number": 2,
+      "section_name": "Japjee Sahib",
+      "start_line": 11,
+      "parts": [
+        { "part_name": "Mul Mantar & Paurhees 1 to 38", "line_number": 11 },
+        { "part_name": "Salok", "line_number": 535 }
+      ]
+    },
+    {
+      "section_number": 3,
+      "section_name": "So Dar",
+      "start_line": 549,
+      "parts": [
+        { "part_name": "Raag Aasaa, First Mehl", "line_number": 549 }
+      ]
+    },
+    {
+      "section_number": 4,
+      "section_name": "So Purakh",
+      "start_line": 583,
+      "parts": [
+        { "part_name": "Raag Aasaa, Fourth Mehl", "line_number": 583 }
+      ]
+    },
+    {
+      "section_number": 5,
+      "section_name": "Sohilaa",
+      "start_line": 615,
+      "parts": [
+        { "part_name": "Raag Gauree Deepakee, First Mehl", "line_number": 615 }
+      ]
+    },
+    {
+      "section_number": 6,
+      "section_name": "Raag Goojree",
+      "start_line": 635,
+      "parts": [
+        { "part_name": "Raag Goojree, Fourth Mehl", "line_number": 635 },
+        { "part_name": "Raag Goojree, Fifth Mehl", "line_number": 643 }
+      ]
+    },
+    {
+      "section_number": 7,
+      "section_name": "Raag Dhanaasree",
+      "start_line": 653,
+      "parts": [
+        { "part_name": "Raag Dhanaasree, First Mehl (Aartee)", "line_number": 653 }
+      ]
+    },
+    {
+      "section_number": 8,
+      "section_name": "Raag Gauree Poorbee",
+      "start_line": 664,
+      "parts": [
+        { "part_name": "Raag Gauree Poorbee, Fourth Mehl", "line_number": 664 },
+        { "part_name": "Raag Gauree Poorbee, Fifth Mehl", "line_number": 674 }
+      ]
+    },
+    {
+      "section_number": 9,
+      "section_name": "Siree Raag",
+      "start_line": 685,
+      "parts": [
+        { "part_name": "Siree Raag, First Mehl, Ghar 1", "line_number": 685 },
+        { "part_name": "Siree Raag, First Mehl", "line_number": 728 },
+        { "part_name": "Siree Raag, First Mehl", "line_number": 754 },
+        { "part_name": "Siree Raag, First Mehl", "line_number": 779 },
+        { "part_name": "Siree Raag, First Mehl", "line_number": 815 },
+        { "part_name": "Siree Raag, First Mehl", "line_number": 841 },
+        { "part_name": "Siree Raag, First Mehl", "line_number": 873 },
+        { "part_name": "Siree Raag, First Mehl", "line_number": 901 },
+        { "part_name": "Siree Raag, First Mehl", "line_number": 928 },
+        { "part_name": "Siree Raag, First Mehl", "line_number": 962 },
+        { "part_name": "Siree Raag, First Mehl", "line_number": 993 },
+        { "part_name": "Siree Raag, First Mehl", "line_number": 1024 },
+        { "part_name": "Siree Raag, First Mehl, Ghar 2", "line_number": 1055 },
+        { "part_name": "Siree Raag, First Mehl, Ghar 3", "line_number": 1081 },
+        { "part_name": "Siree Raag, First Mehl, Ghar 3", "line_number": 1109 },
+        { "part_name": "Siree Raag, First Mehl, Ghar 4", "line_number": 1137 },
+        { "part_name": "Siree Raag, First Mehl, Ghar 4", "line_number": 1163 },
+        { "part_name": "Siree Raag, First Mehl, Ghar 4", "line_number": 1187 },
+        { "part_name": "Siree Raag, First Mehl, Ghar 4", "line_number": 1215 },
+        { "part_name": "Siree Raag, First Mehl, Ghar 5", "line_number": 1242 },
+        { "part_name": "Siree Raag, Third Mehl", "line_number": 1269 },
+        { "part_name": "Siree Raag, Third Mehl", "line_number": 1300 },
+        { "part_name": "Siree Raag, Third Mehl", "line_number": 1334 },
+        { "part_name": "Siree Raag, Third Mehl", "line_number": 1367 },
+        { "part_name": "Siree Raag, Third Mehl", "line_number": 1399 },
+        { "part_name": "Siree Raag, Third Mehl", "line_number": 1432 },
+        { "part_name": "Siree Raag, Third Mehl", "line_number": 1466 },
+        { "part_name": "Siree Raag, Fifth Mehl", "line_number": 1499 },
+        { "part_name": "Siree Raag, Fifth Mehl", "line_number": 1530 },
+        { "part_name": "Siree Raag, Fifth Mehl", "line_number": 1559 },
+        { "part_name": "Siree Raag, Fifth Mehl", "line_number": 1590 },
+        { "part_name": "Siree Raag, Fifth Mehl", "line_number": 1618 },
+        { "part_name": "Siree Raag, Fifth Mehl", "line_number": 1648 },
+        { "part_name": "Siree Raag, Fifth Mehl", "line_number": 1678 },
+        { "part_name": "Siree Raag, Fifth Mehl", "line_number": 1709 },
+        { "part_name": "Siree Raag, Fifth Mehl", "line_number": 1739 },
+        { "part_name": "Siree Raag, Fifth Mehl", "line_number": 1768 },
+        { "part_name": "Siree Raag, Fifth Mehl", "line_number": 1799 },
+        { "part_name": "Siree Raag, Fifth Mehl", "line_number": 1827 },
+        { "part_name": "Siree Raag, Fifth Mehl", "line_number": 1856 },
+        { "part_name": "Siree Raag, Fifth Mehl, Ghar 6", "line_number": 1887 },
+        { "part_name": "Siree Raag, Fifth Mehl", "line_number": 1916 },
+        { "part_name": "Siree Raag, Fifth Mehl", "line_number": 1946 },
+        { "part_name": "Siree Raag, Fifth Mehl, Ghar 7", "line_number": 1976 },
+        { "part_name": "Siree Raag, Fifth Mehl, Ghar 1", "line_number": 2005 },
+        { "part_name": "Siree Raag, Fifth Mehl", "line_number": 2035 },
+        { "part_name": "Siree Raag, Fifth Mehl", "line_number": 2065 },
+        { "part_name": "Siree Raag, First Mehl, Ghar 1 (Ashtapadees)", "line_number": 2095 }
+      ]
+    }
+  ]
+}
+```[cite: 3]

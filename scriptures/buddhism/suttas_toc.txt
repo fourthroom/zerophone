@@ -1,0 +1,4168 @@
+Line       1 | AN1.1-10   The Chapter on What Occupies the Mind
+Line      43 | AN1.11-20  The Chapter on Giving Up the Hindrances
+Line      79 | AN1.140-149 The Chapter on Not the Teaching
+Line      95 | AN1.150-169 The Chapter on Non-offense
+Line     120 | AN1.170-187 The Chapter on One Individual
+Line     159 | AN1.188-197 Chapter One
+Line     175 | AN1.198-208 Chapter Two
+Line     192 | AN1.209-218 Chapter Three
+Line     208 | AN1.21-30  The Chapter on the Unworkable
+Line     244 | AN1.219-234 Chapter Four
+Line     266 | AN1.235-247 Chapter Five
+Line     285 | AN1.248-257 Chapter Six
+Line     301 | AN1.258-267 Chapter Seven
+Line     317 | AN1.268-277 Chapter One
+Line     353 | AN1.278-286 Chapter Two
+Line     377 | AN1.287-295 Chapter Three
+Line     401 | AN1.296-305 Chapter One
+Line     417 | AN1.306-315 Chapter Two
+Line     467 | AN1.31-40  The Chapter on the Untamed
+Line     503 | AN1.316-332 Chapter Three
+Line     566 | AN1.333-377 Chapter Four
+Line     652 | AN1.378-393 The Chapter on Inspiring Qualities
+Line     674 | AN1.394-574 Another Chapter on a Finger-Snap
+Line     844 | AN1.41-50  The Chapter on a Spike
+Line     903 | AN1.51-60  The Chapter on a Finger-Snap
+Line     949 | AN1.575-615 The Chapter on Mindfulness of the Body
+Line    1003 | AN1.61-70  The Chapter on Arousing Energy
+Line    1039 | AN1.616-627 The Chapter on Freedom From Death
+Line    1084 | AN1.71-81  The Chapter on Good Friends
+Line    1132 | AN1.82-97  The Chapter on Negligence
+Line    1186 | AN1.98-139 The Chapter on Negligence (2nd)
+Line    1246 | AN10.100   10. With Upāli
+Line    1261 | AN10.101   11. Perceptions for Ascetics
+Line    1275 | AN10.102   11. Perceptions for Ascetics
+Line    1292 | AN10.103   11. Perceptions for Ascetics
+Line    1307 | AN10.104   11. Perceptions for Ascetics
+Line    1335 | AN10.105   11. Perceptions for Ascetics
+Line    1346 | AN10.106   11. Perceptions for Ascetics
+Line    1386 | AN10.107   11. Perceptions for Ascetics
+Line    1417 | AN10.108   11. Perceptions for Ascetics
+Line    1447 | AN10.109   11. Perceptions for Ascetics
+Line    1475 | AN10.10    1. Benefits
+Line    1501 | AN10.110   11. Perceptions for Ascetics
+Line    1525 | AN10.111   11. Perceptions for Ascetics
+Line    1537 | AN10.112   11. Perceptions for Ascetics
+Line    1548 | AN10.113   12. The Ceremony of Descent
+Line    1568 | AN10.114   12. The Ceremony of Descent
+Line    1623 | AN10.115   12. The Ceremony of Descent
+Line    1702 | AN10.116   12. The Ceremony of Descent
+Line    1761 | AN10.117   12. The Ceremony of Descent
+Line    1804 | AN10.118   12. The Ceremony of Descent
+Line    1841 | AN10.119   12. The Ceremony of Descent
+Line    1913 | AN10.11    2. A Protector
+Line    1940 | AN10.120   12. The Ceremony of Descent
+Line    1968 | AN10.121   12. The Ceremony of Descent
+Line    1978 | AN10.122   12. The Ceremony of Descent
+Line    1989 | AN10.123   13. Purified
+Line    2000 | AN10.124   13. Purified
+Line    2011 | AN10.125   13. Purified
+Line    2022 | AN10.126   13. Purified
+Line    2033 | AN10.127   13. Purified
+Line    2044 | AN10.128   13. Purified
+Line    2055 | AN10.129   13. Purified
+Line    2066 | AN10.12    2. A Protector
+Line    2093 | AN10.130   13. Purified
+Line    2104 | AN10.131   13. Purified
+Line    2115 | AN10.132   13. Purified
+Line    2126 | AN10.133   13. Purified
+Line    2137 | AN10.134   14. Good
+Line    2154 | AN10.135   14. Good
+Line    2168 | AN10.136   14. Good
+Line    2182 | AN10.137   14. Good
+Line    2196 | AN10.138   14. Good
+Line    2210 | AN10.139   14. Good
+Line    2224 | AN10.13    2. A Protector
+Line    2241 | AN10.140   14. Good
+Line    2255 | AN10.141   14. Good
+Line    2269 | AN10.142   14. Good
+Line    2283 | AN10.143   14. Good
+Line    2297 | AN10.144   14. Good
+Line    2311 | AN10.145   15. The Noble Path
+Line    2325 | AN10.146   15. The Noble Path
+Line    2339 | AN10.147   15. The Noble Path
+Line    2353 | AN10.148   15. The Noble Path
+Line    2367 | AN10.149   15. The Noble Path
+Line    2381 | AN10.14    2. A Protector
+Line    2440 | AN10.150   15. The Noble Path
+Line    2454 | AN10.151   15. The Noble Path
+Line    2468 | AN10.152   15. The Noble Path
+Line    2482 | AN10.153   15. The Noble Path
+Line    2496 | AN10.154   15. The Noble Path
+Line    2510 | AN10.155   16. Individuals
+Line    2525 | AN10.156-166 16. Individuals
+Line    2557 | AN10.15    2. A Protector
+Line    2584 | AN10.167   17. With Jāṇussoṇī
+Line    2655 | AN10.168   17. With Jānussoṇi
+Line    2694 | AN10.169   17. With Jānussoṇi
+Line    2737 | AN10.16    2. A Protector
+Line    2748 | AN10.170   17. With Jānussoṇi
+Line    2791 | AN10.171   17. With Jānussoṇi
+Line    2811 | AN10.172   17. With Jānussoṇi
+Line    2909 | AN10.173   17. With Jānussoṇi
+Line    2948 | AN10.174   17. With Jānussoṇi
+Line    2977 | AN10.175   17. With Jānussoṇi
+Line    2997 | AN10.176   17. With Jānussoṇi
+Line    3088 | AN10.177   17. With Jānussoṇi
+Line    3163 | AN10.178   18. Good
+Line    3180 | AN10.179   18. Good
+Line    3197 | AN10.17    2. A Protector
+Line    3231 | AN10.180   18. Good
+Line    3247 | AN10.181   18. Good
+Line    3263 | AN10.182   18. Good
+Line    3279 | AN10.183   18. Good
+Line    3295 | AN10.184   18. Good
+Line    3311 | AN10.185   18. Good
+Line    3327 | AN10.186   18. Good
+Line    3343 | AN10.187   18. Good
+Line    3359 | AN10.188   18. Good
+Line    3375 | AN10.189   19. The Noble Path
+Line    3391 | AN10.18    2. A Protector
+Line    3453 | AN10.190   19. The Noble Path
+Line    3469 | AN10.191   19. The Noble Path
+Line    3485 | AN10.192   19. The Noble Path
+Line    3501 | AN10.193   19. The Noble Path
+Line    3517 | AN10.194   19. The Noble Path
+Line    3533 | AN10.195   19. The Noble Path
+Line    3550 | AN10.196   19. The Noble Path
+Line    3566 | AN10.197   19. The Noble Path
+Line    3582 | AN10.198   19. The Noble Path
+Line    3598 | AN10.199-210 20. Another Chapter on Individuals
+Line    3638 | AN10.19    2. A Protector
+Line    3649 | AN10.1     1. Benefits
+Line    3687 | AN10.20    2. A Protector
+Line    3738 | AN10.211   21. The Body Born of Deeds
+Line    3773 | AN10.212   21. The Body Born of Deeds
+Line    3806 | AN10.213   21. The Body Born of Deeds
+Line    3839 | AN10.214   21. The Body Born of Deeds
+Line    3856 | AN10.215   21. The Body Born of Deeds
+Line    3873 | AN10.216   21. The Body Born of Deeds
+Line    3948 | AN10.217   21. The Body Born of Deeds
+Line    4011 | AN10.218   21. The Body Born of Deeds
+Line    4044 | AN10.219   21. The Body Born of Deeds
+Line    4089 | AN10.21    3. The Great Chapter
+Line    4128 | AN10.220   21. The Body Born of Deeds
+Line    4168 | AN10.221   22. Similarity
+Line    4183 | AN10.222   22. Similarity
+Line    4198 | AN10.223   22. Similarity
+Line    4213 | AN10.224   22. Similarity
+Line    4228 | AN10.225-228 22. Similarity
+Line    4240 | AN10.229-232 22. Similarity
+Line    4252 | AN10.22    3. The Great Chapter
+Line    4288 | AN10.233-236 22. Similarity
+Line    4300 | AN10.237   23. Abbreviated Texts Beginning With Greed
+Line    4311 | AN10.238   23. Abbreviated Texts Beginning With Greed
+Line    4322 | AN10.239   23. Abbreviated Texts Beginning With Greed
+Line    4333 | AN10.23    3. The Great Chapter
+Line    4430 | AN10.240-266 23. Abbreviated Texts Beginning With Greed
+Line    4447 | AN10.24    3. The Great Chapter
+Line    4647 | AN10.25    3. The Great Chapter
+Line    4667 | AN10.267-746 23. Abbreviated Texts Beginning With Greed
+Line    4700 | AN10.26    3. The Great Chapter
+Line    4738 | AN10.27    3. The Great Chapter
+Line    4799 | AN10.28    3. The Great Chapter
+Line    4859 | AN10.29    3. The Great Chapter
+Line    4986 | AN10.2     1. Benefits
+Line    5030 | AN10.30    3. The Great Chapter
+Line    5076 | AN10.31    4. With Upāli
+Line    5089 | AN10.32    4. With Upāli
+Line    5101 | AN10.33    4. With Upāli
+Line    5122 | AN10.34    4. With Upāli
+Line    5143 | AN10.35    4. With Upāli
+Line    5164 | AN10.36    4. With Upāli
+Line    5185 | AN10.37    4. With Upāli
+Line    5197 | AN10.38    4. With Upāli
+Line    5209 | AN10.39    4. With Upāli
+Line    5233 | AN10.3     1. Benefits
+Line    5266 | AN10.40    4. With Upāli
+Line    5288 | AN10.41    5. Abuse
+Line    5299 | AN10.42    5. Abuse
+Line    5311 | AN10.43    5. Abuse
+Line    5323 | AN10.44    5. Abuse
+Line    5371 | AN10.45    5. Abuse
+Line    5430 | AN10.46    5. Abuse
+Line    5510 | AN10.47    5. Abuse
+Line    5535 | AN10.48    5. Abuse
+Line    5556 | AN10.49    5. Abuse
+Line    5567 | AN10.4     1. Benefits
+Line    5589 | AN10.50    5. Abuse
+Line    5620 | AN10.51    6. Your Own Mind
+Line    5645 | AN10.52    6. Your Own Mind
+Line    5669 | AN10.53    6. Your Own Mind
+Line    5703 | AN10.54    6. Your Own Mind
+Line    5802 | AN10.55    6. Your Own Mind
+Line    5842 | AN10.56    6. Your Own Mind
+Line    5853 | AN10.57    6. Your Own Mind
+Line    5864 | AN10.58    6. Your Own Mind
+Line    5882 | AN10.59    6. Your Own Mind
+Line    5895 | AN10.5     1. Benefits
+Line    5929 | AN10.60    6. Your Own Mind
+Line    6006 | AN10.61    7. Pairs
+Line    6078 | AN10.62    7. Pairs
+Line    6153 | AN10.63    7. Pairs
+Line    6170 | AN10.64    7. Pairs
+Line    6187 | AN10.65    7. Pairs
+Line    6205 | AN10.66    7. Pairs
+Line    6241 | AN10.67    7. Pairs
+Line    6324 | AN10.68    7. Pairs
+Line    6401 | AN10.69    7. Pairs
+Line    6421 | AN10.6     1. Benefits
+Line    6435 | AN10.70    7. Pairs
+Line    6468 | AN10.71    8. If You Want
+Line    6493 | AN10.72    8. If You Want
+Line    6525 | AN10.73    8. If You Want
+Line    6550 | AN10.74    8. If You Want
+Line    6569 | AN10.75    8. If You Want
+Line    6679 | AN10.76    8. If You Want
+Line    6783 | AN10.77    8. If You Want
+Line    6798 | AN10.78    8. If You Want
+Line    6818 | AN10.79    8. If You Want
+Line    6838 | AN10.7     1. Benefits
+Line    6857 | AN10.80    8. If You Want
+Line    6876 | AN10.81    9. Senior Mendicants
+Line    6900 | AN10.82    9. Senior Mendicants
+Line    6930 | AN10.83    9. Senior Mendicants
+Line    6952 | AN10.84    9. Senior Mendicants
+Line    6988 | AN10.85    9. Senior Mendicants
+Line    7073 | AN10.86    9. Senior Mendicants
+Line    7119 | AN10.87    9. Senior Mendicants
+Line    7178 | AN10.88    9. Senior Mendicants
+Line    7189 | AN10.89    9. Senior Mendicants
+Line    7286 | AN10.8     1. Benefits
+Line    7312 | AN10.90    9. Senior Mendicants
+Line    7347 | AN10.91    10. With Upāli
+Line    7439 | AN10.92    10. With Upāli
+Line    7488 | AN10.93    10. With Upāli
+Line    7594 | AN10.94    10. With Upāli
+Line    7660 | AN10.95    10. With Upāli
+Line    7704 | AN10.96    10. With Upāli
+Line    7766 | AN10.97    10. With Upāli
+Line    7802 | AN10.98    10. With Upāli
+Line    7822 | AN10.99    10. With Upāli
+Line    7972 | AN10.9     1. Benefits
+Line    7994 | AN11.10    1. Dependence
+Line    8033 | AN11.118-165 The First Fifty
+Line    8048 | AN11.11    2. Recollection
+Line    8104 | AN11.12    2. Recollection
+Line    8146 | AN11.13    2. Recollection
+Line    8203 | AN11.14    2. Recollection
+Line    8260 | AN11.15    2. Recollection
+Line    8271 | AN11.166-213 The First Fifty
+Line    8286 | AN11.16    2. Recollection
+Line    8361 | AN11.17    2. Recollection
+Line    8470 | AN11.18    2. Recollection
+Line    8484 | AN11.19    2. Recollection
+Line    8505 | AN11.1     1. Dependence
+Line    8546 | AN11.20    2. Recollection
+Line    8561 | AN11.214-261 The First Fifty
+Line    8576 | AN11.21    2. Recollection
+Line    8596 | AN11.22-29 The First Fifty
+Line    8616 | AN11.262-309 The First Fifty
+Line    8631 | AN11.2     1. Dependence
+Line    8670 | AN11.30-69 The First Fifty
+Line    8684 | AN11.310-357 The First Fifty
+Line    8699 | AN11.358-405 The First Fifty
+Line    8714 | AN11.3     1. Dependence
+Line    8749 | AN11.406-453 The First Fifty
+Line    8764 | AN11.454-501 The First Fifty
+Line    8786 | AN11.4     1. Dependence
+Line    8825 | AN11.502-981 The First Fifty
+Line    8838 | AN11.5     1. Dependence
+Line    8874 | AN11.6     1. Dependence
+Line    8909 | AN11.70-117 The First Fifty
+Line    8924 | AN11.7     1. Dependence
+Line    8952 | AN11.8     1. Dependence
+Line    8969 | AN11.982   The First Fifty
+Line    8981 | AN11.983-991 The First Fifty
+Line    8999 | AN11.992-1151 The First Fifty
+Line    9036 | AN11.9     1. Dependence
+Line    9092 | AN2.1-10   The Chapter on Punishments
+Line    9195 | AN2.11-20  The Chapter on Disciplinary Issues
+Line    9369 | AN2.118-129 The Chapter on Hopes That Are Hard to Give Up
+Line    9435 | AN2.130-140 The Chapter on Aspiration
+Line    9512 | AN2.141-150 The Chapter on Giving
+Line    9578 | AN2.151-162 The Chapter on Welcome
+Line    9656 | AN2.163-179 The Chapter on Attainment
+Line    9747 | AN2.180-229 The Chapter of Abbreviated Texts Beginning With Anger
+Line    9803 | AN2.21-31  The Chapter on Fools
+Line    9877 | AN2.230-279 The Chapter of Abbreviated Texts Beginning With the Unskillful
+Line    9887 | AN2.280-309 The Chapter of Abbreviated Texts on Monastic Law
+Line    9903 | AN2.310-479 The Chapter of Abbreviated Texts Beginning with Greed
+Line    9923 | AN2.32-41  The Chapter on the Peaceful Mind
+Line   10094 | AN2.42-51  The Chapter on Assemblies
+Line   10236 | AN2.52-63  The Chapter on Individuals
+Line   10322 | AN2.64-76  The Chapter on Happiness
+Line   10406 | AN2.77-86  The Chapter with a Basis
+Line   10442 | AN2.87-97  The Chapter on Two Things
+Line   10503 | AN2.98-117 The Chapter on Fools
+Line   10609 | AN3.100    10. A Lump of Salt
+Line   10667 | AN3.101    10. A Lump of Salt
+Line   10722 | AN3.102    10. A Lump of Salt
+Line   10751 | AN3.103    11. Awakening
+Line   10768 | AN3.104    11. Awakening
+Line   10785 | AN3.105    11. Awakening
+Line   10800 | AN3.106    11. Awakening
+Line   10811 | AN3.107    11. Awakening
+Line   10822 | AN3.108    11. Awakening
+Line   10835 | AN3.109    11. Awakening
+Line   10861 | AN3.10     1. Fools
+Line   10880 | AN3.110    11. Awakening
+Line   10898 | AN3.111    11. Awakening
+Line   10915 | AN3.112    11. Awakening
+Line   10941 | AN3.113    12. Bound for Loss
+Line   10954 | AN3.114    12. Bound for Loss
+Line   10965 | AN3.115    12. Bound for Loss
+Line   10985 | AN3.116    12. Bound for Loss
+Line   11013 | AN3.117    12. Bound for Loss
+Line   11054 | AN3.118    12. Bound for Loss
+Line   11095 | AN3.119    12. Bound for Loss
+Line   11130 | AN3.11     2. The Chariot-Maker
+Line   11145 | AN3.120    12. Bound for Loss
+Line   11165 | AN3.121    12. Bound for Loss
+Line   11193 | AN3.122    12. Bound for Loss
+Line   11217 | AN3.123    13. Kusinārā
+Line   11257 | AN3.124    13. At Kusinārā
+Line   11282 | AN3.125    13. At Kusinārā
+Line   11303 | AN3.126    13. Kusinārā
+Line   11356 | AN3.127    13. Kusinārā
+Line   11391 | AN3.128    13. Kusinārā
+Line   11430 | AN3.129    13. Kusinārā
+Line   11444 | AN3.12     2. The Chariot-Maker
+Line   11469 | AN3.130    13. Kusinārā
+Line   11492 | AN3.131    13. Kusinārā
+Line   11511 | AN3.132    13. Kusinārā
+Line   11541 | AN3.133    14. A Warrior
+Line   11569 | AN3.134    14. A Warrior
+Line   11580 | AN3.135    14. A Warrior
+Line   11591 | AN3.136    14. A Warrior
+Line   11613 | AN3.137    14. A Warrior
+Line   11636 | AN3.138    14. A Warrior
+Line   11647 | AN3.139    14. A Warrior
+Line   11658 | AN3.13     2. The Chariot-Maker
+Line   11720 | AN3.140    14. A Warrior
+Line   11765 | AN3.141    14. A Warrior
+Line   11810 | AN3.142    14. A Warrior
+Line   11838 | AN3.143    14. A Warrior
+Line   11854 | AN3.144    14. A Warrior
+Line   11865 | AN3.145    14. A Warrior
+Line   11876 | AN3.146    15. Good Fortune
+Line   11891 | AN3.147    15. Good Fortune
+Line   11906 | AN3.148    15. Good Fortune
+Line   11917 | AN3.149    15. Good Fortune
+Line   11928 | AN3.14     2. The Chariot-Maker
+Line   11950 | AN3.150    15. Good Fortune
+Line   11963 | AN3.151    15. Good Fortune
+Line   11974 | AN3.152    15. Good Fortune
+Line   11985 | AN3.153    15. Good Fortune
+Line   11996 | AN3.154    15. Good Fortune
+Line   12007 | AN3.155    15. Good Fortune
+Line   12031 | AN3.156-162 The Chapter on Practices
+Line   12111 | AN3.15     2. The Chariot-Maker
+Line   12160 | AN3.163-182 The Chapter on Ways of Performing Deeds
+Line   12193 | AN3.16     2. The Chariot-Maker
+Line   12221 | AN3.17     2. The Chariot-Maker
+Line   12236 | AN3.183-352 The Chapter on Abbreviated Texts Beginning with Greed
+Line   12285 | AN3.18     2. The Chariot-Maker
+Line   12298 | AN3.19     2. The Chariot-Maker
+Line   12321 | AN3.1      1. Fools
+Line   12348 | AN3.20     2. The Chariot-Maker
+Line   12387 | AN3.21     3. Individuals
+Line   12454 | AN3.22     3. Individuals
+Line   12477 | AN3.23     3. Individuals
+Line   12499 | AN3.24     3. Individuals
+Line   12517 | AN3.25     3. Individuals
+Line   12545 | AN3.26     3. Individuals
+Line   12581 | AN3.27     3. Individuals
+Line   12629 | AN3.28     3. Individuals
+Line   12650 | AN3.29     3. Individuals
+Line   12699 | AN3.2      1. Fools
+Line   12718 | AN3.30     3. Individuals
+Line   12794 | AN3.31     4. Messengers of the Gods
+Line   12823 | AN3.32     4. Messengers of the Gods
+Line   12845 | AN3.33     4. Messengers of the Gods
+Line   12875 | AN3.34     4. Messengers of the Gods
+Line   12926 | AN3.35     4. Messengers of the Gods
+Line   12972 | AN3.36     4. Messengers of the Gods
+Line   13082 | AN3.37     4. Messengers of the Gods
+Line   13124 | AN3.38     4. Messengers of the Gods
+Line   13150 | AN3.39     4. Messengers of the Gods
+Line   13205 | AN3.3      1. Fools
+Line   13229 | AN3.40     4. Messengers from the Gods
+Line   13301 | AN3.41     5. The Lesser Chapter
+Line   13314 | AN3.42     5. The Lesser Chapter
+Line   13329 | AN3.43     5. The Lesser Chapter
+Line   13342 | AN3.44     5. The Lesser Chapter
+Line   13355 | AN3.45     5. The Lesser Chapter
+Line   13376 | AN3.46     5. The Lesser Chapter
+Line   13389 | AN3.47     5. The Lesser Chapter
+Line   13405 | AN3.48     5. The Lesser Chapter
+Line   13438 | AN3.49     5. The Lesser Chapter
+Line   13451 | AN3.4      1. Fools
+Line   13467 | AN3.50     5. The Lesser Chapter
+Line   13506 | AN3.51     6. Brahmins
+Line   13530 | AN3.52     6. Brahmins
+Line   13557 | AN3.53     6. Brahmins
+Line   13580 | AN3.54     6. Brahmins
+Line   13607 | AN3.55     6. Brahmins
+Line   13628 | AN3.56     6. Brahmins
+Line   13652 | AN3.57     6. Brahmins
+Line   13724 | AN3.58     6. Brahmins
+Line   13788 | AN3.59     6. Brahmins
+Line   13841 | AN3.5      1. Fools
+Line   13857 | AN3.60     6. Brahmins
+Line   13970 | AN3.61     7. The Great Chapter
+Line   14087 | AN3.62     7. The Great Chapter
+Line   14145 | AN3.63     7. The Great Chapter
+Line   14222 | AN3.64     7. The Great Chapter
+Line   14284 | AN3.65     7. The Great Chapter
+Line   14389 | AN3.66     7. The Great Chapter
+Line   14482 | AN3.67     7. The Great Chapter
+Line   14547 | AN3.68     7. The Great Chapter
+Line   14597 | AN3.69     7. The Great Chapter
+Line   14665 | AN3.6      1. Fools
+Line   14681 | AN3.70     7. The Great Chapter
+Line   14908 | AN3.71     8. Ānanda
+Line   14945 | AN3.72     8. Ānanda
+Line   14992 | AN3.73     8. Ānanda
+Line   15024 | AN3.74     8. Ānanda
+Line   15055 | AN3.75     8. Ānanda
+Line   15079 | AN3.76     8. Ānanda
+Line   15102 | AN3.77     8. Ānanda
+Line   15125 | AN3.78     8. Ānanda
+Line   15144 | AN3.79     8. Ānanda
+Line   15169 | AN3.7      1. Fools
+Line   15179 | AN3.80     8. Ānanda
+Line   15221 | AN3.81     9. Ascetics
+Line   15235 | AN3.82     9. Ascetics
+Line   15255 | AN3.83     9. Ascetics
+Line   15275 | AN3.84     9. Ascetics
+Line   15296 | AN3.85     9. Ascetics
+Line   15318 | AN3.86     9. Ascetics
+Line   15356 | AN3.87     9. Ascetics
+Line   15395 | AN3.88     9. Ascetics
+Line   15424 | AN3.89     9. Ascetics
+Line   15444 | AN3.8      1. Fools
+Line   15458 | AN3.90     9. Ascetics
+Line   15498 | AN3.91     9. Ascetics
+Line   15541 | AN3.92     10. A Lump of Salt
+Line   15567 | AN3.93     10. A Lump of Salt
+Line   15608 | AN3.94     10. A Lump of Salt
+Line   15621 | AN3.95     10. A Lump of Salt
+Line   15647 | AN3.96     10. A Lump of Salt
+Line   15674 | AN3.97     10. A Lump of Salt
+Line   15698 | AN3.98     10. A Lump of Salt
+Line   15722 | AN3.99     10. A Lump of Salt
+Line   15766 | AN3.9      1. Fools
+Line   15781 | AN4.100    10. Titans
+Line   15814 | AN4.101    11. Clouds
+Line   15851 | AN4.102    11. Clouds
+Line   15887 | AN4.103    11. Clouds
+Line   15922 | AN4.104    11. Clouds
+Line   15957 | AN4.105    11. Clouds
+Line   15992 | AN4.106    11. Clouds
+Line   16000 | AN4.107    11. Clouds
+Line   16036 | AN4.108    11. Clouds
+Line   16067 | AN4.109    11. Clouds
+Line   16102 | AN4.10     1. At Wares Village
+Line   16171 | AN4.110    11. Clouds
+Line   16206 | AN4.111    12. With Kesi
+Line   16243 | AN4.112    12. With Kesi
+Line   16258 | AN4.113    12. With Kesi
+Line   16323 | AN4.114    12. With Kesi
+Line   16364 | AN4.115    12. With Kesi
+Line   16419 | AN4.116    12. With Kesi
+Line   16433 | AN4.117    12. With Kesi
+Line   16447 | AN4.118    12. With Kesi
+Line   16461 | AN4.119    12. With Kesi
+Line   16472 | AN4.11     2. Walking
+Line   16509 | AN4.120    12. With Kesi
+Line   16520 | AN4.121    13. Fears
+Line   16555 | AN4.122    13. Fears
+Line   16617 | AN4.123    13. Fears
+Line   16655 | AN4.124    13. Fears
+Line   16673 | AN4.125    13. Fears
+Line   16700 | AN4.126    13. Fears
+Line   16720 | AN4.127    13. Fears
+Line   16744 | AN4.128    13. Fears
+Line   16766 | AN4.129    13. Fears
+Line   16784 | AN4.12     2. Walking
+Line   16809 | AN4.130    13. Fears
+Line   16836 | AN4.131    14. Individuals
+Line   16859 | AN4.132    14. Individuals
+Line   16873 | AN4.133    14. Individuals
+Line   16884 | AN4.134    14. Individuals
+Line   16898 | AN4.135    14. Individuals
+Line   16921 | AN4.136    14. Individuals
+Line   16935 | AN4.137    14. Individuals
+Line   16949 | AN4.138    14. Individuals
+Line   16979 | AN4.139    14. Individuals
+Line   17001 | AN4.13     2. Walking
+Line   17019 | AN4.140    14. Individuals
+Line   17034 | AN4.141    15. Brightness
+Line   17046 | AN4.142    15. Brightness
+Line   17058 | AN4.143    15. Brightness
+Line   17070 | AN4.144    15. Brightness
+Line   17082 | AN4.145    15. Brightness
+Line   17094 | AN4.146    15. Brightness
+Line   17105 | AN4.147    15. Brightness
+Line   17117 | AN4.148    15. Brightness
+Line   17128 | AN4.149    15. Brightness
+Line   17139 | AN4.14     2. Walking
+Line   17184 | AN4.150    15. Brightness
+Line   17195 | AN4.151    16. Faculties
+Line   17206 | AN4.152    16. Faculties
+Line   17217 | AN4.153    16. Faculties
+Line   17228 | AN4.154    16. Faculties
+Line   17239 | AN4.155    16. Faculties
+Line   17250 | AN4.156    16. Faculties
+Line   17268 | AN4.157    16. Faculties
+Line   17290 | AN4.158    16. Faculties
+Line   17317 | AN4.159    16. Faculties
+Line   17379 | AN4.15     2. Walking
+Line   17404 | AN4.160    16. Faculties
+Line   17449 | AN4.161    17. Practice
+Line   17463 | AN4.162    17. Practice
+Line   17501 | AN4.163    17. Practice
+Line   17552 | AN4.164    17. Practice
+Line   17582 | AN4.165    17. Practice
+Line   17611 | AN4.166    17. Practice
+Line   17631 | AN4.167    17. Practice
+Line   17650 | AN4.168    17. Practice
+Line   17669 | AN4.169    17. Practice
+Line   17716 | AN4.16     2. Walking
+Line   17748 | AN4.170    17. Practice
+Line   17781 | AN4.171    18. Intention
+Line   17824 | AN4.172    18. Intention
+Line   17845 | AN4.173    18. Intention
+Line   17877 | AN4.174    18. Intention
+Line   17904 | AN4.175    18. Intention
+Line   17932 | AN4.176    18. Intention
+Line   17951 | AN4.177    18. Intention
+Line   17972 | AN4.178    18. Intention
+Line   18022 | AN4.179    18. Intention
+Line   18037 | AN4.17     2. Walking
+Line   18052 | AN4.180    18. Intention
+Line   18148 | AN4.181    19. Brahmins
+Line   18179 | AN4.182    19. Brahmins
+Line   18195 | AN4.183    19. Brahmins
+Line   18219 | AN4.184    19. Brahmins
+Line   18289 | AN4.185    19. Brahmins
+Line   18325 | AN4.186    19. Brahmins
+Line   18365 | AN4.187    19. Brahmins
+Line   18413 | AN4.188    19. Brahmins
+Line   18445 | AN4.189    19. Brahmins
+Line   18467 | AN4.18     2. Walking
+Line   18482 | AN4.190    19. Brahmins
+Line   18521 | AN4.191    20. The Great Chapter
+Line   18601 | AN4.192    20. The Great Chapter
+Line   18671 | AN4.193    20. The Great Chapter
+Line   18756 | AN4.194    20. The Great Chapter
+Line   18786 | AN4.195    20. The Great Chapter
+Line   18870 | AN4.196    20. The Great Chapter
+Line   18944 | AN4.197    20. The Great Chapter
+Line   19002 | AN4.198    20. The Great Chapter
+Line   19116 | AN4.199    20. The Great Chapter
+Line   19141 | AN4.19     2. Walking
+Line   19164 | AN4.1      1. At Wares Village
+Line   19194 | AN4.200    20. The Great Chapter
+Line   19281 | AN4.201    21. A True Person
+Line   19305 | AN4.202    21. A True Person
+Line   19326 | AN4.203    21. A True Person
+Line   19347 | AN4.204    21. A True Person
+Line   19368 | AN4.205    21. A True Person
+Line   19389 | AN4.206    21. A True Person
+Line   19410 | AN4.207    21. A True Person
+Line   19431 | AN4.208    21. A True Person
+Line   19452 | AN4.209    21. A True Person
+Line   19473 | AN4.20     2. Walking
+Line   19498 | AN4.210    21. A True Person
+Line   19519 | AN4.211    22. Assembly
+Line   19534 | AN4.212    22. Assembly
+Line   19549 | AN4.213    22. Assembly
+Line   19564 | AN4.214    22. Assembly
+Line   19572 | AN4.215    22. Assembly
+Line   19580 | AN4.216    22. Assembly
+Line   19588 | AN4.217    22. Assembly
+Line   19596 | AN4.218    22. Assembly
+Line   19604 | AN4.219    22. Assembly
+Line   19612 | AN4.21     3. At Uruvelā
+Line   19664 | AN4.220    22. Assembly
+Line   19679 | AN4.221    23. Bad Conduct
+Line   19694 | AN4.222    23. Bad Conduct
+Line   19709 | AN4.223    23. Bad Conduct
+Line   19720 | AN4.224    23. Bad Conduct
+Line   19728 | AN4.225    23. Bad Conduct
+Line   19736 | AN4.226    23. Bad Conduct
+Line   19744 | AN4.227    23. Bad Conduct
+Line   19752 | AN4.228    23. Bad Conduct
+Line   19760 | AN4.229    23. Bad Conduct
+Line   19768 | AN4.22     3. At Uruvelā
+Line   19816 | AN4.230    23. Bad Conduct
+Line   19825 | AN4.231    23. Bad Conduct
+Line   19836 | AN4.232    24. Deeds
+Line   19850 | AN4.233    24. Deeds
+Line   19885 | AN4.234    24. Deeds
+Line   19921 | AN4.235    24. Deeds
+Line   19945 | AN4.236    24. Deeds
+Line   19969 | AN4.237    24. Deeds
+Line   19992 | AN4.238    24. Deeds
+Line   20009 | AN4.239    24. Deeds
+Line   20024 | AN4.23     3. At Uruvelā
+Line   20076 | AN4.240    24. Deeds
+Line   20091 | AN4.241    24. Deeds
+Line   20116 | AN4.242    24. Deeds
+Line   20127 | AN4.243    25. Perils of Offenses
+Line   20169 | AN4.244    25. Perils of Offenses
+Line   20210 | AN4.245    25. Perils of Offenses
+Line   20240 | AN4.246    25. Perils of Offenses
+Line   20266 | AN4.247    25. Perils of Offenses
+Line   20277 | AN4.248    25. Perils of Offenses
+Line   20288 | AN4.249    25. Perils of Offenses
+Line   20299 | AN4.24     3. At Uruvelā
+Line   20331 | AN4.250    25. Perils of Offenses
+Line   20342 | AN4.251    25. Perils of Offenses
+Line   20353 | AN4.252    25. Perils of Offenses
+Line   20364 | AN4.253    25. Perils of Offenses
+Line   20375 | AN4.254    26. Insight
+Line   20401 | AN4.255    26. Insight
+Line   20422 | AN4.256    26. Insight
+Line   20433 | AN4.257    26. Insight
+Line   20457 | AN4.258    26. Insight
+Line   20472 | AN4.259    26. Insight
+Line   20499 | AN4.25     3. At Uruvelā
+Line   20518 | AN4.260    26. Insight
+Line   20545 | AN4.261    26. Insight
+Line   20556 | AN4.262    26. Insight
+Line   20571 | AN4.263    26. Insight
+Line   20586 | AN4.264    27. Ways of Performing Deeds
+Line   20601 | AN4.265    27. Ways of Performing Deeds
+Line   20613 | AN4.266    27. Ways of Performing Deeds
+Line   20622 | AN4.267    27. Ways of Performing Deeds
+Line   20631 | AN4.268    27. Ways of Performing Deeds
+Line   20640 | AN4.269    27. Ways of Performing Deeds
+Line   20649 | AN4.26     3. At Uruvelā
+Line   20668 | AN4.270    27. Ways of Performing Deeds
+Line   20677 | AN4.271    27. Ways of Performing Deeds
+Line   20686 | AN4.272    27. Ways of Performing Deeds
+Line   20695 | AN4.273    27. Ways of Performing Deeds
+Line   20705 | AN4.274    28. Abbreviated Texts Beginning with Greed
+Line   20717 | AN4.275    28. Abbreviated Texts Beginning with Greed
+Line   20729 | AN4.276    28. Abbreviated Texts Beginning with Greed
+Line   20743 | AN4.277-303 28. Abbreviated Texts Beginning with Greed
+Line   20751 | AN4.27     3. At Uruvelā
+Line   20776 | AN4.28     3. At Uruvelā
+Line   20810 | AN4.29     3. At Uruvelā
+Line   20825 | AN4.2      1. At Wares Village
+Line   20850 | AN4.304-783 28. Abbreviated Texts Beginning with Greed
+Line   20859 | AN4.30     3. At Uruvelā
+Line   20904 | AN4.31     4. Situations
+Line   20921 | AN4.32     4. Situations
+Line   20946 | AN4.33     4. Situations
+Line   20986 | AN4.34     4. Situations
+Line   21024 | AN4.35     4. Situations
+Line   21078 | AN4.36     4. Situations
+Line   21119 | AN4.37     4. Situations
+Line   21165 | AN4.38     4. Situations
+Line   21200 | AN4.39     4. Situations
+Line   21239 | AN4.3      1. At Wares Village
+Line   21273 | AN4.40     4. Situations
+Line   21308 | AN4.41     5. With Rohitassa
+Line   21347 | AN4.42     5. With Rohitassa
+Line   21377 | AN4.43     5. With Rohitassa
+Line   21400 | AN4.44     5. With Rohitassa
+Line   21423 | AN4.45     5. With Rohitassa
+Line   21455 | AN4.46     5. With Rohitassa
+Line   21465 | AN4.47     5. With Rohitassa
+Line   21489 | AN4.48     5. With Rohitassa
+Line   21513 | AN4.49     5. With Rohitassa
+Line   21556 | AN4.4      1. At Wares Village
+Line   21591 | AN4.50     5. With Rohitassa
+Line   21636 | AN4.51     6. Overflowing Merit
+Line   21662 | AN4.52     6. Overflowing Merit
+Line   21695 | AN4.53     6. Overflowing Merit
+Line   21758 | AN4.54     6. Overflowing Merit
+Line   21788 | AN4.55     6. Overflowing Merit
+Line   21817 | AN4.56     6. Overflowing Merit
+Line   21825 | AN4.57     6. Overflowing Merit
+Line   21855 | AN4.58     6. Overflowing Merit
+Line   21877 | AN4.59     6. Overflowing Merit
+Line   21887 | AN4.5      1. At Wares Village
+Line   21926 | AN4.60     6. Overflowing Merit
+Line   21948 | AN4.61     7. Fitting Deeds
+Line   22025 | AN4.62     7. Fitting Deeds
+Line   22061 | AN4.63     7. Fitting Deeds
+Line   22092 | AN4.64     7. Fitting Deeds
+Line   22107 | AN4.65     7. Fitting Deeds
+Line   22134 | AN4.66     7. Fitting Deeds
+Line   22157 | AN4.67     7. Fitting Deeds
+Line   22199 | AN4.68     7. Fitting Deeds
+Line   22218 | AN4.69     7. Fitting Deeds
+Line   22247 | AN4.6      1. At Wares Village
+Line   22303 | AN4.70     7. Fitting Deeds
+Line   22356 | AN4.71     8.  Sure Bet
+Line   22367 | AN4.72     8.  Sure Bet
+Line   22378 | AN4.73     8.  Sure Bet
+Line   22424 | AN4.74     8.  Sure Bet
+Line   22435 | AN4.75     8.  Sure Bet
+Line   22446 | AN4.76     8.  Sure Bet
+Line   22473 | AN4.77     8.  Sure Bet
+Line   22487 | AN4.78     8.  Sure Bet
+Line   22509 | AN4.79     8.  Sure Bet
+Line   22533 | AN4.7      1. At Wares Village
+Line   22557 | AN4.80     8.  Sure Bet
+Line   22572 | AN4.81     9. Confirmed
+Line   22587 | AN4.82     9. Confirmed
+Line   22602 | AN4.83     9. Confirmed
+Line   22622 | AN4.84     9. Confirmed
+Line   22637 | AN4.85     9. Confirmed
+Line   22673 | AN4.86     9. Confirmed
+Line   22687 | AN4.87     9. Confirmed
+Line   22725 | AN4.88     9. Confirmed
+Line   22748 | AN4.89     9. Confirmed
+Line   22770 | AN4.8      1. At Wares Village
+Line   22796 | AN4.90     9. Confirmed
+Line   22830 | AN4.91     10. Titans
+Line   22856 | AN4.92     10. Titans
+Line   22870 | AN4.93     10. Titans
+Line   22893 | AN4.94     10. Titans
+Line   22934 | AN4.95     10. Titans
+Line   22955 | AN4.96     10. Titans
+Line   22981 | AN4.97     10. Titans
+Line   23011 | AN4.98     10. Titans
+Line   23025 | AN4.99     10. Titans
+Line   23051 | AN4.9      1. At Wares Village
+Line   23073 | AN5.100    10. With Kakudha
+Line   23156 | AN5.101    11. Living Comfortably
+Line   23177 | AN5.102    11. Living Comfortably
+Line   23188 | AN5.103    11. Living Comfortably
+Line   23248 | AN5.104    11. Living Comfortably
+Line   23272 | AN5.105    11. Living Comfortably
+Line   23285 | AN5.106    11. Living Comfortably
+Line   23324 | AN5.107    11. Living Comfortably
+Line   23335 | AN5.108    11. Living Comfortably
+Line   23346 | AN5.109    11. Living Comfortably
+Line   23361 | AN5.10     1. Powers of a Trainee
+Line   23381 | AN5.110    11. Living Comfortably
+Line   23396 | AN5.111    12. At Andhakavinda
+Line   23411 | AN5.112    12. At Andhakavinda
+Line   23426 | AN5.113    12. At Andhakavinda
+Line   23441 | AN5.114    12. At Andhakavinda
+Line   23458 | AN5.115    12. At Andhakavinda
+Line   23473 | AN5.116    12. At Andhakavinda
+Line   23496 | AN5.117    12. At Andhakavinda
+Line   23519 | AN5.118    12. At Andhakavinda
+Line   23542 | AN5.119    12. At Andhakavinda
+Line   23565 | AN5.11     2. Powers
+Line   23577 | AN5.120    12. At Andhakavinda
+Line   23600 | AN5.121    13. Sick
+Line   23618 | AN5.122    13. Sick
+Line   23631 | AN5.123    13. Sick
+Line   23646 | AN5.124    13. Sick
+Line   23669 | AN5.125    13. Sick
+Line   23684 | AN5.126    13. Sick
+Line   23699 | AN5.127    13. Sick
+Line   23714 | AN5.128    13. Sick
+Line   23729 | AN5.129    13. Sick
+Line   23740 | AN5.12     2. Powers
+Line   23757 | AN5.130    13. Sick
+Line   23776 | AN5.131    14. Kings
+Line   23795 | AN5.132    14. Kings
+Line   23814 | AN5.133    14. Kings
+Line   23843 | AN5.134    14. Kings
+Line   23874 | AN5.135    14. Kings
+Line   23920 | AN5.136    14. Kings
+Line   23957 | AN5.137    14. Kings
+Line   23972 | AN5.138    14. Kings
+Line   23987 | AN5.139    14. Kings
+Line   24070 | AN5.13     2. Powers
+Line   24081 | AN5.140    14. Kings
+Line   24135 | AN5.141    15. At Tikaṇḍakī
+Line   24166 | AN5.142    15. At Tikaṇḍakī
+Line   24206 | AN5.143    15. At Tikaṇḍakī
+Line   24242 | AN5.144    15. At Tikaṇḍakī
+Line   24271 | AN5.145    15. At Tikaṇḍakī
+Line   24286 | AN5.146    15. At Tikaṇḍakī
+Line   24301 | AN5.147    15. At Tikaṇḍakī
+Line   24316 | AN5.148    15. At Tikaṇḍakī
+Line   24336 | AN5.149    15. At Tikaṇḍakī
+Line   24351 | AN5.14     2. Powers
+Line   24381 | AN5.150    15. At Tikaṇḍakī
+Line   24396 | AN5.151    16. The True Teaching
+Line   24411 | AN5.152    16. The True Teaching
+Line   24426 | AN5.153    16. The True Teaching
+Line   24441 | AN5.154    16. The True Teaching
+Line   24456 | AN5.155    16. The True Teaching
+Line   24491 | AN5.156    16. The True Teaching
+Line   24536 | AN5.157    16. The True Teaching
+Line   24609 | AN5.158    16. The True Teaching
+Line   24624 | AN5.159    16. The True Teaching
+Line   24647 | AN5.15     2. Powers
+Line   24668 | AN5.160    16. The True Teaching
+Line   24679 | AN5.161    17. Resentment
+Line   24698 | AN5.162    17. Resentment
+Line   24761 | AN5.163    17. Resentment
+Line   24780 | AN5.164    17. Resentment
+Line   24796 | AN5.165    17. Resentment
+Line   24810 | AN5.166    17. Resentment
+Line   24879 | AN5.167    17. Resentment
+Line   24946 | AN5.168    17. Resentment
+Line   24973 | AN5.169    17. Resentment
+Line   24994 | AN5.16     2. Powers
+Line   25008 | AN5.170    17. Resentment
+Line   25039 | AN5.171    18. A Lay Follower
+Line   25060 | AN5.172    18. A Lay Follower
+Line   25075 | AN5.173    18. A Lay Follower
+Line   25090 | AN5.174    18. A Lay Follower
+Line   25133 | AN5.175    18. A Lay Follower
+Line   25156 | AN5.176    18. A Lay Follower
+Line   25192 | AN5.177    18. A Lay Follower
+Line   25203 | AN5.178    18. A Lay Follower
+Line   25273 | AN5.179    18. A Lay Follower
+Line   25362 | AN5.17     2. Powers
+Line   25373 | AN5.180    18. A Lay Follower
+Line   25447 | AN5.181    19. Wilderness Dwellers
+Line   25461 | AN5.182    19. Wilderness Dwellers
+Line   25472 | AN5.183    19. Wilderness Dwellers
+Line   25483 | AN5.184    19. Wilderness Dwellers
+Line   25494 | AN5.185    19. Wilderness Dwellers
+Line   25502 | AN5.186    19. Wilderness Dwellers
+Line   25510 | AN5.187    19. Wilderness Dwellers
+Line   25518 | AN5.188    19. Wilderness Dwellers
+Line   25526 | AN5.189    19. Wilderness Dwellers
+Line   25534 | AN5.18     2. Powers
+Line   25545 | AN5.190    19. Wilderness Dwellers
+Line   25559 | AN5.191    20. Brahmins
+Line   25589 | AN5.192    20. Brahmins
+Line   25683 | AN5.193    20. Brahmins
+Line   25737 | AN5.194    20. Brahmins
+Line   25793 | AN5.195    20. Brahmins
+Line   25823 | AN5.196    20. Brahmins
+Line   25858 | AN5.197    20. Brahmins
+Line   25880 | AN5.198    20. Brahmins
+Line   25891 | AN5.199    20. Brahmins
+Line   25906 | AN5.19     2. Powers
+Line   25917 | AN5.1      1. Powers of a Trainee
+Line   25939 | AN5.200    20. Brahmins
+Line   25976 | AN5.201    21. With Kimbila
+Line   25991 | AN5.202    21. With Kimbila
+Line   26002 | AN5.203    21. With Kimbila
+Line   26017 | AN5.204    21. With Kimbila
+Line   26028 | AN5.205    21. With Kimbila
+Line   26047 | AN5.206    21. With Kimbila
+Line   26066 | AN5.207    21. With Kimbila
+Line   26077 | AN5.208    21. With Kimbila
+Line   26092 | AN5.209    21. With Kimbila
+Line   26104 | AN5.20     2. Powers
+Line   26115 | AN5.210    21. With Kimbila
+Line   26130 | AN5.211    22. Abuse
+Line   26141 | AN5.212    22. Abuse
+Line   26152 | AN5.213    22. Abuse
+Line   26185 | AN5.214    22. Abuse
+Line   26200 | AN5.215    22. Abuse
+Line   26215 | AN5.216    22. Abuse
+Line   26230 | AN5.217    22. Abuse
+Line   26253 | AN5.218    22. Abuse
+Line   26268 | AN5.219    22. Abuse
+Line   26279 | AN5.21     3. With Five Factors
+Line   26296 | AN5.220    22. Abuse
+Line   26307 | AN5.221    23. Long Wandering
+Line   26322 | AN5.222    23. Long Wandering
+Line   26337 | AN5.223    23. Long Wandering
+Line   26352 | AN5.224    23. Long Wandering
+Line   26367 | AN5.225    23. Long Wandering
+Line   26378 | AN5.226    23. Long Wandering
+Line   26393 | AN5.227    23. Long Wandering
+Line   26408 | AN5.228    23. Long Wandering
+Line   26431 | AN5.229    23. Long Wandering
+Line   26446 | AN5.22     3. With Five Factors
+Line   26463 | AN5.230    23. Long Wandering
+Line   26484 | AN5.231    24. A Resident Mendicant
+Line   26507 | AN5.232    24. A Resident Mendicant
+Line   26522 | AN5.233    24. A Resident Mendicant
+Line   26537 | AN5.234    24. A Resident Mendicant
+Line   26553 | AN5.235    24. A Resident Mendicant
+Line   26570 | AN5.236    24. A Resident Mendicant
+Line   26593 | AN5.237    24. A Resident Mendicant
+Line   26616 | AN5.238    24. A Resident Mendicant
+Line   26639 | AN5.239    24. A Resident Mendicant
+Line   26662 | AN5.23     3. With Five Factors
+Line   26709 | AN5.240    24. A Resident Mendicant
+Line   26732 | AN5.241    25. Bad Conduct
+Line   26755 | AN5.242    25. Bad Conduct
+Line   26763 | AN5.243    25. Bad Conduct
+Line   26771 | AN5.244    25. Bad Conduct
+Line   26779 | AN5.245    25. Bad Conduct
+Line   26802 | AN5.246    25. Bad Conduct
+Line   26810 | AN5.247    25. Bad Conduct
+Line   26818 | AN5.248    25. Bad Conduct
+Line   26826 | AN5.249    25. Bad Conduct
+Line   26856 | AN5.24     3. With Five Factors
+Line   26882 | AN5.250    25. Bad Conduct
+Line   26909 | AN5.251    26. Ordination
+Line   26924 | AN5.252    26. Ordination
+Line   26935 | AN5.253    26. Ordination
+Line   26946 | AN5.254    26. Ordination
+Line   26958 | AN5.255    26. Ordination
+Line   26969 | AN5.256    26. Ordination
+Line   26984 | AN5.257-263 26. Ordination
+Line   26999 | AN5.25     3. With Five Factors
+Line   27010 | AN5.264    26. Ordination
+Line   27025 | AN5.265-271 26. Ordination
+Line   27040 | AN5.26     3. With Five Factors
+Line   27092 | AN5.272    27. Abbreviated Texts on Appointments
+Line   27111 | AN5.273-285 27. Abbreviated Texts on Appointments
+Line   27134 | AN5.27     3. With Five Factors
+Line   27151 | AN5.286    28. Abbreviated Texts on Training Rules
+Line   27166 | AN5.287-292 28. Abbreviated Texts on Training Rules
+Line   27181 | AN5.28     3. With Five Factors
+Line   27269 | AN5.293    28. Abbreviated Texts on Training Rules
+Line   27280 | AN5.294-302 28. Abbreviated Texts on Training Rules
+Line   27291 | AN5.29     3. With Five Factors
+Line   27302 | AN5.2      1. Powers of a Trainee
+Line   27332 | AN5.303    29. Abbreviated Texts Beginning With Greed
+Line   27343 | AN5.304    29. Abbreviated Texts Beginning With Greed
+Line   27354 | AN5.305    29. Abbreviated Texts Beginning With Greed
+Line   27365 | AN5.306    29. Abbreviated Texts Beginning With Greed
+Line   27376 | AN5.307    29. Abbreviated Texts Beginning With Greed
+Line   27387 | AN5.308-1152 29. Abbreviated Texts Beginning With Greed
+Line   27400 | AN5.30     3. With Five Factors
+Line   27445 | AN5.31     4. With Sumanā
+Line   27503 | AN5.32     4. With Sumanā
+Line   27552 | AN5.33     4. With Sumanā
+Line   27604 | AN5.34     4. With Sumanā
+Line   27650 | AN5.35     4. With Sumanā
+Line   27673 | AN5.36     4. With Sumanā
+Line   27702 | AN5.37     4. With Sumanā
+Line   27726 | AN5.38     4. With Sumanā
+Line   27763 | AN5.39     4. With Sumanā
+Line   27798 | AN5.3      1. Powers of a Trainee
+Line   27813 | AN5.40     4. With Sumanā
+Line   27854 | AN5.41     5. With King Muṇḍa
+Line   27900 | AN5.42     5. With King Muṇḍa
+Line   27925 | AN5.43     5. With King Muṇḍa
+Line   27975 | AN5.44     5. With King Muṇḍa
+Line   28035 | AN5.45     5. With King Muṇḍa
+Line   28065 | AN5.46     5. With King Muṇḍa
+Line   28076 | AN5.47     5. With King Muṇḍa
+Line   28115 | AN5.48     5. With King Muṇḍa
+Line   28173 | AN5.49     5. With King Muṇḍa
+Line   28189 | AN5.4      1. Powers of a Trainee
+Line   28204 | AN5.50     5. With King Muṇḍa
+Line   28310 | AN5.51     6. Hindrances
+Line   28341 | AN5.52     6. Hindrances
+Line   28354 | AN5.53     6. Hindrances
+Line   28372 | AN5.54     6. Hindrances
+Line   28409 | AN5.55     6. Hindrances
+Line   28462 | AN5.56     6. Hindrances
+Line   28491 | AN5.57     6. Hindrances
+Line   28571 | AN5.58     6. Hindrances
+Line   28633 | AN5.59     6. Hindrances
+Line   28644 | AN5.5      1. Powers of a Trainee
+Line   28659 | AN5.60     6. Hindrances
+Line   28670 | AN5.61     7. Perceptions
+Line   28681 | AN5.62     7. Perceptions
+Line   28692 | AN5.63     7. Perceptions
+Line   28707 | AN5.64     7. Perceptions
+Line   28722 | AN5.65     7. Perceptions
+Line   28737 | AN5.66     7. Perceptions
+Line   28752 | AN5.67     7. Perceptions
+Line   28769 | AN5.68     7. Perceptions
+Line   28789 | AN5.69     7. Perceptions
+Line   28800 | AN5.6      1. Powers of a Trainee
+Line   28813 | AN5.70     7. Perceptions
+Line   28824 | AN5.71     8. Warriors
+Line   28852 | AN5.72     8. Warriors
+Line   28865 | AN5.73     8. Warriors
+Line   28895 | AN5.74     8. Warriors
+Line   28922 | AN5.75     8. Warriors
+Line   29024 | AN5.76     8. Warriors
+Line   29165 | AN5.77     8. Warriors
+Line   29209 | AN5.78     8. Warriors
+Line   29258 | AN5.79     8. Warriors
+Line   29310 | AN5.7      1. Powers of a Trainee
+Line   29335 | AN5.80     8. Warriors
+Line   29369 | AN5.81     9. Senior Mendicants
+Line   29384 | AN5.82     9. Senior Mendicants
+Line   29399 | AN5.83     9. Senior Mendicants
+Line   29414 | AN5.84     9. Senior Mendicants
+Line   29429 | AN5.85     9. Senior Mendicants
+Line   29444 | AN5.86     9. Senior Mendicants
+Line   29456 | AN5.87     9. Senior Mendicants
+Line   29471 | AN5.88     9. Senior Mendicants
+Line   29496 | AN5.89     9. Senior Mendicants
+Line   29511 | AN5.8      1. Powers of a Trainee
+Line   29534 | AN5.90     9. Senior Mendicants
+Line   29579 | AN5.91     10. With Kakudha
+Line   29590 | AN5.92     10. With Kakudha
+Line   29601 | AN5.93     10. With Kakudha
+Line   29616 | AN5.94     10. With Kakudha
+Line   29629 | AN5.95     10. With Kakudha
+Line   29640 | AN5.96     10. With Kakudha
+Line   29655 | AN5.97     10. With Kakudha
+Line   29671 | AN5.98     10. With Kakudha
+Line   29686 | AN5.99     10. With Kakudha
+Line   29714 | AN5.9      1. Powers of a Trainee
+Line   29737 | AN6.100    10. Benefit
+Line   29746 | AN6.101    10. Benefit
+Line   29755 | AN6.102    10. Benefit
+Line   29766 | AN6.103    10. Benefit
+Line   29778 | AN6.104    10. Benefit
+Line   29789 | AN6.105    10. Benefit
+Line   29805 | AN6.106    10. Benefit
+Line   29821 | AN6.107    11. Triads
+Line   29836 | AN6.108    11. Triads
+Line   29851 | AN6.109    11. Triads
+Line   29866 | AN6.10     1. Worthy of Offerings
+Line   29915 | AN6.110    11. Triads
+Line   29930 | AN6.111    11. Triads
+Line   29945 | AN6.112    11. Triads
+Line   29960 | AN6.113    11. Triads
+Line   29975 | AN6.114    11. Triads
+Line   29990 | AN6.115    11. Triads
+Line   30005 | AN6.116    11. Triads
+Line   30020 | AN6.117    12. The Ascetic Life
+Line   30035 | AN6.118    12. The Ascetic Life
+Line   30057 | AN6.119    12. The Ascetic Life
+Line   30068 | AN6.11     2. Warm-hearted
+Line   30084 | AN6.120-139 12. The Ascetic Life
+Line   30114 | AN6.12     2. Warm-hearted
+Line   30132 | AN6.13     2. Warm-hearted
+Line   30176 | AN6.140    13. Abbreviated Texts Beginning with Greed
+Line   30187 | AN6.141    13. Abbreviated Texts Beginning with Greed
+Line   30198 | AN6.142    13. Abbreviated Texts Beginning with Greed
+Line   30209 | AN6.143-169 13. Abbreviated Texts Beginning with Greed
+Line   30225 | AN6.14     2. Warm-hearted
+Line   30256 | AN6.15     2. Warm-hearted
+Line   30284 | AN6.16     2. Warm-hearted
+Line   30343 | AN6.170-649 13. Abbreviated Texts Beginning with Greed
+Line   30379 | AN6.17     2. Warm-hearted
+Line   30442 | AN6.18     2. Warm-hearted
+Line   30486 | AN6.19     2. Warm-hearted
+Line   30550 | AN6.1      1. Worthy of Offerings
+Line   30574 | AN6.20     2. Warm-hearted
+Line   30614 | AN6.21     3. Unsurpassable
+Line   30640 | AN6.22     3. Unsurpassable
+Line   30652 | AN6.23     3. Unsurpassable
+Line   30685 | AN6.24     3. Unsurpassable
+Line   30696 | AN6.25     3. Unsurpassable
+Line   30731 | AN6.26     3. Unsurpassable
+Line   30775 | AN6.27     3. Unsurpassable
+Line   30805 | AN6.28     3. Unsurpassable
+Line   30848 | AN6.29     3. Unsurpassable
+Line   30901 | AN6.2      1. Worthy of Offerings
+Line   30933 | AN6.30     3. Unsurpassable
+Line   30997 | AN6.31     4. Deities
+Line   31012 | AN6.32     4. Deities
+Line   31034 | AN6.33     4. Deities
+Line   31054 | AN6.34     4. Deities
+Line   31094 | AN6.35     4. Deities
+Line   31105 | AN6.36     4. Deities
+Line   31131 | AN6.37     4. Deities
+Line   31176 | AN6.38     4. Deities
+Line   31209 | AN6.39     4. Deities
+Line   31240 | AN6.3      1. Worthy of Offerings
+Line   31251 | AN6.40     4. Deities
+Line   31267 | AN6.41     4. Deities
+Line   31290 | AN6.42     4. Deities
+Line   31347 | AN6.43     5. About Dhammika
+Line   31448 | AN6.44     5. About Dhammika
+Line   31518 | AN6.45     5. About Dhammika
+Line   31621 | AN6.46     5. About Dhammika
+Line   31656 | AN6.47     5. About Dhammika
+Line   31684 | AN6.48     5. About Dhammika
+Line   31712 | AN6.49     5. About Dhammika
+Line   31742 | AN6.4      1. Worthy of Offerings
+Line   31753 | AN6.50     5. About Dhammika
+Line   31777 | AN6.51     5. About Dhammika
+Line   31805 | AN6.52     5. About Dhammika
+Line   31830 | AN6.53     5. About Dhammika
+Line   31858 | AN6.54     5. About Dhammika
+Line   32014 | AN6.55     6. The Great Chapter
+Line   32105 | AN6.56     6. The Great Chapter
+Line   32177 | AN6.57     6. The Great Chapter
+Line   32243 | AN6.58     6. The Great Chapter
+Line   32305 | AN6.59     6. The Great Chapter
+Line   32347 | AN6.5      1. Worthy of Offerings
+Line   32362 | AN6.60     6. The Great Chapter
+Line   32457 | AN6.61     6. The Great Chapter
+Line   32512 | AN6.62     6. The Great Chapter
+Line   32634 | AN6.63     6. The Great Chapter
+Line   32779 | AN6.64     6. The Great Chapter
+Line   32820 | AN6.65     7. A God
+Line   32835 | AN6.66     7. A God
+Line   32850 | AN6.67     7. A God
+Line   32865 | AN6.68     7. A God
+Line   32884 | AN6.69     7. A God
+Line   32931 | AN6.6      1. Worthy of Offerings
+Line   32946 | AN6.70     7. A God
+Line   32967 | AN6.71     7. A God
+Line   32982 | AN6.72     7. A God
+Line   32997 | AN6.73     7. A God
+Line   33014 | AN6.74     7. A God
+Line   33029 | AN6.75     8. Perfection
+Line   33044 | AN6.76     8. Perfection
+Line   33059 | AN6.77     8. Perfection
+Line   33074 | AN6.78     8. Perfection
+Line   33085 | AN6.79     8. Perfection
+Line   33100 | AN6.7      1. Worthy of Offerings
+Line   33115 | AN6.80     8. Perfection
+Line   33126 | AN6.81     8. Perfection
+Line   33141 | AN6.82     8. Perfection
+Line   33156 | AN6.83     8. Perfection
+Line   33171 | AN6.84     8. Perfection
+Line   33186 | AN6.85     9. Coolness
+Line   33201 | AN6.86     9. Coolness
+Line   33216 | AN6.87     9. Coolness
+Line   33231 | AN6.88     9. Coolness
+Line   33246 | AN6.89     9. Coolness
+Line   33261 | AN6.8      1. Worthy of Offerings
+Line   33272 | AN6.90     9. Coolness
+Line   33283 | AN6.91     9. Coolness
+Line   33294 | AN6.92     9. Coolness
+Line   33305 | AN6.93     9. Coolness
+Line   33316 | AN6.94     9. Coolness
+Line   33327 | AN6.95     9. Coolness
+Line   33340 | AN6.96     10. Benefit
+Line   33351 | AN6.97     10. Benefit
+Line   33362 | AN6.98     10. Benefit
+Line   33375 | AN6.99     10. Benefit
+Line   33384 | AN6.9      1. Worthy of Offerings
+Line   33395 | AN7.10     1. Wealth
+Line   33406 | AN7.11     2. Tendencies
+Line   33417 | AN7.12     2. Tendencies
+Line   33430 | AN7.13     2. Tendencies
+Line   33445 | AN7.14     2. Tendencies
+Line   33456 | AN7.15     2. Tendencies
+Line   33500 | AN7.16     2. Tendencies
+Line   33523 | AN7.17     2. Tendencies
+Line   33533 | AN7.18     2. Tendencies
+Line   33541 | AN7.19     2. Tendencies
+Line   33562 | AN7.1      1. Wealth
+Line   33583 | AN7.20     2. Tendencies
+Line   33600 | AN7.21     3. The Vajji Seven
+Line   33632 | AN7.22     3. The Vajji Seven
+Line   33691 | AN7.23     3. The Vajji Seven
+Line   33714 | AN7.24     3. The Vajji Seven
+Line   33732 | AN7.25     3. The Vajji Seven
+Line   33750 | AN7.26     3. The Vajji Seven
+Line   33768 | AN7.27     3. The Vajji Seven
+Line   33786 | AN7.28     3. The Vajji Seven
+Line   33806 | AN7.29     3. The Vajji Seven
+Line   33867 | AN7.2      1. Wealth
+Line   33882 | AN7.30     3. The Vajji Seven
+Line   33891 | AN7.31     3. The Vajji Seven
+Line   33941 | AN7.32     4. Deities
+Line   33965 | AN7.33     4. Deities
+Line   33987 | AN7.34     4. Deities
+Line   34009 | AN7.35     4. Deities
+Line   34051 | AN7.36     4. Deities
+Line   34074 | AN7.37     4. Deities
+Line   34095 | AN7.38     4. Deities
+Line   34112 | AN7.39     4. Deities
+Line   34127 | AN7.3      1. Wealth
+Line   34150 | AN7.40     4. Deities
+Line   34161 | AN7.41     4. Deities
+Line   34172 | AN7.42     4. Deities
+Line   34200 | AN7.43     4. Deities
+Line   34230 | AN7.44     5. A Great Sacrifice
+Line   34254 | AN7.45     5. A Great Sacrifice
+Line   34265 | AN7.46     5. A Great Sacrifice
+Line   34276 | AN7.47     5. A Great Sacrifice
+Line   34355 | AN7.48     5. A Great Sacrifice
+Line   34366 | AN7.49     5. A Great Sacrifice
+Line   34416 | AN7.4      1. Wealth
+Line   34460 | AN7.50     5. A Great Sacrifice
+Line   34496 | AN7.51     5. A Great Sacrifice
+Line   34550 | AN7.52     5. A Great Sacrifice
+Line   34595 | AN7.53     5. A Great Sacrifice
+Line   34674 | AN7.54     6. The Undeclared Points
+Line   34716 | AN7.55     6. The Undeclared Points
+Line   34792 | AN7.56     6. The Undeclared Points
+Line   34874 | AN7.57     6. The Undeclared Points
+Line   34922 | AN7.58     6. The Undeclared Points
+Line   34960 | AN7.59     6. The Undeclared Points
+Line   34976 | AN7.5      1. Wealth
+Line   34999 | AN7.60     6. The Undeclared Points
+Line   35010 | AN7.615    11. Abbreviated Texts Beginning With Greed
+Line   35022 | AN7.616    11. Abbreviated Texts Beginning With Greed
+Line   35033 | AN7.617    11. Abbreviated Texts Beginning With Greed
+Line   35044 | AN7.618-644 11. Abbreviated Texts Beginning With Greed
+Line   35060 | AN7.61     6. The Undeclared Points
+Line   35123 | AN7.62     6. The Undeclared Points
+Line   35186 | AN7.63     6. The Undeclared Points
+Line   35258 | AN7.645-1124 11. Abbreviated Texts Beginning With Greed
+Line   35294 | AN7.64     6. The Undeclared Points
+Line   35416 | AN7.65     7. The Great Chapter
+Line   35446 | AN7.66     7. The Great Chapter
+Line   35539 | AN7.67     7. The Great Chapter
+Line   35638 | AN7.68     7. The Great Chapter
+Line   35741 | AN7.69     7. The Great Chapter
+Line   35786 | AN7.6      1. Wealth
+Line   35830 | AN7.70     7. The Great Chapter
+Line   35893 | AN7.71     7. The Great Chapter
+Line   35946 | AN7.72     7. The Great Chapter
+Line   36021 | AN7.73     7. The Great Chapter
+Line   36053 | AN7.74     7. The Great Chapter
+Line   36100 | AN7.75     8. The Monastic Law
+Line   36117 | AN7.76     8. The Monastic Law
+Line   36134 | AN7.77     8. The Monastic Law
+Line   36151 | AN7.78     8. The Monastic Law
+Line   36168 | AN7.79     8. The Monastic Law
+Line   36185 | AN7.7      1. Wealth
+Line   36215 | AN7.80     8. The Monastic Law
+Line   36232 | AN7.81     8. The Monastic Law
+Line   36249 | AN7.82     8. The Monastic Law
+Line   36266 | AN7.83     8. The Monastic Law
+Line   36283 | AN7.84     8. The Monastic Law
+Line   36294 | AN7.85     9. An Ascetic
+Line   36305 | AN7.86     9. An Ascetic
+Line   36313 | AN7.87     9. An Ascetic
+Line   36321 | AN7.88     9. An Ascetic
+Line   36329 | AN7.89     9. An Ascetic
+Line   36337 | AN7.8      1. Wealth
+Line   36348 | AN7.90     9. An Ascetic
+Line   36356 | AN7.91     9. An Ascetic
+Line   36364 | AN7.92     9. An Ascetic
+Line   36375 | AN7.93     9. An Ascetic
+Line   36386 | AN7.94     9. An Ascetic
+Line   36397 | AN7.95     10. Worthy of Offerings
+Line   36420 | AN7.96-614 10. Worthy of Offerings
+Line   36508 | AN7.9      1. Wealth
+Line   36521 | AN8.10     1. Love
+Line   36602 | AN8.118    11. Abbreviated Texts Beginning With Greed
+Line   36613 | AN8.119    11. Abbreviated Texts Beginning With Greed
+Line   36633 | AN8.11     2. The Great Chapter
+Line   36738 | AN8.120    11. Abbreviated Texts Beginning With Greed
+Line   36749 | AN8.121-147 11. Abbreviated Texts Beginning With Greed
+Line   36766 | AN8.12     2. The Great Chapter
+Line   36909 | AN8.13     2. The Great Chapter
+Line   36952 | AN8.148-627 11. Abbreviated Texts Beginning With Greed
+Line   36986 | AN8.14     2. The Great Chapter
+Line   37071 | AN8.15     2. The Great Chapter
+Line   37099 | AN8.16     2. The Great Chapter
+Line   37122 | AN8.17     2. The Great Chapter
+Line   37141 | AN8.18     2. The Great Chapter
+Line   37160 | AN8.19     2. The Great Chapter
+Line   37222 | AN8.1      1. Love
+Line   37259 | AN8.20     2. The Great Chapter
+Line   37320 | AN8.21     3. Householders
+Line   37394 | AN8.22     3. Householders
+Line   37473 | AN8.23     3. Householders
+Line   37515 | AN8.24     3. Householders
+Line   37553 | AN8.25     3. Householders
+Line   37588 | AN8.26     3. Householders
+Line   37617 | AN8.27     3. Householders
+Line   37628 | AN8.28     3. Householders
+Line   37661 | AN8.29     3. Householders
+Line   37738 | AN8.2      1. Love
+Line   37798 | AN8.30     3. Householders
+Line   37914 | AN8.31     4. Giving
+Line   37932 | AN8.32     4. Giving
+Line   37943 | AN8.33     4. Giving
+Line   37954 | AN8.34     4. Giving
+Line   38005 | AN8.35     4. Giving
+Line   38061 | AN8.36     4. Giving
+Line   38096 | AN8.37     4. Giving
+Line   38119 | AN8.38     4. Giving
+Line   38146 | AN8.39     4. Giving
+Line   38180 | AN8.3      1. Love
+Line   38195 | AN8.40     4. Giving
+Line   38218 | AN8.41     5. Sabbath
+Line   38267 | AN8.42     5. Sabbath
+Line   38356 | AN8.43     5. Sabbath
+Line   38429 | AN8.44     5. Sabbath
+Line   38448 | AN8.45     5. Sabbath
+Line   38515 | AN8.46     5. Sabbath
+Line   38577 | AN8.47     5. Sabbath
+Line   38609 | AN8.48     5. Sabbath
+Line   38649 | AN8.49     5. Sabbath
+Line   38709 | AN8.4      1. Love
+Line   38724 | AN8.50     5. Sabbath
+Line   38780 | AN8.51     6. Gotamī
+Line   38872 | AN8.52     6. Gotamī
+Line   38893 | AN8.53     6. Gotamī
+Line   38925 | AN8.54     6. Gotamī
+Line   39010 | AN8.55     6. Gotamī
+Line   39089 | AN8.56     6. Gotamī
+Line   39127 | AN8.57     6. Gotamī
+Line   39145 | AN8.58     6. Gotamī
+Line   39163 | AN8.59     6. Gotamī
+Line   39182 | AN8.5      1. Love
+Line   39205 | AN8.60     6. Gotamī
+Line   39224 | AN8.61     7. Earthquakes
+Line   39282 | AN8.62     7. Earthquakes
+Line   39361 | AN8.63     7. Earthquakes
+Line   39401 | AN8.64     7. Earthquakes
+Line   39453 | AN8.65     7. Earthquakes
+Line   39487 | AN8.66     7. Earthquakes
+Line   39513 | AN8.67     7. Earthquakes
+Line   39524 | AN8.68     7. Earthquakes
+Line   39535 | AN8.69     7. Earthquakes
+Line   39570 | AN8.6      1. Love
+Line   39643 | AN8.70     7. Earthquakes
+Line   39727 | AN8.71     8. Pairs
+Line   39757 | AN8.72     8. Pairs
+Line   39782 | AN8.73     8. Pairs
+Line   39860 | AN8.74     8. Pairs
+Line   39900 | AN8.75     8. Pairs
+Line   39927 | AN8.76     8. Pairs
+Line   39987 | AN8.77     8. Pairs
+Line   40041 | AN8.78     8. Pairs
+Line   40121 | AN8.79     8. Pairs
+Line   40136 | AN8.7      1. Love
+Line   40181 | AN8.80     8. Pairs
+Line   40269 | AN8.81     9. Mindfulness
+Line   40298 | AN8.82     9. Mindfulness
+Line   40321 | AN8.83     9. Mindfulness
+Line   40340 | AN8.84     9. Mindfulness
+Line   40355 | AN8.85     9. Mindfulness
+Line   40382 | AN8.86     9. Mindfulness
+Line   40450 | AN8.87     9. Mindfulness
+Line   40465 | AN8.88     9. Mindfulness
+Line   40480 | AN8.89     9. Mindfulness
+Line   40495 | AN8.8      1. Love
+Line   40585 | AN8.90     9. Mindfulness
+Line   40595 | AN8.91-117 10. Similarity
+Line   40603 | AN8.9      1. Love
+Line   40644 | AN9.10     1. Awakening
+Line   40655 | AN9.113-432 10. Abbreviated Texts Beginning with Greed
+Line   40689 | AN9.11     2. The Lion’s Roar
+Line   40754 | AN9.12     2. The Lion’s Roar
+Line   40806 | AN9.13     2. The Lion’s Roar
+Line   40853 | AN9.14     2. The Lion’s Roar
+Line   40884 | AN9.15     2. The Lion’s Roar
+Line   40904 | AN9.16     2. The Lion’s Roar
+Line   40915 | AN9.17     2. The Lion’s Roar
+Line   40930 | AN9.18     2. The Lion’s Roar
+Line   40951 | AN9.19     2. The Lion’s Roar
+Line   40980 | AN9.1      1. Awakening
+Line   41020 | AN9.20     2. The Lion’s Roar
+Line   41065 | AN9.21     3. Abodes of Sentient Beings
+Line   41084 | AN9.22     3. Abodes of Sentient Beings
+Line   41161 | AN9.23     3. Abodes of Sentient Beings
+Line   41172 | AN9.24     3. Abodes of Sentient Beings
+Line   41200 | AN9.25     3. Abodes of Sentient Beings
+Line   41221 | AN9.26     3. Abodes of Sentient Beings
+Line   41272 | AN9.27     3. Abodes of Sentient Beings
+Line   41302 | AN9.28     3. Abodes of Sentient Beings
+Line   41326 | AN9.29     3. Abodes of Sentient Beings
+Line   41345 | AN9.2      1. Awakening
+Line   41365 | AN9.30     3. Abodes of Sentient Beings
+Line   41384 | AN9.31     3. Abodes of Sentient Beings
+Line   41403 | AN9.32     4. The Great Chapter
+Line   41414 | AN9.33     4. The Great Chapter
+Line   41487 | AN9.34     4. The Great Chapter
+Line   41560 | AN9.35     4. The Great Chapter
+Line   41656 | AN9.36     4. The Great Chapter
+Line   41730 | AN9.37     4. The Great Chapter
+Line   41769 | AN9.38     4. The Great Chapter
+Line   41844 | AN9.39     4. The Great Chapter
+Line   41908 | AN9.3      1. Awakening
+Line   41971 | AN9.40     4. The Great Chapter
+Line   42013 | AN9.41     4. The Great Chapter
+Line   42183 | AN9.42     5. Similarity
+Line   42249 | AN9.43     5. Similarity
+Line   42272 | AN9.44     5. Similarity
+Line   42287 | AN9.45     5. Similarity
+Line   42302 | AN9.46     5. Similarity
+Line   42315 | AN9.47     5. Similarity
+Line   42328 | AN9.48     5. Similarity
+Line   42336 | AN9.49     5. Similarity
+Line   42344 | AN9.4      1. Awakening
+Line   42428 | AN9.50     5. Similarity
+Line   42436 | AN9.51     5. Similarity
+Line   42449 | AN9.52     6. A Safe Place
+Line   42462 | AN9.53     6. A Safe Place
+Line   42470 | AN9.54     6. A Safe Place
+Line   42478 | AN9.55     6. A Safe Place
+Line   42486 | AN9.56     6. A Safe Place
+Line   42494 | AN9.57     6. A Safe Place
+Line   42502 | AN9.58     6. A Safe Place
+Line   42510 | AN9.59     6. A Safe Place
+Line   42518 | AN9.5      1. Awakening
+Line   42571 | AN9.60     6. A Safe Place
+Line   42579 | AN9.61     6. A Safe Place
+Line   42592 | AN9.62     6. A Safe Place
+Line   42607 | AN9.63     7. Mindfulness Meditation
+Line   42625 | AN9.64     7. Mindfulness Meditation
+Line   42643 | AN9.65     7. Mindfulness Meditation
+Line   42659 | AN9.66     7. Mindfulness Meditation
+Line   42671 | AN9.67     7. Mindfulness Meditation
+Line   42683 | AN9.68     7. Mindfulness Meditation
+Line   42695 | AN9.69     7. Mindfulness Meditation
+Line   42707 | AN9.6      1. Awakening
+Line   42799 | AN9.70     7. Mindfulness Meditation
+Line   42811 | AN9.71     7. Mindfulness Meditation
+Line   42830 | AN9.72     7. Mindfulness Meditation
+Line   42856 | AN9.73     8. Right Efforts
+Line   42874 | AN9.74-81  8. Right Efforts
+Line   42882 | AN9.7      1. Awakening
+Line   42903 | AN9.82     8. Right Efforts
+Line   42921 | AN9.83     9. Bases of Psychic Power
+Line   42939 | AN9.84-91  9. Bases of Psychic Power
+Line   42947 | AN9.8      1. Awakening
+Line   42968 | AN9.92     9. Bases of Psychic Power
+Line   42986 | AN9.93     10. Abbreviated Texts Beginning with Greed
+Line   42997 | AN9.94     10. Abbreviated Texts Beginning with Greed
+Line   43008 | AN9.95-112 10. Abbreviated Texts Beginning with Greed
+Line   43025 | AN9.9      1. Awakening
+Line   43036 | DN10       With Subha
+Line   43267 | DN11       With Kevaḍḍha
+Line   43432 | DN12       With Lohicca
+Line   43581 | DN13       Experts in the Three Vedas
+Line   43834 | DN14       The Great Discourse on Traces Left Behind
+Line   44517 | DN15       The Great Discourse on Causation
+Line   44776 | DN16       The Great Discourse on the Buddha’s Extinguishment
+Line   46349 | DN17       King Mahāsudassana
+Line   46710 | DN18       With Janavasabha
+Line   46965 | DN19       The Great Steward
+Line   47446 | DN1        The Divine Net
+Line   48081 | DN20       The Great Congregation
+Line   48419 | DN21       Sakka’s Questions
+Line   48898 | DN22       The Longer Discourse on Mindfulness Meditation
+Line   49259 | DN23       With Pāyāsi
+Line   49899 | DN24       About Pāṭikaputta
+Line   50403 | DN25       The Lion’s Roar at the Monastery of Lady Udumbarikā
+Line   50753 | DN26       The Wheel-Turning Monarch
+Line   51088 | DN27       What Came First
+Line   51379 | DN28       Inspiring Confidence
+Line   51626 | DN29       An Impressive Discourse
+Line   52034 | DN2        The Fruits of the Ascetic Life
+Line   52619 | DN30       The Marks of a Great Man
+Line   53339 | DN31       Advice to Sigālaka
+Line   53607 | DN32       The Āṭānāṭiya Protection
+Line   53902 | DN33       Reciting in Concert
+Line   55035 | DN34       Up to Ten
+Line   55793 | DN3        With Ambaṭṭha
+Line   56222 | DN4        With Soṇadaṇḍa
+Line   56484 | DN5        With Kūṭadanta
+Line   56817 | DN6        With Mahāli
+Line   56960 | DN7        With Jāliya
+Line   57009 | DN8        The Lion’s Roar to the Naked Ascetic Kassapa
+Line   57211 | DN9        With Poṭṭhapāda
+Line   57590 | CP10       The Chapter With Akitti
+Line   57674 | CP11       The Chapter on an Elephant
+Line   57722 | CP12       The Chapter on an Elephant
+Line   57766 | CP13       The Chapter on an Elephant
+Line   57798 | CP14       The Chapter on an Elephant
+Line   57850 | CP15       The Chapter on an Elephant
+Line   57902 | CP16       The Chapter on an Elephant
+Line   57960 | CP17       The Chapter on an Elephant
+Line   57992 | CP18       The Chapter on an Elephant
+Line   58032 | CP19       The Chapter on an Elephant
+Line   58084 | CP1        The Chapter With Akitti
+Line   58133 | CP20       The Chapter on an Elephant
+Line   58169 | CP21       The Chapter With Yudhañjaya
+Line   58201 | CP22       The Chapter With Yudhañjaya
+Line   58277 | CP23       The Chapter With Yudhañjaya
+Line   58325 | CP24       The Chapter With Yudhañjaya
+Line   58365 | CP25       The Chapter With Yudhañjaya
+Line   58397 | CP26       The Chapter With Yudhañjaya
+Line   58483 | CP27       The Chapter With Yudhañjaya
+Line   58507 | CP28       The Chapter With Yudhañjaya
+Line   58519 | CP29       The Chapter With Yudhañjaya
+Line   58573 | CP2        The Chapter With Akitti
+Line   58617 | CP30       The Chapter With Yudhañjaya
+Line   58665 | CP31       The Chapter With Yudhañjaya
+Line   58726 | CP32       The Chapter With Yudhañjaya
+Line   58760 | CP33       The Chapter With Yudhañjaya
+Line   58780 | CP34       The Chapter With Yudhañjaya
+Line   58810 | CP35       The Chapter With Yudhañjaya
+Line   58867 | CP3        The Chapter With Akitti
+Line   58907 | CP4        The Chapter With Akitti
+Line   58953 | CP5        The Chapter With Akitti
+Line   58973 | CP6        The Chapter With Akitti
+Line   59001 | CP7        The Chapter With Akitti
+Line   59033 | CP8        The Chapter With Akitti
+Line   59105 | CP9        The Chapter With Akitti
+Line   59347 | DHP1-20    Sayings of the Dhamma 1–20
+Line   59444 | DHP100-115 Sayings of the Dhamma 100–115
+Line   59519 | DHP116-128 Sayings of the Dhamma 116–128
+Line   59582 | DHP129-145 Sayings of the Dhamma 129–145
+Line   59659 | DHP146-156 Sayings of the Dhamma 146–156
+Line   59712 | DHP157-166 Sayings of the Dhamma 157–166
+Line   59763 | DHP167-178 Sayings of the Dhamma 167–178
+Line   59818 | DHP179-196 Sayings of the Dhamma 179–196
+Line   59899 | DHP197-208 Sayings of the Dhamma 197–208
+Line   59957 | DHP209-220 Sayings of the Dhamma 209–220
+Line   60012 | DHP21-32   Sayings of the Dhamma 21–32
+Line   60069 | DHP221-234 Sayings of the Dhamma 221–234
+Line   60134 | DHP235-255 Sayings of the Dhamma 235–255
+Line   60229 | DHP256-272 Sayings of the Dhamma 256–272
+Line   60306 | DHP273-289 Sayings of the Dhamma 273–289
+Line   60383 | DHP290-305 Sayings of the Dhamma 290–305
+Line   60458 | DHP306-319 Sayings of the Dhamma 306–319
+Line   60523 | DHP320-333 Sayings of the Dhamma 320–333
+Line   60586 | DHP33-43   Sayings of the Dhamma 33–43
+Line   60637 | DHP334-359 Sayings of the Dhamma 334–359
+Line   60752 | DHP360-382 Sayings of the Dhamma 360–382
+Line   60856 | DHP383-423 Sayings of the Dhamma 383–423
+Line   61040 | DHP44-59   Sayings of the Dhamma 44–59
+Line   61111 | DHP60-75   Sayings of the Dhamma 60–75
+Line   61186 | DHP76-89   Sayings of the Dhamma 76–89
+Line   61253 | DHP90-99   Sayings of the Dhamma 90–99
+Line   61304 | ITI10      The Book of the Ones
+Line   61324 | ITI1       The Book of the Ones
+Line   61347 | ITI2       The Book of the Ones
+Line   61370 | ITI3       The Book of the Ones
+Line   61393 | ITI4       The Book of the Ones
+Line   61416 | ITI5       The Book of the Ones
+Line   61439 | ITI6       The Book of the Ones
+Line   61462 | ITI7       The Book of the Ones
+Line   61480 | ITI8       The Book of the Ones
+Line   61502 | ITI9       The Book of the Ones
+Line   61522 | ITI90      The Book of the Threes
+Line   61562 | ITI91      The Book of the Threes
+Line   61596 | ITI92      The Book of the Threes
+Line   61634 | ITI93      The Book of the Threes
+Line   61678 | ITI94      The Book of the Threes
+Line   61696 | ITI95      The Book of the Threes
+Line   61730 | ITI96      The Book of the Threes
+Line   61757 | ITI97      The Book of the Threes
+Line   61798 | ITI98      The Book of the Threes
+Line   61827 | ITI99      The Book of the Threes
+Line   61856 | ITI100     The Book of the Fours
+Line   61886 | ITI101     The Book of the Fours
+Line   61916 | ITI102     The Book of the Fours
+Line   61944 | ITI103     The Book of the Fours
+Line   61980 | ITI104     The Book of the Fours
+Line   62013 | ITI105     The Book of the Fours
+Line   62040 | ITI106     The Book of the Fours
+Line   62076 | ITI107     The Book of the Fours
+Line   62107 | ITI108     The Book of the Fours
+Line   62131 | ITI109     The Book of the Fours
+Line   62164 | ITI110     The Book of the Fours
+Line   62205 | ITI111     The Book of the Fours
+Line   62239 | ITI112     The Book of the Fours
+Line   62297 | ITI11      The Book of the Ones
+Line   62317 | ITI12      The Book of the Ones
+Line   62337 | ITI13      The Book of the Ones
+Line   62357 | ITI14      The Book of the Ones
+Line   62379 | ITI15      The Book of the Ones
+Line   62401 | ITI16      The Book of the Ones
+Line   62421 | ITI17      The Book of the Ones
+Line   62441 | ITI18      The Book of the Ones
+Line   62464 | ITI19      The Book of the Ones
+Line   62487 | ITI20      The Book of the Ones
+Line   62516 | ITI21      The Book of the Ones
+Line   62545 | ITI22      The Book of the Ones
+Line   62580 | ITI23      The Book of the Ones
+Line   62606 | ITI24      The Book of the Ones
+Line   62637 | ITI25      The Book of the Ones
+Line   62656 | ITI26      The Book of the Ones
+Line   62687 | ITI27      The Book of the Ones
+Line   62726 | ITI28      The Book of the Twos
+Line   62756 | ITI29      The Book of the Twos
+Line   62786 | ITI30      The Book of the Twos
+Line   62811 | ITI31      The Book of the Twos
+Line   62836 | ITI32      The Book of the Twos
+Line   62858 | ITI33      The Book of the Twos
+Line   62880 | ITI34      The Book of the Twos
+Line   62904 | ITI35      The Book of the Twos
+Line   62928 | ITI36      The Book of the Twos
+Line   62952 | ITI37      The Book of the Twos
+Line   62976 | ITI38      The Book of the Twos
+Line   63017 | ITI39      The Book of the Twos
+Line   63044 | ITI40      The Book of the Twos
+Line   63070 | ITI41      The Book of the Twos
+Line   63100 | ITI42      The Book of the Twos
+Line   63126 | ITI43      The Book of the Twos
+Line   63153 | ITI44      The Book of the Twos
+Line   63188 | ITI45      The Book of the Twos
+Line   63211 | ITI46      The Book of the Twos
+Line   63234 | ITI47      The Book of the Twos
+Line   63261 | ITI48      The Book of the Twos
+Line   63289 | ITI49      The Book of the Twos
+Line   63322 | ITI50      The Book of the Threes
+Line   63342 | ITI51      The Book of the Threes
+Line   63368 | ITI52      The Book of the Threes
+Line   63392 | ITI53      The Book of the Threes
+Line   63420 | ITI54      The Book of the Threes
+Line   63444 | ITI55      The Book of the Threes
+Line   63470 | ITI56      The Book of the Threes
+Line   63494 | ITI57      The Book of the Threes
+Line   63516 | ITI58      The Book of the Threes
+Line   63542 | ITI59      The Book of the Threes
+Line   63562 | ITI60      The Book of the Threes
+Line   63586 | ITI61      The Book of the Threes
+Line   63612 | ITI62      The Book of the Threes
+Line   63640 | ITI63      The Book of the Threes
+Line   63668 | ITI64      The Book of the Threes
+Line   63692 | ITI65      The Book of the Threes
+Line   63716 | ITI66      The Book of the Threes
+Line   63736 | ITI67      The Book of the Threes
+Line   63756 | ITI68      The Book of the Threes
+Line   63778 | ITI69      The Book of the Threes
+Line   63802 | ITI70      The Book of the Threes
+Line   63826 | ITI71      The Book of the Threes
+Line   63850 | ITI72      The Book of the Threes
+Line   63874 | ITI73      The Book of the Threes
+Line   63901 | ITI74      The Book of the Threes
+Line   63951 | ITI75      The Book of the Threes
+Line   64000 | ITI76      The Book of the Threes
+Line   64048 | ITI77      The Book of the Threes
+Line   64067 | ITI78      The Book of the Threes
+Line   64099 | ITI79      The Book of the Threes
+Line   64131 | ITI80      The Book of the Threes
+Line   64155 | ITI81      The Book of the Threes
+Line   64180 | ITI82      The Book of the Threes
+Line   64216 | ITI83      The Book of the Threes
+Line   64271 | ITI84      The Book of the Threes
+Line   64307 | ITI85      The Book of the Threes
+Line   64333 | ITI86      The Book of the Threes
+Line   64355 | ITI87      The Book of the Threes
+Line   64385 | ITI88      The Book of the Threes
+Line   64439 | ITI89      The Book of the Threes
+Line   64485 | JA10       The Book of the Ones
+Line   64497 | JA11       The Book of the Ones
+Line   64511 | JA126      The Book of the Ones
+Line   64523 | JA12       The Book of the Ones
+Line   64535 | JA13       The Book of the Ones
+Line   64549 | JA14       The Book of the Ones
+Line   64561 | JA159      The Book of the Twos
+Line   64589 | JA15       The Book of the Ones
+Line   64601 | JA16       The Book of the Ones
+Line   64613 | JA17       The Book of the Ones
+Line   64625 | JA18       The Book of the Ones
+Line   64637 | JA19       The Book of the Ones
+Line   64649 | JA1        The Book of the Ones
+Line   64662 | JA20       The Book of the Ones
+Line   64674 | JA21       The Book of the Ones
+Line   64686 | JA22       The Book of the Ones
+Line   64698 | JA23       The Book of the Ones
+Line   64710 | JA24       The Book of the Ones
+Line   64722 | JA25       The Book of the Ones
+Line   64734 | JA26       The Book of the Ones
+Line   64746 | JA27       The Book of the Ones
+Line   64758 | JA28       The Book of the Ones
+Line   64772 | JA29       The Book of the Ones
+Line   64784 | JA2        The Book of the Ones
+Line   64796 | JA30       The Book of the Ones
+Line   64808 | JA31       The Book of the Ones
+Line   64820 | JA32       The Book of the Ones
+Line   64832 | JA33       The Book of the Ones
+Line   64844 | JA34       The Book of the Ones
+Line   64856 | JA35       The Book of the Ones
+Line   64868 | JA36       The Book of the Ones
+Line   64880 | JA37       The Book of the Ones
+Line   64892 | JA38       The Book of the Ones
+Line   64904 | JA39       The Book of the Ones
+Line   64916 | JA3        The Book of the Ones
+Line   64928 | JA40       The Book of the Ones
+Line   64940 | JA41       The Book of the Ones
+Line   64952 | JA42       The Book of the Ones
+Line   64964 | JA43       The Book of the Ones
+Line   64976 | JA44       The Book of the Ones
+Line   64988 | JA45       The Book of the Ones
+Line   65000 | JA466      The Book of the Twelves
+Line   65058 | JA46       The Book of the Ones
+Line   65070 | JA47       The Book of the Ones
+Line   65082 | JA48       The Book of the Ones
+Line   65094 | JA49       The Book of the Ones
+Line   65106 | JA4        The Book of the Ones
+Line   65118 | JA50       The Book of the Ones
+Line   65130 | JA51       The Book of the Ones
+Line   65142 | JA52       The Book of the Ones
+Line   65154 | JA534      
+Line   65159 | JA53       The Book of the Ones
+Line   65171 | JA54       The Book of the Ones
+Line   65183 | JA55       The Book of the Ones
+Line   65197 | JA56       The Book of the Ones
+Line   65211 | JA57       The Book of the Ones
+Line   65223 | JA58       The Book of the Ones
+Line   65235 | JA59       The Book of the Ones
+Line   65247 | JA5        The Book of the Ones
+Line   65259 | JA60       The Book of the Ones
+Line   65271 | JA61       The Book of the Ones
+Line   65285 | JA62       The Book of the Ones
+Line   65297 | JA63       The Book of the Ones
+Line   65309 | JA64       The Book of the Ones
+Line   65321 | JA65       The Book of the Ones
+Line   65333 | JA66       The Book of the Ones
+Line   65345 | JA67       The Book of the Ones
+Line   65357 | JA68       The Book of the Ones
+Line   65369 | JA69       The Book of the Ones
+Line   65381 | JA6        The Book of the Ones
+Line   65393 | JA70       The Book of the Ones
+Line   65405 | JA71       The Book of the Ones
+Line   65417 | JA72       The Book of the Ones
+Line   65429 | JA73       The Book of the Ones
+Line   65441 | JA74       The Book of the Ones
+Line   65453 | JA75       The Book of the Ones
+Line   65465 | JA76       The Book of the Ones
+Line   65477 | JA77       The Book of the Ones
+Line   65493 | JA78       The Book of the Ones
+Line   65505 | JA79       The Book of the Ones
+Line   65517 | JA7        The Book of the Ones
+Line   65529 | JA8        The Book of the Ones
+Line   65541 | JA9        The Book of the Ones
+Line   65553 | KP1        The Three Refuges
+Line   65569 | KP2        The Ten Precepts
+Line   65585 | KP3        The Thirty-Two Parts of the Body
+Line   65592 | KP4        The Boy’s Questions
+Line   65618 | KP5        Blessings
+Line   65676 | KP6        Gems
+Line   65771 | KP7        Outside the Walls
+Line   65829 | KP8        A Treasure Trove
+Line   65900 | KP9        The Discourse on Love
+Line   65946 | SNP1.10    With Āḷavaka
+Line   66024 | SNP1.11    Victory Over Desire for the Body
+Line   66086 | SNP1.12    The Sage
+Line   66155 | SNP1.1     The Serpent
+Line   66229 | SNP1.2     The Wealthy Rancher
+Line   66317 | SNP1.3     The Horned Rhino
+Line   66487 | SNP1.4     With Bhāradvāja the Farmer
+Line   66555 | SNP1.5     With Cunda
+Line   66598 | SNP1.6     Downfalls
+Line   66708 | SNP1.7     The Lowlife
+Line   66846 | SNP1.8     The Discourse on Love
+Line   66892 | SNP1.9     With Hemavata
+Line   67031 | SNP2.10    Get Up!
+Line   67055 | SNP2.11    With Rāhula
+Line   67094 | SNP2.12    Vaṅgīsa and His Mentor Nigrodhakappa
+Line   67174 | SNP2.13    The Right Way to Wander
+Line   67249 | SNP2.14    With Dhammika
+Line   67374 | SNP2.1     Gems
+Line   67469 | SNP2.2     Putrefaction
+Line   67535 | SNP2.3     Conscientious Companionship
+Line   67561 | SNP2.4     Blessings
+Line   67619 | SNP2.5     With Spiky
+Line   67659 | SNP2.6     A Righteous Life
+Line   67705 | SNP2.7     Brahmanical Principles
+Line   67865 | SNP2.8     The Boat
+Line   67903 | SNP2.9     What Morality?
+Line   67937 | SNP3.10    With Kokālika
+Line   68078 | SNP3.11    About Nālaka
+Line   68267 | SNP3.12    Contemplating Pairs
+Line   68568 | SNP3.1     Going Forth
+Line   68654 | SNP3.2     Striving
+Line   68762 | SNP3.3     Well-Spoken Words
+Line   68804 | SNP3.4     With Bhāradvāja of Sundarikā on the Sacrificial Cake
+Line   68967 | SNP3.5     With Māgha
+Line   69096 | SNP3.6     With Sabhiya
+Line   69321 | SNP3.7     With Sela
+Line   69529 | SNP3.8     The Dart
+Line   69617 | SNP3.9     With Vāseṭṭha
+Line   69912 | SNP4.10    Before the Breakup
+Line   69975 | SNP4.11    Quarrels and Disputes
+Line   70047 | SNP4.12    The Shorter Discourse on Arrayed For Battle
+Line   70121 | SNP4.13    The Longer Discourse on Arrayed for Battle
+Line   70207 | SNP4.14    Speedy
+Line   70294 | SNP4.15    Taking Up Arms
+Line   70381 | SNP4.16    With Sāriputta
+Line   70473 | SNP4.1     Sensual Pleasures
+Line   70503 | SNP4.2     Eight on the Cave
+Line   70541 | SNP4.3     Eight on Malice
+Line   70579 | SNP4.4     Eight on the Pure
+Line   70617 | SNP4.5     Eight on the Ultimate
+Line   70655 | SNP4.6     Old Age
+Line   70701 | SNP4.7     With Tissametteyya
+Line   70749 | SNP4.8     With Pasūra
+Line   70799 | SNP4.9     With Māgaṇḍiya
+Line   70868 | SNP5.10    The Questions of Todeyya
+Line   70892 | SNP5.11    The Questions of Kappa
+Line   70918 | SNP5.12    The Questions of Jatukaṇṇī
+Line   70947 | SNP5.13    The Questions of Bhadrāvudha
+Line   70971 | SNP5.14    The Questions of Udaya
+Line   71009 | SNP5.15    The Question of Posāla
+Line   71037 | SNP5.16    The Questions of Mogharāja
+Line   71062 | SNP5.17    The Questions of Piṅgiya
+Line   71090 | SNP5.18    Homage to the Way to the Far Shore
+Line   71130 | SNP5.19    Preserving the Way to the Far Shore
+Line   71216 | SNP5.1     Introductory Verses
+Line   71453 | SNP5.2     The Questions of Ajita
+Line   71498 | SNP5.3     The Questions of Tissametteyya
+Line   71520 | SNP5.4     The Questions of Puṇṇaka
+Line   71562 | SNP5.5     The Questions of Mettagū
+Line   71622 | SNP5.6     The Questions of Dhotaka
+Line   71664 | SNP5.7     The Questions of Upasīva
+Line   71708 | SNP5.8     The Questions of Nanda
+Line   71762 | SNP5.9     The Questions of Hemaka
+Line   71787 | THAG1.100  The Book of the Ones
+Line   71799 | THAG1.101  The Book of the Ones
+Line   71811 | THAG1.102  The Book of the Ones
+Line   71823 | THAG1.103  The Book of the Ones
+Line   71835 | THAG1.104  The Book of the Ones
+Line   71847 | THAG1.105  The Book of the Ones
+Line   71859 | THAG1.106  The Book of the Ones
+Line   71871 | THAG1.107  The Book of the Ones
+Line   71883 | THAG1.108  The Book of the Ones
+Line   71895 | THAG1.109  The Book of the Ones
+Line   71907 | THAG1.10   The Book of the Ones
+Line   71920 | THAG1.110  The Book of the Ones
+Line   71932 | THAG1.111  The Book of the Ones
+Line   71944 | THAG1.112  The Book of the Ones
+Line   71956 | THAG1.113  The Book of the Ones
+Line   71968 | THAG1.114  The Book of the Ones
+Line   71980 | THAG1.115  The Book of the Ones
+Line   71992 | THAG1.116  The Book of the Ones
+Line   72004 | THAG1.117  The Book of the Ones
+Line   72016 | THAG1.118  The Book of the Ones
+Line   72028 | THAG1.119  The Book of the Ones
+Line   72040 | THAG1.11   The Book of the Ones
+Line   72052 | THAG1.120  The Book of the Ones
+Line   72064 | THAG1.12   The Book of the Ones
+Line   72076 | THAG1.13   The Book of the Ones
+Line   72088 | THAG1.14   The Book of the Ones
+Line   72102 | THAG1.15   The Book of the Ones
+Line   72114 | THAG1.16   The Book of the Ones
+Line   72128 | THAG1.17   The Book of the Ones
+Line   72140 | THAG1.18   The Book of the Ones
+Line   72154 | THAG1.19   The Book of the Ones
+Line   72166 | THAG1.1    The Book of the Ones
+Line   72194 | THAG1.20   The Book of the Ones
+Line   72206 | THAG1.21   The Book of the Ones
+Line   72218 | THAG1.22   The Book of the Ones
+Line   72230 | THAG1.23   The Book of the Ones
+Line   72244 | THAG1.24   The Book of the Ones
+Line   72256 | THAG1.25   The Book of the Ones
+Line   72268 | THAG1.26   The Book of the Ones
+Line   72280 | THAG1.27   The Book of the Ones
+Line   72292 | THAG1.28   The Book of the Ones
+Line   72304 | THAG1.29   The Book of the Ones
+Line   72316 | THAG1.2    The Book of the Ones
+Line   72329 | THAG1.30   The Book of the Ones
+Line   72341 | THAG1.31   The Book of the Ones
+Line   72353 | THAG1.32   The Book of the Ones
+Line   72365 | THAG1.33   The Book of the Ones
+Line   72377 | THAG1.34   The Book of the Ones
+Line   72391 | THAG1.35   The Book of the Ones
+Line   72403 | THAG1.36   The Book of the Ones
+Line   72415 | THAG1.37   The Book of the Ones
+Line   72429 | THAG1.38   The Book of the Ones
+Line   72441 | THAG1.39   The Book of the Ones
+Line   72453 | THAG1.3    The Book of the Ones
+Line   72466 | THAG1.40   The Book of the Ones
+Line   72478 | THAG1.41   The Book of the Ones
+Line   72490 | THAG1.42   The Book of the Ones
+Line   72501 | THAG1.43   The Book of the Ones
+Line   72517 | THAG1.44   The Book of the Ones
+Line   72529 | THAG1.45   The Book of the Ones
+Line   72541 | THAG1.46   The Book of the Ones
+Line   72555 | THAG1.47   The Book of the Ones
+Line   72567 | THAG1.48   The Book of the Ones
+Line   72579 | THAG1.49   The Book of the Ones
+Line   72591 | THAG1.4    The Book of the Ones
+Line   72606 | THAG1.50   The Book of the Ones
+Line   72618 | THAG1.51   The Book of the Ones
+Line   72630 | THAG1.52   The Book of the Ones
+Line   72642 | THAG1.53   The Book of the Ones
+Line   72654 | THAG1.54   The Book of the Ones
+Line   72666 | THAG1.55   The Book of the Ones
+Line   72678 | THAG1.56   The Book of the Ones
+Line   72690 | THAG1.57   The Book of the Ones
+Line   72702 | THAG1.58   The Book of the Ones
+Line   72714 | THAG1.59   The Book of the Ones
+Line   72726 | THAG1.5    The Book of the Ones
+Line   72739 | THAG1.60   The Book of the Ones
+Line   72751 | THAG1.61   The Book of the Ones
+Line   72763 | THAG1.62   The Book of the Ones
+Line   72775 | THAG1.63   The Book of the Ones
+Line   72787 | THAG1.64   The Book of the Ones
+Line   72799 | THAG1.65   The Book of the Ones
+Line   72811 | THAG1.66   The Book of the Ones
+Line   72825 | THAG1.67   The Book of the Ones
+Line   72837 | THAG1.68   The Book of the Ones
+Line   72849 | THAG1.69   The Book of the Ones
+Line   72861 | THAG1.6    The Book of the Ones
+Line   72874 | THAG1.70   The Book of the Ones
+Line   72886 | THAG1.71   The Book of the Ones
+Line   72898 | THAG1.72   The Book of the Ones
+Line   72910 | THAG1.73   The Book of the Ones
+Line   72922 | THAG1.74   The Book of the Ones
+Line   72934 | THAG1.75   The Book of the Ones
+Line   72946 | THAG1.76   The Book of the Ones
+Line   72958 | THAG1.77   The Book of the Ones
+Line   72970 | THAG1.78   The Book of the Ones
+Line   72982 | THAG1.79   The Book of the Ones
+Line   72994 | THAG1.7    The Book of the Ones
+Line   73007 | THAG1.80   The Book of the Ones
+Line   73019 | THAG1.81   The Book of the Ones
+Line   73031 | THAG1.82   The Book of the Ones
+Line   73043 | THAG1.83   The Book of the Ones
+Line   73055 | THAG1.84   The Book of the Ones
+Line   73067 | THAG1.85   The Book of the Ones
+Line   73079 | THAG1.86   The Book of the Ones
+Line   73091 | THAG1.87   The Book of the Ones
+Line   73103 | THAG1.88   The Book of the Ones
+Line   73115 | THAG1.89   The Book of the Ones
+Line   73127 | THAG1.8    The Book of the Ones
+Line   73140 | THAG1.90   The Book of the Ones
+Line   73152 | THAG1.91   The Book of the Ones
+Line   73164 | THAG1.92   The Book of the Ones
+Line   73178 | THAG1.93   The Book of the Ones
+Line   73192 | THAG1.94   The Book of the Ones
+Line   73204 | THAG1.95   The Book of the Ones
+Line   73216 | THAG1.96   The Book of the Ones
+Line   73228 | THAG1.97   The Book of the Ones
+Line   73240 | THAG1.98   The Book of the Ones
+Line   73254 | THAG1.99   The Book of the Ones
+Line   73268 | THAG1.9    The Book of the Ones
+Line   73281 | THAG10.1   The Book of the Tens
+Line   73331 | THAG10.2   The Book of the Tens
+Line   73379 | THAG10.3   The Book of the Tens
+Line   73429 | THAG10.4   The Book of the Tens
+Line   73477 | THAG10.5   The Book of the Tens
+Line   73525 | THAG10.6   The Book of the Tens
+Line   73573 | THAG10.7   The Book of the Tens
+Line   73621 | THAG11.1   The Book of the Elevens
+Line   73673 | THAG12.1   The Book of the Twelves
+Line   73729 | THAG12.2   The Book of the Twelves
+Line   73787 | THAG13.1   The Book of the Thirteens
+Line   73851 | THAG14.1   The Book of the Fourteens
+Line   73915 | THAG14.2   The Book of the Fourteens
+Line   73979 | THAG15.1   The Book of the Sixteens
+Line   74053 | THAG15.2   The Book of the Sixteens
+Line   74125 | THAG16.10  The Book of the Twenties
+Line   74249 | THAG16.1   The Book of the Twenties
+Line   74341 | THAG16.2   The Book of the Twenties
+Line   74433 | THAG16.3   The Book of the Twenties
+Line   74529 | THAG16.4   The Book of the Twenties
+Line   74637 | THAG16.5   The Book of the Twenties
+Line   74765 | THAG16.6   The Book of the Twenties
+Line   74873 | THAG16.7   The Book of the Twenties
+Line   74977 | THAG16.8   The Book of the Twenties
+Line   75089 | THAG16.9   The Book of the Twenties
+Line   75211 | THAG17.1   The Book of the Thirties
+Line   75348 | THAG17.2   The Book of the Thirties
+Line   75508 | THAG17.3   The Book of the Thirties
+Line   75664 | THAG18.1   The Book of the Forties
+Line   75839 | THAG19.1   The Book of the Fifties
+Line   76067 | THAG2.10   The Book of the Twos
+Line   76083 | THAG2.11   The Book of the Twos
+Line   76099 | THAG2.12   The Book of the Twos
+Line   76117 | THAG2.13   The Book of the Twos
+Line   76133 | THAG2.14   The Book of the Twos
+Line   76151 | THAG2.15   The Book of the Twos
+Line   76167 | THAG2.16   The Book of the Twos
+Line   76184 | THAG2.17   The Book of the Twos
+Line   76200 | THAG2.18   The Book of the Twos
+Line   76216 | THAG2.19   The Book of the Twos
+Line   76232 | THAG2.1    The Book of the Twos
+Line   76249 | THAG2.20   The Book of the Twos
+Line   76265 | THAG2.21   The Book of the Twos
+Line   76281 | THAG2.22   The Book of the Twos
+Line   76297 | THAG2.23   The Book of the Twos
+Line   76313 | THAG2.24   The Book of the Twos
+Line   76329 | THAG2.25   The Book of the Twos
+Line   76345 | THAG2.26   The Book of the Twos
+Line   76361 | THAG2.27   The Book of the Twos
+Line   76377 | THAG2.28   The Book of the Twos
+Line   76393 | THAG2.29   The Book of the Twos
+Line   76409 | THAG2.2    The Book of the Twos
+Line   76426 | THAG2.30   The Book of the Twos
+Line   76442 | THAG2.31   The Book of the Twos
+Line   76458 | THAG2.32   The Book of the Twos
+Line   76476 | THAG2.33   The Book of the Twos
+Line   76492 | THAG2.34   The Book of the Twos
+Line   76508 | THAG2.35   The Book of the Twos
+Line   76524 | THAG2.36   The Book of the Twos
+Line   76544 | THAG2.37   The Book of the Twos
+Line   76560 | THAG2.38   The Book of the Twos
+Line   76576 | THAG2.39   The Book of the Twos
+Line   76592 | THAG2.3    The Book of the Twos
+Line   76608 | THAG2.40   The Book of the Twos
+Line   76624 | THAG2.41   The Book of the Twos
+Line   76642 | THAG2.42   The Book of the Twos
+Line   76658 | THAG2.43   The Book of the Twos
+Line   76674 | THAG2.44   The Book of the Twos
+Line   76690 | THAG2.45   The Book of the Twos
+Line   76706 | THAG2.46   The Book of the Twos
+Line   76722 | THAG2.47   The Book of the Twos
+Line   76738 | THAG2.48   The Book of the Twos
+Line   76754 | THAG2.49   The Book of the Twos
+Line   76770 | THAG2.4    The Book of the Twos
+Line   76786 | THAG2.5    The Book of the Twos
+Line   76802 | THAG2.6    The Book of the Twos
+Line   76818 | THAG2.7    The Book of the Twos
+Line   76834 | THAG2.8    The Book of the Twos
+Line   76850 | THAG2.9    The Book of the Twos
+Line   76866 | THAG20.1   The Book of the Sixties
+Line   77164 | THAG21.1   The Great Book
+Line   77462 | THAG3.10   The Book of the Threes
+Line   77482 | THAG3.11   The Book of the Threes
+Line   77502 | THAG3.12   The Book of the Threes
+Line   77522 | THAG3.13   The Book of the Threes
+Line   77542 | THAG3.14   The Book of the Threes
+Line   77562 | THAG3.15   The Book of the Threes
+Line   77582 | THAG3.16   The Book of the Threes
+Line   77604 | THAG3.1    The Book of the Threes
+Line   77624 | THAG3.2    The Book of the Threes
+Line   77644 | THAG3.3    The Book of the Threes
+Line   77664 | THAG3.4    The Book of the Threes
+Line   77684 | THAG3.5    The Book of the Threes
+Line   77704 | THAG3.6    The Book of the Threes
+Line   77724 | THAG3.7    The Book of the Threes
+Line   77744 | THAG3.8    The Book of the Threes
+Line   77764 | THAG3.9    The Book of the Threes
+Line   77784 | THAG4.10   The Book of the Fours
+Line   77808 | THAG4.11   The Book of the Fours
+Line   77832 | THAG4.12   The Book of the Fours
+Line   77856 | THAG4.1    The Book of the Fours
+Line   77880 | THAG4.2    The Book of the Fours
+Line   77904 | THAG4.3    The Book of the Fours
+Line   77928 | THAG4.4    The Book of the Fours
+Line   77952 | THAG4.5    The Book of the Fours
+Line   77976 | THAG4.6    The Book of the Fours
+Line   78000 | THAG4.7    The Book of the Fours
+Line   78024 | THAG4.8    The Book of the Fours
+Line   78048 | THAG4.9    The Book of the Fours
+Line   78072 | THAG5.10   The Book of the Fives
+Line   78102 | THAG5.11   The Book of the Fives
+Line   78130 | THAG5.12   The Book of the Fives
+Line   78158 | THAG5.1    The Book of the Fives
+Line   78186 | THAG5.2    The Book of the Fives
+Line   78214 | THAG5.3    The Book of the Fives
+Line   78242 | THAG5.4    The Book of the Fives
+Line   78270 | THAG5.5    The Book of the Fives
+Line   78300 | THAG5.6    The Book of the Fives
+Line   78328 | THAG5.7    The Book of the Fives
+Line   78356 | THAG5.8    The Book of the Fives
+Line   78384 | THAG5.9    The Book of the Fives
+Line   78412 | THAG6.10   The Book of the Sixes
+Line   78444 | THAG6.11   The Book of the Sixes
+Line   78476 | THAG6.12   The Book of the Sixes
+Line   78508 | THAG6.13   The Book of the Sixes
+Line   78540 | THAG6.14   The Book of the Sixes
+Line   78572 | THAG6.1    The Book of the Sixes
+Line   78604 | THAG6.2    The Book of the Sixes
+Line   78630 | THAG6.3    The Book of the Sixes
+Line   78662 | THAG6.4    The Book of the Sixes
+Line   78694 | THAG6.5    The Book of the Sixes
+Line   78728 | THAG6.6    The Book of the Sixes
+Line   78760 | THAG6.7    The Book of the Sixes
+Line   78794 | THAG6.8    The Book of the Sixes
+Line   78828 | THAG6.9    The Book of the Sixes
+Line   78860 | THAG7.1    The Book of the Sevens
+Line   78898 | THAG7.2    The Book of the Sevens
+Line   78934 | THAG7.3    The Book of the Sevens
+Line   78970 | THAG7.4    The Book of the Sevens
+Line   79008 | THAG7.5    The Book of the Sevens
+Line   79046 | THAG8.1    The Book of the Eights
+Line   79088 | THAG8.2    The Book of the Eights
+Line   79128 | THAG8.3    The Book of the Eights
+Line   79168 | THAG9.1    The Book of the Nines
+Line   79212 | THIG1.10   The Book of the Ones
+Line   79223 | THIG1.11   The Book of the Ones
+Line   79236 | THIG1.12   The Book of the Ones
+Line   79247 | THIG1.13   The Book of the Ones
+Line   79258 | THIG1.14   The Book of the Ones
+Line   79269 | THIG1.15   The Book of the Ones
+Line   79280 | THIG1.16   The Book of the Ones
+Line   79291 | THIG1.17   The Book of the Ones
+Line   79304 | THIG1.18   The Book of the Ones
+Line   79317 | THIG1.1    The Book of the Ones
+Line   79330 | THIG1.2    The Book of the Ones
+Line   79342 | THIG1.3    The Book of the Ones
+Line   79354 | THIG1.4    The Book of the Ones
+Line   79365 | THIG1.5    The Book of the Ones
+Line   79376 | THIG1.6    The Book of the Ones
+Line   79387 | THIG1.7    The Book of the Ones
+Line   79398 | THIG1.8    The Book of the Ones
+Line   79409 | THIG1.9    The Book of the Ones
+Line   79420 | THIG10.1   The Book of the Elevens
+Line   79471 | THIG11.1   The Book of the Twelves
+Line   79526 | THIG12.1   The Book of the Sixteens
+Line   79599 | THIG13.1   The Book of the Twenties
+Line   79682 | THIG13.2   The Book of the Twenties
+Line   79773 | THIG13.3   The Book of the Twenties
+Line   79870 | THIG13.4   The Book of the Twenties
+Line   79992 | THIG13.5   The Book of the Twenties
+Line   80115 | THIG14.1   The Book of the Thirties
+Line   80258 | THIG15.1   The Book of the Forties
+Line   80457 | THIG16.1   The Great Book
+Line   80766 | THIG2.10   The Book of the Twos
+Line   80783 | THIG2.1    The Book of the Twos
+Line   80799 | THIG2.2    The Book of the Twos
+Line   80815 | THIG2.3    The Book of the Twos
+Line   80830 | THIG2.4    The Book of the Twos
+Line   80847 | THIG2.5    The Book of the Twos
+Line   80862 | THIG2.6    The Book of the Twos
+Line   80879 | THIG2.7    The Book of the Twos
+Line   80896 | THIG2.8    The Book of the Twos
+Line   80911 | THIG2.9    The Book of the Twos
+Line   80926 | THIG3.1    The Book of the Threes
+Line   80947 | THIG3.2    The Book of the Threes
+Line   80968 | THIG3.3    The Book of the Threes
+Line   80987 | THIG3.4    The Book of the Threes
+Line   81006 | THIG3.5    The Book of the Threes
+Line   81027 | THIG3.6    The Book of the Threes
+Line   81046 | THIG3.7    The Book of the Threes
+Line   81065 | THIG3.8    The Book of the Threes
+Line   81084 | THIG4.1    The Book of the Fours
+Line   81107 | THIG5.10   The Book of the Fives
+Line   81136 | THIG5.11   The Book of the Fives
+Line   81172 | THIG5.12   The Book of the Fives
+Line   81199 | THIG5.1    The Book of the Fives
+Line   81228 | THIG5.2    The Book of the Fives
+Line   81255 | THIG5.3    The Book of the Fives
+Line   81282 | THIG5.4    The Book of the Fives
+Line   81309 | THIG5.5    The Book of the Fives
+Line   81336 | THIG5.6    The Book of the Fives
+Line   81363 | THIG5.7    The Book of the Fives
+Line   81390 | THIG5.8    The Book of the Fives
+Line   81417 | THIG5.9    The Book of the Fives
+Line   81444 | THIG6.1    The Book of the Sixes
+Line   81478 | THIG6.2    The Book of the Sixes
+Line   81509 | THIG6.3    The Book of the Sixes
+Line   81540 | THIG6.4    The Book of the Sixes
+Line   81571 | THIG6.5    The Book of the Sixes
+Line   81602 | THIG6.6    The Book of the Sixes
+Line   81633 | THIG6.7    The Book of the Sixes
+Line   81664 | THIG6.8    The Book of the Sixes
+Line   81695 | THIG7.1    The Book of the Sevens
+Line   81730 | THIG7.2    The Book of the Sevens
+Line   81765 | THIG7.3    The Book of the Sevens
+Line   81800 | THIG8.1    The Book of the Eights
+Line   81841 | THIG9.1    The Book of the Nines
+Line   81884 | UD1.10     With Bāhiya
+Line   81960 | UD1.1      Upon Awakening (1st)
+Line   81988 | UD1.2      Upon Awakening (2nd)
+Line   82016 | UD1.3      Upon Awakening (3rd)
+Line   82057 | UD1.4      The Mystic Syllable Huṁ
+Line   82076 | UD1.5      The Brahmin
+Line   82096 | UD1.6      With Mahākassapa
+Line   82117 | UD1.7      At Ajakalāpaka
+Line   82133 | UD1.8      With Saṅgāmaji
+Line   82167 | UD1.9      Matted Hair Ascetics
+Line   82183 | UD2.10     With Bhaddiya
+Line   82219 | UD2.1      With Mucalinda
+Line   82242 | UD2.2      Kings
+Line   82265 | UD2.3      A Stick
+Line   82285 | UD2.4      Esteem
+Line   82303 | UD2.5      A Lay Follower
+Line   82321 | UD2.6      The Pregnant Woman
+Line   82352 | UD2.7      An Only Son
+Line   82375 | UD2.8      Suppavāsā
+Line   82450 | UD2.9      With Visākhā
+Line   82470 | UD3.10     The World
+Line   82509 | UD3.1      Born of the Fruits of Deeds
+Line   82524 | UD3.2      With Nanda
+Line   82586 | UD3.3      With Yasoja
+Line   82659 | UD3.4      With Sāriputta
+Line   82674 | UD3.5      With Mahāmoggallāna
+Line   82689 | UD3.6      With Pilindavaccha
+Line   82719 | UD3.7      Sakka’s Heartfelt Saying
+Line   82758 | UD3.8      One Who Eats Only Almsfood
+Line   82785 | UD3.9      Professions
+Line   82824 | UD4.10     The Peacefulness of Sāriputta
+Line   82839 | UD4.1      With Meghiya
+Line   82912 | UD4.2      Restless
+Line   82933 | UD4.3      The Cowherd
+Line   82961 | UD4.4      The Spirit’s Blow
+Line   83013 | UD4.5      A Bull Elephant
+Line   83049 | UD4.6      The Alms-Gatherer
+Line   83066 | UD4.7      With Sāriputta
+Line   83081 | UD4.8      With Sundarī
+Line   83145 | UD4.9      With Upasena
+Line   83172 | UD5.10     With Cūḷapanthaka
+Line   83189 | UD5.1      Who is More Dear?
+Line   83209 | UD5.2      Short-lived
+Line   83227 | UD5.3      With Suppabuddha the Leper
+Line   83293 | UD5.4      The Boys
+Line   83316 | UD5.5      Sabbath
+Line   83409 | UD5.6      With Soṇa
+Line   83476 | UD5.7      With Revata the Doubter
+Line   83491 | UD5.8      Schism in the Saṅgha
+Line   83511 | UD5.9      Teasing
+Line   83526 | UD6.10     Arising
+Line   83550 | UD6.1      Surrendering the Life Force
+Line   83610 | UD6.2      Seven Matted-Hair Ascetics
+Line   83643 | UD6.3      The Buddha’s Reviewing
+Line   83657 | UD6.4      Followers of Various Other Religions (1st)
+Line   83749 | UD6.5      Followers of Various Other Religions (2nd)
+Line   83786 | UD6.6      Followers of Various Other Religions (3rd)
+Line   83830 | UD6.7      With Subhūti
+Line   83845 | UD6.8      The Courtesan
+Line   83866 | UD6.9      Hastening By
+Line   83882 | UD7.10     King Udena
+Line   83903 | UD7.1      Bhaddiya the Dwarf (1st)
+Line   83919 | UD7.2      Bhaddiya the Dwarf (2nd)
+Line   83934 | UD7.3      Clinging (1st)
+Line   83950 | UD7.4      Clinging (2nd)
+Line   83968 | UD7.5      Another Discourse with Bhaddiya the Dwarf
+Line   83988 | UD7.6      The Ending of Craving
+Line   84005 | UD7.7      The Ending of Proliferation
+Line   84019 | UD7.8      Kaccāna
+Line   84036 | UD7.9      The Well
+Line   84071 | UD8.10     Dabba (2nd)
+Line   84096 | UD8.1      About Extinguishment (1st)
+Line   84111 | UD8.2      About Extinguishment (2nd)
+Line   84126 | UD8.3      About Extinguishment (3rd)
+Line   84140 | UD8.4      About Extinguishment (4th)
+Line   84158 | UD8.5      With Cunda
+Line   84260 | UD8.6      The Layfolk of Pāṭali Village
+Line   84362 | UD8.7      A Fork in the Road
+Line   84393 | UD8.8      With Visākhā
+Line   84453 | UD8.9      With Dabba (1st)
+Line   84472 | MN100      With Saṅgārava
+Line   84755 | MN101      At Devadaha
+Line   85049 | MN102      The Five and Three
+Line   85205 | MN103      Is This What You Think Of Me?
+Line   85332 | MN104      At Sāmagāma
+Line   85495 | MN105      With Sunakkhatta
+Line   85679 | MN106      Conducive to the Imperturbable
+Line   85809 | MN107      With Moggallāna the Accountant
+Line   85908 | MN108      With Moggallāna the Guardian
+Line   86048 | MN109      The Longer Discourse on the Full-Moon Night
+Line   86167 | MN10       Mindfulness Meditation
+Line   86365 | MN110      The Shorter Discourse on the Full-Moon Night
+Line   86459 | MN111      One by One
+Line   86557 | MN112      The Sixfold Purification
+Line   86707 | MN113      A True Person
+Line   86831 | MN114      What Should and Should Not Be Cultivated
+Line   87084 | MN115      Many Elements
+Line   87228 | MN116      At Isigili
+Line   87327 | MN117      The Great Forty
+Line   87482 | MN118      Mindfulness of Breathing
+Line   87631 | MN119      Mindfulness of the Body
+Line   87796 | MN11       The Shorter Discourse on the Lion’s Roar
+Line   87918 | MN120      Rebirth by Choice
+Line   88053 | MN121      The Shorter Discourse on Emptiness
+Line   88156 | MN122      The Longer Discourse on Emptiness
+Line   88330 | MN123      Incredible and Amazing
+Line   88434 | MN124      With Bakkula
+Line   88504 | MN125      The Level of the Tamed
+Line   88644 | MN126      With Bhūmija
+Line   88767 | MN127      With Anuruddha
+Line   88892 | MN128      Corruptions
+Line   89132 | MN129      The Foolish and the Astute
+Line   89427 | MN12       The Longer Discourse on the Lion’s Roar
+Line   89748 | MN130      Messengers of the Gods
+Line   89946 | MN131      One Fine Night
+Line   90025 | MN132      Ānanda and One Fine Night
+Line   90074 | MN133      Mahākaccāna and One Fine Night
+Line   90224 | MN134      Lomasakaṅgiya and One Fine Night
+Line   90297 | MN135      The Shorter Analysis of Deeds
+Line   90396 | MN136      The Longer Analysis of Deeds
+Line   90552 | MN137      The Analysis of the Six Sense Fields
+Line   90749 | MN138      A Summary Recital and its Analysis
+Line   90877 | MN139      The Analysis of No Strife
+Line   91052 | MN13       The Longer Discourse on the Mass of Suffering
+Line   91185 | MN140      The Analysis of the Elements
+Line   91418 | MN141      The Analysis of the Truths
+Line   91543 | MN142      The Analysis of Religious Donations
+Line   91669 | MN143      Advice to Anāthapiṇḍika
+Line   91813 | MN144      Advice to Channa
+Line   91889 | MN145      Advice to Puṇṇa
+Line   91974 | MN146      Advice from Nandaka
+Line   92161 | MN147      The Shorter Advice to Rāhula
+Line   92275 | MN148      Six By Six
+Line   92485 | MN149      The Great Discourse on What Relates to the Six Sense Fields
+Line   92561 | MN14       The Shorter Discourse on the Mass of Suffering
+Line   92695 | MN150      With the People of Nagaravinda
+Line   92757 | MN151      The Purification of Alms
+Line   92840 | MN152      The Development of the Faculties
+Line   92969 | MN15       Measuring Up
+Line   93035 | MN16       Hard-heartedness
+Line   93114 | MN17       Jungle Thickets
+Line   93195 | MN18       The Honey-Cake
+Line   93301 | MN19       Two Kinds of Thought
+Line   93427 | MN1        The Root of All Things
+Line   93756 | MN20       How to Stop Thinking
+Line   93829 | MN21       The Simile of the Saw
+Line   94042 | MN22       The Simile of the Cobra
+Line   94356 | MN23       The Termite Mound
+Line   94449 | MN24       Chariots at the Ready
+Line   94571 | MN25       Sowing
+Line   94699 | MN26       The Noble Quest
+Line   95066 | MN27       The Shorter Simile of the Elephant’s Footprint
+Line   95251 | MN28       The Longer Simile of the Elephant’s Footprint
+Line   95414 | MN29       The Longer Simile of the Heartwood
+Line   95511 | MN2        All the Defilements
+Line   95638 | MN30       The Shorter Simile of the Heartwood
+Line   95749 | MN31       The Shorter Discourse at Gosiṅga
+Line   95881 | MN32       The Longer Discourse at Gosiṅga
+Line   96006 | MN33       The Longer Discourse on the Cowherd
+Line   96123 | MN34       The Shorter Discourse on the Cowherd
+Line   96178 | MN35       The Shorter Discourse With Saccaka
+Line   96404 | MN36       The Longer Discourse With Saccaka
+Line   96759 | MN37       The Shorter Discourse on the Ending of Craving
+Line   96857 | MN38       The Longer Discourse on the Ending of Craving
+Line   97186 | MN39       The Longer Discourse at Assapura
+Line   97349 | MN3        Heirs in the Teaching
+Line   97466 | MN40       The Shorter Discourse at Assapura
+Line   97529 | MN41       The People of Sālā
+Line   97638 | MN42       The People of Verañjā
+Line   97658 | MN43       The Great Elaboration
+Line   97836 | MN44       The Shorter Elaboration
+Line   97977 | MN45       The Shorter Discourse on Taking Up Practices
+Line   98061 | MN46       The Great Discourse on Taking Up Practices
+Line   98191 | MN47       The Inquirer
+Line   98270 | MN48       The Mendicants of Kosambī
+Line   98378 | MN49       On the Invitation of Divinity
+Line   98543 | MN4        Fear and Dread
+Line   98657 | MN50       The Warning to Māra
+Line   98868 | MN51       With Kandaraka
+Line   99053 | MN52       The Wealthy Citizen
+Line   99107 | MN53       A Trainee
+Line   99209 | MN54       With Potaliya the Householder
+Line   99364 | MN55       With Jīvaka
+Line   99447 | MN56       With Upāli
+Line   99816 | MN57       The Ascetic Who Behaved Like a Dog
+Line   99931 | MN58       With Prince Abhaya
+Line  100009 | MN59       The Many Kinds of Feeling
+Line  100103 | MN5        Unblemished
+Line  100250 | MN60       A  Sure Bet
+Line  100528 | MN61       Advice to Rāhula at Ambalaṭṭhika
+Line  100623 | MN62       The Longer Advice to Rāhula
+Line  100748 | MN63       The Shorter Discourse With Māluṅkyaputta
+Line  100864 | MN64       The Longer Discourse With Māluṅkya
+Line  100989 | MN65       With Bhaddāli
+Line  101189 | MN66       The Simile of the Quail
+Line  101390 | MN67       At Cātumā
+Line  101519 | MN68       At Naḷakapāna
+Line  101691 | MN69       With Gulissāni
+Line  101780 | MN6        One Might Wish
+Line  101834 | MN70       At Kīṭāgiri
+Line  102023 | MN71       To Vacchagotta on the Three Knowledges
+Line  102072 | MN72       With Vacchagotta on Fire
+Line  102163 | MN73       The Longer Discourse With Vacchagotta
+Line  102280 | MN74       With Dīghanakha
+Line  102382 | MN75       With Māgaṇḍiya
+Line  102639 | MN76       With Sandaka
+Line  102844 | MN77       The Longer Discourse with Sakuludāyī
+Line  103205 | MN78       With Uggāhamāna Samaṇamaṇḍikāputta
+Line  103354 | MN79       The Shorter Discourse With Sakuludāyī
+Line  103551 | MN7        The Simile of the Cloth
+Line  103642 | MN80       With Vekhanasa
+Line  103740 | MN81       With Ghaṭīkāra
+Line  103941 | MN82       With Raṭṭhapāla
+Line  104337 | MN83       About King Maghadeva
+Line  104465 | MN84       At Madhurā
+Line  104600 | MN85       With Prince Bodhi
+Line  105104 | MN86       With Aṅgulimāla
+Line  105305 | MN87       Born From the Beloved
+Line  105424 | MN88       The Foreign Cloth
+Line  105533 | MN89       Shrines to the Teaching
+Line  105684 | MN8        Self-Effacement
+Line  105815 | MN90       At Kaṇṇakatthala
+Line  105960 | MN91       With Brahmāyu
+Line  106248 | MN92       With Sela
+Line  106455 | MN93       With Assalāyana
+Line  106651 | MN94       With Ghoṭamukha
+Line  106847 | MN95       With Caṅkī
+Line  107084 | MN96       With Esukārī
+Line  107208 | MN97       With Dhanañjāni
+Line  107369 | MN98       With Vāseṭṭha
+Line  107666 | MN99       With Subha
+Line  107930 | MN9        Right View
+Line  108108 | SN1.10     1. A Reed
+Line  108129 | SN1.11     2. The Garden of Delight
+Line  108154 | SN1.12     2. The Garden of Delight
+Line  108171 | SN1.13     2. The Garden of Delight
+Line  108188 | SN1.14     2. The Garden of Delight
+Line  108203 | SN1.15     2. The Garden of Delight
+Line  108218 | SN1.16     2. The Garden of Delight
+Line  108233 | SN1.17     2. The Garden of Delight
+Line  108252 | SN1.18     2. The Garden of Delight
+Line  108267 | SN1.19     2. The Garden of Delight
+Line  108294 | SN1.1      1. A Reed
+Line  108317 | SN1.20     2. The Garden of Delight
+Line  108389 | SN1.21     3. A Sword
+Line  108406 | SN1.22     3. A Sword
+Line  108421 | SN1.23     3. A Sword
+Line  108444 | SN1.24     3. A Sword
+Line  108459 | SN1.25     3. A Sword
+Line  108488 | SN1.26     3. A Sword
+Line  108507 | SN1.27     3. A Sword
+Line  108524 | SN1.28     3. A Sword
+Line  108545 | SN1.29     3. A Sword
+Line  108560 | SN1.2      1. A Reed
+Line  108577 | SN1.30     3. A Sword
+Line  108594 | SN1.31     4. The Host of a Hundred Felicities
+Line  108643 | SN1.32     4. The Host of a Hundred Felicities
+Line  108704 | SN1.33     4. The Host of a Hundred Felicities
+Line  108771 | SN1.34     4. The Host of a Hundred Felicities
+Line  108812 | SN1.35     4. The Host of a Hundred Felicities
+Line  108870 | SN1.36     4. The Host of a Hundred Felicities
+Line  108897 | SN1.37     4. The Host of a Hundred Felicities
+Line  108931 | SN1.38     4. The Host of a Hundred Felicities
+Line  108982 | SN1.39     4. The Host of a Hundred Felicities
+Line  109009 | SN1.3      1. A Reed
+Line  109026 | SN1.40     4. The Host of a Hundred Felicities
+Line  109049 | SN1.41     5. On Fire
+Line  109078 | SN1.42     5. On Fire
+Line  109099 | SN1.43     5. On Fire
+Line  109118 | SN1.44     5. On Fire
+Line  109129 | SN1.45     5. On Fire
+Line  109140 | SN1.46     5. On Fire
+Line  109163 | SN1.47     5. On Fire
+Line  109182 | SN1.48     5. On Fire
+Line  109205 | SN1.49     5. On Fire
+Line  109258 | SN1.4      1. A Reed
+Line  109275 | SN1.50     5. On Fire
+Line  109338 | SN1.51     6. Old Age
+Line  109353 | SN1.52     6. Old Age
+Line  109368 | SN1.53     6. Old Age
+Line  109385 | SN1.54     6. Old Age
+Line  109400 | SN1.55     6. Old Age
+Line  109415 | SN1.56     6. Old Age
+Line  109430 | SN1.57     6. Old Age
+Line  109445 | SN1.58     6. Old Age
+Line  109462 | SN1.59     6. Old Age
+Line  109477 | SN1.5      1. A Reed
+Line  109494 | SN1.60     6. Old Age
+Line  109509 | SN1.61     7. Overcome
+Line  109524 | SN1.62     7. Overcome
+Line  109539 | SN1.63     7. Overcome
+Line  109554 | SN1.64     7. Overcome
+Line  109569 | SN1.65     7. Overcome
+Line  109584 | SN1.66     7. Overcome
+Line  109599 | SN1.67     7. Overcome
+Line  109614 | SN1.68     7. Overcome
+Line  109629 | SN1.69     7. Overcome
+Line  109644 | SN1.6      1. A Reed
+Line  109661 | SN1.70     7. Overcome
+Line  109676 | SN1.71     8. Slain
+Line  109695 | SN1.72     8. Slain
+Line  109710 | SN1.73     8. Slain
+Line  109725 | SN1.74     8. Slain
+Line  109744 | SN1.75     8. Slain
+Line  109761 | SN1.76     8. Slain
+Line  109793 | SN1.77     8. Slain
+Line  109816 | SN1.78     8. Slain
+Line  109831 | SN1.79     8. Slain
+Line  109850 | SN1.7      1. A Reed
+Line  109867 | SN1.80     8. Slain
+Line  109890 | SN1.81     8. Slain
+Line  109914 | SN1.8      1. A Reed
+Line  109931 | SN1.9      1. A Reed
+Line  109948 | SN10.10    1. With Indaka
+Line  109962 | SN10.11    1. With Indaka
+Line  109977 | SN10.12    1. With Indaka
+Line  110062 | SN10.1     1. With Indaka
+Line  110086 | SN10.2     1. With Indaka
+Line  110107 | SN10.3     1. With Indaka
+Line  110146 | SN10.4     1. With Indaka
+Line  110167 | SN10.5     1. With Indaka
+Line  110221 | SN10.6     1. With Indaka
+Line  110239 | SN10.7     1. With Indaka
+Line  110290 | SN10.8     1. With Indaka
+Line  110346 | SN10.9     1. With Indaka
+Line  110364 | SN11.10    Chapter One
+Line  110400 | SN11.11    Chapter Two
+Line  110426 | SN11.12    Chapter Two
+Line  110460 | SN11.13    Chapter Two
+Line  110500 | SN11.14    Chapter Two
+Line  110539 | SN11.15    Chapter Two
+Line  110557 | SN11.16    Chapter Two
+Line  110579 | SN11.17    Chapter Two
+Line  110600 | SN11.18    Chapter Two
+Line  110641 | SN11.19    Chapter Two
+Line  110681 | SN11.1     Chapter One
+Line  110731 | SN11.20    Chapter Two
+Line  110778 | SN11.21    Chapter Three
+Line  110798 | SN11.22    Chapter Three
+Line  110826 | SN11.23    Chapter Three
+Line  110850 | SN11.24    Chapter Three
+Line  110876 | SN11.25    Chapter Three
+Line  110895 | SN11.2     Chapter One
+Line  110938 | SN11.3     Chapter One
+Line  110993 | SN11.4     Chapter One
+Line  111058 | SN11.5     Chapter One
+Line  111136 | SN11.6     Chapter One
+Line  111157 | SN11.7     Chapter One
+Line  111179 | SN11.8     Chapter One
+Line  111210 | SN11.9     Chapter One
+Line  111232 | SN12.10    1. The Buddhas
+Line  111285 | SN12.11    2. Fuel
+Line  111320 | SN12.12    2. Fuel
+Line  111393 | SN12.13    2. Fuel
+Line  111425 | SN12.14    2. Fuel
+Line  111461 | SN12.15    2. Fuel
+Line  111488 | SN12.16    2. Fuel
+Line  111515 | SN12.17    2. Fuel
+Line  111578 | SN12.18    2. Fuel
+Line  111622 | SN12.19    2. Fuel
+Line  111652 | SN12.1     1. The Buddhas
+Line  111697 | SN12.20    2. Fuel
+Line  111755 | SN12.21    3. The Ten Powers
+Line  111777 | SN12.22    3. The Ten Powers
+Line  111814 | SN12.23    3. The Ten Powers
+Line  111910 | SN12.24    3. The Ten Powers
+Line  111998 | SN12.25    3. The Ten Powers
+Line  112044 | SN12.26    3. The Ten Powers
+Line  112066 | SN12.27    3. The Ten Powers
+Line  112107 | SN12.28    3. The Ten Powers
+Line  112167 | SN12.29    3. The Ten Powers
+Line  112200 | SN12.2     1. The Buddhas
+Line  112282 | SN12.30    3. The Ten Powers
+Line  112313 | SN12.31    4. Kaḷāra the Aristocrat
+Line  112356 | SN12.32    4. Kaḷāra the Aristocrat
+Line  112464 | SN12.33    4. Kaḷāra the Aristocrat
+Line  112533 | SN12.34    4. Kaḷāra the Aristocrat
+Line  112557 | SN12.35    4. Kaḷāra the Aristocrat
+Line  112618 | SN12.36    4. Kaḷāra the Aristocrat
+Line  112663 | SN12.37    4. Kaḷāra the Aristocrat
+Line  112682 | SN12.38    4. Kaḷāra the Aristocrat
+Line  112705 | SN12.39    4. Kaḷāra the Aristocrat
+Line  112736 | SN12.3     1. The Buddhas
+Line  112758 | SN12.40    4. Kaḷāra the Aristocrat
+Line  112787 | SN12.41    5. Householders
+Line  112827 | SN12.42    5. Householders
+Line  112855 | SN12.43    5. Householders
+Line  112903 | SN12.44    5. Householders
+Line  112951 | SN12.45    5. Householders
+Line  112997 | SN12.46    5. Householders
+Line  113021 | SN12.47    5. Householders
+Line  113044 | SN12.48    5. Householders
+Line  113072 | SN12.49    5. Householders
+Line  113113 | SN12.4     1. The Buddhas
+Line  113222 | SN12.50    5. Householders
+Line  113261 | SN12.51    6. Suffering
+Line  113356 | SN12.52    6. Suffering
+Line  113388 | SN12.53    6. Suffering
+Line  113423 | SN12.54    6. Suffering
+Line  113443 | SN12.55    6. Suffering
+Line  113474 | SN12.56    6. Suffering
+Line  113496 | SN12.57    6. Suffering
+Line  113523 | SN12.58    6. Suffering
+Line  113547 | SN12.59    6. Suffering
+Line  113570 | SN12.5     1. The Buddhas
+Line  113578 | SN12.60    6. Suffering
+Line  113620 | SN12.61    7. The Great Chapter
+Line  113656 | SN12.62    7. The Great Chapter
+Line  113695 | SN12.63    7. The Great Chapter
+Line  113771 | SN12.64    7. The Great Chapter
+Line  113843 | SN12.65    7. The Great Chapter
+Line  113949 | SN12.66    7. The Great Chapter
+Line  114069 | SN12.67    7. The Great Chapter
+Line  114138 | SN12.68    7. The Great Chapter
+Line  114208 | SN12.69    7. The Great Chapter
+Line  114221 | SN12.6     1. The Buddhas
+Line  114229 | SN12.70    7. The Great Chapter
+Line  114399 | SN12.71    8. Ascetics and Brahmins
+Line  114412 | SN12.72-81 8. Ascetics and Brahmins
+Line  114431 | SN12.7     1. The Buddhas
+Line  114439 | SN12.82    9. Incorporated Abbreviation Series
+Line  114453 | SN12.83-92 9. Incorporated Abbreviation Series
+Line  114471 | SN12.8     1. The Buddhas
+Line  114479 | SN12.93-213 9. Incorporated Abbreviation Series
+Line  114498 | SN12.9     1. The Buddhas
+Line  114506 | SN13.10    1. Comprehension
+Line  114524 | SN13.11    1. Comprehension
+Line  114541 | SN13.1     1. Comprehension
+Line  114561 | SN13.2     1. Comprehension
+Line  114579 | SN13.3     1. Comprehension
+Line  114595 | SN13.4     1. Comprehension
+Line  114611 | SN13.5     1. Comprehension
+Line  114626 | SN13.6     1. Comprehension
+Line  114641 | SN13.7     1. Comprehension
+Line  114656 | SN13.8     1. Comprehension
+Line  114671 | SN13.9     1. Comprehension
+Line  114686 | SN14.10    1. Diversity
+Line  114731 | SN14.11    Chapter Two
+Line  114756 | SN14.12    Chapter Two
+Line  114798 | SN14.13    Chapter Two
+Line  114824 | SN14.14    Chapter Two
+Line  114840 | SN14.15    Chapter Two
+Line  114889 | SN14.16    Chapter Two
+Line  114945 | SN14.17    Chapter Two
+Line  114975 | SN14.18    Chapter Two
+Line  115018 | SN14.19    Chapter Two
+Line  115031 | SN14.1     1. Diversity
+Line  115046 | SN14.20    Chapter Two
+Line  115070 | SN14.21    Chapter Two
+Line  115089 | SN14.22    Chapter Two
+Line  115104 | SN14.23    3. Ways of Performing Deeds
+Line  115123 | SN14.24    3. Ways of Performing Deeds
+Line  115142 | SN14.25    3. Ways of Performing Deeds
+Line  115161 | SN14.26    3. Ways of Performing Deeds
+Line  115184 | SN14.27    3. Ways of Performing Deeds
+Line  115213 | SN14.28    3. Ways of Performing Deeds
+Line  115238 | SN14.29    3. Ways of Performing Deeds
+Line  115268 | SN14.2     1. Diversity
+Line  115288 | SN14.30    4. Chapter Four
+Line  115300 | SN14.31    4. Chapter Four
+Line  115326 | SN14.32    4. Chapter Four
+Line  115344 | SN14.33    4. Chapter Four
+Line  115363 | SN14.34    4. Chapter Four
+Line  115382 | SN14.35    4. Chapter Four
+Line  115402 | SN14.36    4. Chapter Four
+Line  115418 | SN14.37    4. Chapter Four
+Line  115433 | SN14.38    4. Chapter Four
+Line  115447 | SN14.39    4. Chapter Four
+Line  115466 | SN14.3     1. Diversity
+Line  115482 | SN14.4     1. Diversity
+Line  115498 | SN14.5     1. Diversity
+Line  115514 | SN14.6     1. Diversity
+Line  115526 | SN14.7     1. Diversity
+Line  115542 | SN14.8     1. Diversity
+Line  115562 | SN14.9     1. Diversity
+Line  115578 | SN15.10    Chapter One
+Line  115615 | SN15.11    Chapter Two
+Line  115629 | SN15.12    Chapter Two
+Line  115643 | SN15.13    Chapter Two
+Line  115681 | SN15.14    Chapter Two
+Line  115694 | SN15.15    Chapter Two
+Line  115705 | SN15.16    Chapter Two
+Line  115715 | SN15.17    Chapter Two
+Line  115725 | SN15.18    Chapter Two
+Line  115735 | SN15.19    2. Chapter Two
+Line  115751 | SN15.1     Chapter One
+Line  115773 | SN15.20    2. Chapter Two
+Line  115837 | SN15.2     Chapter One
+Line  115854 | SN15.3     Chapter One
+Line  115880 | SN15.4     Chapter One
+Line  115897 | SN15.5     Chapter One
+Line  115919 | SN15.6     Chapter One
+Line  115941 | SN15.7     Chapter One
+Line  115965 | SN15.8     Chapter One
+Line  115994 | SN15.9     Chapter One
+Line  116009 | SN16.10    1. Kassapa
+Line  116056 | SN16.11    1. Kassapa
+Line  116135 | SN16.12    1. Kassapa
+Line  116164 | SN16.13    1. Kassapa
+Line  116195 | SN16.1     1. Kassapa
+Line  116216 | SN16.2     1. Kassapa
+Line  116243 | SN16.3     1. Kassapa
+Line  116290 | SN16.4     1. Kassapa
+Line  116340 | SN16.5     1. Kassapa
+Line  116363 | SN16.6     1. Kassapa
+Line  116401 | SN16.7     1. Kassapa
+Line  116443 | SN16.8     1. Kassapa
+Line  116473 | SN16.9     1. Kassapa
+Line  116527 | SN17.10    Chapter One
+Line  116550 | SN17.11    Chapter Two
+Line  116563 | SN17.12    Chapter Two
+Line  116576 | SN17.13-20 Chapter Two
+Line  116595 | SN17.1     Chapter One
+Line  116612 | SN17.21    Chapter Three
+Line  116623 | SN17.22    Chapter Three
+Line  116634 | SN17.23    Chapter Three
+Line  116652 | SN17.24    Chapter Three
+Line  116670 | SN17.25    Chapter Three
+Line  116682 | SN17.26    Chapter Three
+Line  116692 | SN17.27    Chapter Three
+Line  116702 | SN17.28    Chapter Three
+Line  116713 | SN17.29    Chapter Three
+Line  116727 | SN17.2     Chapter One
+Line  116746 | SN17.30    Chapter Three
+Line  116763 | SN17.31    Chapter Four
+Line  116774 | SN17.32    Chapter Four
+Line  116785 | SN17.33    Chapter Four
+Line  116796 | SN17.34    Chapter Four
+Line  116807 | SN17.35    Chapter Four
+Line  116830 | SN17.36    Chapter Four
+Line  116846 | SN17.37    Chapter Four
+Line  116862 | SN17.38-43 Chapter Four
+Line  116885 | SN17.3     Chapter One
+Line  116914 | SN17.4     Chapter One
+Line  116928 | SN17.5     Chapter One
+Line  116947 | SN17.6     Chapter One
+Line  116959 | SN17.7     Chapter One
+Line  116971 | SN17.8     Chapter One
+Line  116987 | SN17.9     Chapter One
+Line  117005 | SN18.10    Chapter One
+Line  117024 | SN18.11    Chapter Two
+Line  117057 | SN18.12-20 Chapter Two
+Line  117123 | SN18.1     Chapter One
+Line  117161 | SN18.21    Chapter Two
+Line  117177 | SN18.22    Chapter Two
+Line  117194 | SN18.2     Chapter One
+Line  117213 | SN18.3     Chapter One
+Line  117232 | SN18.4     Chapter One
+Line  117251 | SN18.5     Chapter One
+Line  117269 | SN18.6     Chapter One
+Line  117287 | SN18.7     Chapter One
+Line  117305 | SN18.8     Chapter One
+Line  117323 | SN18.9     Chapter One
+Line  117341 | SN19.10    Chapter One
+Line  117354 | SN19.11    Chapter Two
+Line  117365 | SN19.12    Chapter Two
+Line  117376 | SN19.13    Chapter Two
+Line  117387 | SN19.14    Chapter Two
+Line  117398 | SN19.15    Chapter Two
+Line  117409 | SN19.16    Chapter Two
+Line  117421 | SN19.17    Chapter Two
+Line  117432 | SN19.18    Chapter Two
+Line  117442 | SN19.19    Chapter Two
+Line  117452 | SN19.1     Chapter One
+Line  117490 | SN19.20    Chapter Two
+Line  117500 | SN19.21    Chapter Two
+Line  117524 | SN19.2     Chapter One
+Line  117535 | SN19.3     Chapter One
+Line  117546 | SN19.4     Chapter One
+Line  117557 | SN19.5     Chapter One
+Line  117568 | SN19.6     Chapter One
+Line  117579 | SN19.7     Chapter One
+Line  117590 | SN19.8     Chapter One
+Line  117601 | SN19.9     Chapter One
+Line  117617 | SN2.10     Chapter One
+Line  117650 | SN2.11     2. With Anāthapiṇḍika
+Line  117668 | SN2.12     2. With Anāthapiṇḍika
+Line  117685 | SN2.13     2. With Anāthapiṇḍika
+Line  117700 | SN2.14     2. With Anāthapiṇḍika
+Line  117722 | SN2.15     2. With Anāthapiṇḍika
+Line  117742 | SN2.16     2. With Anāthapiṇḍika
+Line  117758 | SN2.17     2. With Anāthapiṇḍika
+Line  117778 | SN2.18     2. With Anāthapiṇḍika
+Line  117814 | SN2.19     2. With Anāthapiṇḍika
+Line  117831 | SN2.1      1. Chapter One
+Line  117850 | SN2.20     2. With Anāthapiṇḍika
+Line  117884 | SN2.21     3. Various Sectarians
+Line  117924 | SN2.22     3. Various Sectarians
+Line  117956 | SN2.23     3. Various Sectarians
+Line  118028 | SN2.24     3. Various Sectarians
+Line  118092 | SN2.25     3. Various Sectarians
+Line  118120 | SN2.26     3. Various Sectarians
+Line  118152 | SN2.27     3. Various Sectarians
+Line  118168 | SN2.28     3. Various Sectarians
+Line  118184 | SN2.29     3. Various Sectarians
+Line  118239 | SN2.2      Chapter One
+Line  118252 | SN2.30     3. Various Sectarians
+Line  118311 | SN2.3      Chapter One
+Line  118331 | SN2.4      Chapter One
+Line  118352 | SN2.5      Chapter One
+Line  118377 | SN2.6      Chapter One
+Line  118411 | SN2.7      Chapter One
+Line  118429 | SN2.8      Chapter One
+Line  118469 | SN2.9      Chapter One
+Line  118498 | SN20.10    1. Similes
+Line  118527 | SN20.11    1. Similes
+Line  118547 | SN20.12    1. Similes
+Line  118563 | SN20.1     1. Similes
+Line  118578 | SN20.2     1. Similes
+Line  118597 | SN20.3     1. Similes
+Line  118612 | SN20.4     1. Similes
+Line  118624 | SN20.5     1. Similes
+Line  118646 | SN20.6     1. Similes
+Line  118666 | SN20.7     1. Similes
+Line  118684 | SN20.8     1. Similes
+Line  118710 | SN20.9     1. Similes
+Line  118744 | SN21.10    1. Monks
+Line  118780 | SN21.11    1. Monks
+Line  118808 | SN21.12    1. Monks
+Line  118836 | SN21.1     1. Monks
+Line  118862 | SN21.2     1. Monks
+Line  118885 | SN21.3     1. Monks
+Line  118928 | SN21.4     1. Monks
+Line  118958 | SN21.5     1. Monks
+Line  118979 | SN21.6     1. Monks
+Line  119004 | SN21.7     1. Monks
+Line  119031 | SN21.8     1. Monks
+Line  119049 | SN21.9     1. Monks
+Line  119070 | SN22.100   10. Flowers
+Line  119119 | SN22.101   10. Flowers
+Line  119183 | SN22.102   10. Flowers
+Line  119219 | SN22.103   11. Ends
+Line  119247 | SN22.104   11. Ends
+Line  119272 | SN22.105   11. Ends
+Line  119297 | SN22.106   11. Ends
+Line  119321 | SN22.107   11. Ends
+Line  119334 | SN22.108   11. Ends
+Line  119347 | SN22.109   11. Ends
+Line  119360 | SN22.10    1. Nakula’s Father
+Line  119381 | SN22.110   11. Ends
+Line  119394 | SN22.111   11. Ends
+Line  119409 | SN22.112   11. Ends
+Line  119424 | SN22.113   12. A Dhamma speaker
+Line  119444 | SN22.114   12. A Dhamma speaker
+Line  119463 | SN22.115   12. A Dhamma speaker
+Line  119483 | SN22.116   12. A Dhamma speaker
+Line  119504 | SN22.117   12. A Dhamma speaker
+Line  119528 | SN22.118   12. A Dhamma speaker
+Line  119550 | SN22.119   12. A Dhamma speaker
+Line  119572 | SN22.11    1. Nakula’s Father
+Line  119593 | SN22.120   12. A Dhamma speaker
+Line  119612 | SN22.121   12. A Dhamma speaker
+Line  119631 | SN22.122   12. A Dhamma speaker
+Line  119659 | SN22.123   12. A Dhamma speaker
+Line  119683 | SN22.124   12. A Dhamma speaker
+Line  119699 | SN22.125   12. A Dhamma speaker
+Line  119715 | SN22.126   13. Ignorance
+Line  119753 | SN22.127   13. Ignorance
+Line  119772 | SN22.128   13. Ignorance
+Line  119791 | SN22.129   13. Ignorance
+Line  119810 | SN22.12    2. Impermanence
+Line  119823 | SN22.130   13. Ignorance
+Line  119841 | SN22.131   13. Ignorance
+Line  119859 | SN22.132   13. Ignorance
+Line  119878 | SN22.133   13. Ignorance
+Line  119908 | SN22.134   13. Ignorance
+Line  119937 | SN22.135   13. Ignorance
+Line  119967 | SN22.136   14. Burning Chaff
+Line  119979 | SN22.137   14. Burning Chaff
+Line  119995 | SN22.138   14. Burning Chaff
+Line  120011 | SN22.139   14. Burning Chaff
+Line  120027 | SN22.13    2. Impermanence
+Line  120038 | SN22.140   14. Burning Chaff
+Line  120047 | SN22.141   14. Burning Chaff
+Line  120056 | SN22.142   14. Burning Chaff
+Line  120065 | SN22.143   14. Burning Chaff
+Line  120074 | SN22.144   14. Burning Chaff
+Line  120083 | SN22.145   14. Burning Chaff
+Line  120092 | SN22.146   14. Burning Chaff
+Line  120104 | SN22.147   14. Burning Chaff
+Line  120119 | SN22.148   14. Burning Chaff
+Line  120134 | SN22.149   14. Burning Chaff
+Line  120149 | SN22.14    2. Impermanence
+Line  120161 | SN22.150   15. Views
+Line  120194 | SN22.151   15. Views
+Line  120222 | SN22.152   15. Views
+Line  120260 | SN22.153   15. Views
+Line  120298 | SN22.154   15. Views
+Line  120329 | SN22.155   15. Views
+Line  120358 | SN22.156   15. Views
+Line  120387 | SN22.157   15. Views
+Line  120409 | SN22.158   15. Views
+Line  120431 | SN22.159   15. Views
+Line  120462 | SN22.15    2. Impermanence
+Line  120483 | SN22.16    2. Impermanence
+Line  120502 | SN22.17    2. Impermanence
+Line  120519 | SN22.18    2. Impermanence
+Line  120538 | SN22.19    2. Impermanence
+Line  120557 | SN22.1     1. Nakula’s Father
+Line  120642 | SN22.20    2. Impermanence
+Line  120661 | SN22.21    2. Impermanence
+Line  120680 | SN22.22    3. The Burden
+Line  120716 | SN22.23    3. The Burden
+Line  120732 | SN22.24    3. The Burden
+Line  120750 | SN22.25    3. The Burden
+Line  120765 | SN22.26    3. The Burden
+Line  120793 | SN22.27    3. The Burden
+Line  120826 | SN22.28    3. The Burden
+Line  120851 | SN22.29    3. The Burden
+Line  120873 | SN22.2     1. Nakula’s Father
+Line  120956 | SN22.30    3. The Burden
+Line  120974 | SN22.31    3. The Burden
+Line  120991 | SN22.32    3. The Burden
+Line  121009 | SN22.33    4. It’s Not Yours
+Line  121040 | SN22.34    4. It’s Not Yours
+Line  121060 | SN22.35    4. It’s Not Yours
+Line  121102 | SN22.36    4. It’s Not Yours
+Line  121151 | SN22.37    4. It’s Not Yours
+Line  121182 | SN22.38    4. It’s Not Yours
+Line  121251 | SN22.39    4. It’s Not Yours
+Line  121264 | SN22.3     1. Nakula’s Father
+Line  121349 | SN22.40    4. It’s Not Yours
+Line  121359 | SN22.41    4. It’s Not Yours
+Line  121369 | SN22.42    4. It’s Not Yours
+Line  121379 | SN22.43    5. Be Your Own Island
+Line  121407 | SN22.44    5. Be Your Own Island
+Line  121435 | SN22.45    5. Be Your Own Island
+Line  121462 | SN22.46    5. Be Your Own Island
+Line  121491 | SN22.47    5. Be Your Own Island
+Line  121531 | SN22.48    5. Be Your Own Island
+Line  121555 | SN22.49    5. Be Your Own Island
+Line  121614 | SN22.4     1. Nakula’s Father
+Line  121634 | SN22.50    5. Be Your Own Island
+Line  121656 | SN22.51    5. Be Your Own Island
+Line  121675 | SN22.52    5. Be Your Own Island
+Line  121694 | SN22.53    6. Involvement
+Line  121719 | SN22.54    6. Involvement
+Line  121755 | SN22.55    6. Involvement
+Line  121845 | SN22.56    6. Involvement
+Line  121910 | SN22.57    6. Involvement
+Line  121994 | SN22.58    6. Involvement
+Line  122017 | SN22.59    6. Involvement
+Line  122071 | SN22.5     1. Nakula’s Father
+Line  122128 | SN22.60    6. Involvement
+Line  122178 | SN22.61    6. Involvement
+Line  122190 | SN22.62    6. Involvement
+Line  122225 | SN22.63    7. The Perfected Ones
+Line  122262 | SN22.64    7. The Perfected Ones
+Line  122295 | SN22.65    7. The Perfected Ones
+Line  122328 | SN22.66    7. The Perfected Ones
+Line  122356 | SN22.67    7. The Perfected Ones
+Line  122384 | SN22.68    7. The Perfected Ones
+Line  122412 | SN22.69    7. The Perfected Ones
+Line  122440 | SN22.6     1. Nakula’s Father
+Line  122453 | SN22.70    7. The Perfected Ones
+Line  122481 | SN22.71    7. The Perfected Ones
+Line  122498 | SN22.72    7. The Perfected Ones
+Line  122515 | SN22.73    8. Bitable
+Line  122533 | SN22.74    8. Bitable
+Line  122551 | SN22.75    8. Bitable
+Line  122564 | SN22.76    8. Bitable
+Line  122621 | SN22.77    8. Bitable
+Line  122637 | SN22.78    8. Bitable
+Line  122679 | SN22.79    8. Bitable
+Line  122821 | SN22.7     1. Nakula’s Father
+Line  122865 | SN22.80    8. Bitable
+Line  122942 | SN22.81    8. Bitable
+Line  123054 | SN22.82    8. Bitable
+Line  123171 | SN22.83    9. Senior Mendicants
+Line  123212 | SN22.84    9. Senior Mendicants
+Line  123298 | SN22.85    9. Senior Mendicants
+Line  123489 | SN22.86    9. Senior Mendicants
+Line  123562 | SN22.87    9. Senior Mendicants
+Line  123676 | SN22.88    9. Senior Mendicants
+Line  123731 | SN22.89    9. Senior Mendicants
+Line  123837 | SN22.8     1. Nakula’s Father
+Line  123869 | SN22.90    9. Senior Mendicants
+Line  123930 | SN22.91    9. Senior Mendicants
+Line  123946 | SN22.92    9. Senior Mendicants
+Line  123962 | SN22.93    10. Flowers
+Line  123992 | SN22.94    10. Flowers
+Line  124030 | SN22.95    10. Flowers
+Line  124084 | SN22.96    10. Flowers
+Line  124136 | SN22.97    10. Flowers
+Line  124176 | SN22.98    10. Flowers
+Line  124195 | SN22.99    10. Flowers
+Line  124230 | SN22.9     1. Nakula’s Father
+Line  124251 | SN23.10    1. About Māra
+Line  124267 | SN23.11    2. About Māra (2nd)
+Line  124282 | SN23.12    2. About Māra (2nd)
+Line  124296 | SN23.13    2. About Māra (2nd)
+Line  124310 | SN23.14    2. About Māra (2nd)
+Line  124324 | SN23.15    2. About Māra (2nd)
+Line  124338 | SN23.16    2. About Māra (2nd)
+Line  124352 | SN23.17    2. About Māra (2nd)
+Line  124366 | SN23.18    2. About Māra (2nd)
+Line  124380 | SN23.19    2. About Māra (2nd)
+Line  124394 | SN23.1     1. About Māra
+Line  124425 | SN23.20    2. About Māra (2nd)
+Line  124439 | SN23.21    2. About Māra (2nd)
+Line  124453 | SN23.22    2. About Māra (2nd)
+Line  124467 | SN23.23-33 3. Appeals
+Line  124495 | SN23.2     1. About Māra
+Line  124520 | SN23.34    3. Appeals
+Line  124538 | SN23.35-45 4. Sitting Close
+Line  124562 | SN23.3     1. About Māra
+Line  124582 | SN23.46    4. Sitting Close
+Line  124600 | SN23.4     1. About Māra
+Line  124623 | SN23.5     1. About Māra
+Line  124639 | SN23.6     1. About Māra
+Line  124653 | SN23.7     1. About Māra
+Line  124667 | SN23.8     1. About Māra
+Line  124681 | SN23.9     1. About Māra
+Line  124697 | SN24.10    1. Stream-Entry
+Line  124713 | SN24.11    1. Stream-Entry
+Line  124723 | SN24.12    1. Stream-Entry
+Line  124733 | SN24.13    1. Stream-Entry
+Line  124743 | SN24.14    1. Stream-Entry
+Line  124753 | SN24.15    1. Stream-Entry
+Line  124763 | SN24.16    1. Stream-Entry
+Line  124773 | SN24.17    1. Stream-Entry
+Line  124783 | SN24.18    1. Stream-Entry
+Line  124811 | SN24.19    2. The Second Round
+Line  124846 | SN24.1     1. Stream-Entry
+Line  124895 | SN24.20-35 2. The Second Round
+Line  124903 | SN24.2     1. Stream-Entry
+Line  124938 | SN24.36    2. The Second Round
+Line  124970 | SN24.37    2. The Second Round
+Line  124980 | SN24.38    2. The Second Round
+Line  124990 | SN24.39    2. The Second Round
+Line  124999 | SN24.3     1. Stream-Entry
+Line  125031 | SN24.40    2. The Second Round
+Line  125039 | SN24.41    2. The Second Round
+Line  125047 | SN24.42    2. The Second Round
+Line  125055 | SN24.43    2. The Second Round
+Line  125063 | SN24.44    2. The Second Round
+Line  125071 | SN24.45    3. The Third Round
+Line  125106 | SN24.46-69 3. The Third Round
+Line  125114 | SN24.4     1. Stream-Entry
+Line  125146 | SN24.5     1. Stream-Entry
+Line  125189 | SN24.6     1. Stream-Entry
+Line  125227 | SN24.70    3. The Third Round
+Line  125261 | SN24.71    4. The Fourth Round
+Line  125304 | SN24.72-95 4. The Fourth Round
+Line  125312 | SN24.7     1. Stream-Entry
+Line  125351 | SN24.8     1. Stream-Entry
+Line  125392 | SN24.96    4. The Fourth Round
+Line  125437 | SN24.9     1. Stream-Entry
+Line  125461 | SN25.10    1. The Eye
+Line  125483 | SN25.1     1. The Eye
+Line  125504 | SN25.2     1. The Eye
+Line  125526 | SN25.3     1. The Eye
+Line  125541 | SN25.4     1. The Eye
+Line  125556 | SN25.5     1. The Eye
+Line  125571 | SN25.6     1. The Eye
+Line  125586 | SN25.7     1. The Eye
+Line  125601 | SN25.8     1. The Eye
+Line  125616 | SN25.9     1. The Eye
+Line  125631 | SN26.10    1. Arising
+Line  125650 | SN26.1     1. Arising
+Line  125670 | SN26.2     1. Arising
+Line  125690 | SN26.3     1. Arising
+Line  125704 | SN26.4     1. Arising
+Line  125718 | SN26.5     1. Arising
+Line  125731 | SN26.6     1. Arising
+Line  125743 | SN26.7     1. Arising
+Line  125755 | SN26.8     1. Arising
+Line  125767 | SN26.9     1. Arising
+Line  125787 | SN27.10    1. Corruptions
+Line  125799 | SN27.1     1. Corruptions
+Line  125815 | SN27.2     1. Corruptions
+Line  125831 | SN27.3     1. Corruptions
+Line  125847 | SN27.4     1. Corruptions
+Line  125861 | SN27.5     1. Corruptions
+Line  125875 | SN27.6     1. Corruptions
+Line  125889 | SN27.7     1. Corruptions
+Line  125903 | SN27.8     1. Corruptions
+Line  125917 | SN27.9     1. Corruptions
+Line  125931 | SN28.10    1. With Sāriputta
+Line  125964 | SN28.1     1. With Sāriputta
+Line  125986 | SN28.2     1. With Sāriputta
+Line  126003 | SN28.3     1. With Sāriputta
+Line  126020 | SN28.4     1. With Sāriputta
+Line  126037 | SN28.5     1. With Sāriputta
+Line  126047 | SN28.6     1. With Sāriputta
+Line  126057 | SN28.7     1. With Sāriputta
+Line  126067 | SN28.8     1. With Sāriputta
+Line  126077 | SN28.9     1. With Sāriputta
+Line  126092 | SN29.10    1. Dragons
+Line  126109 | SN29.11-20 1. Dragons
+Line  126135 | SN29.1     1. Dragons
+Line  126147 | SN29.21-50 1. Dragons
+Line  126171 | SN29.2     1. Dragons
+Line  126186 | SN29.3     1. Dragons
+Line  126202 | SN29.4     1. Dragons
+Line  126213 | SN29.5     1. Dragons
+Line  126224 | SN29.6     1. Dragons
+Line  126240 | SN29.7     1. Dragons
+Line  126257 | SN29.8     1. Dragons
+Line  126268 | SN29.9     1. Dragons
+Line  126279 | SN3.10     1. Shackles
+Line  126298 | SN3.11     2. Childless
+Line  126333 | SN3.12     2. Childless
+Line  126383 | SN3.13     2. Childless
+Line  126411 | SN3.14     2. Childless
+Line  126435 | SN3.15     2. Childless
+Line  126468 | SN3.16     2. Childless
+Line  126489 | SN3.17     2. Childless
+Line  126520 | SN3.18     2. Childless
+Line  126569 | SN3.19     2. Childless
+Line  126613 | SN3.1      1. Shackles
+Line  126691 | SN3.20     2. Childless
+Line  126742 | SN3.21     3. Kosala
+Line  126843 | SN3.22     3. Kosala
+Line  126878 | SN3.23     3. Kosala
+Line  126899 | SN3.24     3. Kosala
+Line  126973 | SN3.25     3. Kosala
+Line  127039 | SN3.2      1. Shackles
+Line  127060 | SN3.3      1. Shackles
+Line  127080 | SN3.4      1. Shackles
+Line  127127 | SN3.5      1. Shackles
+Line  127160 | SN3.6      1. Shackles
+Line  127179 | SN3.7      1. Shackles
+Line  127201 | SN3.8      1. Shackles
+Line  127221 | SN3.9      1. Shackles
+Line  127253 | SN30.17-46 1. Phoenixes
+Line  127267 | SN30.1     1. Phoenixes
+Line  127279 | SN30.2     1. Phoenixes
+Line  127296 | SN30.3     1. Phoenixes
+Line  127313 | SN30.4-6   1. Phoenixes
+Line  127332 | SN30.7-16  1. Phoenixes
+Line  127359 | SN31.13-22 1. Centaurs
+Line  127386 | SN31.1     1. Centaurs
+Line  127409 | SN31.23-112 1. Centaurs
+Line  127445 | SN31.2     1. Centaurs
+Line  127462 | SN31.3     1. Centaurs
+Line  127480 | SN31.4-12  1. Centaurs
+Line  127508 | SN32.13-52 1. Gods of the Thunderclouds
+Line  127530 | SN32.1     1. Gods of the Thunderclouds
+Line  127547 | SN32.2     1. Gods of the Thunderclouds
+Line  127564 | SN32.3-12  1. Gods of the Thunderclouds
+Line  127583 | SN32.53    1. Gods of the Thunderclouds
+Line  127597 | SN32.54    1. Gods of the Thunderclouds
+Line  127611 | SN32.55    1. Gods of the Thunderclouds
+Line  127625 | SN32.56    1. Gods of the Thunderclouds
+Line  127639 | SN32.57    1. Gods of the Thunderclouds
+Line  127654 | SN33.11-15 1. With Vacchagotta
+Line  127667 | SN33.16-20 1. With Vacchagotta
+Line  127680 | SN33.1     1. With Vacchagotta
+Line  127695 | SN33.21-25 1. With Vacchagotta
+Line  127704 | SN33.26-30 1. With Vacchagotta
+Line  127713 | SN33.2     1. With Vacchagotta
+Line  127728 | SN33.31-35 1. With Vacchagotta
+Line  127737 | SN33.36-40 1. With Vacchagotta
+Line  127746 | SN33.3     1. With Vacchagotta
+Line  127757 | SN33.41-45 1. With Vacchagotta
+Line  127766 | SN33.46-50 1. With Vacchagotta
+Line  127775 | SN33.4     1. With Vacchagotta
+Line  127786 | SN33.51-54 1. With Vacchagotta
+Line  127801 | SN33.55    1. With Vacchagotta
+Line  127813 | SN33.5     1. With Vacchagotta
+Line  127824 | SN33.6-10  1. With Vacchagotta
+Line  127839 | SN34.10    1. Absorption
+Line  127850 | SN34.11    1. Absorption
+Line  127861 | SN34.12    1. Absorption
+Line  127872 | SN34.13    1. Absorption
+Line  127883 | SN34.14    1. Absorption
+Line  127894 | SN34.15    1. Absorption
+Line  127905 | SN34.16    1. Absorption
+Line  127916 | SN34.17    1. Absorption
+Line  127927 | SN34.18    1. Absorption
+Line  127938 | SN34.19    1. Absorption
+Line  127949 | SN34.1     1. Absorption
+Line  127966 | SN34.20-27 1. Absorption
+Line  127978 | SN34.28-34 1. Absorption
+Line  127990 | SN34.2     1. Absorption
+Line  128007 | SN34.35-40 1. Absorption
+Line  128017 | SN34.3     1. Absorption
+Line  128028 | SN34.41-45 1. Absorption
+Line  128038 | SN34.46-49 1. Absorption
+Line  128051 | SN34.4     1. Absorption
+Line  128062 | SN34.50-52 1. Absorption
+Line  128073 | SN34.53-54 1. Absorption
+Line  128083 | SN34.55    1. Absorption
+Line  128105 | SN34.5     1. Absorption
+Line  128116 | SN34.6     1. Absorption
+Line  128127 | SN34.7     1. Absorption
+Line  128138 | SN34.8     1. Absorption
+Line  128149 | SN34.9     1. Absorption
+Line  128160 | SN35.100   10. The Sixes
+Line  128177 | SN35.101   10. The Sixes
+Line  128212 | SN35.102   10. The Sixes
+Line  128231 | SN35.103   10. The Sixes
+Line  128271 | SN35.104   11. Sanctuary from the Yoke
+Line  128289 | SN35.105   11. Sanctuary from the Yoke
+Line  128317 | SN35.106   11. Sanctuary from the Yoke
+Line  128355 | SN35.107   11. Sanctuary from the Yoke
+Line  128398 | SN35.108   11. Sanctuary from the Yoke
+Line  128425 | SN35.109   11. Sanctuary from the Yoke
+Line  128441 | SN35.10    1. Impermanence
+Line  128450 | SN35.110   11. Sanctuary from the Yoke
+Line  128466 | SN35.111   11. Sanctuary from the Yoke
+Line  128483 | SN35.112   11. Sanctuary from the Yoke
+Line  128502 | SN35.113   11. Sanctuary from the Yoke
+Line  128552 | SN35.114   12. The World and the Kinds of Sensual Stimulation
+Line  128577 | SN35.115   12. The World and the Kinds of Sensual Stimulation
+Line  128602 | SN35.116   12. The World and the Kinds of Sensual Stimulation
+Line  128662 | SN35.117   12. The World and the Kinds of Sensual Stimulation
+Line  128710 | SN35.118   12. The World and the Kinds of Sensual Stimulation
+Line  128741 | SN35.119   12. The World and the Kinds of Sensual Stimulation
+Line  128763 | SN35.11    1. Impermanence
+Line  128772 | SN35.120   12. The World and the Kinds of Sensual Stimulation
+Line  128809 | SN35.121   12. The World and the Kinds of Sensual Stimulation
+Line  128878 | SN35.122   12. The World and the Kinds of Sensual Stimulation
+Line  128895 | SN35.123   12. The World and the Kinds of Sensual Stimulation
+Line  128912 | SN35.124   13. Householders
+Line  128939 | SN35.125   13. Householders
+Line  128951 | SN35.126   13. Householders
+Line  128963 | SN35.127   13. Householders
+Line  129008 | SN35.128   13. Householders
+Line  129020 | SN35.129   13. Householders
+Line  129045 | SN35.12    1. Impermanence
+Line  129054 | SN35.130   13. Householders
+Line  129083 | SN35.131   13. Householders
+Line  129114 | SN35.132   13. Householders
+Line  129199 | SN35.133   13. Householders
+Line  129241 | SN35.134   14. At Devadaha
+Line  129264 | SN35.135   14. At Devadaha
+Line  129288 | SN35.136   14. At Devadaha
+Line  129345 | SN35.137   14. At Devadaha
+Line  129356 | SN35.138   14. At Devadaha
+Line  129381 | SN35.139   14. At Devadaha
+Line  129402 | SN35.13    2. Pairs
+Line  129432 | SN35.140   14. At Devadaha
+Line  129449 | SN35.141   14. At Devadaha
+Line  129465 | SN35.142   14. At Devadaha
+Line  129481 | SN35.143   14. At Devadaha
+Line  129500 | SN35.144   14. At Devadaha
+Line  129519 | SN35.145   14. At Devadaha
+Line  129539 | SN35.146   15. The Old and the New
+Line  129566 | SN35.147   15. The Old and the New
+Line  129580 | SN35.148   15. The Old and the New
+Line  129594 | SN35.149   15. The Old and the New
+Line  129607 | SN35.14    2. Pairs
+Line  129621 | SN35.150   15. The Old and the New
+Line  129654 | SN35.151   15. The Old and the New
+Line  129693 | SN35.152   15. The Old and the New
+Line  129721 | SN35.153   15. The Old and the New
+Line  129754 | SN35.154   15. The Old and the New
+Line  129770 | SN35.155   15. The Old and the New
+Line  129787 | SN35.156   16. The End of Relishing
+Line  129803 | SN35.157   16. The End of Relishing
+Line  129822 | SN35.158   16. The End of Relishing
+Line  129841 | SN35.159   16. The End of Relishing
+Line  129861 | SN35.15    2. Pairs
+Line  129894 | SN35.160   16. The End of Relishing
+Line  129912 | SN35.161   16. The End of Relishing
+Line  129929 | SN35.162   16. The End of Relishing
+Line  129952 | SN35.163   16. The End of Relishing
+Line  129975 | SN35.164   16. The End of Relishing
+Line  129996 | SN35.165   16. The End of Relishing
+Line  130009 | SN35.166   16. The End of Relishing
+Line  130022 | SN35.167   16. The End of Relishing
+Line  130034 | SN35.168   17. Sixty Abbreviated Texts
+Line  130046 | SN35.169   17. Sixty Abbreviated Texts
+Line  130056 | SN35.16    2. Pairs
+Line  130065 | SN35.170   17. Sixty Abbreviated Texts
+Line  130075 | SN35.171-173 17. Sixty Abbreviated Texts
+Line  130087 | SN35.174-176 17. Sixty Abbreviated Texts
+Line  130097 | SN35.177-179 17. Sixty Abbreviated Texts
+Line  130112 | SN35.17    2. Pairs
+Line  130137 | SN35.180-182 17. Sixty Abbreviated Texts
+Line  130152 | SN35.183-185 17. Sixty Abbreviated Texts
+Line  130162 | SN35.186   17. Sixty Abbreviated Texts
+Line  130173 | SN35.187   17. Sixty Abbreviated Texts
+Line  130181 | SN35.188   17. Sixty Abbreviated Texts
+Line  130189 | SN35.189-191 17. Sixty Abbreviated Texts
+Line  130197 | SN35.18    2. Pairs
+Line  130205 | SN35.192-194 17. Sixty Abbreviated Texts
+Line  130213 | SN35.195-197 17. Sixty Abbreviated Texts
+Line  130221 | SN35.198-200 17. Sixty Abbreviated Texts
+Line  130229 | SN35.19    2. Pairs
+Line  130252 | SN35.1     1. Impermanence
+Line  130280 | SN35.201-203 17. Sixty Abbreviated Texts
+Line  130288 | SN35.204   17. Sixty Abbreviated Texts
+Line  130299 | SN35.205   17. Sixty Abbreviated Texts
+Line  130308 | SN35.206   17. Sixty Abbreviated Texts
+Line  130317 | SN35.207-209 17. Sixty Abbreviated Texts
+Line  130326 | SN35.20    2. Pairs
+Line  130335 | SN35.210-212 17. Sixty Abbreviated Texts
+Line  130344 | SN35.213-215 17. Sixty Abbreviated Texts
+Line  130353 | SN35.216-218 17. Sixty Abbreviated Texts
+Line  130362 | SN35.219-221 17. Sixty Abbreviated Texts
+Line  130371 | SN35.21    2. Pairs
+Line  130390 | SN35.222   17. Sixty Abbreviated Texts
+Line  130400 | SN35.223   17. Sixty Abbreviated Texts
+Line  130410 | SN35.224   17. Sixty Abbreviated Texts
+Line  130420 | SN35.225   17. Sixty Abbreviated Texts
+Line  130430 | SN35.226   17. Sixty Abbreviated Texts
+Line  130440 | SN35.227   17. Sixty Abbreviated Texts
+Line  130450 | SN35.228   18. The Ocean
+Line  130475 | SN35.229   18. The Ocean
+Line  130499 | SN35.22    2. Pairs
+Line  130518 | SN35.230   18. The Ocean
+Line  130542 | SN35.231   18. The Ocean
+Line  130586 | SN35.232   18. The Ocean
+Line  130646 | SN35.233   18. The Ocean
+Line  130674 | SN35.234   18. The Ocean
+Line  130703 | SN35.235   18. The Ocean
+Line  130751 | SN35.236   18. The Ocean
+Line  130772 | SN35.237   18. The Ocean
+Line  130793 | SN35.238   19. The Simile of the Vipers
+Line  130853 | SN35.239   19. The Simile of the Vipers
+Line  130889 | SN35.23    3. All
+Line  130907 | SN35.240   19. The Simile of the Vipers
+Line  130941 | SN35.241   19. The Simile of the Vipers
+Line  130990 | SN35.242   19. The Simile of the Vipers
+Line  131007 | SN35.243   19. The Simile of the Vipers
+Line  131112 | SN35.244   19. The Simile of the Vipers
+Line  131176 | SN35.245   19. The Simile of the Vipers
+Line  131227 | SN35.246   19. The Simile of the Vipers
+Line  131284 | SN35.247   19. The Simile of the Vipers
+Line  131344 | SN35.248   19. The Simile of the Vipers
+Line  131395 | SN35.24    3. All
+Line  131411 | SN35.25    3. All
+Line  131427 | SN35.26    3. All
+Line  131460 | SN35.27    3. All
+Line  131481 | SN35.28    3. All
+Line  131506 | SN35.29    3. All
+Line  131530 | SN35.2     1. Impermanence
+Line  131549 | SN35.30    3. All
+Line  131573 | SN35.31    3. All
+Line  131599 | SN35.32    3. All
+Line  131644 | SN35.33-42 4. Liable to Be Reborn
+Line  131674 | SN35.3     1. Impermanence
+Line  131691 | SN35.43-51 5. All is Impermanent
+Line  131717 | SN35.4     1. Impermanence
+Line  131739 | SN35.52    5. All is Impermanent
+Line  131756 | SN35.53    6. Ignorance
+Line  131775 | SN35.54    6. Ignorance
+Line  131784 | SN35.55    6. Ignorance
+Line  131793 | SN35.56    6. Ignorance
+Line  131801 | SN35.57    6. Ignorance
+Line  131809 | SN35.58    6. Ignorance
+Line  131817 | SN35.59    6. Ignorance
+Line  131825 | SN35.5     1. Impermanence
+Line  131835 | SN35.60    6. Ignorance
+Line  131858 | SN35.61    6. Ignorance
+Line  131878 | SN35.62    6. Ignorance
+Line  131924 | SN35.63    7. With Migajāla
+Line  131970 | SN35.64    7. With Migajāla
+Line  132000 | SN35.65    7. With Migajāla
+Line  132024 | SN35.66    7. With Migajāla
+Line  132033 | SN35.67    7. With Migajāla
+Line  132042 | SN35.68    7. With Migajāla
+Line  132057 | SN35.69    7. With Migajāla
+Line  132090 | SN35.6     1. Impermanence
+Line  132099 | SN35.70    7. With Migajāla
+Line  132127 | SN35.71    7. With Migajāla
+Line  132149 | SN35.72    7. With Migajāla
+Line  132171 | SN35.73    7. With Migajāla
+Line  132205 | SN35.74    8. Sick
+Line  132258 | SN35.75    8. Sick
+Line  132312 | SN35.76    8. Sick
+Line  132335 | SN35.77    8. Sick
+Line  132343 | SN35.78    8. Sick
+Line  132351 | SN35.79    8. Sick
+Line  132370 | SN35.7     1. Impermanence
+Line  132391 | SN35.80    8. Sick
+Line  132417 | SN35.81    8. Sick
+Line  132444 | SN35.82    8. Sick
+Line  132461 | SN35.83    8. Sick
+Line  132475 | SN35.84    9. With Channa
+Line  132492 | SN35.85    9. With Channa
+Line  132508 | SN35.86    9. With Channa
+Line  132546 | SN35.87    9. With Channa
+Line  132616 | SN35.88    9. With Channa
+Line  132686 | SN35.89    9. With Channa
+Line  132721 | SN35.8     1. Impermanence
+Line  132733 | SN35.90    9. With Channa
+Line  132761 | SN35.91    9. With Channa
+Line  132789 | SN35.92    9. With Channa
+Line  132806 | SN35.93    9. With Channa
+Line  132843 | SN35.94    10. The Sixes
+Line  132897 | SN35.95    10. The Sixes
+Line  133056 | SN35.96    10. The Sixes
+Line  133097 | SN35.97    10. The Sixes
+Line  133144 | SN35.98    10. The Sixes
+Line  133175 | SN35.99    10. The Sixes
+Line  133197 | SN35.9     1. Impermanence
+Line  133209 | SN36.10    1. With Verses
+Line  133229 | SN36.11    2. In Private
+Line  133279 | SN36.12    2. In Private
+Line  133309 | SN36.13    2. In Private
+Line  133319 | SN36.14    2. In Private
+Line  133330 | SN36.15    2. In Private
+Line  133366 | SN36.16    2. In Private
+Line  133384 | SN36.17    2. In Private
+Line  133417 | SN36.18    2. In Private
+Line  133433 | SN36.19    2. In Private
+Line  133557 | SN36.1     1. With Verses
+Line  133576 | SN36.20    2. In Private
+Line  133595 | SN36.21    3. The Explanation of the Hundred and Eight
+Line  133635 | SN36.22    3. The Explanation of the Hundred and Eight
+Line  133664 | SN36.23    3. The Explanation of the Hundred and Eight
+Line  133686 | SN36.24    3. The Explanation of the Hundred and Eight
+Line  133703 | SN36.25    3. The Explanation of the Hundred and Eight
+Line  133718 | SN36.26    3. The Explanation of the Hundred and Eight
+Line  133736 | SN36.27    3. The Explanation of the Hundred and Eight
+Line  133750 | SN36.28    3. The Explanation of the Hundred and Eight
+Line  133762 | SN36.29    3. The Explanation of the Hundred and Eight
+Line  133771 | SN36.2     1. With Verses
+Line  133790 | SN36.30    3. The Explanation of the Hundred and Eight
+Line  133801 | SN36.31    3. The Explanation of the Hundred and Eight
+Line  133858 | SN36.3     1. With Verses
+Line  133890 | SN36.4     1. With Verses
+Line  133919 | SN36.5     1. With Verses
+Line  133942 | SN36.6     1. With Verses
+Line  134008 | SN36.7     1. With Verses
+Line  134070 | SN36.8     1. With Verses
+Line  134114 | SN36.9     1. With Verses
+Line  134125 | SN37.10    1. Abbreviated Texts
+Line  134133 | SN37.11    1. Abbreviated Texts
+Line  134141 | SN37.12    1. Abbreviated Texts
+Line  134149 | SN37.13    1. Abbreviated Texts
+Line  134157 | SN37.14    1. Abbreviated Texts
+Line  134168 | SN37.15    2. Abbreviated Texts
+Line  134182 | SN37.16    2. Abbreviated Texts
+Line  134190 | SN37.17    2. Abbreviated Texts
+Line  134198 | SN37.18    2. Abbreviated Texts
+Line  134206 | SN37.19    2. Abbreviated Texts
+Line  134214 | SN37.1     1. Abbreviated Texts
+Line  134229 | SN37.20    2. Abbreviated Texts
+Line  134237 | SN37.21    2. Abbreviated Texts
+Line  134245 | SN37.22    2. Abbreviated Texts
+Line  134253 | SN37.23    2. Abbreviated Texts
+Line  134261 | SN37.24    2. Abbreviated Texts
+Line  134272 | SN37.25    3. Powers
+Line  134284 | SN37.26    3. Powers
+Line  134296 | SN37.27    3. Powers
+Line  134308 | SN37.28    3. Powers
+Line  134318 | SN37.29    3. Powers
+Line  134345 | SN37.2     1. Abbreviated Texts
+Line  134360 | SN37.30    3. Powers
+Line  134379 | SN37.31    3. Powers
+Line  134392 | SN37.32    3. Powers
+Line  134425 | SN37.33    3. Powers
+Line  134436 | SN37.34    3. Powers
+Line  134452 | SN37.3     1. Abbreviated Texts
+Line  134472 | SN37.4     1. Abbreviated Texts
+Line  134483 | SN37.5     1. Abbreviated Texts
+Line  134497 | SN37.6     1. Abbreviated Texts
+Line  134505 | SN37.7     1. Abbreviated Texts
+Line  134513 | SN37.8     1. Abbreviated Texts
+Line  134521 | SN37.9     1. Abbreviated Texts
+Line  134529 | SN38.10    1. With Jambukhādaka
+Line  134543 | SN38.11    1. With Jambukhādaka
+Line  134557 | SN38.12    1. With Jambukhādaka
+Line  134571 | SN38.13    1. With Jambukhādaka
+Line  134585 | SN38.14    1. With Jambukhādaka
+Line  134599 | SN38.15    1. With Jambukhādaka
+Line  134613 | SN38.16    1. With Jambukhādaka
+Line  134629 | SN38.1     1. With Jambukhādaka
+Line  134651 | SN38.2     1. With Jambukhādaka
+Line  134670 | SN38.3     1. With Jambukhādaka
+Line  134689 | SN38.4     1. With Jambukhādaka
+Line  134700 | SN38.5     1. With Jambukhādaka
+Line  134712 | SN38.6     1. With Jambukhādaka
+Line  134724 | SN38.7     1. With Jambukhādaka
+Line  134739 | SN38.8     1. With Jambukhādaka
+Line  134753 | SN38.9     1. With Jambukhādaka
+Line  134766 | SN39.1-15  1. With Sāmaṇḍaka
+Line  134789 | SN39.16    1. With Sāmaṇḍaka
+Line  134805 | SN4.10     1. Lifespan
+Line  134829 | SN4.11     2. Rule
+Line  134845 | SN4.12     2. Rule
+Line  134867 | SN4.13     2. Rule
+Line  134898 | SN4.14     2. Rule
+Line  134920 | SN4.15     2. Rule
+Line  134939 | SN4.16     2. Rule
+Line  134970 | SN4.17     2. Rule
+Line  134999 | SN4.18     2. Rule
+Line  135026 | SN4.19     2. Rule
+Line  135067 | SN4.1      1. Lifespan
+Line  135095 | SN4.20     2. Rule
+Line  135119 | SN4.21     3. Māra
+Line  135146 | SN4.22     3. Māra
+Line  135179 | SN4.23     3. Māra
+Line  135249 | SN4.24     3. Māra
+Line  135301 | SN4.25     3. Māra
+Line  135399 | SN4.2      1. Lifespan
+Line  135419 | SN4.3      1. Lifespan
+Line  135440 | SN4.4      1. Lifespan
+Line  135465 | SN4.5      1. Lifespan
+Line  135495 | SN4.6      1. Lifespan
+Line  135525 | SN4.7      1. Lifespan
+Line  135545 | SN4.8      1. Lifespan
+Line  135564 | SN4.9      1. Lifespan
+Line  135591 | SN40.10    1. By Moggallāna
+Line  135665 | SN40.11    1. By Moggallāna
+Line  135679 | SN40.1     1. By Moggallāna
+Line  135705 | SN40.2     1. By Moggallāna
+Line  135725 | SN40.3     1. By Moggallāna
+Line  135744 | SN40.4     1. By Moggallāna
+Line  135763 | SN40.5     1. By Moggallāna
+Line  135782 | SN40.6     1. By Moggallāna
+Line  135801 | SN40.7     1. By Moggallāna
+Line  135820 | SN40.8     1. By Moggallāna
+Line  135839 | SN40.9     1. By Moggallāna
+Line  135859 | SN41.10    1. With Citta
+Line  135900 | SN41.1     1. With Citta
+Line  135935 | SN41.2     1. With Citta
+Line  135974 | SN41.3     1. With Citta
+Line  136046 | SN41.4     1. With Citta
+Line  136095 | SN41.5     1. With Citta
+Line  136136 | SN41.6     1. With Citta
+Line  136190 | SN41.7     1. With Citta
+Line  136235 | SN41.8     1. With Citta
+Line  136282 | SN41.9     1. With Citta
+Line  136322 | SN42.10    1. Chiefs
+Line  136346 | SN42.11    1. Chiefs
+Line  136404 | SN42.12    1. Chiefs
+Line  136576 | SN42.13    1. Chiefs
+Line  136804 | SN42.1     1. Chiefs
+Line  136840 | SN42.2     1. Chiefs
+Line  136886 | SN42.3     1. Chiefs
+Line  136922 | SN42.4     1. Chiefs
+Line  136931 | SN42.5     1. Chiefs
+Line  136940 | SN42.6     1. Chiefs
+Line  136988 | SN42.7     1. Chiefs
+Line  137038 | SN42.8     1. Chiefs
+Line  137119 | SN42.9     1. Chiefs
+Line  137158 | SN43.10    Chapter One
+Line  137167 | SN43.11    Chapter One
+Line  137180 | SN43.12    Chapter Two
+Line  137254 | SN43.13    Chapter Two
+Line  137263 | SN43.14-43 Chapter Two
+Line  137300 | SN43.1     Chapter One
+Line  137319 | SN43.2     Chapter One
+Line  137334 | SN43.3     Chapter One
+Line  137343 | SN43.44    Chapter Two
+Line  137363 | SN43.4     Chapter One
+Line  137372 | SN43.5     Chapter One
+Line  137381 | SN43.6     Chapter One
+Line  137390 | SN43.7     Chapter One
+Line  137399 | SN43.8     Chapter One
+Line  137408 | SN43.9     Chapter One
+Line  137417 | SN44.10    1. The Undeclared Points
+Line  137440 | SN44.11    1. The Undeclared Points
+Line  137467 | SN44.1     1. The Undeclared Points
+Line  137532 | SN44.2     1. The Undeclared Points
+Line  137614 | SN44.3     1. The Undeclared Points
+Line  137644 | SN44.4     1. The Undeclared Points
+Line  137674 | SN44.5     1. The Undeclared Points
+Line  137697 | SN44.6     1. The Undeclared Points
+Line  137750 | SN44.7     1. The Undeclared Points
+Line  137789 | SN44.8     1. The Undeclared Points
+Line  137824 | SN44.9     1. The Undeclared Points
+Line  137868 | SN45.103   10. Abbreviated Texts on the Ganges
+Line  137880 | SN45.104-108 10. Abbreviated Texts on the Ganges
+Line  137892 | SN45.109   10. Abbreviated Texts on the Ganges
+Line  137904 | SN45.10    1. Ignorance
+Line  137922 | SN45.110-114 10. Abbreviated Texts on the Ganges
+Line  137934 | SN45.115   10. Abbreviated Texts on the Ganges
+Line  137946 | SN45.116-120 10. Abbreviated Texts on the Ganges
+Line  137958 | SN45.11    2. Meditation
+Line  137982 | SN45.121   10. Abbreviated Texts on the Ganges
+Line  137994 | SN45.122-126 10. Abbreviated Texts on the Ganges
+Line  138006 | SN45.127   10. Abbreviated Texts on the Ganges
+Line  138018 | SN45.128-132 10. Abbreviated Texts on the Ganges
+Line  138030 | SN45.12    2. Meditation
+Line  138060 | SN45.133   10. Abbreviated Texts on the Ganges
+Line  138072 | SN45.134-138 10. Abbreviated Texts on the Ganges
+Line  138084 | SN45.139   11. Abbreviated Texts on Diligence
+Line  138118 | SN45.13    2. Meditation
+Line  138131 | SN45.140   11. Abbreviated Texts on Diligence
+Line  138145 | SN45.141-145 11. Abbreviated Texts on Diligence
+Line  138159 | SN45.146-148 11. Abbreviated Texts on Diligence
+Line  138170 | SN45.149   12. Hard Work
+Line  138186 | SN45.14    2. Meditation
+Line  138198 | SN45.150   12. Hard Work
+Line  138210 | SN45.151   12. Hard Work
+Line  138223 | SN45.152   12. Hard Work
+Line  138237 | SN45.153   12. Hard Work
+Line  138249 | SN45.154   12. Hard Work
+Line  138265 | SN45.155   12. Hard Work
+Line  138278 | SN45.156   12. Hard Work
+Line  138290 | SN45.157   12. Hard Work
+Line  138302 | SN45.158   12. Hard Work
+Line  138314 | SN45.159   12. Hard Work
+Line  138341 | SN45.15    2. Meditation
+Line  138353 | SN45.160   12. Hard Work
+Line  138380 | SN45.161   13. Searches
+Line  138438 | SN45.162   13. Searches
+Line  138454 | SN45.163   13. Searches
+Line  138466 | SN45.164   13. Searches
+Line  138478 | SN45.165   13. Searches
+Line  138490 | SN45.166   13. Searches
+Line  138502 | SN45.167   13. Searches
+Line  138514 | SN45.168   13. Searches
+Line  138526 | SN45.169   13. Searches
+Line  138538 | SN45.16    2. Meditation
+Line  138550 | SN45.170   13. Searches
+Line  138574 | SN45.171   14. Floods
+Line  138588 | SN45.172   14. Floods
+Line  138600 | SN45.173   14. Floods
+Line  138612 | SN45.174   14. Floods
+Line  138624 | SN45.175   14. Floods
+Line  138636 | SN45.176   14. Floods
+Line  138651 | SN45.177   14. Floods
+Line  138663 | SN45.178   14. Floods
+Line  138675 | SN45.179   14. Floods
+Line  138687 | SN45.17    2. Meditation
+Line  138699 | SN45.180   14. Floods
+Line  138725 | SN45.18    2. Meditation
+Line  138746 | SN45.19    2. Meditation
+Line  138766 | SN45.1     1. Ignorance
+Line  138797 | SN45.20    2. Meditation
+Line  138815 | SN45.21    3. The Wrong Way
+Line  138831 | SN45.22    3. The Wrong Way
+Line  138847 | SN45.23    3. The Wrong Way
+Line  138863 | SN45.24    3. The Wrong Way
+Line  138885 | SN45.25    3. The Wrong Way
+Line  138901 | SN45.26    3. The Wrong Way
+Line  138924 | SN45.27    3. The Wrong Way
+Line  138940 | SN45.28    3. The Wrong Way
+Line  138954 | SN45.29    3. The Wrong Way
+Line  138970 | SN45.2     1. Ignorance
+Line  138997 | SN45.30    3. The Wrong Way
+Line  139022 | SN45.31    4. Practice
+Line  139038 | SN45.32    4. Practice
+Line  139054 | SN45.33    4. Practice
+Line  139068 | SN45.34    4. Practice
+Line  139104 | SN45.35    4. Practice
+Line  139121 | SN45.36    4. Practice
+Line  139138 | SN45.37    4. Practice
+Line  139155 | SN45.38    4. Practice
+Line  139172 | SN45.39    4. Practice
+Line  139189 | SN45.3     1. Ignorance
+Line  139208 | SN45.40    4. Practice
+Line  139225 | SN45.41    5. Abbreviated Texts on Followers of Other Religions
+Line  139244 | SN45.42-47 5. Abbreviated Texts on Followers of Other Religions
+Line  139259 | SN45.48    5. Abbreviated Texts on Followers of Other Religions
+Line  139278 | SN45.49    6. Abbreviated Texts on the Sun
+Line  139292 | SN45.4     1. Ignorance
+Line  139339 | SN45.50-54 6. Abbreviated Texts on the Sun
+Line  139353 | SN45.55    6. Abbreviated Texts on the Sun
+Line  139366 | SN45.56    6. Abbreviated Texts on the Sun
+Line  139379 | SN45.57-61 6. Abbreviated Texts on the Sun
+Line  139392 | SN45.5     1. Ignorance
+Line  139416 | SN45.62    6. Abbreviated Texts on the Sun
+Line  139428 | SN45.63    7. Abbreviated Texts on One Thing
+Line  139443 | SN45.64-68 7. Abbreviated Texts on One Thing
+Line  139457 | SN45.69    7. Abbreviated Texts on One Thing
+Line  139469 | SN45.6     1. Ignorance
+Line  139484 | SN45.70    7. Abbreviated Texts on One Thing
+Line  139499 | SN45.71-75 7. Abbreviated Texts on One Thing
+Line  139514 | SN45.76    7. Abbreviated Texts on One Thing
+Line  139526 | SN45.77    8. Abbreviated Texts on One Thing
+Line  139539 | SN45.78-82 8. Abbreviated Texts on One Thing
+Line  139551 | SN45.7     1. Ignorance
+Line  139571 | SN45.83    8. Abbreviated Texts on One Thing
+Line  139583 | SN45.84    8. Abbreviated Texts on One Thing
+Line  139595 | SN45.85-89 8. Abbreviated Texts on One Thing
+Line  139607 | SN45.8     1. Ignorance
+Line  139654 | SN45.90    8. Abbreviated Texts on One Thing
+Line  139666 | SN45.91    9. Abbreviated Texts on the Ganges
+Line  139679 | SN45.92-95 9. Abbreviated Texts on the Ganges
+Line  139690 | SN45.96    9. Abbreviated Texts on the Ganges
+Line  139703 | SN45.97    9. Abbreviated Texts on the Ganges
+Line  139712 | SN45.98-102 9. Abbreviated Texts on the Ganges
+Line  139724 | SN45.9     1. Ignorance
+Line  139747 | SN46.10    1. Mountains
+Line  139758 | SN46.111-120 12. Searches
+Line  139769 | SN46.11    2. Sick
+Line  139783 | SN46.121-129 13. Floods
+Line  139794 | SN46.12    2. Sick
+Line  139808 | SN46.130   13. Floods
+Line  139827 | SN46.131-142 14. Another Chapter of Abbreviated Texts on the Ganges
+Line  139835 | SN46.13    2. Sick
+Line  139849 | SN46.143-152 15. Another Chapter on Diligence
+Line  139857 | SN46.14    2. Sick
+Line  139878 | SN46.153-164 16. Another Chapter on Hard Work
+Line  139886 | SN46.15    2. Sick
+Line  139907 | SN46.165-174 17. Another Chapter on Searches
+Line  139915 | SN46.16    2. Sick
+Line  139935 | SN46.175-184 18. Another Chapter on Floods
+Line  139946 | SN46.17    2. Sick
+Line  139979 | SN46.18    2. Sick
+Line  139992 | SN46.19    2. Sick
+Line  140003 | SN46.1     1. Mountains
+Line  140023 | SN46.20    2. Sick
+Line  140034 | SN46.21    3. With Udāyī
+Line  140048 | SN46.22    3. With Udāyī
+Line  140060 | SN46.23    3. With Udāyī
+Line  140074 | SN46.24    3. With Udāyī
+Line  140093 | SN46.25    3. With Udāyī
+Line  140107 | SN46.26    3. With Udāyī
+Line  140130 | SN46.27    3. With Udāyī
+Line  140146 | SN46.28    3. With Udāyī
+Line  140170 | SN46.29    3. With Udāyī
+Line  140191 | SN46.2     1. Mountains
+Line  140255 | SN46.30    3. With Udāyī
+Line  140286 | SN46.31    4. Hindrances
+Line  140299 | SN46.32    4. Hindrances
+Line  140312 | SN46.33    4. Hindrances
+Line  140331 | SN46.34    4. Hindrances
+Line  140342 | SN46.35    4. Hindrances
+Line  140351 | SN46.36    4. Hindrances
+Line  140362 | SN46.37    4. Hindrances
+Line  140381 | SN46.38    4. Hindrances
+Line  140396 | SN46.39    4. Hindrances
+Line  140420 | SN46.3     1. Mountains
+Line  140463 | SN46.40    4. Hindrances
+Line  140478 | SN46.41    5. A Wheel-Turning Monarch
+Line  140494 | SN46.42    5. A Wheel-Turning Monarch
+Line  140509 | SN46.43    5. A Wheel-Turning Monarch
+Line  140523 | SN46.44    5. A Wheel-Turning Monarch
+Line  140537 | SN46.45    5. A Wheel-Turning Monarch
+Line  140550 | SN46.46    5. A Wheel-Turning Monarch
+Line  140563 | SN46.47    5. A Wheel-Turning Monarch
+Line  140576 | SN46.48    5. A Wheel-Turning Monarch
+Line  140590 | SN46.49    5. A Wheel-Turning Monarch
+Line  140598 | SN46.4     1. Mountains
+Line  140632 | SN46.50    5. A Wheel-Turning Monarch
+Line  140640 | SN46.51    6. Discussion
+Line  140746 | SN46.52    6. Discussion
+Line  140802 | SN46.53    6. Discussion
+Line  140859 | SN46.54    6. Discussion
+Line  140926 | SN46.55    6. Discussion
+Line  140987 | SN46.56    6. Discussion
+Line  141040 | SN46.57    7. Breathing
+Line  141063 | SN46.58    7. Breathing
+Line  141071 | SN46.59    7. Breathing
+Line  141079 | SN46.5     1. Mountains
+Line  141097 | SN46.60    7. Breathing
+Line  141105 | SN46.61    7. Breathing
+Line  141113 | SN46.62    7. Breathing
+Line  141121 | SN46.63    7. Breathing
+Line  141129 | SN46.64    7. Breathing
+Line  141137 | SN46.65    7. Breathing
+Line  141145 | SN46.66    7. Breathing
+Line  141153 | SN46.67    8. Cessation
+Line  141161 | SN46.68    8. Cessation
+Line  141169 | SN46.69    8. Cessation
+Line  141177 | SN46.6     1. Mountains
+Line  141239 | SN46.70    8. Cessation
+Line  141247 | SN46.71    8. Cessation
+Line  141255 | SN46.72    8. Cessation
+Line  141263 | SN46.73    8. Cessation
+Line  141271 | SN46.74    8. Cessation
+Line  141279 | SN46.75    8. Cessation
+Line  141287 | SN46.76    8. Cessation
+Line  141311 | SN46.77-88 9. Abbreviated Texts on the Ganges
+Line  141325 | SN46.7     1. Mountains
+Line  141338 | SN46.89-98 10. Diligence
+Line  141347 | SN46.8     1. Mountains
+Line  141362 | SN46.99-110 11. Hard Work
+Line  141371 | SN46.9     1. Mountains
+Line  141382 | SN47.10    1. In Ambapālī’s Mango Grove
+Line  141449 | SN47.11    2. At Nāḷandā
+Line  141472 | SN47.12    2. At Nāḷandā
+Line  141509 | SN47.13    2. At Nāḷandā
+Line  141551 | SN47.14    2. At Nāḷandā
+Line  141583 | SN47.15    2. At Nāḷandā
+Line  141607 | SN47.16    2. At Nāḷandā
+Line  141631 | SN47.17    2. At Nāḷandā
+Line  141645 | SN47.18    2. At Nāḷandā
+Line  141677 | SN47.19    2. At Nāḷandā
+Line  141707 | SN47.1     1. In Ambapālī’s Mango Grove
+Line  141729 | SN47.20    2. At Nāḷandā
+Line  141759 | SN47.21    3. Ethics and Duration
+Line  141783 | SN47.22    3. Ethics and Duration
+Line  141809 | SN47.23    3. Ethics and Duration
+Line  141836 | SN47.24    3. Ethics and Duration
+Line  141851 | SN47.25    3. Ethics and Duration
+Line  141876 | SN47.26    3. Ethics and Duration
+Line  141895 | SN47.27    3. Ethics and Duration
+Line  141912 | SN47.28    3. Ethics and Duration
+Line  141929 | SN47.29    3. Ethics and Duration
+Line  141963 | SN47.2     1. In Ambapālī’s Mango Grove
+Line  141988 | SN47.30    3. Ethics and Duration
+Line  142007 | SN47.31    4. Not Learned From Anyone Else
+Line  142027 | SN47.32    4. Not Learned From Anyone Else
+Line  142041 | SN47.33    4. Not Learned From Anyone Else
+Line  142057 | SN47.34    4. Not Learned From Anyone Else
+Line  142071 | SN47.35    4. Not Learned From Anyone Else
+Line  142094 | SN47.36    4. Not Learned From Anyone Else
+Line  142110 | SN47.37    4. Not Learned From Anyone Else
+Line  142131 | SN47.38    4. Not Learned From Anyone Else
+Line  142152 | SN47.39    4. Not Learned From Anyone Else
+Line  142167 | SN47.3     1. In Ambapālī’s Mango Grove
+Line  142201 | SN47.40    4. Not Learned From Anyone Else
+Line  142226 | SN47.41    5. Freedom From Death
+Line  142243 | SN47.42    5. Freedom From Death
+Line  142261 | SN47.43    5. Freedom From Death
+Line  142295 | SN47.44    5. Freedom From Death
+Line  142312 | SN47.45    5. Freedom From Death
+Line  142328 | SN47.46    5. Freedom From Death
+Line  142351 | SN47.47    5. Freedom From Death
+Line  142371 | SN47.48    5. Freedom From Death
+Line  142385 | SN47.49    5. Freedom From Death
+Line  142403 | SN47.4     1. In Ambapālī’s Mango Grove
+Line  142427 | SN47.50    5. Freedom From Death
+Line  142445 | SN47.51-62 6. Abbreviated Texts on the Ganges
+Line  142464 | SN47.5     1. In Ambapālī’s Mango Grove
+Line  142488 | SN47.63-72 7. Diligence
+Line  142501 | SN47.6     1. In Ambapālī’s Mango Grove
+Line  142543 | SN47.73-84 8. Hard Work
+Line  142556 | SN47.7     1. In Ambapālī’s Mango Grove
+Line  142602 | SN47.85-94 9. Searches
+Line  142617 | SN47.8     1. In Ambapālī’s Mango Grove
+Line  142662 | SN47.95-104 10. Floods
+Line  142686 | SN47.9     1. In Ambapālī’s Mango Grove
+Line  142735 | SN48.105-114 11. The Chapter on Searches
+Line  142747 | SN48.10    1. Plain Version
+Line  142787 | SN48.115-124 12. The Chapter on Floods
+Line  142807 | SN48.11    2. Weaker
+Line  142834 | SN48.125-136 13. Another Chapter of Abbreviated Texts on the Ganges
+Line  142850 | SN48.12    2. Weaker
+Line  142862 | SN48.137-146 13. Another Chapter of Abbreviated Texts on the Ganges
+Line  142870 | SN48.13    2. Weaker
+Line  142883 | SN48.147-158 13. Another Chapter of Abbreviated Texts on the Ganges
+Line  142891 | SN48.14    2. Weaker
+Line  142905 | SN48.159-168 14. Another Chapter on Searches
+Line  142913 | SN48.15    2. Weaker
+Line  142925 | SN48.169-178 15. Another Chapter on Floods
+Line  142945 | SN48.16    2. Weaker
+Line  142958 | SN48.17    2. Weaker
+Line  142972 | SN48.18    2. Weaker
+Line  142985 | SN48.19    2. Weaker
+Line  142997 | SN48.1     1. Plain Version
+Line  143010 | SN48.20    2. Weaker
+Line  143022 | SN48.21    3. The Six Faculties
+Line  143036 | SN48.22    3. The Six Faculties
+Line  143047 | SN48.23    3. The Six Faculties
+Line  143058 | SN48.24    3. The Six Faculties
+Line  143070 | SN48.25    3. The Six Faculties
+Line  143081 | SN48.26    3. The Six Faculties
+Line  143093 | SN48.27    3. The Six Faculties
+Line  143105 | SN48.28    3. The Six Faculties
+Line  143119 | SN48.29    3. The Six Faculties
+Line  143133 | SN48.2     1. Plain Version
+Line  143145 | SN48.30    3. The Six Faculties
+Line  143166 | SN48.31    4. The Pleasure Faculty
+Line  143177 | SN48.32    4. The Pleasure Faculty
+Line  143189 | SN48.33    4. The Pleasure Faculty
+Line  143201 | SN48.34    4. The Pleasure Faculty
+Line  143215 | SN48.35    4. The Pleasure Faculty
+Line  143237 | SN48.36    4. The Pleasure Faculty
+Line  143263 | SN48.37    4. The Pleasure Faculty
+Line  143292 | SN48.38    4. The Pleasure Faculty
+Line  143321 | SN48.39    4. The Pleasure Faculty
+Line  143356 | SN48.3     1. Plain Version
+Line  143368 | SN48.40    4. The Pleasure Faculty
+Line  143423 | SN48.41    5. Old Age
+Line  143451 | SN48.42    5. Old Age
+Line  143484 | SN48.43    5. Old Age
+Line  143518 | SN48.44    5. Old Age
+Line  143540 | SN48.45    5. Old Age
+Line  143557 | SN48.46    5. Old Age
+Line  143575 | SN48.47    5. Old Age
+Line  143591 | SN48.48    5. Old Age
+Line  143607 | SN48.49    5. Old Age
+Line  143631 | SN48.4     1. Plain Version
+Line  143643 | SN48.50    5. Old Age
+Line  143674 | SN48.51    6. The Boar’s Cave
+Line  143694 | SN48.52    6. The Boar’s Cave
+Line  143713 | SN48.53    6. The Boar’s Cave
+Line  143749 | SN48.54    6. The Boar’s Cave
+Line  143766 | SN48.55    6. The Boar’s Cave
+Line  143783 | SN48.56    6. The Boar’s Cave
+Line  143801 | SN48.57    6. The Boar’s Cave
+Line  143833 | SN48.58    6. The Boar’s Cave
+Line  143860 | SN48.59    6. The Boar’s Cave
+Line  143872 | SN48.5     1. Plain Version
+Line  143884 | SN48.60    6. The Boar’s Cave
+Line  143895 | SN48.61    7. On the Side of Awakening
+Line  143907 | SN48.62    7. On the Side of Awakening
+Line  143918 | SN48.63    7. On the Side of Awakening
+Line  143929 | SN48.64    7. On the Side of Awakening
+Line  143944 | SN48.65    7. On the Side of Awakening
+Line  143957 | SN48.66    7. On the Side of Awakening
+Line  143978 | SN48.67    7. On the Side of Awakening
+Line  143995 | SN48.68    7. On the Side of Awakening
+Line  144012 | SN48.69    7. On the Side of Awakening
+Line  144025 | SN48.6     1. Plain Version
+Line  144039 | SN48.70    7. On the Side of Awakening
+Line  144052 | SN48.71-82 8. Abbreviated Texts on the Ganges
+Line  144072 | SN48.7     1. Plain Version
+Line  144091 | SN48.83-92 9. The Chapter on Diligence
+Line  144103 | SN48.8     1. Plain Version
+Line  144124 | SN48.93-104 10. The Chapter on Hard Work
+Line  144136 | SN48.9     1. Plain Version
+Line  144163 | SN49.1-12  1. Abbreviated Texts on the Ganges
+Line  144192 | SN49.13-22 2. Diligence
+Line  144204 | SN49.23-34 3. Hard Work
+Line  144222 | SN49.35-44 4. Searches
+Line  144243 | SN49.45-54 5. Floods
+Line  144265 | SN5.10     1. Nuns
+Line  144300 | SN5.1      1. Nuns
+Line  144330 | SN5.2      1. Nuns
+Line  144360 | SN5.3      1. Nuns
+Line  144390 | SN5.4      1. Nuns
+Line  144423 | SN5.5      1. Nuns
+Line  144456 | SN5.6      1. Nuns
+Line  144486 | SN5.7      1. Nuns
+Line  144520 | SN5.8      1. Nuns
+Line  144552 | SN5.9      1. Nuns
+Line  144586 | SN50.1-12  1. Abbreviated Texts on the Ganges
+Line  144610 | SN50.13-22 2. Diligence
+Line  144622 | SN50.23-34 3. Hard Work
+Line  144634 | SN50.35-44 4. Searches
+Line  144646 | SN50.45-54 5. Floods
+Line  144666 | SN50.55-66 6. Another Chapter of Abbreviated Texts on the Ganges
+Line  144683 | SN50.67-76 6. Another Chapter of Abbreviated Texts on the Ganges
+Line  144691 | SN50.77-88 7. Another Chapter on Hard Work
+Line  144699 | SN50.89-98 8. Another Chapter on Searches
+Line  144711 | SN50.99-108 9. Another Chapter on Floods
+Line  144731 | SN51.10    1. At the Cāpāla Shrine
+Line  144796 | SN51.11    2. Shaking the Stilt Longhouse
+Line  144845 | SN51.12    2. Shaking the Stilt Longhouse
+Line  144873 | SN51.13    2. Shaking the Stilt Longhouse
+Line  144910 | SN51.14    2. Shaking the Stilt Longhouse
+Line  144951 | SN51.15    2. Shaking the Stilt Longhouse
+Line  144999 | SN51.16    2. Shaking the Stilt Longhouse
+Line  145017 | SN51.17    2. Shaking the Stilt Longhouse
+Line  145037 | SN51.18    2. Shaking the Stilt Longhouse
+Line  145051 | SN51.19    2. Shaking the Stilt Longhouse
+Line  145076 | SN51.1     1. At the Cāpāla Shrine
+Line  145090 | SN51.20    2. Shaking the Stilt Longhouse
+Line  145161 | SN51.21    3. The Iron Ball
+Line  145191 | SN51.22    3. The Iron Ball
+Line  145218 | SN51.23    3. The Iron Ball
+Line  145233 | SN51.24    3. The Iron Ball
+Line  145247 | SN51.25    3. The Iron Ball
+Line  145263 | SN51.26    3. The Iron Ball
+Line  145283 | SN51.27    3. The Iron Ball
+Line  145308 | SN51.28    3. The Iron Ball
+Line  145333 | SN51.29    3. The Iron Ball
+Line  145357 | SN51.2     1. At the Cāpāla Shrine
+Line  145373 | SN51.30    3. The Iron Ball
+Line  145400 | SN51.31    3. The Iron Ball
+Line  145428 | SN51.32    3. The Iron Ball
+Line  145461 | SN51.33-44 4. Abbreviated Texts on the Ganges
+Line  145480 | SN51.3     1. At the Cāpāla Shrine
+Line  145494 | SN51.45-54 5. Diligence
+Line  145506 | SN51.4     1. At the Cāpāla Shrine
+Line  145520 | SN51.55-66 6. Hard Work
+Line  145532 | SN51.5     1. At the Cāpāla Shrine
+Line  145550 | SN51.67-76 7. Searches
+Line  145562 | SN51.6     1. At the Cāpāla Shrine
+Line  145580 | SN51.77-86 8. Floods
+Line  145604 | SN51.7     1. At the Cāpāla Shrine
+Line  145622 | SN51.8     1. At the Cāpāla Shrine
+Line  145637 | SN51.9     1. At the Cāpāla Shrine
+Line  145656 | SN52.10    1. In Private
+Line  145673 | SN52.11    2. A Thousand
+Line  145691 | SN52.12    2. A Thousand
+Line  145699 | SN52.13    2. A Thousand
+Line  145707 | SN52.14    2. A Thousand
+Line  145717 | SN52.15    2. A Thousand
+Line  145725 | SN52.16    2. A Thousand
+Line  145733 | SN52.17    2. A Thousand
+Line  145741 | SN52.18    2. A Thousand
+Line  145749 | SN52.19    2. A Thousand
+Line  145757 | SN52.1     1. In Private
+Line  145792 | SN52.20    2. A Thousand
+Line  145800 | SN52.21    2. A Thousand
+Line  145808 | SN52.22    2. A Thousand
+Line  145816 | SN52.23    2. A Thousand
+Line  145824 | SN52.24    2. A Thousand
+Line  145833 | SN52.2     1. In Private
+Line  145859 | SN52.3     1. In Private
+Line  145878 | SN52.4     1. In Private
+Line  145896 | SN52.5     1. In Private
+Line  145913 | SN52.6     1. In Private
+Line  145931 | SN52.7     1. In Private
+Line  145950 | SN52.8     1. In Private
+Line  145981 | SN52.9     1. In Private
+Line  146002 | SN53.1-12  1. Abbreviated Texts on the Ganges
+Line  146029 | SN53.13-22 2. Diligence
+Line  146041 | SN53.23-34 3. Hard Work
+Line  146053 | SN53.35-44 4. Searches
+Line  146065 | SN53.45-54 5. Floods
+Line  146089 | SN54.10    1. One Thing
+Line  146156 | SN54.11    Chapter Two
+Line  146185 | SN54.12    Chapter Two
+Line  146236 | SN54.13    Chapter Two
+Line  146315 | SN54.14    Chapter Two
+Line  146330 | SN54.15    Chapter Two
+Line  146344 | SN54.16    Chapter Two
+Line  146360 | SN54.17    Chapter Two
+Line  146368 | SN54.18    Chapter Two
+Line  146376 | SN54.19    Chapter Two
+Line  146384 | SN54.1     1. One Thing
+Line  146415 | SN54.20    Chapter Two
+Line  146434 | SN54.2     1. One Thing
+Line  146447 | SN54.3     1. One Thing
+Line  146460 | SN54.4     1. One Thing
+Line  146475 | SN54.5     1. One Thing
+Line  146498 | SN54.6     1. One Thing
+Line  146525 | SN54.7     1. One Thing
+Line  146546 | SN54.8     1. One Thing
+Line  146623 | SN54.9     1. One Thing
+Line  146659 | SN55.10    1. At Bamboo Gate
+Line  146700 | SN55.11    2. The Royal Monastery
+Line  146716 | SN55.12    2. The Royal Monastery
+Line  146740 | SN55.13    2. The Royal Monastery
+Line  146766 | SN55.14    2. The Royal Monastery
+Line  146780 | SN55.15    2. The Royal Monastery
+Line  146794 | SN55.16    2. The Royal Monastery
+Line  146808 | SN55.17    2. The Royal Monastery
+Line  146826 | SN55.18    2. The Royal Monastery
+Line  146848 | SN55.19    2. The Royal Monastery
+Line  146870 | SN55.1     1. At Bamboo Gate
+Line  146891 | SN55.20    2. The Royal Monastery
+Line  146912 | SN55.21    3. About Sarakāni
+Line  146945 | SN55.22    3. About Sarakāni
+Line  146976 | SN55.23    3. About Sarakāni
+Line  147015 | SN55.24    3. About Sarakāni
+Line  147080 | SN55.25    3. About Sarakāni
+Line  147157 | SN55.26    3. About Sarakāni
+Line  147228 | SN55.27    3. About Sarakāni
+Line  147274 | SN55.28    3. About Sarakāni
+Line  147311 | SN55.29    3. About Sarakāni
+Line  147321 | SN55.2     1. At Bamboo Gate
+Line  147341 | SN55.30    3. About Sarakāni
+Line  147368 | SN55.31    4. Overflowing Merit
+Line  147387 | SN55.32    4. Overflowing Merit
+Line  147402 | SN55.33    4. Overflowing Merit
+Line  147417 | SN55.34    4. Overflowing Merit
+Line  147434 | SN55.35    4. Overflowing Merit
+Line  147463 | SN55.36    4. Overflowing Merit
+Line  147481 | SN55.37    4. Overflowing Merit
+Line  147506 | SN55.38    4. Overflowing Merit
+Line  147516 | SN55.39    4. Overflowing Merit
+Line  147540 | SN55.3     1. At Bamboo Gate
+Line  147587 | SN55.40    4. Overflowing Merit
+Line  147646 | SN55.41    5. Overflowing Merit, With Verses
+Line  147679 | SN55.42    5. Overflowing Merit, With Verses
+Line  147714 | SN55.43    5. Overflowing Merit, With Verses
+Line  147738 | SN55.44    5. Overflowing Merit, With Verses
+Line  147752 | SN55.45    5. Overflowing Merit, With Verses
+Line  147766 | SN55.46    5. Overflowing Merit, With Verses
+Line  147780 | SN55.47    5. Overflowing Merit, With Verses
+Line  147796 | SN55.48    5. Overflowing Merit, With Verses
+Line  147806 | SN55.49    5. Overflowing Merit, With Verses
+Line  147816 | SN55.4     1. At Bamboo Gate
+Line  147833 | SN55.50    5. Overflowing Merit, With Verses
+Line  147844 | SN55.51    6. A Wise Person
+Line  147872 | SN55.52    6. A Wise Person
+Line  147899 | SN55.53    6. A Wise Person
+Line  147929 | SN55.54    6. A Wise Person
+Line  147990 | SN55.55    6. A Wise Person
+Line  148001 | SN55.56    6. A Wise Person
+Line  148009 | SN55.57    6. A Wise Person
+Line  148017 | SN55.58    6. A Wise Person
+Line  148025 | SN55.59    6. A Wise Person
+Line  148033 | SN55.5     1. At Bamboo Gate
+Line  148058 | SN55.60    6. A Wise Person
+Line  148066 | SN55.61    6. A Wise Person
+Line  148074 | SN55.62    7. Great Wisdom
+Line  148085 | SN55.63    7. Great Wisdom
+Line  148093 | SN55.64    7. Great Wisdom
+Line  148101 | SN55.65    7. Great Wisdom
+Line  148109 | SN55.66    7. Great Wisdom
+Line  148117 | SN55.67    7. Great Wisdom
+Line  148125 | SN55.68    7. Great Wisdom
+Line  148133 | SN55.69    7. Great Wisdom
+Line  148141 | SN55.6     1. At Bamboo Gate
+Line  148222 | SN55.70    7. Great Wisdom
+Line  148230 | SN55.71    7. Great Wisdom
+Line  148238 | SN55.72    7. Great Wisdom
+Line  148246 | SN55.73    7. Great Wisdom
+Line  148254 | SN55.74    7. Great Wisdom
+Line  148266 | SN55.7     1. At Bamboo Gate
+Line  148345 | SN55.8     1. At Bamboo Gate
+Line  148378 | SN55.9     1. At Bamboo Gate
+Line  148397 | SN56.102   11. Abbreviated Texts on Five Destinations
+Line  148405 | SN56.103   11. Abbreviated Texts on Five Destinations
+Line  148413 | SN56.104   11. Abbreviated Texts on Five Destinations
+Line  148421 | SN56.105-107 11. Abbreviated Texts on Five Destinations
+Line  148429 | SN56.108-110 11. Abbreviated Texts on Five Destinations
+Line  148437 | SN56.10    1. Immersion
+Line  148450 | SN56.111-113 11. Abbreviated Texts on Five Destinations
+Line  148458 | SN56.114-116 11. Abbreviated Texts on Five Destinations
+Line  148466 | SN56.117-119 11. Abbreviated Texts on Five Destinations
+Line  148474 | SN56.11    2. Rolling Forth the Wheel of Dhamma
+Line  148536 | SN56.120-122 11. Abbreviated Texts on Five Destinations
+Line  148544 | SN56.123-125 11. Abbreviated Texts on Five Destinations
+Line  148552 | SN56.126-128 11. Abbreviated Texts on Five Destinations
+Line  148560 | SN56.129-130 11. Abbreviated Texts on Five Destinations
+Line  148569 | SN56.12    2. Rolling Forth the Wheel of Dhamma
+Line  148588 | SN56.131   11. Abbreviated Texts on Five Destinations
+Line  148606 | SN56.13    2. Rolling Forth the Wheel of Dhamma
+Line  148633 | SN56.14    2. Rolling Forth the Wheel of Dhamma
+Line  148653 | SN56.15    2. Rolling Forth the Wheel of Dhamma
+Line  148677 | SN56.16    2. Rolling Forth the Wheel of Dhamma
+Line  148716 | SN56.17    2. Rolling Forth the Wheel of Dhamma
+Line  148731 | SN56.18    2. Rolling Forth the Wheel of Dhamma
+Line  148746 | SN56.19    2. Rolling Forth the Wheel of Dhamma
+Line  148762 | SN56.1     1. Immersion
+Line  148777 | SN56.20    2. Rolling Forth the Wheel of Dhamma
+Line  148792 | SN56.21    3. At the Village of Koṭi
+Line  148818 | SN56.22    3. At the Village of Koṭi
+Line  148851 | SN56.23    3. At the Village of Koṭi
+Line  148865 | SN56.24    3. At the Village of Koṭi
+Line  148882 | SN56.25    3. At the Village of Koṭi
+Line  148894 | SN56.26    3. At the Village of Koṭi
+Line  148906 | SN56.27    3. At the Village of Koṭi
+Line  148919 | SN56.28    3. At the Village of Koṭi
+Line  148932 | SN56.29    3. At the Village of Koṭi
+Line  148947 | SN56.2     1. Immersion
+Line  148961 | SN56.30    3. At the Village of Koṭi
+Line  148977 | SN56.31    4. In a Rosewood Forest
+Line  149001 | SN56.32    4. In a Rosewood Forest
+Line  149027 | SN56.33    4. In a Rosewood Forest
+Line  149041 | SN56.34    4. In a Rosewood Forest
+Line  149054 | SN56.35    4. In a Rosewood Forest
+Line  149075 | SN56.36    4. In a Rosewood Forest
+Line  149093 | SN56.37    4. In a Rosewood Forest
+Line  149105 | SN56.38    4. In a Rosewood Forest
+Line  149127 | SN56.39    4. In a Rosewood Forest
+Line  149161 | SN56.3     1. Immersion
+Line  149177 | SN56.40    4. In a Rosewood Forest
+Line  149199 | SN56.41    5. A Cliff
+Line  149236 | SN56.42    5. A Cliff
+Line  149267 | SN56.43    5. A Cliff
+Line  149297 | SN56.44    5. A Cliff
+Line  149323 | SN56.45    5. A Cliff
+Line  149343 | SN56.46    5. A Cliff
+Line  149369 | SN56.47    5. A Cliff
+Line  149389 | SN56.48    5. A Cliff
+Line  149408 | SN56.49    5. A Cliff
+Line  149425 | SN56.4     1. Immersion
+Line  149438 | SN56.50    5. A Cliff
+Line  149455 | SN56.51    6. Comprehension
+Line  149471 | SN56.52    6. Comprehension
+Line  149486 | SN56.53    6. Comprehension
+Line  149501 | SN56.54    6. Comprehension
+Line  149516 | SN56.55    6. Comprehension
+Line  149530 | SN56.56    6. Comprehension
+Line  149544 | SN56.57    6. Comprehension
+Line  149558 | SN56.58    6. Comprehension
+Line  149572 | SN56.59    6. Comprehension
+Line  149586 | SN56.5     1. Immersion
+Line  149599 | SN56.60    6. Comprehension
+Line  149615 | SN56.61    7. Abbreviated Texts on Raw Grain
+Line  149633 | SN56.62    7. Abbreviated Texts on Raw Grain
+Line  149646 | SN56.63    7. Abbreviated Texts on Raw Grain
+Line  149654 | SN56.64    7. Abbreviated Texts on Raw Grain
+Line  149662 | SN56.65    7. Abbreviated Texts on Raw Grain
+Line  149670 | SN56.66    7. Abbreviated Texts on Raw Grain
+Line  149678 | SN56.67    7. Abbreviated Texts on Raw Grain
+Line  149686 | SN56.68    7. Abbreviated Texts on Raw Grain
+Line  149694 | SN56.69    7. Abbreviated Texts on Raw Grain
+Line  149702 | SN56.6     1. Immersion
+Line  149715 | SN56.70    7. Abbreviated Texts on Raw Grain
+Line  149723 | SN56.71    8. Abbreviated Texts on Raw Grain
+Line  149731 | SN56.72    8. Abbreviated Texts on Raw Grain
+Line  149739 | SN56.73    8. Abbreviated Texts on Raw Grain
+Line  149747 | SN56.74    8. Abbreviated Texts on Raw Grain
+Line  149755 | SN56.75    8. Abbreviated Texts on Raw Grain
+Line  149763 | SN56.76    8. Abbreviated Texts on Raw Grain
+Line  149771 | SN56.77    8. Abbreviated Texts on Raw Grain
+Line  149779 | SN56.78    8. Abbreviated Texts on Raw Grain
+Line  149787 | SN56.79    8. Abbreviated Texts on Raw Grain
+Line  149795 | SN56.7     1. Immersion
+Line  149810 | SN56.80    8. Abbreviated Texts on Raw Grain
+Line  149818 | SN56.81    9. Abbreviated Texts on Raw Grain
+Line  149827 | SN56.82    9. Abbreviated Texts on Raw Grain
+Line  149835 | SN56.83    9. Abbreviated Texts on Raw Grain
+Line  149843 | SN56.84    9. Abbreviated Texts on Raw Grain
+Line  149851 | SN56.85    9. Abbreviated Texts on Raw Grain
+Line  149859 | SN56.86    9. Abbreviated Texts on Raw Grain
+Line  149867 | SN56.87    9. Abbreviated Texts on Raw Grain
+Line  149875 | SN56.88    9. Abbreviated Texts on Raw Grain
+Line  149883 | SN56.89    9. Abbreviated Texts on Raw Grain
+Line  149891 | SN56.8     1. Immersion
+Line  149906 | SN56.90    9. Abbreviated Texts on Raw Grain
+Line  149914 | SN56.91    10. Abbreviated Texts on Raw Grain
+Line  149922 | SN56.92    10. Abbreviated Texts on Raw Grain
+Line  149930 | SN56.93    10. Abbreviated Texts on Raw Grain
+Line  149938 | SN56.94    10. Abbreviated Texts on Raw Grain
+Line  149946 | SN56.95    10. Abbreviated Texts on Raw Grain
+Line  149954 | SN56.96-101 10. Abbreviated Texts on Raw Grain
+Line  149967 | SN56.9     1. Immersion
+Line  149980 | SN6.10     1. The Appeal
+Line  150052 | SN6.11     Chapter Two
+Line  150070 | SN6.12     Chapter Two
+Line  150085 | SN6.13     Chapter Two
+Line  150120 | SN6.14     Chapter Two
+Line  150186 | SN6.15     Chapter Two
+Line  150227 | SN6.1      1. The Appeal
+Line  150284 | SN6.2      1. The Appeal
+Line  150326 | SN6.3      1. The Appeal
+Line  150375 | SN6.4      1. The Appeal
+Line  150431 | SN6.5      1. The Appeal
+Line  150484 | SN6.6      1. The Appeal
+Line  150524 | SN6.7      1. The Appeal
+Line  150539 | SN6.8      1. The Appeal
+Line  150554 | SN6.9      1. The Appeal
+Line  150587 | SN7.10     1. The Perfected Ones
+Line  150663 | SN7.11     2. Lay Followers
+Line  150718 | SN7.12     2. Lay Followers
+Line  150750 | SN7.13     2. Lay Followers
+Line  150798 | SN7.14     2. Lay Followers
+Line  150842 | SN7.15     2. Lay Followers
+Line  150896 | SN7.16     2. Lay Followers
+Line  150922 | SN7.17     2. Lay Followers
+Line  150947 | SN7.18     2. Lay Followers
+Line  150984 | SN7.19     2. Lay Followers
+Line  151007 | SN7.1      1. The Perfected Ones
+Line  151048 | SN7.20     2. Lay Followers
+Line  151070 | SN7.21     2. Lay Followers
+Line  151099 | SN7.22     2. Lay Followers
+Line  151125 | SN7.2      1. The Perfected Ones
+Line  151176 | SN7.3      1. The Perfected Ones
+Line  151208 | SN7.4      1. The Perfected Ones
+Line  151226 | SN7.5      1. The Perfected Ones
+Line  151246 | SN7.6      1. The Perfected Ones
+Line  151276 | SN7.7      1. The Perfected Ones
+Line  151304 | SN7.8      1. The Perfected Ones
+Line  151347 | SN7.9      1. The Perfected Ones
+Line  151421 | SN8.10     1. With Vaṅgīsa
+Line  151450 | SN8.11     1. With Vaṅgīsa
+Line  151471 | SN8.12     1. With Vaṅgīsa
+Line  151501 | SN8.1      1. With Vaṅgīsa
+Line  151538 | SN8.2      1. With Vaṅgīsa
+Line  151573 | SN8.3      1. With Vaṅgīsa
+Line  151602 | SN8.4      1. With Vaṅgīsa
+Line  151633 | SN8.5      1. With Vaṅgīsa
+Line  151675 | SN8.6      1. With Vaṅgīsa
+Line  151707 | SN8.7      1. With Vaṅgīsa
+Line  151753 | SN8.8      1. With Vaṅgīsa
+Line  151807 | SN8.9      1. With Vaṅgīsa
+Line  151837 | SN9.10     1. In the Woods
+Line  151856 | SN9.11     1. In the Woods
+Line  151878 | SN9.12     1. In the Woods
+Line  151895 | SN9.13     1. In the Woods
+Line  151923 | SN9.14     1. In the Woods
+Line  151963 | SN9.1      1. In the Woods
+Line  151987 | SN9.2      1. In the Woods
+Line  152021 | SN9.3      1. In the Woods
+Line  152044 | SN9.4      1. In the Woods
+Line  152063 | SN9.5      1. In the Woods
+Line  152078 | SN9.6      1. In the Woods
+Line  152111 | SN9.7      1. In the Woods
+Line  152130 | SN9.8      1. In the Woods
+Line  152152 | SN9.9      1. In the Woods
