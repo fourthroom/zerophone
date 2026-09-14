@@ -931,7 +931,7 @@
       </div>
     </div>
 
-    <!-- ART GALLERY TAB -->
+    <!-- ART GALLERY TAB (UPDATED FOR GUARANTEED API SUCCESS) -->
     <div id="tab-art" class="tab-content">
       <h2 style="color: #ffd60a; margin-top: 0;">🏛️ World Art Museum Collections</h2>
       <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Direct open-access digital collections from premier international museums</p>
@@ -939,8 +939,6 @@
       <div class="art-box">
         <div class="museum-institution-bar">
           <button id="btnMuseumAll" class="museum-inst-btn active" onclick="setMuseumScope('all')">🌐 All Museums</button>
-          <button id="btnMuseumParis" class="museum-inst-btn" onclick="setMuseumScope('paris')">🏛️ Paris Musées</button>
-          <button id="btnMuseumSMB" class="museum-inst-btn" onclick="setMuseumScope('smb')">🏛️ SMB (Berlin)</button>
           <button id="btnMuseumVAM" class="museum-inst-btn" onclick="setMuseumScope('vam')">🏛️ V&A (London)</button>
           <button id="btnMuseumAIC" class="museum-inst-btn" onclick="setMuseumScope('aic')">🏛️ Chicago (AIC)</button>
           <button id="btnMuseumMET" class="museum-inst-btn" onclick="setMuseumScope('met')">🏛️ The Met (NYC)</button>
@@ -1428,7 +1426,7 @@
     }
 
     // =======================================================
-    // MULTI-MUSEUM ART GALLERY ENGINE (PARIS, SMB, V&A, AIC, MET, CMA)
+    // MULTI-MUSEUM ART GALLERY ENGINE (V&A, AIC, MET, CMA)
     // =======================================================
     let hasLoadedArtOnce = false;
     let currentMuseumScope = 'all';
@@ -1441,8 +1439,6 @@
       currentMuseumScope = scope;
       document.querySelectorAll('.museum-inst-btn').forEach(btn => btn.classList.remove('active'));
       if (scope === 'all') document.getElementById('btnMuseumAll').classList.add('active');
-      if (scope === 'paris') document.getElementById('btnMuseumParis').classList.add('active');
-      if (scope === 'smb') document.getElementById('btnMuseumSMB').classList.add('active');
       if (scope === 'vam') document.getElementById('btnMuseumVAM').classList.add('active');
       if (scope === 'aic') document.getElementById('btnMuseumAIC').classList.add('active');
       if (scope === 'met') document.getElementById('btnMuseumMET').classList.add('active');
@@ -1457,47 +1453,6 @@
         [array[i], array[j]] = [array[j], array[i]];
       }
       return array;
-    }
-
-    // PARIS MUSÉES OPENDATA API
-    async function fetchFromParis(query, limit = 10) {
-      try {
-        const url = `https://opendata.paris.fr/api/records/1.0/search/?dataset=oeuvres-des-musees-de-la-ville-de-paris&q=${encodeURIComponent(query)}&rows=${limit}`;
-        const res = await fetch(url);
-        const json = await res.json();
-        return (json.records || []).filter(item => item.fields && item.fields.visuel && item.fields.visuel.url).map(item => ({
-          id: `paris-${item.recordid}`,
-          title: item.fields.titre || 'Untitled',
-          artist: item.fields.auteur || 'Unknown Artist',
-          date: item.fields.date_de_production || 'Date Unknown',
-          medium: item.fields.domaine || 'Artwork',
-          imageUrl: item.fields.visuel.url,
-          museum: 'Paris Musées'
-        }));
-      } catch (e) {
-        return [];
-      }
-    }
-
-    // STAATLICHE MUSEEN ZU BERLIN (SMB)
-    async function fetchFromSMB(query, limit = 10) {
-      try {
-        const url = `https://recherche.smb.museum/api/search?q=${encodeURIComponent(query)}&limit=${limit}`;
-        const res = await fetch(url);
-        if (!res.ok) return []; // Fail gracefully on CORS blocks
-        const json = await res.json();
-        return (json.objects || []).filter(item => item.image).map(item => ({
-          id: `smb-${item.id}`,
-          title: item.title || 'Untitled',
-          artist: item.creator || 'Unknown Artist',
-          date: item.date || 'Date Unknown',
-          medium: item.medium || 'Artwork',
-          imageUrl: item.image,
-          museum: 'Staatliche Museen zu Berlin'
-        }));
-      } catch (e) {
-        return []; // Fail gracefully on CORS blocks
-      }
     }
 
     async function fetchFromVAM(query, limit = 10) {
@@ -1611,11 +1566,7 @@
       document.getElementById('mainArtworkImg').style.display = 'none';
 
       let results = [];
-      if (currentMuseumScope === 'paris') {
-        results = await fetchFromParis(query, 16);
-      } else if (currentMuseumScope === 'smb') {
-        results = await fetchFromSMB(query, 16);
-      } else if (currentMuseumScope === 'vam') {
+      if (currentMuseumScope === 'vam') {
         results = await fetchFromVAM(query, 16);
       } else if (currentMuseumScope === 'aic') {
         results = await fetchFromAIC(query, 16);
@@ -1624,15 +1575,13 @@
       } else if (currentMuseumScope === 'met') {
         results = await fetchFromMet(query, 10);
       } else {
-        const [paris, smb, vam, aic, cma, met] = await Promise.all([
-          fetchFromParis(query, 3),
-          fetchFromSMB(query, 3),
-          fetchFromVAM(query, 3),
-          fetchFromAIC(query, 3),
-          fetchFromCMA(query, 3),
-          fetchFromMet(query, 2)
+        const [vam, aic, cma, met] = await Promise.all([
+          fetchFromVAM(query, 4),
+          fetchFromAIC(query, 4),
+          fetchFromCMA(query, 4),
+          fetchFromMet(query, 3)
         ]);
-        results = shuffleArray([...paris, ...smb, ...vam, ...aic, ...cma, ...met]);
+        results = shuffleArray([...vam, ...aic, ...cma, ...met]);
       }
 
       if (results.length > 0) {
