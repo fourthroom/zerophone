@@ -92,8 +92,6 @@
     .tab-phone.active { background: #30d158; color: #000; }
     .tab-text { background: #267340; border-top: 3px solid #63e685; }
     .tab-text.active { background: #63e685; color: #000; }
-    .tab-scriptures { background: #3b2f2f; border-top: 3px solid #f59e0b; }
-    .tab-scriptures.active { background: #f59e0b; color: #000; }
     .tab-maps { background: #5c3800; border-top: 3px solid #ff9500; }
     .tab-maps.active { background: #ff9500; color: #000; }
     .tab-seattle-wifi { background: #005a70; border-top: 3px solid #00c0f0; }
@@ -104,6 +102,8 @@
     .tab-art.active { background: #ffd60a; color: #000; }
     .tab-help { background: #1c3d5a; border-top: 3px solid #38bdf8; }
     .tab-help.active { background: #38bdf8; color: #000; }
+    .tab-scriptures { background: #3b2f2f; border-top: 3px solid #f59e0b; }
+    .tab-scriptures.active { background: #f59e0b; color: #000; }
 
     .sub-tagline { font-size: 11px; display: block; font-weight: normal; margin-top: 2px; }
     .container { padding: 10px 15px; max-width: 100%; margin: 0 auto; text-align: center; }
@@ -685,10 +685,6 @@
         WebText
         <span class="sub-tagline">Free Text</span>
       </button>
-      <button class="tab-btn tab-scriptures" onclick="switchTab('scriptures')">
-        📖 Scriptures
-        <span class="sub-tagline">Sacred Texts</span>
-      </button>
       <button class="tab-btn tab-maps" onclick="switchTab('maps')">
         📍 Maps
         <span class="sub-tagline">Wi-Fi & Resource Finder</span>
@@ -708,6 +704,10 @@
       <button class="tab-btn tab-help" onclick="switchTab('help')">
         🤝 Help & Resources
         <span class="sub-tagline">Essential Community Aid</span>
+      </button>
+      <button class="tab-btn tab-scriptures" onclick="switchTab('scriptures')">
+        📖 Scriptures
+        <span class="sub-tagline">Sacred Texts</span>
       </button>
     </div>
   </div>
@@ -848,43 +848,6 @@
 
       <div class="privacy-notice-badge">
         🔒 <b>End-to-End Encrypted (AES-256-GCM):</b> All video, voice, and web text are scrambled directly on your device before transmission. Zero data is logged, stored, or shared.
-      </div>
-    </div>
-
-    <!-- SCRIPTURES TAB -->
-    <div id="tab-scriptures" class="tab-content">
-      <h2 style="color: #f59e0b; margin-top: 0;">📖 Sacred Scriptures Reader</h2>
-      <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Select a scripture to load its table of contents and reader</p>
-
-      <div class="scripture-box">
-        <div class="scripture-btn-row">
-          <button id="btnScripBible" class="scripture-sel-btn" onclick="loadScripture('bible', 'kjv.json', 'kjv_bible_complete.txt', this)">Bible</button>
-          <button id="btnScripKoran" class="scripture-sel-btn" onclick="loadScripture('koran', 'koran.json', 'en.yusufali.txt', this)">Koran</button>
-          <button id="btnScripSuttas" class="scripture-sel-btn" onclick="loadScripture('suttas', 'suttas_toc.json', 'suttas-complete.txt', this)">Buddhist Sutras</button>
-          <button id="btnScripSggs" class="scripture-sel-btn" onclick="loadScripture('sggs', 'sggs_english.json', 'sggs_english.txt', this)">Sri Guru Granth Sahib</button>
-          <button id="btnScripUpanishads" class="scripture-sel-btn" onclick="loadScripture('upanishads', 'upanishads_all_toc_3.json', 'muller_upanishads_vol1_2.txt', this)">Upanishads</button>
-          <button id="btnScripRigveda" class="scripture-sel-btn" onclick="loadScripture('rigveda', 'rig-vedas.json', 'rigveda-complete.txt', this)">Rig Vedas</button>
-        </div>
-
-        <div id="scriptureTocContainer" class="scripture-toc-panel">
-          <p style="color: #666; font-style: italic; margin: 0;">Select a scripture above to load its table of contents...</p>
-        </div>
-
-        <div class="reader-controls-bar">
-          <button class="btn-reader-nav" onclick="scrollReader(-100)">⏪ Fast Back</button>
-          <button class="btn-reader-nav" onclick="scrollReader(-20)">◀️ Back</button>
-          <span id="readerPositionIndicator" style="font-size: 12px; color: #aaa;">Line: 1</span>
-          <button class="btn-reader-nav" onclick="scrollReader(20)">Forward ▶️</button>
-          <button class="btn-reader-nav" onclick="scrollReader(100)">Fast Fwd ⏩</button>
-        </div>
-
-        <div id="scriptureReaderBox" class="scripture-reader-console">
-          <p style="color: #666; font-style: italic;">Text viewer ready...</p>
-        </div>
-      </div>
-
-      <div class="privacy-notice-badge">
-        🔒 <b>Sacred Archives:</b> Fully searchable line-indexed public domain texts.
       </div>
     </div>
 
@@ -1117,6 +1080,43 @@
       </div>
     </div>
 
+    <!-- SCRIPTURES TAB -->
+    <div id="tab-scriptures" class="tab-content">
+      <h2 style="color: #f59e0b; margin-top: 0;">📖 Sacred Scriptures Reader</h2>
+      <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Select a scripture to load its table of contents and reader</p>
+
+      <div class="scripture-box">
+        <div class="scripture-btn-row">
+          <button id="btnScripBible" class="scripture-sel-btn" onclick="loadScripture('bible', 'kjv/kjv.json', 'kjv/kjv_bible_complete.txt', this)">Bible</button>
+          <button id="btnScripKoran" class="scripture-sel-btn" onclick="loadScripture('koran', 'koran/koran.json', 'koran/en.yusufali.txt', this)">Koran</button>
+          <button id="btnScripSuttas" class="scripture-sel-btn" onclick="loadScripture('suttas', 'buddhism/suttas_loc.json', 'buddhism/early_buddhist_suttas.txt', this)">Buddhist Sutras</button>
+          <button id="btnScripSggs" class="scripture-sel-btn" onclick="loadScripture('sggs', 'sggs_english/sggs_english.json', 'sggs_english/sggs_english.txt', this)">Sri Guru Granth Sahib</button>
+          <button id="btnScripUpanishads" class="scripture-sel-btn" onclick="loadScripture('upanishads', 'upanishads/upanishads_all_toc.json', 'upanishads/upanishads_all.txt', this)">Upanishads</button>
+          <button id="btnScripRigveda" class="scripture-sel-btn" onclick="loadScripture('rigveda', 'rig-vedas/rig-vedas.json', 'rig-vedas/aurobino_rig-vedas.txt', this)">Rig Vedas</button>
+        </div>
+
+        <div id="scriptureTocContainer" class="scripture-toc-panel">
+          <p style="color: #666; font-style: italic; margin: 0;">Select a scripture above to load its table of contents...</p>
+        </div>
+
+        <div class="reader-controls-bar">
+          <button class="btn-reader-nav" onclick="scrollReader(-100)">⏪ Fast Back</button>
+          <button class="btn-reader-nav" onclick="scrollReader(-20)">◀️ Back</button>
+          <span id="readerPositionIndicator" style="font-size: 12px; color: #aaa;">Line: 1</span>
+          <button class="btn-reader-nav" onclick="scrollReader(20)">Forward ▶️</button>
+          <button class="btn-reader-nav" onclick="scrollReader(100)">Fast Fwd ⏩</button>
+        </div>
+
+        <div id="scriptureReaderBox" class="scripture-reader-console">
+          <p style="color: #666; font-style: italic;">Text viewer ready...</p>
+        </div>
+      </div>
+
+      <div class="privacy-notice-badge">
+        🔒 <b>Sacred Archives:</b> Fully searchable line-indexed public domain texts.
+      </div>
+    </div>
+
   </div>
 
   <script>
@@ -1171,7 +1171,7 @@
         jumpToLine(0);
       } catch (err) {
         tocContainer.innerHTML = '<p style="color:#ff3b30; margin:0;">Failed to load scripture data files.</p>';
-        readerBox.innerText = "Error loading text or JSON index file. Make sure both files are in your scriptures/app directory.";
+        readerBox.innerText = `Error loading text or JSON index file from subfolders (${txtFile}, ${jsonFile}). Make sure all subfolders and files exist.`;
       }
     }
 
@@ -1385,7 +1385,7 @@
       initPracticalQuotes();
 
       // Auto-load first scripture (Bible) preview by default on startup
-      loadScripture('bible', 'kjv.json', 'kjv_bible_complete.txt', document.getElementById('btnScripBible'));
+      loadScripture('bible', 'kjv/kjv.json', 'kjv/kjv_bible_complete.txt', document.getElementById('btnScripBible'));
 
       const artInput = document.getElementById('customArtInput');
       if (artInput) {
