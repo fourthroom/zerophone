@@ -1087,12 +1087,12 @@
 
       <div class="scripture-box">
         <div class="scripture-btn-row">
-          <button id="btnScripBible" class="scripture-sel-btn" onclick="loadScripture('bible', 'kjv/kjv.json', 'kjv/kjv_bible_complete.txt', this)">Bible</button>
-          <button id="btnScripKoran" class="scripture-sel-btn" onclick="loadScripture('koran', 'koran/koran.json', 'koran/en.yusufali.txt', this)">Koran</button>
-          <button id="btnScripSuttas" class="scripture-sel-btn" onclick="loadScripture('suttas', 'buddhism/suttas_loc.json', 'buddhism/early_buddhist_suttas.txt', this)">Buddhist Sutras</button>
-          <button id="btnScripSggs" class="scripture-sel-btn" onclick="loadScripture('sggs', 'sggs_english/sggs_english.json', 'sggs_english/sggs_english.txt', this)">Sri Guru Granth Sahib</button>
-          <button id="btnScripUpanishads" class="scripture-sel-btn" onclick="loadScripture('upanishads', 'upanishads/upanishads_all_toc.json', 'upanishads/upanishads_all.txt', this)">Upanishads</button>
-          <button id="btnScripRigveda" class="scripture-sel-btn" onclick="loadScripture('rigveda', 'rig-vedas/rig-vedas.json', 'rig-vedas/aurobino_rig-vedas.txt', this)">Rig Vedas</button>
+          <button id="btnScripBible" class="scripture-sel-btn" onclick="loadScripture('bible', 'scriptures/kjv/kjv.json', 'scriptures/kjv/kjv_bible_complete.txt', this)">Bible</button>
+          <button id="btnScripKoran" class="scripture-sel-btn" onclick="loadScripture('koran', 'scriptures/koran/koran.json', 'scriptures/koran/en.yusufali.txt', this)">Koran</button>
+          <button id="btnScripSuttas" class="scripture-sel-btn" onclick="loadScripture('suttas', 'scriptures/buddhism/suttas_loc.json', 'scriptures/buddhism/early_buddhist_suttas.txt', this)">Buddhist Sutras</button>
+          <button id="btnScripSggs" class="scripture-sel-btn" onclick="loadScripture('sggs', 'scriptures/sggs_english/sggs_english.json', 'scriptures/sggs_english/sggs_english.txt', this)">Sri Guru Granth Sahib</button>
+          <button id="btnScripUpanishads" class="scripture-sel-btn" onclick="loadScripture('upanishads', 'scriptures/upanishads/upanishads_all_toc.json', 'scriptures/upanishads/upanishads_all.txt', this)">Upanishads</button>
+          <button id="btnScripRigveda" class="scripture-sel-btn" onclick="loadScripture('rigveda', 'scriptures/rig-vedas/rig-vedas.json', 'scriptures/rig-vedas/aurobino_rig-vedas.txt', this)">Rig Vedas</button>
         </div>
 
         <div id="scriptureTocContainer" class="scripture-toc-panel">
@@ -1385,7 +1385,7 @@
       initPracticalQuotes();
 
       // Auto-load first scripture (Bible) preview by default on startup
-      loadScripture('bible', 'kjv/kjv.json', 'kjv/kjv_bible_complete.txt', document.getElementById('btnScripBible'));
+      loadScripture('bible', 'scriptures/kjv/kjv.json', 'scriptures/kjv/kjv_bible_complete.txt', document.getElementById('btnScripBible'));
 
       const artInput = document.getElementById('customArtInput');
       if (artInput) {
