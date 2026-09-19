@@ -2212,30 +2212,44 @@
 
         try {
           const stats = await pc.getStats();
-          stats.forEach(async report => {
-            if (report.type === 'candidate-pair' && report.state === 'succeeded') {
-              const localCandidate = stats.get(report.localCandidateId);
-              const remoteCandidate = stats.get(report.remoteCandidateId);
+          let activePair = null;
 
-              const isRelayed = (localCandidate && localCandidate.candidateType === 'relay') || 
-                                (remoteCandidate && remoteCandidate.candidateType === 'relay');
-
-              if (isRelayed && !pc.isVoiceRestricted) {
-                pc.isVoiceRestricted = true;
-
-                const videoSender = pc.getSenders().find(s => s.track && s.track.kind === 'video');
-                if (videoSender) {
-                  await videoSender.replaceTrack(null);
-                }
-
-                const badge = document.getElementById(`turn-badge-${targetSocketId}`);
-                if (badge) badge.style.display = 'block';
-
-                statusDiv.innerText = "Relay Network: Strict connection restricted to Voice-Only.";
-                statusDiv.style.color = "#ff9500";
-              }
+          stats.forEach(report => {
+            if (report.type === 'transport' && report.selectedCandidatePairId) {
+              activePair = stats.get(report.selectedCandidatePairId);
             }
           });
+
+          if (!activePair) {
+            stats.forEach(report => {
+              if (report.type === 'candidate-pair' && report.state === 'succeeded' && (report.nominated || report.selected)) {
+                activePair = report;
+              }
+            });
+          }
+
+          if (activePair) {
+            const localCandidate = stats.get(activePair.localCandidateId);
+            const remoteCandidate = stats.get(activePair.remoteCandidateId);
+
+            const isRelayed = (localCandidate && localCandidate.candidateType === 'relay') || 
+                              (remoteCandidate && remoteCandidate.candidateType === 'relay');
+
+            if (isRelayed && !pc.isVoiceRestricted) {
+              pc.isVoiceRestricted = true;
+
+              const videoSender = pc.getSenders().find(s => s.track && s.track.kind === 'video');
+              if (videoSender) {
+                await videoSender.replaceTrack(null);
+              }
+
+              const badge = document.getElementById(`turn-badge-${targetSocketId}`);
+              if (badge) badge.style.display = 'block';
+
+              statusDiv.innerText = "Relay Network: Strict connection restricted to Voice-Only.";
+              statusDiv.style.color = "#ff9500";
+            }
+          }
         } catch (e) {
           console.warn("Stats check warning:", e);
         }
