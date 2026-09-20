@@ -2204,11 +2204,18 @@
     });
 
     function monitorPeerRelay(pc, targetSocketId) {
+      // Delay first check slightly to let ICE figure out the best path
+      let checkCount = 0;
+
       pc.relayInterval = setInterval(async () => {
         if (pc.connectionState === 'closed') {
           clearInterval(pc.relayInterval);
           return;
         }
+
+        checkCount++;
+        // Give ICE ~6 seconds to find direct P2P STUN path before reacting
+        if (checkCount < 2) return;
 
         try {
           const stats = await pc.getStats();
@@ -2237,17 +2244,31 @@
 
             if (isRelayed && !pc.isVoiceRestricted) {
               pc.isVoiceRestricted = true;
-
-              const videoSender = pc.getSenders().find(s => s.track && s.track.kind === 'video');
-              if (videoSender) {
-                await videoSender.replaceTrack(null);
+              if (pc.videoSender) {
+                await pc.videoSender.replaceTrack(null);
               }
 
               const badge = document.getElementById(`turn-badge-${targetSocketId}`);
               if (badge) badge.style.display = 'block';
 
-              statusDiv.innerText = "Relay Network: Strict connection restricted to Voice-Only.";
+              statusDiv.innerText = "Relay Network: Restricted to Voice-Only.";
               statusDiv.style.color = "#ff9500";
+            } 
+            else if (!isRelayed && pc.isVoiceRestricted) {
+              // Self-healing: Connection upgraded to STUN/P2P, restore video!
+              pc.isVoiceRestricted = false;
+              if (pc.videoSender && localStream && !isVideoMuted) {
+                const videoTrack = localStream.getVideoTracks()[0];
+                if (videoTrack) {
+                  await pc.videoSender.replaceTrack(videoTrack);
+                }
+              }
+
+              const badge = document.getElementById(`turn-badge-${targetSocketId}`);
+              if (badge) badge.style.display = 'none';
+
+              statusDiv.innerText = "Live Connected! (Direct P2P)";
+              statusDiv.style.color = "#30d158";
             }
           }
         } catch (e) {
@@ -2261,10 +2282,14 @@
 
       const pc = new RTCPeerConnection(rtcConfig);
       pc.isVoiceRestricted = false;
+      pc.videoSender = null;
       peerConnections[targetSocketId] = pc;
 
       if (localStream) {
-        localStream.getTracks().forEach(track => pc.addTrack(track, localStream));
+        localStream.getTracks().forEach(track => {
+          const sender = pc.addTrack(track, localStream);
+          if (track.kind === 'video') pc.videoSender = sender;
+        });
       }
 
       pc.ontrack = (event) => {
