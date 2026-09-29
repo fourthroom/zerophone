@@ -944,7 +944,6 @@
           <button id="btnMuseumCMA" class="museum-inst-btn" onclick="setMuseumScope('cma')">🏛️ Cleveland (CMA)</button>
         </div>
 
-        <!-- GENRE BAR WITH CLEAN DYNAMIC HIGHLIGHT -->
         <div class="art-genre-bar">
           <button class="art-genre-btn active" onclick="triggerArtSearch('impressionism', 'Impressionism', this)">🎨 Impressionism</button>
           <button class="art-genre-btn" onclick="triggerArtSearch('renaissance', 'Renaissance', this)">⚜️ Renaissance</button>
@@ -1018,12 +1017,14 @@
         <div class="help-layout">
           <!-- LEFT BANK: CATEGORIES -->
           <div class="help-category-bank">
-            <button class="help-category-btn active" onclick="selectHelpCategory('housing', this)">🏠 Housing & Shelter</button>
-            <button class="help-category-btn" onclick="selectHelpCategory('addiction', this)">💊 Drug Addiction & Recovery</button>
-            <button class="help-category-btn" onclick="selectHelpCategory('food', this)">🥫 Food Resources & Meals</button>
+            <button class="help-category-btn active" onclick="selectHelpCategory('housing', this)">🏠 Housing & Shelters</button>
+            <button class="help-category-btn" onclick="selectHelpCategory('addiction', this)">💊 Drug Addiction & Harm Reduction</button>
+            <button class="help-category-btn" onclick="selectHelpCategory('food', this)">🥫 Food Banks & Hot Meals</button>
             <button class="help-category-btn" onclick="selectHelpCategory('hygiene', this)">🚿 Hygiene & Showers</button>
+            <!-- NEW MEDICAL CATEGORY BUTTON -->
+            <button class="help-category-btn" onclick="selectHelpCategory('medical', this)">🩺 Medical, Dental & Vision</button>
             <button class="help-category-btn" onclick="selectHelpCategory('financial', this)">💵 Financial & Utility Aid</button>
-            <button class="help-category-btn" onclick="selectHelpCategory('family', this)">🍼 Family & Pediatric Care</button>
+            <button class="help-category-btn" onclick="selectHelpCategory('family', this)">🍼 Family, Diapers & Pediatrics</button>
             <button class="help-category-btn" onclick="selectHelpCategory('mental', this)">🧠 Mental Health Services</button>
             <button class="help-category-btn crisis" onclick="selectHelpCategory('suicide', this)">☎️ Crisis & Suicide (988)</button>
           </div>
@@ -1339,7 +1340,6 @@
       document.getElementById('locationModal').style.display = 'none';
     }
 
-    // RADIO ENGINE
     const RADIO_API_BASE = "https://de1.api.radio-browser.info/json/stations/search";
 
     async function fetchRadioBrowserGenre(tag, labelName) {
@@ -1431,9 +1431,6 @@
       });
     }
 
-    // =======================================================
-    // MULTI-MUSEUM ART GALLERY ENGINE (WITH BUTTON HIGHLIGHT FIX)
-    // =======================================================
     let hasLoadedArtOnce = false;
     let currentMuseumScope = 'all';
     let lastArtQuery = 'impressionism';
@@ -1558,7 +1555,7 @@
           fetchFromCMA(query, 6),
           fetchFromMet(query, 4)
         ]);
-        results = shuffleArray([...aic, ...cma, ...met]);
+        results = shuffleArray([...aic, cma, ...met]);
       }
 
       if (results.length > 0) {
@@ -1674,146 +1671,188 @@
 
     // =======================================================
     // 🤝 HELP & COMMUNITY RESOURCES DIRECTORY ENGINE
+    // Updated with verified local Seattle resources
     // =======================================================
     let currentHelpLocation = "Seattle, WA";
     let activeHelpCategory = "housing";
 
     const HELP_RESOURCES = {
       housing: {
-        title: "🏠 Housing, Shelters & Eviction Defense",
+        title: "🏠 Housing, Shelters & Safe Parking",
         cards: [
           {
-            name: "National Emergency Shelter Locator (HUD)",
-            desc: "Immediate emergency shelter, transitional housing, and local rapid rehousing programs.",
-            phone: "211",
-            mapQuery: "emergency homeless shelter"
+            name: "Bread of Life Mission (Men 18+)",
+            desc: "24/7 shelter for homeless men. $5 fee and valid ID required. Visit to register.",
+            phone: "206-682-3579",
+            mapQuery: "97 S Main St, Seattle"
           },
           {
-            name: "National Eviction Prevention & Rental Aid",
-            desc: "Emergency rental assistance, legal tenant defense, and eviction diversion programs.",
-            phone: "800-569-4287",
-            mapQuery: "housing authority rental assistance"
+            name: "WHEEL Women's Shelter",
+            desc: "Serves homeless women 18 and older. Service animals allowed. Call ahead for availability.",
+            phone: "206-956-0334",
+            mapQuery: "WHEEL Women's Shelter Seattle"
           },
           {
-            name: "Youth & Young Adult Emergency Shelter Line",
-            desc: "24/7 dedicated crisis line and immediate shelter for runaway or housing-insecure youth.",
-            phone: "800-786-2929",
-            mapQuery: "youth shelter"
+            name: "ROOTS Shelter (Young Adults 18-25)",
+            desc: "Nightly shelter for young adults. Provides on-site case management. Intake daily 8pm-8:30pm.",
+            phone: "206-632-1635",
+            mapQuery: "4541 19th Ave NE, Seattle"
+          },
+          {
+            name: "Broadview (Domestic Violence Shelter)",
+            desc: "Confidential 24/7 shelter for survivor-headed families with children fleeing domestic violence.",
+            phone: "206-299-2500",
+            mapQuery: "Seattle domestic violence shelter"
           }
         ]
       },
       addiction: {
-        title: "💊 Substance Use & Addiction Recovery",
+        title: "💊 Substance Use & Harm Reduction",
         cards: [
+          {
+            name: "Capitol Hill Needle Exchange",
+            desc: "Provides new sterile syringes, clean injection supplies, and sexual safety items. Tu-Sa: 6:30-8:30pm.",
+            phone: "206-263-2000",
+            mapQuery: "1161 11th Ave, Seattle"
+          },
+          {
+            name: "Hepatitis Education Project",
+            desc: "Syringe services program, low-barrier buprenorphine treatment, naloxone, and testing. M-Th 12:30-5:30pm.",
+            phone: "206-732-0311",
+            mapQuery: "1621 S Jackson St, Seattle"
+          },
           {
             name: "SAMHSA National Recovery Helpline",
             desc: "Free, confidential, 24/7 information service for individuals facing substance use disorders.",
             phone: "800-662-4357",
             mapQuery: "substance abuse treatment center"
-          },
-          {
-            name: "Local Detox & Withdrawal Management Centers",
-            desc: "Medically supervised detox, sobering centers, and inpatient stabilization programs.",
-            phone: "211",
-            mapQuery: "detox center"
-          },
-          {
-            name: "Harm Reduction, Syringe Exchange & Naloxone Sites",
-            desc: "Free overdose reversal supplies (Narcan/Naloxone), testing strips, and health navigation.",
-            phone: "211",
-            mapQuery: "harm reduction needle exchange"
           }
         ]
       },
       food: {
-        title: "🥫 Food Banks, Soup Kitchens & Meal Programs",
+        title: "🥫 Food Banks & Hot Meals",
         cards: [
           {
-            name: "Feeding America Community Food Pantry Network",
-            desc: "Weekly free grocery distribution, fresh produce boxes, and emergency dry food rations.",
-            phone: "211",
-            mapQuery: "food bank pantry"
+            name: "Ballard Food Bank",
+            desc: "Food pantry and baby cupboard for Seattle residents. Visit Mon, Tue, Wed, Thu for assistance.",
+            phone: "206-789-7800",
+            mapQuery: "1400 Leary Way NW, Seattle"
           },
           {
-            name: "Daily Community Soup Kitchens & Hot Meals",
-            desc: "Daily hot lunch and dinner services open to all members of the community without ID.",
-            phone: "211",
-            mapQuery: "soup kitchen free hot meal"
+            name: "Cathedral Kitchen",
+            desc: "Provides a free hot meal to anyone in need. Monday-Friday 4-4:45pm, Sunday 7-8am.",
+            phone: "206-264-2091",
+            mapQuery: "910 Columbia St, Seattle"
           },
           {
-            name: "SNAP / EBT Emergency Food Assistance Office",
-            desc: "State emergency food stamps expedited applications for low-income and unhoused individuals.",
-            phone: "800-221-5689",
+            name: "Chief Seattle Club (Native 18+)",
+            desc: "Drop-in meals for American Indian & Alaskan Natives. Breakfast 8-9:30am, Lunch 12-1pm.",
+            phone: "206-715-7536",
+            mapQuery: "410 2nd Ave Extension S, Seattle"
+          },
+          {
+            name: "Within Reach (Basic Food/WIC)",
+            desc: "Toll-free phone line with screening and application assistance for Basic Food and WIC nutrition programs.",
+            phone: "888-436-6392",
             mapQuery: "DSHS community services SNAP food stamps"
           }
         ]
       },
       hygiene: {
-        title: "🚿 Showers, Restrooms & Laundry Centers",
+        title: "🚿 Showers, Restrooms & Laundry",
         cards: [
           {
-            name: "Day Center Free Showers & Hygiene Stations",
-            desc: "Access to private hot showers, hygiene kits, towels, and public restrooms.",
-            phone: "211",
-            mapQuery: "homeless day center showers"
+            name: "Urban Rest Stop - Ballard",
+            desc: "Provides restrooms, showers, and laundry. M-F 6:30am-10am; 11:30am-2:30pm. No smoking or drug use allowed.",
+            phone: "206-258-3626",
+            mapQuery: "2014 NW 57th St, Seattle"
           },
           {
-            name: "Community Free Laundry Programs",
-            desc: "Facilities offering free washer and dryer cycles and laundry detergent for low-income families.",
-            phone: "211",
-            mapQuery: "free laundry community center"
+            name: "Compass Hygiene Center",
+            desc: "Drop-in showers, laundry, and hygiene supplies for adults. M-F 7am-4pm, Sat 8am-Noon.",
+            phone: "206-474-1680",
+            mapQuery: "77 S Washington St, Seattle"
           },
           {
-            name: "Public Restrooms & Drinking Water Access",
-            desc: "Mapped municipal parks, community centers, and libraries with verified public restrooms.",
-            phone: "211",
-            mapQuery: "public library restroom"
+            name: "Elizabeth Gregory Home (Women Only)",
+            desc: "Showers, laundry facilities, and hygiene kits for women 18+. No children allowed.",
+            phone: "206-729-0262",
+            mapQuery: "1604 NE 50th St, Seattle"
+          }
+        ]
+      },
+      medical: {
+        title: "🩺 Medical, Dental & Vision",
+        cards: [
+          {
+            name: "UW School of Dentistry (Urgent Care)",
+            desc: "Urgent care dental services for patients who need immediate care. M-F: 8:30am-12pm; 1:30pm-4:30pm.",
+            phone: "206-543-5850",
+            mapQuery: "1959 NE Pacific St, Seattle"
+          },
+          {
+            name: "Harborview Pioneer Square Clinic",
+            desc: "Provides primary health care for ages 18+. Treatment of acute health problems, social services, education.",
+            phone: "206-744-1500",
+            mapQuery: "206 3rd Ave S, Seattle"
+          },
+          {
+            name: "UpLift Northwest (Vision)",
+            desc: "Provides exams and glasses for Medicaid clients or those who have no vision insurance. Leave voicemail to schedule.",
+            phone: "206-686-2759",
+            mapQuery: "2515 Western Ave, Seattle"
+          },
+          {
+            name: "Apple Health (Medical Benefits)",
+            desc: "Provides medical benefits and healthcare enrollment assistance. Ongoing enrollment.",
+            phone: "855-923-4633",
+            mapQuery: "Washington Health Benefit Exchange"
           }
         ]
       },
       financial: {
-        title: "💵 Financial Assistance & Utility Lifelines",
+        title: "💵 Financial Assistance & Resources",
         cards: [
           {
-            name: "2-1-1 United Way Financial Relief Clearinghouse",
-            desc: "Emergency grants for past-due utility shut-offs, rent help, and transit vouchers.",
+            name: "2-1-1 United Way Help Line",
+            desc: "Emergency screening and connections to financial relief, utility grants, and transit vouchers.",
             phone: "211",
             mapQuery: "community action agency financial assistance"
+          },
+          {
+            name: "Dress For Success",
+            desc: "Provides interview-appropriate clothing for low-income women and nonbinary individuals. Job search support.",
+            phone: "206-461-4472",
+            mapQuery: "600 Pine St, Seattle"
           },
           {
             name: "LIHEAP Electric & Heating Energy Grants",
             desc: "Federal utility grant assistance to keep winter heat and summer electricity active.",
             phone: "866-674-6327",
             mapQuery: "LIHEAP utility assistance office"
-          },
-          {
-            name: "Government Lifeline Free Cellphone & Internet Aid",
-            desc: "Federal subsidies providing free monthly cellular service and discounted home internet.",
-            phone: "800-234-9473",
-            mapQuery: "lifeline assistance phone wireless"
           }
         ]
       },
       family: {
-        title: "🍼 Family, Diapers & Pediatric Care",
+        title: "🍼 Family, Diapers & Maternity",
         cards: [
           {
-            name: "National Diaper Bank & Infant Essentials",
-            desc: "Free monthly allocations of infant diapers, baby wipes, and infant formula.",
-            phone: "211",
-            mapQuery: "diaper bank family resource center"
+            name: "FamilyWorks Free Diaper Program",
+            desc: "Provides free diapers (50-70/mo), wipes, and rash cream for children under 4 or with a disability. No appt needed.",
+            phone: "206-647-1790",
+            mapQuery: "1005 NE 67th St, Seattle"
           },
           {
-            name: "Free Pediatric & Child Health Clinics",
-            desc: "Sliding-scale and free childhood immunizations, well-child checkups, and dental screenings.",
-            phone: "211",
-            mapQuery: "community health center pediatrics"
+            name: "Vine Maple Place",
+            desc: "Provides supportive shelter for homeless pregnant women & single-parent families with children ages 17 & younger.",
+            phone: "425-432-2119",
+            mapQuery: "21730 Dorre Don Way SE, Maple Valley"
           },
           {
-            name: "Child Care Resource & Subsidy Agency",
-            desc: "Assistance finding subsidized childcare, Head Start programs, and emergency respite care.",
-            phone: "800-424-2246",
-            mapQuery: "head start child care resources"
+            name: "West Seattle Clothesline",
+            desc: "Operates a clothing bank which provides free clothing and shoes for infants, children, and adults.",
+            phone: "206-932-4357",
+            mapQuery: "4425 41st Ave SW, Seattle"
           }
         ]
       },
@@ -2204,7 +2243,6 @@
     });
 
     function monitorPeerRelay(pc, targetSocketId) {
-      // Delay first check slightly to let ICE figure out the best path
       let checkCount = 0;
 
       pc.relayInterval = setInterval(async () => {
@@ -2214,7 +2252,6 @@
         }
 
         checkCount++;
-        // Give ICE ~6 seconds to find direct P2P STUN path before reacting
         if (checkCount < 2) return;
 
         try {
@@ -2255,7 +2292,6 @@
               statusDiv.style.color = "#ff9500";
             } 
             else if (!isRelayed && pc.isVoiceRestricted) {
-              // Self-healing: Connection upgraded to STUN/P2P, restore video!
               pc.isVoiceRestricted = false;
               if (pc.videoSender && localStream && !isVideoMuted) {
                 const videoTrack = localStream.getVideoTracks()[0];
