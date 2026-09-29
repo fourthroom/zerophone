@@ -1002,31 +1002,26 @@
 
     <!-- 🤝 HELP & COMMUNITY RESOURCES TAB -->
     <div id="tab-help" class="tab-content">
-      <h2 style="color: #38bdf8; margin-top: 0;">🤝 Essential Community Help & Well-Being Directory</h2>
-      <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Find physical, mental, and social support services with direct-dial and mapping links</p>
+      <h2 style="color: #38bdf8; margin-top: 0;">🤝 Help & Community Resources</h2>
+      <p style="color: #aaa; font-size: 13px; margin-top: -10px;">Comprehensive directory of physical, mental, and social support services</p>
 
       <div class="help-box">
-        <!-- TOP LOCATION INPUT -->
-        <div class="help-location-bar">
-          <label for="helpLocationInput" style="font-size: 13px; font-weight: bold; color: #ccc;">Your City or Zip:</label>
-          <input type="text" id="helpLocationInput" class="help-loc-input" placeholder="e.g., Seattle, WA or 98101" value="Seattle, WA">
-          <button class="btn-help-loc" onclick="updateHelpLocation()">Update Location</button>
-          <button class="btn-help-loc" style="background:#30d158;" onclick="detectHelpGPS()">📍 Use GPS</button>
+        <!-- TOP LOCATION HEADER (REPLACED) -->
+        <div class="help-location-bar" style="justify-content: flex-start; background: #121212; padding: 12px 16px; border-radius: 10px; border: 1px solid #333;">
+          <h3 style="margin: 0; font-size: 18px; color: #fff; display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 22px;">📍</span> Seattle Area Resources
+          </h3>
+          <span style="color: #aaa; font-size: 13px; margin-left: auto;">Complete Brochure Listings</span>
         </div>
 
         <div class="help-layout">
           <!-- LEFT BANK: CATEGORIES -->
           <div class="help-category-bank">
-            <button class="help-category-btn active" onclick="selectHelpCategory('housing', this)">🏠 Housing & Shelters</button>
-            <button class="help-category-btn" onclick="selectHelpCategory('addiction', this)">💊 Drug Addiction & Harm Reduction</button>
-            <button class="help-category-btn" onclick="selectHelpCategory('food', this)">🥫 Food Banks & Hot Meals</button>
-            <button class="help-category-btn" onclick="selectHelpCategory('hygiene', this)">🚿 Hygiene & Showers</button>
-            <!-- NEW MEDICAL CATEGORY BUTTON -->
-            <button class="help-category-btn" onclick="selectHelpCategory('medical', this)">🩺 Medical, Dental & Vision</button>
-            <button class="help-category-btn" onclick="selectHelpCategory('financial', this)">💵 Financial & Utility Aid</button>
-            <button class="help-category-btn" onclick="selectHelpCategory('family', this)">🍼 Family, Diapers & Pediatrics</button>
-            <button class="help-category-btn" onclick="selectHelpCategory('mental', this)">🧠 Mental Health Services</button>
-            <button class="help-category-btn crisis" onclick="selectHelpCategory('suicide', this)">☎️ Crisis & Suicide (988)</button>
+            <button class="help-category-btn active" onclick="selectHelpCategory('food', this)">🥫 Food Resources</button>
+            <button class="help-category-btn" onclick="selectHelpCategory('shelter', this)">🏠 Shelter & Housing</button>
+            <button class="help-category-btn" onclick="selectHelpCategory('hygiene', this)">🚿 Hygiene & Survival</button>
+            <button class="help-category-btn" onclick="selectHelpCategory('medical', this)">🩺 Health & Medical</button>
+            <button class="help-category-btn crisis" onclick="selectHelpCategory('crisis', this)">☎️ Crisis & Hotlines</button>
           </div>
 
           <!-- RIGHT CONSOLE: CARDS -->
@@ -1047,7 +1042,7 @@
       </div>
 
       <div class="privacy-notice-badge">
-        🔒 <b>Community Support:</b> All emergency hotlines (988, 211, SAMHSA) are completely free, confidential, and accessible 24/7.
+        🔒 <b>Community Support:</b> All emergency hotlines (988, 211) are completely free, confidential, and accessible 24/7.
       </div>
     </div>
 
@@ -1673,119 +1668,213 @@
     // 🤝 HELP & COMMUNITY RESOURCES DIRECTORY ENGINE
     // Updated with verified local Seattle resources
     // =======================================================
-    let currentHelpLocation = "Seattle, WA";
-    let activeHelpCategory = "housing";
+    let activeHelpCategory = "food";
 
     const HELP_RESOURCES = {
-      housing: {
-        title: "🏠 Housing, Shelters & Safe Parking",
-        cards: [
-          { name: "Emergency Family Intake Line", desc: "For families seeking shelter on the day of viewing. Intake starts at 9 am.", phone: "206-245-1026", mapQuery: "Seattle emergency family shelter" },
-          { name: "Coordinated Entry for All (CEA)", desc: "Main entry point for King County housing assistance and shelter programs.", phone: "206-328-5796", mapQuery: "King County Coordinated Entry" },
-          { name: "DESC / King Co. Emergency Shelter", desc: "Walk In Only. Admin Bldg at 4th & Jefferson. Intake begins at 7pm.", phone: "206-833-9070", mapQuery: "500 4th Ave, Seattle" },
-          { name: "Salvation Army Women's Shelter", desc: "1101 Pike St. Call M-F to inquire about space. $5/day fee; those without income may be accepted.", phone: "206-447-9944", mapQuery: "1101 Pike St, Seattle" },
-          { name: "YWCA Angeline's Center (Women)", desc: "Screening nightly from 6-9pm. Priority given to those who arrive by 8pm. No ID Req'd.", phone: "206-441-3210", mapQuery: "2030 3rd Ave, Seattle" },
-          { name: "WHEEL Women's Shelter", desc: "Serves homeless women 18 and older. Service animals allowed. Call ahead for availability.", phone: "206-956-0334", mapQuery: "WHEEL Women's Shelter Seattle" },
-          { name: "Bread of Life Mission (Men 18+)", desc: "24/7 shelter for homeless men. $5 fee and valid ID required. Visit to register.", phone: "206-682-3579", mapQuery: "97 S Main St, Seattle" },
-          { name: "Seattle's Union Gospel Mission", desc: "Drug and alcohol-free enhanced shelter for single men. Meals provided.", phone: "206-501-4357", mapQuery: "318 2nd Ave Ext S, Seattle" },
-          { name: "Lazarus Center (Men 45+)", desc: "Visit in person daily, 6:30pm. Men bussed from Lazarus Center to shelter. ID req'd.", phone: "206-323-6341", mapQuery: "2329 Rainier Ave S, Seattle" },
-          { name: "ROOTS Shelter (Young Adults 18-25)", desc: "Nightly shelter for young adults. Provides on-site case management. Intake daily 8pm.", phone: "206-632-1635", mapQuery: "4541 19th Ave NE, Seattle" },
-          { name: "YouthCare's Orion Center (Youth 12-24)", desc: "First-time participants arrive before 6pm for intake. Overnight shelter.", phone: "206-374-0866", mapQuery: "1828 Yale Ave, Seattle" },
-          { name: "Together Center (Young Adults 18-24)", desc: "Visit in person daily at 8:30 pm. Closes each morning at 8am.", phone: "425-449-3868", mapQuery: "16225 NE 87th St, Redmond" },
-          { name: "Broadview (Domestic Violence)", desc: "Confidential 24/7 shelter for survivor-headed families with children fleeing domestic violence.", phone: "206-299-2500", mapQuery: "Seattle domestic violence shelter" },
-          { name: "DAWN (Domestic Violence)", desc: "Call for intake 24 hours, daily. Serves survivors of any gender.", phone: "425-656-7867", mapQuery: "DAWN domestic violence shelter" },
-          { name: "LifeWire (Domestic Violence)", desc: "Call for intake 24 hours, daily. Survivors of any gender. Occasional motel vouchers.", phone: "425-746-1940", mapQuery: "LifeWire domestic violence shelter" },
-          { name: "Home Safe / New Beginnings", desc: "Call for intake 24 hours, daily. Serves women, including trans women.", phone: "206-522-9472", mapQuery: "New Beginnings domestic violence shelter" },
-          { name: "Camp Second Chance (Encampment)", desc: "Outdoor camp for single adults, couples, & families with kids. ID req'd.", phone: "425-615-0800", mapQuery: "Camp Second Chance Seattle" },
-          { name: "Congregations for the Homeless (Bellevue)", desc: "Provides shelter for men at rotating churches. ID req'd.", phone: "425-289-4044", mapQuery: "Congregations for the Homeless Bellevue" },
-          { name: "HOME & ARISE Shelters (Kent/Renton)", desc: "Call or visit in person for intake. Serves anyone age 18+ identifying as female.", phone: "253-854-0077", mapQuery: "HOME ARISE shelter Renton" },
-          { name: "REACH Center of Hope (Renton)", desc: "Call M-F: 7:30am-4pm to schedule intake appointment.", phone: "425-277-7594", mapQuery: "1055 S Grady Way, Renton" },
-          { name: "Catholic Community Services - Katherine's House", desc: "Transitional housing and shelter services. Call for screening.", phone: "253-856-7716", mapQuery: "Katherine's House Kent" },
-          { name: "Arms Around You - Safe Home", desc: "Dormitory style transitional housing program for formerly incarcerated homeless women.", phone: "253-302-3231", mapQuery: "Arms Around You Seattle" }
-        ]
-      },
-      addiction: {
-        title: "💊 Substance Use & Harm Reduction",
-        cards: [
-          { name: "Washington Recovery Help Line", desc: "Statewide 24-hour behavioral health helpline for substance use disorder or problem gambling.", phone: "866-789-1511", mapQuery: "Washington Recovery Help Line" },
-          { name: "SAMHSA National Recovery Helpline", desc: "Free, confidential, 24/7 information service for individuals facing substance use disorders.", phone: "800-662-4357", mapQuery: "substance abuse treatment center" },
-          { name: "Capitol Hill Needle Exchange", desc: "Provides new sterile syringes, clean injection supplies, and sexual safety items. Tu-Sa: 6:30-8:30pm.", phone: "206-263-2000", mapQuery: "1161 11th Ave, Seattle" },
-          { name: "Hepatitis Education Project", desc: "Syringe services program, low-barrier buprenorphine treatment, naloxone, and testing.", phone: "206-732-0311", mapQuery: "1621 S Jackson St, Seattle" }
-        ]
-      },
       food: {
-        title: "🥫 Food Banks & Hot Meals",
-        cards: [
-          { name: "Cathedral Kitchen", desc: "Provides a free hot meal to anyone in need. Monday-Friday 4-4:45pm, Sunday 7-8am.", phone: "206-264-2091", mapQuery: "910 Columbia St, Seattle" },
-          { name: "Operation Nightwatch", desc: "Breakfast M-F 9am, Lunch M-F 12pm. Serves anyone in need.", phone: "206-329-8700", mapQuery: "624 South Dearborn Street, Seattle" },
-          { name: "Mary's Place", desc: "Breakfast 7am-8:30am; Lunch 12pm-1pm. Serves women with or without children.", phone: "206-812-8559", mapQuery: "1830 9th Ave, Seattle" },
-          { name: "YouthCare's Orion Center", desc: "Meals: M-F: 10am, 12:15pm, 5pm. Serves homeless and street involved youth ages 12-24.", phone: "206-622-5555", mapQuery: "1828 Yale Ave, Seattle" },
-          { name: "Chief Seattle Club (Native 18+)", desc: "Drop-in meals for American Indian & Alaskan Natives. Breakfast 8am, Lunch 12pm.", phone: "206-715-7536", mapQuery: "410 2nd Ave Extension S, Seattle" },
-          { name: "FareStart", desc: "Culinary job training and community meals program.", phone: "206-787-1502", mapQuery: "700 Virginia St, Seattle" },
-          { name: "Chicken Soup Brigade", desc: "Provides delivery service for homebound people. Call to register.", phone: "206-957-1686", mapQuery: "210 S Lucile St, Seattle" },
-          { name: "SoDo Community Market", desc: "Provides food for anyone in need. M: 1:30pm-7:30pm; W, F: 8am-2pm.", phone: "206-625-0755", mapQuery: "1915 4th Ave S, Seattle" },
-          { name: "Ballard Food Bank", desc: "Food pantry and baby cupboard for Seattle residents. Visit Mon-Thu.", phone: "206-789-7800", mapQuery: "1400 Leary Way NW, Seattle" },
-          { name: "Polack Food Bank", desc: "W, F: 10am-12pm; Th: 2pm-4pm. Operates a food pantry.", phone: "206-461-3240", mapQuery: "1601 16th Ave, Seattle" },
-          { name: "YWCA Central Seattle Food Bank", desc: "Available for residents of central Seattle. Wednesdays 12pm-3pm.", phone: "206-461-4882", mapQuery: "2820 East Cherry Street, Seattle" },
-          { name: "Greenwood Food Bank", desc: "Tu: 4pm-6pm. W: 11am-1pm. Provides food twice a week for anyone.", phone: "206-783-1225", mapQuery: "9501 Greenwood Ave N, Seattle" },
-          { name: "North Helpline", desc: "Operates a food pantry that provides a variety of items. Open to anyone.", phone: "206-367-3477", mapQuery: "12736 33rd Ave NE, Seattle" },
-          { name: "Salvation Army Downtown Food Bank", desc: "Tu, W, Th mornings and afternoons. Operates a food pantry.", phone: "206-442-8393", mapQuery: "1101 Pike St, Seattle" },
-          { name: "Filipino Community of Seattle", desc: "M, Tu, Th: 12pm-1pm. Operates a food pantry. Delivery available for seniors.", phone: "206-722-9372", mapQuery: "5740 MLK Jr Way S, Seattle" },
-          { name: "West Seattle Food Bank", desc: "Tu, Th, F: 10am-2pm, W: 12pm-7pm. Assistance provided once per week.", phone: "206-932-9023", mapQuery: "3419 SW Morgan St, Seattle" },
-          { name: "Within Reach (Basic Food/WIC)", desc: "Toll-free phone line with screening and application assistance for Basic Food and WIC nutrition programs.", phone: "888-436-6392", mapQuery: "DSHS community services SNAP food stamps" }
+        title: "🥫 Food Resources",
+        subcategories: [
+          {
+            title: "Food Banks",
+            areas: [
+              {
+                areaName: "CENTRAL/DOWNTOWN",
+                cards: [
+                  { name: "Asian Counseling and Referral Service", address: "919 S King St", desc: "Serves Asian/Pacific Islander foods. Wed & Fri.", phone: "206-695-7510" },
+                  { name: "Byrd Barr Place", address: "722 18th Ave", desc: "Food bank and financial assistance. Tue, Wed, Thu.", phone: "206-812-4940" },
+                  { name: "Chicken Soup Brigade", address: "210 S Lucile St", desc: "Food pickup/delivery for those with medical conditions.", phone: "206-957-1686" },
+                  { name: "Immanuel Community Services", address: "1215 Thomas St", desc: "Food bank located in SLU. Mon 11am-1pm.", phone: "206-622-1930" },
+                  { name: "Jewish Family Service", address: "1601 16th Ave", desc: "Polack Food Bank. Wed & Fri mornings, Thu afternoons.", phone: "206-461-3240" },
+                  { name: "Puget Sound Labor Agency", address: "2800 1st Ave", desc: "Food bank for union members and community. Mon & Fri.", phone: "206-448-9277" },
+                  { name: "Salvation Army Seattle", address: "1101 Pike St", desc: "Downtown food bank. Tue, Wed, Thu.", phone: "206-442-8393" },
+                  { name: "St. Mary's Food Bank", address: "611 20th Ave S", desc: "Food bank serving Central District. Tue, Thu, Sat.", phone: "206-324-7100" },
+                  { name: "YWCA Central", address: "2820 East Cherry St", desc: "Central Seattle Food Bank. Wednesdays 12pm-3pm.", phone: "206-461-4882" }
+                ]
+              },
+              {
+                areaName: "NORTH",
+                cards: [
+                  { name: "Ballard Food Bank", address: "1400 Leary Way NW", desc: "Food pantry and no-cook bags. Mon-Thu.", phone: "206-789-7800" },
+                  { name: "FamilyWorks", address: "1501 N 45th St", desc: "Wallingford food bank and family resource center.", phone: "206-694-6722" },
+                  { name: "North Helpline", address: "12736 33rd Ave NE", desc: "Lake City food bank. Wed, Thu, Sat.", phone: "206-367-3477" },
+                  { name: "Phinney Neighborhood Association", address: "6532 Phinney Ave N", desc: "Hot meals and food access. Check for current hours.", phone: "206-783-2244" },
+                  { name: "University District Food Bank", address: "5017 Roosevelt Way NE", desc: "Walk-in food bank. Mon, Tue, Thu, Fri.", phone: "206-523-7060" }
+                ]
+              },
+              {
+                areaName: "SOUTH/WEST",
+                cards: [
+                  { name: "Paradise of Samoa", address: "1001 15th Ave S", desc: "Food assistance program. Call for hours.", phone: "206-329-3933" },
+                  { name: "Rainier Valley Food Bank", address: "4205 Rainier Ave S", desc: "Busy food bank in South Seattle. Wed & Sat.", phone: "206-723-4105" },
+                  { name: "SVdP Food Bank", address: "5950 4th Ave S", desc: "Georgetown area food bank. Tue, Thu, Fri, Sat.", phone: "206-767-3835" },
+                  { name: "West Seattle Food Bank", address: "3419 SW Morgan St", desc: "Food distribution. Tue, Wed, Thu, Fri.", phone: "206-932-9023" },
+                  { name: "White Center Food Bank", address: "10829 8th Ave SW", desc: "Serves White Center and surrounding area.", phone: "206-762-2848" }
+                ]
+              }
+            ]
+          },
+          {
+            title: "Food Benefits",
+            areas: [
+              {
+                areaName: "ALL AREAS",
+                cards: [
+                  { name: "DSHS (Basic Food/EBT)", address: "Various Locations", desc: "Washington state SNAP/EBT assistance program.", phone: "877-501-2233" },
+                  { name: "WIC (Women, Infants & Children)", address: "Within Reach", desc: "Nutrition program for pregnant women and children under 5.", phone: "800-322-2588" }
+                ]
+              }
+            ]
+          },
+          {
+            title: "Hot Meals",
+            areas: [
+              {
+                areaName: "ALL AREAS",
+                cards: [
+                  { name: "Bread of Life Mission", address: "97 S Main St", desc: "Lunch Mon-Fri 12:15pm. Dinner daily 6:30pm (must attend service).", phone: "206-682-3579" },
+                  { name: "Cathedral Kitchen", address: "910 Columbia St", desc: "Dinner Mon-Fri 4:00pm. Sunday Breakfast 7:00am.", phone: "206-264-2091" },
+                  { name: "Chief Seattle Club", address: "410 2nd Ave Ext S", desc: "For Native Americans. Breakfast Mon-Fri 8am. Lunch 12pm.", phone: "206-292-6214" },
+                  { name: "Community Psychiatric Clinic", address: "Multiple Locations", desc: "Meals for established clients.", phone: "206-461-3614" },
+                  { name: "Compass Center", address: "77 S Washington St", desc: "Check current meal program schedule.", phone: "206-474-1000" },
+                  { name: "DESC Main Shelter", address: "517 3rd Ave", desc: "Meals for current shelter guests.", phone: "206-464-1570" },
+                  { name: "Edible Hope Kitchen", address: "5710 22nd Ave NW", desc: "St. Luke's in Ballard. Breakfast Mon-Fri 7am-10am.", phone: "206-784-3119" },
+                  { name: "FareStart", address: "700 Virginia St", desc: "Community meals provided at various partner locations.", phone: "206-443-1233" },
+                  { name: "First AME Church", address: "1522 14th Ave", desc: "Community meals. Call for schedule.", phone: "206-324-3664" },
+                  { name: "Immanuel Community Services", address: "1215 Thomas St", desc: "Community Lunch on the last Sunday of the month.", phone: "206-622-1930" },
+                  { name: "Lazarus Center", address: "2329 Rainier Ave S", desc: "Lunch daily at 12pm for adults 50+.", phone: "206-323-6341" },
+                  { name: "Mary's Place", address: "Various Locations", desc: "Meals for women and families using the day center.", phone: "206-621-8474" },
+                  { name: "Millionair Club Charity", address: "2515 Western Ave", desc: "Uplift NW. Breakfast & Lunch M-F for workers.", phone: "206-728-5627" },
+                  { name: "Operation Nightwatch", address: "302 14th Ave S", desc: "Dinner provided during evening drop-in (starts 8:30pm).", phone: "206-329-2099" },
+                  { name: "OSL (Operation Sack Lunch)", address: "Outdoor Locations", desc: "Serves hot meals under I-5. Multiple times daily.", phone: "206-622-6422" },
+                  { name: "Phinney Neighborhood Association", address: "6532 Phinney Ave N", desc: "Hot meal program Tue & Thu evenings.", phone: "206-783-2244" },
+                  { name: "Pike Market Senior Center", address: "85 Pike St, Rm 200", desc: "Meals for adults 55+. Breakfast & Lunch daily.", phone: "206-728-2773" },
+                  { name: "Recovery Café", address: "2022 Boren Ave", desc: "Meals for members in recovery. Tue-Sat.", phone: "206-374-8731" },
+                  { name: "Seattle Indian Center", address: "1265 S Main St", desc: "Hot meals Mon-Fri 11:30am - 1pm.", phone: "206-329-8700" },
+                  { name: "YouthCare Orion Center", address: "1828 Yale Ave", desc: "Meals for youth 12-24. Breakfast, Lunch, Dinner M-F.", phone: "206-622-5555" },
+                  { name: "Seattle's Union Gospel Mission", address: "318 2nd Ave Ext S", desc: "Meals for shelter guests and walk-ins. Multiple times.", phone: "206-622-5177" }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      shelter: {
+        title: "🏠 Shelter & Housing",
+        subcategories: [
+          {
+            title: "Emergency Shelters",
+            areas: [
+              {
+                areaName: "CENTRAL/DOWNTOWN",
+                cards: [
+                  { name: "DESC Main Shelter", address: "517 3rd Ave", desc: "Emergency shelter for vulnerable adults. Walk-in.", phone: "206-464-1570" },
+                  { name: "Union Gospel Mission", address: "318 2nd Ave Ext S", desc: "Men's shelter. ID required.", phone: "206-622-5177" },
+                  { name: "Bread of Life Mission", address: "97 S Main St", desc: "Men's shelter. $5 fee may apply. Sign up early.", phone: "206-682-3579" },
+                  { name: "Mary's Place", address: "Downtown", desc: "Women and families. Call line for intake.", phone: "206-245-1026" },
+                  { name: "WHEEL Women's Shelter", address: "Various", desc: "Low-barrier women's shelter. Call for location.", phone: "206-956-0334" }
+                ]
+              },
+              {
+                areaName: "NORTH",
+                cards: [
+                  { name: "ROOTS Young Adult Shelter", address: "4541 19th Ave NE", desc: "For young adults 18-25. Line up by 8pm.", phone: "206-632-1635" }
+                ]
+              },
+              {
+                areaName: "SOUTH/WEST",
+                cards: [
+                  { name: "Camp Second Chance", address: "9701 Myers Way S", desc: "Sanctioned encampment. Call for availability.", phone: "425-615-0800" }
+                ]
+              }
+            ]
+          },
+          {
+            title: "Day Centers",
+            areas: [
+              {
+                areaName: "ALL AREAS",
+                cards: [
+                  { name: "Chief Seattle Club", address: "410 2nd Ave Ext S", desc: "Day center for American Indians and Alaska Natives.", phone: "206-292-6214" },
+                  { name: "Lazarus Center", address: "2329 Rainier Ave S", desc: "Day center for individuals 50 and older.", phone: "206-323-6341" },
+                  { name: "The Sophia Way", address: "Bellevue", desc: "Women's day center and shelter services.", phone: "425-463-6285" }
+                ]
+              }
+            ]
+          }
         ]
       },
       hygiene: {
-        title: "🚿 Showers, Restrooms, Laundry & Mail",
-        cards: [
-          { name: "Compass Housing Alliance - CSO", desc: "Provides mail service and drop-in hygiene center for anyone needing a local address for receipt of mail.", phone: "206-474-1600", mapQuery: "77 S Washington St, Seattle" },
-          { name: "Urban Rest Stop - Ballard", desc: "Provides restrooms, showers, and laundry. M-F mornings and afternoons. No smoking or drug use.", phone: "206-258-3626", mapQuery: "2014 NW 57th St, Seattle" },
-          { name: "Elizabeth Gregory Home (Women Only)", desc: "Showers, laundry facilities, and hygiene kits for women 18+. No children allowed.", phone: "206-729-0262", mapQuery: "1604 NE 50th St, Seattle" }
+        title: "🚿 Hygiene & Survival",
+        subcategories: [
+          {
+            title: "Showers & Laundry",
+            areas: [
+              {
+                areaName: "CENTRAL/DOWNTOWN",
+                cards: [
+                  { name: "Urban Rest Stop - Downtown", address: "1924 9th Ave", desc: "Free showers, laundry, and restrooms. Mon-Fri.", phone: "206-332-0110" },
+                  { name: "Compass Center Hygiene", address: "77 S Washington St", desc: "Showers, laundry, mail service. M-F early mornings.", phone: "206-474-1000" }
+                ]
+              },
+              {
+                areaName: "NORTH",
+                cards: [
+                  { name: "Urban Rest Stop - Ballard", address: "2014 NW 57th St", desc: "Showers and laundry. Mon-Fri.", phone: "206-258-3626" },
+                  { name: "Urban Rest Stop - U-District", address: "1415 NE 43rd St", desc: "Showers and laundry. Tue-Sat.", phone: "206-327-0744" }
+                ]
+              }
+            ]
+          }
         ]
       },
       medical: {
-        title: "🩺 Medical, Dental & Vision",
-        cards: [
-          { name: "UW School of Dentistry (Urgent Care)", desc: "Urgent care dental services for patients who need immediate care. M-F: 8:30am-12pm; 1:30pm-4:30pm.", phone: "206-543-5850", mapQuery: "1959 NE Pacific St, Seattle" },
-          { name: "Harborview Pioneer Square Clinic", desc: "Provides primary health care for ages 18+. Treatment of acute health problems, social services, education.", phone: "206-744-1500", mapQuery: "206 3rd Ave S, Seattle" },
-          { name: "UpLift Northwest (Vision)", desc: "Provides exams and glasses for Medicaid clients or those who have no vision insurance. Leave voicemail.", phone: "206-686-2759", mapQuery: "2515 Western Ave, Seattle" },
-          { name: "Apple Health (Medical Benefits)", desc: "Provides medical benefits and healthcare enrollment assistance. Ongoing enrollment.", phone: "855-923-4633", mapQuery: "Washington Health Benefit Exchange" }
+        title: "🩺 Health & Medical",
+        subcategories: [
+          {
+            title: "Medical Clinics",
+            areas: [
+              {
+                areaName: "CENTRAL/DOWNTOWN",
+                cards: [
+                  { name: "Harborview Pioneer Square Clinic", address: "206 3rd Ave S", desc: "Primary care, walk-ins accepted. Medicaid.", phone: "206-744-1500" },
+                  { name: "Neighborcare Pike Place Clinic", address: "1930 Post Alley", desc: "Medical, dental, and mental health.", phone: "206-728-4143" },
+                  { name: "Country Doctor Clinic", address: "500 19th Ave E", desc: "Sliding scale and Medicaid community clinic.", phone: "206-299-1600" }
+                ]
+              },
+              {
+                areaName: "NORTH",
+                cards: [
+                  { name: "Neighborcare 45th St Clinic", address: "1629 N 45th St", desc: "Wallingford community clinic and youth services.", phone: "206-633-3350" }
+                ]
+              },
+              {
+                areaName: "SOUTH/WEST",
+                cards: [
+                  { name: "Sea Mar South Park Clinic", address: "8720 14th Ave S", desc: "Medical, dental, bilingual staff.", phone: "206-762-3730" }
+                ]
+              }
+            ]
+          }
         ]
       },
-      financial: {
-        title: "💵 Financial Assistance & Resources",
-        cards: [
-          { name: "2-1-1 United Way Help Line", desc: "Emergency screening and connections to financial relief, utility grants, and transit vouchers.", phone: "211", mapQuery: "community action agency financial assistance" },
-          { name: "Dress For Success", desc: "Provides interview-appropriate clothing for low-income women and nonbinary individuals. Job search support.", phone: "206-461-4472", mapQuery: "600 Pine St, Seattle" },
-          { name: "LIHEAP Electric & Heating Energy Grants", desc: "Federal utility grant assistance to keep winter heat and summer electricity active.", phone: "866-674-6327", mapQuery: "LIHEAP utility assistance office" }
-        ]
-      },
-      family: {
-        title: "🍼 Family, Diapers & Maternity",
-        cards: [
-          { name: "FamilyWorks Free Diaper Program", desc: "Provides free diapers (50-70/mo), wipes, and rash cream for children under 4 or with a disability.", phone: "206-647-1790", mapQuery: "1005 NE 67th St, Seattle" },
-          { name: "Vine Maple Place", desc: "Provides supportive shelter for homeless pregnant women & single-parent families with children.", phone: "425-432-2119", mapQuery: "21730 Dorre Don Way SE, Maple Valley" },
-          { name: "West Seattle Clothesline", desc: "Operates a clothing bank which provides free clothing and shoes for infants, children, and adults.", phone: "206-932-4357", mapQuery: "4425 41st Ave SW, Seattle" }
-        ]
-      },
-      mental: {
-        title: "🧠 Mental Health Counseling & Hotlines",
-        cards: [
-          { name: "Teen Link", desc: "Confidential and anonymous help line for teens. Talk it out with another teen.", phone: "866-833-6546", mapQuery: "Teen Link mental health support" },
-          { name: "Warm Line", desc: "Peer support line for people living with emotional and mental health challenges.", phone: "877-500-9276", mapQuery: "Warm Line mental health" },
-          { name: "Community Mental Health Centers", desc: "Walk-in counseling, psychiatric evaluations, peer support groups, and trauma therapy.", phone: "211", mapQuery: "community mental health clinic" },
-          { name: "NAMI National Alliance on Mental Illness", desc: "Free peer-support service providing information, resource referrals, and community support.", phone: "800-950-6264", mapQuery: "NAMI mental health support" }
-        ]
-      },
-      suicide: {
-        title: "☎️ 24/7 Crisis & Suicide Lifelines",
-        cards: [
-          { name: "988 Suicide & Crisis Lifeline", desc: "Free, confidential 24/7 support for anyone in emotional distress, suicidal crisis, or substance panic.", phone: "988", isCrisis: true, mapQuery: "crisis stabilization center" },
-          { name: "24-Hour Crisis Line", desc: "Immediate help for individuals, families, and friends of people in emotional crisis.", phone: "866-427-4747", isCrisis: true, mapQuery: "crisis center Seattle" },
-          { name: "Community Care Hub Intake Center", desc: "Centralized crisis support and care hub intake line for King County.", phone: "833-453-0336", isCrisis: true, mapQuery: "King county community care hub" },
-          { name: "King County Stop Hate Hotline", desc: "Report hate crimes and receive support through the county's dedicated hotline.", phone: "833-786-7481", isCrisis: true, mapQuery: "King county civil rights" },
-          { name: "Veterans Crisis Line", desc: "Confidential support specialized for military veterans, active service members, and families.", phone: "988", isCrisis: true, mapQuery: "VA medical center mental health" },
-          { name: "The Trevor Project", desc: "24/7 suicide prevention and crisis counseling for LGBTQ youth and young adults.", phone: "866-488-7386", isCrisis: true, mapQuery: "LGBTQ community center crisis" }
+      crisis: {
+        title: "☎️ Crisis & Hotlines",
+        subcategories: [
+          {
+            title: "24/7 Support Lines",
+            areas: [
+              {
+                areaName: "ALL AREAS (TOLL-FREE)",
+                cards: [
+                  { name: "988 Suicide & Crisis Lifeline", address: "Anywhere", desc: "24/7 confidential emotional support.", phone: "988", isCrisis: true },
+                  { name: "Washington 2-1-1", address: "Statewide", desc: "Connections to rent, utility, and general resources.", phone: "211" },
+                  { name: "Teen Link", address: "King County", desc: "Anonymous help line for teens, by teens. Evenings.", phone: "866-833-6546" },
+                  { name: "Domestic Violence Hotline", address: "National", desc: "24/7 confidential support for DV victims.", phone: "800-799-7233", isCrisis: true },
+                  { name: "Recovery Help Line", address: "Statewide", desc: "24/7 substance abuse and mental health support.", phone: "866-789-1511" }
+                ]
+              }
+            ]
+          }
         ]
       }
     };
@@ -1801,50 +1890,53 @@
       renderHelpCategory(catKey);
     }
 
-    function updateHelpLocation() {
-      const input = document.getElementById('helpLocationInput');
-      const val = input.value.trim();
-      if (!val) return alert("Please enter a valid city or zip code.");
-      currentHelpLocation = val;
-      renderHelpCategory(activeHelpCategory);
-    }
-
-    function detectHelpGPS() {
-      if (!navigator.geolocation) return alert("Geolocation not supported on this browser.");
-      navigator.geolocation.getCurrentPosition(
-        (pos) => {
-          currentCoords = { lat: pos.coords.latitude, lng: pos.coords.longitude };
-          currentHelpLocation = `${pos.coords.latitude.toFixed(3)}, ${pos.coords.longitude.toFixed(3)}`;
-          document.getElementById('helpLocationInput').value = "📍 Current GPS Location";
-          renderHelpCategory(activeHelpCategory);
-        },
-        () => alert("Unable to detect location. Please type your city or zip code.")
-      );
-    }
-
     function renderHelpCategory(catKey) {
       const consoleEl = document.getElementById('helpResultsConsole');
       const data = HELP_RESOURCES[catKey];
       if (!data) return;
 
-      let html = `<div class="help-console-header"><span>${data.title}</span><span style="font-size:12px; font-weight:normal; color:#aaa;">Near: ${currentHelpLocation}</span></div>`;
+      let html = `<div class="help-console-header"><span style="font-size:20px;">${data.title}</span></div>`;
 
-      data.cards.forEach(card => {
-        const mapUrl = currentCoords 
-          ? `https://www.google.com/maps?q=${encodeURIComponent(card.mapQuery)}&ll=${currentCoords.lat},${currentCoords.lng}&z=14`
-          : `https://www.google.com/maps?q=${encodeURIComponent(card.mapQuery + ' in ' + currentHelpLocation)}&z=14`;
-
-        html += `
-          <div class="resource-card ${card.isCrisis ? 'crisis-card' : ''}">
-            <h3 class="resource-card-title">${card.name}</h3>
-            <p class="resource-card-desc">${card.desc}</p>
-            <div class="resource-card-actions">
-              <a href="tel:${card.phone}" class="${card.isCrisis ? 'btn-res-crisis' : 'btn-res-call'}">📞 Call ${card.phone}</a>
-              <a href="${mapUrl}" target="_blank" rel="noopener noreferrer" class="btn-res-map">📍 View Nearby Map</a>
+      if (data.subcategories) {
+        data.subcategories.forEach(sub => {
+          html += `
+            <div style="margin-top:20px; margin-bottom:10px; padding-bottom:5px; border-bottom:2px solid #38bdf8;">
+              <h3 style="margin:0; color:#fff; font-size:18px;">${sub.title}</h3>
             </div>
-          </div>
-        `;
-      });
+          `;
+          
+          sub.areas.forEach(area => {
+            html += `
+              <div style="margin-top:15px; margin-bottom:10px;">
+                <h4 style="margin:0 0 8px 0; color:#38bdf8; font-size:13px; text-transform:uppercase; letter-spacing:1px; background:#1c1c1e; padding:6px 10px; border-radius:6px; display:inline-block; border:1px solid #333;">
+                  📍 ${area.areaName}
+                </h4>
+              </div>
+            `;
+                     
+            area.cards.forEach(card => {
+              const mapQuery = card.address && card.address !== 'Various Locations' && card.address !== 'Anywhere' && card.address !== 'Statewide'
+                ? `${card.name} ${card.address} Seattle` 
+                : `${card.name} Seattle`;
+              const mapUrl = `https://www.google.com/maps?q=${encodeURIComponent(mapQuery)}&z=14`;
+              
+              html += `
+                <div class="resource-card ${card.isCrisis ? 'crisis-card' : ''}" style="margin-bottom:12px;">
+                  <h3 class="resource-card-title">${card.name}</h3>
+                  <p class="resource-card-desc">
+                    <b style="color:#ddd;">${card.address || 'Confidential / Various'}</b><br>
+                    ${card.desc}
+                  </p>
+                  <div class="resource-card-actions">
+                    <a href="tel:${card.phone}" class="${card.isCrisis ? 'btn-res-crisis' : 'btn-res-call'}">📞 Call ${card.phone}</a>
+                    <a href="${mapUrl}" target="_blank" rel="noopener noreferrer" class="btn-res-map">📍 Map</a>
+                  </div>
+                </div>
+              `;
+            });
+          });
+        });
+      }
 
       consoleEl.innerHTML = html;
     }
