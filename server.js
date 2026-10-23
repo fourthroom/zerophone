@@ -5,14 +5,27 @@ const path = require('path');
 const { Server } = require('socket.io');
 
 const app = express();
+
+// SECURITY UPDATE: Mitigate TLS/CA vulnerabilities and bypass flaws
+// 1. Hide the Express framework signature
+app.disable('x-powered-by');
+
+// 2. Enforce HTTP Strict Transport Security (HSTS) and prevent MIME-sniffing
+// This prevents attackers from forcing a downgrade to HTTP if the TLS CA is compromised
+app.use((req, res, next) => {
+  res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  next();
+});
+
 app.use(cors());
 
-// Serve test page at fourthroom.org/test[cite: 2]
+// Serve test page at fourthroom.org/test
 app.get('/test', (req, res) => {
   res.sendFile(path.join(__dirname, 'test.html'));
 });
 
-// Serve all static files (HTML, CSS, JSON, images) from the current folder[cite: 2]
+// Serve all static files (HTML, CSS, JSON, images) from the current folder
 app.use(express.static(__dirname));
 
 const server = http.createServer(app);
@@ -24,7 +37,7 @@ const io = new Server(server, {
   }
 });
 
-// Twilio Client Setup (Environment Variables)[cite: 2]
+// Twilio Client Setup (Environment Variables)
 const twilioSid = process.env.TWILIO_ACCOUNT_SID;
 const twilioAuthToken = process.env.TWILIO_AUTH_TOKEN;
 let twilioClient = null;
@@ -37,7 +50,7 @@ if (twilioSid && twilioAuthToken) {
   console.warn('[Twilio] Credentials missing. Falling back to public STUN.');
 }
 
-// Endpoint to provide ephemeral ICE servers (STUN + TURN)[cite: 2]
+// Endpoint to provide ephemeral ICE servers (STUN + TURN)
 app.get('/api/ice-servers', async (req, res) => {
   const fallbackServers = [{ urls: 'stun:stun.l.google.com:19302' }];
 
@@ -54,11 +67,11 @@ app.get('/api/ice-servers', async (req, res) => {
   }
 });
 
-// TOTAL MONTHLY RENDER FREE TIER HOURS ALLOWANCE[cite: 2]
+// TOTAL MONTHLY RENDER FREE TIER HOURS ALLOWANCE
 const MONTHLY_RENDER_HOURS_LIMIT = 750;
 const serverStartTime = new Date();
 
-// ANONYMOUS IN-MEMORY USAGE STATS[cite: 2]
+// ANONYMOUS IN-MEMORY USAGE STATS
 const usageStats = {
   activeConnections: 0,
   totalVideoCallsStarted: 0,
