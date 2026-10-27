@@ -342,6 +342,7 @@
       align-items: center;
       gap: 15px;
       margin-top: 15px;
+      flex-wrap: wrap;
     }
 
     .btn-media-toggle {
@@ -361,6 +362,11 @@
     .btn-media-toggle.muted {
       background: #ff3b30;
       border-color: #d70015;
+    }
+    .btn-media-toggle.warning {
+      background: #ff9500;
+      border-color: #cc7700;
+      color: #000;
     }
 
     .btn-red-end { 
@@ -861,6 +867,8 @@
       <div id="inCallControls" class="incall-controls-bar" style="display:none;">
         <button id="toggleMicBtn" class="btn-media-toggle" onclick="toggleAudio()" title="Mute/Unmute Mic">🎙️</button>
         <button id="toggleCamBtn" class="btn-media-toggle" onclick="toggleVideo()" title="Turn Camera On/Off">📹</button>
+        <!-- NEW SNAPSHOT / LOW BANDWIDTH TOGGLE -->
+        <button id="toggleSnapshotBtn" class="btn-media-toggle" onclick="toggleSnapshotMode()" title="Toggle Low-Bandwidth Snapshot Mode (1 FPS)">🐢</button>
         <button id="hangUpBtn" class="btn-red-end" onclick="hangUpCall()">🔴 End Call</button>
       </div>
 
@@ -1023,6 +1031,8 @@
 
     let isAudioMuted = false;
     let isVideoMuted = false;
+    let snapshotModeActive = false; // Tracks User's Low Bandwidth Snapshot Mode
+    let networkMonitorInterval = null;
 
     const roomIdInput = document.getElementById('roomId');
     const callerNameInput = document.getElementById('callerName');
@@ -1385,6 +1395,105 @@
       statusDiv.style.color = "#ff9500";
     });
 
+    // LOW BANDWIDTH "SNAPSHOT" MODE CONTROLS
+    async function applyVideoProfile(pc, profile) {
+      if (!pc) return;
+      const senders = pc.getSenders();
+      const videoSender = senders.find(s => s.track && s.track.kind === 'video');
+      if (!videoSender) return;
+
+      const params = videoSender.getParameters();
+      if (!params.encodings || params.encodings.length === 0) params.encodings = [{}];
+      
+      if (profile === 'snapshot') {
+        params.encodings[0].maxFramerate = 1;      // Force 1 FPS Snapshots
+        params.encodings[0].maxBitrate = 40000;    // Cap at 40kbps
+        params.encodings[0].scaleResolutionDownBy = 2; // Half resolution
+      } else {
+        delete params.encodings[0].maxFramerate;
+        delete params.encodings[0].maxBitrate;
+        params.encodings[0].scaleResolutionDownBy = 1;
+      }
+      
+      try {
+        await videoSender.setParameters(params);
+      } catch(e) {
+        console.warn("Failed to apply video encoding parameters (might be unsupported by device)", e);
+      }
+    }
+
+    async function toggleSnapshotMode() {
+      snapshotModeActive = !snapshotModeActive;
+      const btn = document.getElementById('toggleSnapshotBtn');
+      
+      if (snapshotModeActive) {
+        btn.classList.add('warning');
+        statusDiv.innerText = "🐢 Snapshot Mode Enabled (Saving Data/Network)";
+        statusDiv.style.color = "#ff9500";
+      } else {
+        btn.classList.remove('warning');
+        statusDiv.innerText = "Live Connected!";
+        statusDiv.style.color = "#30d158";
+      }
+      
+      // Update our own sending framerate to ALL peers 
+      // AND notify remote peers to lower their sending framerate strictly to US.
+      for (let id in peerConnections) {
+        const pc = peerConnections[id];
+        await applyVideoProfile(pc, snapshotModeActive ? 'snapshot' : 'normal');
+        
+        if (pc.controlChannel && pc.controlChannel.readyState === 'open') {
+          pc.controlChannel.send(JSON.stringify({ 
+            type: snapshotModeActive ? 'request-snapshot' : 'request-normal' 
+          }));
+        }
+      }
+    }
+
+    // AUTOMATIC SLOW-NETWORK MONITOR
+    function startNetworkMonitor() {
+      if (networkMonitorInterval) clearInterval(networkMonitorInterval);
+      networkMonitorInterval = setInterval(async () => {
+        if (snapshotModeActive || Object.keys(peerConnections).length === 0) return;
+        
+        let badNetworkDetected = false;
+        
+        for (let id in peerConnections) {
+          const pc = peerConnections[id];
+          try {
+            const stats = await pc.getStats();
+            stats.forEach(report => {
+              // High Round-Trip Time Check (> 800ms)
+              if (report.type === 'candidate-pair' && report.state === 'succeeded') {
+                if (report.currentRoundTripTime > 0.8) badNetworkDetected = true;
+              }
+              // Severe Packet Loss Check
+              if (report.type === 'inbound-rtp' && report.kind === 'video') {
+                const lost = report.packetsLost || 0;
+                const received = report.packetsReceived || 0;
+                if (lost > 50 && (lost / (received + lost)) > 0.1) {
+                  badNetworkDetected = true; // >10% packet loss
+                }
+              }
+            });
+          } catch(e) {}
+        }
+        
+        if (badNetworkDetected) {
+          console.warn("Severe network drops detected. Auto-enabling Snapshot mode to save connection.");
+          toggleSnapshotMode(); // Automagically downgrade
+        }
+      }, 5000); // Check every 5 seconds
+    }
+
+    function stopNetworkMonitor() {
+      if (networkMonitorInterval) {
+        clearInterval(networkMonitorInterval);
+        networkMonitorInterval = null;
+      }
+    }
+
+
     // START MULTI-PARTY VIDEO CALL WITH ROBUST HARDWARE FALLBACKS
     async function startCall() {
       const roomId = roomIdInput.value.trim();
@@ -1429,6 +1538,8 @@
       updateGridLayout();
       socket.emit('join-room', roomId);
       statusDiv.innerText = `Joined room: ${roomId}. Waiting for peers...`;
+      
+      startNetworkMonitor();
     }
 
     // IN-CALL CONTROLS: AUDIO & VIDEO MUTE TOGGLES
@@ -1469,6 +1580,10 @@
     }
 
     function hangUpCall() {
+      stopNetworkMonitor();
+      snapshotModeActive = false;
+      document.getElementById('toggleSnapshotBtn').classList.remove('warning');
+
       if (localStream) {
         localStream.getTracks().forEach(track => track.stop());
         localStream = null;
@@ -1527,8 +1642,8 @@
     });
 
     socket.on('answer', async ({ answer, senderId }) => {
-      statusDiv.innerText = "Live Connected!";
-      statusDiv.style.color = "#30d158";
+      statusDiv.innerText = snapshotModeActive ? "🐢 Snapshot Mode Enabled" : "Live Connected!";
+      statusDiv.style.color = snapshotModeActive ? "#ff9500" : "#30d158";
       if (peerConnections[senderId]) {
         await peerConnections[senderId].setRemoteDescription(new RTCSessionDescription(answer));
       }
@@ -1553,11 +1668,44 @@
       updateGridLayout();
     });
 
+    async function handleDataChannelMessage(event, senderId) {
+      try {
+        const msg = JSON.parse(event.data);
+        const pc = peerConnections[senderId];
+        if (!pc) return;
+
+        // Remote peer has a slow network and requested a specific framerate downgrade
+        if (msg.type === 'request-snapshot') {
+          console.log(`Peer ${senderId} requested low bandwidth snapshot mode.`);
+          await applyVideoProfile(pc, 'snapshot'); 
+        } else if (msg.type === 'request-normal') {
+          console.log(`Peer ${senderId} recovered, restoring normal bandwidth mode.`);
+          await applyVideoProfile(pc, 'normal');
+        }
+      } catch (err) {
+        console.warn("Control message parsing error:", err);
+      }
+    }
+
     function createPeerConnection(targetSocketId) {
       if (peerConnections[targetSocketId]) return peerConnections[targetSocketId];
 
       const pc = new RTCPeerConnection(rtcConfig);
       peerConnections[targetSocketId] = pc;
+
+      // SET UP OUT OF BAND NEGOTIATED DATA CHANNEL FOR BANDWIDTH CONTROL SIGNALING
+      const dc = pc.createDataChannel('bandwidth-control', { negotiated: true, id: 1 });
+      pc.controlChannel = dc;
+      
+      dc.onopen = () => {
+        // If we are currently operating in snapshot mode when someone connects, tell them!
+        if (snapshotModeActive) {
+          dc.send(JSON.stringify({ type: 'request-snapshot' }));
+          applyVideoProfile(pc, 'snapshot');
+        }
+      };
+
+      dc.onmessage = (e) => handleDataChannelMessage(e, targetSocketId);
 
       if (localStream) {
         localStream.getTracks().forEach(track => pc.addTrack(track, localStream));
@@ -1580,7 +1728,7 @@
         videoEl.srcObject = event.streams[0];
         
         videoEl.play().catch(e => console.warn("Remote stream play trigger:", e));
-        statusDiv.innerText = "Live Connected!";
+        statusDiv.innerText = snapshotModeActive ? "🐢 Snapshot Mode Enabled" : "Live Connected!";
       };
 
       pc.onicecandidate = (event) => {
