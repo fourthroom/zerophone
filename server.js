@@ -101,10 +101,52 @@ app.get('/stats', (req, res) => {
   });
 });
 
+
+// ==========================================
+// GAME ON! "PICTURE THIS!" STATE MANAGER
+// ==========================================
+const gameRooms = {};
+
+const BOARD_SPACES = [
+  "Inherit a Painting",
+  "Bank Auction",
+  "Collect $3,000,000 OR a Value Card",
+  "May Buy a Painting for $1,500,000",
+  "Private Auction",
+  "Bank Auction",
+  "Bank Auction",
+  "Inherit a Painting",
+  "Collect $3,000,000 OR a Value Card",
+  "May Buy a Painting for $2,000,000",
+  "Bank Auction",
+  "May Buy a Painting for $1,500,000",
+  "Bank Auction",
+  "May Buy a Painting for $2,500,000",
+  "Private Auction",
+  "Collect $3,000,000 OR a Value Card",
+  "Bank Auction",
+  "Inherit a Painting",
+  "Bank Auction",
+  "Bank Auction",
+  "Collect $3,000,000 OR a Value Card",
+  "May Buy a Painting for $1,500,000",
+  "Inherit a Painting",
+  "Bank Auction",
+  "Private Auction",
+  "May Buy a Painting for $2,000,000",
+  "Collect $3,000,000 OR a Value Card",
+  "Bank Auction",
+  "May Buy a Painting for $2,500,000",
+  "Bank Auction"
+];
+// ==========================================
+
+
 io.on('connection', (socket) => {
   usageStats.activeConnections++;
   console.log(`[Connect] Active sockets: ${usageStats.activeConnections}`);
 
+  // WEBPHONE & WEBTEXT SIGNALING
   socket.on('join-room', (roomId) => {
     socket.join(roomId);
     usageStats.totalRoomsJoined++;
@@ -112,11 +154,8 @@ io.on('connection', (socket) => {
   });
 
   socket.on('offer', (data) => {
-    if (data.isAudioOnly) {
-      usageStats.totalVoiceCallsStarted++;
-    } else {
-      usageStats.totalVideoCallsStarted++;
-    }
+    if (data.isAudioOnly) usageStats.totalVoiceCallsStarted++;
+    else usageStats.totalVideoCallsStarted++;
     socket.to(data.targetId).emit('offer', { offer: data.offer, senderId: socket.id });
   });
 
@@ -138,9 +177,116 @@ io.on('connection', (socket) => {
     });
   });
 
+
+  // ==========================================
+  // GAME ON! "PICTURE THIS!" SOCKET EVENTS
+  // ==========================================
+  
+  socket.on('game-select-piece', ({ roomId, color }) => {
+    if (!gameRooms[roomId]) {
+      gameRooms[roomId] = { players: [], turnIndex: 0, phase: 'lobby' };
+    }
+    const room = gameRooms[roomId];
+    
+    // Prevent duplicate player profiles if they click multiple times
+    const existing = room.players.find(p => p.id === socket.id);
+    if (!existing) {
+      room.players.push({ id: socket.id, piece: color, spaceIndex: 0, cash: 15000000, portfolio: [] });
+    } else {
+      existing.piece = color; 
+    }
+  });
+
+  socket.on('game-start', ({ roomId }) => {
+    const room = gameRooms[roomId];
+    if(room && room.players.length > 0) {
+      room.phase = 'board_ready';
+    }
+  });
+
+  socket.on('game-init-deck', ({ roomId, genre }) => {
+    const room = gameRooms[roomId];
+    if (room && room.players.length > 0) {
+      room.phase = 'active_turn';
+      // Signal the first player that it is their turn to roll
+      io.to(roomId).emit('game-state-update', {
+        phase: 'turn_start',
+        activePlayerId: room.players[room.turnIndex].id,
+        activePlayerPiece: room.players[room.turnIndex].piece
+      });
+    }
+  });
+
+  socket.on('game-roll-dice', ({ roomId }) => {
+    const room = gameRooms[roomId];
+    if(!room) return;
+    
+    const player = room.players[room.turnIndex];
+    // Ensure only the active player can roll the dice
+    if(!player || player.id !== socket.id) return; 
+
+    const roll = Math.floor(Math.random() * 6) + 1;
+    player.spaceIndex = (player.spaceIndex + roll) % 30; // Move along the 30-space board
+    const spaceAction = BOARD_SPACES[player.spaceIndex];
+
+    // 1. Emit dice animation state to everyone
+    io.to(roomId).emit('game-state-update', { 
+      phase: 'dice_animating', 
+      lastRoll: roll, 
+      activePlayerPiece: player.piece 
+    });
+
+    // 2. Wait 2.5 seconds for animation to play, then resolve the space action
+    setTimeout(() => {
+      let buttonsHtml = '';
+      
+      // Inject direct socket.emit calls to automatically process end-turns via the HTML client
+      if (spaceAction === "Bank Auction") {
+        buttonsHtml = `<button class="btn-game-action" onclick="socket.emit('game-end-turn', {roomId: '${roomId}'})">Start Bidding (End Turn)</button>`;
+      } else if (spaceAction.includes("Collect")) {
+        buttonsHtml = `<button class="btn-game-action" onclick="socket.emit('game-end-turn', {roomId: '${roomId}'})">Take Cash</button>
+                       <button class="btn-game-action" onclick="socket.emit('game-end-turn', {roomId: '${roomId}'})">Take Value Card</button>`;
+      } else if (spaceAction.includes("Buy")) {
+         buttonsHtml = `<button class="btn-game-action" onclick="socket.emit('game-end-turn', {roomId: '${roomId}'})">Buy Painting</button>
+                        <button class="btn-game-action" onclick="socket.emit('game-end-turn', {roomId: '${roomId}'})">Pass</button>`;
+      } else {
+        buttonsHtml = `<button class="btn-game-action" onclick="socket.emit('game-end-turn', {roomId: '${roomId}'})">Done</button>`;
+      }
+
+      io.to(roomId).emit('game-state-update', {
+        phase: 'space_action',
+        currentSpaceText: spaceAction,
+        actionButtonsHtml: buttonsHtml,
+        activePlayerId: player.id
+      });
+    }, 2500);
+  });
+  
+  socket.on('game-end-turn', ({ roomId }) => {
+     const room = gameRooms[roomId];
+     if(room && room.players.length > 0) {
+       // Advance to next player
+       room.turnIndex = (room.turnIndex + 1) % room.players.length;
+       
+       io.to(roomId).emit('game-state-update', {
+         phase: 'turn_start',
+         activePlayerId: room.players[room.turnIndex].id,
+         activePlayerPiece: room.players[room.turnIndex].piece
+       });
+     }
+  });
+
+
+  // ==========================================
+  // DISCONNECT LOGIC
+  // ==========================================
   socket.on('disconnect', () => {
     usageStats.activeConnections = Math.max(0, usageStats.activeConnections - 1);
     console.log(`[Disconnect] Active sockets: ${usageStats.activeConnections}`);
+    
+    // (Optional): Add logic here to cleanly remove disconnected players from gameRooms 
+    // if their phone drops mid-game, preventing the turn order from getting stuck.
+    
     io.emit('user-disconnected', { socketId: socket.id });
   });
 });
