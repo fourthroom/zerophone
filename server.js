@@ -6,8 +6,17 @@ const { Server } = require('socket.io');
 
 const app = express();
 
-// FORCE HTTPS REDIRECT
-// If a user connects via standard HTTP, instantly redirect them to secure HTTPS
+// SECURITY UPDATE: Mitigate TLS/CA vulnerabilities and bypass flaws
+app.disable('x-powered-by');
+
+// Enforce HTTP Strict Transport Security (HSTS)
+app.use((req, res, next) => {
+  res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  next();
+});
+
+// FORCE HTTPS REDIRECT FOR WEBRTC CAMERA PERMISSIONS
 app.use((req, res, next) => {
   if (req.headers['x-forwarded-proto'] === 'http') {
     return res.redirect(301, `https://${req.hostname}${req.url}`);
@@ -15,27 +24,14 @@ app.use((req, res, next) => {
   next();
 });
 
-// SECURITY UPDATE: Mitigate TLS/CA vulnerabilities and bypass flaws
-// 1. Hide the Express framework signature
-app.disable('x-powered-by');
-
-// 2. Enforce HTTP Strict Transport Security (HSTS) and prevent MIME-sniffing
-// This prevents attackers from forcing a downgrade to HTTP if the TLS CA is compromised
-app.use((req, res, next) => {
-  res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
-  res.setHeader('X-Content-Type-Options', 'nosniff');
-  next();
-});
-
 app.use(cors());
 
-// Serve test page at fourthroom.org/test
+// Serve test page
 app.get('/test', (req, res) => {
   res.sendFile(path.join(__dirname, 'test.html'));
 });
 
-// Serve all static files (HTML, CSS, JSON, images) from the current folder
-// NEW: Added extension routing so fourthroom.org/family works without typing .html
+// Serve all static files, resolving .html automatically
 app.use(express.static(__dirname, { extensions: ['html'] }));
 
 const server = http.createServer(app);
@@ -47,7 +43,7 @@ const io = new Server(server, {
   }
 });
 
-// Twilio Client Setup (Environment Variables)
+// Twilio Client Setup
 const twilioSid = process.env.TWILIO_ACCOUNT_SID;
 const twilioAuthToken = process.env.TWILIO_AUTH_TOKEN;
 let twilioClient = null;
@@ -60,54 +56,29 @@ if (twilioSid && twilioAuthToken) {
   console.warn('[Twilio] Credentials missing. Falling back to public STUN.');
 }
 
-// Endpoint to provide ephemeral ICE servers (STUN + TURN)
+// Endpoint to provide ephemeral ICE servers
 app.get('/api/ice-servers', async (req, res) => {
   const fallbackServers = [{ urls: 'stun:stun.l.google.com:19302' }];
-
-  if (!twilioClient) {
-    return res.json({ iceServers: fallbackServers });
-  }
-
+  if (!twilioClient) return res.json({ iceServers: fallbackServers });
   try {
     const token = await twilioClient.tokens.create({ ttl: 14400 });
     res.json({ iceServers: token.iceServers });
   } catch (err) {
-    console.error('[Twilio Error] Failed to generate NTS Token:', err.message);
+    console.error('[Twilio Error]', err.message);
     res.json({ iceServers: fallbackServers });
   }
 });
 
-// TOTAL MONTHLY RENDER FREE TIER HOURS ALLOWANCE
 const MONTHLY_RENDER_HOURS_LIMIT = 750;
 const serverStartTime = new Date();
-
-// ANONYMOUS IN-MEMORY USAGE STATS
-const usageStats = {
-  activeConnections: 0,
-  totalVideoCallsStarted: 0,
-  totalVoiceCallsStarted: 0,
-  totalWebTextsSent: 0,
-  totalRoomsJoined: 0
-};
+const usageStats = { activeConnections: 0, totalVideoCallsStarted: 0, totalVoiceCallsStarted: 0, totalWebTextsSent: 0, totalRoomsJoined: 0 };
 
 app.get('/stats', (req, res) => {
   const uptimeSeconds = process.uptime();
   const uptimeHours = parseFloat((uptimeSeconds / 3600).toFixed(4));
-  const remainingHours = parseFloat(Math.max(0, MONTHLY_RENDER_HOURS_LIMIT - uptimeHours).toFixed(4));
-  const percentUsed = parseFloat(((uptimeHours / MONTHLY_RENDER_HOURS_LIMIT) * 100).toFixed(2));
-
   res.json({
-    status: "online",
-    stats: usageStats,
-    serverUptime: {
-      startedAt: serverStartTime.toISOString(),
-      currentSessionSeconds: Math.floor(uptimeSeconds),
-      currentSessionHours: uptimeHours,
-      monthlyAllowanceHours: MONTHLY_RENDER_HOURS_LIMIT,
-      sessionHoursRemaining: remainingHours,
-      percentOfMonthlyQuotaUsed: `${percentUsed}%`
-    },
-    timestamp: new Date().toISOString()
+    status: "online", stats: usageStats,
+    serverUptime: { startedAt: serverStartTime.toISOString(), sessionHoursRemaining: Math.max(0, MONTHLY_RENDER_HOURS_LIMIT - uptimeHours) }
   });
 });
 
@@ -117,97 +88,48 @@ app.get('/stats', (req, res) => {
 const gameRooms = {};
 
 const BOARD_SPACES = [
-  "Inherit a Painting",
-  "Bank Auction",
-  "Collect $3,000,000 OR a Value Card",
-  "May Buy a Painting for $1,500,000",
-  "Private Auction",
-  "Bank Auction",
-  "Bank Auction",
-  "Inherit a Painting",
-  "Collect $3,000,000 OR a Value Card",
-  "May Buy a Painting for $2,000,000",
-  "Bank Auction",
-  "May Buy a Painting for $1,500,000",
-  "Bank Auction",
-  "May Buy a Painting for $2,500,000",
-  "Private Auction",
-  "Collect $3,000,000 OR a Value Card",
-  "Bank Auction",
-  "Inherit a Painting",
-  "Bank Auction",
-  "Bank Auction",
-  "Collect $3,000,000 OR a Value Card",
-  "May Buy a Painting for $1,500,000",
-  "Inherit a Painting",
-  "Bank Auction",
-  "Private Auction",
-  "May Buy a Painting for $2,000,000",
-  "Collect $3,000,000 OR a Value Card",
-  "Bank Auction",
-  "May Buy a Painting for $2,500,000",
-  "Bank Auction"
+  "Inherit a Painting", "Bank Auction", "Collect $3,000,000 OR a Value Card", "May Buy a Painting for $1,500,000", "Private Auction",
+  "Bank Auction", "Bank Auction", "Inherit a Painting", "Collect $3,000,000 OR a Value Card", "May Buy a Painting for $2,000,000",
+  "Bank Auction", "May Buy a Painting for $1,500,000", "Bank Auction", "May Buy a Painting for $2,500,000", "Private Auction",
+  "Collect $3,000,000 OR a Value Card", "Bank Auction", "Inherit a Painting", "Bank Auction", "Bank Auction",
+  "Collect $3,000,000 OR a Value Card", "May Buy a Painting for $1,500,000", "Inherit a Painting", "Bank Auction", "Private Auction",
+  "May Buy a Painting for $2,000,000", "Collect $3,000,000 OR a Value Card", "Bank Auction", "May Buy a Painting for $2,500,000", "Bank Auction"
 ];
-// ==========================================
-
 
 io.on('connection', (socket) => {
   usageStats.activeConnections++;
-  console.log(`[Connect] Active sockets: ${usageStats.activeConnections}`);
-
-  // WEBPHONE & WEBTEXT SIGNALING
+  
   socket.on('join-room', (roomId) => {
-    socket.join(roomId);
-    usageStats.totalRoomsJoined++;
+    socket.join(roomId); usageStats.totalRoomsJoined++;
     socket.to(roomId).emit('user-joined', { socketId: socket.id });
   });
 
-  socket.on('offer', (data) => {
-    if (data.isAudioOnly) usageStats.totalVoiceCallsStarted++;
-    else usageStats.totalVideoCallsStarted++;
-    socket.to(data.targetId).emit('offer', { offer: data.offer, senderId: socket.id });
-  });
-
-  socket.on('answer', (data) => {
-    socket.to(data.targetId).emit('answer', { answer: data.answer, senderId: socket.id });
-  });
-
-  socket.on('ice-candidate', (data) => {
-    socket.to(data.targetId).emit('ice-candidate', { candidate: data.candidate, senderId: socket.id });
-  });
-
-  socket.on('send-web-chat', (data) => {
-    usageStats.totalWebTextsSent++;
-    socket.to(data.roomId).emit('receive-web-chat', {
-      cipher: data.cipher,
-      iv: data.iv,
-      message: data.message,
-      sender: data.sender
-    });
-  });
-
+  socket.on('offer', (data) => socket.to(data.targetId).emit('offer', { offer: data.offer, senderId: socket.id }));
+  socket.on('answer', (data) => socket.to(data.targetId).emit('answer', { answer: data.answer, senderId: socket.id }));
+  socket.on('ice-candidate', (data) => socket.to(data.targetId).emit('ice-candidate', { candidate: data.candidate, senderId: socket.id }));
+  socket.on('send-web-chat', (data) => socket.to(data.roomId).emit('receive-web-chat', { cipher: data.cipher, iv: data.iv, message: data.message, sender: data.sender }));
 
   // ==========================================
-  // GAME ON! "PICTURE THIS!" SOCKET EVENTS
+  // PICTURE THIS! SOCKET EVENTS
   // ==========================================
   socket.on('game-select-piece', ({ roomId, color }) => {
-    if (!gameRooms[roomId]) {
-      gameRooms[roomId] = { players: [], turnIndex: 0, phase: 'lobby' };
-    }
+    if (!gameRooms[roomId]) gameRooms[roomId] = { players: [], turnIndex: 0, phase: 'lobby' };
     const room = gameRooms[roomId];
     
     const existing = room.players.find(p => p.id === socket.id);
-    if (!existing) {
-      room.players.push({ id: socket.id, piece: color, spaceIndex: 0, cash: 15000000, portfolio: [] });
-    } else {
-      existing.piece = color; 
-    }
+    if (!existing) room.players.push({ id: socket.id, piece: color, spaceIndex: 0, cash: 15000000, portfolio: [] });
+    else existing.piece = color; 
+
+    // Broadcast the badge color to all players so it appears under their video
+    io.to(roomId).emit('game-player-updated', { playerId: socket.id, piece: color });
   });
 
   socket.on('game-start', ({ roomId }) => {
     const room = gameRooms[roomId];
     if(room && room.players.length > 0) {
       room.phase = 'board_ready';
+      // Broadcast player array so the client can prepare token graphics
+      io.to(roomId).emit('game-started', { players: room.players });
     }
   });
 
@@ -218,7 +140,8 @@ io.on('connection', (socket) => {
       io.to(roomId).emit('game-state-update', {
         phase: 'turn_start',
         activePlayerId: room.players[room.turnIndex].id,
-        activePlayerPiece: room.players[room.turnIndex].piece
+        activePlayerPiece: room.players[room.turnIndex].piece,
+        players: room.players
       });
     }
   });
@@ -235,9 +158,7 @@ io.on('connection', (socket) => {
     const spaceAction = BOARD_SPACES[player.spaceIndex];
 
     io.to(roomId).emit('game-state-update', { 
-      phase: 'dice_animating', 
-      lastRoll: roll, 
-      activePlayerPiece: player.piece 
+      phase: 'dice_animating', lastRoll: roll, activePlayerPiece: player.piece 
     });
 
     setTimeout(() => {
@@ -258,7 +179,8 @@ io.on('connection', (socket) => {
         phase: 'space_action',
         currentSpaceText: spaceAction,
         actionButtonsHtml: buttonsHtml,
-        activePlayerId: player.id
+        activePlayerId: player.id,
+        players: room.players // Pass updated array so tokens visually slide to new space!
       });
     }, 2500);
   });
@@ -270,19 +192,17 @@ io.on('connection', (socket) => {
        io.to(roomId).emit('game-state-update', {
          phase: 'turn_start',
          activePlayerId: room.players[room.turnIndex].id,
-         activePlayerPiece: room.players[room.turnIndex].piece
+         activePlayerPiece: room.players[room.turnIndex].piece,
+         players: room.players
        });
      }
   });
 
   socket.on('disconnect', () => {
     usageStats.activeConnections = Math.max(0, usageStats.activeConnections - 1);
-    console.log(`[Disconnect] Active sockets: ${usageStats.activeConnections}`);
     io.emit('user-disconnected', { socketId: socket.id });
   });
 });
 
 const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => {
-  console.log(`Signaling server running on port ${PORT}`);
-});
+server.listen(PORT, () => console.log(`Signaling server running on port ${PORT}`));
