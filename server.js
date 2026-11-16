@@ -6,6 +6,15 @@ const { Server } = require('socket.io');
 
 const app = express();
 
+// FORCE HTTPS REDIRECT
+// If a user connects via standard HTTP, instantly redirect them to secure HTTPS
+app.use((req, res, next) => {
+  if (req.headers['x-forwarded-proto'] === 'http') {
+    return res.redirect(301, `https://${req.hostname}${req.url}`);
+  }
+  next();
+});
+
 // SECURITY UPDATE: Mitigate TLS/CA vulnerabilities and bypass flaws
 // 1. Hide the Express framework signature
 app.disable('x-powered-by');
