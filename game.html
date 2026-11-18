@@ -148,16 +148,16 @@
     .game-phase.active { display: flex; }
     .game-video-row { display: flex; gap: 10px; justify-content: center; width: 100%; margin-bottom: 20px; flex-wrap: wrap; }
     
-    /* FIX 1: Video Frame Player Badges */
-    .player-badge { position: absolute; bottom: 10px; right: 10px; width: 24px; height: 24px; border-radius: 50%; border: 3px solid #fff; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.8); }
+    /* MODIFIED: Player Badges using Sprite Sheet */
+    .player-badge { position: absolute; bottom: 10px; right: 10px; width: 28px; height: 40px; border-radius: 4px; border: 2px solid #fff; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.8); }
     
     .board-container { position: relative; width: 100%; max-width: 600px; aspect-ratio: 1/1; margin: 0 auto; }
     .board-bg { width: 100%; height: 100%; border-radius: 50%; object-fit: contain; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
     
-    /* FIX 2: Sliding Physical Tokens on Board */
-    .board-token { position: absolute; width: 24px; height: 24px; border-radius: 50%; border: 3px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.8); z-index: 20; transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
+    /* MODIFIED: Board Tokens sliding around */
+    .board-token { position: absolute; box-shadow: 0 4px 10px rgba(0,0,0,0.8); z-index: 20; transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
     
-    /* FIX 4: Glowing Corner Turn Highlighting */
+    /* Glowing Corner Turn Highlighting */
     .corner-video { position: absolute; width: 22%; height: 22%; border-radius: 12px; border: 4px solid #333; background: #000; overflow: visible; z-index: 10; transition: border-color 0.3s, box-shadow 0.3s; }
     .corner-video.active-turn { border-color: #ffd60a; box-shadow: 0 0 25px #ffd60a; }
     
@@ -167,10 +167,16 @@
     .corner-video.bottom-right { bottom: -5%; right: -5%; }
     
     .game-pieces-grid { display: flex; gap: 20px; justify-content: center; margin: 20px 0; flex-wrap: wrap; }
-    .game-piece-btn { background: #2c2c2e; border: 2px solid #555; border-radius: 12px; padding: 10px; cursor: pointer; transition: transform 0.2s; color: #fff; font-weight: bold; display: flex; flex-direction: column; align-items: center; gap: 5px; }
-    .game-piece-btn:hover { transform: scale(1.1); }
-    .game-piece-btn.selected { border-color: #ffd60a; box-shadow: 0 0 15px rgba(255, 214, 10, 0.5); }
     
+    /* MODIFIED: Game Piece Selection Buttons with Sprite Sheet */
+    .game-piece-btn { width: 70px; height: 100px; background-image: url('game-pieces.jpg'); background-size: 400% 100%; border: 3px solid #555; border-radius: 12px; padding: 0; cursor: pointer; transition: transform 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+    .game-piece-btn:hover { transform: scale(1.1); }
+    .game-piece-btn.selected { box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); border-color: #fff !important; }
+    #piece-red { background-position: 0% center; border-color: #ff3b30; }
+    #piece-green { background-position: 33.33% center; border-color: #30d158; }
+    #piece-blue { background-position: 66.66% center; border-color: #0a84ff; }
+    #piece-yellow { background-position: 100% center; border-color: #ffd60a; }
+
     .center-console { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 45%; height: 45%; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(0,0,0,0.85); z-index: 5; text-align: center; padding: 15px; color: #fff; }
     .center-console h2 { margin: 0 0 10px 0; font-size: 16px; color: #ffd60a; }
     .btn-game-action { background: #30d158; color: #000; font-weight: bold; border: none; padding: 8px 14px; border-radius: 8px; cursor: pointer; font-size: 13px; margin-top: 5px; }
@@ -257,12 +263,15 @@
       <div id="gamePhaseSelect" class="game-phase">
         <div id="selectVideoRow" class="game-video-row"></div>
         <h2 style="color: #ffd60a; margin: 0;">Pick a Game Piece</h2>
+        
+        <!-- MODIFIED: Pieces mapped to Sprite Image -->
         <div class="game-pieces-grid">
-          <button class="game-piece-btn" id="piece-red" onclick="selectPiece('red')">🎨 Red</button>
-          <button class="game-piece-btn" id="piece-green" onclick="selectPiece('green')">🎨 Green</button>
-          <button class="game-piece-btn" id="piece-blue" onclick="selectPiece('blue')">🎨 Blue</button>
-          <button class="game-piece-btn" id="piece-yellow" onclick="selectPiece('yellow')">🎨 Yellow</button>
+          <button class="game-piece-btn" id="piece-red" onclick="selectPiece('red')" title="Red Token"></button>
+          <button class="game-piece-btn" id="piece-green" onclick="selectPiece('green')" title="Green Token"></button>
+          <button class="game-piece-btn" id="piece-blue" onclick="selectPiece('blue')" title="Blue Token"></button>
+          <button class="game-piece-btn" id="piece-yellow" onclick="selectPiece('yellow')" title="Yellow Token"></button>
         </div>
+
         <button class="btn-mega-enter" style="max-width: 300px;" onclick="startGameBoard()">Start Game</button>
       </div>
 
@@ -373,7 +382,6 @@
       document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
       if (tabName === 'level1-phone') { document.querySelectorAll('.tab-btn')[0].classList.add('active'); document.getElementById('tab-level1-phone').classList.add('active'); } 
       else if (tabName === 'game') { document.querySelectorAll('.tab-btn')[6].classList.add('active'); document.getElementById('tab-game').classList.add('active'); enterGameLobby(); }
-      // (Other standard tabs abbreviated for speed)
     }
 
     // ==========================================
@@ -386,7 +394,6 @@
     function enterGameLobby() {
       const sourceGrid = document.getElementById('videoStreamView');
       const targetRow = document.getElementById('lobbyVideoRow');
-      // Reparent the entire video-card div so we don't break the layout
       sourceGrid.querySelectorAll('.video-card').forEach(v => {
         v.style.width = '120px'; // Shrink for row
         targetRow.appendChild(v);
@@ -409,7 +416,7 @@
       socket.emit('game-select-piece', { roomId: room, color: color });
     }
 
-    // FIX 1: Attach Colored Badge to Video Card
+    // MODIFIED: Attach Sprite Token Badges to Corner Video
     socket.on('game-player-updated', ({ playerId, piece }) => {
       let card = (playerId === socket.id) ? document.getElementById('localVideo').parentNode : document.getElementById(`card-${playerId}`);
       if (card) {
@@ -419,11 +426,16 @@
           badge.className = 'player-badge';
           card.appendChild(badge);
         }
-        badge.style.background = PIECE_COLORS[piece];
+        badge.style.backgroundImage = "url('game-pieces.jpg')";
+        badge.style.backgroundSize = "400% 100%";
+        if(piece === 'red') badge.style.backgroundPosition = "0% center";
+        if(piece === 'green') badge.style.backgroundPosition = "33.33% center";
+        if(piece === 'blue') badge.style.backgroundPosition = "66.66% center";
+        if(piece === 'yellow') badge.style.backgroundPosition = "100% center";
+        badge.style.borderColor = PIECE_COLORS[piece];
       }
     });
 
-    // Handle game start and store player array to draw tokens later
     socket.on('game-started', ({ players }) => {
       gamePlayers = players;
     });
@@ -439,7 +451,7 @@
         if (idx < 4) {
           card.style.width = '100%'; card.style.height = '100%';
           const label = card.querySelector('h3');
-          if(label) label.style.display = 'none'; // Hide text in small corner
+          if(label) label.style.display = 'none';
           document.getElementById(corners[idx]).appendChild(card);
         }
       });
@@ -448,33 +460,41 @@
       socket.emit('game-start', { roomId: room });
     }
 
-    // FIX 2: Draw sliding tokens on the board using math
+    // MODIFIED: Draw tokens sliding on the board using Sprites
     function drawTokens(players) {
       const container = document.querySelector('.board-container');
       
-      // Remove old tokens before re-drawing
       container.querySelectorAll('.board-token').forEach(e => e.remove());
       
       players.forEach((p, idx) => {
         const token = document.createElement('div');
         token.className = `board-token`;
-        token.style.background = PIECE_COLORS[p.piece];
         
-        // Calculate position in a circle (30 spaces)
-        // Space 0 is top center (-90 degrees or -PI/2)
+        token.style.backgroundImage = "url('game-pieces.jpg')";
+        token.style.backgroundSize = "400% 100%";
+        if(p.piece === 'red') token.style.backgroundPosition = "0% center";
+        if(p.piece === 'green') token.style.backgroundPosition = "33.33% center";
+        if(p.piece === 'blue') token.style.backgroundPosition = "66.66% center";
+        if(p.piece === 'yellow') token.style.backgroundPosition = "100% center";
+        
+        token.style.border = `2px solid ${PIECE_COLORS[p.piece]}`;
+        token.style.backgroundColor = "transparent";
+        token.style.width = "20px";
+        token.style.height = "30px";
+        token.style.borderRadius = "4px";
+
         const angle = (p.spaceIndex / 30) * 2 * Math.PI - (Math.PI / 2);
-        const radius = 42; // Track is roughly 42% from the center of the board
+        const radius = 42; 
         
-        // Offset so multiple pieces on the same space don't perfectly overlap
         const offsetX = (idx % 2 === 0 ? 2 : -2);
         const offsetY = (idx > 1 ? 2 : -2);
         
         const left = 50 + radius * Math.cos(angle) + offsetX;
         const top = 50 + radius * Math.sin(angle) + offsetY;
         
-        // Offset by 12px to center the 24px token exactly on the mathematical point
-        token.style.left = `calc(${left}% - 12px)`;
-        token.style.top = `calc(${top}% - 12px)`;
+        // Offset by half dimensions (10px wide, 15px tall) to center exactly
+        token.style.left = `calc(${left}% - 10px)`;
+        token.style.top = `calc(${top}% - 15px)`;
         
         container.appendChild(token);
       });
@@ -486,7 +506,6 @@
       consoleEl.innerHTML = `<button class="btn-game-action" style="padding:15px; font-size:16px;" onclick="pickGenre()">Pick An Art Genre</button>`;
     }
 
-    // FIX 3: Expanded Art Genres
     function pickGenre() {
       const consoleEl = document.getElementById('centerConsole');
       consoleEl.innerHTML = `
@@ -528,7 +547,6 @@
     socket.on('game-state-update', (state) => {
       const consoleEl = document.getElementById('centerConsole');
       
-      // FIX 4: The missing turn_start logic!
       if (state.phase === 'turn_start') {
         if (state.players) { gamePlayers = state.players; drawTokens(gamePlayers); }
 
@@ -538,7 +556,6 @@
           <p style="font-size: 13px; margin: 0;">Waiting for roll...</p>
         `;
 
-        // Highlight Active Player's Corner Video Frame
         document.querySelectorAll('.corner-video').forEach(cv => cv.classList.remove('active-turn'));
         let activeCard = (state.activePlayerId === socket.id) ? document.getElementById('localVideo').parentNode : document.getElementById(`card-${state.activePlayerId}`);
         if (activeCard && activeCard.closest('.corner-video')) {
@@ -556,7 +573,6 @@
       }
 
       if (state.phase === 'space_action') {
-        // Draw the tokens in their new space after rolling
         if (state.players) { gamePlayers = state.players; drawTokens(gamePlayers); }
         
         consoleEl.innerHTML = `
@@ -598,9 +614,9 @@
       statusDiv.innerText = `Joined room: ${roomId}. Waiting for peers...`;
     }
 
-    function toggleAudio() { /* Abbreviated for speed */ }
-    function toggleVideo() { /* Abbreviated for speed */ }
-    function hangUpCall() { /* Abbreviated for speed */ }
+    function toggleAudio() { /* Abbreviated */ }
+    function toggleVideo() { /* Abbreviated */ }
+    function hangUpCall() { /* Abbreviated */ }
 
     socket.on('user-joined', async ({ socketId }) => {
       const pc = createPeerConnection(socketId);
