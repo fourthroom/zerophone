@@ -148,13 +148,13 @@
     .game-phase.active { display: flex; }
     .game-video-row { display: flex; gap: 10px; justify-content: center; width: 100%; margin-bottom: 20px; flex-wrap: wrap; }
     
-    /* MODIFIED: Player Badges using New Sprite Sheet */
+    /* Player Badges using New Sprite Sheet */
     .player-badge { position: absolute; bottom: 10px; right: 10px; width: 28px; height: 40px; border-radius: 4px; border: 2px solid #fff; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.8); }
     
     .board-container { position: relative; width: 100%; max-width: 600px; aspect-ratio: 1/1; margin: 0 auto; }
     .board-bg { width: 100%; height: 100%; border-radius: 50%; object-fit: contain; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
     
-    /* MODIFIED: Board Tokens sliding around */
+    /* Board Tokens sliding around */
     .board-token { position: absolute; box-shadow: 0 4px 10px rgba(0,0,0,0.8); z-index: 20; transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
     
     /* Glowing Corner Turn Highlighting */
@@ -168,7 +168,7 @@
     
     .game-pieces-grid { display: flex; gap: 20px; justify-content: center; margin: 20px 0; flex-wrap: wrap; }
     
-    /* MODIFIED: Game Piece Selection Buttons with New Image */
+    /* Game Piece Selection Buttons with New Image */
     .game-piece-btn { width: 70px; height: 100px; background-image: url('watermarked_img_14111003506702974865.webp'); background-size: 400% 100%; border: 3px solid #555; border-radius: 12px; padding: 0; cursor: pointer; transition: transform 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
     .game-piece-btn:hover { transform: scale(1.1); }
     .game-piece-btn.selected { box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); border-color: #fff !important; }
@@ -185,11 +185,59 @@
     .game-nav-btn { background: #2c2c2e; color: #fff; border: 1px solid #555; padding: 12px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; }
     .game-nav-btn.dice-btn { background: #0a84ff; border-color: #0066cc; }
     .game-nav-btn.dice-btn:disabled { background: #333; color: #666; cursor: not-allowed; }
+    .game-nav-btn.bid-btn { background: #ffd60a; color: #000; border-color: #d4af37; }
+
+    /* BIDDING MODAL */
+    .bid-modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); z-index: 100000; justify-content: center; align-items: center; }
+    .bid-modal-content { background: #1c1c1e; border: 2px solid #ffd60a; border-radius: 16px; padding: 20px; width: 340px; text-align: center; box-shadow: 0 10px 40px rgba(255, 214, 10, 0.2); }
+    .bid-display { font-size: 36px; color: #30d158; margin: 15px 0; font-weight: 900; background: #000; padding: 15px; border-radius: 10px; border: 1px solid #333; letter-spacing: 1px; }
+    .bid-keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
+    .bid-key { background: #2c2c2e; color: #fff; border: 1px solid #555; padding: 15px; font-size: 22px; font-weight: bold; border-radius: 8px; cursor: pointer; transition: background 0.1s; }
+    .bid-key:active { background: #444; }
+    .bid-key.action-clear { background: #ff3b30; color: #fff; border-color: #d70015; }
+    .bid-key.action-close { background: #555; font-size: 16px; }
+    .bid-submit { background: #ffd60a; color: #000; width: 100%; padding: 18px; font-size: 22px; font-weight: 900; border: none; border-radius: 10px; cursor: pointer; text-transform: uppercase; }
+
+    /* AUCTION CENTER CONSOLE DISPLAY */
+    .auction-card-display { position: relative; width: 160px; height: 220px; margin: 0 auto 10px auto; box-shadow: 0 10px 25px rgba(0,0,0,0.9); transition: transform 0.4s; transform-style: preserve-3d; }
+    .auction-card-display img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; border: 2px solid #d4af37; }
+    
+    /* PORTFOLIO & CARDS */
+    .portfolio-grid { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
+    .portfolio-item { width: 110px; height: 155px; position: relative; cursor: pointer; transition: transform 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.7); }
+    .portfolio-item:hover { transform: scale(1.08) translateY(-5px); z-index: 10; }
+    .portfolio-item img.main-art { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; border: 1px solid #555; }
+    .portfolio-value-badge { position: absolute; bottom: -15px; right: -15px; width: 50px; height: 75px; box-shadow: 0 2px 8px rgba(0,0,0,0.8); border-radius: 4px; border: 1px solid #222; }
+    
+    .money-stack-container { display: flex; justify-content: center; align-items: center; margin-top: 20px; position: relative; height: 250px; }
+    .money-card { position: absolute; width: 150px; height: 220px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.8); border: 1px solid #111; transition: transform 0.3s; }
+    .money-card:hover { transform: translateY(-15px) !important; z-index: 20 !important; cursor: pointer; }
   </style>
 </head>
 <body>
 
   <!-- POPUPS (Hidden) -->
+  <div id="bidModal" class="bid-modal-overlay">
+    <div class="bid-modal-content">
+      <h3 style="color: #ffd60a; margin: 0 0 10px 0;">Place Your Bid</h3>
+      <div id="bidDisplay" class="bid-display">$0</div>
+      <div class="bid-keypad">
+        <button class="bid-key" onclick="appendBid('1')">1</button>
+        <button class="bid-key" onclick="appendBid('2')">2</button>
+        <button class="bid-key" onclick="appendBid('3')">3</button>
+        <button class="bid-key" onclick="appendBid('4')">4</button>
+        <button class="bid-key" onclick="appendBid('5')">5</button>
+        <button class="bid-key" onclick="appendBid('6')">6</button>
+        <button class="bid-key" onclick="appendBid('7')">7</button>
+        <button class="bid-key" onclick="appendBid('8')">8</button>
+        <button class="bid-key" onclick="appendBid('9')">9</button>
+        <button class="bid-key action-clear" onclick="clearBid()">CLR</button>
+        <button class="bid-key" onclick="appendBid('0')">0</button>
+        <button class="bid-key action-close" onclick="closeBidModal()">Cancel</button>
+      </div>
+      <button class="bid-submit" onclick="submitBid()">Submit Bid</button>
+    </div>
+  </div>
   <div id="artFullscreenModal" class="art-fullscreen-modal">
     <button class="art-fullscreen-close-btn" onclick="closeArtFullscreen()">✕ ESC</button>
     <img id="artFullscreenImg" class="art-fullscreen-img" src="" alt="Fullscreen Artwork">
@@ -264,7 +312,7 @@
         <div id="selectVideoRow" class="game-video-row"></div>
         <h2 style="color: #ffd60a; margin: 0;">Pick a Game Piece</h2>
         
-        <!-- MODIFIED: Pieces mapped to new Sprite Image -->
+        <!-- Pieces mapped to new Sprite Image -->
         <div class="game-pieces-grid">
           <button class="game-piece-btn" id="piece-red" onclick="selectPiece('red')" title="Red Token"></button>
           <button class="game-piece-btn" id="piece-green" onclick="selectPiece('green')" title="Green Token"></button>
@@ -298,17 +346,35 @@
           <button class="game-nav-btn" onclick="showSubView('artwork')">My ArtWork</button>
           <button class="game-nav-btn" style="color: #30d158; border-color: #30d158;" onclick="showSubView('money')">My Money</button>
           <button id="btnRollDice" class="game-nav-btn dice-btn" onclick="rollDice()" disabled>Roll Dice</button>
+          <button class="game-nav-btn bid-btn" onclick="openBidModal()">BID!</button>
           <button class="game-nav-btn" onclick="showSubView('rules')">Rules</button>
         </div>
       </div>
       
       <!-- GAME SUB-VIEWS -->
       <div id="gameSubArtwork" style="display:none; margin-top:20px;">
-        <h3 style="color:#ffd60a;">My Portfolio</h3><p style="color:#aaa;">Click a thumbnail to reveal secret values.</p>
+        <h3 style="color:#ffd60a;">My Portfolio</h3><p style="color:#aaa;">Hover/Tap to inspect secret values.</p>
+        <div class="portfolio-grid">
+          <!-- Placeholder Portfolio Item using uploaded image assets -->
+          <div class="portfolio-item">
+            <img src="15FDDD6C-6205-4F68-8C6A-338AB0FA6C84_4_5005_c.jpeg" class="main-art" alt="Artwork Backing">
+            <img src="84DD302A-1B51-4861-AC13-83430EABF508_4_5005_c.jpeg" class="portfolio-value-badge" alt="Secret Value">
+          </div>
+          <div class="portfolio-item">
+            <img src="15FDDD6C-6205-4F68-8C6A-338AB0FA6C84_4_5005_c.jpeg" class="main-art" alt="Artwork Backing">
+            <img src="44597DDA-24A4-4EE9-9007-4D59DD62645A_4_5005_c.jpeg" class="portfolio-value-badge" alt="Forgery">
+          </div>
+        </div>
       </div>
       <div id="gameSubMoney" style="display:none; margin-top:20px; text-align:center;">
         <h3 style="color:#30d158; margin-bottom: 5px;">My Ledger</h3>
-        <h1 id="playerCashDisplay" style="font-size: 48px; margin: 0; color: #fff;">$15,000,000</h1>
+        <h1 id="playerCashDisplay" style="font-size: 42px; margin: 0; color: #fff;">$15,000,000</h1>
+        <div class="money-stack-container">
+          <img src="01F51434-BFAE-491D-9217-15DB68FDC6D5_4_5005_c.jpeg" class="money-card" style="transform: rotate(-10deg) translateX(-60px); z-index: 1;" alt="Money Back">
+          <img src="01F51434-BFAE-491D-9217-15DB68FDC6D5_4_5005_c.jpeg" class="money-card" style="transform: rotate(-2deg) translateX(-20px); z-index: 2;" alt="Money Back">
+          <img src="65587C4B-ACCD-4E62-B7A5-961C7A667D57_4_5005_c.jpeg" class="money-card" style="transform: rotate(8deg) translateX(30px); z-index: 3;" alt="3 Million Front">
+          <img src="65587C4B-ACCD-4E62-B7A5-961C7A667D57_4_5005_c.jpeg" class="money-card" style="transform: rotate(15deg) translateX(70px); z-index: 4;" alt="3 Million Front">
+        </div>
       </div>
       <div id="gameSubRules" style="display:none; margin-top:20px; text-align:left; max-width:600px; margin-inline:auto; background:#1c1c1e; padding:20px; border-radius:12px; border:1px solid #444;">
         <h3 style="color:#ffd60a; margin-top:0;">Rules of Picture This!</h3>
@@ -329,7 +395,7 @@
 
     const roomIdInput = document.getElementById('roomId');
     const callerNameInput = document.getElementById('callerName');
-    const webTextSenderNameInput = document.getElementById('webTextSenderName') || {value: ''}; // Saftey check if removed in minimal
+    const webTextSenderNameInput = document.getElementById('webTextSenderName') || {value: ''}; 
     const statusDiv = document.getElementById('status');
     const rtcConfig = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] };
 
@@ -408,7 +474,7 @@
       cards.forEach(c => targetRow.appendChild(c));
     }
 
-    // MODIFIED: Added local state fallback in case backend signaling doesn't return state properly
+    // Local state fallback in case backend signaling doesn't return state properly
     function selectPiece(color) {
       myGamePiece = color;
       document.querySelectorAll('.game-piece-btn').forEach(btn => btn.classList.remove('selected'));
@@ -483,7 +549,7 @@
       }
     }
 
-    // MODIFIED: Draw tokens sliding on the board using the new Sprite Image
+    // Draw tokens sliding on the board using the new Sprite Image
     function drawTokens(players) {
       const container = document.querySelector('.board-container');
       
@@ -532,6 +598,55 @@
       drawTokens(gamePlayers);
       const consoleEl = document.getElementById('centerConsole');
       consoleEl.innerHTML = `<button class="btn-game-action" style="padding:15px; font-size:16px;" onclick="pickGenre()">Pick An Art Genre</button>`;
+    }
+
+    // Function to display the painting in the center for an Auction
+    function triggerAuctionView() {
+      const consoleEl = document.getElementById('centerConsole');
+      showSubView('board'); // ensure we are on the board view
+      consoleEl.innerHTML = `
+        <h2 style="color:#ffd60a; margin: 0 0 10px 0; text-shadow: 0 2px 4px #000;">ACTIVE AUCTION</h2>
+        <div class="auction-card-display">
+          <img src="15FDDD6C-6205-4F68-8C6A-338AB0FA6C84_4_5005_c.jpeg" alt="Auction Painting">
+        </div>
+        <p style="font-size:11px; margin:0;">Bidding starts now!</p>
+      `;
+    }
+
+    // BIDDING MODAL LOGIC
+    let currentBidValue = "";
+    function openBidModal() { 
+      currentBidValue = ""; 
+      updateBidDisplay(); 
+      document.getElementById('bidModal').style.display = 'flex'; 
+    }
+    function closeBidModal() { document.getElementById('bidModal').style.display = 'none'; }
+    function appendBid(num) {
+      if(currentBidValue.length < 12) {
+        currentBidValue += num;
+        updateBidDisplay();
+      }
+    }
+    function clearBid() { currentBidValue = ""; updateBidDisplay(); }
+    function updateBidDisplay() {
+      const display = document.getElementById('bidDisplay');
+      if (!currentBidValue) { display.innerText = "$0"; return; }
+      const formatted = Number(currentBidValue).toLocaleString('en-US');
+      display.innerText = "$" + formatted;
+    }
+    function submitBid() {
+      if (!currentBidValue) return;
+      const room = roomIdInput.value.trim() || 'room1';
+      socket.emit('game-place-bid', { roomId: room, bidAmount: Number(currentBidValue) });
+      closeBidModal();
+      
+      // UI flair: Temporarily show bid placed on the center console
+      const consoleEl = document.getElementById('centerConsole');
+      if (consoleEl.innerHTML.includes('ACTIVE AUCTION')) {
+         const ogHtml = consoleEl.innerHTML;
+         consoleEl.innerHTML = `<h2 style="color:#30d158; font-size:24px;">Bid Placed!<br>$${Number(currentBidValue).toLocaleString()}</h2>`;
+         setTimeout(() => { consoleEl.innerHTML = ogHtml; }, 2000);
+      }
     }
 
     function pickGenre() {
@@ -603,10 +718,15 @@
       if (state.phase === 'space_action') {
         if (state.players) { gamePlayers = state.players; drawTokens(gamePlayers); }
         
-        consoleEl.innerHTML = `
-          <h2>${state.currentSpaceText}</h2>
-          ${state.actionButtonsHtml} 
-        `;
+        // If the space is an auction, auto-trigger the painting in the middle
+        if (state.currentSpaceText && state.currentSpaceText.toLowerCase().includes('auction')) {
+          triggerAuctionView();
+        } else {
+          consoleEl.innerHTML = `
+            <h2>${state.currentSpaceText}</h2>
+            ${state.actionButtonsHtml} 
+          `;
+        }
       }
 
       if (state.activePlayerId === socket.id) {
