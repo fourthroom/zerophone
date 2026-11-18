@@ -148,7 +148,7 @@
     .game-phase.active { display: flex; }
     .game-video-row { display: flex; gap: 10px; justify-content: center; width: 100%; margin-bottom: 20px; flex-wrap: wrap; }
     
-    /* MODIFIED: Player Badges using Sprite Sheet */
+    /* MODIFIED: Player Badges using New Sprite Sheet */
     .player-badge { position: absolute; bottom: 10px; right: 10px; width: 28px; height: 40px; border-radius: 4px; border: 2px solid #fff; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.8); }
     
     .board-container { position: relative; width: 100%; max-width: 600px; aspect-ratio: 1/1; margin: 0 auto; }
@@ -168,8 +168,8 @@
     
     .game-pieces-grid { display: flex; gap: 20px; justify-content: center; margin: 20px 0; flex-wrap: wrap; }
     
-    /* MODIFIED: Game Piece Selection Buttons with Sprite Sheet */
-    .game-piece-btn { width: 70px; height: 100px; background-image: url('game-pieces.jpg'); background-size: 400% 100%; border: 3px solid #555; border-radius: 12px; padding: 0; cursor: pointer; transition: transform 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+    /* MODIFIED: Game Piece Selection Buttons with New Image */
+    .game-piece-btn { width: 70px; height: 100px; background-image: url('watermarked_img_14111003506702974865.webp'); background-size: 400% 100%; border: 3px solid #555; border-radius: 12px; padding: 0; cursor: pointer; transition: transform 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
     .game-piece-btn:hover { transform: scale(1.1); }
     .game-piece-btn.selected { box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); border-color: #fff !important; }
     #piece-red { background-position: 0% center; border-color: #ff3b30; }
@@ -242,7 +242,7 @@
       </div>
     </div>
 
-    <!-- OTHER TABS (Structurally retained but minimized for length) -->
+    <!-- OTHER TABS -->
     <div id="tab-level1-text" class="tab-content"><h2 style="color: #63e685;">Level 1 - WebText</h2><div class="web-chat-box"><div id="web-chat-thread"></div><div style="display:flex;gap:8px;"><input type="text" id="webChatInput" style="flex:1;"><button id="sendWebChatBtn">Send</button></div></div></div>
     <div id="tab-level2" class="tab-content"><div class="under-construction-box"><h1 style="color: #ff3b30;">Under Construction</h1></div></div>
     <div id="tab-maps" class="tab-content"><h2 style="color: #ff9500;">📍 Maps</h2><div class="maps-box"><button onclick="centerMapOnUser(true)">Refresh GPS</button><iframe id="googleMapIframe"></iframe></div></div>
@@ -264,7 +264,7 @@
         <div id="selectVideoRow" class="game-video-row"></div>
         <h2 style="color: #ffd60a; margin: 0;">Pick a Game Piece</h2>
         
-        <!-- MODIFIED: Pieces mapped to Sprite Image -->
+        <!-- MODIFIED: Pieces mapped to new Sprite Image -->
         <div class="game-pieces-grid">
           <button class="game-piece-btn" id="piece-red" onclick="selectPiece('red')" title="Red Token"></button>
           <button class="game-piece-btn" id="piece-green" onclick="selectPiece('green')" title="Green Token"></button>
@@ -329,7 +329,7 @@
 
     const roomIdInput = document.getElementById('roomId');
     const callerNameInput = document.getElementById('callerName');
-    const webTextSenderNameInput = document.getElementById('webTextSenderName');
+    const webTextSenderNameInput = document.getElementById('webTextSenderName') || {value: ''}; // Saftey check if removed in minimal
     const statusDiv = document.getElementById('status');
     const rtcConfig = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] };
 
@@ -343,8 +343,7 @@
       else if (count >= 4) grid.classList.add('peers-4');
     }
 
-    callerNameInput.addEventListener('input', (e) => { webTextSenderNameInput.value = e.target.value; });
-    webTextSenderNameInput.addEventListener('input', (e) => { callerNameInput.value = e.target.value; });
+    callerNameInput.addEventListener('input', (e) => { if(webTextSenderNameInput.tagName) webTextSenderNameInput.value = e.target.value; });
 
     function triggerCellCall(event) {
       const number = prompt("Enter phone number to call (optional):", "");
@@ -358,7 +357,8 @@
     const roomParam = urlParams.get('room');
     if (roomParam) {
       roomIdInput.value = roomParam;
-      document.getElementById('webTextRoomId').value = roomParam;
+      const tId = document.getElementById('webTextRoomId');
+      if (tId) tId.value = roomParam;
     }
 
     window.addEventListener('DOMContentLoaded', () => {
@@ -408,15 +408,33 @@
       cards.forEach(c => targetRow.appendChild(c));
     }
 
+    // MODIFIED: Added local state fallback in case backend signaling doesn't return state properly
     function selectPiece(color) {
       myGamePiece = color;
       document.querySelectorAll('.game-piece-btn').forEach(btn => btn.classList.remove('selected'));
       document.getElementById(`piece-${color}`).classList.add('selected');
       const room = roomIdInput.value.trim() || 'room1';
       socket.emit('game-select-piece', { roomId: room, color: color });
+
+      // Local UI Fallback (Ensures your piece visually registers immediately)
+      let card = document.getElementById('localVideo').parentNode;
+      if (card) {
+        let badge = card.querySelector('.player-badge');
+        if (!badge) {
+          badge = document.createElement('div');
+          badge.className = 'player-badge';
+          card.appendChild(badge);
+        }
+        badge.style.backgroundImage = "url('watermarked_img_14111003506702974865.webp')";
+        badge.style.backgroundSize = "400% 100%";
+        if(color === 'red') badge.style.backgroundPosition = "0% center";
+        if(color === 'green') badge.style.backgroundPosition = "33.33% center";
+        if(color === 'blue') badge.style.backgroundPosition = "66.66% center";
+        if(color === 'yellow') badge.style.backgroundPosition = "100% center";
+        badge.style.borderColor = PIECE_COLORS[color];
+      }
     }
 
-    // MODIFIED: Attach Sprite Token Badges to Corner Video
     socket.on('game-player-updated', ({ playerId, piece }) => {
       let card = (playerId === socket.id) ? document.getElementById('localVideo').parentNode : document.getElementById(`card-${playerId}`);
       if (card) {
@@ -426,7 +444,7 @@
           badge.className = 'player-badge';
           card.appendChild(badge);
         }
-        badge.style.backgroundImage = "url('game-pieces.jpg')";
+        badge.style.backgroundImage = "url('watermarked_img_14111003506702974865.webp')";
         badge.style.backgroundSize = "400% 100%";
         if(piece === 'red') badge.style.backgroundPosition = "0% center";
         if(piece === 'green') badge.style.backgroundPosition = "33.33% center";
@@ -458,9 +476,14 @@
 
       const room = roomIdInput.value.trim() || 'room1';
       socket.emit('game-start', { roomId: room });
+
+      // Local Fallback: If server didn't respond with "game-started" populate local player anyway so tokens will draw
+      if (gamePlayers.length === 0 && myGamePiece) {
+        gamePlayers.push({ id: socket.id || 'local_user', piece: myGamePiece, spaceIndex: 0 });
+      }
     }
 
-    // MODIFIED: Draw tokens sliding on the board using Sprites
+    // MODIFIED: Draw tokens sliding on the board using the new Sprite Image
     function drawTokens(players) {
       const container = document.querySelector('.board-container');
       
@@ -470,7 +493,7 @@
         const token = document.createElement('div');
         token.className = `board-token`;
         
-        token.style.backgroundImage = "url('game-pieces.jpg')";
+        token.style.backgroundImage = "url('watermarked_img_14111003506702974865.webp')";
         token.style.backgroundSize = "400% 100%";
         if(p.piece === 'red') token.style.backgroundPosition = "0% center";
         if(p.piece === 'green') token.style.backgroundPosition = "33.33% center";
@@ -501,6 +524,11 @@
     }
 
     function placeTokens() {
+      // Re-trigger fallback just in case
+      if (gamePlayers.length === 0 && myGamePiece) {
+         gamePlayers = [{ id: socket.id || 'local_user', piece: myGamePiece, spaceIndex: 0 }];
+      }
+      
       drawTokens(gamePlayers);
       const consoleEl = document.getElementById('centerConsole');
       consoleEl.innerHTML = `<button class="btn-game-action" style="padding:15px; font-size:16px;" onclick="pickGenre()">Pick An Art Genre</button>`;
