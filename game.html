@@ -62,4 +62,1101 @@
     .switch-container input { opacity: 0; width: 0; height: 0; }
     .slider-track { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #2c2c2e; border: 2px solid #555; border-radius: 12px; transition: .2s; }
     .slider-track:before { position: absolute; content: ""; height: 16px; width: 14px; left: 2px; top: 2px; background-color: #aaa; border-radius: 6px; transition: .2s; }
-    input:checked + .slider-track:before { transform: translateY(20px); background-color: #ff
+    input:checked + .slider-track:before { transform: translateY(20px); background-color: #ff3b30; }
+
+    .incall-controls-bar { display: flex; justify-content: center; align-items: center; gap: 15px; margin-top: 15px; flex-wrap: wrap; }
+    .btn-media-toggle { background: #2c2c2e; color: #fff; border: 1px solid #555; border-radius: 50%; width: 52px; height: 52px; font-size: 20px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+    .btn-media-toggle.muted { background: #ff3b30; border-color: #d70015; }
+    .btn-red-end { background: #ff3b30; color: white; cursor: pointer; font-weight: bold; font-size: 16px; padding: 12px 24px; border-radius: 10px; border: none; }
+    #status { font-weight: bold; color: #30d158; margin-bottom: 4px; }
+
+    /* DYNAMIC VIDEO GRID */
+    .video-grid { display: grid; grid-template-columns: minmax(0, 480px); gap: 12px; justify-content: center; align-content: center; margin: 10px auto; width: 100%; max-width: 900px; }
+    .video-grid.peers-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .video-grid.peers-3, .video-grid.peers-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, auto); }
+    .video-card { width: 100%; display: flex; flex-direction: column; align-items: center; position: relative; }
+    video { width: 100%; aspect-ratio: 1 / 1; background: #000; border-radius: 14px; border: 2px solid #333; object-fit: cover; display: block; }
+    #localVideo { transform: scaleX(-1); }
+
+    .modal-return-overlay, .location-modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 99999; justify-content: center; align-items: center; }
+    .modal-return-content, .location-modal-content { background: #1c1c1e; border: 2px solid #30d158; border-radius: 16px; padding: 30px 20px; max-width: 420px; width: 85%; text-align: center; }
+    .location-modal-content { border-color: #ff9500; }
+    .btn-return-app { background: #30d158; color: #000; border: none; padding: 14px 28px; border-radius: 10px; font-size: 16px; font-weight: 900; cursor: pointer; }
+    #responderAccessBox { display: none; background: #1c1c1e; border: 2px solid #30d158; border-radius: 20px; padding: 40px 20px; max-width: 450px; margin: 40px auto; text-align: center; }
+    .btn-mega-enter { background: #30d158; color: #000; font-size: 24px; font-weight: 900; padding: 20px 32px; border-radius: 14px; border: none; cursor: pointer; width: 100%; }
+
+    /* WEB TEXT & MAPS & RADIO & ART */
+    .web-chat-box { background: #1c1c1e; border: 1px solid #63e685; border-radius: 12px; padding: 15px; max-width: 620px; margin: 0 auto; }
+    #web-chat-thread { height: 260px; border: 1px solid #333; border-radius: 8px; padding: 10px; overflow-y: auto; background: #121212; text-align: left; margin-bottom: 12px; }
+    .maps-box { background: #1c1c1e; border: 1px solid #ff9500; border-radius: 12px; padding: 15px; max-width: 900px; margin: 0 auto; }
+    .maps-filter-bar { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 15px; }
+    .maps-filter-btn { background: #2c2c2e; color: #fff; border: 1px solid #555; padding: 8px 12px; font-size: 13px; font-weight: bold; border-radius: 8px; cursor: pointer; }
+    .map-frame-container { width: 100%; height: 500px; border-radius: 10px; overflow: hidden; border: 1px solid #444; }
+    iframe { width: 100%; height: 100%; border: none; }
+    .radio-box { background: #1c1c1e; border: 1px solid #e040fb; border-radius: 12px; padding: 20px; max-width: 950px; margin: 0 auto; }
+    .radio-genre-bar { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+    .genre-btn { background: #2c2c2e; color: #fff; border: 1px solid #555; padding: 10px 14px; font-size: 13px; font-weight: bold; border-radius: 8px; cursor: pointer; }
+    .radio-layout { display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; }
+    .station-bank-container { flex: 1; min-width: 280px; background: #121212; border: 1px solid #333; border-radius: 12px; padding: 12px; text-align: left; }
+    .station-bank-header { font-size: 13px; font-weight: bold; color: #e040fb; margin: 0 0 10px 0; text-transform: uppercase; }
+    .station-bank-list { display: flex; flex-direction: column; gap: 8px; max-height: 360px; overflow-y: auto; }
+    .station-bank-item { background: #2c2c2e; border: 1px solid #444; border-radius: 8px; padding: 10px; cursor: pointer; text-align: left; }
+    .radio-console { flex: 1.5; min-width: 320px; background: #121212; border: 1px solid #333; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 15px; }
+    .now-playing-title { font-size: 20px; font-weight: bold; color: #e040fb; margin: 0; }
+    .now-playing-sub { font-size: 13px; color: #aaa; margin-top: -6px; }
+    audio { width: 100%; max-width: 480px; border-radius: 8px; }
+    .tuner-box { margin-top: 10px; padding-top: 15px; border-top: 1px solid #333; width: 100%; max-width: 480px; text-align: left; }
+    .under-construction-box { background: #1c1c1e; border: 2px dashed #ff3b30; border-radius: 16px; padding: 50px 20px; max-width: 500px; margin: 30px auto; }
+    
+    /* ART GALLERY */
+    .art-box { background: #1c1c1e; border: 1px solid #ffd60a; border-radius: 12px; padding: 20px; max-width: 1000px; margin: 0 auto; }
+    .museum-institution-bar { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #333; }
+    .museum-inst-btn { background: #18181a; color: #ffd60a; border: 1px solid #ffd60a; padding: 8px 14px; font-size: 12px; font-weight: 900; border-radius: 20px; cursor: pointer; transition: all 0.2s; }
+    .museum-inst-btn.active { background: #ffd60a; color: #000; }
+    .art-genre-bar { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+    .art-genre-btn { background: #2c2c2e; color: #fff; border: 1px solid #555; padding: 8px 12px; font-size: 12px; font-weight: bold; border-radius: 8px; cursor: pointer; transition: all 0.2s; }
+    .art-genre-btn.active { background: #ffd60a; color: #000; border-color: #ffd60a; font-weight: 900; }
+    .art-layout { display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; }
+    .art-bank-container { flex: 1; min-width: 280px; background: #121212; border: 1px solid #333; border-radius: 12px; padding: 12px; text-align: left; }
+    .art-bank-header { font-size: 13px; font-weight: bold; color: #ffd60a; margin: 0 0 10px 0; text-transform: uppercase; }
+    .art-bank-list { display: flex; flex-direction: column; gap: 8px; max-height: 480px; overflow-y: auto; }
+    .art-bank-item { background: #2c2c2e; border: 1px solid #444; border-radius: 8px; padding: 10px; cursor: pointer; text-align: left; }
+    .art-bank-item.active { border-color: #ffd60a; background: #332b00; }
+    .art-display-console { flex: 2; min-width: 320px; background: #121212; border: 1px solid #333; border-radius: 12px; padding: 18px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+    .art-image-frame { width: 100%; min-height: 380px; max-height: 520px; background: #000; border-radius: 10px; border: 1px solid #444; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .art-image-frame img { max-width: 100%; max-height: 500px; object-fit: contain; border-radius: 8px; }
+    .art-caption-card { width: 100%; background: #1c1c1e; border: 1px solid #444; border-radius: 10px; padding: 14px 16px; text-align: left; font-size: 13px; line-height: 1.5; }
+    .art-caption-title { font-size: 18px; font-weight: 900; color: #ffd60a; margin: 0 0 4px 0; }
+    .art-caption-artist { font-size: 14px; font-weight: bold; color: #fff; margin: 0 0 6px 0; }
+    .art-caption-meta { color: #aaa; font-size: 12px; margin: 0; }
+    .art-museum-badge { display: inline-block; margin-top: 8px; background: #2a2400; color: #ffd60a; border: 1px solid #ffd60a; border-radius: 6px; padding: 4px 8px; font-size: 11px; font-weight: bold; }
+    .art-actions-bar { display: flex; gap: 10px; width: 100%; justify-content: center; }
+    .btn-art-action { background: #2c2c2e; color: #ffd60a; border: 1px solid #ffd60a; border-radius: 8px; padding: 8px 16px; font-size: 13px; font-weight: bold; cursor: pointer; transition: all 0.2s; }
+    .art-fullscreen-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.96); z-index: 100000; flex-direction: column; align-items: center; justify-content: center; padding: 20px; }
+    .art-fullscreen-close-btn { position: absolute; top: 20px; right: 25px; background: #ff3b30; color: #fff; border: none; padding: 10px 18px; border-radius: 8px; font-size: 16px; font-weight: 900; cursor: pointer; }
+    .art-fullscreen-img { max-width: 92%; max-height: 82vh; object-fit: contain; border-radius: 8px; }
+    .art-fullscreen-caption { margin-top: 14px; text-align: center; color: #fff; max-width: 80%; }
+    .art-fullscreen-caption h3 { margin: 0 0 4px 0; color: #ffd60a; font-size: 18px; }
+    .art-fullscreen-caption p { margin: 0; color: #aaa; font-size: 13px; }
+    .privacy-notice-badge { margin-top: 25px; font-size: 12px; color: #888; background: #18181a; border: 1px solid #2a2a2d; border-radius: 20px; padding: 8px 16px; display: inline-block; max-width: 90%; line-height: 1.4; }
+
+    /* ------------------------------------------- */
+    /* GAME UI STYLES ("PICTURE THIS!")            */
+    /* ------------------------------------------- */
+    #tab-game { text-align: center; padding-top: 10px; }
+    .game-phase { display: none; flex-direction: column; align-items: center; gap: 15px; }
+    .game-phase.active { display: flex; }
+    .game-video-row { display: flex; gap: 10px; justify-content: center; width: 100%; margin-bottom: 20px; flex-wrap: wrap; }
+    
+    /* Player Badges using Game_Icons.jpeg */
+    .player-badge {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      width: 26px;
+      height: 46px;
+      background-color: #080a0f;
+      background-repeat: no-repeat;
+      border-radius: 6px;
+      border: 2px solid #fff;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.85);
+    }
+    
+    .board-container { position: relative; width: 100%; max-width: 600px; aspect-ratio: 1/1; margin: 0 auto; }
+    .board-bg { width: 100%; height: 100%; border-radius: 50%; object-fit: contain; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
+    
+    /* Board Tokens sliding around */
+    .board-token {
+      position: absolute;
+      background-color: #080a0f;
+      background-repeat: no-repeat;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.85);
+      z-index: 20;
+      transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    
+    /* Glowing Corner Turn Highlighting */
+    .corner-video { position: absolute; width: 22%; height: 22%; border-radius: 12px; border: 4px solid #333; background: #000; overflow: visible; z-index: 10; transition: border-color 0.3s, box-shadow 0.3s; }
+    .corner-video.active-turn { border-color: #ffd60a; box-shadow: 0 0 25px #ffd60a; }
+    
+    .corner-video.top-left { top: -5%; left: -5%; }
+    .corner-video.top-right { top: -5%; right: -5%; }
+    .corner-video.bottom-left { bottom: -5%; left: -5%; }
+    .corner-video.bottom-right { bottom: -5%; right: -5%; }
+    
+    .game-pieces-grid { display: flex; gap: 20px; justify-content: center; margin: 20px 0; flex-wrap: wrap; }
+    
+    /* Colored Square Game Piece Buttons with Centered Game_Icons.jpeg Sprites */
+    .game-piece-btn {
+      position: relative;
+      width: 96px;
+      height: 96px;
+      background-color: #080a0f;
+      border: 3px solid #555;
+      border-radius: 14px;
+      padding: 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    }
+    .game-piece-btn::before {
+      content: "";
+      width: 48px;
+      height: 86px;
+      background-image: url('Game_Icons.jpeg');
+      background-size: auto 138%;
+      background-repeat: no-repeat;
+      border-radius: 8px;
+      display: block;
+      pointer-events: none;
+    }
+    .game-piece-btn:hover { transform: scale(1.08); }
+    .game-piece-btn.selected {
+      box-shadow: 0 0 24px rgba(255, 255, 255, 0.95) !important;
+      border-color: #fff !important;
+      transform: scale(1.08);
+    }
+    #piece-red {
+      border-color: #ff3b30;
+      box-shadow: 0 0 14px rgba(255, 59, 48, 0.45), inset 0 0 18px rgba(255, 59, 48, 0.3);
+    }
+    #piece-red::before { background-position: 11% 37%; }
+
+    #piece-green {
+      border-color: #30d158;
+      box-shadow: 0 0 14px rgba(48, 209, 88, 0.45), inset 0 0 18px rgba(48, 209, 88, 0.3);
+    }
+    #piece-green::before { background-position: 41% 34%; }
+
+    #piece-blue {
+      border-color: #0a84ff;
+      box-shadow: 0 0 14px rgba(10, 132, 255, 0.45), inset 0 0 18px rgba(10, 132, 255, 0.3);
+    }
+    #piece-blue::before { background-position: 69% 28%; }
+
+    #piece-yellow {
+      border-color: #ffd60a;
+      box-shadow: 0 0 14px rgba(255, 214, 10, 0.45), inset 0 0 18px rgba(255, 214, 10, 0.3);
+    }
+    #piece-yellow::before { background-position: 94% 25%; }
+
+    .center-console { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 45%; height: 45%; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(0,0,0,0.85); z-index: 5; text-align: center; padding: 18px 20px; color: #fff; overflow-y: auto; gap: 4px; }
+    .center-console h2 { margin: 0 0 10px 0; font-size: 16px; color: #ffd60a; }
+    .btn-game-action { background: #30d158; color: #000; font-weight: bold; border: none; padding: 8px 14px; border-radius: 8px; cursor: pointer; font-size: 13px; margin-top: 5px; }
+    
+    .game-bottom-bar { display: flex; gap: 10px; justify-content: center; margin-top: 30px; flex-wrap: wrap; }
+    .game-nav-btn { background: #2c2c2e; color: #fff; border: 1px solid #555; padding: 12px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; }
+    .game-nav-btn.dice-btn { background: #0a84ff; border-color: #0066cc; }
+    .game-nav-btn.dice-btn:disabled { background: #333; color: #666; cursor: not-allowed; }
+    .game-nav-btn.bid-btn { background: #ffd60a; color: #000; border-color: #d4af37; }
+
+    /* OFFICIAL RULES PANEL STYLING */
+    .rules-panel {
+      display: none;
+      margin: 20px auto 30px auto;
+      text-align: left;
+      max-width: 720px;
+      background: #1c1c1e;
+      padding: 24px 26px;
+      border-radius: 14px;
+      border: 1px solid #444;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.65);
+      line-height: 1.6;
+      color: #e5e5ea;
+    }
+    .rules-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      border-bottom: 2px solid #ffd60a;
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+    .rules-panel h2 { color: #ffd60a; margin: 0; font-size: 22px; letter-spacing: 0.3px; }
+    .rules-panel h3 { color: #ffd60a; margin: 22px 0 8px 0; font-size: 16px; border-bottom: 1px solid #333; padding-bottom: 4px; }
+    .rules-panel h4 { color: #63e685; margin: 14px 0 6px 0; font-size: 14px; }
+    .rules-panel p { margin: 6px 0 10px 0; font-size: 14px; }
+    .rules-panel ul, .rules-panel ol { margin: 6px 0 12px 0; padding-left: 22px; font-size: 14px; }
+    .rules-panel li { margin-bottom: 6px; }
+    .rules-note { color: #aaa; font-style: italic; }
+
+    /* BIDDING MODAL */
+    .bid-modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); z-index: 100000; justify-content: center; align-items: center; }
+    .bid-modal-content { background: #1c1c1e; border: 2px solid #ffd60a; border-radius: 16px; padding: 20px; width: 340px; text-align: center; box-shadow: 0 10px 40px rgba(255, 214, 10, 0.2); }
+    .bid-display { font-size: 36px; color: #30d158; margin: 15px 0; font-weight: 900; background: #000; padding: 15px; border-radius: 10px; border: 1px solid #333; letter-spacing: 1px; }
+    .bid-keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
+    .bid-key { background: #2c2c2e; color: #fff; border: 1px solid #555; padding: 15px; font-size: 22px; font-weight: bold; border-radius: 8px; cursor: pointer; transition: background 0.1s; }
+    .bid-key:active { background: #444; }
+    .bid-key.action-clear { background: #ff3b30; color: #fff; border-color: #d70015; }
+    .bid-key.action-close { background: #555; font-size: 16px; }
+    .bid-submit { background: #ffd60a; color: #000; width: 100%; padding: 18px; font-size: 22px; font-weight: 900; border: none; border-radius: 10px; cursor: pointer; text-transform: uppercase; }
+
+    /* AUCTION CENTER CONSOLE DISPLAY */
+    .auction-card-display { position: relative; width: 160px; height: 220px; margin: 0 auto 10px auto; box-shadow: 0 10px 25px rgba(0,0,0,0.9); transition: transform 0.4s; transform-style: preserve-3d; }
+    .auction-card-display img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; border: 2px solid #d4af37; }
+    
+    /* PORTFOLIO & CARDS */
+    .portfolio-grid { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
+    .portfolio-item { width: 110px; height: 155px; position: relative; cursor: pointer; transition: transform 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.7); }
+    .portfolio-item:hover { transform: scale(1.08) translateY(-5px); z-index: 10; }
+    .portfolio-item img.main-art { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; border: 1px solid #555; }
+    .portfolio-value-badge { position: absolute; bottom: -15px; right: -15px; width: 50px; height: 75px; box-shadow: 0 2px 8px rgba(0,0,0,0.8); border-radius: 4px; border: 1px solid #222; }
+    
+    .money-stack-container { display: flex; justify-content: center; align-items: center; margin-top: 20px; position: relative; height: 250px; }
+    .money-card { position: absolute; width: 150px; height: 220px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.8); border: 1px solid #111; transition: transform 0.3s; }
+    .money-card:hover { transform: translateY(-15px) !important; z-index: 20 !important; cursor: pointer; }
+    .console-art-thumb { width: 88px; height: 88px; object-fit: cover; border-radius: 8px; border: 2px solid #ffd60a; cursor: pointer; margin: 4px auto; display: block; }
+    .console-btn-row { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; margin-top: 6px; }
+    .btn-game-action.danger { background: #ff3b30; color: #fff; }
+    .btn-game-action.gold { background: #ffd60a; color: #000; }
+    .btn-game-action:disabled { background: #444; color: #888; cursor: not-allowed; }
+    .auction-timer-pill { background: #ff3b30; color: #fff; font-size: 11px; font-weight: 900; padding: 2px 8px; border-radius: 12px; }
+    .secret-values-strip { display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; margin-top: 6px; }
+    .val-chip { font-size: 11px; font-weight: 900; padding: 2px 6px; border-radius: 4px; background: #1b4d2e; color: #63e685; border: 1px solid #30d158; }
+    .val-chip.forgery { background: #5a0000; color: #ff6b6b; border-color: #ff3b30; }
+    .portfolio-card-wrap { background: #1c1c1e; border: 1px solid #444; border-radius: 10px; padding: 10px; width: 160px; text-align: center; }
+    .portfolio-card-wrap img { width: 100%; height: 140px; object-fit: cover; border-radius: 6px; cursor: pointer; }
+    #gameToast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #ff3b30; color: #fff; padding: 10px 18px; border-radius: 10px; font-weight: bold; z-index: 200000; display: none; box-shadow: 0 4px 20px rgba(0,0,0,0.6); }
+  </style>
+</head>
+<body>
+<div id="gameToast"></div>
+  <!-- POPUPS (Hidden) -->
+  <div id="bidModal" class="bid-modal-overlay">
+    <div class="bid-modal-content">
+      <h3 style="color: #ffd60a; margin: 0 0 10px 0;">Place Your Bid</h3>
+      <div id="bidDisplay" class="bid-display">$0</div>
+      <div class="bid-keypad">
+        <button class="bid-key" onclick="appendBid('1')">1</button>
+        <button class="bid-key" onclick="appendBid('2')">2</button>
+        <button class="bid-key" onclick="appendBid('3')">3</button>
+        <button class="bid-key" onclick="appendBid('4')">4</button>
+        <button class="bid-key" onclick="appendBid('5')">5</button>
+        <button class="bid-key" onclick="appendBid('6')">6</button>
+        <button class="bid-key" onclick="appendBid('7')">7</button>
+        <button class="bid-key" onclick="appendBid('8')">8</button>
+        <button class="bid-key" onclick="appendBid('9')">9</button>
+        <button class="bid-key action-clear" onclick="clearBid()">CLR</button>
+        <button class="bid-key" onclick="appendBid('0')">0</button>
+        <button class="bid-key action-close" onclick="closeBidModal()">Cancel</button>
+      </div>
+      <button class="bid-submit" onclick="submitBid()">Submit Bid</button>
+    </div>
+  </div>
+  <div id="artFullscreenModal" class="art-fullscreen-modal">
+    <button class="art-fullscreen-close-btn" onclick="closeArtFullscreen()">✕ ESC</button>
+    <img id="artFullscreenImg" class="art-fullscreen-img" src="" alt="Fullscreen Artwork">
+    <div class="art-fullscreen-caption"><h3 id="artFsTitle">Title</h3><p id="artFsDetails">Artist • Date • Museum</p></div>
+  </div>
+  <div id="returnModal" class="modal-return-overlay">
+    <div class="modal-return-content"><h3 style="color: #30d158;">📞 Call Cell Initiated</h3><button class="btn-return-app" onclick="closeReturnModal()">Return To ZeroPhone</button></div>
+  </div>
+  <div id="locationModal" class="location-modal-overlay">
+    <div class="location-modal-content"><h3 style="color: #ff9500;">📍 Enable Location Access</h3><button onclick="closeLocationModal()" style="background: #ff9500; font-weight: bold;">Got It</button></div>
+  </div>
+
+  <div id="mainHeader" class="top-header">
+    <div class="brand-container"><h1 class="app-brand-title"><img src="family-icon.svg" alt="Icon" class="app-header-logo" onerror="this.style.display='none'">ZeroPhone Family</h1></div>
+    <div class="tab-bar">
+      <button class="tab-btn tab-level1-phone active" onclick="switchTab('level1-phone')">Level 1 - WebPhone</button>
+      <button class="tab-btn tab-level1-text" onclick="switchTab('level1-text')">Level 1 - WebText</button>
+      <button class="tab-btn tab-level2" onclick="switchTab('level2')">Level 2 - "CellPhone"</button>
+      <button class="tab-btn tab-maps" onclick="switchTab('maps')">📍 Maps</button>
+      <button class="tab-btn tab-radio" onclick="switchTab('radio')">📻 Radio</button>
+      <button class="tab-btn tab-art" onclick="switchTab('art')">🏛️ Art Gallery</button>
+      <button class="tab-btn tab-game" onclick="switchTab('game')">🎲 Game On!</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <div id="responderAccessBox">
+      <h2 id="inviteTitleText" style="color:#30d158;">You have been invited!</h2>
+      <button id="megaEnterBtn" class="btn-mega-enter">📹 Enter</button>
+    </div>
+
+    <!-- PHONE TAB -->
+    <div id="tab-level1-phone" class="tab-content active">
+      <div id="status">Connected to Server</div>
+      <div id="webphoneMainSection">
+        <div class="webphone-simplified-card">
+          <div class="step-row-item"><span class="step-title-green">Step 1:</span><input type="text" id="callerName" class="webphone-input-field" placeholder="Enter Your Name"></div>
+          <div class="step-row-item"><span class="step-title-green">Step 2:</span><input type="text" id="roomId" class="webphone-input-field" placeholder="Enter Room Name"></div>
+          <div class="step-row-item"><span class="step-title-green">Step 3: Invite:</span><a id="callCellBtn" href="tel:" class="btn-round-red" onclick="triggerCellCall(event)">📞</a></div>
+          <div class="step-row-item"><span class="step-title-green">Start:</span><button id="joinVideoBtn" class="btn-square-start-red" onclick="startCall()">📹</button></div>
+        </div>
+      </div>
+      <div id="videoStreamView" class="video-grid" style="display:none;">
+        <div class="video-card"><h3 style="margin: 0 0 8px 0; font-size: 14px;">Local Stream (You)</h3><video id="localVideo" autoplay playsinline muted></video></div>
+      </div>
+      <div id="inCallControls" class="incall-controls-bar" style="display:none;">
+        <button id="toggleMicBtn" class="btn-media-toggle" onclick="toggleAudio()">🎙️</button>
+        <button id="toggleCamBtn" class="btn-media-toggle" onclick="toggleVideo()">📹</button>
+        <button id="hangUpBtn" class="btn-red-end" onclick="hangUpCall()">🔴 End Call</button>
+      </div>
+    </div>
+
+    <!-- OTHER TABS -->
+    <div id="tab-level1-text" class="tab-content"><h2 style="color: #63e685;">Level 1 - WebText</h2><div class="web-chat-box"><div id="web-chat-thread"></div><div style="display:flex;gap:8px;"><input type="text" id="webChatInput" style="flex:1;"><button id="sendWebChatBtn">Send</button></div></div></div>
+    <div id="tab-level2" class="tab-content"><div class="under-construction-box"><h1 style="color: #ff3b30;">Under Construction</h1></div></div>
+    <div id="tab-maps" class="tab-content"><h2 style="color: #ff9500;">📍 Maps</h2><div class="maps-box"><button onclick="centerMapOnUser(true)">Refresh GPS</button><iframe id="googleMapIframe"></iframe></div></div>
+    <div id="tab-radio" class="tab-content"><h2 style="color: #e040fb;">📻 Radio</h2><div class="radio-box"><audio id="radioAudioPlayer" controls></audio></div></div>
+    <div id="tab-art" class="tab-content"><h2 style="color: #ffd60a;">🏛️ Gallery</h2><div class="art-box"><img id="mainArtworkImg" src="" style="display:none;" onload="onArtworkImageLoaded()"></div></div>
+
+    <!-- GAME ON TAB ("PICTURE THIS!") -->
+    <div id="tab-game" class="tab-content">
+      
+      <!-- PHASE 1: LOBBY -->
+      <div id="gamePhaseLobby" class="game-phase active">
+        <p style="color: #aaa; margin: 0;">Ensure you are in an active Video Call first.</p>
+        <div id="lobbyVideoRow" class="game-video-row"></div>
+        <button class="btn-mega-enter" style="background:#ff3b30; color:#fff;" onclick="transitionToPieceSelection()">Play Picture This</button>
+      </div>
+
+      <!-- PHASE 2: PIECE SELECTION -->
+      <div id="gamePhaseSelect" class="game-phase">
+        <div id="selectVideoRow" class="game-video-row"></div>
+        <h2 style="color: #ffd60a; margin: 0;">Pick a Game Piece</h2>
+        
+        <!-- Colored Squares with Centered Glowing Game_Icons.jpeg Pieces -->
+        <div class="game-pieces-grid">
+          <button class="game-piece-btn" id="piece-red" onclick="selectPiece('red')" title="Red Token" aria-label="Red Game Piece"></button>
+          <button class="game-piece-btn" id="piece-green" onclick="selectPiece('green')" title="Green Token" aria-label="Green Game Piece"></button>
+          <button class="game-piece-btn" id="piece-blue" onclick="selectPiece('blue')" title="Blue Token" aria-label="Blue Game Piece"></button>
+          <button class="game-piece-btn" id="piece-yellow" onclick="selectPiece('yellow')" title="Yellow Token" aria-label="Yellow Game Piece"></button>
+        </div>
+
+        <button class="btn-mega-enter" style="max-width: 300px;" onclick="startGameBoard()">Start Game</button>
+      </div>
+
+      <!-- PHASE 3: GAME BOARD -->
+      <div id="gamePhaseBoard" class="game-phase">
+        <div class="board-container">
+          <!-- BOARD BACKGROUND -->
+          <img src="picture-this-board.jpg" class="board-bg" alt="Game Board">
+          
+          <!-- CORNER VIDEO CONTAINERS -->
+          <div id="corner1" class="corner-video top-left"></div>
+          <div id="corner2" class="corner-video top-right"></div>
+          <div id="corner3" class="corner-video bottom-left"></div>
+          <div id="corner4" class="corner-video bottom-right"></div>
+
+          <!-- DYNAMIC CENTER CONSOLE -->
+          <div id="centerConsole" class="center-console">
+            <button id="btnPlaceToken" class="btn-game-action" style="padding:15px; font-size:16px;" onclick="placeTokens()">Place Your Token on the Board</button>
+          </div>
+        </div>
+
+        <div class="game-bottom-bar">
+          <button class="game-nav-btn" onclick="showSubView('board')">GameBoard</button>
+          <button class="game-nav-btn" onclick="showSubView('artwork')">My ArtWork</button>
+          <button class="game-nav-btn" style="color: #30d158; border-color: #30d158;" onclick="showSubView('money')">My Money</button>
+          <button id="btnRollDice" class="game-nav-btn dice-btn" onclick="rollDice()" disabled>Roll Dice</button>
+          <button class="game-nav-btn bid-btn" onclick="openBidModal()">BID!</button>
+          <button class="game-nav-btn" onclick="showSubView('rules')">Game Rules</button>
+        </div>
+      </div>
+      
+      <!-- GAME SUB-VIEWS -->
+      <div id="gameSubArtwork" style="display:none; margin-top:20px;">
+        <h3 style="color:#ffd60a;">My Portfolio</h3><p style="color:#aaa;">Hover/Tap to inspect secret values.</p>
+        <div class="portfolio-grid">
+          <div class="portfolio-item">
+            <img src="15FDDD6C-6205-4F68-8C6A-338AB0FA6C84_4_5005_c.jpeg" class="main-art" alt="Artwork Backing">
+            <img src="84DD302A-1B51-4861-AC13-83430EABF508_4_5005_c.jpeg" class="portfolio-value-badge" alt="Secret Value">
+          </div>
+          <div class="portfolio-item">
+            <img src="15FDDD6C-6205-4F68-8C6A-338AB0FA6C84_4_5005_c.jpeg" class="main-art" alt="Artwork Backing">
+            <img src="44597DDA-24A4-4EE9-9007-4D59DD62645A_4_5005_c.jpeg" class="portfolio-value-badge" alt="Forgery">
+          </div>
+        </div>
+      </div>
+
+      <div id="gameSubMoney" style="display:none; margin-top:20px; text-align:center;">
+        <h3 style="color:#30d158; margin-bottom: 5px;">My Ledger</h3>
+        <h1 id="playerCashDisplay" style="font-size: 42px; margin: 0; color: #fff;">$15,000,000</h1>
+        <div class="money-stack-container">
+          <img src="01F51434-BFAE-491D-9217-15DB68FDC6D5_4_5005_c.jpeg" class="money-card" style="transform: rotate(-10deg) translateX(-60px); z-index: 1;" alt="Money Back">
+          <img src="01F51434-BFAE-491D-9217-15DB68FDC6D5_4_5005_c.jpeg" class="money-card" style="transform: rotate(-2deg) translateX(-20px); z-index: 2;" alt="Money Back">
+          <img src="65587C4B-ACCD-4E62-B7A5-961C7A667D57_4_5005_c.jpeg" class="money-card" style="transform: rotate(8deg) translateX(30px); z-index: 3;" alt="3 Million Front">
+          <img src="65587C4B-ACCD-4E62-B7A5-961C7A667D57_4_5005_c.jpeg" class="money-card" style="transform: rotate(15deg) translateX(70px); z-index: 4;" alt="3 Million Front">
+        </div>
+      </div>
+
+      <div id="gameSubRules" class="rules-panel">
+        <div class="rules-header-row">
+          <h2>PICTURE THIS! – Official Game Rules</h2>
+          <button class="btn-game-action gold" style="margin-top:0;" onclick="showSubView('board')">← Back to GameBoard</button>
+        </div>
+
+        <h3>The Objective</h3>
+        <p>You are an elite art collector navigating the ruthless world of high-stakes auctions. Your goal is to amass the highest net worth by the time the bank's gallery is empty. Your net worth is the combined total of your cash on hand and the true, hidden value of the authentic artworks in your portfolio.</p>
+
+        <h3>Game Setup</h3>
+        <ol>
+          <li><strong>The Bank:</strong> Appoint one player (or your WebRTC cloud umpire) to act as the Banker. The Banker manages the cash, the Artwork deck, and the Value deck.</li>
+          <li><strong>Starting Capital:</strong> The Banker issues <strong>$15,000,000</strong> to each player (e.g., one $5M, nine $1M, and two $500k notes).</li>
+          <li><strong>The Starting Portfolio:</strong> Shuffle the Artwork and Value decks separately. The Banker deals one Artwork card face-up to each player, followed by one Value card face-down.</li>
+          <li><strong>Secret Values:</strong> Players secretly slide their Value card underneath their Artwork card. You may look at your own Value cards at any time, but you must keep them hidden from your opponents.</li>
+        </ol>
+
+        <h3>On Your Turn</h3>
+        <p>Players take turns rolling a standard 6-sided die and moving their token clockwise around the 30-space circular track. You must execute the action of the space you land on. Two or more players may occupy the same space.</p>
+
+        <h3>The Board Spaces</h3>
+
+        <h4>1. Bank Auction (11 Spaces)</h4>
+        <p>The Bank places the top Artwork card from the deck onto the center easel.</p>
+        <ul>
+          <li>The Banker opens the bidding. Any player may bid, regardless of whose turn it is.</li>
+          <li>Bids must be in increments of at least $500,000.</li>
+          <li>The highest bidder pays their bid amount to the Bank, takes the Artwork card, and immediately draws the top Value card, sliding it secretly behind their new painting.</li>
+          <li class="rules-note">Note: If no one bids, the Artwork goes to the bottom of the deck.</li>
+        </ul>
+
+        <h4>2. Private Auction (3 Spaces)</h4>
+        <p>You must auction off one of the artworks from your own portfolio to the other players!</p>
+        <ul>
+          <li>The player to your immediate left chooses which of your paintings goes on the block.</li>
+          <li>You act as the auctioneer and <strong>cannot bid</strong>.</li>
+          <li>The highest bidder pays <strong>you</strong> directly. They take the Artwork card and all Value cards attached to it. The buyer cannot look at the attached Value cards until the transaction is complete.</li>
+          <li class="rules-note">Note: If you own no artwork when you land here, nothing happens and your turn ends.</li>
+        </ul>
+
+        <h4>3. Direct Purchase (7 Spaces: $1.5M, $2.0M, or $2.5M)</h4>
+        <p>You have the exclusive option to buy the top Artwork card directly from the Bank for the price printed on the space.</p>
+        <ul>
+          <li>If you choose to buy, pay the Bank, take the Artwork, and draw the top Value card.</li>
+          <li>No other player may bid or interfere.</li>
+          <li>If you decline the purchase, the Artwork remains on top of the deck and your turn ends.</li>
+        </ul>
+
+        <h4>4. Collect $3,000,000 OR a Value Card (5 Spaces)</h4>
+        <p>You are presented with a market choice: liquidity or asset inflation.</p>
+        <ul>
+          <li><strong>Option A:</strong> Take $3,000,000 in cash from the Bank.</li>
+          <li><strong>Option B:</strong> Draw the top Value card from the deck and secretly add it to an Artwork you already own. This allows you to increase a painting's worth by stacking multiple Value cards behind it.</li>
+          <li class="rules-note">Note: If you do not own any artwork, you must take the cash.</li>
+        </ul>
+
+        <h4>5. Inherit a Painting (4 Spaces)</h4>
+        <p>A wealthy benefactor has left you a masterpiece. Take the top Artwork card and the top Value card from the Bank completely free of charge.</p>
+
+        <h3>The Portfolio Rules (Values &amp; Forgeries)</h3>
+        <ul>
+          <li><strong>Stacking:</strong> A single Artwork can have multiple Value cards stacked behind it. Its total worth is the sum of all its attached cards.</li>
+          <li><strong>Permanence:</strong> Once a Value card is assigned to an Artwork, it cannot be moved to a different painting.</li>
+          <li><strong>The Forgery Rule:</strong> If <strong>any</strong> Value card attached to an Artwork is a "Forgery", that painting is definitively proven fake. Its total value drops to <strong>$0</strong>, regardless of how many other legitimate Value cards are stacked with it.</li>
+          <li><strong>Bluffing:</strong> You are highly encouraged to hype up your forgeries to trick opponents into buying them during Private Auctions!</li>
+        </ul>
+
+        <h3>Game End &amp; Victory</h3>
+        <p>The game instantly ends the moment the final Artwork card is acquired from the Bank.</p>
+        <p>At this point, all players reveal their Value cards.</p>
+        <ol>
+          <li>Discard the value of any painting containing a Forgery card.</li>
+          <li>Sum the valid Value cards in your portfolio.</li>
+          <li>Add your remaining cash on hand.</li>
+        </ol>
+        <p><strong>The player with the highest total Net Worth is the ultimate collector and wins the game!</strong></p>
+
+        <div style="text-align:center; margin-top:18px;">
+          <button class="btn-game-action gold" onclick="showSubView('board')">← Back to GameBoard</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const SIGNALING_SERVER = "https://webrtc-signaling-do2l.onrender.com";
+    
+    const socket = io(SIGNALING_SERVER);
+    let localStream;
+    let peerConnections = {};
+    let currentCoords = null;
+    let isAudioMuted = false;
+    let isVideoMuted = false;
+
+    const roomIdInput = document.getElementById('roomId');
+    const callerNameInput = document.getElementById('callerName');
+    const webTextSenderNameInput = document.getElementById('webTextSenderName') || {value: ''}; 
+    const statusDiv = document.getElementById('status');
+    const rtcConfig = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] };
+
+    function updateGridLayout() {
+      const grid = document.getElementById('videoStreamView');
+      if (!grid) return;
+      const count = grid.querySelectorAll('.video-card').length;
+      grid.classList.remove('peers-2', 'peers-3', 'peers-4');
+      if (count === 2) grid.classList.add('peers-2');
+      else if (count === 3) grid.classList.add('peers-3');
+      else if (count >= 4) grid.classList.add('peers-4');
+    }
+
+    callerNameInput.addEventListener('input', (e) => { if(webTextSenderNameInput.tagName) webTextSenderNameInput.value = e.target.value; });
+
+    function triggerCellCall(event) {
+      const number = prompt("Enter phone number to call (optional):", "");
+      const callLink = document.getElementById('callCellBtn');
+      callLink.href = (number && number.trim()) ? `tel:${encodeURIComponent(number.trim())}` : "tel:";
+      setTimeout(() => { document.getElementById('returnModal').style.display = 'flex'; }, 10000);
+    }
+    function closeReturnModal() { document.getElementById('returnModal').style.display = 'none'; }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const roomParam = urlParams.get('room');
+    if (roomParam) {
+      roomIdInput.value = roomParam;
+      const tId = document.getElementById('webTextRoomId');
+      if (tId) tId.value = roomParam;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      if (roomParam) {
+        document.getElementById('mainHeader').style.display = 'none';
+        document.getElementById('webphoneMainSection').style.display = 'none';
+        document.getElementById('videoStreamView').style.display = 'none';
+        document.getElementById('status').style.display = 'none';
+        document.getElementById('responderAccessBox').style.display = 'block';
+      }
+    });
+
+    document.getElementById('megaEnterBtn').addEventListener('click', () => {
+      document.getElementById('responderAccessBox').style.display = 'none';
+      document.getElementById('status').style.display = 'block';
+      startCall();
+    });
+
+    function switchTab(tabName) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+      if (tabName === 'level1-phone') { document.querySelectorAll('.tab-btn')[0].classList.add('active'); document.getElementById('tab-level1-phone').classList.add('active'); } 
+      else if (tabName === 'game') { document.querySelectorAll('.tab-btn')[6].classList.add('active'); document.getElementById('tab-game').classList.add('active'); enterGameLobby(); }
+    }
+
+    // ==========================================
+    // GAME ON! "PICTURE THIS!" AUTOMATED CLIENT
+    // ==========================================
+    let myGamePiece = null;
+    let gamePlayers = [];
+    let latestState = null;
+    let myPrivateState = { cash: 15000000, portfolio: [], secretPortfolioTotal: 0, secretNetWorth: 15000000 };
+    let auctionCountdownInterval = null;
+    const PIECE_COLORS = { red: '#ff3b30', green: '#30d158', blue: '#0a84ff', yellow: '#ffd60a' };
+    const FALLBACK_ART = "15FDDD6C-6205-4F68-8C6A-338AB0FA6C84_4_5005_c.jpeg";
+
+    function getRoomId() {
+      return roomIdInput.value.trim() || 'family-game';
+    }
+
+    function showGameToast(msg, isSuccess = false) {
+      const toast = document.getElementById('gameToast');
+      toast.style.background = isSuccess ? '#30d158' : '#ff3b30';
+      toast.style.color = isSuccess ? '#000' : '#fff';
+      toast.innerText = msg;
+      toast.style.display = 'block';
+      setTimeout(() => { toast.style.display = 'none'; }, 3000);
+    }
+
+    function zoomGameArt(imgUrl, title, details) {
+      document.getElementById('artFullscreenImg').src = imgUrl || FALLBACK_ART;
+      document.getElementById('artFsTitle').innerText = title || "Masterpiece";
+      document.getElementById('artFsDetails').innerText = details || "";
+      document.getElementById('artFullscreenModal').style.display = 'flex';
+    }
+    function closeArtFullscreen() {
+      document.getElementById('artFullscreenModal').style.display = 'none';
+    }
+
+    function enterGameLobby() {
+      const sourceGrid = document.getElementById('videoStreamView');
+      const targetRow = document.getElementById('lobbyVideoRow');
+      sourceGrid.querySelectorAll('.video-card').forEach(v => {
+        v.style.width = '120px';
+        targetRow.appendChild(v);
+      });
+    }
+
+    function transitionToPieceSelection() {
+      document.getElementById('gamePhaseLobby').classList.remove('active');
+      document.getElementById('gamePhaseSelect').classList.add('active');
+      const cards = document.getElementById('lobbyVideoRow').querySelectorAll('.video-card');
+      const targetRow = document.getElementById('selectVideoRow');
+      cards.forEach(c => targetRow.appendChild(c));
+    }
+
+    function applyPieceSprite(el, piece) {
+      el.style.backgroundColor = "#080a0f";
+      el.style.backgroundImage = "url('Game_Icons.jpeg')";
+      el.style.backgroundSize = "auto 138%";
+      el.style.backgroundRepeat = "no-repeat";
+      const pos = {
+        red: "11% 37%",
+        green: "41% 34%",
+        blue: "69% 28%",
+        yellow: "94% 25%"
+      };
+      el.style.backgroundPosition = pos[piece] || "11% 37%";
+      el.style.borderColor = PIECE_COLORS[piece] || "#fff";
+    }
+
+    function selectPiece(color) {
+      myGamePiece = color;
+      document.querySelectorAll('.game-piece-btn').forEach(btn => btn.classList.remove('selected'));
+      document.getElementById(`piece-${color}`).classList.add('selected');
+      socket.emit('game-select-piece', {
+        roomId: getRoomId(),
+        color,
+        name: callerNameInput.value.trim() || color.toUpperCase()
+      });
+    }
+
+    socket.on('game-player-updated', ({ playerId, piece, players }) => {
+      if (players) gamePlayers = players;
+      const card = (playerId === socket.id)
+        ? document.getElementById('localVideo').parentNode
+        : document.getElementById(`card-${playerId}`);
+      if (card) {
+        let badge = card.querySelector('.player-badge');
+        if (!badge) {
+          badge = document.createElement('div');
+          badge.className = 'player-badge';
+          card.appendChild(badge);
+        }
+        applyPieceSprite(badge, piece);
+      }
+    });
+
+    socket.on('game-started', ({ players }) => {
+      gamePlayers = players;
+      document.getElementById('gamePhaseLobby').classList.remove('active');
+      document.getElementById('gamePhaseSelect').classList.remove('active');
+      document.getElementById('gamePhaseBoard').classList.add('active');
+      moveVideosToCorners();
+    });
+
+    function moveVideosToCorners() {
+      const cards = document.querySelectorAll('#selectVideoRow .video-card, #lobbyVideoRow .video-card');
+      const corners = ['corner1', 'corner2', 'corner3', 'corner4'];
+      cards.forEach((card, idx) => {
+        if (idx < 4) {
+          card.style.width = '100%';
+          card.style.height = '100%';
+          const label = card.querySelector('h3');
+          if (label) label.style.display = 'none';
+          document.getElementById(corners[idx]).appendChild(card);
+        }
+      });
+    }
+
+    function startGameBoard() {
+      if (!myGamePiece) return showGameToast("Pick a game piece first!");
+      moveVideosToCorners();
+      document.getElementById('gamePhaseSelect').classList.remove('active');
+      document.getElementById('gamePhaseBoard').classList.add('active');
+      socket.emit('game-start', { roomId: getRoomId() });
+    }
+
+    // Smoothly create or glide tokens around the 30-space circular track
+    function drawTokens(players) {
+      const container = document.querySelector('.board-container');
+      const activeIds = new Set(players.map(p => `token-${p.id}`));
+      container.querySelectorAll('.board-token').forEach(el => {
+        if (!activeIds.has(el.id)) el.remove();
+      });
+
+      players.forEach((p, idx) => {
+        let token = document.getElementById(`token-${p.id}`);
+        if (!token) {
+          token = document.createElement('div');
+          token.id = `token-${p.id}`;
+          token.className = 'board-token';
+          token.style.width = "24px";
+          token.style.height = "42px";
+          token.style.borderRadius = "6px";
+          token.style.border = `2px solid ${PIECE_COLORS[p.piece]}`;
+          applyPieceSprite(token, p.piece);
+          container.appendChild(token);
+        }
+
+        const angle = (p.spaceIndex / 30) * 2 * Math.PI - (Math.PI / 2);
+        const radius = 42;
+        const offsetX = (idx % 2 === 0 ? 1.8 : -1.8);
+        const offsetY = (idx > 1 ? 1.8 : -1.8);
+        const left = 50 + radius * Math.cos(angle) + offsetX;
+        const top = 50 + radius * Math.sin(angle) + offsetY;
+
+        token.style.left = `calc(${left}% - 12px)`;
+        token.style.top = `calc(${top}% - 21px)`;
+      });
+    }
+
+    function placeTokens() {
+      drawTokens(gamePlayers);
+      document.getElementById('centerConsole').innerHTML =
+        `<button class="btn-game-action gold" style="padding:14px; font-size:15px;" onclick="pickGenre()">Pick An Art Genre</button>`;
+    }
+
+    function pickGenre() {
+      document.getElementById('centerConsole').innerHTML = `
+        <h2 style="font-size:14px; margin-bottom:8px;">Select Masterpiece Deck</h2>
+        <div class="console-btn-row">
+          <button class="btn-game-action" onclick="initDeck('renaissance')">Renaissance</button>
+          <button class="btn-game-action" onclick="initDeck('baroque')">Baroque</button>
+          <button class="btn-game-action" onclick="initDeck('impressionism')">Impressionist</button>
+          <button class="btn-game-action" onclick="initDeck('american')">American</button>
+          <button class="btn-game-action" onclick="initDeck('modern')">Modern</button>
+        </div>
+      `;
+    }
+
+    function initDeck(genre) {
+      socket.emit('game-init-deck', { roomId: getRoomId(), genre });
+    }
+
+    function showSubView(view) {
+      document.querySelector('.board-container').style.display = (view === 'board') ? 'block' : 'none';
+      document.getElementById('gameSubArtwork').style.display = (view === 'artwork') ? 'block' : 'none';
+      document.getElementById('gameSubMoney').style.display = (view === 'money') ? 'block' : 'none';
+      document.getElementById('gameSubRules').style.display = (view === 'rules') ? 'block' : 'none';
+      if (view === 'artwork') renderPrivatePortfolio();
+      if (view === 'money') renderPrivateMoney();
+    }
+
+    function rollDice() {
+      document.getElementById('btnRollDice').disabled = true;
+      socket.emit('game-roll-dice', { roomId: getRoomId() });
+    }
+
+    // Player Choice Emitters
+    function sendDirectBuy(buy) {
+      socket.emit('game-direct-buy', { roomId: getRoomId(), buy });
+    }
+    function sendCollectChoice(choice, artworkId = null) {
+      socket.emit('game-collect-choice', { roomId: getRoomId(), choice, artworkId });
+    }
+    function sendPrivateSelect(artworkId) {
+      socket.emit('game-private-select', { roomId: getRoomId(), artworkId });
+    }
+    function quickBid(amount) {
+      socket.emit('game-place-bid', { roomId: getRoomId(), bidAmount: amount });
+    }
+    function passAuction() {
+      socket.emit('game-auction-pass', { roomId: getRoomId() });
+    }
+
+    // BIDDING KEYPAD MODAL
+    let currentBidValue = "";
+    function openBidModal() {
+      if (!latestState || !latestState.auction) {
+        return showGameToast("Bidding is only open during an active auction!");
+      }
+      currentBidValue = String(latestState.auction.minNextBid);
+      updateBidDisplay();
+      document.getElementById('bidModal').style.display = 'flex';
+    }
+    function closeBidModal() { document.getElementById('bidModal').style.display = 'none'; }
+    function appendBid(num) {
+      if (currentBidValue.length < 12) { currentBidValue += num; updateBidDisplay(); }
+    }
+    function clearBid() { currentBidValue = ""; updateBidDisplay(); }
+    function updateBidDisplay() {
+      const display = document.getElementById('bidDisplay');
+      display.innerText = currentBidValue ? "$" + Number(currentBidValue).toLocaleString('en-US') : "$0";
+    }
+    function submitBid() {
+      if (!currentBidValue) return;
+      socket.emit('game-place-bid', { roomId: getRoomId(), bidAmount: Number(currentBidValue) });
+      closeBidModal();
+    }
+
+    // PRIVATE HAND & MONEY RENDERING
+    function renderPrivatePortfolio() {
+      const container = document.querySelector('#gameSubArtwork .portfolio-grid');
+      if (!myPrivateState.portfolio.length) {
+        container.innerHTML = `<p style="color:#888;">You do not own any paintings yet.</p>`;
+        return;
+      }
+      container.innerHTML = myPrivateState.portfolio.map(art => {
+        const chips = art.values.map(v =>
+          `<span class="val-chip ${v.isForgery ? 'forgery' : ''}">${v.label}</span>`
+        ).join('');
+        const totalText = art.hasForgery
+          ? `<span style="color:#ff3b30;">$0 (FORGERY!)</span>`
+          : `<span style="color:#30d158;">$${art.total.toLocaleString()}</span>`;
+        return `
+          <div class="portfolio-card-wrap">
+            <img src="${art.imageUrl}" onerror="this.src='${FALLBACK_ART}'"
+                 onclick="zoomGameArt('${art.imageUrl}', '${art.title.replace(/'/g, "\\'")}', '${art.artist.replace(/'/g, "\\'")} • ${art.year}')">
+            <div style="font-size:12px; font-weight:bold; margin-top:6px; color:#ffd60a;">${art.title}</div>
+            <div style="font-size:11px; color:#aaa;">${art.artist}</div>
+            <div class="secret-values-strip">${chips}</div>
+            <div style="font-size:12px; font-weight:900; margin-top:6px;">True Value: ${totalText}</div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderPrivateMoney() {
+      document.getElementById('playerCashDisplay').innerText = `$${myPrivateState.cash.toLocaleString()}`;
+    }
+
+    socket.on('game-private-state', (priv) => {
+      myPrivateState = priv;
+      renderPrivateMoney();
+      if (document.getElementById('gameSubArtwork').style.display === 'block') {
+        renderPrivatePortfolio();
+      }
+    });
+
+    socket.on('game-error', ({ message }) => showGameToast(message, false));
+
+    // MASTER STATE RENDERER
+    socket.on('game-state-update', (state) => {
+      latestState = state;
+      clearInterval(auctionCountdownInterval);
+
+      if (state.players) {
+        gamePlayers = state.players;
+        drawTokens(gamePlayers);
+      }
+
+      const consoleEl = document.getElementById('centerConsole');
+      const isMyTurn = (state.activePlayerId === socket.id);
+
+      document.getElementById('btnRollDice').disabled = !(state.phase === 'turn_start' && isMyTurn);
+
+      document.querySelectorAll('.corner-video').forEach(cv => cv.classList.remove('active-turn'));
+      const activeCard = isMyTurn
+        ? document.getElementById('localVideo').parentNode
+        : document.getElementById(`card-${state.activePlayerId}`);
+      if (activeCard && activeCard.closest('.corner-video')) {
+        activeCard.closest('.corner-video').classList.add('active-turn');
+      }
+
+      if (state.phase === 'turn_start') {
+        consoleEl.innerHTML = `
+          <div style="font-size:11px; color:#aaa;">Gallery Left: ${state.deckCount} Paintings</div>
+          <h2 style="margin:6px 0; font-size:20px;">${state.activePlayerName}'S TURN</h2>
+          <p style="font-size:12px; margin:0; color:${isMyTurn ? '#30d158' : '#ccc'};">
+            ${isMyTurn ? 'Click Roll Dice below!' : 'Waiting for roll...'}
+          </p>
+        `;
+      }
+      else if (state.phase === 'dice_animating') {
+        showSubView('board');
+        consoleEl.innerHTML = `
+          <video src="dice-roll.mp4" autoplay muted playsinline style="width:85%; border-radius:50%; border:2px solid #555;"></video>
+        `;
+        setTimeout(() => {
+          if (latestState && latestState.phase === 'dice_animating') {
+            consoleEl.innerHTML = `<h1 style="font-size:68px; margin:0; color:#ffd60a;">${state.lastRoll}</h1><p style="margin:0; font-size:13px;">${state.activePlayerName} rolled ${state.lastRoll}!</p>`;
+          }
+        }, 1400);
+      }
+      else if (state.phase === 'turn_notice') {
+        consoleEl.innerHTML = `
+          <h2 style="font-size:15px; color:#30d158;">Update</h2>
+          <p style="font-size:13px; margin:4px 0;">${state.message}</p>
+        `;
+      }
+      else if (state.phase === 'direct_buy' && state.pendingAction) {
+        const { artwork, price, canAfford } = state.pendingAction;
+        consoleEl.innerHTML = `
+          <h2 style="font-size:13px; margin:0;">Buy for $${price.toLocaleString()}?</h2>
+          <img class="console-art-thumb" src="${artwork.imageUrl}" onerror="this.src='${FALLBACK_ART}'"
+               onclick="zoomGameArt('${artwork.imageUrl}', '${artwork.title.replace(/'/g, "\\'")}', '${artwork.artist.replace(/'/g, "\\'")}')">
+          <div style="font-size:11px; color:#ddd;">${artwork.title}</div>
+          ${isMyTurn ? `
+            <div class="console-btn-row">
+              <button class="btn-game-action" onclick="sendDirectBuy(true)" ${canAfford ? '' : 'disabled'}>Buy ($${(price/1000000).toFixed(1)}M)</button>
+              <button class="btn-game-action danger" onclick="sendDirectBuy(false)">Pass</button>
+            </div>
+          ` : `<p style="font-size:11px; color:#aaa;">Waiting for ${state.activePlayerName}...</p>`}
+        `;
+      }
+      else if (state.phase === 'collect_choice' && state.pendingAction) {
+        consoleEl.innerHTML = `
+          <h2 style="font-size:14px;">Market Choice</h2>
+          ${isMyTurn ? `
+            <div class="console-btn-row">
+              <button class="btn-game-action" onclick="sendCollectChoice('cash')">Take $3,000,000</button>
+              <button class="btn-game-action gold" onclick="sendCollectChoice('value')" ${state.pendingAction.canTakeValue ? '' : 'disabled'}>Take Value Card</button>
+            </div>
+          ` : `<p style="font-size:12px; color:#aaa;">${state.activePlayerName} is choosing...</p>`}
+        `;
+      }
+      else if (state.phase === 'assign_value' && state.pendingAction) {
+        if (isMyTurn) {
+          const btns = state.pendingAction.artworks.map(a =>
+            `<button class="btn-game-action gold" style="font-size:11px;" onclick="sendCollectChoice('value', '${a.id}')">${a.title} (${a.valueCardCount})</button>`
+          ).join('');
+          consoleEl.innerHTML = `<h2 style="font-size:13px;">Attach Value Card To:</h2><div class="console-btn-row">${btns}</div>`;
+        } else {
+          consoleEl.innerHTML = `<h2 style="font-size:14px;">Secret Appraisal</h2><p style="font-size:12px;">${state.activePlayerName} is stacking a Value Card...</p>`;
+        }
+      }
+      else if (state.phase === 'private_select' && state.pendingAction) {
+        const pa = state.pendingAction;
+        const amSelector = (socket.id === pa.selectorId);
+        if (amSelector) {
+          const btns = pa.sellerArtworks.map(a =>
+            `<button class="btn-game-action gold" style="font-size:11px;" onclick="sendPrivateSelect('${a.id}')">${a.title} (${a.valueCardCount} cards)</button>`
+          ).join('');
+          consoleEl.innerHTML = `<h2 style="font-size:13px;">Pick ${pa.sellerName}'s Painting to Auction:</h2><div class="console-btn-row">${btns}</div>`;
+        } else {
+          consoleEl.innerHTML = `<h2 style="font-size:14px;">Private Auction</h2><p style="font-size:12px;">${pa.selectorName} is picking which of ${pa.sellerName}'s paintings goes on the block...</p>`;
+        }
+      }
+      else if ((state.phase === 'bank_auction' || state.phase === 'private_auction') && state.auction) {
+        showSubView('board');
+        const auc = state.auction;
+        const isSeller = (auc.type === 'private' && socket.id === auc.sellerId);
+        const isLeader = (socket.id === auc.highestBidderId);
+        const hasPassed = auc.passedIds.includes(socket.id);
+        const canQuickBid = !isSeller && !isLeader && (myPrivateState.cash >= auc.minNextBid);
+
+        consoleEl.innerHTML = `
+          <div style="display:flex; gap:6px; align-items:center;">
+            <span style="font-size:11px; font-weight:900; color:#ffd60a;">${auc.type === 'bank' ? 'BANK AUCTION' : 'PRIVATE AUCTION'}</span>
+            <span id="auctionTimerPill" class="auction-timer-pill">12s</span>
+          </div>
+          <img class="console-art-thumb" src="${auc.artwork.imageUrl}" onerror="this.src='${FALLBACK_ART}'"
+               onclick="zoomGameArt('${auc.artwork.imageUrl}', '${auc.artwork.title.replace(/'/g, "\\'")}', '${auc.artwork.artist.replace(/'/g, "\\'")}')">
+          <div style="font-size:11px; font-weight:bold; color:#fff;">${auc.artwork.title}</div>
+          <div style="font-size:12px; color:#30d158; font-weight:900;">
+            ${auc.currentBid > 0 ? `$${auc.currentBid.toLocaleString()} (${auc.highestBidderName})` : 'Opening Bid: $500,000'}
+          </div>
+          ${isSeller
+            ? `<div style="font-size:11px; color:#aaa;">You are the auctioneer (cannot bid).</div>`
+            : `<div class="console-btn-row">
+                 <button class="btn-game-action gold" onclick="quickBid(${auc.minNextBid})" ${canQuickBid ? '' : 'disabled'}>
+                   Bid $${(auc.minNextBid/1000000).toFixed(1)}M
+                 </button>
+                 <button class="btn-game-action danger" onclick="passAuction()" ${(isLeader || hasPassed) ? 'disabled' : ''}>
+                   ${hasPassed ? 'Passed' : 'Pass'}
+                 </button>
+               </div>`
+          }
+        `;
+
+        const updateTimer = () => {
+          const pill = document.getElementById('auctionTimerPill');
+          if (!pill) return;
+          const secs = Math.max(0, Math.ceil((auc.endsAt - Date.now()) / 1000));
+          pill.innerText = `${secs}s`;
+        };
+        updateTimer();
+        auctionCountdownInterval = setInterval(updateTimer, 300);
+      }
+      else if (state.phase === 'game_over' && state.leaderboard) {
+        const winner = state.leaderboard[0];
+        const rows = state.leaderboard.map((p, i) =>
+          `<div style="font-size:12px; margin:3px 0;">
+            ${i === 0 ? '🏆 ' : `${i + 1}. `}<b>${p.name}</b>: $${p.netWorth.toLocaleString()}
+            <span style="color:#aaa; font-size:10px;">(Cash $${(p.cash/1000000).toFixed(1)}M + Art $${(p.portfolioValue/1000000).toFixed(1)}M)</span>
+          </div>`
+        ).join('');
+        consoleEl.innerHTML = `
+          <h2 style="font-size:16px; color:#ffd60a;">${winner.name} Wins!</h2>
+          <div style="text-align:left; max-height:110px; overflow-y:auto;">${rows}</div>
+          <button class="btn-game-action gold" onclick="pickGenre()">Play Again</button>
+        `;
+      }
+    });
+
+    // ==========================================
+    // WEBRTC SIGNALING CORE 
+    // ==========================================
+    async function startCall() {
+      const roomId = roomIdInput.value.trim();
+      if (!roomId) return alert("Please enter a room name");
+
+      const mediaConfigs = [{ audio: true, video: true }, { audio: true, video: { facingMode: 'user' } }];
+      localStream = null;
+      for (const config of mediaConfigs) {
+        try { localStream = await navigator.mediaDevices.getUserMedia(config); if (localStream) break; } catch (e) { }
+      }
+
+      if (!localStream) return alert("Unable to access camera or microphone.");
+
+      const localVid = document.getElementById('localVideo');
+      localVid.srcObject = localStream;
+      localVid.play().catch(e => {});
+
+      document.getElementById('videoStreamView').style.display = 'grid';
+      document.getElementById('inCallControls').style.display = 'flex';
+      document.getElementById('webphoneMainSection').style.display = 'none';
+
+      updateGridLayout();
+      socket.emit('join-room', roomId);
+      statusDiv.innerText = `Joined room: ${roomId}. Waiting for peers...`;
+    }
+
+    function toggleAudio() { /* Abbreviated */ }
+    function toggleVideo() { /* Abbreviated */ }
+    function hangUpCall() { /* Abbreviated */ }
+
+    socket.on('user-joined', async ({ socketId }) => {
+      const pc = createPeerConnection(socketId);
+      const offer = await pc.createOffer();
+      await pc.setLocalDescription(offer);
+      socket.emit('offer', { offer, targetId: socketId, isAudioOnly: false });
+    });
+
+    socket.on('offer', async ({ offer, senderId }) => {
+      const pc = createPeerConnection(senderId);
+      await pc.setRemoteDescription(new RTCSessionDescription(offer));
+      const answer = await pc.createAnswer();
+      await pc.setLocalDescription(answer);
+      socket.emit('answer', { answer, targetId: senderId });
+    });
+
+    socket.on('answer', async ({ answer, senderId }) => {
+      if (peerConnections[senderId]) await peerConnections[senderId].setRemoteDescription(new RTCSessionDescription(answer));
+    });
+
+    socket.on('ice-candidate', async ({ candidate, senderId }) => {
+      if (peerConnections[senderId]) await peerConnections[senderId].addIceCandidate(new RTCIceCandidate(candidate));
+    });
+
+    socket.on('user-disconnected', ({ socketId }) => {
+      if (peerConnections[socketId]) { peerConnections[socketId].close(); delete peerConnections[socketId]; }
+      const remoteCard = document.getElementById(`card-${socketId}`);
+      if (remoteCard) remoteCard.remove();
+      updateGridLayout();
+    });
+
+    function createPeerConnection(targetSocketId) {
+      if (peerConnections[targetSocketId]) return peerConnections[targetSocketId];
+      const pc = new RTCPeerConnection(rtcConfig);
+      peerConnections[targetSocketId] = pc;
+      if (localStream) localStream.getTracks().forEach(track => pc.addTrack(track, localStream));
+
+      pc.ontrack = (event) => {
+        let remoteCard = document.getElementById(`card-${targetSocketId}`);
+        if (!remoteCard) {
+          remoteCard = document.createElement('div');
+          remoteCard.className = 'video-card';
+          remoteCard.id = `card-${targetSocketId}`;
+          remoteCard.innerHTML = `<h3 style="margin: 0 0 8px 0; font-size: 14px;">Peer Stream</h3><video id="video-${targetSocketId}" autoplay playsinline></video>`;
+          document.getElementById('videoStreamView').appendChild(remoteCard);
+          updateGridLayout();
+        }
+        const videoEl = document.getElementById(`video-${targetSocketId}`);
+        videoEl.srcObject = event.streams[0];
+        videoEl.play().catch(e => {});
+      };
+
+      pc.onicecandidate = (event) => { if (event.candidate) socket.emit('ice-candidate', { candidate: event.candidate, targetId: targetSocketId }); };
+      return pc;
+    }
+  </script>
+</body>
+</html>
