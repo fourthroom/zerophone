@@ -212,10 +212,23 @@
     .money-stack-container { display: flex; justify-content: center; align-items: center; margin-top: 20px; position: relative; height: 250px; }
     .money-card { position: absolute; width: 150px; height: 220px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.8); border: 1px solid #111; transition: transform 0.3s; }
     .money-card:hover { transform: translateY(-15px) !important; z-index: 20 !important; cursor: pointer; }
+.center-console { overflow-y: auto; padding: 18px 20px; gap: 4px; }
+.console-art-thumb { width: 88px; height: 88px; object-fit: cover; border-radius: 8px; border: 2px solid #ffd60a; cursor: pointer; margin: 4px auto; display: block; }
+.console-btn-row { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; margin-top: 6px; }
+.btn-game-action.danger { background: #ff3b30; color: #fff; }
+.btn-game-action.gold { background: #ffd60a; color: #000; }
+.btn-game-action:disabled { background: #444; color: #888; cursor: not-allowed; }
+.auction-timer-pill { background: #ff3b30; color: #fff; font-size: 11px; font-weight: 900; padding: 2px 8px; border-radius: 12px; }
+.secret-values-strip { display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; margin-top: 6px; }
+.val-chip { font-size: 11px; font-weight: 900; padding: 2px 6px; border-radius: 4px; background: #1b4d2e; color: #63e685; border: 1px solid #30d158; }
+.val-chip.forgery { background: #5a0000; color: #ff6b6b; border-color: #ff3b30; }
+.portfolio-card-wrap { background: #1c1c1e; border: 1px solid #444; border-radius: 10px; padding: 10px; width: 160px; text-align: center; }
+.portfolio-card-wrap img { width: 100%; height: 140px; object-fit: cover; border-radius: 6px; cursor: pointer; }
+#gameToast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #ff3b30; color: #fff; padding: 10px 18px; border-radius: 10px; font-weight: bold; z-index: 200000; display: none; box-shadow: 0 4px 20px rgba(0,0,0,0.6); }
   </style>
 </head>
 <body>
-
+<div id="gameToast"></div>
   <!-- POPUPS (Hidden) -->
   <div id="bidModal" class="bid-modal-overlay">
     <div class="bid-modal-content">
@@ -453,15 +466,45 @@
     // ==========================================
     // GAME ON! "PICTURE THIS!" LOGIC
     // ==========================================
+// ==========================================
+    // GAME ON! "PICTURE THIS!" AUTOMATED CLIENT
+    // ==========================================
     let myGamePiece = null;
-    let gamePlayers = []; 
+    let gamePlayers = [];
+    let latestState = null;
+    let myPrivateState = { cash: 15000000, portfolio: [], secretPortfolioTotal: 0, secretNetWorth: 15000000 };
+    let auctionCountdownInterval = null;
     const PIECE_COLORS = { red: '#ff3b30', green: '#30d158', blue: '#0a84ff', yellow: '#ffd60a' };
+    const FALLBACK_ART = "15FDDD6C-6205-4F68-8C6A-338AB0FA6C84_4_5005_c.jpeg";
+
+    function getRoomId() {
+      return roomIdInput.value.trim() || 'family-game';
+    }
+
+    function showGameToast(msg, isSuccess = false) {
+      const toast = document.getElementById('gameToast');
+      toast.style.background = isSuccess ? '#30d158' : '#ff3b30';
+      toast.style.color = isSuccess ? '#000' : '#fff';
+      toast.innerText = msg;
+      toast.style.display = 'block';
+      setTimeout(() => { toast.style.display = 'none'; }, 3000);
+    }
+
+    function zoomGameArt(imgUrl, title, details) {
+      document.getElementById('artFullscreenImg').src = imgUrl || FALLBACK_ART;
+      document.getElementById('artFsTitle').innerText = title || "Masterpiece";
+      document.getElementById('artFsDetails').innerText = details || "";
+      document.getElementById('artFullscreenModal').style.display = 'flex';
+    }
+    function closeArtFullscreen() {
+      document.getElementById('artFullscreenModal').style.display = 'none';
+    }
 
     function enterGameLobby() {
       const sourceGrid = document.getElementById('videoStreamView');
       const targetRow = document.getElementById('lobbyVideoRow');
       sourceGrid.querySelectorAll('.video-card').forEach(v => {
-        v.style.width = '120px'; // Shrink for row
+        v.style.width = '120px';
         targetRow.appendChild(v);
       });
     }
@@ -474,35 +517,30 @@
       cards.forEach(c => targetRow.appendChild(c));
     }
 
-    // Local state fallback in case backend signaling doesn't return state properly
+    function applyPieceSprite(el, piece) {
+      el.style.backgroundImage = "url('watermarked_img_14111003506702974865.webp')";
+      el.style.backgroundSize = "400% 100%";
+      const pos = { red: "0%", green: "33.33%", blue: "66.66%", yellow: "100%" };
+      el.style.backgroundPosition = `${pos[piece] || "0%"} center`;
+      el.style.borderColor = PIECE_COLORS[piece] || "#fff";
+    }
+
     function selectPiece(color) {
       myGamePiece = color;
       document.querySelectorAll('.game-piece-btn').forEach(btn => btn.classList.remove('selected'));
       document.getElementById(`piece-${color}`).classList.add('selected');
-      const room = roomIdInput.value.trim() || 'room1';
-      socket.emit('game-select-piece', { roomId: room, color: color });
-
-      // Local UI Fallback (Ensures your piece visually registers immediately)
-      let card = document.getElementById('localVideo').parentNode;
-      if (card) {
-        let badge = card.querySelector('.player-badge');
-        if (!badge) {
-          badge = document.createElement('div');
-          badge.className = 'player-badge';
-          card.appendChild(badge);
-        }
-        badge.style.backgroundImage = "url('watermarked_img_14111003506702974865.webp')";
-        badge.style.backgroundSize = "400% 100%";
-        if(color === 'red') badge.style.backgroundPosition = "0% center";
-        if(color === 'green') badge.style.backgroundPosition = "33.33% center";
-        if(color === 'blue') badge.style.backgroundPosition = "66.66% center";
-        if(color === 'yellow') badge.style.backgroundPosition = "100% center";
-        badge.style.borderColor = PIECE_COLORS[color];
-      }
+      socket.emit('game-select-piece', {
+        roomId: getRoomId(),
+        color,
+        name: callerNameInput.value.trim() || color.toUpperCase()
+      });
     }
 
-    socket.on('game-player-updated', ({ playerId, piece }) => {
-      let card = (playerId === socket.id) ? document.getElementById('localVideo').parentNode : document.getElementById(`card-${playerId}`);
+    socket.on('game-player-updated', ({ playerId, piece, players }) => {
+      if (players) gamePlayers = players;
+      const card = (playerId === socket.id)
+        ? document.getElementById('localVideo').parentNode
+        : document.getElementById(`card-${playerId}`);
       if (card) {
         let badge = card.querySelector('.player-badge');
         if (!badge) {
@@ -510,150 +548,84 @@
           badge.className = 'player-badge';
           card.appendChild(badge);
         }
-        badge.style.backgroundImage = "url('watermarked_img_14111003506702974865.webp')";
-        badge.style.backgroundSize = "400% 100%";
-        if(piece === 'red') badge.style.backgroundPosition = "0% center";
-        if(piece === 'green') badge.style.backgroundPosition = "33.33% center";
-        if(piece === 'blue') badge.style.backgroundPosition = "66.66% center";
-        if(piece === 'yellow') badge.style.backgroundPosition = "100% center";
-        badge.style.borderColor = PIECE_COLORS[piece];
+        applyPieceSprite(badge, piece);
       }
     });
 
     socket.on('game-started', ({ players }) => {
       gamePlayers = players;
-    });
-
-    function startGameBoard() {
+      document.getElementById('gamePhaseLobby').classList.remove('active');
       document.getElementById('gamePhaseSelect').classList.remove('active');
       document.getElementById('gamePhaseBoard').classList.add('active');
-      
-      const cards = document.getElementById('selectVideoRow').querySelectorAll('.video-card');
+      moveVideosToCorners();
+    });
+
+    function moveVideosToCorners() {
+      const cards = document.querySelectorAll('#selectVideoRow .video-card, #lobbyVideoRow .video-card');
       const corners = ['corner1', 'corner2', 'corner3', 'corner4'];
-      
       cards.forEach((card, idx) => {
         if (idx < 4) {
-          card.style.width = '100%'; card.style.height = '100%';
+          card.style.width = '100%';
+          card.style.height = '100%';
           const label = card.querySelector('h3');
-          if(label) label.style.display = 'none';
+          if (label) label.style.display = 'none';
           document.getElementById(corners[idx]).appendChild(card);
         }
       });
-
-      const room = roomIdInput.value.trim() || 'room1';
-      socket.emit('game-start', { roomId: room });
-
-      // Local Fallback: If server didn't respond with "game-started" populate local player anyway so tokens will draw
-      if (gamePlayers.length === 0 && myGamePiece) {
-        gamePlayers.push({ id: socket.id || 'local_user', piece: myGamePiece, spaceIndex: 0 });
-      }
     }
 
-    // Draw tokens sliding on the board using the new Sprite Image
+    function startGameBoard() {
+      if (!myGamePiece) return showGameToast("Pick a game piece first!");
+      moveVideosToCorners();
+      document.getElementById('gamePhaseSelect').classList.remove('active');
+      document.getElementById('gamePhaseBoard').classList.add('active');
+      socket.emit('game-start', { roomId: getRoomId() });
+    }
+
+    // Smoothly create or glide tokens around the 30-space circular track
     function drawTokens(players) {
       const container = document.querySelector('.board-container');
-      
-      container.querySelectorAll('.board-token').forEach(e => e.remove());
-      
+      const activeIds = new Set(players.map(p => `token-${p.id}`));
+      container.querySelectorAll('.board-token').forEach(el => {
+        if (!activeIds.has(el.id)) el.remove();
+      });
+
       players.forEach((p, idx) => {
-        const token = document.createElement('div');
-        token.className = `board-token`;
-        
-        token.style.backgroundImage = "url('watermarked_img_14111003506702974865.webp')";
-        token.style.backgroundSize = "400% 100%";
-        if(p.piece === 'red') token.style.backgroundPosition = "0% center";
-        if(p.piece === 'green') token.style.backgroundPosition = "33.33% center";
-        if(p.piece === 'blue') token.style.backgroundPosition = "66.66% center";
-        if(p.piece === 'yellow') token.style.backgroundPosition = "100% center";
-        
-        token.style.border = `2px solid ${PIECE_COLORS[p.piece]}`;
-        token.style.backgroundColor = "transparent";
-        token.style.width = "20px";
-        token.style.height = "30px";
-        token.style.borderRadius = "4px";
+        let token = document.getElementById(`token-${p.id}`);
+        if (!token) {
+          token = document.createElement('div');
+          token.id = `token-${p.id}`;
+          token.className = 'board-token';
+          token.style.width = "22px";
+          token.style.height = "32px";
+          token.style.borderRadius = "4px";
+          token.style.border = `2px solid ${PIECE_COLORS[p.piece]}`;
+          applyPieceSprite(token, p.piece);
+          container.appendChild(token);
+        }
 
         const angle = (p.spaceIndex / 30) * 2 * Math.PI - (Math.PI / 2);
-        const radius = 42; 
-        
-        const offsetX = (idx % 2 === 0 ? 2 : -2);
-        const offsetY = (idx > 1 ? 2 : -2);
-        
+        const radius = 42;
+        const offsetX = (idx % 2 === 0 ? 1.8 : -1.8);
+        const offsetY = (idx > 1 ? 1.8 : -1.8);
         const left = 50 + radius * Math.cos(angle) + offsetX;
         const top = 50 + radius * Math.sin(angle) + offsetY;
-        
-        // Offset by half dimensions (10px wide, 15px tall) to center exactly
-        token.style.left = `calc(${left}% - 10px)`;
-        token.style.top = `calc(${top}% - 15px)`;
-        
-        container.appendChild(token);
+
+        token.style.left = `calc(${left}% - 11px)`;
+        token.style.top = `calc(${top}% - 16px)`;
       });
     }
 
     function placeTokens() {
-      // Re-trigger fallback just in case
-      if (gamePlayers.length === 0 && myGamePiece) {
-         gamePlayers = [{ id: socket.id || 'local_user', piece: myGamePiece, spaceIndex: 0 }];
-      }
-      
       drawTokens(gamePlayers);
-      const consoleEl = document.getElementById('centerConsole');
-      consoleEl.innerHTML = `<button class="btn-game-action" style="padding:15px; font-size:16px;" onclick="pickGenre()">Pick An Art Genre</button>`;
-    }
-
-    // Function to display the painting in the center for an Auction
-    function triggerAuctionView() {
-      const consoleEl = document.getElementById('centerConsole');
-      showSubView('board'); // ensure we are on the board view
-      consoleEl.innerHTML = `
-        <h2 style="color:#ffd60a; margin: 0 0 10px 0; text-shadow: 0 2px 4px #000;">ACTIVE AUCTION</h2>
-        <div class="auction-card-display">
-          <img src="15FDDD6C-6205-4F68-8C6A-338AB0FA6C84_4_5005_c.jpeg" alt="Auction Painting">
-        </div>
-        <p style="font-size:11px; margin:0;">Bidding starts now!</p>
-      `;
-    }
-
-    // BIDDING MODAL LOGIC
-    let currentBidValue = "";
-    function openBidModal() { 
-      currentBidValue = ""; 
-      updateBidDisplay(); 
-      document.getElementById('bidModal').style.display = 'flex'; 
-    }
-    function closeBidModal() { document.getElementById('bidModal').style.display = 'none'; }
-    function appendBid(num) {
-      if(currentBidValue.length < 12) {
-        currentBidValue += num;
-        updateBidDisplay();
-      }
-    }
-    function clearBid() { currentBidValue = ""; updateBidDisplay(); }
-    function updateBidDisplay() {
-      const display = document.getElementById('bidDisplay');
-      if (!currentBidValue) { display.innerText = "$0"; return; }
-      const formatted = Number(currentBidValue).toLocaleString('en-US');
-      display.innerText = "$" + formatted;
-    }
-    function submitBid() {
-      if (!currentBidValue) return;
-      const room = roomIdInput.value.trim() || 'room1';
-      socket.emit('game-place-bid', { roomId: room, bidAmount: Number(currentBidValue) });
-      closeBidModal();
-      
-      // UI flair: Temporarily show bid placed on the center console
-      const consoleEl = document.getElementById('centerConsole');
-      if (consoleEl.innerHTML.includes('ACTIVE AUCTION')) {
-         const ogHtml = consoleEl.innerHTML;
-         consoleEl.innerHTML = `<h2 style="color:#30d158; font-size:24px;">Bid Placed!<br>$${Number(currentBidValue).toLocaleString()}</h2>`;
-         setTimeout(() => { consoleEl.innerHTML = ogHtml; }, 2000);
-      }
+      document.getElementById('centerConsole').innerHTML =
+        `<button class="btn-game-action gold" style="padding:14px; font-size:15px;" onclick="pickGenre()">Pick An Art Genre</button>`;
     }
 
     function pickGenre() {
-      const consoleEl = document.getElementById('centerConsole');
-      consoleEl.innerHTML = `
-        <h2 style="font-size:14px; margin-bottom:10px;">Select Masterpiece Deck</h2>
-        <div style="display:flex; gap:6px; flex-wrap:wrap; justify-content:center;">
+      document.getElementById('centerConsole').innerHTML = `
+        <h2 style="font-size:14px; margin-bottom:8px;">Select Masterpiece Deck</h2>
+        <div class="console-btn-row">
           <button class="btn-game-action" onclick="initDeck('renaissance')">Renaissance</button>
           <button class="btn-game-action" onclick="initDeck('baroque')">Baroque</button>
           <button class="btn-game-action" onclick="initDeck('impressionism')">Impressionist</button>
@@ -664,76 +636,278 @@
     }
 
     function initDeck(genre) {
-      const room = roomIdInput.value.trim() || 'room1';
-      socket.emit('game-init-deck', { roomId: room, genre: genre });
+      socket.emit('game-init-deck', { roomId: getRoomId(), genre });
     }
 
     function showSubView(view) {
-      const board = document.querySelector('.board-container');
-      const artwork = document.getElementById('gameSubArtwork');
-      const money = document.getElementById('gameSubMoney');
-      const rules = document.getElementById('gameSubRules');
-      
-      board.style.display = 'none'; artwork.style.display = 'none'; money.style.display = 'none'; rules.style.display = 'none';
-      if (view === 'board') board.style.display = 'block';
-      if (view === 'artwork') artwork.style.display = 'block';
-      if (view === 'money') money.style.display = 'block';
-      if (view === 'rules') rules.style.display = 'block';
+      document.querySelector('.board-container').style.display = (view === 'board') ? 'block' : 'none';
+      document.getElementById('gameSubArtwork').style.display = (view === 'artwork') ? 'block' : 'none';
+      document.getElementById('gameSubMoney').style.display = (view === 'money') ? 'block' : 'none';
+      document.getElementById('gameSubRules').style.display = (view === 'rules') ? 'block' : 'none';
+      if (view === 'artwork') renderPrivatePortfolio();
+      if (view === 'money') renderPrivateMoney();
     }
 
     function rollDice() {
-      document.getElementById('btnRollDice').disabled = true; 
-      const room = roomIdInput.value.trim() || 'room1';
-      socket.emit('game-roll-dice', { roomId: room });
+      document.getElementById('btnRollDice').disabled = true;
+      socket.emit('game-roll-dice', { roomId: getRoomId() });
     }
 
-    socket.on('game-state-update', (state) => {
-      const consoleEl = document.getElementById('centerConsole');
-      
-      if (state.phase === 'turn_start') {
-        if (state.players) { gamePlayers = state.players; drawTokens(gamePlayers); }
+    // Player Choice Emitters
+    function sendDirectBuy(buy) {
+      socket.emit('game-direct-buy', { roomId: getRoomId(), buy });
+    }
+    function sendCollectChoice(choice, artworkId = null) {
+      socket.emit('game-collect-choice', { roomId: getRoomId(), choice, artworkId });
+    }
+    function sendPrivateSelect(artworkId) {
+      socket.emit('game-private-select', { roomId: getRoomId(), artworkId });
+    }
+    function quickBid(amount) {
+      socket.emit('game-place-bid', { roomId: getRoomId(), bidAmount: amount });
+    }
+    function passAuction() {
+      socket.emit('game-auction-pass', { roomId: getRoomId() });
+    }
 
-        consoleEl.innerHTML = `
-          <h2 style="color:#aaa; font-size: 14px; margin: 0;">Deck: Active</h2>
-          <h2 style="color:#ffd60a; margin: 10px 0; font-size: 22px;">${state.activePlayerPiece.toUpperCase()}'S TURN</h2>
-          <p style="font-size: 13px; margin: 0;">Waiting for roll...</p>
+    // BIDDING KEYPAD MODAL
+    let currentBidValue = "";
+    function openBidModal() {
+      if (!latestState || !latestState.auction) {
+        return showGameToast("Bidding is only open during an active auction!");
+      }
+      currentBidValue = String(latestState.auction.minNextBid);
+      updateBidDisplay();
+      document.getElementById('bidModal').style.display = 'flex';
+    }
+    function closeBidModal() { document.getElementById('bidModal').style.display = 'none'; }
+    function appendBid(num) {
+      if (currentBidValue.length < 12) { currentBidValue += num; updateBidDisplay(); }
+    }
+    function clearBid() { currentBidValue = ""; updateBidDisplay(); }
+    function updateBidDisplay() {
+      const display = document.getElementById('bidDisplay');
+      display.innerText = currentBidValue ? "$" + Number(currentBidValue).toLocaleString('en-US') : "$0";
+    }
+    function submitBid() {
+      if (!currentBidValue) return;
+      socket.emit('game-place-bid', { roomId: getRoomId(), bidAmount: Number(currentBidValue) });
+      closeBidModal();
+    }
+
+    // PRIVATE HAND & MONEY RENDERING
+    function renderPrivatePortfolio() {
+      const container = document.querySelector('#gameSubArtwork .portfolio-grid');
+      if (!myPrivateState.portfolio.length) {
+        container.innerHTML = `<p style="color:#888;">You do not own any paintings yet.</p>`;
+        return;
+      }
+      container.innerHTML = myPrivateState.portfolio.map(art => {
+        const chips = art.values.map(v =>
+          `<span class="val-chip ${v.isForgery ? 'forgery' : ''}">${v.label}</span>`
+        ).join('');
+        const totalText = art.hasForgery
+          ? `<span style="color:#ff3b30;">$0 (FORGERY!)</span>`
+          : `<span style="color:#30d158;">$${art.total.toLocaleString()}</span>`;
+        return `
+          <div class="portfolio-card-wrap">
+            <img src="${art.imageUrl}" onerror="this.src='${FALLBACK_ART}'"
+                 onclick="zoomGameArt('${art.imageUrl}', '${art.title.replace(/'/g, "\\'")}', '${art.artist.replace(/'/g, "\\'")} • ${art.year}')">
+            <div style="font-size:12px; font-weight:bold; margin-top:6px; color:#ffd60a;">${art.title}</div>
+            <div style="font-size:11px; color:#aaa;">${art.artist}</div>
+            <div class="secret-values-strip">${chips}</div>
+            <div style="font-size:12px; font-weight:900; margin-top:6px;">True Value: ${totalText}</div>
+          </div>
         `;
+      }).join('');
+    }
 
-        document.querySelectorAll('.corner-video').forEach(cv => cv.classList.remove('active-turn'));
-        let activeCard = (state.activePlayerId === socket.id) ? document.getElementById('localVideo').parentNode : document.getElementById(`card-${state.activePlayerId}`);
-        if (activeCard && activeCard.closest('.corner-video')) {
-          activeCard.closest('.corner-video').classList.add('active-turn');
-        }
-      }
+    function renderPrivateMoney() {
+      document.getElementById('playerCashDisplay').innerText = `$${myPrivateState.cash.toLocaleString()}`;
+    }
 
-      if (state.phase === 'dice_animating') {
-        consoleEl.innerHTML = `
-          <video src="dice-roll.mp4" autoplay muted playsinline style="width:100%; border-radius:50%; border:2px solid #555;"></video>
-        `;
-        setTimeout(() => {
-          consoleEl.innerHTML = `<h1 style="font-size: 80px; margin:0; color:#ffd60a;">${state.lastRoll}</h1><p>${state.activePlayerPiece} rolled!</p>`;
-        }, 1500); 
-      }
-
-      if (state.phase === 'space_action') {
-        if (state.players) { gamePlayers = state.players; drawTokens(gamePlayers); }
-        
-        // If the space is an auction, auto-trigger the painting in the middle
-        if (state.currentSpaceText && state.currentSpaceText.toLowerCase().includes('auction')) {
-          triggerAuctionView();
-        } else {
-          consoleEl.innerHTML = `
-            <h2>${state.currentSpaceText}</h2>
-            ${state.actionButtonsHtml} 
-          `;
-        }
-      }
-
-      if (state.activePlayerId === socket.id) {
-        document.getElementById('btnRollDice').disabled = false;
+    socket.on('game-private-state', (priv) => {
+      myPrivateState = priv;
+      renderPrivateMoney();
+      if (document.getElementById('gameSubArtwork').style.display === 'block') {
+        renderPrivatePortfolio();
       }
     });
 
+    socket.on('game-error', ({ message }) => showGameToast(message, false));
+
+    // MASTER STATE RENDERER
+    socket.on('game-state-update', (state) => {
+      latestState = state;
+      clearInterval(auctionCountdownInterval);
+
+      if (state.players) {
+        gamePlayers = state.players;
+        drawTokens(gamePlayers);
+      }
+
+      const consoleEl = document.getElementById('centerConsole');
+      const isMyTurn = (state.activePlayerId === socket.id);
+
+      // Only enable Roll Dice during turn_start for the active player
+      document.getElementById('btnRollDice').disabled = !(state.phase === 'turn_start' && isMyTurn);
+
+      // Highlight active player's corner video
+      document.querySelectorAll('.corner-video').forEach(cv => cv.classList.remove('active-turn'));
+      const activeCard = isMyTurn
+        ? document.getElementById('localVideo').parentNode
+        : document.getElementById(`card-${state.activePlayerId}`);
+      if (activeCard && activeCard.closest('.corner-video')) {
+        activeCard.closest('.corner-video').classList.add('active-turn');
+      }
+
+      // PHASE: TURN START
+      if (state.phase === 'turn_start') {
+        consoleEl.innerHTML = `
+          <div style="font-size:11px; color:#aaa;">Gallery Left: ${state.deckCount} Paintings</div>
+          <h2 style="margin:6px 0; font-size:20px;">${state.activePlayerName}'S TURN</h2>
+          <p style="font-size:12px; margin:0; color:${isMyTurn ? '#30d158' : '#ccc'};">
+            ${isMyTurn ? 'Click Roll Dice below!' : 'Waiting for roll...'}
+          </p>
+        `;
+      }
+
+      // PHASE: DICE ANIMATING
+      else if (state.phase === 'dice_animating') {
+        showSubView('board');
+        consoleEl.innerHTML = `
+          <video src="dice-roll.mp4" autoplay muted playsinline style="width:85%; border-radius:50%; border:2px solid #555;"></video>
+        `;
+        setTimeout(() => {
+          if (latestState && latestState.phase === 'dice_animating') {
+            consoleEl.innerHTML = `<h1 style="font-size:68px; margin:0; color:#ffd60a;">${state.lastRoll}</h1><p style="margin:0; font-size:13px;">${state.activePlayerName} rolled ${state.lastRoll}!</p>`;
+          }
+        }, 1400);
+      }
+
+      // PHASE: TURN NOTICE (Inherit / Auction Result / Cash Collected)
+      else if (state.phase === 'turn_notice') {
+        consoleEl.innerHTML = `
+          <h2 style="font-size:15px; color:#30d158;">Update</h2>
+          <p style="font-size:13px; margin:4px 0;">${state.message}</p>
+        `;
+      }
+
+      // PHASE: DIRECT PURCHASE
+      else if (state.phase === 'direct_buy' && state.pendingAction) {
+        const { artwork, price, canAfford } = state.pendingAction;
+        consoleEl.innerHTML = `
+          <h2 style="font-size:13px; margin:0;">Buy for $${price.toLocaleString()}?</h2>
+          <img class="console-art-thumb" src="${artwork.imageUrl}" onerror="this.src='${FALLBACK_ART}'"
+               onclick="zoomGameArt('${artwork.imageUrl}', '${artwork.title.replace(/'/g, "\\'")}', '${artwork.artist.replace(/'/g, "\\'")}')">
+          <div style="font-size:11px; color:#ddd;">${artwork.title}</div>
+          ${isMyTurn ? `
+            <div class="console-btn-row">
+              <button class="btn-game-action" onclick="sendDirectBuy(true)" ${canAfford ? '' : 'disabled'}>Buy ($${(price/1000000).toFixed(1)}M)</button>
+              <button class="btn-game-action danger" onclick="sendDirectBuy(false)">Pass</button>
+            </div>
+          ` : `<p style="font-size:11px; color:#aaa;">Waiting for ${state.activePlayerName}...</p>`}
+        `;
+      }
+
+      // PHASE: COLLECT $3M OR VALUE CARD
+      else if (state.phase === 'collect_choice' && state.pendingAction) {
+        consoleEl.innerHTML = `
+          <h2 style="font-size:14px;">Market Choice</h2>
+          ${isMyTurn ? `
+            <div class="console-btn-row">
+              <button class="btn-game-action" onclick="sendCollectChoice('cash')">Take $3,000,000</button>
+              <button class="btn-game-action gold" onclick="sendCollectChoice('value')" ${state.pendingAction.canTakeValue ? '' : 'disabled'}>Take Value Card</button>
+            </div>
+          ` : `<p style="font-size:12px; color:#aaa;">${state.activePlayerName} is choosing...</p>`}
+        `;
+      }
+
+      // PHASE: ASSIGN VALUE CARD TO SPECIFIC PAINTING
+      else if (state.phase === 'assign_value' && state.pendingAction) {
+        if (isMyTurn) {
+          const btns = state.pendingAction.artworks.map(a =>
+            `<button class="btn-game-action gold" style="font-size:11px;" onclick="sendCollectChoice('value', '${a.id}')">${a.title} (${a.valueCardCount})</button>`
+          ).join('');
+          consoleEl.innerHTML = `<h2 style="font-size:13px;">Attach Value Card To:</h2><div class="console-btn-row">${btns}</div>`;
+        } else {
+          consoleEl.innerHTML = `<h2 style="font-size:14px;">Secret Appraisal</h2><p style="font-size:12px;">${state.activePlayerName} is stacking a Value Card...</p>`;
+        }
+      }
+
+      // PHASE: PRIVATE AUCTION — LEFT NEIGHBOR PICKS PAINTING
+      else if (state.phase === 'private_select' && state.pendingAction) {
+        const pa = state.pendingAction;
+        const amSelector = (socket.id === pa.selectorId);
+        if (amSelector) {
+          const btns = pa.sellerArtworks.map(a =>
+            `<button class="btn-game-action gold" style="font-size:11px;" onclick="sendPrivateSelect('${a.id}')">${a.title} (${a.valueCardCount} cards)</button>`
+          ).join('');
+          consoleEl.innerHTML = `<h2 style="font-size:13px;">Pick ${pa.sellerName}'s Painting to Auction:</h2><div class="console-btn-row">${btns}</div>`;
+        } else {
+          consoleEl.innerHTML = `<h2 style="font-size:14px;">Private Auction</h2><p style="font-size:12px;">${pa.selectorName} is picking which of ${pa.sellerName}'s paintings goes on the block...</p>`;
+        }
+      }
+
+      // PHASE: LIVE BANK OR PRIVATE AUCTION
+      else if ((state.phase === 'bank_auction' || state.phase === 'private_auction') && state.auction) {
+        showSubView('board');
+        const auc = state.auction;
+        const isSeller = (auc.type === 'private' && socket.id === auc.sellerId);
+        const isLeader = (socket.id === auc.highestBidderId);
+        const hasPassed = auc.passedIds.includes(socket.id);
+        const canQuickBid = !isSeller && !isLeader && (myPrivateState.cash >= auc.minNextBid);
+
+        consoleEl.innerHTML = `
+          <div style="display:flex; gap:6px; align-items:center;">
+            <span style="font-size:11px; font-weight:900; color:#ffd60a;">${auc.type === 'bank' ? 'BANK AUCTION' : 'PRIVATE AUCTION'}</span>
+            <span id="auctionTimerPill" class="auction-timer-pill">12s</span>
+          </div>
+          <img class="console-art-thumb" src="${auc.artwork.imageUrl}" onerror="this.src='${FALLBACK_ART}'"
+               onclick="zoomGameArt('${auc.artwork.imageUrl}', '${auc.artwork.title.replace(/'/g, "\\'")}', '${auc.artwork.artist.replace(/'/g, "\\'")}')">
+          <div style="font-size:11px; font-weight:bold; color:#fff;">${auc.artwork.title}</div>
+          <div style="font-size:12px; color:#30d158; font-weight:900;">
+            ${auc.currentBid > 0 ? `$${auc.currentBid.toLocaleString()} (${auc.highestBidderName})` : 'Opening Bid: $500,000'}
+          </div>
+          ${isSeller
+            ? `<div style="font-size:11px; color:#aaa;">You are the auctioneer (cannot bid).</div>`
+            : `<div class="console-btn-row">
+                 <button class="btn-game-action gold" onclick="quickBid(${auc.minNextBid})" ${canQuickBid ? '' : 'disabled'}>
+                   Bid $${(auc.minNextBid/1000000).toFixed(1)}M
+                 </button>
+                 <button class="btn-game-action danger" onclick="passAuction()" ${(isLeader || hasPassed) ? 'disabled' : ''}>
+                   ${hasPassed ? 'Passed' : 'Pass'}
+                 </button>
+               </div>`
+          }
+        `;
+
+        const updateTimer = () => {
+          const pill = document.getElementById('auctionTimerPill');
+          if (!pill) return;
+          const secs = Math.max(0, Math.ceil((auc.endsAt - Date.now()) / 1000));
+          pill.innerText = `${secs}s`;
+        };
+        updateTimer();
+        auctionCountdownInterval = setInterval(updateTimer, 300);
+      }
+
+      // PHASE: GAME OVER & FINAL SCORING REVEAL
+      else if (state.phase === 'game_over' && state.leaderboard) {
+        const winner = state.leaderboard[0];
+        const rows = state.leaderboard.map((p, i) =>
+          `<div style="font-size:12px; margin:3px 0;">
+            ${i === 0 ? '🏆 ' : `${i + 1}. `}<b>${p.name}</b>: $${p.netWorth.toLocaleString()}
+            <span style="color:#aaa; font-size:10px;">(Cash $${(p.cash/1000000).toFixed(1)}M + Art $${(p.portfolioValue/1000000).toFixed(1)}M)</span>
+          </div>`
+        ).join('');
+        consoleEl.innerHTML = `
+          <h2 style="font-size:16px; color:#ffd60a;">${winner.name} Wins!</h2>
+          <div style="text-align:left; max-height:110px; overflow-y:auto;">${rows}</div>
+          <button class="btn-game-action gold" onclick="pickGenre()">Play Again</button>
+        `;
+      }
+    });
     // ==========================================
     // WEBRTC SIGNALING CORE 
     // ==========================================
