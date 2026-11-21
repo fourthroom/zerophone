@@ -1,0 +1,1659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>ZeroPhone Elder — Simple Senior Video & Voice Calling</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="ZeroPhone Elder">
+  <meta name="theme-color" content="#121212">
+
+  <!-- Google Fonts: Inter for maximum senior legibility -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+          },
+          colors: {
+            zpBg: '#121212',
+            zpCard: '#1c1c1e',
+            zpGreen: '#30d158',
+            zpGreenDeep: '#1b5e35',
+            zpRed: '#ff3b30',
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Socket.IO Client 4.7.5 (matching ZeroPhone Family signaling) -->
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+</head>
+
+<body class="bg-[#121212] text-white font-sans antialiased selection:bg-[#30d158] selection:text-black min-h-screen overflow-x-hidden">
+
+  <!-- =====================================================================
+       TOAST NOTIFICATION BANNER (Replaces alert() for clean UX)
+       ===================================================================== -->
+  <div id="toast-container" class="fixed top-5 left-1/2 -translate-x-1/2 z-[100] pointer-events-none w-[92%] max-w-md flex flex-col items-center gap-2"></div>
+
+  <!-- =====================================================================
+       VIEW 1: HOMESCREEN VIEW (Default Elder Interface)
+       ===================================================================== -->
+  <div id="view-homescreen" class="min-h-screen flex flex-col justify-between">
+    <!-- Minimal High-Contrast Top Bar -->
+    <header class="w-full bg-[#1c1c1e] border-b border-neutral-800 px-5 sm:px-8 py-4 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <!-- Inline SVG ZeroPhone Emblem -->
+        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-[#1b5e35] border-2 border-[#30d158] flex items-center justify-center shadow-md shrink-0">
+          <svg class="w-6 h-6 sm:w-7 sm:h-7 text-[#30d158]" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+          </svg>
+        </div>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2.5">
+            <h1 class="text-2xl sm:text-3xl font-black tracking-tight text-white">ZeroPhone</h1>
+            <!-- Subtle Connection Status Dot -->
+            <span id="server-status-dot" title="Connecting to ZeroPhone Server..." class="w-3 h-3 rounded-full bg-amber-400 animate-pulse inline-block ring-4 ring-amber-400/20 transition-colors"></span>
+          </div>
+          <span id="server-status-label" class="text-xs sm:text-sm text-neutral-400 font-medium">Connecting...</span>
+        </div>
+      </div>
+
+      <!-- Large Easy-to-Read Clock & Date -->
+      <div class="text-right">
+        <div id="clock-time" class="text-2xl sm:text-4xl font-extrabold tracking-tight text-white tabular-nums leading-none">--:--</div>
+        <div id="clock-date" class="text-sm sm:text-lg font-semibold text-neutral-300 mt-1">Loading date...</div>
+      </div>
+    </header>
+
+    <!-- Main Area: Centered Adaptive Large Call Tiles -->
+    <main class="flex-1 w-full flex flex-col items-center justify-center px-4 sm:px-8 pt-6 pb-32">
+      <div id="homescreen-tiles-grid" class="grid w-full mx-auto place-items-stretch">
+        <!-- Tiles rendered dynamically by renderHomescreen() -->
+      </div>
+    </main>
+
+    <!-- Fixed Bottom-Right Caregiver Settings Button (5-Click Guard) -->
+    <button
+      id="settings-trigger-btn"
+      type="button"
+      onclick="handleSettingsClick()"
+      aria-label="Caregiver Settings. Click 5 times within 5 seconds to open."
+      class="fixed bottom-4 right-4 z-40 bg-[#1c1c1e]/95 hover:bg-[#252529] active:scale-95 border border-neutral-700/90 rounded-2xl px-4 py-2.5 shadow-2xl flex flex-col items-center justify-center transition-transform duration-100 touch-manipulation select-none cursor-pointer"
+    >
+      <div class="flex items-center gap-1.5 text-neutral-200 font-bold text-sm sm:text-base leading-tight">
+        <span class="text-base sm:text-lg" aria-hidden="true">⚙️</span>
+        <span>Settings</span>
+      </div>
+      <span class="text-[11px] sm:text-xs text-neutral-400 font-medium mt-0.5">(Click 5 x To Open)</span>
+      <!-- 5 Subtle Click Progress Dots -->
+      <div id="settings-click-dots" class="flex items-center justify-center gap-1.5 mt-2" aria-hidden="true">
+        <span class="w-2 h-2 rounded-full bg-neutral-700 transition-all duration-200"></span>
+        <span class="w-2 h-2 rounded-full bg-neutral-700 transition-all duration-200"></span>
+        <span class="w-2 h-2 rounded-full bg-neutral-700 transition-all duration-200"></span>
+        <span class="w-2 h-2 rounded-full bg-neutral-700 transition-all duration-200"></span>
+        <span class="w-2 h-2 rounded-full bg-neutral-700 transition-all duration-200"></span>
+      </div>
+    </button>
+  </div>
+
+  <!-- =====================================================================
+       VIEW 2: CAREGIVER SETTINGS SCREEN (Separate View)
+       ===================================================================== -->
+  <div id="view-settings" class="hidden min-h-screen bg-[#121212] pb-16">
+    <!-- Sticky Header -->
+    <header class="sticky top-0 z-30 bg-[#1c1c1e]/95 backdrop-blur border-b border-neutral-800 px-4 sm:px-8 py-4">
+      <div class="max-w-3xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-black text-white flex items-center gap-2">
+            <span>⚙️</span> Caregiver Settings
+          </h2>
+          <p class="text-xs sm:text-sm text-neutral-400 mt-0.5">Program contacts and homescreen tiles</p>
+        </div>
+        <button
+          type="button"
+          onclick="returnToHomescreen()"
+          class="bg-[#30d158] hover:bg-[#28b84c] active:scale-[0.98] text-black font-extrabold text-base sm:text-lg px-5 py-3.5 rounded-2xl shadow-lg transition-all touch-manipulation cursor-pointer text-center"
+        >
+          ← Done / Return to Homescreen
+        </button>
+      </div>
+    </header>
+
+    <main class="max-w-3xl mx-auto px-4 sm:px-6 pt-6 space-y-6">
+      <!-- SECTION A: Elder's Name / Device Profile -->
+      <section class="bg-[#1c1c1e] border border-neutral-800 rounded-3xl p-5 sm:p-6 shadow-xl">
+        <div class="flex items-center justify-between gap-2 mb-3">
+          <h3 class="text-lg sm:text-xl font-extrabold text-white">Elder's Name / Device Profile</h3>
+          <span id="profile-saved-badge" class="text-xs font-bold text-[#30d158] opacity-0 transition-opacity duration-300">✓ Saved</span>
+        </div>
+        <p class="text-sm text-neutral-400 mb-3">
+          Optional name shown to family members when they open a ZeroPhone invite link (e.g., "Mom" or "Grandpa").
+        </p>
+        <input
+          type="text"
+          id="elder-name-input"
+          placeholder="e.g., Mom"
+          maxlength="40"
+          oninput="saveElderProfile()"
+          class="w-full bg-[#121212] border border-neutral-700 focus:border-[#30d158] focus:outline-none rounded-2xl px-4 py-3.5 text-lg font-semibold text-white placeholder-neutral-500 transition-colors"
+        />
+      </section>
+
+      <!-- SECTION B: Add / Edit Contact Form -->
+      <section id="contact-form-section" class="bg-[#1c1c1e] border border-neutral-800 rounded-3xl p-5 sm:p-6 shadow-xl">
+        <div class="flex items-center justify-between gap-2 mb-4">
+          <h3 id="form-heading" class="text-lg sm:text-xl font-extrabold text-[#30d158]">Add Contact to Address Bank</h3>
+          <button
+            id="cancel-edit-btn"
+            type="button"
+            onclick="resetContactForm()"
+            class="hidden text-sm font-bold text-neutral-300 hover:text-white bg-neutral-800 px-3.5 py-1.5 rounded-xl cursor-pointer"
+          >
+            Cancel Edit
+          </button>
+        </div>
+
+        <form id="contact-form" onsubmit="handleContactFormSubmit(event)" class="space-y-4">
+          <input type="hidden" id="edit-contact-id" value="" />
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- Contact Name -->
+            <div>
+              <label for="contact-name-input" class="block text-sm font-bold text-neutral-300 mb-1.5">
+                Contact Name <span class="text-[#ff3b30]">*</span>
+              </label>
+              <input
+                type="text"
+                id="contact-name-input"
+                required
+                maxlength="32"
+                placeholder="e.g., Sarah"
+                oninput="updateDerivedRoomPreview()"
+                class="w-full bg-[#121212] border border-neutral-700 focus:border-[#30d158] focus:outline-none rounded-2xl px-4 py-3 text-base font-semibold text-white placeholder-neutral-500"
+              />
+            </div>
+
+            <!-- Phone Number -->
+            <div>
+              <label for="contact-phone-input" class="block text-sm font-bold text-neutral-300 mb-1.5">
+                Phone Number <span class="text-[#ff3b30]">*</span>
+              </label>
+              <input
+                type="tel"
+                id="contact-phone-input"
+                required
+                maxlength="30"
+                placeholder="e.g., 555-0142"
+                oninput="updateDerivedRoomPreview()"
+                class="w-full bg-[#121212] border border-neutral-700 focus:border-[#30d158] focus:outline-none rounded-2xl px-4 py-3 text-base font-semibold text-white placeholder-neutral-500"
+              />
+            </div>
+          </div>
+
+          <!-- Call Action Dropdown -->
+          <div>
+            <label for="contact-mode-select" class="block text-sm font-bold text-neutral-300 mb-1.5">
+              Call Action
+            </label>
+            <select
+              id="contact-mode-select"
+              onchange="toggleRoomInputVisibility()"
+              class="w-full bg-[#121212] border border-neutral-700 focus:border-[#30d158] focus:outline-none rounded-2xl px-4 py-3.5 text-base font-semibold text-white cursor-pointer"
+            >
+              <option value="webrtc">ZeroPhone Video Call (Free Wi-Fi)</option>
+              <option value="tel">Device Phone Dialer (tel:)</option>
+            </select>
+          </div>
+
+          <!-- Optional Custom Room Name (for ZeroPhone WebRTC mode) -->
+          <div id="custom-room-wrapper" class="bg-[#121212]/70 border border-neutral-800 rounded-2xl p-4">
+            <label for="contact-room-input" class="block text-sm font-bold text-neutral-300 mb-1">
+              ZeroPhone Room Name <span class="text-neutral-500 font-normal">(Optional)</span>
+            </label>
+            <input
+              type="text"
+              id="contact-room-input"
+              maxlength="48"
+              placeholder="Leave blank to auto-generate from phone number"
+              oninput="updateDerivedRoomPreview()"
+              class="w-full bg-[#1c1c1e] border border-neutral-700 focus:border-[#30d158] focus:outline-none rounded-xl px-3.5 py-2.5 text-sm font-medium text-white placeholder-neutral-500"
+            />
+            <p id="derived-room-preview" class="text-xs text-neutral-400 mt-1.5">
+              Active Room ID: <span class="text-[#30d158] font-mono font-bold">elder-...</span>
+            </p>
+          </div>
+
+          <!-- Show on Homescreen Checkbox -->
+          <label class="flex items-center gap-3.5 bg-[#121212] border border-neutral-800 rounded-2xl p-4 cursor-pointer select-none">
+            <input
+              type="checkbox"
+              id="contact-homescreen-checkbox"
+              checked
+              class="w-6 h-6 accent-[#30d158] rounded cursor-pointer"
+            />
+            <div>
+              <span class="block text-base font-bold text-white">Show on Homescreen</span>
+              <span class="block text-xs text-neutral-400">Adds a large "Call [Name]" tile to the main screen</span>
+            </div>
+          </label>
+
+          <!-- Submit Button -->
+          <button
+            id="form-submit-btn"
+            type="submit"
+            class="w-full bg-[#30d158] hover:bg-[#28b84c] active:scale-[0.99] text-black font-black text-lg py-4 rounded-2xl shadow-lg transition-all touch-manipulation cursor-pointer"
+          >
+            + Add to Address Bank
+          </button>
+        </form>
+      </section>
+
+      <!-- SECTION C: Address Bank List -->
+      <section class="bg-[#1c1c1e] border border-neutral-800 rounded-3xl p-5 sm:p-6 shadow-xl">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+          <div>
+            <h3 class="text-lg sm:text-xl font-extrabold text-white">Address Bank</h3>
+            <p id="address-bank-summary" class="text-xs sm:text-sm text-neutral-400 mt-0.5">0 contacts saved</p>
+          </div>
+        </div>
+
+        <div id="address-bank-list" class="space-y-4">
+          <!-- Contact cards rendered dynamically by renderAddressBank() -->
+        </div>
+      </section>
+
+      <!-- Subtle Privacy Footer -->
+      <p class="text-center text-xs text-neutral-500 px-4">
+        🔒 Powered by ZeroPhone peer-to-peer WebRTC. All contacts stay stored privately on this device.
+      </p>
+    </main>
+  </div>
+
+  <!-- =====================================================================
+       VIEW 3: ACTIVE CALL SCREEN (Replaces Homescreen During Call)
+       ===================================================================== -->
+  <div id="view-call" class="hidden min-h-screen flex flex-col justify-between bg-[#121212]">
+    <!-- Top Call Status Banner -->
+    <header class="w-full bg-[#1c1c1e] border-b border-neutral-800 px-5 sm:px-8 py-4 sm:py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
+      <div class="flex items-center justify-center sm:justify-start gap-3">
+        <span id="call-status-dot" class="w-4 h-4 rounded-full bg-amber-400 animate-pulse shrink-0"></span>
+        <div>
+          <h2 id="call-banner-title" class="text-2xl sm:text-3xl font-black text-white tracking-tight">Calling...</h2>
+          <p id="call-banner-subtitle" class="text-sm sm:text-base text-neutral-400 font-semibold">Waiting for answer</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <span id="snapshot-mode-badge" class="hidden bg-amber-500/20 border border-amber-400/50 text-amber-300 text-xs sm:text-sm font-bold px-3 py-1 rounded-full">
+          🐢 Saving Bandwidth
+        </span>
+        <!-- Large Live Call Duration Timer -->
+        <div id="call-timer" class="text-3xl sm:text-4xl font-black text-[#30d158] tabular-nums tracking-wider bg-[#121212] border border-neutral-800 px-4 py-1.5 rounded-2xl">
+          00:00
+        </div>
+      </div>
+    </header>
+
+    <!-- Center Video & Waiting Stage -->
+    <main class="flex-1 w-full max-w-5xl mx-auto px-4 py-4 flex items-center justify-center">
+      <div class="relative w-full h-[52vh] sm:h-[58vh] min-h-[300px] bg-[#1c1c1e] border-2 border-neutral-800 rounded-3xl overflow-hidden shadow-2xl flex items-center justify-center">
+
+        <!-- Waiting / Ringing / Audio-Only Avatar Overlay -->
+        <div id="call-waiting-overlay" class="absolute inset-0 z-10 flex flex-col items-center justify-center p-6 text-center bg-[#1c1c1e]">
+          <div class="relative flex items-center justify-center mb-6">
+            <span id="ring-pulse-1" class="absolute w-36 h-36 sm:w-44 sm:h-44 rounded-full bg-[#30d158]/20 animate-ping"></span>
+            <div class="relative w-28 h-28 sm:w-36 sm:h-36 rounded-full bg-[#1b5e35] border-4 border-[#30d158] flex items-center justify-center shadow-2xl">
+              <span id="call-avatar-initial" class="text-5xl sm:text-6xl font-black text-white">?</span>
+            </div>
+          </div>
+          <p id="call-waiting-text" class="text-2xl sm:text-3xl font-extrabold text-white">Ringing...</p>
+          <p id="call-waiting-subtext" class="text-base sm:text-lg text-neutral-400 mt-2 max-w-md">
+            Please wait while they answer your call.
+          </p>
+          <!-- Re-dial trigger shown only in tel: Phone Dialer mode -->
+          <a
+            id="tel-redial-link"
+            href="tel:"
+            class="hidden mt-6 bg-[#1b5e35] hover:bg-[#227543] border-2 border-[#30d158] text-white font-extrabold text-xl px-7 py-4 rounded-2xl shadow-lg touch-manipulation"
+          >
+            📞 Open Phone Dialer
+          </a>
+        </div>
+
+        <!-- Remote Video Grid (Displays 1 or more remote peers) -->
+        <div id="remote-video-grid" class="w-full h-full grid grid-cols-1 gap-2 bg-black p-1"></div>
+
+        <!-- Smaller Mirrored Self-Preview Corner -->
+        <div id="local-preview-wrapper" class="hidden absolute bottom-3 right-3 z-20 w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 rounded-2xl overflow-hidden border-2 border-[#30d158] bg-black shadow-2xl">
+          <video id="localVideo" autoplay playsinline muted class="w-full h-full object-cover -scale-x-100"></video>
+          <span class="absolute bottom-1 left-2 text-[11px] font-bold bg-black/70 text-white px-2 py-0.5 rounded-md">You</span>
+        </div>
+
+        <!-- Audio-Only Notice Pill (when camera is unavailable) -->
+        <div id="audio-only-pill" class="hidden absolute bottom-3 left-3 z-20 bg-neutral-900/90 border border-neutral-700 text-neutral-200 text-xs sm:text-sm font-bold px-3.5 py-2 rounded-xl shadow-lg">
+          🎙️ Voice-Only Mode
+        </div>
+      </div>
+    </main>
+
+    <!-- Bottom Anchored HUGE BRIGHT RED END CALL BUTTON -->
+    <footer class="w-full px-4 pb-6 pt-2 flex justify-center">
+      <button
+        id="end-call-btn"
+        type="button"
+        onclick="endActiveCall()"
+        class="w-full max-w-[560px] bg-[#ff3b30] hover:bg-[#e02d22] active:scale-[0.98] text-white font-black text-3xl sm:text-4xl py-6 sm:py-7 px-6 rounded-3xl shadow-[0_8px_32px_rgba(255,59,48,0.45)] border-2 border-red-300/30 flex items-center justify-center gap-4 transition-all touch-manipulation cursor-pointer"
+      >
+        <svg class="w-9 h-9 sm:w-11 sm:h-11 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 9c-1.6 0-3.15.25-4.6.72v3.1c0 .39-.23.74-.56.9-.98.49-1.87 1.12-2.66 1.85-.18.18-.43.28-.7.28-.28 0-.53-.11-.71-.29L.29 13.08a.956.956 0 01-.29-.7c0-.28.11-.53.29-.71C3.34 8.78 7.46 7 12 7s8.66 1.78 11.71 4.67c.18.18.29.43.29.71 0 .28-.11.53-.29.71l-2.48 2.48c-.18.18-.43.29-.71.29-.27 0-.52-.11-.7-.28a11.27 11.27 0 00-2.67-1.85.996.996 0 01-.56-.9v-3.1C15.15 9.25 13.6 9 12 9z"/>
+        </svg>
+        <span>End Call</span>
+      </button>
+    </footer>
+  </div>
+
+  <!-- =====================================================================
+       VIEW 4: INCOMING INVITE LINK LANDING VIEW (?room=...)
+       ===================================================================== -->
+  <div id="view-invite" class="hidden min-h-screen flex items-center justify-center p-5 bg-[#121212]">
+    <div class="w-full max-w-lg bg-[#1c1c1e] border-2 border-[#30d158] rounded-3xl p-8 sm:p-10 text-center shadow-2xl">
+      <div class="w-24 h-24 mx-auto mb-6 rounded-full bg-[#1b5e35] border-4 border-[#30d158] flex items-center justify-center shadow-lg">
+        <svg class="w-12 h-12 text-[#30d158]" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" />
+        </svg>
+      </div>
+      <h2 id="invite-heading" class="text-3xl sm:text-4xl font-black text-white mb-3">ZeroPhone Video Call</h2>
+      <p id="invite-subtext" class="text-lg text-neutral-300 mb-8">
+        Tap the green button below to answer and join the private video call.
+      </p>
+
+      <button
+        id="invite-answer-btn"
+        type="button"
+        onclick="joinFromInviteLink()"
+        class="w-full bg-[#30d158] hover:bg-[#28b84c] active:scale-[0.98] text-black font-black text-2xl sm:text-3xl py-6 px-6 rounded-3xl shadow-[0_6px_24px_rgba(48,209,88,0.4)] transition-all touch-manipulation cursor-pointer"
+      >
+        📹 Answer / Join Call
+      </button>
+
+      <button
+        type="button"
+        onclick="dismissInviteToHomescreen()"
+        class="mt-6 text-sm font-semibold text-neutral-400 hover:text-white underline underline-offset-4 cursor-pointer"
+      >
+        Go to ZeroPhone Homescreen instead
+      </button>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       APPLICATION LOGIC (State, 5-Click Guard, Ringback Audio, WebRTC)
+       ===================================================================== -->
+  <script>
+    /* ---------------------------------------------------------------------
+       CONSTANTS & CONFIGURATION
+       --------------------------------------------------------------------- */
+    const STORAGE_KEY = 'zerophone_elder_data_v1';
+    const SIGNALING_SERVER = 'https://webrtc-signaling-do2l.onrender.com';
+    const RTC_CONFIG = {
+      iceServers: [{ urls: 'stun:stun.l.google.com:19302' }]
+    };
+
+    /* ---------------------------------------------------------------------
+       GLOBAL STATE
+       --------------------------------------------------------------------- */
+    let appData = {
+      elderName: 'Mom',
+      contacts: []
+    };
+
+    // 5-Click Caregiver Guard State
+    let settingsClickTimestamps = [];
+    let settingsPruneTimer = null;
+
+    // Inline Delete Confirmation State (avoids window.confirm)
+    let pendingDeleteId = null;
+    let pendingDeleteTimer = null;
+
+    // Signaling & WebRTC Call State
+    let socket = null;
+    let localStream = null;
+    let peerConnections = {};
+    let activeCall = null; // { name, phone, mode, room, isInvite }
+    let callTimerInterval = null;
+    let callSecondsElapsed = 0;
+    let snapshotModeActive = false;
+    let networkMonitorInterval = null;
+
+    // Web Audio API Synthesized US Ringback Tone State
+    let ringAudioCtx = null;
+    let ringCycleTimeout = null;
+    let isRinging = false;
+
+    // URL Parameter Invite State
+    let inviteParams = { room: null, from: null };
+
+    /* ---------------------------------------------------------------------
+       DATA PERSISTENCE (localStorage with First-Visit Seeding)
+       --------------------------------------------------------------------- */
+    function deriveRoomFromContact(phone, name, customRoom) {
+      if (customRoom && customRoom.trim()) {
+        return customRoom.trim().toLowerCase().replace(/[^a-z0-9-_]/g, '');
+      }
+      const digits = (phone || '').replace(/\D/g, '');
+      if (digits.length > 0) {
+        return `elder-${digits}`;
+      }
+      const slug = (name || 'family').toLowerCase().replace(/[^a-z0-9]/g, '') || 'room';
+      return `elder-${slug}`;
+    }
+
+    function loadAppData() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw === null) {
+          // Pre-seed on very first visit with 2 clear example contacts
+          appData = {
+            elderName: 'Mom',
+            contacts: [
+              {
+                id: 'contact_sarah_default',
+                name: 'Sarah',
+                phone: '555-0142',
+                mode: 'webrtc',
+                customRoom: '',
+                room: 'elder-5550142',
+                onHomescreen: true
+              },
+              {
+                id: 'contact_david_default',
+                name: 'David',
+                phone: '555-0198',
+                mode: 'webrtc',
+                customRoom: '',
+                room: 'elder-5550198',
+                onHomescreen: true
+              }
+            ]
+          };
+          saveAppData();
+        } else {
+          const parsed = JSON.parse(raw);
+          appData = {
+            elderName: typeof parsed.elderName === 'string' ? parsed.elderName : '',
+            contacts: Array.isArray(parsed.contacts) ? parsed.contacts : []
+          };
+          // Ensure every contact has a valid room field
+          appData.contacts.forEach(c => {
+            if (!c.room) {
+              c.room = deriveRoomFromContact(c.phone, c.name, c.customRoom);
+            }
+          });
+        }
+      } catch (err) {
+        console.warn('Error loading localStorage, using defaults:', err);
+        appData = { elderName: 'Mom', contacts: [] };
+      }
+    }
+
+    function saveAppData() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
+      } catch (err) {
+        console.warn('Unable to save to localStorage:', err);
+      }
+    }
+
+    /* ---------------------------------------------------------------------
+       TOAST HELPER (Non-intrusive replacement for alert())
+       --------------------------------------------------------------------- */
+    function showToast(message, type = 'success') {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      const colorClasses =
+        type === 'error'
+          ? 'bg-[#ff3b30] text-white border-red-300/40'
+          : type === 'warning'
+          ? 'bg-amber-500 text-black border-amber-200/40'
+          : 'bg-[#30d158] text-black border-green-200/40';
+
+      toast.className = `${colorClasses} border font-extrabold text-sm sm:text-base px-5 py-3 rounded-2xl shadow-2xl text-center transition-all duration-300 opacity-0 -translate-y-2`;
+      toast.textContent = message;
+      container.appendChild(toast);
+
+      requestAnimationFrame(() => {
+        toast.classList.remove('opacity-0', '-translate-y-2');
+      });
+
+      setTimeout(() => {
+        toast.classList.add('opacity-0', '-translate-y-2');
+        setTimeout(() => toast.remove(), 300);
+      }, 3200);
+    }
+
+    /* ---------------------------------------------------------------------
+       CLOCK & DATE UPDATER (Top Bar)
+       --------------------------------------------------------------------- */
+    function updateClock() {
+      const now = new Date();
+      const timeStr = now.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+      const dateStr = now.toLocaleDateString([], { weekday: 'long', month: 'short', day: 'numeric' });
+      const timeEl = document.getElementById('clock-time');
+      const dateEl = document.getElementById('clock-date');
+      if (timeEl) timeEl.textContent = timeStr;
+      if (dateEl) dateEl.textContent = dateStr;
+    }
+
+    /* ---------------------------------------------------------------------
+       VIEW NAVIGATION
+       --------------------------------------------------------------------- */
+    function showView(viewId) {
+      ['view-homescreen', 'view-settings', 'view-call', 'view-invite'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.classList.toggle('hidden', id !== viewId);
+      });
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+
+    function returnToHomescreen() {
+      resetContactForm();
+      renderHomescreen();
+      showView('view-homescreen');
+    }
+
+    /* ---------------------------------------------------------------------
+       5-CLICK CAREGIVER SETTINGS GUARD (5 clicks within 5000ms)
+       --------------------------------------------------------------------- */
+    function updateSettingsDots(activeCount) {
+      const dotsContainer = document.getElementById('settings-click-dots');
+      if (!dotsContainer) return;
+      const dots = dotsContainer.children;
+      for (let i = 0; i < dots.length; i++) {
+        if (i < activeCount) {
+          dots[i].classList.remove('bg-neutral-700');
+          dots[i].classList.add('bg-[#30d158]', 'scale-125', 'shadow-[0_0_6px_#30d158]');
+        } else {
+          dots[i].classList.remove('bg-[#30d158]', 'scale-125', 'shadow-[0_0_6px_#30d158]');
+          dots[i].classList.add('bg-neutral-700');
+        }
+      }
+    }
+
+    function pruneExpiredSettingsClicks() {
+      const now = Date.now();
+      settingsClickTimestamps = settingsClickTimestamps.filter(ts => now - ts <= 5000);
+      updateSettingsDots(settingsClickTimestamps.length);
+
+      if (settingsPruneTimer) clearTimeout(settingsPruneTimer);
+      if (settingsClickTimestamps.length > 0) {
+        const oldest = settingsClickTimestamps[0];
+        const delay = Math.max(50, 5000 - (now - oldest) + 40);
+        settingsPruneTimer = setTimeout(pruneExpiredSettingsClicks, delay);
+      }
+    }
+
+    function handleSettingsClick() {
+      const now = Date.now();
+      // Keep only clicks within the rolling 5-second window
+      settingsClickTimestamps = settingsClickTimestamps.filter(ts => now - ts <= 5000);
+      settingsClickTimestamps.push(now);
+
+      updateSettingsDots(settingsClickTimestamps.length);
+
+      if (settingsClickTimestamps.length >= 5) {
+        // Unlocked! Reset click tracker and open Caregiver Settings
+        settingsClickTimestamps = [];
+        if (settingsPruneTimer) clearTimeout(settingsPruneTimer);
+        updateSettingsDots(0);
+        openSettingsView();
+        return;
+      }
+
+      // Schedule dot fade-out as clicks age past 5 seconds
+      if (settingsPruneTimer) clearTimeout(settingsPruneTimer);
+      const oldest = settingsClickTimestamps[0];
+      const delay = Math.max(50, 5000 - (now - oldest) + 40);
+      settingsPruneTimer = setTimeout(pruneExpiredSettingsClicks, delay);
+    }
+
+    function openSettingsView() {
+      document.getElementById('elder-name-input').value = appData.elderName || '';
+      resetContactForm();
+      renderAddressBank();
+      showView('view-settings');
+    }
+
+    /* ---------------------------------------------------------------------
+       HOMESCREEN RENDERER (Adaptive Large Tiles)
+       --------------------------------------------------------------------- */
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function renderHomescreen() {
+      const grid = document.getElementById('homescreen-tiles-grid');
+      if (!grid) return;
+
+      const pinned = appData.contacts.filter(c => c.onHomescreen);
+      grid.innerHTML = '';
+
+      if (pinned.length === 0) {
+        grid.className = 'grid grid-cols-1 max-w-xl w-full mx-auto';
+        grid.innerHTML = `
+          <div class="bg-[#1c1c1e] border-2 border-dashed border-neutral-700 rounded-3xl p-10 text-center">
+            <div class="text-5xl mb-4" aria-hidden="true">📞</div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-2">No Call Tiles Yet</h2>
+            <p class="text-base sm:text-lg text-neutral-400">
+              Caregiver: Tap <span class="text-white font-bold">Settings</span> 5 times in the bottom-right corner to add family members here.
+            </p>
+          </div>
+        `;
+        return;
+      }
+
+      // Dynamically adapt grid columns & tile height based on tile count
+      let gridClass = '';
+      let tilePaddingClass = '';
+      let titleSizeClass = '';
+      let iconBoxClass = '';
+
+      if (pinned.length === 1) {
+        gridClass = 'grid grid-cols-1 max-w-2xl w-full mx-auto gap-6';
+        tilePaddingClass = 'min-h-[290px] sm:min-h-[360px] p-8 sm:p-12';
+        titleSizeClass = 'text-4xl sm:text-6xl';
+        iconBoxClass = 'w-24 h-24 sm:w-28 sm:h-28';
+      } else if (pinned.length === 2) {
+        gridClass = 'grid grid-cols-1 md:grid-cols-2 max-w-5xl w-full mx-auto gap-6 sm:gap-8';
+        tilePaddingClass = 'min-h-[230px] sm:min-h-[310px] p-7 sm:p-10';
+        titleSizeClass = 'text-4xl sm:text-5xl';
+        iconBoxClass = 'w-20 h-20 sm:w-24 sm:h-24';
+      } else if (pinned.length <= 4) {
+        gridClass = 'grid grid-cols-1 sm:grid-cols-2 max-w-5xl w-full mx-auto gap-5 sm:gap-7';
+        tilePaddingClass = 'min-h-[190px] sm:min-h-[245px] p-6 sm:p-8';
+        titleSizeClass = 'text-3xl sm:text-4xl';
+        iconBoxClass = 'w-16 h-16 sm:w-20 sm:h-20';
+      } else {
+        gridClass = 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl w-full mx-auto gap-5';
+        tilePaddingClass = 'min-h-[175px] sm:min-h-[215px] p-6';
+        titleSizeClass = 'text-3xl sm:text-4xl';
+        iconBoxClass = 'w-16 h-16';
+      }
+
+      grid.className = gridClass;
+
+      pinned.forEach(contact => {
+        const isVideo = contact.mode !== 'tel';
+        const iconSvg = isVideo
+          ? `<svg class="w-1/2 h-1/2 text-[#30d158]" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true">
+               <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" />
+             </svg>`
+          : `<svg class="w-1/2 h-1/2 text-[#30d158]" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true">
+               <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+             </svg>`;
+
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.onclick = () => startCallToContact(contact);
+        btn.className = `${tilePaddingClass} w-full bg-[#1b5e35] hover:bg-[#227543] active:scale-[0.97] border-4 border-[#30d158] rounded-3xl shadow-[0_10px_30px_rgba(0,0,0,0.55)] flex flex-col items-center justify-center text-center gap-4 transition-all duration-150 touch-manipulation cursor-pointer focus:outline-none focus:ring-4 focus:ring-[#30d158]/60`;
+
+        btn.innerHTML = `
+          <div class="${iconBoxClass} rounded-full bg-[#121212]/45 border-2 border-[#30d158]/70 flex items-center justify-center shrink-0 shadow-inner">
+            ${iconSvg}
+          </div>
+          <div class="space-y-1.5">
+            <div class="${titleSizeClass} font-black text-white tracking-tight leading-tight break-words">
+              Call ${escapeHtml(contact.name)}
+            </div>
+            <div class="text-base sm:text-lg font-bold text-green-200/90">
+              ${isVideo ? 'Tap for Video Call' : 'Tap for Phone Call'}
+            </div>
+          </div>
+        `;
+        grid.appendChild(btn);
+      });
+    }
+
+    /* ---------------------------------------------------------------------
+       CAREGIVER SETTINGS: PROFILE & ADDRESS BANK CRUD
+       --------------------------------------------------------------------- */
+    let profileBadgeTimer = null;
+    function saveElderProfile() {
+      const input = document.getElementById('elder-name-input');
+      appData.elderName = input.value.trim();
+      saveAppData();
+
+      const badge = document.getElementById('profile-saved-badge');
+      badge.classList.remove('opacity-0');
+      if (profileBadgeTimer) clearTimeout(profileBadgeTimer);
+      profileBadgeTimer = setTimeout(() => badge.classList.add('opacity-0'), 1600);
+    }
+
+    function toggleRoomInputVisibility() {
+      const mode = document.getElementById('contact-mode-select').value;
+      const wrapper = document.getElementById('custom-room-wrapper');
+      wrapper.classList.toggle('hidden', mode !== 'webrtc');
+      updateDerivedRoomPreview();
+    }
+
+    function updateDerivedRoomPreview() {
+      const phone = document.getElementById('contact-phone-input').value;
+      const name = document.getElementById('contact-name-input').value;
+      const customRoom = document.getElementById('contact-room-input').value;
+      const room = deriveRoomFromContact(phone, name, customRoom);
+      const preview = document.getElementById('derived-room-preview');
+      if (preview) {
+        preview.innerHTML = `Active Room ID: <span class="text-[#30d158] font-mono font-bold">${escapeHtml(room)}</span>`;
+      }
+    }
+
+    function resetContactForm() {
+      document.getElementById('edit-contact-id').value = '';
+      document.getElementById('contact-name-input').value = '';
+      document.getElementById('contact-phone-input').value = '';
+      document.getElementById('contact-mode-select').value = 'webrtc';
+      document.getElementById('contact-room-input').value = '';
+      document.getElementById('contact-homescreen-checkbox').checked = true;
+
+      document.getElementById('form-heading').textContent = 'Add Contact to Address Bank';
+      document.getElementById('form-submit-btn').textContent = '+ Add to Address Bank';
+      document.getElementById('cancel-edit-btn').classList.add('hidden');
+      toggleRoomInputVisibility();
+    }
+
+    function handleContactFormSubmit(event) {
+      event.preventDefault();
+
+      const editId = document.getElementById('edit-contact-id').value;
+      const name = document.getElementById('contact-name-input').value.trim();
+      const phone = document.getElementById('contact-phone-input').value.trim();
+      const mode = document.getElementById('contact-mode-select').value;
+      const customRoom = document.getElementById('contact-room-input').value.trim();
+      const onHomescreen = document.getElementById('contact-homescreen-checkbox').checked;
+
+      if (!name || !phone) {
+        showToast('Please enter both a Name and Phone Number.', 'warning');
+        return;
+      }
+
+      const room = deriveRoomFromContact(phone, name, customRoom);
+
+      if (editId) {
+        const idx = appData.contacts.findIndex(c => c.id === editId);
+        if (idx !== -1) {
+          appData.contacts[idx] = {
+            ...appData.contacts[idx],
+            name,
+            phone,
+            mode,
+            customRoom,
+            room,
+            onHomescreen
+          };
+          showToast(`Updated ${name}`);
+        }
+      } else {
+        appData.contacts.push({
+          id: 'c_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6),
+          name,
+          phone,
+          mode,
+          customRoom,
+          room,
+          onHomescreen
+        });
+        showToast(`Added ${name} to Address Bank`);
+      }
+
+      saveAppData();
+      resetContactForm();
+      renderAddressBank();
+      renderHomescreen();
+    }
+
+    function startEditContact(id) {
+      const contact = appData.contacts.find(c => c.id === id);
+      if (!contact) return;
+
+      document.getElementById('edit-contact-id').value = contact.id;
+      document.getElementById('contact-name-input').value = contact.name;
+      document.getElementById('contact-phone-input').value = contact.phone;
+      document.getElementById('contact-mode-select').value = contact.mode || 'webrtc';
+      document.getElementById('contact-room-input').value = contact.customRoom || '';
+      document.getElementById('contact-homescreen-checkbox').checked = !!contact.onHomescreen;
+
+      document.getElementById('form-heading').textContent = `Editing: ${contact.name}`;
+      document.getElementById('form-submit-btn').textContent = 'Save Contact Changes';
+      document.getElementById('cancel-edit-btn').classList.remove('hidden');
+      toggleRoomInputVisibility();
+
+      document.getElementById('contact-form-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function toggleHomescreenStatus(id) {
+      const contact = appData.contacts.find(c => c.id === id);
+      if (!contact) return;
+      contact.onHomescreen = !contact.onHomescreen;
+      saveAppData();
+      renderAddressBank();
+      renderHomescreen();
+      showToast(
+        contact.onHomescreen
+          ? `Added "Call ${contact.name}" to Homescreen`
+          : `Removed "${contact.name}" from Homescreen`
+      );
+    }
+
+    function handleDeleteContact(id) {
+      if (pendingDeleteId === id) {
+        // Confirmed on second tap
+        const contact = appData.contacts.find(c => c.id === id);
+        appData.contacts = appData.contacts.filter(c => c.id !== id);
+        pendingDeleteId = null;
+        if (pendingDeleteTimer) clearTimeout(pendingDeleteTimer);
+
+        if (document.getElementById('edit-contact-id').value === id) {
+          resetContactForm();
+        }
+        saveAppData();
+        renderAddressBank();
+        renderHomescreen();
+        showToast(`Deleted ${contact ? contact.name : 'contact'}`, 'warning');
+      } else {
+        // First tap: arm inline confirmation for 4 seconds
+        pendingDeleteId = id;
+        renderAddressBank();
+        if (pendingDeleteTimer) clearTimeout(pendingDeleteTimer);
+        pendingDeleteTimer = setTimeout(() => {
+          pendingDeleteId = null;
+          renderAddressBank();
+        }, 4000);
+      }
+    }
+
+    function copyInviteLink(id) {
+      const contact = appData.contacts.find(c => c.id === id);
+      if (!contact) return;
+
+      const room = contact.room || deriveRoomFromContact(contact.phone, contact.name, contact.customRoom);
+      const baseUrl = `${window.location.origin}${window.location.pathname}`;
+      const fromParam = appData.elderName ? `&from=${encodeURIComponent(appData.elderName)}` : '';
+      const inviteUrl = `${baseUrl}?room=${encodeURIComponent(room)}${fromParam}`;
+
+      // Use document.execCommand('copy') for universal compatibility including iframes
+      const tempInput = document.createElement('textarea');
+      tempInput.value = inviteUrl;
+      tempInput.setAttribute('readonly', '');
+      tempInput.style.position = 'fixed';
+      tempInput.style.left = '-9999px';
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      tempInput.setSelectionRange(0, 99999);
+
+      let copied = false;
+      try {
+        copied = document.execCommand('copy');
+      } catch (err) {
+        copied = false;
+      }
+      document.body.removeChild(tempInput);
+
+      if (copied) {
+        showToast(`Invite link copied for ${contact.name}!`);
+      } else {
+        showToast(`Room link: ?room=${room}`, 'warning');
+      }
+    }
+
+    function renderAddressBank() {
+      const list = document.getElementById('address-bank-list');
+      const summary = document.getElementById('address-bank-summary');
+      if (!list) return;
+
+      const total = appData.contacts.length;
+      const pinnedCount = appData.contacts.filter(c => c.onHomescreen).length;
+      summary.textContent = `${total} contact${total === 1 ? '' : 's'} saved • ${pinnedCount} on Homescreen`;
+
+      if (total === 0) {
+        list.innerHTML = `
+          <div class="bg-[#121212] border border-dashed border-neutral-800 rounded-2xl p-6 text-center text-neutral-400 text-sm">
+            Your Address Bank is empty. Add your first contact using the form above.
+          </div>
+        `;
+        return;
+      }
+
+      list.innerHTML = '';
+
+      appData.contacts.forEach(contact => {
+        const isVideo = contact.mode !== 'tel';
+        const isConfirmingDelete = pendingDeleteId === contact.id;
+
+        const card = document.createElement('div');
+        card.className = 'bg-[#121212] border border-neutral-800 rounded-2xl p-4 sm:p-5 space-y-4';
+
+        card.innerHTML = `
+          <div class="flex flex-wrap items-start justify-between gap-2">
+            <div>
+              <h4 class="text-xl font-black text-white">${escapeHtml(contact.name)}</h4>
+              <p class="text-base font-semibold text-neutral-300 mt-0.5">${escapeHtml(contact.phone)}</p>
+              ${
+                isVideo
+                  ? `<p class="text-xs text-neutral-500 font-mono mt-1">Room: ${escapeHtml(contact.room)}</p>`
+                  : ''
+              }
+            </div>
+            <span class="${
+              isVideo
+                ? 'bg-[#1b5e35]/80 text-[#30d158] border-[#30d158]/50'
+                : 'bg-blue-950/80 text-blue-300 border-blue-500/50'
+            } border text-xs font-extrabold px-3 py-1.5 rounded-full">
+              ${isVideo ? '📹 ZeroPhone Video (Wi-Fi)' : '📞 Phone Dialer (tel:)'}
+            </span>
+          </div>
+
+          <div class="flex flex-wrap gap-2.5">
+            <button
+              type="button"
+              onclick="toggleHomescreenStatus('${contact.id}')"
+              class="${
+                contact.onHomescreen
+                  ? 'bg-[#30d158] text-black hover:bg-[#28b84c]'
+                  : 'bg-[#1c1c1e] text-[#30d158] border border-[#30d158]/70 hover:bg-[#1b5e35]/40'
+              } font-extrabold text-sm px-4 py-2.5 rounded-xl transition-colors touch-manipulation cursor-pointer"
+            >
+              ${contact.onHomescreen ? '✓ On Homescreen (Remove)' : '+ Add to Homescreen'}
+            </button>
+
+            <button
+              type="button"
+              onclick="copyInviteLink('${contact.id}')"
+              class="bg-[#1c1c1e] hover:bg-neutral-800 border border-neutral-700 text-white font-bold text-sm px-4 py-2.5 rounded-xl transition-colors touch-manipulation cursor-pointer"
+            >
+              🔗 Copy Invite Link
+            </button>
+
+            <button
+              type="button"
+              onclick="startEditContact('${contact.id}')"
+              class="bg-[#1c1c1e] hover:bg-neutral-800 border border-neutral-700 text-neutral-200 font-bold text-sm px-4 py-2.5 rounded-xl transition-colors touch-manipulation cursor-pointer"
+            >
+              ✏️ Edit
+            </button>
+
+            <button
+              type="button"
+              onclick="handleDeleteContact('${contact.id}')"
+              class="${
+                isConfirmingDelete
+                  ? 'bg-[#ff3b30] text-white border-[#ff3b30] animate-pulse'
+                  : 'bg-[#1c1c1e] hover:bg-red-950/60 border-neutral-700 text-red-400'
+              } border font-bold text-sm px-4 py-2.5 rounded-xl transition-colors touch-manipulation cursor-pointer"
+            >
+              ${isConfirmingDelete ? 'Tap Again to Delete' : '🗑️ Delete'}
+            </button>
+          </div>
+        `;
+        list.appendChild(card);
+      });
+    }
+
+    /* ---------------------------------------------------------------------
+       SYNTHESIZED OUTGOING US RINGBACK TONE (Web Audio API: 440Hz + 480Hz)
+       Standard US Cadence: 2 seconds ON, 4 seconds OFF
+       --------------------------------------------------------------------- */
+    function startRingbackTone() {
+      stopRingbackTone();
+      isRinging = true;
+
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+        ringAudioCtx = new AudioCtx();
+
+        const playOneRingBurst = () => {
+          if (!isRinging || !ringAudioCtx) return;
+          if (ringAudioCtx.state === 'suspended') {
+            ringAudioCtx.resume().catch(() => {});
+          }
+
+          const now = ringAudioCtx.currentTime;
+          const osc1 = ringAudioCtx.createOscillator();
+          const osc2 = ringAudioCtx.createOscillator();
+          const gainNode = ringAudioCtx.createGain();
+
+          osc1.type = 'sine';
+          osc2.type = 'sine';
+          osc1.frequency.setValueAtTime(440, now);
+          osc2.frequency.setValueAtTime(480, now);
+
+          // Gentle volume with smooth fade-in / fade-out to avoid audio pops
+          gainNode.gain.setValueAtTime(0.0001, now);
+          gainNode.gain.exponentialRampToValueAtTime(0.06, now + 0.05);
+          gainNode.gain.setValueAtTime(0.06, now + 1.95);
+          gainNode.gain.exponentialRampToValueAtTime(0.0001, now + 2.0);
+
+          osc1.connect(gainNode);
+          osc2.connect(gainNode);
+          gainNode.connect(ringAudioCtx.destination);
+
+          osc1.start(now);
+          osc2.start(now);
+          osc1.stop(now + 2.02);
+          osc2.stop(now + 2.02);
+
+          // Schedule next burst after 2s ON + 4s OFF = 6000ms
+          ringCycleTimeout = setTimeout(playOneRingBurst, 6000);
+        };
+
+        playOneRingBurst();
+      } catch (err) {
+        console.warn('Ringback tone unavailable:', err);
+      }
+    }
+
+    function stopRingbackTone() {
+      isRinging = false;
+      if (ringCycleTimeout) {
+        clearTimeout(ringCycleTimeout);
+        ringCycleTimeout = null;
+      }
+      if (ringAudioCtx) {
+        try {
+          ringAudioCtx.close();
+        } catch (e) {}
+        ringAudioCtx = null;
+      }
+    }
+
+    /* ---------------------------------------------------------------------
+       CALL TIMER UTILITIES
+       --------------------------------------------------------------------- */
+    function formatDuration(totalSeconds) {
+      const mins = Math.floor(totalSeconds / 60);
+      const secs = totalSeconds % 60;
+      return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+    }
+
+    function startCallTimer() {
+      stopCallTimer();
+      callSecondsElapsed = 0;
+      document.getElementById('call-timer').textContent = '00:00';
+      callTimerInterval = setInterval(() => {
+        callSecondsElapsed++;
+        document.getElementById('call-timer').textContent = formatDuration(callSecondsElapsed);
+      }, 1000);
+    }
+
+    function stopCallTimer() {
+      if (callTimerInterval) {
+        clearInterval(callTimerInterval);
+        callTimerInterval = null;
+      }
+      callSecondsElapsed = 0;
+      document.getElementById('call-timer').textContent = '00:00';
+    }
+
+    /* ---------------------------------------------------------------------
+       SOCKET.IO SIGNALING INITIALIZATION
+       --------------------------------------------------------------------- */
+    function updateServerConnectionUI(isConnected) {
+      const dot = document.getElementById('server-status-dot');
+      const label = document.getElementById('server-status-label');
+      if (!dot || !label) return;
+
+      if (isConnected) {
+        dot.className = 'w-3 h-3 rounded-full bg-[#30d158] inline-block ring-4 ring-[#30d158]/20 transition-colors';
+        dot.title = 'Connected to ZeroPhone Server';
+        label.textContent = 'Ready to Call';
+        label.className = 'text-xs sm:text-sm text-[#30d158] font-semibold';
+      } else {
+        dot.className = 'w-3 h-3 rounded-full bg-amber-400 animate-pulse inline-block ring-4 ring-amber-400/20 transition-colors';
+        dot.title = 'Connecting to ZeroPhone Server...';
+        label.textContent = 'Waking Server...';
+        label.className = 'text-xs sm:text-sm text-amber-400 font-medium';
+      }
+    }
+
+    function initSocket() {
+      if (typeof io === 'undefined') {
+        updateServerConnectionUI(false);
+        return;
+      }
+
+      socket = io(SIGNALING_SERVER, {
+        reconnection: true,
+        reconnectionDelay: 1000
+      });
+
+      socket.on('connect', () => {
+        updateServerConnectionUI(true);
+        // If user is currently waiting in a WebRTC call when server finishes waking up, rejoin room automatically
+        if (activeCall && activeCall.mode === 'webrtc' && activeCall.room) {
+          socket.emit('join-room', activeCall.room);
+        }
+      });
+
+      socket.on('disconnect', () => {
+        updateServerConnectionUI(false);
+      });
+
+      socket.on('connect_error', () => {
+        updateServerConnectionUI(false);
+      });
+
+      // ZeroPhone WebRTC Signaling Events
+      socket.on('user-joined', async ({ socketId }) => {
+        if (!activeCall || activeCall.mode !== 'webrtc') return;
+        stopRingbackTone();
+        updateCallStatusConnected();
+
+        try {
+          const pc = createPeerConnection(socketId);
+          const offer = await pc.createOffer();
+          await pc.setLocalDescription(offer);
+          socket.emit('offer', { offer, targetId: socketId, isAudioOnly: false });
+        } catch (err) {
+          console.warn('Error creating WebRTC offer:', err);
+        }
+      });
+
+      socket.on('offer', async ({ offer, senderId }) => {
+        if (!activeCall || activeCall.mode !== 'webrtc') return;
+        stopRingbackTone();
+        updateCallStatusConnected();
+
+        try {
+          const pc = createPeerConnection(senderId);
+          await pc.setRemoteDescription(new RTCSessionDescription(offer));
+          const answer = await pc.createAnswer();
+          await pc.setLocalDescription(answer);
+          socket.emit('answer', { answer, targetId: senderId });
+        } catch (err) {
+          console.warn('Error handling WebRTC offer:', err);
+        }
+      });
+
+      socket.on('answer', async ({ answer, senderId }) => {
+        if (!activeCall || activeCall.mode !== 'webrtc') return;
+        stopRingbackTone();
+        updateCallStatusConnected();
+
+        try {
+          if (peerConnections[senderId]) {
+            await peerConnections[senderId].setRemoteDescription(new RTCSessionDescription(answer));
+          }
+        } catch (err) {
+          console.warn('Error setting remote answer:', err);
+        }
+      });
+
+      socket.on('ice-candidate', async ({ candidate, senderId }) => {
+        try {
+          if (peerConnections[senderId] && candidate) {
+            await peerConnections[senderId].addIceCandidate(new RTCIceCandidate(candidate));
+          }
+        } catch (err) {
+          console.warn('ICE candidate error:', err);
+        }
+      });
+
+      socket.on('user-disconnected', ({ socketId }) => {
+        if (peerConnections[socketId]) {
+          try {
+            peerConnections[socketId].close();
+          } catch (e) {}
+          delete peerConnections[socketId];
+        }
+
+        const remoteTile = document.getElementById(`remote-tile-${socketId}`);
+        if (remoteTile) remoteTile.remove();
+        updateRemoteVideoGridLayout();
+
+        const remainingPeers = Object.keys(peerConnections).length;
+        if (remainingPeers === 0 && activeCall && activeCall.mode === 'webrtc') {
+          // Remote party left — show calm waiting/ended message until elder presses End Call
+          document.getElementById('call-waiting-overlay').classList.remove('hidden');
+          document.getElementById('ring-pulse-1').classList.add('hidden');
+          document.getElementById('call-banner-title').textContent = `${activeCall.name} disconnected`;
+          document.getElementById('call-banner-subtitle').textContent = 'Press the red End Call button below to go home';
+          document.getElementById('call-waiting-text').textContent = `${activeCall.name} left the call`;
+          document.getElementById('call-waiting-subtext').textContent = 'Tap the big red "End Call" button below to return home.';
+          document.getElementById('call-status-dot').className = 'w-4 h-4 rounded-full bg-[#ff3b30] shrink-0';
+        }
+      });
+    }
+
+    /* ---------------------------------------------------------------------
+       WEBRTC ENGINE + AUTOMATIC LOW-BANDWIDTH SNAPSHOT FALLBACK
+       --------------------------------------------------------------------- */
+    async function applyVideoProfile(pc, profile) {
+      if (!pc) return;
+      const videoSender = pc.getSenders().find(s => s.track && s.track.kind === 'video');
+      if (!videoSender) return;
+
+      const params = videoSender.getParameters();
+      if (!params.encodings || params.encodings.length === 0) {
+        params.encodings = [{}];
+      }
+
+      if (profile === 'snapshot') {
+        params.encodings[0].maxFramerate = 1;
+        params.encodings[0].maxBitrate = 40000;
+        params.encodings[0].scaleResolutionDownBy = 2;
+      } else {
+        delete params.encodings[0].maxFramerate;
+        delete params.encodings[0].maxBitrate;
+        params.encodings[0].scaleResolutionDownBy = 1;
+      }
+
+      try {
+        await videoSender.setParameters(params);
+      } catch (err) {
+        console.warn('Video bitrate parameter adjustment unsupported on this browser:', err);
+      }
+    }
+
+    async function enableSnapshotFallback() {
+      if (snapshotModeActive) return;
+      snapshotModeActive = true;
+      document.getElementById('snapshot-mode-badge').classList.remove('hidden');
+
+      for (const id in peerConnections) {
+        const pc = peerConnections[id];
+        await applyVideoProfile(pc, 'snapshot');
+        if (pc.controlChannel && pc.controlChannel.readyState === 'open') {
+          try {
+            pc.controlChannel.send(JSON.stringify({ type: 'request-snapshot' }));
+          } catch (e) {}
+        }
+      }
+    }
+
+    function startNetworkMonitor() {
+      stopNetworkMonitor();
+      networkMonitorInterval = setInterval(async () => {
+        if (snapshotModeActive || Object.keys(peerConnections).length === 0) return;
+
+        let badNetwork = false;
+        for (const id in peerConnections) {
+          const pc = peerConnections[id];
+          try {
+            const stats = await pc.getStats();
+            stats.forEach(report => {
+              if (report.type === 'candidate-pair' && report.state === 'succeeded') {
+                if (report.currentRoundTripTime > 0.8) badNetwork = true;
+              }
+              if (report.type === 'inbound-rtp' && report.kind === 'video') {
+                const lost = report.packetsLost || 0;
+                const received = report.packetsReceived || 0;
+                if (lost > 50 && lost / (received + lost) > 0.1) {
+                  badNetwork = true;
+                }
+              }
+            });
+          } catch (e) {}
+        }
+
+        if (badNetwork) {
+          console.warn('Slow network detected — automatically enabling 1 FPS snapshot fallback.');
+          enableSnapshotFallback();
+        }
+      }, 5000);
+    }
+
+    function stopNetworkMonitor() {
+      if (networkMonitorInterval) {
+        clearInterval(networkMonitorInterval);
+        networkMonitorInterval = null;
+      }
+    }
+
+    function updateRemoteVideoGridLayout() {
+      const grid = document.getElementById('remote-video-grid');
+      if (!grid) return;
+      const count = grid.children.length;
+      if (count >= 2) {
+        grid.className = 'w-full h-full grid grid-cols-1 sm:grid-cols-2 gap-2 bg-black p-1';
+      } else {
+        grid.className = 'w-full h-full grid grid-cols-1 gap-2 bg-black p-1';
+      }
+    }
+
+    function createPeerConnection(targetSocketId) {
+      if (peerConnections[targetSocketId]) return peerConnections[targetSocketId];
+
+      const pc = new RTCPeerConnection(RTC_CONFIG);
+      peerConnections[targetSocketId] = pc;
+
+      // Negotiated data channel for ZeroPhone low-bandwidth snapshot signaling
+      const dc = pc.createDataChannel('bandwidth-control', { negotiated: true, id: 1 });
+      pc.controlChannel = dc;
+
+      dc.onopen = () => {
+        if (snapshotModeActive) {
+          dc.send(JSON.stringify({ type: 'request-snapshot' }));
+          applyVideoProfile(pc, 'snapshot');
+        }
+      };
+
+      dc.onmessage = async (event) => {
+        try {
+          const msg = JSON.parse(event.data);
+          if (msg.type === 'request-snapshot') {
+            await applyVideoProfile(pc, 'snapshot');
+          } else if (msg.type === 'request-normal') {
+            await applyVideoProfile(pc, 'normal');
+          }
+        } catch (e) {}
+      };
+
+      if (localStream) {
+        localStream.getTracks().forEach(track => pc.addTrack(track, localStream));
+      }
+
+      pc.ontrack = (event) => {
+        stopRingbackTone();
+        updateCallStatusConnected();
+
+        const remoteGrid = document.getElementById('remote-video-grid');
+        let tile = document.getElementById(`remote-tile-${targetSocketId}`);
+        if (!tile) {
+          tile = document.createElement('div');
+          tile.id = `remote-tile-${targetSocketId}`;
+          tile.className = 'relative w-full h-full bg-black rounded-2xl overflow-hidden flex items-center justify-center';
+          tile.innerHTML = `<video id="remote-video-${targetSocketId}" autoplay playsinline class="w-full h-full object-cover"></video>`;
+          remoteGrid.appendChild(tile);
+          updateRemoteVideoGridLayout();
+        }
+
+        const videoEl = document.getElementById(`remote-video-${targetSocketId}`);
+        if (event.streams && event.streams[0]) {
+          videoEl.srcObject = event.streams[0];
+          videoEl.play().catch(() => {});
+
+          // Hide waiting overlay once remote video track is present
+          const hasVideoTrack = event.streams[0].getVideoTracks().length > 0;
+          if (hasVideoTrack) {
+            document.getElementById('call-waiting-overlay').classList.add('hidden');
+          } else {
+            document.getElementById('ring-pulse-1').classList.add('hidden');
+            document.getElementById('call-waiting-text').textContent = `Connected with ${activeCall ? activeCall.name : 'Family'}`;
+            document.getElementById('call-waiting-subtext').textContent = 'Voice call in progress';
+          }
+        }
+      };
+
+      pc.onicecandidate = (event) => {
+        if (event.candidate && socket && socket.connected) {
+          socket.emit('ice-candidate', { candidate: event.candidate, targetId: targetSocketId });
+        }
+      };
+
+      return pc;
+    }
+
+    /* ---------------------------------------------------------------------
+       CALL LIFECYCLE: START CALL & END CALL
+       --------------------------------------------------------------------- */
+    function updateCallStatusConnected() {
+      if (!activeCall) return;
+      document.getElementById('call-banner-title').textContent = `Connected with ${activeCall.name}`;
+      document.getElementById('call-banner-subtitle').textContent = 'Encrypted ZeroPhone Call';
+      document.getElementById('call-status-dot').className = 'w-4 h-4 rounded-full bg-[#30d158] shrink-0 shadow-[0_0_10px_#30d158]';
+    }
+
+    async function acquireLocalMedia() {
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        return null;
+      }
+      const attempts = [
+        { audio: true, video: { facingMode: 'user' } },
+        { audio: true, video: true },
+        { audio: true, video: false }
+      ];
+
+      for (const constraints of attempts) {
+        try {
+          const stream = await navigator.mediaDevices.getUserMedia(constraints);
+          if (stream) return stream;
+        } catch (err) {
+          console.warn('Media attempt failed, trying fallback:', constraints, err.name);
+        }
+      }
+      return null;
+    }
+
+    async function startCallToContact(contact, isInvite = false) {
+      const mode = contact.mode === 'tel' ? 'tel' : 'webrtc';
+      const room = contact.room || deriveRoomFromContact(contact.phone, contact.name, contact.customRoom);
+
+      activeCall = {
+        name: contact.name,
+        phone: contact.phone,
+        mode,
+        room,
+        isInvite
+      };
+
+      // Reset Call Screen UI
+      snapshotModeActive = false;
+      document.getElementById('snapshot-mode-badge').classList.add('hidden');
+      document.getElementById('remote-video-grid').innerHTML = '';
+      document.getElementById('local-preview-wrapper').classList.add('hidden');
+      document.getElementById('audio-only-pill').classList.add('hidden');
+      document.getElementById('call-waiting-overlay').classList.remove('hidden');
+      document.getElementById('ring-pulse-1').classList.remove('hidden');
+      document.getElementById('tel-redial-link').classList.add('hidden');
+
+      const initial = (contact.name || '?').trim().charAt(0).toUpperCase() || '?';
+      document.getElementById('call-avatar-initial').textContent = initial;
+      document.getElementById('call-banner-title').textContent = `Calling ${contact.name}...`;
+      document.getElementById('call-status-dot').className = 'w-4 h-4 rounded-full bg-amber-400 animate-pulse shrink-0';
+
+      showView('view-call');
+      startCallTimer();
+
+      // BRANCH 1: Native Device Phone Dialer (tel:)
+      if (mode === 'tel') {
+        const cleanTel = (contact.phone || '').replace(/[^\d+*#]/g, '');
+        const telHref = `tel:${cleanTel}`;
+        document.getElementById('call-banner-subtitle').textContent = `Phone Dialer • ${contact.phone}`;
+        document.getElementById('call-waiting-text').textContent = `Dialing ${contact.name}...`;
+        document.getElementById('call-waiting-subtext').textContent = `Opening your device phone to call ${contact.phone}.`;
+        const redialLink = document.getElementById('tel-redial-link');
+        redialLink.href = telHref;
+        redialLink.classList.remove('hidden');
+
+        // Trigger native dialer
+        try {
+          window.location.href = telHref;
+        } catch (e) {}
+        return;
+      }
+
+      // BRANCH 2: ZeroPhone WebRTC Video/Voice Call (Free Wi-Fi)
+      document.getElementById('call-banner-subtitle').textContent = 'ZeroPhone Wi-Fi Video Call';
+      document.getElementById('call-waiting-text').textContent = isInvite
+        ? `Joining ${contact.name}...`
+        : `Ringing ${contact.name}...`;
+      document.getElementById('call-waiting-subtext').textContent = isInvite
+        ? 'Connecting your video and audio...'
+        : 'Please wait while they answer your call.';
+
+      // Play gentle synthesized US ringback tone while waiting (for outgoing calls)
+      if (!isInvite) {
+        startRingbackTone();
+      }
+
+      // Request Camera + Mic with graceful voice-only fallback
+      localStream = await acquireLocalMedia();
+
+      // Guard in case user already pressed End Call while permissions prompt was open
+      if (!activeCall) {
+        if (localStream) {
+          localStream.getTracks().forEach(t => t.stop());
+          localStream = null;
+        }
+        return;
+      }
+
+      if (localStream) {
+        const hasVideo = localStream.getVideoTracks().length > 0;
+        if (hasVideo) {
+          const localVid = document.getElementById('localVideo');
+          localVid.srcObject = localStream;
+          localVid.play().catch(() => {});
+          document.getElementById('local-preview-wrapper').classList.remove('hidden');
+        } else {
+          document.getElementById('audio-only-pill').classList.remove('hidden');
+        }
+      } else {
+        document.getElementById('audio-only-pill').textContent = '🔇 Camera/Mic Permission Needed';
+        document.getElementById('audio-only-pill').classList.remove('hidden');
+      }
+
+      // Join ZeroPhone Signaling Room
+      if (socket) {
+        if (!socket.connected) socket.connect();
+        socket.emit('join-room', room);
+      }
+
+      startNetworkMonitor();
+    }
+
+    function endActiveCall() {
+      // 1. Stop synthesized ringback tone immediately
+      stopRingbackTone();
+
+      // 2. Stop live duration timer & network monitor
+      stopCallTimer();
+      stopNetworkMonitor();
+      snapshotModeActive = false;
+
+      const wasInvite = activeCall && activeCall.isInvite;
+      activeCall = null;
+
+      // 3. Stop all local camera/microphone hardware tracks
+      if (localStream) {
+        localStream.getTracks().forEach(track => {
+          try {
+            track.stop();
+          } catch (e) {}
+        });
+        localStream = null;
+      }
+      const localVid = document.getElementById('localVideo');
+      if (localVid) localVid.srcObject = null;
+
+      // 4. Close all active WebRTC peer connections
+      Object.keys(peerConnections).forEach(id => {
+        try {
+          peerConnections[id].close();
+        } catch (e) {}
+      });
+      peerConnections = {};
+      document.getElementById('remote-video-grid').innerHTML = '';
+
+      // 5. Cleanly release signaling room membership by cycling socket connection
+      if (socket) {
+        try {
+          socket.disconnect();
+          setTimeout(() => {
+            if (socket && !socket.connected) socket.connect();
+          }, 200);
+        } catch (e) {}
+      }
+
+      // 6. Immediately return user to the Homescreen (or invite landing if opened via invite)
+      if (wasInvite && inviteParams.room) {
+        // Clear URL query cleanly so user can use homescreen or close tab
+        try {
+          window.history.replaceState({}, document.title, window.location.pathname);
+        } catch (e) {}
+        inviteParams.room = null;
+      }
+      returnToHomescreen();
+    }
+
+    /* ---------------------------------------------------------------------
+       INCOMING INVITE LINK HANDLING (?room=...)
+       --------------------------------------------------------------------- */
+    function checkIncomingInviteUrl() {
+      const params = new URLSearchParams(window.location.search);
+      const room = params.get('room');
+      const from = params.get('from');
+
+      if (room && room.trim()) {
+        inviteParams.room = room.trim();
+        inviteParams.from = from ? from.trim() : null;
+
+        document.getElementById('invite-heading').textContent = inviteParams.from
+          ? `${inviteParams.from} is calling!`
+          : 'ZeroPhone Call Invitation';
+        document.getElementById('invite-subtext').textContent =
+          'Tap the giant green button below to answer and connect instantly.';
+
+        showView('view-invite');
+        return true;
+      }
+      return false;
+    }
+
+    function joinFromInviteLink() {
+      if (!inviteParams.room) {
+        returnToHomescreen();
+        return;
+      }
+      startCallToContact(
+        {
+          name: inviteParams.from || 'Family',
+          phone: '',
+          mode: 'webrtc',
+          room: inviteParams.room
+        },
+        true
+      );
+    }
+
+    function dismissInviteToHomescreen() {
+      inviteParams.room = null;
+      try {
+        window.history.replaceState({}, document.title, window.location.pathname);
+      } catch (e) {}
+      returnToHomescreen();
+    }
+
+    /* ---------------------------------------------------------------------
+       APP BOOTSTRAP
+       --------------------------------------------------------------------- */
+    window.addEventListener('DOMContentLoaded', () => {
+      loadAppData();
+      updateClock();
+      setInterval(updateClock, 1000);
+      initSocket();
+      renderHomescreen();
+
+      // If opened with ?room=... show single giant "Answer / Join Call" screen
+      if (!checkIncomingInviteUrl()) {
+        showView('view-homescreen');
+      }
+    });
+  </script>
+</body>
+</html>
