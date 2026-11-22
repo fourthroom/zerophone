@@ -75,6 +75,7 @@
     .video-grid.peers-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .video-grid.peers-3, .video-grid.peers-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, auto); }
     .video-card { width: 100%; display: flex; flex-direction: column; align-items: center; position: relative; }
+    #videoStreamView .player-badge { display: none; }
     video { width: 100%; aspect-ratio: 1 / 1; background: #000; border-radius: 14px; border: 2px solid #333; object-fit: cover; display: block; }
     #localVideo { transform: scaleX(-1); }
 
@@ -311,10 +312,13 @@
     .btn-game-action { background: #30d158; color: #000; font-weight: bold; border: none; padding: 8px 14px; border-radius: 8px; cursor: pointer; font-size: 13px; margin-top: 5px; }
 
     .game-bottom-bar { display: flex; gap: 10px; justify-content: center; margin-top: 30px; flex-wrap: wrap; }
-    .game-nav-btn { background: #2c2c2e; color: #fff; border: 1px solid #555; padding: 12px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; }
+    .game-nav-btn { background: #2c2c2e; color: #fff; border: 1px solid #555; padding: 12px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: background 0.15s, transform 0.1s; }
+    .game-nav-btn:active { transform: scale(0.97); }
     .game-nav-btn.dice-btn { background: #0a84ff; border-color: #0066cc; }
     .game-nav-btn.dice-btn:disabled { background: #333; color: #666; cursor: not-allowed; }
     .game-nav-btn.bid-btn { background: #ffd60a; color: #000; border-color: #d4af37; }
+    .game-nav-btn.return-video-btn { background: #1b4d2e; color: #fff; border: 1px solid #30d158; }
+    .game-nav-btn.return-video-btn:hover { background: #30d158; color: #000; }
 
     /* OFFICIAL RULES PANEL STYLING */
     .rules-panel {
@@ -630,6 +634,7 @@
           <button id="btnRollDice" class="game-nav-btn dice-btn" onclick="rollDice()" disabled>Roll Dice</button>
           <button class="game-nav-btn bid-btn" onclick="openBidModal()">BID!</button>
           <button class="game-nav-btn" onclick="showSubView('rules')">Game Rules</button>
+          <button class="game-nav-btn return-video-btn" onclick="returnToVideoChat()">📹 Return to Video Chat</button>
         </div>
       </div>
       
@@ -774,6 +779,14 @@
       else if (count >= 4) grid.classList.add('peers-4');
     }
 
+    function ensureCardVideoPlaying(card) {
+      if (!card) return;
+      const vid = card.querySelector('video');
+      if (vid && vid.srcObject) {
+        vid.play().catch(() => {});
+      }
+    }
+
     callerNameInput.addEventListener('input', (e) => { if(webTextSenderNameInput.tagName) webTextSenderNameInput.value = e.target.value; });
 
     function triggerCellCall(event) {
@@ -809,13 +822,59 @@
       startCall();
     });
 
-    function switchTab(tabName) {
+    function returnToVideoChat() {
+      const videoGrid = document.getElementById('videoStreamView');
+      const allCards = Array.from(document.querySelectorAll(
+        '#corner1 .video-card, #corner2 .video-card, #corner3 .video-card, #corner4 .video-card, #selectVideoRow .video-card, #lobbyVideoRow .video-card'
+      ));
+
+      // Place local stream card first for a clean grid layout
+      allCards.sort((a, b) => {
+        const aIsLocal = !!a.querySelector('#localVideo');
+        const bIsLocal = !!b.querySelector('#localVideo');
+        return (bIsLocal ? 1 : 0) - (aIsLocal ? 1 : 0);
+      });
+
+      allCards.forEach(card => {
+        card.style.width = '';
+        card.style.height = '';
+        const label = card.querySelector('h3');
+        if (label) label.style.display = '';
+        videoGrid.appendChild(card);
+        ensureCardVideoPlaying(card);
+      });
+
+      // Ensure any video cards already in the grid keep playing smoothly
+      videoGrid.querySelectorAll('.video-card').forEach(ensureCardVideoPlaying);
+
+      // Switch back to the WebPhone tab while keeping all WebRTC & audio/video connections intact
       document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
       document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+      document.querySelectorAll('.tab-btn')[0].classList.add('active');
+      document.getElementById('tab-level1-phone').classList.add('active');
+
+      const hasActiveCall = !!localStream || Object.keys(peerConnections).length > 0;
+      if (hasActiveCall) {
+        document.getElementById('webphoneMainSection').style.display = 'none';
+        videoGrid.style.display = 'grid';
+        document.getElementById('inCallControls').style.display = 'flex';
+      } else {
+        document.getElementById('webphoneMainSection').style.display = 'block';
+        videoGrid.style.display = 'none';
+        document.getElementById('inCallControls').style.display = 'none';
+      }
+
+      updateGridLayout();
+    }
+
+    function switchTab(tabName) {
       if (tabName === 'level1-phone') {
-        document.querySelectorAll('.tab-btn')[0].classList.add('active');
-        document.getElementById('tab-level1-phone').classList.add('active');
-      } else if (tabName === 'game') {
+        returnToVideoChat();
+        return;
+      }
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+      if (tabName === 'game') {
         document.querySelectorAll('.tab-btn')[6].classList.add('active');
         document.getElementById('tab-game').classList.add('active');
         enterGameLobby();
@@ -1094,11 +1153,27 @@
     }
 
     function enterGameLobby() {
+      const boardActive = document.getElementById('gamePhaseBoard').classList.contains('active');
+      const selectActive = document.getElementById('gamePhaseSelect').classList.contains('active');
+
+      // If returning to an already-active Game Board, put video cards straight back into the corners
+      if (boardActive) {
+        moveVideosToCorners();
+        return;
+      }
+
       const sourceGrid = document.getElementById('videoStreamView');
-      const targetRow = document.getElementById('lobbyVideoRow');
+      const targetRow = selectActive
+        ? document.getElementById('selectVideoRow')
+        : document.getElementById('lobbyVideoRow');
+
       sourceGrid.querySelectorAll('.video-card').forEach(v => {
         v.style.width = '130px';
+        v.style.height = '';
+        const label = v.querySelector('h3');
+        if (label) label.style.display = '';
         targetRow.appendChild(v);
+        ensureCardVideoPlaying(v);
       });
       syncAllPlayerBadges();
     }
@@ -1108,7 +1183,10 @@
       document.getElementById('gamePhaseSelect').classList.add('active');
       const cards = document.getElementById('lobbyVideoRow').querySelectorAll('.video-card');
       const targetRow = document.getElementById('selectVideoRow');
-      cards.forEach(c => targetRow.appendChild(c));
+      cards.forEach(c => {
+        targetRow.appendChild(c);
+        ensureCardVideoPlaying(c);
+      });
       syncAllPlayerBadges();
     }
 
@@ -1264,7 +1342,14 @@
           if (label) label.style.display = 'none';
           if (pid) targetCorner.dataset.playerId = pid;
           targetCorner.appendChild(card);
+          ensureCardVideoPlaying(card);
         }
+      });
+
+      // Make sure corner videos stay playing
+      corners.forEach(id => {
+        const corner = document.getElementById(id);
+        if (corner) corner.querySelectorAll('.video-card').forEach(ensureCardVideoPlaying);
       });
 
       syncAllPlayerBadges();
@@ -1644,6 +1729,7 @@
         if (peerConnections[id]) peerConnections[id].close();
       });
       peerConnections = {};
+      document.getElementById('videoStreamView').style.display = 'none';
       document.getElementById('inCallControls').style.display = 'none';
       document.getElementById('webphoneMainSection').style.display = 'block';
       statusDiv.innerText = "Call ended.";
@@ -1694,10 +1780,10 @@
           remoteCard.id = `card-${targetSocketId}`;
           remoteCard.innerHTML = `<h3 style="margin: 0 0 8px 0; font-size: 14px;">Peer Stream</h3><video id="video-${targetSocketId}" autoplay playsinline></video>`;
 
-          // Place straight into the active game view if the game tab is already open
-          const boardActive = document.getElementById('gamePhaseBoard').classList.contains('active');
-          const selectActive = document.getElementById('gamePhaseSelect').classList.contains('active');
-          const lobbyActive = document.getElementById('tab-game').classList.contains('active');
+          // Place straight into the active game view only if the Game tab is currently active
+          const gameTabActive = document.getElementById('tab-game').classList.contains('active');
+          const boardActive = gameTabActive && document.getElementById('gamePhaseBoard').classList.contains('active');
+          const selectActive = gameTabActive && document.getElementById('gamePhaseSelect').classList.contains('active');
 
           if (boardActive) {
             document.getElementById('videoStreamView').appendChild(remoteCard);
@@ -1705,7 +1791,7 @@
           } else if (selectActive) {
             remoteCard.style.width = '130px';
             document.getElementById('selectVideoRow').appendChild(remoteCard);
-          } else if (lobbyActive) {
+          } else if (gameTabActive) {
             remoteCard.style.width = '130px';
             document.getElementById('lobbyVideoRow').appendChild(remoteCard);
           } else {
