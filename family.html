@@ -9,8 +9,8 @@
 
   <!-- SEO PRIMARY META TAGS FOR GOOGLE SEARCH -->
   <title>ZeroPhone Family — Encrypted Browser Video Calling, WebText & Local Resources</title>
-  <meta name="description" content="ZeroPhone Family is a completely free, privacy-first web utility featuring end-to-end AES-256-GCM encrypted video calling, voice calls, free WebText, local Wi-Fi maps, and live radio.">
-  <meta name="keywords" content="ZeroPhone, fourthroom.org, AES-256 encryption, free video call, browser calling, WebRTC, free web text, local radio streams, public wifi maps">
+  <meta name="description" content="ZeroPhone Family is a completely free, privacy-first web utility featuring end-to-end AES-256-GCM encrypted video calling, voice calls, free WebText, local Wi-Fi maps, live radio, art gallery, and Picture This! multiplayer game.">
+  <meta name="keywords" content="ZeroPhone, fourthroom.org, AES-256 encryption, free video call, browser calling, WebRTC, free web text, local radio streams, public wifi maps, Picture This game">
   <meta name="author" content="FourthRoom">
   <link rel="canonical" href="https://fourthroom.org/family.html">
 
@@ -128,6 +128,9 @@
 
     .tab-art { background: #4a3600; border-top: 3px solid #ffd60a; }
     .tab-art.active { background: #ffd60a; color: #000; }
+
+    .tab-game { background: #5a0000; border-top: 3px solid #ff3b30; }
+    .tab-game.active { background: #ff3b30; color: #fff; font-weight: 900; }
 
     .sub-tagline {
       font-size: 11px;
@@ -418,6 +421,9 @@
       align-items: center;
       position: relative;
     }
+
+    /* Hide game token badges while viewing normal video chat */
+    #videoStreamView .player-badge { display: none; }
 
     /* Strict 1:1 Square Framing on All Devices */
     video { 
@@ -794,9 +800,384 @@
       text-align: center;
       box-shadow: 0 10px 30px rgba(0,0,0,0.9);
     }
+
+    /* ------------------------------------------- */
+    /* GAME UI STYLES ("PICTURE THIS!")            */
+    /* ------------------------------------------- */
+    #tab-game { text-align: center; padding-top: 10px; }
+    .game-phase { display: none; flex-direction: column; align-items: center; gap: 15px; }
+    .game-phase.active { display: flex; }
+    .game-video-row { display: flex; gap: 12px; justify-content: center; width: 100%; margin-bottom: 20px; flex-wrap: wrap; }
+    .game-video-row .video-card { width: 130px; position: relative; }
+
+    /* Player Icon Badges — always visible inside player boxes */
+    .player-badge {
+      position: absolute;
+      bottom: 6px;
+      right: 6px;
+      width: 36px;
+      height: 54px;
+      background: #080a0f;
+      border-radius: 8px;
+      border: 2px solid #fff;
+      padding: 2px;
+      z-index: 120;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      pointer-events: none;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.9);
+    }
+    .player-badge img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      border-radius: 4px;
+    }
+
+    .board-container { position: relative; width: 100%; max-width: 600px; aspect-ratio: 1/1; margin: 0 auto; }
+    .board-bg { width: 100%; height: 100%; border-radius: 50%; object-fit: contain; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
+
+    /* Board Tokens sliding around the 30-space track */
+    .board-token {
+      position: absolute;
+      width: 28px;
+      height: 46px;
+      background: #080a0f;
+      border-radius: 7px;
+      border: 2px solid #fff;
+      padding: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.9);
+      z-index: 25;
+      transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .board-token img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      border-radius: 4px;
+    }
+
+    /* Glowing Corner Video Boxes on the Game Board */
+    .corner-video {
+      position: absolute;
+      width: 22%;
+      height: 22%;
+      border-radius: 12px;
+      border: 4px solid #333;
+      background: #080a0f;
+      overflow: visible;
+      z-index: 10;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .corner-video.active-turn { border-color: #ffd60a; box-shadow: 0 0 25px #ffd60a; }
+    .corner-video .video-card { width: 100%; height: 100%; position: relative; }
+    .corner-video video { width: 100%; height: 100%; aspect-ratio: auto; border-radius: 8px; border: none; object-fit: cover; }
+    .corner-video .player-badge {
+      width: 34%;
+      min-width: 28px;
+      max-width: 46px;
+      height: 52%;
+      min-height: 42px;
+      max-height: 68px;
+      bottom: 4px;
+      right: 4px;
+    }
+    .corner-placeholder-card {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 6px;
+      border-radius: 8px;
+      background: radial-gradient(circle at center, #1b1d24, #080a0f);
+      position: relative;
+    }
+    .corner-placeholder-name {
+      font-size: 11px;
+      font-weight: 800;
+      color: #ddd;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .corner-video.top-left { top: -5%; left: -5%; }
+    .corner-video.top-right { top: -5%; right: -5%; }
+    .corner-video.bottom-left { bottom: -5%; left: -5%; }
+    .corner-video.bottom-right { bottom: -5%; right: -5%; }
+
+    .game-pieces-grid { display: flex; gap: 18px; justify-content: center; margin: 20px 0; flex-wrap: wrap; }
+
+    /* Selection Boxes using Individual Icon Images */
+    .game-piece-btn {
+      position: relative;
+      width: 104px;
+      height: 144px;
+      background-color: #080a0f;
+      border: 3px solid #555;
+      border-radius: 14px;
+      padding: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.65);
+    }
+    .game-piece-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      border-radius: 8px;
+      pointer-events: none;
+    }
+    .game-piece-btn:hover { transform: scale(1.07); }
+    .game-piece-btn.selected {
+      box-shadow: 0 0 26px rgba(255, 255, 255, 0.95) !important;
+      border-color: #fff !important;
+      transform: scale(1.08);
+    }
+    #piece-red {
+      border-color: #ff3b30;
+      box-shadow: 0 0 16px rgba(255, 59, 48, 0.5), inset 0 0 18px rgba(255, 59, 48, 0.25);
+    }
+    #piece-green {
+      border-color: #30d158;
+      box-shadow: 0 0 16px rgba(48, 209, 88, 0.5), inset 0 0 18px rgba(48, 209, 88, 0.25);
+    }
+    #piece-blue {
+      border-color: #0a84ff;
+      box-shadow: 0 0 16px rgba(10, 132, 255, 0.5), inset 0 0 18px rgba(10, 132, 255, 0.25);
+    }
+    #piece-yellow {
+      border-color: #ffd60a;
+      box-shadow: 0 0 16px rgba(255, 214, 10, 0.5), inset 0 0 18px rgba(255, 214, 10, 0.25);
+    }
+
+    .center-console { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 45%; height: 45%; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(0,0,0,0.85); z-index: 5; text-align: center; padding: 18px 20px; color: #fff; overflow-y: auto; gap: 4px; }
+    .center-console h2 { margin: 0 0 10px 0; font-size: 16px; color: #ffd60a; }
+    .btn-game-action { background: #30d158; color: #000; font-weight: bold; border: none; padding: 8px 14px; border-radius: 8px; cursor: pointer; font-size: 13px; margin-top: 5px; }
+
+    .game-bottom-bar { display: flex; gap: 10px; justify-content: center; margin-top: 30px; flex-wrap: wrap; }
+    .game-nav-btn { background: #2c2c2e; color: #fff; border: 1px solid #555; padding: 12px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: background 0.15s, transform 0.1s; }
+    .game-nav-btn:active { transform: scale(0.97); }
+    .game-nav-btn.dice-btn { background: #0a84ff; border-color: #0066cc; }
+    .game-nav-btn.dice-btn:disabled { background: #333; color: #666; cursor: not-allowed; }
+    .game-nav-btn.bid-btn { background: #ffd60a; color: #000; border-color: #d4af37; }
+    .game-nav-btn.return-video-btn { background: #1b4d2e; color: #fff; border: 1px solid #30d158; }
+    .game-nav-btn.return-video-btn:hover { background: #30d158; color: #000; }
+
+    /* OFFICIAL RULES PANEL STYLING */
+    .rules-panel {
+      display: none;
+      margin: 20px auto 30px auto;
+      text-align: left;
+      max-width: 720px;
+      background: #1c1c1e;
+      padding: 24px 26px;
+      border-radius: 14px;
+      border: 1px solid #444;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.65);
+      line-height: 1.6;
+      color: #e5e5ea;
+    }
+    .rules-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      border-bottom: 2px solid #ffd60a;
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+    .rules-panel h2 { color: #ffd60a; margin: 0; font-size: 22px; letter-spacing: 0.3px; }
+    .rules-panel h3 { color: #ffd60a; margin: 22px 0 8px 0; font-size: 16px; border-bottom: 1px solid #333; padding-bottom: 4px; }
+    .rules-panel h4 { color: #63e685; margin: 14px 0 6px 0; font-size: 14px; }
+    .rules-panel p { margin: 6px 0 10px 0; font-size: 14px; }
+    .rules-panel ul, .rules-panel ol { margin: 6px 0 12px 0; padding-left: 22px; font-size: 14px; }
+    .rules-panel li { margin-bottom: 6px; }
+    .rules-note { color: #aaa; font-style: italic; }
+
+    /* BIDDING MODAL */
+    .bid-modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); z-index: 100000; justify-content: center; align-items: center; }
+    .bid-modal-content { background: #1c1c1e; border: 2px solid #ffd60a; border-radius: 16px; padding: 20px; width: 340px; text-align: center; box-shadow: 0 10px 40px rgba(255, 214, 10, 0.2); }
+    .bid-display { font-size: 36px; color: #30d158; margin: 15px 0; font-weight: 900; background: #000; padding: 15px; border-radius: 10px; border: 1px solid #333; letter-spacing: 1px; }
+    .bid-keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
+    .bid-key { background: #2c2c2e; color: #fff; border: 1px solid #555; padding: 15px; font-size: 22px; font-weight: bold; border-radius: 8px; cursor: pointer; transition: background 0.1s; }
+    .bid-key:active { background: #444; }
+    .bid-key.action-clear { background: #ff3b30; color: #fff; border-color: #d70015; }
+    .bid-key.action-close { background: #555; font-size: 16px; }
+    .bid-submit { background: #ffd60a; color: #000; width: 100%; padding: 18px; font-size: 22px; font-weight: 900; border: none; border-radius: 10px; cursor: pointer; text-transform: uppercase; }
+
+    /* AUCTION CENTER CONSOLE DISPLAY */
+    .auction-card-display { position: relative; width: 160px; height: 220px; margin: 0 auto 10px auto; box-shadow: 0 10px 25px rgba(0,0,0,0.9); transition: transform 0.4s; transform-style: preserve-3d; }
+    .auction-card-display img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; border: 2px solid #d4af37; }
+
+    /* PORTFOLIO & CARDS */
+    .portfolio-grid { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
+    .portfolio-item { width: 110px; height: 155px; position: relative; cursor: pointer; transition: transform 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.7); }
+    .portfolio-item:hover { transform: scale(1.08) translateY(-5px); z-index: 10; }
+    .portfolio-item img.main-art { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; border: 1px solid #555; }
+    .portfolio-value-badge { position: absolute; bottom: -15px; right: -15px; width: 50px; height: 75px; box-shadow: 0 2px 8px rgba(0,0,0,0.8); border-radius: 4px; border: 1px solid #222; }
+
+    /* LIVE DENOMINATION BILL WALLET */
+    .money-ledger-panel {
+      max-width: 760px;
+      margin: 20px auto 30px auto;
+      background: #1c1c1e;
+      border: 1px solid #2e4d38;
+      border-radius: 16px;
+      padding: 22px 18px 26px 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.65);
+    }
+    .money-subtitle-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-top: 6px;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      color: #aaa;
+    }
+    .cash-delta-pill {
+      display: none;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+    .cash-delta-pill.positive { display: inline-block; background: #143d22; color: #30d158; border: 1px solid #30d158; }
+    .cash-delta-pill.negative { display: inline-block; background: #471212; color: #ff6b6b; border: 1px solid #ff3b30; }
+
+    .bill-denominations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 16px;
+      margin-top: 8px;
+    }
+    .bill-box {
+      position: relative;
+      border-radius: 14px;
+      border: 2px solid #30d158;
+      padding: 18px 14px 16px 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.55);
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    .bill-box.empty-denom {
+      opacity: 0.45;
+      filter: grayscale(0.45);
+    }
+    .bill-box-header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      opacity: 0.9;
+    }
+    .bill-denom-amount {
+      font-size: 26px;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -0.5px;
+      margin: 4px 0;
+    }
+    .bill-count-badge {
+      font-size: 18px;
+      font-weight: 900;
+      padding: 5px 16px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.55);
+      border: 1px solid currentColor;
+    }
+    .bill-pips-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 4px;
+      min-height: 12px;
+      max-width: 160px;
+    }
+    .bill-pip {
+      width: 16px;
+      height: 8px;
+      border-radius: 2px;
+      border: 1px solid rgba(255,255,255,0.45);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    }
+    .bill-subtotal {
+      font-size: 13px;
+      font-weight: 700;
+      color: #d1d1d6;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding-top: 8px;
+      width: 100%;
+    }
+
+    .console-art-thumb { width: 88px; height: 88px; object-fit: cover; border-radius: 8px; border: 2px solid #ffd60a; cursor: pointer; margin: 4px auto; display: block; }
+    .console-btn-row { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; margin-top: 6px; }
+    .btn-game-action.danger { background: #ff3b30; color: #fff; }
+    .btn-game-action.gold { background: #ffd60a; color: #000; }
+    .btn-game-action:disabled { background: #444; color: #888; cursor: not-allowed; }
+    .auction-timer-pill { background: #ff3b30; color: #fff; font-size: 11px; font-weight: 900; padding: 2px 8px; border-radius: 12px; }
+    .secret-values-strip { display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; margin-top: 6px; }
+    .val-chip { font-size: 11px; font-weight: 900; padding: 2px 6px; border-radius: 4px; background: #1b4d2e; color: #63e685; border: 1px solid #30d158; }
+    .val-chip.forgery { background: #5a0000; color: #ff6b6b; border-color: #ff3b30; }
+    .portfolio-card-wrap { background: #1c1c1e; border: 1px solid #444; border-radius: 10px; padding: 10px; width: 160px; text-align: center; }
+    .portfolio-card-wrap img { width: 100%; height: 140px; object-fit: cover; border-radius: 6px; cursor: pointer; }
+    #gameToast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #ff3b30; color: #fff; padding: 10px 18px; border-radius: 10px; font-weight: bold; z-index: 200000; display: none; box-shadow: 0 4px 20px rgba(0,0,0,0.6); }
   </style>
 </head>
 <body>
+
+  <div id="gameToast"></div>
+
+  <!-- GAME BIDDING KEYPAD MODAL -->
+  <div id="bidModal" class="bid-modal-overlay">
+    <div class="bid-modal-content">
+      <h3 style="color: #ffd60a; margin: 0 0 10px 0;">Place Your Bid</h3>
+      <div id="bidDisplay" class="bid-display">$0</div>
+      <div class="bid-keypad">
+        <button class="bid-key" onclick="appendBid('1')">1</button>
+        <button class="bid-key" onclick="appendBid('2')">2</button>
+        <button class="bid-key" onclick="appendBid('3')">3</button>
+        <button class="bid-key" onclick="appendBid('4')">4</button>
+        <button class="bid-key" onclick="appendBid('5')">5</button>
+        <button class="bid-key" onclick="appendBid('6')">6</button>
+        <button class="bid-key" onclick="appendBid('7')">7</button>
+        <button class="bid-key" onclick="appendBid('8')">8</button>
+        <button class="bid-key" onclick="appendBid('9')">9</button>
+        <button class="bid-key action-clear" onclick="clearBid()">CLR</button>
+        <button class="bid-key" onclick="appendBid('0')">0</button>
+        <button class="bid-key action-close" onclick="closeBidModal()">Cancel</button>
+      </div>
+      <button class="bid-submit" onclick="submitBid()">Submit Bid</button>
+    </div>
+  </div>
 
   <!-- ART FULLSCREEN THEATER OVERLAY -->
   <div id="artFullscreenModal" class="art-fullscreen-modal">
@@ -868,6 +1249,10 @@
       <button class="tab-btn tab-art" onclick="switchTab('art')">
         🏛️ Art Gallery
         <span class="sub-tagline">World Masterpieces</span>
+      </button>
+      <button class="tab-btn tab-game" onclick="switchTab('game')">
+        🎲 Game On!
+        <span class="sub-tagline">Picture This!</span>
       </button>
     </div>
   </div>
@@ -952,7 +1337,7 @@
       <div id="inCallControls" class="incall-controls-bar" style="display:none;">
         <button id="toggleMicBtn" class="btn-media-toggle" onclick="toggleAudio()" title="Mute/Unmute Mic">🎙️</button>
         <button id="toggleCamBtn" class="btn-media-toggle" onclick="toggleVideo()" title="Turn Camera On/Off">📹</button>
-        <!-- NEW SNAPSHOT / LOW BANDWIDTH TOGGLE -->
+        <!-- SNAPSHOT / LOW BANDWIDTH TOGGLE -->
         <button id="toggleSnapshotBtn" class="btn-media-toggle" onclick="toggleSnapshotMode()" title="Toggle Low-Bandwidth Snapshot Mode (1 FPS)">🐢</button>
         <button id="hangUpBtn" class="btn-red-end" onclick="hangUpCall()">🔴 End Call</button>
       </div>
@@ -1176,6 +1561,187 @@
       </div>
     </div>
 
+    <!-- GAME ON TAB ("PICTURE THIS!") -->
+    <div id="tab-game" class="tab-content">
+      
+      <!-- PHASE 1: LOBBY -->
+      <div id="gamePhaseLobby" class="game-phase active">
+        <p style="color: #aaa; margin: 0;">Ensure you are in an active Video Call first.</p>
+        <div id="lobbyVideoRow" class="game-video-row"></div>
+        <button class="btn-mega-enter" style="background:#ff3b30; color:#fff; max-width: 420px;" onclick="transitionToPieceSelection()">Play Picture This</button>
+      </div>
+
+      <!-- PHASE 2: PIECE SELECTION -->
+      <div id="gamePhaseSelect" class="game-phase">
+        <div id="selectVideoRow" class="game-video-row"></div>
+        <h2 style="color: #ffd60a; margin: 0;">Pick a Game Piece</h2>
+        
+        <!-- Individual Glowing Game Piece Selection Boxes -->
+        <div class="game-pieces-grid">
+          <button class="game-piece-btn" id="piece-red" onclick="selectPiece('red')" title="Red Token" aria-label="Red Game Piece">
+            <img src="Red_Icon.jpeg" alt="Red Game Piece">
+          </button>
+          <button class="game-piece-btn" id="piece-green" onclick="selectPiece('green')" title="Green Token" aria-label="Green Game Piece">
+            <img src="Green_Icon.jpeg" alt="Green Game Piece">
+          </button>
+          <button class="game-piece-btn" id="piece-blue" onclick="selectPiece('blue')" title="Blue Token" aria-label="Blue Game Piece">
+            <img src="Blue_Icon.jpeg" alt="Blue Game Piece">
+          </button>
+          <button class="game-piece-btn" id="piece-yellow" onclick="selectPiece('yellow')" title="Yellow Token" aria-label="Yellow Game Piece">
+            <img src="Yellow_Icon.jpeg" alt="Yellow Game Piece">
+          </button>
+        </div>
+
+        <button class="btn-mega-enter" style="max-width: 300px;" onclick="startGameBoard()">Start Game</button>
+      </div>
+
+      <!-- PHASE 3: GAME BOARD -->
+      <div id="gamePhaseBoard" class="game-phase">
+        <div class="board-container">
+          <!-- BOARD BACKGROUND -->
+          <img src="picture-this-board.jpg" class="board-bg" alt="Game Board">
+          
+          <!-- CORNER VIDEO CONTAINERS -->
+          <div id="corner1" class="corner-video top-left"></div>
+          <div id="corner2" class="corner-video top-right"></div>
+          <div id="corner3" class="corner-video bottom-left"></div>
+          <div id="corner4" class="corner-video bottom-right"></div>
+
+          <!-- DYNAMIC CENTER CONSOLE -->
+          <div id="centerConsole" class="center-console">
+            <button id="btnPlaceToken" class="btn-game-action" style="padding:15px; font-size:16px;" onclick="placeTokens()">Place Your Token on the Board</button>
+          </div>
+        </div>
+
+        <div class="game-bottom-bar">
+          <button class="game-nav-btn" onclick="showSubView('board')">GameBoard</button>
+          <button class="game-nav-btn" onclick="showSubView('artwork')">My ArtWork</button>
+          <button class="game-nav-btn" style="color: #30d158; border-color: #30d158;" onclick="showSubView('money')">My Money</button>
+          <button id="btnRollDice" class="game-nav-btn dice-btn" onclick="rollDice()" disabled>Roll Dice</button>
+          <button class="game-nav-btn bid-btn" onclick="openBidModal()">BID!</button>
+          <button class="game-nav-btn" onclick="showSubView('rules')">Game Rules</button>
+          <button class="game-nav-btn return-video-btn" onclick="returnToVideoChat()">📹 Return to Video Chat</button>
+        </div>
+      </div>
+      
+      <!-- GAME SUB-VIEWS -->
+      <div id="gameSubArtwork" style="display:none; margin-top:20px;">
+        <h3 style="color:#ffd60a;">My Portfolio</h3><p style="color:#aaa;">Hover/Tap to inspect secret values.</p>
+        <div class="portfolio-grid">
+          <div class="portfolio-item">
+            <img src="15FDDD6C-6205-4F68-8C6A-338AB0FA6C84_4_5005_c.jpeg" class="main-art" alt="Artwork Backing">
+            <img src="84DD302A-1B51-4861-AC13-83430EABF508_4_5005_c.jpeg" class="portfolio-value-badge" alt="Secret Value">
+          </div>
+          <div class="portfolio-item">
+            <img src="15FDDD6C-6205-4F68-8C6A-338AB0FA6C84_4_5005_c.jpeg" class="main-art" alt="Artwork Backing">
+            <img src="44597DDA-24A4-4EE9-9007-4D59DD62645A_4_5005_c.jpeg" class="portfolio-value-badge" alt="Forgery">
+          </div>
+        </div>
+      </div>
+
+      <!-- LIVE CALCULATED MONEY & BILL DENOMINATIONS VIEW -->
+      <div id="gameSubMoney" class="money-ledger-panel" style="display:none;">
+        <h3 style="color:#30d158; margin: 0 0 6px 0; text-transform: uppercase; letter-spacing: 1px; font-size: 14px;">My Ledger</h3>
+        <h1 id="playerCashDisplay" style="font-size: 44px; margin: 0; color: #fff; letter-spacing: -0.5px;">$15,000,000</h1>
+        <div class="money-subtitle-row">
+          <span id="playerBillCountSummary">12 bills on hand</span>
+          <span id="cashDeltaPill" class="cash-delta-pill"></span>
+        </div>
+        <div id="billDenominationsGrid" class="bill-denominations-grid">
+          <!-- Live calculated bill boxes rendered here -->
+        </div>
+        <div style="margin-top: 20px;">
+          <button class="btn-game-action gold" onclick="showSubView('board')">← Back to GameBoard</button>
+        </div>
+      </div>
+
+      <div id="gameSubRules" class="rules-panel">
+        <div class="rules-header-row">
+          <h2>PICTURE THIS! – Official Game Rules</h2>
+          <button class="btn-game-action gold" style="margin-top:0;" onclick="showSubView('board')">← Back to GameBoard</button>
+        </div>
+
+        <h3>The Objective</h3>
+        <p>You are an elite art collector navigating the ruthless world of high-stakes auctions. Your goal is to amass the highest net worth by the time the bank's gallery is empty. Your net worth is the combined total of your cash on hand and the true, hidden value of the authentic artworks in your portfolio.</p>
+
+        <h3>Game Setup</h3>
+        <ol>
+          <li><strong>The Bank:</strong> Appoint one player (or your WebRTC cloud umpire) to act as the Banker. The Banker manages the cash, the Artwork deck, and the Value deck.</li>
+          <li><strong>Starting Capital:</strong> The Banker issues <strong>$15,000,000</strong> to each player (e.g., one $5M, nine $1M, and two $500k notes).</li>
+          <li><strong>The Starting Portfolio:</strong> Shuffle the Artwork and Value decks separately. The Banker deals one Artwork card face-up to each player, followed by one Value card face-down.</li>
+          <li><strong>Secret Values:</strong> Players secretly slide their Value card underneath their Artwork card. You may look at your own Value cards at any time, but you must keep them hidden from your opponents.</li>
+        </ol>
+
+        <h3>On Your Turn</h3>
+        <p>Players take turns rolling a standard 6-sided die and moving their token clockwise around the 30-space circular track. You must execute the action of the space you land on. Two or more players may occupy the same space.</p>
+
+        <h3>The Board Spaces</h3>
+
+        <h4>1. Bank Auction (11 Spaces)</h4>
+        <p>The Bank places the top Artwork card from the deck onto the center easel.</p>
+        <ul>
+          <li>The Banker opens the bidding. Any player may bid, regardless of whose turn it is.</li>
+          <li>Bids must be in increments of at least $500,000.</li>
+          <li>The highest bidder pays their bid amount to the Bank, takes the Artwork card, and immediately draws the top Value card, sliding it secretly behind their new painting.</li>
+          <li class="rules-note">Note: If no one bids, the Artwork goes to the bottom of the deck.</li>
+        </ul>
+
+        <h4>2. Private Auction (3 Spaces)</h4>
+        <p>You must auction off one of the artworks from your own portfolio to the other players!</p>
+        <ul>
+          <li>The player to your immediate left chooses which of your paintings goes on the block.</li>
+          <li>You act as the auctioneer and <strong>cannot bid</strong>.</li>
+          <li>The highest bidder pays <strong>you</strong> directly. They take the Artwork card and all Value cards attached to it. The buyer cannot look at the attached Value cards until the transaction is complete.</li>
+          <li class="rules-note">Note: If you own no artwork when you land here, nothing happens and your turn ends.</li>
+        </ul>
+
+        <h4>3. Direct Purchase (7 Spaces: $1.5M, $2.0M, or $2.5M)</h4>
+        <p>You have the exclusive option to buy the top Artwork card directly from the Bank for the price printed on the space.</p>
+        <ul>
+          <li>If you choose to buy, pay the Bank, take the Artwork, and draw the top Value card.</li>
+          <li>No other player may bid or interfere.</li>
+          <li>If you decline the purchase, the Artwork remains on top of the deck and your turn ends.</li>
+        </ul>
+
+        <h4>4. Collect $3,000,000 OR a Value Card (5 Spaces)</h4>
+        <p>You are presented with a market choice: liquidity or asset inflation.</p>
+        <ul>
+          <li><strong>Option A:</strong> Take $3,000,000 in cash from the Bank.</li>
+          <li><strong>Option B:</strong> Draw the top Value card from the deck and secretly add it to an Artwork you already own. This allows you to increase a painting's worth by stacking multiple Value cards behind it.</li>
+          <li class="rules-note">Note: If you do not own any artwork, you must take the cash.</li>
+        </ul>
+
+        <h4>5. Inherit a Painting (4 Spaces)</h4>
+        <p>A wealthy benefactor has left you a masterpiece. Take the top Artwork card and the top Value card from the Bank completely free of charge.</p>
+
+        <h3>The Portfolio Rules (Values &amp; Forgeries)</h3>
+        <ul>
+          <li><strong>Stacking:</strong> A single Artwork can have multiple Value cards stacked behind it. Its total worth is the sum of all its attached cards.</li>
+          <li><strong>Permanence:</strong> Once a Value card is assigned to an Artwork, it cannot be moved to a different painting.</li>
+          <li><strong>The Forgery Rule:</strong> If <strong>any</strong> Value card attached to an Artwork is a "Forgery", that painting is definitively proven fake. Its total value drops to <strong>$0</strong>, regardless of how many other legitimate Value cards are stacked with it.</li>
+          <li><strong>Bluffing:</strong> You are highly encouraged to hype up your forgeries to trick opponents into buying them during Private Auctions!</li>
+        </ul>
+
+        <h3>Game End &amp; Victory</h3>
+        <p>The game instantly ends the moment the final Artwork card is acquired from the Bank.</p>
+        <p>At this point, all players reveal their Value cards.</p>
+        <ol>
+          <li>Discard the value of any painting containing a Forgery card.</li>
+          <li>Sum the valid Value cards in your portfolio.</li>
+          <li>Add your remaining cash on hand.</li>
+        </ol>
+        <p><strong>The player with the highest total Net Worth is the ultimate collector and wins the game!</strong></p>
+
+        <div style="text-align:center; margin-top:18px;">
+          <button class="btn-game-action gold" onclick="showSubView('board')">← Back to GameBoard</button>
+        </div>
+      </div>
+
+      <div class="privacy-notice-badge">
+        🔒 <b>End-to-End Encrypted (AES-256-GCM):</b> All video, voice, and web text are scrambled directly on your device before transmission. Zero data is logged, stored, or shared.
+      </div>
+    </div>
+
   </div>
 
   <script>
@@ -1210,6 +1776,14 @@
         grid.classList.add('peers-3');
       } else if (count >= 4) {
         grid.classList.add('peers-4');
+      }
+    }
+
+    function ensureCardVideoPlaying(card) {
+      if (!card) return;
+      const vid = card.querySelector('video');
+      if (vid && vid.srcObject) {
+        vid.play().catch(() => {});
       }
     }
 
@@ -1346,6 +1920,8 @@
 
         document.getElementById('responderAccessBox').style.display = 'block';
       }
+
+      renderPrivateMoney();
     });
 
     document.getElementById('megaEnterBtn').addEventListener('click', () => {
@@ -1359,14 +1935,61 @@
       }
     });
 
+    function returnToVideoChat() {
+      const videoGrid = document.getElementById('videoStreamView');
+      const allCards = Array.from(document.querySelectorAll(
+        '#corner1 .video-card, #corner2 .video-card, #corner3 .video-card, #corner4 .video-card, #selectVideoRow .video-card, #lobbyVideoRow .video-card'
+      ));
+
+      // Place local stream card first for a clean grid layout
+      allCards.sort((a, b) => {
+        const aIsLocal = !!a.querySelector('#localVideo');
+        const bIsLocal = !!b.querySelector('#localVideo');
+        return (bIsLocal ? 1 : 0) - (aIsLocal ? 1 : 0);
+      });
+
+      allCards.forEach(card => {
+        card.style.width = '';
+        card.style.height = '';
+        const label = card.querySelector('h3');
+        if (label) label.style.display = '';
+        videoGrid.appendChild(card);
+        ensureCardVideoPlaying(card);
+      });
+
+      // Ensure any video cards already in the grid keep playing smoothly
+      videoGrid.querySelectorAll('.video-card').forEach(ensureCardVideoPlaying);
+
+      // Switch back to the WebPhone tab while keeping all WebRTC & audio/video connections intact
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+      document.querySelectorAll('.tab-btn')[0].classList.add('active');
+      document.getElementById('tab-level1-phone').classList.add('active');
+
+      const hasActiveCall = !!localStream || Object.keys(peerConnections).length > 0;
+      if (hasActiveCall) {
+        document.getElementById('webphoneMainSection').style.display = 'none';
+        videoGrid.style.display = 'grid';
+        document.getElementById('inCallControls').style.display = 'flex';
+      } else {
+        document.getElementById('webphoneMainSection').style.display = 'block';
+        videoGrid.style.display = 'none';
+        document.getElementById('inCallControls').style.display = 'none';
+      }
+
+      updateGridLayout();
+    }
+
     function switchTab(tabName) {
+      if (tabName === 'level1-phone') {
+        returnToVideoChat();
+        return;
+      }
+
       document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
       document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
 
-      if (tabName === 'level1-phone') {
-        document.querySelectorAll('.tab-btn')[0].classList.add('active');
-        document.getElementById('tab-level1-phone').classList.add('active');
-      } else if (tabName === 'level1-text') {
+      if (tabName === 'level1-text') {
         document.querySelectorAll('.tab-btn')[1].classList.add('active');
         document.getElementById('tab-level1-text').classList.add('active');
         const r = document.getElementById('webTextRoomId').value.trim() || roomIdInput.value.trim();
@@ -1387,6 +2010,10 @@
         if (!hasLoadedArtOnce) {
           triggerArtSearch('impressionism', 'Impressionism');
         }
+      } else if (tabName === 'game') {
+        document.querySelectorAll('.tab-btn')[6].classList.add('active');
+        document.getElementById('tab-game').classList.add('active');
+        enterGameLobby();
       }
     }
 
@@ -1767,6 +2394,790 @@
       }
       selectArtItem(currentArtworkList[currentArtworkIndex], currentArtworkIndex);
     }
+
+    // ==========================================
+    // GAME ON! "PICTURE THIS!" AUTOMATED CLIENT
+    // ==========================================
+    let myGamePiece = null;
+    let gamePlayers = [];
+    let playerPiecesById = {};
+    let latestState = null;
+    let myPrivateState = { cash: 15000000, portfolio: [], secretPortfolioTotal: 0, secretNetWorth: 15000000 };
+    let auctionCountdownInterval = null;
+
+    const PIECE_COLORS = {
+      red: '#ff3b30',
+      green: '#30d158',
+      blue: '#0a84ff',
+      yellow: '#ffd60a'
+    };
+
+    const PIECE_IMAGES = {
+      red: 'Red_Icon.jpeg',
+      green: 'Green_Icon.jpeg',
+      blue: 'Blue_Icon.jpeg',
+      yellow: 'Yellow_Icon.jpeg'
+    };
+
+    const FALLBACK_ART = "15FDDD6C-6205-4F68-8C6A-338AB0FA6C84_4_5005_c.jpeg";
+
+    // LIVE BILL DENOMINATION WALLET ENGINE
+    const BILL_DENOMINATIONS = [
+      { value: 5000000, shortLabel: '$5M Note', fullLabel: '$5,000,000', accent: '#ffd60a', bg: 'linear-gradient(145deg, #2b2304, #141002)' },
+      { value: 1000000, shortLabel: '$1M Note', fullLabel: '$1,000,000', accent: '#30d158', bg: 'linear-gradient(145deg, #0e2c18, #07160c)' },
+      { value: 500000,  shortLabel: '$500K Note', fullLabel: '$500,000', accent: '#64d2ff', bg: 'linear-gradient(145deg, #0b2436, #06131c)' }
+    ];
+
+    // Starting Capital per Official Rules: 1 x $5M, 9 x $1M, 2 x $500k = $15,000,000
+    let myWallet = { 5000000: 1, 1000000: 9, 500000: 2, remainder: 0 };
+    let lastCashDelta = 0;
+
+    function getWalletTotal(w = myWallet) {
+      return (w[5000000] * 5000000) + (w[1000000] * 1000000) + (w[500000] * 500000) + (w.remainder || 0);
+    }
+
+    function buildFreshWallet(amount) {
+      let rem = Math.max(0, Math.round(Number(amount) || 0));
+      if (rem === 15000000) {
+        return { 5000000: 1, 1000000: 9, 500000: 2, remainder: 0 };
+      }
+      const w = { 5000000: 0, 1000000: 0, 500000: 0, remainder: 0 };
+      if (rem >= 2000000 && rem % 1000000 === 0) {
+        w[500000] = 2;
+        rem -= 1000000;
+      } else if (rem % 1000000 === 500000) {
+        w[500000] = 1;
+        rem -= 500000;
+      }
+      w[5000000] = Math.floor(rem / 5000000);
+      rem -= w[5000000] * 5000000;
+
+      w[1000000] = Math.floor(rem / 1000000);
+      rem -= w[1000000] * 1000000;
+
+      const extra500 = Math.floor(rem / 500000);
+      w[500000] += extra500;
+      rem -= extra500 * 500000;
+
+      w.remainder = rem;
+      return w;
+    }
+
+    function resetStartingWallet(cash = 15000000) {
+      myWallet = buildFreshWallet(cash);
+      lastCashDelta = 0;
+      renderPrivateMoney();
+    }
+
+    function syncWalletToCash(newCash) {
+      const target = Math.max(0, Math.round(Number(newCash) || 0));
+      const current = getWalletTotal(myWallet);
+      const delta = target - current;
+
+      if (delta === 0) return;
+      lastCashDelta = delta;
+
+      if (target === 0) {
+        myWallet = { 5000000: 0, 1000000: 0, 500000: 0, remainder: 0 };
+        return;
+      }
+
+      // Cash gained (e.g., Collect $3M or Private Auction payout)
+      if (delta > 0) {
+        let add = delta;
+        const add5M = Math.floor(add / 5000000);
+        myWallet[5000000] += add5M;
+        add -= add5M * 5000000;
+
+        const add1M = Math.floor(add / 1000000);
+        myWallet[1000000] += add1M;
+        add -= add1M * 1000000;
+
+        const add500k = Math.floor(add / 500000);
+        myWallet[500000] += add500k;
+        add -= add500k * 500000;
+
+        myWallet.remainder = (myWallet.remainder || 0) + add;
+        if (myWallet.remainder >= 500000) {
+          const carry = Math.floor(myWallet.remainder / 500000);
+          myWallet[500000] += carry;
+          myWallet.remainder -= carry * 500000;
+        }
+        if (getWalletTotal(myWallet) !== target) {
+          myWallet = buildFreshWallet(target);
+        }
+        return;
+      }
+
+      // Cash spent (e.g., Direct Purchase or Auction win)
+      let owed = -delta;
+      const nonStandard = owed % 500000;
+      if (nonStandard > 0) {
+        if ((myWallet.remainder || 0) >= nonStandard) {
+          myWallet.remainder -= nonStandard;
+          owed -= nonStandard;
+        } else {
+          myWallet = buildFreshWallet(target);
+          return;
+        }
+      }
+
+      // Pay using available bills largest-first
+      const use5M = Math.min(myWallet[5000000], Math.floor(owed / 5000000));
+      myWallet[5000000] -= use5M;
+      owed -= use5M * 5000000;
+
+      const use1M = Math.min(myWallet[1000000], Math.floor(owed / 1000000));
+      myWallet[1000000] -= use1M;
+      owed -= use1M * 1000000;
+
+      const use500k = Math.min(myWallet[500000], Math.floor(owed / 500000));
+      myWallet[500000] -= use500k;
+      owed -= use500k * 500000;
+
+      // Make change from larger bills when needed
+      let guard = 0;
+      while (owed > 0 && guard < 100) {
+        guard++;
+        if (owed >= 1000000 && myWallet[5000000] > 0) {
+          myWallet[5000000] -= 1;
+          myWallet[1000000] += 5;
+          const take1M = Math.min(myWallet[1000000], Math.floor(owed / 1000000));
+          myWallet[1000000] -= take1M;
+          owed -= take1M * 1000000;
+        } else if (owed >= 500000 && myWallet[1000000] > 0) {
+          myWallet[1000000] -= 1;
+          myWallet[500000] += 2;
+          const take500k = Math.min(myWallet[500000], Math.floor(owed / 500000));
+          myWallet[500000] -= take500k;
+          owed -= take500k * 500000;
+        } else if (owed >= 500000 && myWallet[5000000] > 0) {
+          myWallet[5000000] -= 1;
+          myWallet[1000000] += 4;
+          myWallet[500000] += 2;
+          const take500k = Math.min(myWallet[500000], Math.floor(owed / 500000));
+          myWallet[500000] -= take500k;
+          owed -= take500k * 500000;
+        } else {
+          break;
+        }
+      }
+
+      if (getWalletTotal(myWallet) !== target) {
+        myWallet = buildFreshWallet(target);
+      }
+    }
+
+    function renderPrivateMoney() {
+      const totalCash = Math.max(0, Math.round(Number(myPrivateState.cash) || 0));
+      syncWalletToCash(totalCash);
+
+      const displayEl = document.getElementById('playerCashDisplay');
+      if (displayEl) displayEl.innerText = `$${totalCash.toLocaleString('en-US')}`;
+
+      const totalBillCount = myWallet[5000000] + myWallet[1000000] + myWallet[500000] + (myWallet.remainder > 0 ? 1 : 0);
+      const summaryEl = document.getElementById('playerBillCountSummary');
+      if (summaryEl) {
+        summaryEl.innerText = totalBillCount === 1 ? '1 bill on hand' : `${totalBillCount} bills on hand`;
+      }
+
+      const deltaPill = document.getElementById('cashDeltaPill');
+      if (deltaPill) {
+        if (lastCashDelta > 0) {
+          deltaPill.className = 'cash-delta-pill positive';
+          deltaPill.innerText = `Last change: +$${lastCashDelta.toLocaleString('en-US')}`;
+        } else if (lastCashDelta < 0) {
+          deltaPill.className = 'cash-delta-pill negative';
+          deltaPill.innerText = `Last change: -$${Math.abs(lastCashDelta).toLocaleString('en-US')}`;
+        } else {
+          deltaPill.className = 'cash-delta-pill';
+          deltaPill.innerText = '';
+        }
+      }
+
+      const grid = document.getElementById('billDenominationsGrid');
+      if (!grid) return;
+
+      let html = BILL_DENOMINATIONS.map(denom => {
+        const count = myWallet[denom.value] || 0;
+        const subtotal = count * denom.value;
+        const pipCount = Math.min(count, 12);
+        const extraPips = count > 12 ? `<span style="font-size:10px; color:${denom.accent}; font-weight:800;">+${count - 12}</span>` : '';
+        let pipsHtml = '';
+        for (let i = 0; i < pipCount; i++) {
+          pipsHtml += `<span class="bill-pip" style="background:${denom.accent};"></span>`;
+        }
+        pipsHtml += extraPips;
+
+        return `
+          <div class="bill-box ${count === 0 ? 'empty-denom' : ''}" style="background:${denom.bg}; border-color:${denom.accent};">
+            <div class="bill-box-header" style="color:${denom.accent};">
+              <span>${denom.shortLabel}</span>
+              <span>BANK NOTE</span>
+            </div>
+            <div class="bill-denom-amount">${denom.fullLabel}</div>
+            <div class="bill-count-badge" style="color:${denom.accent};">× ${count}</div>
+            <div class="bill-pips-row">${pipsHtml}</div>
+            <div class="bill-subtotal">Subtotal: $${subtotal.toLocaleString('en-US')}</div>
+          </div>
+        `;
+      }).join('');
+
+      if (myWallet.remainder && myWallet.remainder > 0) {
+        html += `
+          <div class="bill-box" style="background:linear-gradient(145deg, #2b1d2e, #150e17); border-color:#e040fb;">
+            <div class="bill-box-header" style="color:#e040fb;">
+              <span>Reserve Voucher</span>
+              <span>CHANGE</span>
+            </div>
+            <div class="bill-denom-amount">$${myWallet.remainder.toLocaleString('en-US')}</div>
+            <div class="bill-count-badge" style="color:#e040fb;">× 1</div>
+            <div class="bill-pips-row"><span class="bill-pip" style="background:#e040fb;"></span></div>
+            <div class="bill-subtotal">Subtotal: $${myWallet.remainder.toLocaleString('en-US')}</div>
+          </div>
+        `;
+      }
+
+      grid.innerHTML = html;
+    }
+
+    function getRoomId() {
+      return roomIdInput.value.trim() || 'family-game';
+    }
+
+    function showGameToast(msg, isSuccess = false) {
+      const toast = document.getElementById('gameToast');
+      toast.style.background = isSuccess ? '#30d158' : '#ff3b30';
+      toast.style.color = isSuccess ? '#000' : '#fff';
+      toast.innerText = msg;
+      toast.style.display = 'block';
+      setTimeout(() => { toast.style.display = 'none'; }, 3000);
+    }
+
+    function zoomGameArt(imgUrl, title, details) {
+      document.getElementById('artFullscreenImg').src = imgUrl || FALLBACK_ART;
+      document.getElementById('artFsTitle').innerText = title || "Masterpiece";
+      document.getElementById('artFsDetails').innerText = details || "";
+      document.getElementById('artFullscreenModal').style.display = 'flex';
+    }
+
+    function enterGameLobby() {
+      const boardActive = document.getElementById('gamePhaseBoard').classList.contains('active');
+      const selectActive = document.getElementById('gamePhaseSelect').classList.contains('active');
+
+      // If returning to an already-active Game Board, put video cards straight back into the corners
+      if (boardActive) {
+        moveVideosToCorners();
+        return;
+      }
+
+      const sourceGrid = document.getElementById('videoStreamView');
+      const targetRow = selectActive
+        ? document.getElementById('selectVideoRow')
+        : document.getElementById('lobbyVideoRow');
+
+      sourceGrid.querySelectorAll('.video-card').forEach(v => {
+        v.style.width = '130px';
+        v.style.height = '';
+        const label = v.querySelector('h3');
+        if (label) label.style.display = '';
+        targetRow.appendChild(v);
+        ensureCardVideoPlaying(v);
+      });
+      syncAllPlayerBadges();
+    }
+
+    function transitionToPieceSelection() {
+      document.getElementById('gamePhaseLobby').classList.remove('active');
+      document.getElementById('gamePhaseSelect').classList.add('active');
+      const cards = document.getElementById('lobbyVideoRow').querySelectorAll('.video-card');
+      const targetRow = document.getElementById('selectVideoRow');
+      cards.forEach(c => {
+        targetRow.appendChild(c);
+        ensureCardVideoPlaying(c);
+      });
+      syncAllPlayerBadges();
+    }
+
+    // Apply Individual Icon Image to Badges & Board Tokens
+    function applyPieceIcon(el, piece) {
+      const color = PIECE_COLORS[piece] || '#fff';
+      const imgSrc = PIECE_IMAGES[piece] || PIECE_IMAGES.red;
+      el.style.borderColor = color;
+      el.style.boxShadow = `0 0 12px ${color}`;
+
+      let img = el.querySelector('img');
+      if (!img) {
+        img = document.createElement('img');
+        el.innerHTML = '';
+        el.appendChild(img);
+      }
+      if (img.getAttribute('src') !== imgSrc) {
+        img.src = imgSrc;
+      }
+      img.alt = `${piece || 'Player'} icon`;
+    }
+
+    function ensureBadgeOnContainer(container, piece) {
+      if (!container || !piece || !PIECE_IMAGES[piece]) return;
+      let badge = container.querySelector(':scope > .player-badge');
+      if (!badge) {
+        badge = document.createElement('div');
+        badge.className = 'player-badge';
+        container.appendChild(badge);
+      }
+      applyPieceIcon(badge, piece);
+    }
+
+    function findPlayerCard(playerId) {
+      if (!playerId) return null;
+      if (playerId === socket.id || playerId === 'local') {
+        const localVid = document.getElementById('localVideo');
+        return localVid ? localVid.closest('.video-card') : null;
+      }
+      return document.getElementById(`card-${playerId}`);
+    }
+
+    // Keep every player's chosen icon visible at all times inside their player box & corner box
+    function syncAllPlayerBadges() {
+      if (myGamePiece && socket.id) {
+        playerPiecesById[socket.id] = myGamePiece;
+      }
+      gamePlayers.forEach(p => {
+        if (p.id && p.piece) {
+          playerPiecesById[p.id] = p.piece;
+        }
+      });
+
+      // Local player badge (works even before socket connects)
+      if (myGamePiece) {
+        const localCard = findPlayerCard('local');
+        if (localCard) ensureBadgeOnContainer(localCard, myGamePiece);
+        const localCorner = localCard ? localCard.closest('.corner-video') : null;
+        if (localCorner) {
+          localCorner.dataset.playerId = socket.id || 'local';
+          ensureBadgeOnContainer(localCorner, myGamePiece);
+        }
+      }
+
+      // All known players' badges
+      const corners = ['corner1', 'corner2', 'corner3', 'corner4'];
+      const boardActive = document.getElementById('gamePhaseBoard').classList.contains('active');
+
+      Object.keys(playerPiecesById).forEach(pid => {
+        const piece = playerPiecesById[pid];
+        const card = findPlayerCard(pid);
+        if (card) {
+          ensureBadgeOnContainer(card, piece);
+          const corner = card.closest('.corner-video');
+          if (corner) {
+            corner.dataset.playerId = pid;
+            ensureBadgeOnContainer(corner, piece);
+          }
+        } else if (boardActive) {
+          // Player joined game without a video card yet: ensure a corner box shows their name + icon
+          let corner = corners.map(id => document.getElementById(id)).find(c => c && c.dataset.playerId === pid);
+          if (!corner) {
+            corner = corners.map(id => document.getElementById(id)).find(c => c && !c.dataset.playerId && c.children.length === 0);
+          }
+          if (corner) {
+            corner.dataset.playerId = pid;
+            const playerObj = gamePlayers.find(p => p.id === pid);
+            const pName = playerObj ? playerObj.name : piece.toUpperCase();
+            if (!corner.querySelector('.corner-placeholder-card')) {
+              const ph = document.createElement('div');
+              ph.className = 'corner-placeholder-card';
+              ph.innerHTML = `<div class="corner-placeholder-name">${pName}</div>`;
+              corner.appendChild(ph);
+            }
+            ensureBadgeOnContainer(corner, piece);
+          }
+        }
+      });
+    }
+
+    function selectPiece(color) {
+      myGamePiece = color;
+      if (socket.id) playerPiecesById[socket.id] = color;
+      document.querySelectorAll('.game-piece-btn').forEach(btn => btn.classList.remove('selected'));
+      document.getElementById(`piece-${color}`).classList.add('selected');
+
+      // Show icon immediately inside local player's box
+      syncAllPlayerBadges();
+
+      socket.emit('game-select-piece', {
+        roomId: getRoomId(),
+        color,
+        name: callerNameInput.value.trim() || color.toUpperCase()
+      });
+    }
+
+    socket.on('game-player-updated', ({ playerId, piece, players }) => {
+      if (players) gamePlayers = players;
+      if (playerId && piece) playerPiecesById[playerId] = piece;
+      syncAllPlayerBadges();
+    });
+
+    socket.on('game-started', ({ players }) => {
+      gamePlayers = players;
+      resetStartingWallet(15000000);
+      document.getElementById('gamePhaseLobby').classList.remove('active');
+      document.getElementById('gamePhaseSelect').classList.remove('active');
+      document.getElementById('gamePhaseBoard').classList.add('active');
+      moveVideosToCorners();
+      syncAllPlayerBadges();
+    });
+
+    function moveVideosToCorners() {
+      const cards = document.querySelectorAll('#selectVideoRow .video-card, #lobbyVideoRow .video-card, #videoStreamView .video-card');
+      const corners = ['corner1', 'corner2', 'corner3', 'corner4'];
+
+      cards.forEach((card) => {
+        if (card.closest('.corner-video')) return;
+        const isLocal = !!card.querySelector('#localVideo');
+        const pid = isLocal ? (socket.id || 'local') : (card.id ? card.id.replace('card-', '') : '');
+
+        // Prefer a corner already assigned to this player, otherwise first available
+        let targetCorner = corners.map(id => document.getElementById(id)).find(c => c && pid && c.dataset.playerId === pid);
+        if (!targetCorner) {
+          targetCorner = corners.map(id => document.getElementById(id)).find(c => c && !c.querySelector('.video-card'));
+        }
+        if (targetCorner) {
+          const placeholder = targetCorner.querySelector('.corner-placeholder-card');
+          if (placeholder) placeholder.remove();
+          card.style.width = '100%';
+          card.style.height = '100%';
+          const label = card.querySelector('h3');
+          if (label) label.style.display = 'none';
+          if (pid) targetCorner.dataset.playerId = pid;
+          targetCorner.appendChild(card);
+          ensureCardVideoPlaying(card);
+        }
+      });
+
+      // Make sure corner videos stay playing
+      corners.forEach(id => {
+        const corner = document.getElementById(id);
+        if (corner) corner.querySelectorAll('.video-card').forEach(ensureCardVideoPlaying);
+      });
+
+      syncAllPlayerBadges();
+    }
+
+    function startGameBoard() {
+      if (!myGamePiece) return showGameToast("Pick a game piece first!");
+      document.getElementById('gamePhaseSelect').classList.remove('active');
+      document.getElementById('gamePhaseBoard').classList.add('active');
+      moveVideosToCorners();
+      socket.emit('game-start', { roomId: getRoomId() });
+    }
+
+    // Smoothly create or glide tokens around the 30-space circular track
+    function drawTokens(players) {
+      const container = document.querySelector('.board-container');
+      const activeIds = new Set(players.map(p => `token-${p.id}`));
+      container.querySelectorAll('.board-token').forEach(el => {
+        if (!activeIds.has(el.id)) el.remove();
+      });
+
+      players.forEach((p, idx) => {
+        let token = document.getElementById(`token-${p.id}`);
+        if (!token) {
+          token = document.createElement('div');
+          token.id = `token-${p.id}`;
+          token.className = 'board-token';
+          container.appendChild(token);
+        }
+        applyPieceIcon(token, p.piece);
+
+        const angle = (p.spaceIndex / 30) * 2 * Math.PI - (Math.PI / 2);
+        const radius = 42;
+        const offsetX = (idx % 2 === 0 ? 1.8 : -1.8);
+        const offsetY = (idx > 1 ? 1.8 : -1.8);
+        const left = 50 + radius * Math.cos(angle) + offsetX;
+        const top = 50 + radius * Math.sin(angle) + offsetY;
+
+        token.style.left = `calc(${left}% - 14px)`;
+        token.style.top = `calc(${top}% - 23px)`;
+      });
+    }
+
+    function placeTokens() {
+      drawTokens(gamePlayers);
+      syncAllPlayerBadges();
+      document.getElementById('centerConsole').innerHTML =
+        `<button class="btn-game-action gold" style="padding:14px; font-size:15px;" onclick="pickGenre()">Pick An Art Genre</button>`;
+    }
+
+    function pickGenre() {
+      document.getElementById('centerConsole').innerHTML = `
+        <h2 style="font-size:14px; margin-bottom:8px;">Select Masterpiece Deck</h2>
+        <div class="console-btn-row">
+          <button class="btn-game-action" onclick="initDeck('renaissance')">Renaissance</button>
+          <button class="btn-game-action" onclick="initDeck('baroque')">Baroque</button>
+          <button class="btn-game-action" onclick="initDeck('impressionism')">Impressionist</button>
+          <button class="btn-game-action" onclick="initDeck('american')">American</button>
+          <button class="btn-game-action" onclick="initDeck('modern')">Modern</button>
+        </div>
+      `;
+    }
+
+    function initDeck(genre) {
+      resetStartingWallet(15000000);
+      socket.emit('game-init-deck', { roomId: getRoomId(), genre });
+    }
+
+    function showSubView(view) {
+      document.querySelector('.board-container').style.display = (view === 'board') ? 'block' : 'none';
+      document.getElementById('gameSubArtwork').style.display = (view === 'artwork') ? 'block' : 'none';
+      document.getElementById('gameSubMoney').style.display = (view === 'money') ? 'block' : 'none';
+      document.getElementById('gameSubRules').style.display = (view === 'rules') ? 'block' : 'none';
+      if (view === 'artwork') renderPrivatePortfolio();
+      if (view === 'money') renderPrivateMoney();
+    }
+
+    function rollDice() {
+      document.getElementById('btnRollDice').disabled = true;
+      socket.emit('game-roll-dice', { roomId: getRoomId() });
+    }
+
+    // Player Choice Emitters
+    function sendDirectBuy(buy) {
+      socket.emit('game-direct-buy', { roomId: getRoomId(), buy });
+    }
+    function sendCollectChoice(choice, artworkId = null) {
+      socket.emit('game-collect-choice', { roomId: getRoomId(), choice, artworkId });
+    }
+    function sendPrivateSelect(artworkId) {
+      socket.emit('game-private-select', { roomId: getRoomId(), artworkId });
+    }
+    function quickBid(amount) {
+      socket.emit('game-place-bid', { roomId: getRoomId(), bidAmount: amount });
+    }
+    function passAuction() {
+      socket.emit('game-auction-pass', { roomId: getRoomId() });
+    }
+
+    // BIDDING KEYPAD MODAL
+    let currentBidValue = "";
+    function openBidModal() {
+      if (!latestState || !latestState.auction) {
+        return showGameToast("Bidding is only open during an active auction!");
+      }
+      currentBidValue = String(latestState.auction.minNextBid);
+      updateBidDisplay();
+      document.getElementById('bidModal').style.display = 'flex';
+    }
+    function closeBidModal() { document.getElementById('bidModal').style.display = 'none'; }
+    function appendBid(num) {
+      if (currentBidValue.length < 12) { currentBidValue += num; updateBidDisplay(); }
+    }
+    function clearBid() { currentBidValue = ""; updateBidDisplay(); }
+    function updateBidDisplay() {
+      const display = document.getElementById('bidDisplay');
+      display.innerText = currentBidValue ? "$" + Number(currentBidValue).toLocaleString('en-US') : "$0";
+    }
+    function submitBid() {
+      if (!currentBidValue) return;
+      socket.emit('game-place-bid', { roomId: getRoomId(), bidAmount: Number(currentBidValue) });
+      closeBidModal();
+    }
+
+    // PRIVATE HAND RENDERING
+    function renderPrivatePortfolio() {
+      const container = document.querySelector('#gameSubArtwork .portfolio-grid');
+      if (!myPrivateState.portfolio.length) {
+        container.innerHTML = `<p style="color:#888;">You do not own any paintings yet.</p>`;
+        return;
+      }
+      container.innerHTML = myPrivateState.portfolio.map(art => {
+        const chips = art.values.map(v =>
+          `<span class="val-chip ${v.isForgery ? 'forgery' : ''}">${v.label}</span>`
+        ).join('');
+        const totalText = art.hasForgery
+          ? `<span style="color:#ff3b30;">$0 (FORGERY!)</span>`
+          : `<span style="color:#30d158;">$${art.total.toLocaleString()}</span>`;
+        return `
+          <div class="portfolio-card-wrap">
+            <img src="${art.imageUrl}" onerror="this.src='${FALLBACK_ART}'"
+                 onclick="zoomGameArt('${art.imageUrl}', '${art.title.replace(/'/g, "\\'")}', '${art.artist.replace(/'/g, "\\'")} • ${art.year}')">
+            <div style="font-size:12px; font-weight:bold; margin-top:6px; color:#ffd60a;">${art.title}</div>
+            <div style="font-size:11px; color:#aaa;">${art.artist}</div>
+            <div class="secret-values-strip">${chips}</div>
+            <div style="font-size:12px; font-weight:900; margin-top:6px;">True Value: ${totalText}</div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    socket.on('game-private-state', (priv) => {
+      myPrivateState = priv;
+      renderPrivateMoney();
+      if (document.getElementById('gameSubArtwork').style.display === 'block') {
+        renderPrivatePortfolio();
+      }
+    });
+
+    socket.on('game-error', ({ message }) => showGameToast(message, false));
+
+    // MASTER STATE RENDERER
+    socket.on('game-state-update', (state) => {
+      latestState = state;
+      clearInterval(auctionCountdownInterval);
+
+      if (state.players) {
+        gamePlayers = state.players;
+        drawTokens(gamePlayers);
+        syncAllPlayerBadges();
+      }
+
+      const consoleEl = document.getElementById('centerConsole');
+      const isMyTurn = (state.activePlayerId === socket.id);
+
+      document.getElementById('btnRollDice').disabled = !(state.phase === 'turn_start' && isMyTurn);
+
+      document.querySelectorAll('.corner-video').forEach(cv => cv.classList.remove('active-turn'));
+      const activeCard = isMyTurn
+        ? document.getElementById('localVideo').parentNode
+        : document.getElementById(`card-${state.activePlayerId}`);
+      if (activeCard && activeCard.closest('.corner-video')) {
+        activeCard.closest('.corner-video').classList.add('active-turn');
+      } else {
+        const activeCorner = Array.from(document.querySelectorAll('.corner-video'))
+          .find(cv => cv.dataset.playerId === state.activePlayerId);
+        if (activeCorner) activeCorner.classList.add('active-turn');
+      }
+
+      if (state.phase === 'turn_start') {
+        consoleEl.innerHTML = `
+          <div style="font-size:11px; color:#aaa;">Gallery Left: ${state.deckCount} Paintings</div>
+          <h2 style="margin:6px 0; font-size:20px;">${state.activePlayerName}'S TURN</h2>
+          <p style="font-size:12px; margin:0; color:${isMyTurn ? '#30d158' : '#ccc'};">
+            ${isMyTurn ? 'Click Roll Dice below!' : 'Waiting for roll...'}
+          </p>
+        `;
+      }
+      else if (state.phase === 'dice_animating') {
+        showSubView('board');
+        consoleEl.innerHTML = `
+          <video src="dice-roll.mp4" autoplay muted playsinline style="width:85%; border-radius:50%; border:2px solid #555;"></video>
+        `;
+        setTimeout(() => {
+          if (latestState && latestState.phase === 'dice_animating') {
+            consoleEl.innerHTML = `<h1 style="font-size:68px; margin:0; color:#ffd60a;">${state.lastRoll}</h1><p style="margin:0; font-size:13px;">${state.activePlayerName} rolled ${state.lastRoll}!</p>`;
+          }
+        }, 1400);
+      }
+      else if (state.phase === 'turn_notice') {
+        consoleEl.innerHTML = `
+          <h2 style="font-size:15px; color:#30d158;">Update</h2>
+          <p style="font-size:13px; margin:4px 0;">${state.message}</p>
+        `;
+      }
+      else if (state.phase === 'direct_buy' && state.pendingAction) {
+        const { artwork, price, canAfford } = state.pendingAction;
+        consoleEl.innerHTML = `
+          <h2 style="font-size:13px; margin:0;">Buy for $${price.toLocaleString()}?</h2>
+          <img class="console-art-thumb" src="${artwork.imageUrl}" onerror="this.src='${FALLBACK_ART}'"
+               onclick="zoomGameArt('${artwork.imageUrl}', '${artwork.title.replace(/'/g, "\\'")}', '${artwork.artist.replace(/'/g, "\\'")}')">
+          <div style="font-size:11px; color:#ddd;">${artwork.title}</div>
+          ${isMyTurn ? `
+            <div class="console-btn-row">
+              <button class="btn-game-action" onclick="sendDirectBuy(true)" ${canAfford ? '' : 'disabled'}>Buy ($${(price/1000000).toFixed(1)}M)</button>
+              <button class="btn-game-action danger" onclick="sendDirectBuy(false)">Pass</button>
+            </div>
+          ` : `<p style="font-size:11px; color:#aaa;">Waiting for ${state.activePlayerName}...</p>`}
+        `;
+      }
+      else if (state.phase === 'collect_choice' && state.pendingAction) {
+        consoleEl.innerHTML = `
+          <h2 style="font-size:14px;">Market Choice</h2>
+          ${isMyTurn ? `
+            <div class="console-btn-row">
+              <button class="btn-game-action" onclick="sendCollectChoice('cash')">Take $3,000,000</button>
+              <button class="btn-game-action gold" onclick="sendCollectChoice('value')" ${state.pendingAction.canTakeValue ? '' : 'disabled'}>Take Value Card</button>
+            </div>
+          ` : `<p style="font-size:12px; color:#aaa;">${state.activePlayerName} is choosing...</p>`}
+        `;
+      }
+      else if (state.phase === 'assign_value' && state.pendingAction) {
+        if (isMyTurn) {
+          const btns = state.pendingAction.artworks.map(a =>
+            `<button class="btn-game-action gold" style="font-size:11px;" onclick="sendCollectChoice('value', '${a.id}')">${a.title} (${a.valueCardCount})</button>`
+          ).join('');
+          consoleEl.innerHTML = `<h2 style="font-size:13px;">Attach Value Card To:</h2><div class="console-btn-row">${btns}</div>`;
+        } else {
+          consoleEl.innerHTML = `<h2 style="font-size:14px;">Secret Appraisal</h2><p style="font-size:12px;">${state.activePlayerName} is stacking a Value Card...</p>`;
+        }
+      }
+      else if (state.phase === 'private_select' && state.pendingAction) {
+        const pa = state.pendingAction;
+        const amSelector = (socket.id === pa.selectorId);
+        if (amSelector) {
+          const btns = pa.sellerArtworks.map(a =>
+            `<button class="btn-game-action gold" style="font-size:11px;" onclick="sendPrivateSelect('${a.id}')">${a.title} (${a.valueCardCount} cards)</button>`
+          ).join('');
+          consoleEl.innerHTML = `<h2 style="font-size:13px;">Pick ${pa.sellerName}'s Painting to Auction:</h2><div class="console-btn-row">${btns}</div>`;
+        } else {
+          consoleEl.innerHTML = `<h2 style="font-size:14px;">Private Auction</h2><p style="font-size:12px;">${pa.selectorName} is picking which of ${pa.sellerName}'s paintings goes on the block...</p>`;
+        }
+      }
+      else if ((state.phase === 'bank_auction' || state.phase === 'private_auction') && state.auction) {
+        showSubView('board');
+        const auc = state.auction;
+        const isSeller = (auc.type === 'private' && socket.id === auc.sellerId);
+        const isLeader = (socket.id === auc.highestBidderId);
+        const hasPassed = auc.passedIds.includes(socket.id);
+        const canQuickBid = !isSeller && !isLeader && (myPrivateState.cash >= auc.minNextBid);
+
+        consoleEl.innerHTML = `
+          <div style="display:flex; gap:6px; align-items:center;">
+            <span style="font-size:11px; font-weight:900; color:#ffd60a;">${auc.type === 'bank' ? 'BANK AUCTION' : 'PRIVATE AUCTION'}</span>
+            <span id="auctionTimerPill" class="auction-timer-pill">12s</span>
+          </div>
+          <img class="console-art-thumb" src="${auc.artwork.imageUrl}" onerror="this.src='${FALLBACK_ART}'"
+               onclick="zoomGameArt('${auc.artwork.imageUrl}', '${auc.artwork.title.replace(/'/g, "\\'")}', '${auc.artwork.artist.replace(/'/g, "\\'")}')">
+          <div style="font-size:11px; font-weight:bold; color:#fff;">${auc.artwork.title}</div>
+          <div style="font-size:12px; color:#30d158; font-weight:900;">
+            ${auc.currentBid > 0 ? `$${auc.currentBid.toLocaleString()} (${auc.highestBidderName})` : 'Opening Bid: $500,000'}
+          </div>
+          ${isSeller
+            ? `<div style="font-size:11px; color:#aaa;">You are the auctioneer (cannot bid).</div>`
+            : `<div class="console-btn-row">
+                 <button class="btn-game-action gold" onclick="quickBid(${auc.minNextBid})" ${canQuickBid ? '' : 'disabled'}>
+                   Bid $${(auc.minNextBid/1000000).toFixed(1)}M
+                 </button>
+                 <button class="btn-game-action danger" onclick="passAuction()" ${(isLeader || hasPassed) ? 'disabled' : ''}>
+                   ${hasPassed ? 'Passed' : 'Pass'}
+                 </button>
+               </div>`
+          }
+        `;
+
+        const updateTimer = () => {
+          const pill = document.getElementById('auctionTimerPill');
+          if (!pill) return;
+          const secs = Math.max(0, Math.ceil((auc.endsAt - Date.now()) / 1000));
+          pill.innerText = `${secs}s`;
+        };
+        updateTimer();
+        auctionCountdownInterval = setInterval(updateTimer, 300);
+      }
+      else if (state.phase === 'game_over' && state.leaderboard) {
+        const winner = state.leaderboard[0];
+        const rows = state.leaderboard.map((p, i) =>
+          `<div style="font-size:12px; margin:3px 0;">
+            ${i === 0 ? '🏆 ' : `${i + 1}. `}<b>${p.name}</b>: $${p.netWorth.toLocaleString()}
+            <span style="color:#aaa; font-size:10px;">(Cash $${(p.cash/1000000).toFixed(1)}M + Art $${(p.portfolioValue/1000000).toFixed(1)}M)</span>
+          </div>`
+        ).join('');
+        consoleEl.innerHTML = `
+          <h2 style="font-size:16px; color:#ffd60a;">${winner.name} Wins!</h2>
+          <div style="text-align:left; max-height:110px; overflow-y:auto;">${rows}</div>
+          <button class="btn-game-action gold" onclick="pickGenre()">Play Again</button>
+        `;
+      }
+    });
     // ==========================================
 
     // INVITATION DISPATCHER (SMS vs EMAIL DYNAMIC GENERATOR)
@@ -1909,7 +3320,6 @@
       }
     }
 
-
     // START MULTI-PARTY VIDEO CALL WITH ROBUST HARDWARE FALLBACKS
     async function startCall() {
       const roomId = roomIdInput.value.trim();
@@ -2009,6 +3419,10 @@
         if (peerConnections[id]) peerConnections[id].close();
       });
       peerConnections = {};
+
+      // Clear any video cards parked inside Game containers so no duplicate localVideo IDs remain
+      document.querySelectorAll('#corner1 .video-card, #corner2 .video-card, #corner3 .video-card, #corner4 .video-card, #selectVideoRow .video-card, #lobbyVideoRow .video-card')
+        .forEach(card => card.remove());
 
       const grid = document.getElementById('videoStreamView');
       grid.innerHTML = `
@@ -2137,8 +3551,27 @@
             <h3 style="margin: 0 0 8px 0; font-size: 14px;">Peer Stream</h3>
             <video id="video-${targetSocketId}" autoplay playsinline></video>
           `;
-          document.getElementById('videoStreamView').appendChild(remoteCard);
+
+          // Place straight into the active game view only if the Game tab is currently active
+          const gameTabActive = document.getElementById('tab-game').classList.contains('active');
+          const boardActive = gameTabActive && document.getElementById('gamePhaseBoard').classList.contains('active');
+          const selectActive = gameTabActive && document.getElementById('gamePhaseSelect').classList.contains('active');
+
+          if (boardActive) {
+            document.getElementById('videoStreamView').appendChild(remoteCard);
+            moveVideosToCorners();
+          } else if (selectActive) {
+            remoteCard.style.width = '130px';
+            document.getElementById('selectVideoRow').appendChild(remoteCard);
+          } else if (gameTabActive) {
+            remoteCard.style.width = '130px';
+            document.getElementById('lobbyVideoRow').appendChild(remoteCard);
+          } else {
+            document.getElementById('videoStreamView').appendChild(remoteCard);
+          }
+
           updateGridLayout();
+          syncAllPlayerBadges();
         }
         const videoEl = document.getElementById(`video-${targetSocketId}`);
         videoEl.srcObject = event.streams[0];
