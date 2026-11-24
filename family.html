@@ -2225,6 +2225,20 @@
       if (modeParam === 'text') {
         switchTab('level1-text');
       } else {
+        // Show a clean 2-tab header (Video Call + Game On!) for call respondents
+        const header = document.getElementById('mainHeader');
+        header.style.display = 'flex';
+        header.querySelectorAll('.tab-btn').forEach((btn, idx) => {
+          if (idx === 0) {
+            btn.style.display = '';
+            btn.innerHTML = '📹 Video Call<span class="sub-tagline">Active Room</span>';
+          } else if (idx === 6) {
+            btn.style.display = '';
+          } else {
+            btn.style.display = 'none';
+          }
+        });
+
         startCall();
       }
     });
@@ -4287,7 +4301,14 @@
       
       document.getElementById('inCallControls').style.display = 'none';
       document.getElementById('videoStreamView').style.display = 'none';
-      document.getElementById('mainHeader').style.display = 'flex';
+      const header = document.getElementById('mainHeader');
+      header.style.display = 'flex';
+      header.querySelectorAll('.tab-btn').forEach((btn, idx) => {
+        btn.style.display = '';
+        if (idx === 0) {
+          btn.innerHTML = 'Level 1 - WebPhone<span class="sub-tagline">Completely Free</span>';
+        }
+      });
       document.getElementById('webphoneMainSection').style.display = 'block';
 
       // Reset Mute Buttons
