@@ -1021,6 +1021,20 @@
     .art-fullscreen-caption { margin-top: 14px; text-align: center; color: #fff; max-width: 80%; }
     .art-fullscreen-caption h3 { margin: 0 0 4px 0; color: #ffd60a; font-size: 18px; }
     .art-fullscreen-caption p { margin: 0; color: #aaa; font-size: 13px; }
+    .art-fs-auction-banner {
+      display: none;
+      margin-bottom: 12px;
+      padding: 8px 18px;
+      border-radius: 999px;
+      background: rgba(255, 214, 10, 0.16);
+      border: 2px solid #ffd60a;
+      color: #ffd60a;
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 0.4px;
+      text-align: center;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.7);
+    }
 
     /* PRIVACY FOOTER BADGE */
     .privacy-notice-badge {
@@ -1439,6 +1453,7 @@
   <!-- ART FULLSCREEN THEATER OVERLAY -->
   <div id="artFullscreenModal" class="art-fullscreen-modal">
     <button class="art-fullscreen-close-btn" onclick="closeArtFullscreen()">✕ ESC</button>
+    <div id="artFsAuctionBanner" class="art-fs-auction-banner"></div>
     <img id="artFullscreenImg" class="art-fullscreen-img" src="" alt="Fullscreen Artwork">
     <div class="art-fullscreen-caption">
       <h3 id="artFsTitle">Painting Title</h3>
@@ -3227,10 +3242,16 @@
     }
 
     function openArtFullscreen() {
+      const banner = document.getElementById('artFsAuctionBanner');
+      if (banner) banner.style.display = 'none';
+      isAuctionPreviewFullscreen = false;
       document.getElementById('artFullscreenModal').style.display = 'flex';
     }
 
     function closeArtFullscreen() {
+      const banner = document.getElementById('artFsAuctionBanner');
+      if (banner) banner.style.display = 'none';
+      isAuctionPreviewFullscreen = false;
       document.getElementById('artFullscreenModal').style.display = 'none';
     }
 
@@ -3268,6 +3289,8 @@
     let latestState = null;
     let myPrivateState = { cash: 15000000, portfolio: [], secretPortfolioTotal: 0, secretNetWorth: 15000000 };
     let auctionCountdownInterval = null;
+    let isAuctionPreviewFullscreen = false;
+    let lastPreviewedAuctionKey = null;
 
     const PIECE_COLORS = {
       red: '#ff3b30',
@@ -3519,9 +3542,28 @@
     }
 
     function zoomGameArt(imgUrl, title, details) {
+      const banner = document.getElementById('artFsAuctionBanner');
+      if (banner) banner.style.display = 'none';
+      isAuctionPreviewFullscreen = false;
       document.getElementById('artFullscreenImg').src = imgUrl || FALLBACK_ART;
       document.getElementById('artFsTitle').innerText = title || "Masterpiece";
       document.getElementById('artFsDetails').innerText = details || "";
+      document.getElementById('artFullscreenModal').style.display = 'flex';
+    }
+
+    function openAuctionPreviewFullscreen(auc, remainingSecs) {
+      const art = auc.artwork || {};
+      document.getElementById('artFullscreenImg').src = art.imageUrl || FALLBACK_ART;
+      document.getElementById('artFsTitle').innerText = art.title || "Masterpiece";
+      const detailsParts = [art.artist || '', art.year || ''].filter(Boolean);
+      document.getElementById('artFsDetails').innerText = detailsParts.join(' • ');
+      const banner = document.getElementById('artFsAuctionBanner');
+      if (banner) {
+        const label = auc.type === 'private' ? 'PRIVATE AUCTION PREVIEW' : 'BANK AUCTION PREVIEW';
+        banner.innerText = `🎨 ${label} — Bidding starts in ${remainingSecs}s`;
+        banner.style.display = 'block';
+      }
+      isAuctionPreviewFullscreen = true;
       document.getElementById('artFullscreenModal').style.display = 'flex';
     }
 
@@ -3828,7 +3870,15 @@
       if (!latestState || !latestState.auction) {
         return showGameToast("Bidding is only open during an active auction!");
       }
-      currentBidValue = String(latestState.auction.minNextBid);
+      const auc = latestState.auction;
+      const previewEnd = (latestState.phase === 'auction_preview')
+        ? (auc.previewEndsAt || auc.endsAt || 0)
+        : (auc.previewEndsAt || 0);
+      if (latestState.phase === 'auction_preview' || (previewEnd && Date.now() < previewEnd)) {
+        const secs = Math.max(1, Math.ceil((previewEnd - Date.now()) / 1000));
+        return showGameToast(`Viewing painting — bidding starts in ${secs}s!`);
+      }
+      currentBidValue = String(auc.minNextBid);
       updateBidDisplay();
       document.getElementById('bidModal').style.display = 'flex';
     }
@@ -3888,6 +3938,14 @@
     socket.on('game-state-update', (state) => {
       latestState = state;
       clearInterval(auctionCountdownInterval);
+
+      const isAuctionPhase = (state.phase === 'auction_preview' || state.phase === 'bank_auction' || state.phase === 'private_auction');
+      if (!isAuctionPhase) {
+        lastPreviewedAuctionKey = null;
+        if (isAuctionPreviewFullscreen) {
+          closeArtFullscreen();
+        }
+      }
 
       if (state.players) {
         gamePlayers = state.players;
@@ -3986,46 +4044,111 @@
           consoleEl.innerHTML = `<h2 style="font-size:14px;">Private Auction</h2><p style="font-size:12px;">${pa.selectorName} is picking which of ${pa.sellerName}'s paintings goes on the block...</p>`;
         }
       }
-      else if ((state.phase === 'bank_auction' || state.phase === 'private_auction') && state.auction) {
+      else if ((state.phase === 'auction_preview' || state.phase === 'bank_auction' || state.phase === 'private_auction') && state.auction) {
         showSubView('board');
         const auc = state.auction;
-        const isSeller = (auc.type === 'private' && socket.id === auc.sellerId);
-        const isLeader = (socket.id === auc.highestBidderId);
-        const hasPassed = auc.passedIds.includes(socket.id);
-        const canQuickBid = !isSeller && !isLeader && (myPrivateState.cash >= auc.minNextBid);
+        const safeTitle = (auc.artwork.title || '').replace(/'/g, "\\'");
+        const safeArtist = (auc.artwork.artist || '').replace(/'/g, "\\'");
+        const previewEnd = (state.phase === 'auction_preview')
+          ? (auc.previewEndsAt || auc.endsAt || (Date.now() + 30000))
+          : (auc.previewEndsAt || 0);
+        const inPreview = (state.phase === 'auction_preview') || (previewEnd > Date.now());
 
-        consoleEl.innerHTML = `
-          <div style="display:flex; gap:6px; align-items:center;">
-            <span style="font-size:11px; font-weight:900; color:#ffd60a;">${auc.type === 'bank' ? 'BANK AUCTION' : 'PRIVATE AUCTION'}</span>
-            <span id="auctionTimerPill" class="auction-timer-pill">12s</span>
-          </div>
-          <img class="console-art-thumb" src="${auc.artwork.imageUrl}" onerror="this.src='${FALLBACK_ART}'"
-               onclick="zoomGameArt('${auc.artwork.imageUrl}', '${auc.artwork.title.replace(/'/g, "\\'")}', '${auc.artwork.artist.replace(/'/g, "\\'")}')">
-          <div style="font-size:11px; font-weight:bold; color:#fff;">${auc.artwork.title}</div>
-          <div style="font-size:12px; color:#30d158; font-weight:900;">
-            ${auc.currentBid > 0 ? `$${auc.currentBid.toLocaleString()} (${auc.highestBidderName})` : 'Opening Bid: $500,000'}
-          </div>
-          ${isSeller
-            ? `<div style="font-size:11px; color:#aaa;">You are the auctioneer (cannot bid).</div>`
-            : `<div class="console-btn-row">
-                 <button class="btn-game-action gold" onclick="quickBid(${auc.minNextBid})" ${canQuickBid ? '' : 'disabled'}>
-                   Bid $${(auc.minNextBid/1000000).toFixed(1)}M
-                 </button>
-                 <button class="btn-game-action danger" onclick="passAuction()" ${(isLeader || hasPassed) ? 'disabled' : ''}>
-                   ${hasPassed ? 'Passed' : 'Pass'}
-                 </button>
-               </div>`
+        const renderLiveAuctionConsole = () => {
+          if (isAuctionPreviewFullscreen) {
+            closeArtFullscreen();
           }
-        `;
+          const isSeller = (auc.type === 'private' && socket.id === auc.sellerId);
+          const isLeader = (socket.id === auc.highestBidderId);
+          const hasPassed = (auc.passedIds || []).includes(socket.id);
+          const canQuickBid = !isSeller && !isLeader && (myPrivateState.cash >= auc.minNextBid);
 
-        const updateTimer = () => {
-          const pill = document.getElementById('auctionTimerPill');
-          if (!pill) return;
-          const secs = Math.max(0, Math.ceil((auc.endsAt - Date.now()) / 1000));
-          pill.innerText = `${secs}s`;
+          consoleEl.innerHTML = `
+            <div style="display:flex; gap:6px; align-items:center;">
+              <span style="font-size:11px; font-weight:900; color:#ffd60a;">${auc.type === 'bank' ? 'BANK AUCTION' : 'PRIVATE AUCTION'}</span>
+              <span id="auctionTimerPill" class="auction-timer-pill">30s</span>
+            </div>
+            <img class="console-art-thumb" src="${auc.artwork.imageUrl}" onerror="this.src='${FALLBACK_ART}'"
+                 onclick="zoomGameArt('${auc.artwork.imageUrl}', '${safeTitle}', '${safeArtist}')">
+            <div style="font-size:11px; font-weight:bold; color:#fff;">${auc.artwork.title}</div>
+            <div style="font-size:12px; color:#30d158; font-weight:900;">
+              ${auc.currentBid > 0 ? `$${auc.currentBid.toLocaleString()} (${auc.highestBidderName})` : 'Opening Bid: $500,000'}
+            </div>
+            ${isSeller
+              ? `<div style="font-size:11px; color:#aaa;">You are the auctioneer (cannot bid).</div>`
+              : `<div class="console-btn-row">
+                   <button class="btn-game-action gold" onclick="quickBid(${auc.minNextBid})" ${canQuickBid ? '' : 'disabled'}>
+                     Bid $${(auc.minNextBid/1000000).toFixed(1)}M
+                   </button>
+                   <button class="btn-game-action danger" onclick="passAuction()" ${(isLeader || hasPassed) ? 'disabled' : ''}>
+                     ${hasPassed ? 'Passed' : 'Pass'}
+                   </button>
+                 </div>`
+            }
+          `;
+
+          const updateTimer = () => {
+            const pill = document.getElementById('auctionTimerPill');
+            if (!pill) return;
+            const secs = Math.max(0, Math.ceil((auc.endsAt - Date.now()) / 1000));
+            pill.innerText = `${secs}s`;
+          };
+          updateTimer();
+          clearInterval(auctionCountdownInterval);
+          auctionCountdownInterval = setInterval(updateTimer, 250);
         };
-        updateTimer();
-        auctionCountdownInterval = setInterval(updateTimer, 300);
+
+        if (inPreview) {
+          const initSecs = Math.max(1, Math.ceil((previewEnd - Date.now()) / 1000));
+          const previewKey = `${auc.type}-${auc.artwork.id || auc.artwork.title}-${previewEnd}`;
+
+          consoleEl.innerHTML = `
+            <div style="display:flex; gap:6px; align-items:center;">
+              <span style="font-size:11px; font-weight:900; color:#ffd60a;">${auc.type === 'bank' ? 'BANK AUCTION' : 'PRIVATE AUCTION'} PREVIEW</span>
+              <span id="auctionTimerPill" class="auction-timer-pill">${initSecs}s</span>
+            </div>
+            <img class="console-art-thumb" src="${auc.artwork.imageUrl}" onerror="this.src='${FALLBACK_ART}'"
+                 onclick="zoomGameArt('${auc.artwork.imageUrl}', '${safeTitle}', '${safeArtist}')">
+            <div style="font-size:11px; font-weight:bold; color:#fff;">${auc.artwork.title}</div>
+            <div style="font-size:11px; color:#ffd60a; font-weight:bold;">
+              Viewing painting — bidding starts in <span id="auctionPreviewInlineSecs">${initSecs}</span>s
+            </div>
+          `;
+
+          if (lastPreviewedAuctionKey !== previewKey) {
+            lastPreviewedAuctionKey = previewKey;
+            openAuctionPreviewFullscreen(auc, initSecs);
+          }
+
+          const updatePreviewTimer = () => {
+            const remainingMs = previewEnd - Date.now();
+            const secs = Math.max(0, Math.ceil(remainingMs / 1000));
+            const pill = document.getElementById('auctionTimerPill');
+            if (pill) pill.innerText = `${secs}s`;
+            const inlineSecs = document.getElementById('auctionPreviewInlineSecs');
+            if (inlineSecs) inlineSecs.innerText = `${secs}`;
+            if (isAuctionPreviewFullscreen) {
+              const banner = document.getElementById('artFsAuctionBanner');
+              if (banner) {
+                const label = auc.type === 'private' ? 'PRIVATE AUCTION PREVIEW' : 'BANK AUCTION PREVIEW';
+                banner.innerText = `🎨 ${label} — Bidding starts in ${secs}s`;
+              }
+            }
+            if (remainingMs <= 0) {
+              clearInterval(auctionCountdownInterval);
+              if (isAuctionPreviewFullscreen) {
+                closeArtFullscreen();
+              }
+              if (state.phase === 'bank_auction' || state.phase === 'private_auction') {
+                renderLiveAuctionConsole();
+              }
+            }
+          };
+          updatePreviewTimer();
+          auctionCountdownInterval = setInterval(updatePreviewTimer, 250);
+        } else {
+          renderLiveAuctionConsole();
+        }
       }
       else if (state.phase === 'game_over' && state.leaderboard) {
         const winner = state.leaderboard[0];

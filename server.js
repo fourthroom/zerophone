@@ -83,9 +83,6 @@ app.get('/stats', (req, res) => {
 });
 
 // ==========================================
-// GAME ON! "PICTURE THIS!" STATE MANAGER
-// ==========================================
-// ==========================================
 // GAME ON! "PICTURE THIS!" AUTOMATED ENGINE
 // ==========================================
 const gameRooms = {};
@@ -101,7 +98,8 @@ const BOARD_SPACES = [
 
 const FALLBACK_ART_IMAGE = "15FDDD6C-6205-4F68-8C6A-338AB0FA6C84_4_5005_c.jpeg";
 const DECK_SIZE = 14; // Adjust higher/lower for longer or shorter family games
-const AUCTION_SECONDS = 12;
+const AUCTION_PREVIEW_SECONDS = 30;
+const AUCTION_SECONDS = 30;
 
 const GENRE_QUERIES = {
   renaissance: "renaissance painting",
@@ -240,7 +238,7 @@ async function buildArtworkDeck(genre) {
         title: a.title.slice(0, 60),
         artist: a.artist_title || "Unknown Artist",
         year: a.date_display || "",
-        imageUrl: `https://www.artic.edu/iiif/2/${a.image_id}/full/400,/0/default.jpg`,
+        imageUrl: `https://www.artic.edu/iiif/2/${a.image_id}/full/843,/0/default.jpg`,
         values: []
       }));
       if (valid.length >= 10) return shuffle(valid).slice(0, DECK_SIZE);
@@ -316,6 +314,7 @@ function broadcastState(roomId, extra = {}) {
   const reveal = room.phase === 'game_over';
 
   io.to(roomId).emit('game-state-update', {
+    serverNow: Date.now(),
     phase: room.phase,
     genre: room.genre,
     deckCount: room.artworkDeck ? room.artworkDeck.length : 0,
@@ -325,6 +324,8 @@ function broadcastState(roomId, extra = {}) {
     players: sanitizePublicPlayers(room, reveal),
     auction: room.auction ? {
       type: room.auction.type,
+      isPreview: !!room.auction.isPreview,
+      previewEndsAt: room.auction.previewEndsAt || 0,
       artwork: {
         id: room.auction.artwork.id,
         title: room.auction.artwork.title,
@@ -352,6 +353,9 @@ function broadcastState(roomId, extra = {}) {
 function checkGameOverOrAdvance(roomId, message = "", delayMs = 2400) {
   const room = gameRooms[roomId];
   if (!room) return;
+
+  clearTimeout(room.auctionTimer);
+  clearTimeout(room.previewTimer);
 
   if (room.artworkDeck.length === 0) {
     room.phase = 'game_over';
@@ -396,6 +400,7 @@ function closeAuction(roomId) {
   const room = gameRooms[roomId];
   if (!room || !room.auction) return;
   clearTimeout(room.auctionTimer);
+  clearTimeout(room.previewTimer);
 
   const auc = room.auction;
   const winner = room.players.find(p => p.id === auc.highestBidderId);
@@ -439,6 +444,35 @@ function startAuctionTimer(roomId) {
   room.auctionTimer = setTimeout(() => closeAuction(roomId), AUCTION_SECONDS * 1000);
 }
 
+function beginAuctionBidding(roomId) {
+  const room = gameRooms[roomId];
+  if (!room || !room.auction || room.phase !== 'auction_preview') return;
+  clearTimeout(room.previewTimer);
+  room.previewTimer = null;
+
+  room.auction.isPreview = false;
+  room.auction.previewEndsAt = 0;
+  room.phase = room.auction.type === 'bank' ? 'bank_auction' : 'private_auction';
+
+  startAuctionTimer(roomId);
+  broadcastState(roomId);
+}
+
+function startAuctionPreview(roomId, extra = {}) {
+  const room = gameRooms[roomId];
+  if (!room || !room.auction) return;
+  clearTimeout(room.auctionTimer);
+  clearTimeout(room.previewTimer);
+
+  room.phase = 'auction_preview';
+  room.auction.isPreview = true;
+  room.auction.previewEndsAt = Date.now() + AUCTION_PREVIEW_SECONDS * 1000;
+  room.auction.endsAt = 0;
+
+  broadcastState(roomId, extra);
+  room.previewTimer = setTimeout(() => beginAuctionBidding(roomId), AUCTION_PREVIEW_SECONDS * 1000);
+}
+
 function resolveSpace(roomId) {
   const room = gameRooms[roomId];
   if (!room) return;
@@ -458,12 +492,13 @@ function resolveSpace(roomId) {
     return;
   }
 
-  // 2. BANK AUCTION
+  // 2. BANK AUCTION (30s full-screen preview -> 30s bidding increments)
   if (spaceAction === "Bank Auction") {
     const art = room.artworkDeck.pop();
-    room.phase = 'bank_auction';
     room.auction = {
       type: 'bank',
+      isPreview: true,
+      previewEndsAt: 0,
       artwork: art,
       sellerId: null,
       sellerName: "The Bank",
@@ -474,8 +509,7 @@ function resolveSpace(roomId) {
       passedIds: [],
       endsAt: 0
     };
-    startAuctionTimer(roomId);
-    broadcastState(roomId, { currentSpaceText: spaceAction });
+    startAuctionPreview(roomId, { currentSpaceText: spaceAction });
     return;
   }
 
@@ -586,6 +620,10 @@ io.on('connection', (socket) => {
     const room = gameRooms[roomId];
     if (!room || room.players.length === 0) return;
 
+    clearTimeout(room.auctionTimer);
+    clearTimeout(room.previewTimer);
+    clearTimeout(room.advanceTimer);
+
     room.genre = genre;
     room.turnIndex = 0;
     room.artworkDeck = await buildArtworkDeck(genre);
@@ -693,10 +731,11 @@ io.on('connection', (socket) => {
     const chosenArt = seller.portfolio.find(a => a.id === artworkId);
     if (!chosenArt) return;
 
-    room.phase = 'private_auction';
     room.pendingAction = null;
     room.auction = {
       type: 'private',
+      isPreview: true,
+      previewEndsAt: 0,
       artwork: chosenArt,
       sellerId: seller.id,
       sellerName: seller.name,
@@ -707,13 +746,15 @@ io.on('connection', (socket) => {
       passedIds: [seller.id], // Seller acts as auctioneer and cannot bid
       endsAt: 0
     };
-    startAuctionTimer(roomId);
-    broadcastState(roomId);
+    startAuctionPreview(roomId);
   });
 
   socket.on('game-place-bid', ({ roomId, bidAmount }) => {
     const room = gameRooms[roomId];
     if (!room || !room.auction) return;
+    if (room.phase === 'auction_preview' || room.auction.isPreview) {
+      return socket.emit('game-error', { message: "Preview in progress! Bidding starts once the painting returns to the board." });
+    }
     const player = room.players.find(p => p.id === socket.id);
     if (!player) return;
 
@@ -743,13 +784,14 @@ io.on('connection', (socket) => {
       return closeAuction(roomId);
     }
 
+    // Reset auction clock to a fresh 30-second increment after each bid
     startAuctionTimer(roomId);
     broadcastState(roomId);
   });
 
   socket.on('game-auction-pass', ({ roomId }) => {
     const room = gameRooms[roomId];
-    if (!room || !room.auction) return;
+    if (!room || !room.auction || room.phase === 'auction_preview' || room.auction.isPreview) return;
     const auc = room.auction;
 
     if (!auc.passedIds.includes(socket.id) && socket.id !== auc.highestBidderId) {
@@ -776,6 +818,7 @@ io.on('connection', (socket) => {
         room.players.splice(idx, 1);
         if (room.players.length === 0) {
           clearTimeout(room.auctionTimer);
+          clearTimeout(room.previewTimer);
           clearTimeout(room.advanceTimer);
           delete gameRooms[roomId];
         } else {
